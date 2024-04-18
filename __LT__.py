@@ -3,9 +3,29 @@ import pandas as pd
 import os
 import glob
 import math
-from tkinter import messagebox
 
-def laser_tweezers(path, split_subfold, a, b, date_of_cal, a_end, b_end, date_of_cal_end, split, position):
+# для вывода диалогового окна
+from PySide6.QtWidgets import QMessageBox
+
+def laser_tweezers(self) -> None:
+    dlg = QMessageBox(self)
+    #########################
+    # параметры, которые нам понадобятся
+    path = self.ui.path_for_LT.text()
+    split_subfold = self.ui.sep_for_LT.text()
+    a, b = self.ui.a_dop.value(), self.ui.b_dop.value()
+    date_of_cal = self.ui.dateEdit_2.text()
+    a_end, b_end = self.ui.a_main.value(), self.ui.b_main.value()
+    date_of_cal_end = self.ui.dateEdit.text()
+    split = self.ui.sep_for_LT_values.text()
+    position = self.ui.position.value()
+    #########################
+    if path == '':
+        dlg.setWindowTitle("Лазерный пинцет")
+        dlg.setText("Не введен путь к папкам")
+        dlg.exec()
+        return None
+
     path = path + '\\'
     # имя файла
     name_of_exp = path.split('\\')[-2]
@@ -50,13 +70,20 @@ def laser_tweezers(path, split_subfold, a, b, date_of_cal, a_end, b_end, date_of
         all_FD['Concentration'] = all_FD['Concentration'].astype(int)
         all_end['Concentration'] = all_end['Concentration'].astype(int)
         all_glass['Concentration'] = all_glass['Concentration'].astype(int)
-    except Exception:
+    except Exception as e:
         print('Нельзя перевести имена папок в формат int')
     # приводим значения к float
-    all_FA['Force, pN'] = all_FA['Force, pN'].astype(float)
-    all_FD['Force, pN'] = all_FD['Force, pN'].astype(float)
-    all_end['Force, pN'] = all_end['Force, pN'].astype(float)
-    all_glass['Force, pN'] = all_glass['Force, pN'].astype(float)
+    try:
+        all_FA['Force, pN'] = all_FA['Force, pN'].astype(float)
+        all_FD['Force, pN'] = all_FD['Force, pN'].astype(float)
+        all_end['Force, pN'] = all_end['Force, pN'].astype(float)
+        all_glass['Force, pN'] = all_glass['Force, pN'].astype(float)
+    except Exception as e:
+        dlg.setWindowTitle("Лазерный пинцет")
+        dlg.setText("Некоторые значения сил нельзя перевести в float.\nПроверьте данные.\n" + str(e))
+        dlg.exec()
+        return None
+
     # переводим значения в силы
     all_FA['Force, pN'] = all_FA['Force, pN'] * a + b
     all_FD['Force, pN'] = all_FD['Force, pN'] * a + b
@@ -163,4 +190,8 @@ def laser_tweezers(path, split_subfold, a, b, date_of_cal, a_end, b_end, date_of
             text_sheet.cell(column=2, row=10, value='b_end:')
             text_sheet.cell(column=1, row=11, value=a)
             text_sheet.cell(column=2, row=11, value=b)
-    return messagebox.showinfo('Лазерный пинцет', f'Excel файл и все графики успешно сохранены')
+
+    dlg.setWindowTitle("Лазерный пинцет")
+    dlg.setText("Excel файл и все графики успешно сохранены")
+    dlg.exec()
+    return None

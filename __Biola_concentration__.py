@@ -1,7 +1,9 @@
+# необходимые библиотеки
 from PyPDF2 import PdfReader
 import pandas as pd
 import re
-from tkinter import messagebox
+# для вывода диалогового окна
+from PySide6.QtWidgets import QMessageBox
 ####################################
 import sys
 
@@ -10,12 +12,20 @@ if sys.version_info[0] < 3:
 else:
     from io import StringIO
 ####################################
-def conentration_to_excel(path, file):
 
+def conentration_to_excel(path, file) -> None:
+    dlg = QMessageBox(self)
+    # DataFrame основной
     final_dataframe = pd.DataFrame()
 
-    path += '//'
+    if path == '':
+        dlg.setWindowTitle("Biola - PDF")
+        dlg.setText("Не введен путь к файлу PDF")
+        dlg.exec()
+        return None
 
+    path += '//'
+    # читаем PDF файл
     reader = PdfReader(path + file)
 
     # читаем каждую страницу файла
@@ -51,15 +61,31 @@ def conentration_to_excel(path, file):
 
             # записываем всё в основной DataFrame
             final_dataframe = pd.concat([df, final_dataframe], ignore_index=True)
-        except:
-            return messagebox.showerror('Ошибка', f'На странице {i} есть проблемы. Обратитесь в поддержку, или же измените pdf')
+        except Exception as e:
+            dlg.setWindowTitle("Biola - PDF")
+            dlg.setText(f'На странице {i} есть проблемы. Измените pdf.\n' + str(e))
+            dlg.setIcon(QMessageBox.Icon.Critical)
+            dlg.exec()
+            return None
 
     try:
         final_dataframe.columns = ['Фамилия', 'Концентрация тромбоцитов,тыс/мкл', 'Контроль']
-    except:
-        return messagebox.showerror('Ошибка','В данных есть проблемы -- выделилось не 3 столбца, а больше. Обратитесь в поддержку, или же измените pdf')
+    except Exception as e:
+        dlg.setWindowTitle("Biola - PDF")
+        dlg.setText(f'В данных есть проблемы -- выделилось не 3 столбца, а больше. Измените pdf.\n' + str(e))
+        dlg.setIcon(QMessageBox.Icon.Critical)
+        dlg.exec()
+        return None
     try:
         final_dataframe.to_excel(path + "platelets_concentration.xlsx")
-    except:
-        return messagebox.showerror('Ошибка','Excel файл с концентрациями не сохранился')
-    return messagebox.showinfo('Biola', f'Excel файл и все графики успешно сохранены')
+    except Exception as e:
+        dlg.setWindowTitle("Biola - PDF")
+        dlg.setText(f'Excel файл с концентрациями не сохранился.\n' + str(e))
+        dlg.setIcon(QMessageBox.Icon.Critical)
+        dlg.exec()
+        return None
+
+    dlg.setWindowTitle("Biola - PDF")
+    dlg.setText(f'Excel файл и все графики успешно сохранены')
+    dlg.exec()
+    return None

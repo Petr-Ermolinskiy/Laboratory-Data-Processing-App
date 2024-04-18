@@ -2,14 +2,36 @@
 import pandas as pd
 import scipy as sc
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 import scipy.optimize as opt
 from scipy.signal import savgol_filter
-from tkinter import messagebox
-#библиотека дополнительная для графиков
-import seaborn as sns
 
-def biola_result(plot_fiture, path, name_of_file, number_of_these_windows_born, number_of_these_windows_fluc, windows_born, windows_fluc):
+# для вывода диалогового окна
+from PySide6.QtWidgets import QMessageBox
+
+def biola_result(self):
+    dlg = QMessageBox(self)
+
+    #########################
+    # параметры, которые нам понадобятся
+    plot_fiture = self.ui.doubleSpinBox_Biola.value(), self.ui.comboBox_Biola_SD_or.currentText(), self.ui.comboBox_Biola_language.currentText(), self.ui.check_setka_biola.isChecked()
+    path = self.ui.path_for_biola.text()
+    name_of_file = self.ui.comboBox_biola.currentText()
+    number_of_these_windows_born = self.ui.spinBox_biola_born.value()
+    number_of_these_windows_fluc = self.ui.spinBox_biola_fluc.value()
+    windows_born = self.ui.spinBox_biola_born_odd.value()
+    windows_fluc = self.ui.spinBox_biola_fluc_odd.value()
+    plot_figs = self.ui.check_biola_plot_figs.isChecked()
+    #########################
+
+    if path == '':
+        dlg.setWindowTitle("Biola")
+        dlg.setText("Не введен путь к папкам")
+        dlg.exec()
+        return None
+
+
     path = path + '//'
     # изначальный DataFrame - читаем файл
     try:
@@ -22,10 +44,11 @@ def biola_result(plot_fiture, path, name_of_file, number_of_these_windows_born, 
         dff = pd.read_csv(path + name_of_file, sep=' ', engine='python', on_bad_lines='skip', index_col=False, encoding='cp1251')
         # добавляем индексы для того, чтобы в дальнейшем разделить данные
         name = dff.iat[0, 0] + ' ' + dff.iat[1, 0] + ' мкМ' + ' ' + dff.columns[0]
-    #для более новых библиотек:
+
     # добавляем дополнительный столбец
     dff['индекс для split'] = ""
 
+    # используем at вместо loc, т.к. это сделает большой выигрышь в скорости
     for i in range(len(dff)):
         if type(dff.iat[i, 1]) != float:
             if ':' in dff.iat[i, 1] and i + 1 < len(dff):
@@ -195,62 +218,62 @@ def biola_result(plot_fiture, path, name_of_file, number_of_these_windows_born, 
     else:
         title1 = 'Усредненная кривая по '
         title2 = ' пациентам'
+    if plot_figs:
+        sns.reset_orig()
+        #насколько шрифт изменяем
+        sns.set(font_scale=plot_fiture[0])
+        ##################################
+        just_for_plot = pd.melt(smooth_BORN.join(Time), id_vars=['время'])
+        just_for_plot.columns = ['Время, с', 'Пациент', 'Светопропускание,%']
+        if plot_fiture[2] == 'Eng':
+            just_for_plot.columns = ['Time, s', 'Пациент', 'Light transmission,%']
 
-    sns.reset_orig()
-    #насколько шрифт изменяем
-    sns.set(font_scale=plot_fiture[0])
-    ##################################
-    just_for_plot = pd.melt(smooth_BORN.join(Time), id_vars=['время'])
-    just_for_plot.columns = ['Время, с', 'Пациент', 'Светопропускание,%']
-    if plot_fiture[2] == 'Eng':
-        just_for_plot.columns = ['Time, s', 'Пациент', 'Light transmission,%']
+        #стили
+        sns.set_style("ticks")
+        if plot_fiture[3]:
+            sns.set_style("whitegrid")
 
-    #стили
-    sns.set_style("ticks")
-    if plot_fiture[3]:
-        sns.set_style("whitegrid")
+        fig, ax = plt.subplots()
+        sns.lineplot(data=just_for_plot, x=just_for_plot.columns[0], y=just_for_plot.columns[2], errorbar=error_, ax=ax).set(
+            title=title1 + str(len(result_main)) + title2)
+        ax.set_xlim(0, 300)
+        plt.tight_layout()
 
-    fig, ax = plt.subplots()
-    sns.lineplot(data=just_for_plot, x=just_for_plot.columns[0], y=just_for_plot.columns[2], errorbar=error_, ax=ax).set(
-        title=title1 + str(len(result_main)) + title2)
-    ax.set_xlim(0, 300)
-    plt.tight_layout()
+        just_for_plot2 = pd.melt(smooth_diff_BORN.join(Time), id_vars=['время'])
+        just_for_plot2.columns = ['Время, с', 'Пациент', 'Производная светопропускания,%/мин.']
+        if plot_fiture[2] == 'Eng':
+            just_for_plot2.columns = ['Time, s', 'Пациент', 'Light transmission derivative, %/min']
 
-    just_for_plot2 = pd.melt(smooth_diff_BORN.join(Time), id_vars=['время'])
-    just_for_plot2.columns = ['Время, с', 'Пациент', 'Производная светопропускания,%/мин.']
-    if plot_fiture[2] == 'Eng':
-        just_for_plot2.columns = ['Time, s', 'Пациент', 'Light transmission derivative, %/min']
+        #sns.set_style("whitegrid")
+        fig2, ax2 = plt.subplots()
+        sns.lineplot(data=just_for_plot2, x=just_for_plot2.columns[0], y=just_for_plot2.columns[2], errorbar=error_, ax=ax2).set(
+            title=title1 + str(len(result_main)) + title2)
+        ax2.set_xlim(0, 300)
+        plt.tight_layout()
 
-    #sns.set_style("whitegrid")
-    fig2, ax2 = plt.subplots()
-    sns.lineplot(data=just_for_plot2, x=just_for_plot2.columns[0], y=just_for_plot2.columns[2], errorbar=error_, ax=ax2).set(
-        title=title1 + str(len(result_main)) + title2)
-    ax2.set_xlim(0, 300)
-    plt.tight_layout()
+        just_for_plot3 = pd.melt(smooth_FLUC.join(Time), id_vars=['время'])
+        just_for_plot3.columns = ['Время, с', 'Пациент', 'Средний размер агрегата, отн.ед.']
+        if plot_fiture[2] == 'Eng':
+            just_for_plot3.columns = ['Time, s', 'Пациент', 'Average aggregate size, a.u.']
 
-    just_for_plot3 = pd.melt(smooth_FLUC.join(Time), id_vars=['время'])
-    just_for_plot3.columns = ['Время, с', 'Пациент', 'Средний размер агрегата, отн.ед.']
-    if plot_fiture[2] == 'Eng':
-        just_for_plot3.columns = ['Time, s', 'Пациент', 'Average aggregate size, a.u.']
+        #sns.set_style("whitegrid")
+        fig3, ax3 = plt.subplots()
+        sns.lineplot(data=just_for_plot3, x=just_for_plot3.columns[0], y=just_for_plot3.columns[2], errorbar=error_, ax=ax3).set(
+            title=title1 + str(len(result_main)) + title2)
+        ax3.set_xlim(0, 300)
+        plt.tight_layout()
 
-    #sns.set_style("whitegrid")
-    fig3, ax3 = plt.subplots()
-    sns.lineplot(data=just_for_plot3, x=just_for_plot3.columns[0], y=just_for_plot3.columns[2], errorbar=error_, ax=ax3).set(
-        title=title1 + str(len(result_main)) + title2)
-    ax3.set_xlim(0, 300)
-    plt.tight_layout()
+        just_for_plot4 = pd.melt(smooth_diff_FLUC.join(Time), id_vars=['время'])
+        just_for_plot4.columns = ['Время, с', 'Пациент', 'Производная среднего размера агрегата, отн.ед.']
+        if plot_fiture[2] == 'Eng':
+            just_for_plot4.columns = ['Time, s', 'Пациент', 'Average aggregate size derivative, a.u.']
 
-    just_for_plot4 = pd.melt(smooth_diff_FLUC.join(Time), id_vars=['время'])
-    just_for_plot4.columns = ['Время, с', 'Пациент', 'Производная среднего размера агрегата, отн.ед.']
-    if plot_fiture[2] == 'Eng':
-        just_for_plot4.columns = ['Time, s', 'Пациент', 'Average aggregate size derivative, a.u.']
-
-    #sns.set_style("whitegrid")
-    fig4, ax4 = plt.subplots()
-    sns.lineplot(data=just_for_plot4, x=just_for_plot4.columns[0], y=just_for_plot4.columns[2], errorbar=error_,
-                 ax=ax4).set(title=title1 + str(len(result_main)) + title2)
-    ax4.set_xlim(0, 300)
-    plt.tight_layout()
+        #sns.set_style("whitegrid")
+        fig4, ax4 = plt.subplots()
+        sns.lineplot(data=just_for_plot4, x=just_for_plot4.columns[0], y=just_for_plot4.columns[2], errorbar=error_,
+                     ax=ax4).set(title=title1 + str(len(result_main)) + title2)
+        ax4.set_xlim(0, 300)
+        plt.tight_layout()
 
     with pd.ExcelWriter(path + name_of_file.replace('.txt', '') +'_agg'+ ".xlsx") as writer:
         result_main.to_excel(writer, sheet_name='полученные данные')
@@ -261,9 +284,14 @@ def biola_result(plot_fiture, path, name_of_file, number_of_these_windows_born, 
         smooth_diff_FLUC.to_excel(writer, sheet_name='Произв. от ср. разм. агр.')
         combined_data_frame.to_excel(writer, sheet_name='Усредненные данные по строкам')
     # сохраняем усредненные графики
-    fig.savefig(path + 'Светопропускание.png', dpi=600)
-    fig2.savefig(path + 'Производная_светопропускания.png', dpi=600)
-    fig3.savefig(path + 'Средний_радиус.png', dpi=600)
-    fig4.savefig(path + 'Производная_среднего_радиуса.png', dpi=600)
+    if plot_figs:
+        fig.savefig(path + 'Светопропускание.png', dpi=600)
+        fig2.savefig(path + 'Производная_светопропускания.png', dpi=600)
+        fig3.savefig(path + 'Средний_радиус.png', dpi=600)
+        fig4.savefig(path + 'Производная_среднего_радиуса.png', dpi=600)
 
-    return messagebox.showinfo('Biola', f'Excel файл и все графики успешно сохранены')
+    # завершаем работу
+    dlg.setWindowTitle("Biola")
+    dlg.setText("Excel файл и все графики успешно сохранены")
+    dlg.exec()
+    return None

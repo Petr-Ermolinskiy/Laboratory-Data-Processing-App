@@ -1,9 +1,10 @@
 import glob
 import os
-from tkinter import messagebox
 from pandas import read_table
 from pathlib2 import Path
 
+# для вывода диалогового окна
+from PySide6.QtWidgets import QMessageBox
 
 def replacetext(path_to_file):
     # Reading and storing the content of the file in
@@ -32,7 +33,7 @@ def subfold(path, level):
                 s.add(i.path)
 
 
-def sort_these_files(path):
+def sort_these_files(path, self):
     path = path + '\\'
     ############
     #Изменим название папок на маленькие буквы, если такие папки есть
@@ -48,7 +49,18 @@ def sort_these_files(path):
     ############
     files_all = glob.glob(path+'*.txt')
     if files_all == []:
-        return messagebox.showerror('Ошибка', f'По пути {path} нет txt файлов')
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("RheoScan")
+        dlg.setText(f'По пути {path} нет txt файлов. Продолжить?')
+        dlg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        dlg.setIcon(QMessageBox.Question)
+        button = dlg.exec()
+
+        if button == QMessageBox.No:
+            return True
+        else:
+            return None
+
     # создаем подпапки для файлов
     os.makedirs(path + 'agg', exist_ok=True)
     os.makedirs(path + 'stress', exist_ok=True)
@@ -67,18 +79,27 @@ def sort_these_files(path):
             os.rename(i, path + 'agg//' + i.split('\\')[-1])
         elif var == 'Def':
             os.rename(i, path + 'deform//' + i.split('\\')[-1])
-    return 0
+    return None
 
-def sort_RheoScan_data(path, level):
+def sort_RheoScan_data(self) -> None:
+    path, level = self.ui.main_path.text(), self.ui.spinBox_level.value()
+
+    dlg = QMessageBox(self)
     if path == '':
-        return messagebox.showerror('Ошибка', f'В поле <путь к папке с подпапками> ничего не введено')
+        dlg.setWindowTitle("RheoScan")
+        dlg.setText("Не введен путь к папкам")
+        dlg.exec()
+        return None
+
     global s
     s = set()
     subfold(path, level)
     for path_for_one in s:
-        sort_these_files(path_for_one)
-    messagebox.showinfo('RheoScan', f'Данные рассортированы по подпапкам')
+        if sort_these_files(path_for_one, self):
+            break
 
-
-
+    dlg.setWindowTitle("RheoScan")
+    dlg.setText("Данные рассортированы по подпапкам")
+    dlg.exec()
+    return None
 

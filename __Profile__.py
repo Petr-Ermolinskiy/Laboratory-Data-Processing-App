@@ -1,153 +1,50 @@
 #необходимые библиотеки
 import math
 from math import pi
-from tkinter import messagebox
 
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+# для вывода диалогового окна
+from PySide6.QtWidgets import QMessageBox
 
-#import numpy as np
-
-#библиотека дополнительная для графиков
-
-
-#функция превращения данных из буфера обмена в 2 словаря -- среднее и погрешность
-def get_data_from_clipboard(just_DATA):
-    if just_DATA=='norm':
-        # словарь с значениями параметров нормы
-        norm_data = {'CSS, мПа': 250, 'AI, %': 41, 'AMP': 0.0527, 'T1/2, сек.': 5.9, 'DI (3 Па)': 0.322,
-                     'DI (20 Па)': 0.525, 'ВА, сек.': 6.6, 'СА, пН': 6.2, 'СД, пН': 3.36, 'СА/СД': 1.05, 'DA, %': 33,
-                     'VA, %/мин': 30}
-        # словарь с значениями стандартных отклонений параметров  нормы
-        SD_norm_data = {'CSS, мПа': 20, 'AI, %': 2, 'AMP': 0.001, 'T1/2, сек.': 1, 'DI (3 Па)': 0.03,
-                        'DI (20 Па)': 0.05, 'ВА, сек.': 1, 'СА, пН': 0.5, 'СД, пН': 0.2, 'СА/СД': 0.1, 'DA, %': 5,
-                        'VA, %/мин': 5}
-        return norm_data, SD_norm_data
-    #данные, скопированные из exel -- 3 столбца: (1) параметры; (2) среднее; (3) погрешность
-    #разделим данные по \t
-    just_DATA=just_DATA.split("\t")
-    #сделаем подготовку данных
-    for i in range(1,len(just_DATA)):
-        if i%2==0 and i != len(just_DATA)-1:
-            just_DATA[i]=just_DATA[i].split("\n", 1)
-            just_DATA[i][0]=just_DATA[i][0].replace(',','.')
-        else:
-            just_DATA[i]=just_DATA[i].replace(',','.')
-            just_DATA[i] = just_DATA[i].replace('\n', '')
-    #массив чтобы flatten данные
-    clear_DATA = []
-    #необходимый цикл, чтобы избавится от list of list
-    for i in just_DATA:
-        if type(i)==list and len(i)==2:
-            clear_DATA.append(i[0])
-            clear_DATA.append(i[1])
-        elif type(i)==list and len(i)==1:
-            clear_DATA.append(i[0])
-        else:
-            clear_DATA.append(i)
-    if len(clear_DATA)%3!=0:
-        messagebox.showerror('Ошибка', f'Что-то не так с введенными данными для микрореологического профиля')
-
-    #сделаем 2 словаря (среднее и погрешность) на основе списка clear_DATA
-
-    #словарь с значениями параметров пациентов
-    patient_data = {}
-    #словарь с значениями стандартных отклонений параметров  пациентов
-    SD_patient_data = {}
-
-    #заполним данные словари значениями
-    k = 0
-    while k < len(clear_DATA) - 1:
-        patient_data[clear_DATA[k]] = float(clear_DATA[k+1])
-        SD_patient_data[clear_DATA[k]] = float(clear_DATA[k+2])
-        k=k+3
-    return patient_data, SD_patient_data
+def prifile_plot(self) -> None:
+    dlg = QMessageBox(self)
+    #########################
+    # параметры, которые нам понадобятся
+    #########################
+    #это цвета
+    prifile_data__ = [self.ui.patient_prof.text(), self.ui.norm_prof.text(), self.ui.color_for_patient.text(), self.ui.color_for_norm.text()]
+    # это всё остальное
+    patient_d = self.ui.patient_data.text()
+    norm_d = self.ui.norm_data.text()
+    # путь к папке для сохранения файла
+    path = self.ui.path_for_profile.text()
+    # чертить линии или нет
+    pat_line = self.ui.check_profile_pat_line.isChecked()
+    pat_sd = self.ui.check_profile_pat_sd.isChecked()
+    norm_line = self.ui.check_profile_norm_line.isChecked()
+    norm_sd = self.ui.check_profile_norm_sd.isChecked()
+    #########################
 
 
-#функция для вычисления положительного отклонения
-def mul_err_plus(values, SD_values):
-    dop=values.copy()
-    SD_dop = SD_values.copy()
-    for i in range(len(dop)):
-        dop[i]=dop[i]+SD_dop[i]
-    return dop
-
-
-#функция для вычисления отрицательного отклонения
-def mul_err_minus(values, SD_values):
-    dop=values.copy()
-    SD_dop = SD_values.copy()
-    for i in range(len(dop)):
-        dop[i]=dop[i]-SD_dop[i]
-    return dop
-
-
-#функция нахождения максимального значения
-def find_max(dict_):
-    max_=0.0
-    for i in dict_:
-        if max_<dict_[i]:
-            max_= dict_[i]
-    return max_
-
-
-#функция перевода значения в %
-def to_percent(list_):
-    list_percent = []
-    for i in list_:
-        list_percent.append(str(int(round(i*100,0)))+'%')
-    return list_percent
-
-
-#функция перевода значения в относительные % для построения профиля в линейных координатах
-def to_percent_for_line(list_,mean_or_SD):
-    list_percent = []
-    for i in list_:
-        if mean_or_SD=='mean':
-            list_percent.append((i-1)*100)
-        if mean_or_SD=='SD':
-            list_percent.append(i*100)
-    return list_percent
-
-
-#функция получения массива для построения гладкой линии
-def smooth_curve(start, finish, up_limit):
-    xxx=[]
-    yyy=[]
-    i=start
-    while i<=finish:
-        xxx.append(i)
-        yyy.append(up_limit-0.1)
-        i=i+0.05
-    return xxx, yyy
-
-
-#функция для переименования категорий для красоты некоторых параметров
-def change_name_of_categories(categories):
-    new = categories.copy()
-    for i in range(len(new)):
-        new[i]=new[i].replace('T1/2, сек.', '$T_{1/2}, сек.$')
-    return new
-
-
-def prifile_plot(prifile_data__, patient_d, norm_d, path_profile, lines_or_no_lines):
-    pat_line = lines_or_no_lines[0]
-    pat_sd = lines_or_no_lines[1]
-    norm_line = lines_or_no_lines[2]
-    norm_sd = lines_or_no_lines[3]
     sns.reset_orig()
     # какие группы? 1-ая группа -- пациент; 2-ая группа -- это контрольная группа
     I_index = [prifile_data__[0], prifile_data__[1]]
 
-    # путь к папке для сохранения файла
-    path = path_profile
     if path == '':
-        return messagebox.showerror('Ошибка', f'В поле <путь к папке для сохранения> ничего не введено')
+        dlg.setWindowTitle("Микрореологический профиль")
+        dlg.setText("Не введен путь к сохранению графиков")
+        dlg.exec()
+        return None
+
     path = path + '//'
     if len(prifile_data__[2]) != 7 or len(prifile_data__[3]) != 7 or prifile_data__[2][0] + prifile_data__[3][0] != '##':
-        return messagebox.showerror('Ошибка', f'Неправильные значения цветов HEX')
+        dlg.setWindowTitle("Микрореологический профиль - Ошибка")
+        dlg.setText("Неправильные значения цветов HEX")
+        dlg.exec()
+        return None
     #######
     # Цвета для радиального графика
     #######
@@ -166,11 +63,21 @@ def prifile_plot(prifile_data__, patient_d, norm_d, path_profile, lines_or_no_li
     color_NORM_line = prifile_data__[3]
     ###
     if patient_d == '' or norm_d == '':
-        return messagebox.showerror('Ошибка', f'Введите данные для профиля')
+        dlg.setWindowTitle("Микрореологический профиль - Ошибка")
+        dlg.setText("Введите данные для профилей")
+        dlg.exec()
+        return None
+
     # получаем словарь для средних значениях и стандарного отклонения для ПАЦИЕНТА
-    patient_data, SD_patient_data = get_data_from_clipboard(patient_d)
+    patient_data, SD_patient_data = get_data_from_clipboard(patient_d, self)
+    # проверка
+    if patient_data==None or SD_patient_data==None:
+        return None
     # получаем словарь для средних значениях и стандарного отклонения для НОРМЫ
-    norm_data, SD_norm_data = get_data_from_clipboard(norm_d)
+    norm_data, SD_norm_data = get_data_from_clipboard(norm_d, self)
+    # проверка
+    if norm_data==None or SD_norm_data==None:
+        return None
     # создаём нормированные значения параметров пациента и нормы
     patient_data_norm = {}
     norm_data_norm = {}
@@ -367,23 +274,159 @@ def prifile_plot(prifile_data__, patient_d, norm_d, path_profile, lines_or_no_li
 
     # удалим отсупы по оси X -- если это нужно, то надо добавить строчку ниже
     # ax2.set_xlim(left=0, right=len(names_for_line)-1)
-
     # добавим легенду
     ax2.legend()
+
     try:
         # сохранение графика в радиальных координатах
         fig.savefig(path + I_index[0] + '.png', dpi=600, bbox_inches='tight')
         # сохранение графика в линейных координатах
         fig2.savefig(path + I_index[0] + '_line' + '.png', dpi=600, bbox_inches='tight')
-        messagebox.showinfo('Успешное сохранение', f'Профили успешно сохранились')
-        ax.cla()
-        ax2.cla()
-        plt.clf()
-    except:
-        messagebox.showerror('Ошибка', f'Профили не сохранились. \n Обратитесь в поддержку в тг по тел. +79151148759')
+        # очистим графики -- у меня почему-то без этого иногда графики при повторном построении накладывались
         ax.cla()
         ax2.cla()
         plt.clf()
 
+        dlg.setWindowTitle("Микрореологический профиль - Успешное сохранение")
+        dlg.setText("Профили успешно сохранились")
+        dlg.exec()
+        return None
+    except Exception as e:
+        # очистим графики -- у меня почему-то без этого иногда графики при повторном построении накладывались
+        ax.cla()
+        ax2.cla()
+        plt.clf()
 
+        dlg.setWindowTitle("Микрореологический профиль - Ошибка")
+        dlg.setText("Профили не сохранились.\n" + str(e))
+        dlg.exec()
+        return None
+
+#######
+# доп. функции
+#######
+
+#функция превращения данных из буфера обмена в 2 словаря -- среднее и погрешность
+def get_data_from_clipboard(just_DATA, self):
+
+    if just_DATA=='norm':
+        # словарь с значениями параметров нормы
+        norm_data = {'CSS, мПа': 250, 'AI, %': 41, 'AMP': 0.0527, 'T1/2, сек.': 5.9, 'DI (3 Па)': 0.322,
+                     'DI (20 Па)': 0.525, 'ВА, сек.': 6.6, 'СА, пН': 6.2, 'СД, пН': 3.36, 'СА/СД': 1.05, 'DA, %': 33,
+                     'VA, %/мин': 30}
+        # словарь с значениями стандартных отклонений параметров  нормы
+        SD_norm_data = {'CSS, мПа': 20, 'AI, %': 2, 'AMP': 0.001, 'T1/2, сек.': 1, 'DI (3 Па)': 0.03,
+                        'DI (20 Па)': 0.05, 'ВА, сек.': 1, 'СА, пН': 0.5, 'СД, пН': 0.2, 'СА/СД': 0.1, 'DA, %': 5,
+                        'VA, %/мин': 5}
+        return norm_data, SD_norm_data
+    #данные, скопированные из exel -- 3 столбца: (1) параметры; (2) среднее; (3) погрешность
+    #разделим данные по \t
+    just_DATA=just_DATA.split("\t")
+    #сделаем подготовку данных
+    for i in range(1,len(just_DATA)):
+        if i%2==0 and i != len(just_DATA)-1:
+            just_DATA[i]=just_DATA[i].split("\n", 1)
+            just_DATA[i][0]=just_DATA[i][0].replace(',','.')
+        else:
+            just_DATA[i]=just_DATA[i].replace(',','.')
+            just_DATA[i] = just_DATA[i].replace('\n', '')
+    #массив чтобы flatten данные
+    clear_DATA = []
+    #необходимый цикл, чтобы избавится от list of list
+    for i in just_DATA:
+        if type(i)==list and len(i)==2:
+            clear_DATA.append(i[0])
+            clear_DATA.append(i[1])
+        elif type(i)==list and len(i)==1:
+            clear_DATA.append(i[0])
+        else:
+            clear_DATA.append(i)
+    if len(clear_DATA)%3!=0:
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Микрореологический профиль - Ошибка")
+        dlg.setText("Введенными данные для микрореологического профиля не подходят. Данные должны представлять собой 3 столбца - параметр, среднее и стандартное отклонение")
+        dlg.setIcon(QMessageBox.Icon.Critical)
+        dlg.exec()
+        return None, None
+
+    #сделаем 2 словаря (среднее и погрешность) на основе списка clear_DATA
+
+    #словарь с значениями параметров пациентов
+    patient_data = {}
+    #словарь с значениями стандартных отклонений параметров  пациентов
+    SD_patient_data = {}
+
+    #заполним данные словари значениями
+    k = 0
+    while k < len(clear_DATA) - 1:
+        patient_data[clear_DATA[k]] = float(clear_DATA[k+1])
+        SD_patient_data[clear_DATA[k]] = float(clear_DATA[k+2])
+        k=k+3
+    return patient_data, SD_patient_data
+
+
+#функция для вычисления положительного отклонения
+def mul_err_plus(values, SD_values):
+    dop=values.copy()
+    SD_dop = SD_values.copy()
+    for i in range(len(dop)):
+        dop[i]=dop[i]+SD_dop[i]
+    return dop
+
+
+#функция для вычисления отрицательного отклонения
+def mul_err_minus(values, SD_values):
+    dop=values.copy()
+    SD_dop = SD_values.copy()
+    for i in range(len(dop)):
+        dop[i]=dop[i]-SD_dop[i]
+    return dop
+
+
+#функция нахождения максимального значения
+def find_max(dict_):
+    max_=0.0
+    for i in dict_:
+        if max_<dict_[i]:
+            max_= dict_[i]
+    return max_
+
+
+#функция перевода значения в %
+def to_percent(list_):
+    list_percent = []
+    for i in list_:
+        list_percent.append(str(int(round(i*100,0)))+'%')
+    return list_percent
+
+
+#функция перевода значения в относительные % для построения профиля в линейных координатах
+def to_percent_for_line(list_,mean_or_SD):
+    list_percent = []
+    for i in list_:
+        if mean_or_SD=='mean':
+            list_percent.append((i-1)*100)
+        if mean_or_SD=='SD':
+            list_percent.append(i*100)
+    return list_percent
+
+
+#функция получения массива для построения гладкой линии
+def smooth_curve(start, finish, up_limit):
+    xxx=[]
+    yyy=[]
+    i=start
+    while i<=finish:
+        xxx.append(i)
+        yyy.append(up_limit-0.1)
+        i=i+0.05
+    return xxx, yyy
+
+
+#функция для переименования категорий для красоты некоторых параметров
+def change_name_of_categories(categories):
+    new = categories.copy()
+    for i in range(len(new)):
+        new[i]=new[i].replace('T1/2, сек.', '$T_{1/2}, сек.$')
+    return new
 

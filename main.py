@@ -3,7 +3,6 @@
 ###############
 ##############
 ##############
-
 import sys
 ############################
 # библиотеки для создания приложения
@@ -21,7 +20,6 @@ from __Catplot__ import *
 from __Biola__ import *
 from __Biola_concentration__ import *
 from __LT__ import *
-from additional_func import get_name_out_of_path
 # основное окно приложения
 from ui_main import Ui_MainWindow
 #дополнительные библиотеки
@@ -39,11 +37,7 @@ class Main_window(QMainWindow):
         super(Main_window, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        '''
-        my_icon = QIcon()
-        my_icon.addFile('LOGO.png')
-        self.setWindowIcon(my_icon)
-        '''
+
         #################################
         #Buttons
         #################################
@@ -96,29 +90,40 @@ class Main_window(QMainWindow):
             with open("style_dark.qss", "r") as f:
                 _style = f.read()
             self.setStyleSheet(_style)
-        elif index == 2:
-            with open("style_mac.qss", "r") as f:
-                _style = f.read()
-            self.setStyleSheet(_style)
-        elif index == 3:
-            with open("style_aqua.qss", "r") as f:
-                _style = f.read()
-            self.setStyleSheet(_style)
         else:
             self.setStyleSheet('')
     ##############################
     #функции при нажатии на кнопки
     ##############################
-    #RheoScan
+
+    ############
+    # RheoScan
+    ############
     def RheoScan(self):
         level_(self.ui.spinBox_level.value(),[[self.ui.tua_1_agg.text(), self.ui.tau_2_agg.text(), self.ui.r2_def.text(), self.ui.spinBox_n_max_deform.value()], self.ui.main_path.text(), self.ui.check_agg.isChecked(), self.ui.check_stress.isChecked(), self.ui.check_deform.isChecked(), self.ui.check_save_exel.isChecked(), self.ui.check_save_csv.isChecked(), self.ui.separator_for_data.text(), self.ui.check_stat_for_column.isChecked(), self.ui.check_figs_for_agg.isChecked(), self.ui.check_approx_agg.isChecked(), self.ui.check_approx_deform.isChecked(), self.ui.check_for_deform.isChecked(), self.ui.vibros_delete.isChecked(), self.ui.iqr_vibros.value()])
-    #sort data
+    # сортировка данных RheoScan
     def RheoScan_sort_data(self):
-        sort_RheoScan_data(self.ui.main_path.text(),self.ui.spinBox_level.value())
-    #Микрореологический профиль
-    def Profile(self):
-        lines_or_no_lines = [self.ui.check_profile_pat_line.isChecked(),self.ui.check_profile_pat_sd.isChecked(),self.ui.check_profile_norm_line.isChecked(),self.ui.check_profile_norm_sd.isChecked()]
-        prifile_plot([self.ui.patient_prof.text(),self.ui.norm_prof.text(),self.ui.color_for_patient.text(),self.ui.color_for_norm.text()], self.ui.patient_data.text(), self.ui.norm_data.text(), self.ui.path_for_profile.text(), lines_or_no_lines)
+        sort_RheoScan_data(self)
+
+    ############
+    # Biola
+    ############
+    # основная функция извлечения данных из txt файла
+    def biola_do(self):
+        biola_result(self)
+    # извлечение данных из PDF файла для "Счета"
+    def biola_concentration(self):
+        conentration_to_excel(self.ui.path_for_biola.text(), self.ui.comboBox_biola_concentration.currentText())
+
+    ############
+    # Лазерный пинцет
+    ############
+    def LT(self):
+        laser_tweezers(self)
+
+    ############
+    # Обработка данных
+    ############
     #Рисунки
     def Figs_and_stuff(self):
         #дополнительные настройки
@@ -126,32 +131,25 @@ class Main_window(QMainWindow):
         #основная функция - comboBox и comboBox2 -- это для excel файла
         figs_plot(plot_feature_data__, self.ui.path_for_plot.text(), self.ui.comboBox.currentText(), self.ui.comboBox_2.currentText(),
                   self.ui.check_box_plot.isChecked(), self.ui.check_corr_matrix.isChecked(), self.ui.check_corr_figs.isChecked())
-    #сводные таблицы
+    # Микрореологический профиль
+    def Profile(self):
+        prifile_plot(self)
+
+    #сводная таблица
     def pivot_table(self):
         do_for_each_sheet(self.ui.path_for_pivot_table.text(), self.ui.comboBox_pivot_table.currentText(), self.ui.comboBox_pivot_hue.currentText(), self.ui.spinBox_pivot_table.value(), self.ui.comboBox_sd_or_se_pivot.currentText())
-
+    # корреляционная матрица
     def corr_table(self):
         corr_for_each_sheeeeeeet(self.ui.path_for_pivot_table.text(), self.ui.comboBox_pivot_table.currentText(), self.ui.comboBox_pivot_hue.currentText(), self.ui.comboBox_correlation_person_or_not.currentText(), self.ui.check_color_for_corr_pivot.isChecked(), self.ui.comboBox_correlation_color_map.currentText())
-
-    #Biola
-    def biola_do(self):
-        plot_fiture = self.ui.doubleSpinBox_Biola.value(), self.ui.comboBox_Biola_SD_or.currentText(), self.ui.comboBox_Biola_language.currentText(), self.ui.check_setka_biola.isChecked()
-        biola_result(plot_fiture, self.ui.path_for_biola.text(), self.ui.comboBox_biola.currentText(), self.ui.spinBox_biola_born.value(), self.ui.spinBox_biola_fluc.value(), self.ui.spinBox_biola_born_odd.value(), self.ui.spinBox_biola_fluc_odd.value())
-
-    def biola_concentration(self):
-        conentration_to_excel(self.ui.path_for_biola.text(), self.ui.comboBox_biola_concentration.currentText())
-
-    #Лазерный пинцет
-    def LT(self):
-        laser_tweezers(self.ui.path_for_LT.text(), self.ui.sep_for_LT.text(), self.ui.a_dop.value(), self.ui.b_dop.value(),  self.ui.dateEdit_2.text(), self.ui.a_main.value(), self.ui.b_main.value(),  self.ui.dateEdit.text(), self.ui.sep_for_LT_values.text(), self.ui.position.value())
-
-    #catplot
-
+    # Catplot
     def cat_plot(self):
-        plot_catplot(self.ui.path_for_catplot.text(), self.ui.comboBox_excel_catplot.currentText(), self.ui.comboBox_excel_sheet_catplot.currentText(), self.ui.comboBox_catplot_x.currentText(), self.ui.comboBox_catplot_y.currentText(), self.ui.comboBox_catplot_hue.currentText(), self.ui.comboBox_color_catplot.currentText(), self.ui.comboBox_catplot_SD_or_not.currentText(), self.ui.comboBox_template_catplot.currentText(), self.ui.comboBox_catplot_form_x.currentText(), self.ui.comboBox_catplot_form_y.currentText(), self.ui.comboBox_catplot_form_hue.currentText(), self.ui.comboBox_stat_test_catplot.currentText(), self.ui.check_stat_znachimost_catplot.isChecked(), self.ui.doubleSpinBox_catplot.value(), self.ui.comboBox_catplot_mult_stat.currentText(), self.ui.comboBox_catplot_stat_formatt.currentText())
+        plot_catplot(self)
+
+    ################################################
     ###
-    #добавление списка файлов в папке в comboBox
+    #добавление списка файлов в папке в comboBox'ы
     ###
+    ################################################
     def add_excel_catplot(self):
         #files = get_name_out_of_path(glob.glob(self.ui.path_for_plot.text() + '//' +'*.xlsx'))
         files = glob.glob(self.ui.path_for_catplot.text() + '//' + '*.xlsx')
@@ -220,8 +218,19 @@ class Main_window(QMainWindow):
         self.ui.comboBox_biola_concentration.addItems(files2)
 
 
+
+#функция, чтобы разделить путь до файла на название файла без расширений
+def get_name_out_of_path(files):
+    out=[0]*(len(files))
+    for i in range(len(files)):
+        out[i]=files[i].split('\\')[-1]
+    return out
+
+# важно обозначить для того, чтобы лого обозначалось правильно
 basedir = os.path.dirname(__file__)
-#стандарт
+###########################################
+# запуск приложения
+###########################################
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(os.path.join(basedir, 'LOGO.ico')))

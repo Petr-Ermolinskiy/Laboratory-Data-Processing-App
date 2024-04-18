@@ -6,8 +6,10 @@ import matplotlib.pyplot as plt
 from statannotations.Annotator import Annotator
 import math
 from itertools import permutations
-from tkinter import messagebox
 import statsmodels
+
+# для вывода диалогового окна
+from PySide6.QtWidgets import QMessageBox
 
 def for_save(Name_fiqure):
     Name_fiqure = Name_fiqure.replace('/', '')
@@ -36,7 +38,32 @@ def change_type(x, __type__):
     else:
         return x
 
-def plot_catplot(path, exel_name, sheet_name, x_name, y_name, hue_name, pallette_catplot, _error_, bar_or_not, type_x, type_y, type_hue, ttest_stat, stat_or_not, scale_, mult_camparison, stat_formatter):
+def plot_catplot(self) -> None:
+    dlg = QMessageBox(self)
+    #########################
+    # параметры, которые нам понадобятся
+    path = self.ui.path_for_catplot.text()
+    exel_name = self.ui.comboBox_excel_catplot.currentText()
+    sheet_name = self.ui.comboBox_excel_sheet_catplot.currentText()
+    x_name = self.ui.comboBox_catplot_x.currentText()
+    y_name = self.ui.comboBox_catplot_y.currentText()
+    hue_name = self.ui.comboBox_catplot_hue.currentText()
+    pallette_catplot = self.ui.comboBox_color_catplot.currentText()
+    _error_ = self.ui.comboBox_catplot_SD_or_not.currentText()
+    bar_or_not = self.ui.comboBox_template_catplot.currentText()
+    type_x, type_y, type_hue = self.ui.comboBox_catplot_form_x.currentText(), self.ui.comboBox_catplot_form_y.currentText(), self.ui.comboBox_catplot_form_hue.currentText()
+    ttest_stat = self.ui.comboBox_stat_test_catplot.currentText()
+    stat_or_not = self.ui.check_stat_znachimost_catplot.isChecked()
+    scale_ = self.ui.doubleSpinBox_catplot.value()
+    mult_camparison = self.ui.comboBox_catplot_mult_stat.currentText()
+    stat_formatter = self.ui.comboBox_catplot_stat_formatt.currentText()
+    #########################
+    if path == '':
+        dlg.setWindowTitle("Catplot")
+        dlg.setText("Не введен путь к папкам")
+        dlg.exec()
+        return None
+
     files = path + '//' + exel_name
     if hue_name == '--без подгруппы':
         hue_name = None
@@ -95,10 +122,13 @@ def plot_catplot(path, exel_name, sheet_name, x_name, y_name, hue_name, pallette
     #edgecolor="black",
     if args['hue'] == None:
         n_and_n = df.groupby(args['x'])[args['y']].count()
+
         for cat_ax in cat_plot.axes:
             for sm_cat_ax in cat_ax:
-                for i, n in enumerate(n_and_n):
-                    sm_cat_ax.annotate(f'n={n}', xy=(i, 0.01), xycoords=('data', 'axes fraction'), ha='center',
+                # важно проходиться по xlabels, а не просто по n_and_n, иначе будет неправильный порядок. см. https://stackoverflow.com/questions/64783410/adding-number-of-observations-to-seaborn-catplot-stirpplot
+                xlabels = [x.get_text() for x in sm_cat_ax.get_xticklabels()]
+                for i, n in enumerate(xlabels):
+                    sm_cat_ax.annotate(f'n={n_and_n[n]}', xy=(i, 0.01), xycoords=('data', 'axes fraction'), ha='center',
                                        size='small')
 
     if stat_or_not:
@@ -124,8 +154,11 @@ def plot_catplot(path, exel_name, sheet_name, x_name, y_name, hue_name, pallette
 
     try:
         cat_plot.savefig(path + '//' + for_save(str(x_name) +'_'+ str(y_name) +'_'+ str(hue_name)) + '.png', dpi=600)
-    except:
-        return messagebox.showerror('Ошибка - Catplot', 'График не сохранен')
+    except Exception as e:
+        dlg.setWindowTitle("Ошибка - Catplot")
+        dlg.setText("График не сохранен.\n" + str(e))
+        dlg.exec()
+        return None
 
     try:
         file1 = open(path + '//' + for_save(str(x_name) +'_'+ str(y_name) +'_'+ str(hue_name)) + '.txt', "w")
@@ -138,11 +171,13 @@ def plot_catplot(path, exel_name, sheet_name, x_name, y_name, hue_name, pallette
 
         L2 = '*: 1.00e-02 < p <= 5.00e-02 \n**: 1.00e-03 < p <= 1.00e-02 \n***: 1.00e-04 < p <= 1.00e-03 \n****: p <= 1.00e-04'
 
-        # \n is placed to indicate EOL (End of Line)
         file1.writelines(L0 + L1 + L2)
-        file1.close()  # to change file access modes
-    except:
-        return messagebox.showerror('Ошибка - Catplot', 'txt файл для графика не сохранен')
+        file1.close()
+    except Exception as e:
+        dlg.setWindowTitle("Ошибка - Catplot")
+        dlg.setText("TXT файл для графика.\n"+str(e))
+        dlg.exec()
+        return None
 
     try:
         if args['hue'] == None:
@@ -150,7 +185,13 @@ def plot_catplot(path, exel_name, sheet_name, x_name, y_name, hue_name, pallette
         else:
             jjj = df.groupby([args['x'], args['hue']])[args['y']].count()
         jjj.rename("N").to_csv(path + '//' + for_save(str(x_name) +'_'+ str(y_name) +'_'+ str(hue_name)) + '_N_of_data.txt', sep='\t')
-    except:
-        return messagebox.showerror('Ошибка - Catplot', 'txt файл для N в группах не сохранен')
+    except Exception as e:
+        dlg.setWindowTitle("Ошибка - Catplot")
+        dlg.setText("TXT файл для N в группах не сохранен.\n"+str(e))
+        dlg.exec()
+        return None
 
-    return messagebox.showinfo('Catplot', f'График успешно сохранен')
+    dlg.setWindowTitle("Catplot")
+    dlg.setText("График успешно сохранен")
+    dlg.exec()
+    return None

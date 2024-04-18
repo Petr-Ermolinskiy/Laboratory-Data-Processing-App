@@ -1,4 +1,22 @@
-from imports import *
+############################
+from tkinter import messagebox
+#библиотеки для функций
+############################
+##############################
+####################
+import glob
+import math
+# для работы с папками
+import os
+# также для графиков понадобится библиотека matplotlib
+import matplotlib.pyplot as plt
+############################
+# библиотеки для обработки данных
+import numpy as np
+import scipy.optimize as opt
+from pandas import Series, read_table, ExcelWriter, DataFrame, to_numeric, concat
+from sklearn.metrics import r2_score
+############################
 
 def subfold(level, path):
     global s
@@ -178,6 +196,9 @@ def main_thingy(massive_of_all_parameters, changed_path):
                 plt.ylabel('Светопропускание, отн.ед.')
                 # сохраняем все рисунки в отдельную папку
                 fig.savefig(path_for_agg_fit + '//' + Name_fit_agg + '.png', dpi=600, format='png')
+
+                # закрываем и всё очищаем
+                plt.close()
                 ax.cla()
                 plt.clf()
                 #####################################
@@ -379,6 +400,8 @@ def main_thingy(massive_of_all_parameters, changed_path):
                         plt.ylabel('Индекс деформируемости, отн.ед.')
                         # сохраняем все рисунки в отдельную папку
                         fig.savefig(path_for_def_fit + '//' + ttt + '.png', dpi=600, format='png')
+                        # закрываем и всё очищаем
+                        plt.close()
                         ax.cla()
                         plt.clf()
                         #####################################

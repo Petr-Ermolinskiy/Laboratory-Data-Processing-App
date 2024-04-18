@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>709</width>
-    <height>649</height>
+    <height>643</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,6 +19,48 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_10">
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(128, 160, 165);</string>
+      </property>
+      <property name="text">
+       <string>Ермолинский Петр — версия 3.3</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QComboBox" name="comboBox_style_sheet">
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(128, 160, 165);
+background-color: rgba(255, 255, 255, 0);</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Основная тема</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Темная тема</string>
+       </property>
+      </item>
+     </widget>
+    </item>
     <item row="0" column="0" colspan="2">
      <widget class="QTabWidget" name="Lab_stuff">
       <property name="palette">
@@ -122,7 +164,7 @@
        <string notr="true">/*background-color: rgb(249, 249, 249);</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabWidgetPage1">
        <attribute name="title">
@@ -172,6 +214,9 @@ border-radius: 17px;
               <layout class="QVBoxLayout" name="verticalLayout_5">
                <item>
                 <widget class="QCheckBox" name="check_approx_agg">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                    <horstretch>0</horstretch>
@@ -1161,7 +1206,131 @@ border-radius: 10px;</string>
        <attribute name="title">
         <string>Биола</string>
        </attribute>
-       <layout class="QFormLayout" name="formLayout_2">
+       <layout class="QGridLayout" name="gridLayout_10">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_40">
+          <item>
+           <widget class="QLabel" name="lb_path_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Путь к папке с файлом</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="path_for_biola">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Путь к папке с файлом txt, который был сохранен из программы для Биолы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_73">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_41">
+            <item>
+             <widget class="QLabel" name="lb_path_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Segoe UI</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Название файла для агрегатограмм (txt)</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_biola">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_72">
+          <item>
+           <widget class="QLabel" name="lb_path_16">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Название файла для концентрации тромбоцитов (pdf)</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_biola_concentration">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
         <item row="3" column="0">
          <layout class="QVBoxLayout" name="verticalLayout_31">
           <item>
@@ -1209,6 +1378,28 @@ border-radius: 17px;
                </property>
                <property name="text">
                 <string>Длина окна для сглаживания кривых</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="Line" name="line_16">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(128, 160, 165);</string>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Plain</enum>
+               </property>
+               <property name="lineWidth">
+                <number>4</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
                </property>
               </widget>
              </item>
@@ -1372,6 +1563,28 @@ border-radius: 17px;
               </widget>
              </item>
              <item>
+              <widget class="Line" name="line_17">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(128, 160, 165);</string>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Plain</enum>
+               </property>
+               <property name="lineWidth">
+                <number>4</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
               <layout class="QVBoxLayout" name="verticalLayout_22">
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_42">
@@ -1482,9 +1695,292 @@ border-radius: 17px;
             </layout>
            </widget>
           </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QCheckBox" name="check_biola_plot_figs">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Начертить графики</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <property name="tristate">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="plp">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame#plp{
+border: 5px solid rgb(128, 160, 165);
+border-radius: 17px;
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_30">
+             <property name="leftMargin">
+              <number>6</number>
+             </property>
+             <property name="topMargin">
+              <number>6</number>
+             </property>
+             <property name="rightMargin">
+              <number>6</number>
+             </property>
+             <property name="bottomMargin">
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="lb_color_pal_box_13">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                 <underline>true</underline>
+                </font>
+               </property>
+               <property name="text">
+                <string>Для графиков</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="Line" name="line_18">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(128, 160, 165);</string>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Plain</enum>
+               </property>
+               <property name="lineWidth">
+                <number>4</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_29">
+               <property name="leftMargin">
+                <number>30</number>
+               </property>
+               <property name="rightMargin">
+                <number>30</number>
+               </property>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_61">
+                 <item>
+                  <widget class="QLabel" name="lb_color_pal_box_9">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Относительный размер шрифта</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="doubleSpinBox_Biola">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="decimals">
+                    <number>1</number>
+                   </property>
+                   <property name="minimum">
+                    <double>0.100000000000000</double>
+                   </property>
+                   <property name="singleStep">
+                    <double>0.100000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>1.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_62">
+                 <item>
+                  <widget class="QLabel" name="lb_color_pal_box_10">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Обозначение погрешностей на графике</string>
+                   </property>
+                   <property name="text">
+                    <string>Погрешности</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboBox_Biola_SD_or">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Среднеквадратическое отклонение</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Среднеквадратическая ошибка</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Доверительный интервал</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Перцентильный интервал</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_63">
+                 <item>
+                  <widget class="QCheckBox" name="check_setka_biola">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Без флажка порядок будет таким, какой он в таблице</string>
+                   </property>
+                   <property name="text">
+                    <string>Сетка</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignRight">
+                  <widget class="QLabel" name="lb_color_pal_box_11">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Язык  </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboBox_Biola_language">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Rus</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Eng</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
          </layout>
         </item>
-        <item row="5" column="0">
+        <item row="4" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_74">
           <item>
            <widget class="QPushButton" name="btn_biola">
@@ -1521,366 +2017,6 @@ border-radius: 10px;</string>
            </widget>
           </item>
          </layout>
-        </item>
-        <item row="0" column="0" colspan="2">
-         <layout class="QHBoxLayout" name="horizontalLayout_40">
-          <item>
-           <widget class="QLabel" name="lb_path_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Путь к папке с файлом</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="path_for_biola">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Путь к папке с файлом txt, который был сохранен из программы для Биолы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="1" column="0" colspan="2">
-         <layout class="QHBoxLayout" name="horizontalLayout_73">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_41">
-            <item>
-             <widget class="QLabel" name="lb_path_3">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>Segoe UI</family>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Название файла для агрегатограмм (txt)</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="comboBox_biola">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-        <item row="2" column="0" colspan="2">
-         <layout class="QHBoxLayout" name="horizontalLayout_72">
-          <item>
-           <widget class="QLabel" name="lb_path_16">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Название файла для концентрации тромбоцитов (pdf)</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="comboBox_biola_concentration">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="4" column="0">
-         <widget class="QFrame" name="plp">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame#plp{
-border: 5px solid rgb(128, 160, 165);
-border-radius: 17px;
-}</string>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_30">
-           <property name="leftMargin">
-            <number>6</number>
-           </property>
-           <property name="topMargin">
-            <number>6</number>
-           </property>
-           <property name="rightMargin">
-            <number>6</number>
-           </property>
-           <property name="bottomMargin">
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="lb_color_pal_box_13">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-               <underline>true</underline>
-              </font>
-             </property>
-             <property name="text">
-              <string>Для графиков</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_29">
-             <property name="leftMargin">
-              <number>30</number>
-             </property>
-             <property name="rightMargin">
-              <number>30</number>
-             </property>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_61">
-               <item>
-                <widget class="QLabel" name="lb_color_pal_box_9">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>Относительный размер шрифта</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QDoubleSpinBox" name="doubleSpinBox_Biola">
-                 <property name="font">
-                  <font>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <property name="decimals">
-                  <number>1</number>
-                 </property>
-                 <property name="minimum">
-                  <double>0.100000000000000</double>
-                 </property>
-                 <property name="singleStep">
-                  <double>0.100000000000000</double>
-                 </property>
-                 <property name="value">
-                  <double>1.000000000000000</double>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_62">
-               <item>
-                <widget class="QLabel" name="lb_color_pal_box_10">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <property name="toolTip">
-                  <string>Обозначение погрешностей на графике</string>
-                 </property>
-                 <property name="text">
-                  <string>Погрешности</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="comboBox_Biola_SD_or">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>Среднеквадратическое отклонение</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Среднеквадратическая ошибка</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Доверительный интервал</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Перцентильный интервал</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_63">
-               <item>
-                <widget class="QLabel" name="lb_color_pal_box_11">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>Язык</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="comboBox_Biola_language">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>Rus</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Eng</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="check_setka_biola">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>Без флажка порядок будет таким, какой он в таблице</string>
-               </property>
-               <property name="text">
-                <string>Сетка</string>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
         </item>
        </layout>
       </widget>
@@ -2307,6 +2443,13 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="date">
+                    <date>
+                     <year>2024</year>
+                     <month>1</month>
+                     <day>1</day>
+                    </date>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -2489,6 +2632,13 @@ border-radius: 17px;
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="date">
+                    <date>
+                     <year>2024</year>
+                     <month>1</month>
+                     <day>1</day>
+                    </date>
                    </property>
                   </widget>
                  </item>
@@ -6636,439 +6786,315 @@ border-radius: 10px;</string>
            <attribute name="title">
             <string>Стат. значимость</string>
            </attribute>
-           <widget class="QWidget" name="layoutWidget">
-            <property name="geometry">
-             <rect>
-              <x>60</x>
-              <y>30</y>
-              <width>285</width>
-              <height>28</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_107">
-             <item>
-              <widget class="QLabel" name="lb_path_for_plot_4">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>Путь, по которому может быть найден excel файл</string>
-               </property>
-               <property name="text">
-                <string>Путь к excel файлу</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="path_for_catplot_2">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="layoutWidget_2">
-            <property name="geometry">
-             <rect>
-              <x>70</x>
-              <y>80</y>
-              <width>230</width>
-              <height>24</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_110">
-             <item>
-              <widget class="QLabel" name="lb_exel_name_5">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>Название excel файла</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_excel_catplot_2"/>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="layoutWidget_3">
-            <property name="geometry">
-             <rect>
-              <x>60</x>
-              <y>210</y>
-              <width>188</width>
-              <height>24</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_111">
-             <item>
-              <widget class="QLabel" name="lb_hue_name_9">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string/>
-               </property>
-               <property name="text">
-                <string>Первая группа</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_catplot_x_2"/>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="layoutWidget_4">
-            <property name="geometry">
-             <rect>
-              <x>60</x>
-              <y>130</y>
-              <width>246</width>
-              <height>24</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_112">
-             <item>
-              <widget class="QLabel" name="lb_exel_name_6">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>Название листа в файле</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_excel_sheet_catplot_2"/>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="layoutWidget_5">
-            <property name="geometry">
-             <rect>
-              <x>60</x>
-              <y>330</y>
-              <width>290</width>
-              <height>28</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_113">
-             <item>
-              <widget class="QLabel" name="lb_stattest_8">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>см. пакет statannotations</string>
-               </property>
-               <property name="text">
-                <string>Статистический тест</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_stat_test_catplot_2">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <item>
-                <property name="text">
-                 <string>Brunner-Munzel</string>
+           <layout class="QFormLayout" name="formLayout_6">
+            <item row="0" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_107">
+              <item>
+               <widget class="QLabel" name="lb_path_for_plot_4">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
                 </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Levene</string>
+                <property name="toolTip">
+                 <string>Путь, по которому может быть найден excel файл</string>
                 </property>
-               </item>
-               <item>
                 <property name="text">
-                 <string>Mann-Whitney</string>
+                 <string>Путь к excel файлу</string>
                 </property>
-               </item>
-               <item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="path_for_catplot_2">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>Mann-Whitney-gt</string>
+                 <string/>
                 </property>
-               </item>
-               <item>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_110">
+              <item>
+               <widget class="QLabel" name="lb_exel_name_5">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>Mann-Whitney-ls</string>
+                 <string>Название excel файла</string>
                 </property>
-               </item>
-               <item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_excel_catplot_2"/>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_112">
+              <item>
+               <widget class="QLabel" name="lb_exel_name_6">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>t-test_ind</string>
+                 <string>Название листа в файле</string>
                 </property>
-               </item>
-               <item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_excel_sheet_catplot_2"/>
+              </item>
+             </layout>
+            </item>
+            <item row="3" column="0">
+             <widget class="Line" name="line_12">
+              <property name="font">
+               <font>
+                <family>Segoe UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(128, 160, 165);</string>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <property name="lineWidth">
+               <number>3</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_115">
+              <item>
+               <widget class="QLabel" name="lb_stattest_11">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string>см. пакет statannotations</string>
+                </property>
                 <property name="text">
-                 <string>t-test_welch</string>
+                 <string>Данные</string>
                 </property>
-               </item>
-               <item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_stat_test_catplot_3">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Две колонки</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Индексируемые</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="5" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_111">
+              <item>
+               <widget class="QLabel" name="lb_hue_name_9">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
                 <property name="text">
-                 <string>t-test_paired</string>
+                 <string>Первая группа</string>
                 </property>
-               </item>
-               <item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_catplot_x_2"/>
+              </item>
+             </layout>
+            </item>
+            <item row="6" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_114">
+              <item>
+               <widget class="QLabel" name="lb_hue_name_10">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
                 <property name="text">
-                 <string>Wilcoxon</string>
+                 <string>Вторая группа</string>
                 </property>
-               </item>
-               <item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_catplot_x_3"/>
+              </item>
+             </layout>
+            </item>
+            <item row="7" column="0">
+             <widget class="Line" name="line_13">
+              <property name="font">
+               <font>
+                <family>Segoe UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(128, 160, 165);</string>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <property name="lineWidth">
+               <number>3</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_113">
+              <item>
+               <widget class="QLabel" name="lb_stattest_8">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string>см. пакет statannotations</string>
+                </property>
                 <property name="text">
-                 <string>Kruskal</string>
+                 <string>Статистический тест</string>
                 </property>
-               </item>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="Line" name="line_12">
-            <property name="geometry">
-             <rect>
-              <x>60</x>
-              <y>150</y>
-              <width>301</width>
-              <height>16</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(128, 160, 165);</string>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
-            </property>
-            <property name="lineWidth">
-             <number>3</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-           <widget class="Line" name="line_13">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>270</y>
-              <width>301</width>
-              <height>16</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(128, 160, 165);</string>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
-            </property>
-            <property name="lineWidth">
-             <number>3</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-           <widget class="QWidget" name="layoutWidget_6">
-            <property name="geometry">
-             <rect>
-              <x>60</x>
-              <y>240</y>
-              <width>188</width>
-              <height>24</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_114">
-             <item>
-              <widget class="QLabel" name="lb_hue_name_10">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string/>
-               </property>
-               <property name="text">
-                <string>Вторая группа</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_catplot_x_3"/>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="layoutWidget_7">
-            <property name="geometry">
-             <rect>
-              <x>60</x>
-              <y>170</y>
-              <width>290</width>
-              <height>28</height>
-             </rect>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_115">
-             <item>
-              <widget class="QLabel" name="lb_stattest_11">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>см. пакет statannotations</string>
-               </property>
-               <property name="text">
-                <string>Данные</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_stat_test_catplot_3">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <item>
-                <property name="text">
-                 <string>Две колонки</string>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_stat_test_catplot_2">
+                <property name="enabled">
+                 <bool>true</bool>
                 </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Индексируемые</string>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
                 </property>
-               </item>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QPushButton" name="btn_plot_and_save_catplot_2">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>410</y>
-              <width>461</width>
-              <height>26</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(128, 160, 165, 50);
+                <item>
+                 <property name="text">
+                  <string>Brunner-Munzel</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Levene</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Mann-Whitney</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Mann-Whitney-gt</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Mann-Whitney-ls</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>t-test_ind</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>t-test_welch</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>t-test_paired</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Wilcoxon</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Kruskal</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="9" column="0">
+             <widget class="QPushButton" name="btn_plot_and_save_catplot_2">
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(128, 160, 165, 50);
 border: 3px solid rgb(128, 160, 165);
 border-radius: 10px;</string>
-            </property>
-            <property name="text">
-             <string>Рассчитать стат. значимость</string>
-            </property>
-           </widget>
+              </property>
+              <property name="text">
+               <string>Рассчитать стат. значимость</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
        </layout>
       </widget>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_10">
-      <property name="font">
-       <font>
-        <family>Segoe UI</family>
-        <pointsize>9</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(128, 160, 165);</string>
-      </property>
-      <property name="text">
-       <string>Ермолинский Петр — версия 3.1</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QComboBox" name="comboBox_style_sheet">
-      <property name="font">
-       <font>
-        <family>Segoe UI</family>
-        <pointsize>9</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(128, 160, 165);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>Основная тема</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Темная тема</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Mac</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Aqua</string>
-       </property>
-      </item>
      </widget>
     </item>
    </layout>
@@ -7078,162 +7104,18 @@ background-color: rgba(255, 255, 255, 0);</string>
  <resources/>
  <connections>
   <connection>
-   <sender>check_change_corr_fig_down_limit</sender>
+   <sender>check_biola_plot_figs</sender>
    <signal>toggled(bool)</signal>
-   <receiver>doubleSpinBox_corr_figs</receiver>
+   <receiver>plp</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>65</x>
-     <y>343</y>
+     <x>55</x>
+     <y>341</y>
     </hint>
     <hint type="destinationlabel">
-     <x>78</x>
-     <y>343</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vibros_delete</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>iqr_vibros</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>339</x>
-     <y>474</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>477</x>
-     <y>474</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_agg</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>check_figs_for_agg</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>122</x>
-     <y>296</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>124</x>
-     <y>326</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_deform</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>check_for_deform</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>387</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>417</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_color_for_corr_pivot</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>comboBox_correlation_color_map</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>218</x>
-     <y>410</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>243</x>
-     <y>480</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_stat_znachimost</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>comboBox_stat_test</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>364</x>
-     <y>354</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>402</x>
-     <y>405</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_stat_znachimost</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>comboBox_alter_hep</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>360</x>
-     <y>351</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>379</x>
-     <y>440</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_stat_znachimost_catplot</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>comboBox_stat_test_catplot</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>324</x>
-     <y>350</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>546</x>
-     <y>351</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_stat_znachimost_catplot</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>comboBox_catplot_stat_formatt</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>326</x>
-     <y>347</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>382</x>
-     <y>385</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_stat_znachimost_catplot</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>comboBox_catplot_mult_stat</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>320</x>
-     <y>353</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>419</y>
+     <x>91</x>
+     <y>365</y>
     </hint>
    </hints>
   </connection>

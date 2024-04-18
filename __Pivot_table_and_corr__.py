@@ -1,4 +1,9 @@
 import pandas as pd
+
+# для вывода диалогового окна
+from PySide6.QtWidgets import QMessageBox
+
+######################
 from tkinter import messagebox
 
 def describe_this_dataframe(path, _df, __round__, error, what_sheet, _int=False, index='index'):
