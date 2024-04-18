@@ -91,7 +91,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, botto
 
     # добавить точки! важный параметр palette=take_a_color_point
     try:
-        sns.stripplot(data=data, alpha=0.6, palette=take_a_color_point, ax=ax, linewidth=1, size=4)
+        sns.stripplot(data=data, alpha=0.6, palette=take_a_color_point, ax=ax, linewidth=1, size=6)
     except:
         return messagebox.showerror('Ошибка', 'Скорее всего вы ввели неправильный цвет HEX')
 
@@ -293,9 +293,14 @@ def calculate_table_for_p_val(df_list, dict_for_future):
                     statistic, p_value = stats.ansari(df_list[dict_for_future[i]][col1].dropna(),
                                                          df_list[dict_for_future[i]][col2].dropna(),
                                                          alternative=plot_feature_data__[13])
+                elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля':
+                    statistic, p_value = stats.brunnermunzel(df_list[dict_for_future[i]][col1].dropna(),
+                                                             df_list[dict_for_future[i]][col2].dropna(),
+                                                             alternative=plot_feature_data__[13])
                 else:
                     statistic, p_value = stats.brunnermunzel(df_list[dict_for_future[i]][col1].dropna(),
                                                              df_list[dict_for_future[i]][col2].dropna(),
+                                                             distribution='normal',
                                                              alternative=plot_feature_data__[13])
                 # добавим в наш DataFrame
                 dop_DF.loc[col1, col2] = round(p_value, 4)
@@ -437,7 +442,8 @@ def do_for_one_sheet(what_sheet):
         hue_name_for_sheet = columns_of_interest[0]
         columns_of_interest = columns_of_interest[1:]
     else:
-        hue_name_for_sheet = hue_name
+        hue_name_for_sheet = hue_name.replace('\\n', '\n')
+
         if hue_name_for_sheet not in columns_of_interest:
             return messagebox.showerror('Ошибка', 'В таблице нет такого столбца:' + str(hue_name_for_sheet))
         index_for_col_interest = list(columns_of_interest).index(hue_name_for_sheet)

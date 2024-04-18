@@ -34,7 +34,7 @@ def do_pivot(path, exel_name, what_sheet, hue_name, __round__, error):
         hue_name_for_sheet = columns_of_interest[0]
         columns_of_interest = columns_of_interest[1:]
     else:
-        hue_name_for_sheet = hue_name
+        hue_name_for_sheet = hue_name.replace('\\n', '\n')
         if hue_name_for_sheet not in columns_of_interest:
             return messagebox.showerror('Ошибка', 'В таблице нет такого столбца:' + str(hue_name_for_sheet))
         index_for_col_interest = list(columns_of_interest).index(hue_name_for_sheet)
@@ -118,7 +118,7 @@ def corr_sheeeeeeet(path, exel_name, hue_name, what_sheet, pierson_or_not, color
         hue_name_for_sheet = columns_of_interest[0]
         columns_of_interest = columns_of_interest[1:]
     else:
-        hue_name_for_sheet = hue_name
+        hue_name_for_sheet = hue_name.replace('\\n', '\n')
         if hue_name_for_sheet not in columns_of_interest:
             return messagebox.showerror('Ошибка', 'В таблице нет такого столбца:' + str(hue_name_for_sheet))
         index_for_col_interest = list(columns_of_interest).index(hue_name_for_sheet)

@@ -154,7 +154,7 @@ def main_thingy(massive_of_all_parameters, changed_path):
             x = read_table(i, skiprows=22, header=None, decimal=',')
             x.columns = ['Time, s', 'Raw data, a.u.', 'Approx. data, a.u.']
             # непосредственно сама аппроксимация (функция opt.curve_fit). Если вдруг не удается хорошо аппроксимировать ф-ию, надо изменить bounds
-            (y0_, A1_, A2_, t1_, t2_), _ = opt.curve_fit(f, x['Time, s'], x['Raw data, a.u.'], bounds=((0, -3, -3, 0, 0), (10, 3, 3, float(agg_approx_data__[0]), float(agg_approx_data__[1]))))
+            (y0_, A1_, A2_, t1_, t2_), _ = opt.curve_fit(f, x['Time, s'], x['Raw data, a.u.'], bounds=((0, -10, -10, 0, 0), (10, 10, 10, float(agg_approx_data__[0]), float(agg_approx_data__[1]))))
             Up = x['Raw data, a.u.']
             Upppp = Up[0]
             Botttom = x['Raw data, a.u.'].min()
@@ -490,6 +490,7 @@ def main_thingy(massive_of_all_parameters, changed_path):
     # сохраняем все полученные данные
     try:
         if saving_s_exel:
+            ### massive_of_all_parameters[1]     path
             with ExcelWriter(path + name_of_patient + '.xlsx') as writer:
                 if var_agg and files_agg != []:
                     all_agg.to_excel(writer, index_label='Номер', sheet_name='Agg')

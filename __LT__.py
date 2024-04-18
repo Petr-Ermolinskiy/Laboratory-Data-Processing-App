@@ -33,8 +33,8 @@ def laser_tweezers(path, split_subfold, a, b, date_of_cal, a_end, b_end, date_of
                 if len(m) < 2:
                     continue
                 kk = m[0]
-                # по условию просто записывает в DataFrames всё, что есть
-                add__add = pd.DataFrame({'Concentration': name, 'Force, pN': m[1]}, index=[0])
+                # по условию просто записывает в DataFrames всё, что есть -- тут у m нужно поставить -1
+                add__add = pd.DataFrame({'Concentration': name, 'Force, pN': m[-1]}, index=[0])
                 if len(kk) > 1 and len(m) > 0:
                     if kk[0:2] == 'FA' or kk[0:2] == 'fa' or kk[0:2] == 'Fa':
                         all_FA = pd.concat([all_FA, add__add], ignore_index=True)
