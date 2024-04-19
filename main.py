@@ -135,11 +135,8 @@ class Main_window(QMainWindow):
     ############
     #Рисунки
     def Figs_and_stuff(self):
-        #дополнительные настройки
-        plot_feature_data__ = self.ui.comboBox_color_pal_box.currentText(), self.ui.comboBox_color_pal_points.currentText(), self.ui.color_box.text(), self.ui.color_points.text(), self.ui.comboBox_sd_or_minmax.currentText(), self.ui.bottom_lim.text(), self.ui.comboBox_color_pal_corr.currentText(), self.ui.del_hue.text(), self.ui.corr_mat_figsize.text(), self.ui.font_for_in.text(), self.ui.font_for_out.text(), self.ui.name_of_corr_matrix.text(), self.ui.comboBox_stat_test.currentText(), self.ui.comboBox_alter_hep.currentText(), self.ui.comboBox_spin_x_.currentText(), self.ui.check_sort_or_not.isChecked(), self.ui.check_stat_znachimost.isChecked(), self.ui.spinBox_x_label.value(), self.ui.spinBox_y_label.value(), self.ui.spinBox_x_val.value(), self.ui.spinBox_y_vals.value(), self.ui.comboBox_fonts.currentText(), self.ui.spinBox_mean_val_size.value(), self.ui.check_N_.isChecked(), self.ui.check_background.isChecked(), self.ui.check_change_corr_fig_down_limit.isChecked(), self.ui.doubleSpinBox_corr_figs.value(), self.ui.spinBox_points_corrFIGS.value(), self.ui.doubleSpinBox_corr_figs_fontscale.value(), self.ui.check_sort_or_not_corr_figs.isChecked(), self.ui.check_setka.isChecked(), self.ui.order_box_plot.text(), self.ui.STAT_znachimost_order_box_plot.text()
         #основная функция - comboBox и comboBox2 -- это для excel файла
-        figs_plot(plot_feature_data__, self.ui.path_for_plot.text(), self.ui.comboBox.currentText(), self.ui.comboBox_2.currentText(),
-                  self.ui.check_box_plot.isChecked(), self.ui.check_corr_matrix.isChecked(), self.ui.check_corr_figs.isChecked())
+        figs_plot(self)
     # Микрореологический профиль
     def Profile(self):
         prifile_plot(self)

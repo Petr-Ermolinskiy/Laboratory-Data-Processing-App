@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>709</width>
+    <width>712</width>
     <height>679</height>
    </rect>
   </property>
@@ -529,7 +529,7 @@ border-radius: 10px;</string>
                     <number>1</number>
                    </property>
                    <property name="maximum">
-                    <number>100</number>
+                    <number>200</number>
                    </property>
                    <property name="value">
                     <number>20</number>
@@ -1963,7 +1963,7 @@ border-radius: 17px;
              <string>Начертить графики</string>
             </property>
             <property name="checked">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="tristate">
              <bool>false</bool>
@@ -1972,6 +1972,9 @@ border-radius: 17px;
           </item>
           <item>
            <widget class="QFrame" name="plp">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -2157,7 +2160,7 @@ border-radius: 17px;
                  <item>
                   <widget class="QCheckBox" name="check_setka_biola">
                    <property name="enabled">
-                    <bool>true</bool>
+                    <bool>false</bool>
                    </property>
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -2936,7 +2939,7 @@ border-radius: 10px;</string>
            </font>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
@@ -3108,7 +3111,7 @@ border-radius: 17px;
                  </font>
                 </property>
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>2</number>
                 </property>
                 <widget class="QWidget" name="tab_3">
                  <attribute name="title">
@@ -5572,188 +5575,101 @@ border-radius: 10px;</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_11">
             <item row="0" column="0">
-             <layout class="QVBoxLayout" name="verticalLayout_37">
+             <layout class="QVBoxLayout" name="verticalLayout_43">
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout_36">
+               <layout class="QVBoxLayout" name="verticalLayout_37">
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_75">
+                 <layout class="QVBoxLayout" name="verticalLayout_36">
                   <item>
-                   <widget class="QLabel" name="lb_path_for_plot_2">
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="toolTip">
-                     <string>Путь, по которому может быть найден excel файл</string>
-                    </property>
-                    <property name="text">
-                     <string>Путь к excel файлу</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="path_for_pivot_table">
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_76">
-                  <item>
-                   <widget class="QLabel" name="lb_exel_name_2">
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Название excel файла</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="comboBox_pivot_table"/>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_120">
-                  <item>
-                   <widget class="QLabel" name="lb_exel_name_7">
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Название листа</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="comboBox_pivot_table_excel_sheet"/>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_77">
-                  <item>
-                   <widget class="QLabel" name="lb_hue_name_2">
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="toolTip">
-                     <string>Именно после этого столбца должны идти столбцы с данными</string>
-                    </property>
-                    <property name="text">
-                     <string>Название столбца для групп</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="comboBox_pivot_hue"/>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_80">
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_79">
-                  <item>
-                   <widget class="QLabel" name="lb_color_pal_box_8">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Округлить значения до знака после запятой</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QSpinBox" name="spinBox_pivot_table">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="minimum">
-                     <number>0</number>
-                    </property>
-                    <property name="maximum">
-                     <number>10</number>
-                    </property>
-                    <property name="value">
-                     <number>1</number>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_78">
-                  <item>
-                   <widget class="QLabel" name="lb_sd_or_minmax_2">
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Обозначение погрешностей</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="comboBox_sd_or_se_pivot">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_75">
                     <item>
-                     <property name="text">
-                      <string>SD</string>
-                     </property>
+                     <widget class="QLabel" name="lb_path_for_plot_2">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Путь, по которому может быть найден excel файл</string>
+                      </property>
+                      <property name="text">
+                       <string>Путь к excel файлу</string>
+                      </property>
+                     </widget>
                     </item>
                     <item>
-                     <property name="text">
-                      <string>SE</string>
-                     </property>
+                     <widget class="QLineEdit" name="path_for_pivot_table">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
                     </item>
-                   </widget>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_76">
+                    <item>
+                     <widget class="QLabel" name="lb_exel_name_2">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Название excel файла</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QComboBox" name="comboBox_pivot_table"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_120">
+                    <item>
+                     <widget class="QLabel" name="lb_exel_name_7">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Название листа</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QComboBox" name="comboBox_pivot_table_excel_sheet"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_77">
+                    <item>
+                     <widget class="QLabel" name="lb_hue_name_2">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Именно после этого столбца должны идти столбцы с данными</string>
+                      </property>
+                      <property name="text">
+                       <string>Название столбца для групп</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QComboBox" name="comboBox_pivot_hue"/>
+                    </item>
+                   </layout>
                   </item>
                  </layout>
                 </item>
@@ -5774,7 +5690,7 @@ border-radius: 10px;</string>
                  <enum>QFrame::Plain</enum>
                 </property>
                 <property name="lineWidth">
-                 <number>3</number>
+                 <number>10</number>
                 </property>
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
@@ -5782,232 +5698,419 @@ border-radius: 10px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_plot_and_save_pivot_table">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
+               <widget class="QFrame" name="yyy">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgba(128, 160, 165, 50);
+                 <string notr="true">QFrame#yyy{
+border: 5px solid rgb(128, 160, 165);
+border-radius: 17px;
+}</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_40">
+                 <property name="leftMargin">
+                  <number>8</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>8</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>8</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>8</number>
+                 </property>
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="lb_color_pal_box_17">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                     <bold>false</bold>
+                     <underline>true</underline>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Сводная таблица</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_80">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_79">
+                     <item>
+                      <widget class="QLabel" name="lb_color_pal_box_8">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Округлить значения до знака после запятой</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QSpinBox" name="spinBox_pivot_table">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="minimum">
+                        <number>0</number>
+                       </property>
+                       <property name="maximum">
+                        <number>10</number>
+                       </property>
+                       <property name="value">
+                        <number>1</number>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_78">
+                     <item>
+                      <widget class="QLabel" name="lb_sd_or_minmax_2">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Обозначение погрешностей</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="comboBox_sd_or_se_pivot">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>SD</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>SE</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_plot_and_save_pivot_table">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgba(128, 160, 165, 50);
 border: 3px solid rgb(128, 160, 165);
 border-radius: 10px;</string>
-                </property>
-                <property name="text">
-                 <string>Сохранить сводную таблицу</string>
-                </property>
+                   </property>
+                   <property name="text">
+                    <string>Сохранить сводную таблицу</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_85">
-                <property name="spacing">
-                 <number>10</number>
-                </property>
-                <item>
-                 <widget class="QLabel" name="lb_sd_or_minmax_3">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Корреляция по</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QComboBox" name="comboBox_correlation_person_or_not">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>pearson</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>kendall</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>spearman</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_26">
-                <item>
-                 <widget class="QLabel" name="lb_sd_or_minmax_4">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Выделить ячейки цветом</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QCheckBox" name="check_color_for_corr_pivot">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_86">
-                <property name="spacing">
-                 <number>10</number>
-                </property>
-                <item>
-                 <widget class="QLabel" name="lb_sd_or_minmax_5">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Цветовая схема</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QComboBox" name="comboBox_correlation_color_map">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>coolwarm</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>YlGn</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>BuGn</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>GnBu</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>bwr</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>seismic</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>PiYG</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>RdGy</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>seismic</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>hot</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>inferno</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>gist_heat</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_plot_and_save_corr_table">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
+               <widget class="QFrame" name="ppp">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgba(128, 160, 165, 50);
+                 <string notr="true">QFrame#ppp{
+border: 5px solid rgb(128, 160, 165);
+border-radius: 17px;
+}</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_42">
+                 <property name="leftMargin">
+                  <number>8</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>8</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>8</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>8</number>
+                 </property>
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="lb_color_pal_box_18">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                     <bold>false</bold>
+                     <underline>true</underline>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Корреляционная матрица</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_41">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_85">
+                     <property name="spacing">
+                      <number>10</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="lb_sd_or_minmax_3">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Корреляция по</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="comboBox_correlation_person_or_not">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>pearson</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>kendall</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>spearman</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_121">
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_26">
+                       <item>
+                        <widget class="QLabel" name="lb_sd_or_minmax_4">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Выделить ячейки цветом</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="check_color_for_corr_pivot">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="checked">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_86">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="lb_sd_or_minmax_5">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Цветовая схема</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QComboBox" name="comboBox_correlation_color_map">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>coolwarm</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>YlGn</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>BuGn</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>GnBu</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>bwr</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>seismic</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>PiYG</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>RdGy</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>seismic</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>hot</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>inferno</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>gist_heat</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_plot_and_save_corr_table">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgba(128, 160, 165, 50);
 border: 3px solid rgb(128, 160, 165);
 border-radius: 10px;</string>
-                </property>
-                <property name="text">
-                 <string>Сохранить корреляционную матрицу по всем данным</string>
-                </property>
+                   </property>
+                   <property name="text">
+                    <string>Сохранить корреляционную матрицу по всем данным</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>
@@ -7484,11 +7587,9 @@ border-radius: 10px;</string>
   <tabstop>comboBox_pivot_hue</tabstop>
   <tabstop>spinBox_pivot_table</tabstop>
   <tabstop>comboBox_sd_or_se_pivot</tabstop>
-  <tabstop>btn_plot_and_save_pivot_table</tabstop>
   <tabstop>comboBox_correlation_person_or_not</tabstop>
   <tabstop>check_color_for_corr_pivot</tabstop>
   <tabstop>comboBox_correlation_color_map</tabstop>
-  <tabstop>btn_plot_and_save_corr_table</tabstop>
   <tabstop>path_for_catplot</tabstop>
   <tabstop>comboBox_excel_catplot</tabstop>
   <tabstop>comboBox_excel_sheet_catplot</tabstop>
@@ -7739,6 +7840,22 @@ border-radius: 10px;</string>
     <hint type="destinationlabel">
      <x>441</x>
      <y>550</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_biola_plot_figs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plp</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>260</x>
+     <y>404</y>
     </hint>
    </hints>
   </connection>

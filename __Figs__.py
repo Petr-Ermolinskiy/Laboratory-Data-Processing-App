@@ -1,61 +1,217 @@
 # необходимые библиотеки
-# для работы с папками
 import os
-from tkinter import messagebox
-
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from scipy import stats
 
-##############################################################
-'''
-plot_feature_data__[0] - цвет для box - палитра
-plot_feature_data__[1] - цвет для points - палитра
-plot_feature_data__[2] - цвет для box
-plot_feature_data__[3] - цвет для points
-plot_feature_data__[4] - SD or MAX-MIN
-plot_feature_data__[5] - bottom limit
-plot_feature_data__[6] - цвет для corr
-plot_feature_data__[7] - del hue
-plot_feature_data__[8] - matrix corr fig size
-plot_feature_data__[9] - matrix font corr for in
-plot_feature_data__[10] - matrix font corr for out
-plot_feature_data__[11] - matrix name of corr figure
-plot_feature_data__[12] - stat test
-plot_feature_data__[13] - alter heposisis
-plot_feature_data__[14] - spin x_label
-plot_feature_data__[15] - sort x_label or not
-plot_feature_data__[16] - делать стат значимость или нет
-plot_feature_data__[17] - размер шрифт для оси x -- подпись
-plot_feature_data__[18] - размер шрифт для оси y -- подпись
-plot_feature_data__[19] - размер шрифт для оси x -- значения
-plot_feature_data__[20] - размер шрифт для оси y -- значения
-plot_feature_data__[21] - какой шрифт - только для Box
-plot_feature_data__[22] - размер точек для среднего значения
-plot_feature_data__[23] - нужно ли внизу размечать N
-plot_feature_data__[24] - сделать фон прозрачным или нет
-plot_feature_data__[25] - корреляционные кривые - надо изменять нижнюю границу или нет
-plot_feature_data__[26] - корреляционные кривые - нижняя граница
-plot_feature_data__[27] - корреляционные кривые - размер точек
-plot_feature_data__[28] - корреляционные кривые - размер шрифта на графике
-plot_feature_data__[29] - корреляционные кривые - сортировать значения в группах или нет
-plot_feature_data__[30] - корреляционные кривые - сетка
-plot_feature_data__[31] - порядок подписей к box plot
-plot_feature_data__[32] - изменить порядок стат. значимости
-'''
+# для вывода диалогового окна
+from PySide6.QtWidgets import QMessageBox
 
+
+from tkinter import messagebox
 
 ##############################################################
-def safe_name(name) -> str:
-    name = name.replace('/', '').replace('\n', '').replace('\\frac', '').replace('\\', '').replace('$', '').replace('{', '').replace('}', '').replace('*', '').replace('%', '').replace(':', '')
-    return name
+#
+# главная функция
+#
+##############################################################
+def figs_plot(self):
+    global plot_feature_data__
+    # я решил все особенности и кастомизацию графиков перевести в массив "plot_feature_data__" -- по большей части это связано с тем, что этот код я несколько раз переписывал
+    plot_feature_data__ = lets_add_all_parameters_for_figs_here(self)
+
+    #########################
+    # параметры, которые нам понадобятся
+    path = self.ui.path_for_plot.text()
+    exel_name = self.ui.comboBox.currentText()
+    # от чего смотрится зависимость?
+    hue_name = self.ui.comboBox_2.currentText()
+    # стоим или не строим - box plot, корреляционные графики или матрицы
+    box_plot_or_not = self.ui.check_box_plot.isChecked()
+    corr_is_need_matrix = self.ui.check_corr_matrix.isChecked()
+    corr_is_need = self.ui.check_corr_figs.isChecked()
+    #########################
 
 
+
+    checc = error_for_val_plot(plot_feature_data__, path, exel_name)
+
+    if checc != '':
+        return messagebox.showerror('Ошибка', checc)
+
+    # основной путь
+    path = path + '//'
+    # путь до файла
+    files = path + exel_name
+
+    try:
+        names = pd.ExcelFile(files).sheet_names
+    except:
+        return messagebox.showerror('Ошибка', 'Нет такого файла или директории')
+
+    # выполяем функцию do_for_one_sheet по всем листам в excel файле
+    check_cykle = '__'
+    for i in names:
+        check_cykle = do_for_one_sheet(path, files, i, box_plot_or_not, corr_is_need, corr_is_need_matrix, hue_name)
+        if check_cykle != '__':
+            break
+    if check_cykle == '__':
+        return messagebox.showinfo('Построение графиков', f'Все графики успешно сохранены')
+
+
+##############################################################
+#
+# проходимся по одному листу и стоим всё, что надо
+#
+##############################################################
+def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, corr_is_need_matrix, hue_name):
+
+    # читаем exel файл - index_col=0,
+    df = pd.read_excel(files, sheet_name=what_sheet)
+    df.index.rename(None, inplace=True)
+    # на всякий случай почистим
+    df.columns = df.columns.str.replace('\\n', '\n', regex=False)
+    # выделяем те колонки, которые нас будут интерисовать с точки зрения обработки!
+    columns_of_interest = df.columns[:]
+    # если ничего не введено, то тогда первый столбец будет hue
+    if hue_name == '':
+        hue_name_for_sheet = columns_of_interest[0]
+        columns_of_interest = columns_of_interest[1:]
+    else:
+        hue_name_for_sheet = hue_name.replace('\\n', '\n')
+
+        if hue_name_for_sheet not in columns_of_interest:
+            return messagebox.showerror('Ошибка', 'В таблице нет такого столбца:' + str(hue_name_for_sheet))
+        index_for_col_interest = list(columns_of_interest).index(hue_name_for_sheet)
+        columns_of_interest = columns_of_interest[index_for_col_interest + 1:]
+
+    # все столбцы с данными приводим к численному виду
+
+    for dd in columns_of_interest:
+        try:
+            df[dd] = df[dd].apply(pd.to_numeric)
+        except:
+            message_ = 'В колонке ' + str(dd) + ' представлены значения, \nкоторые нельзя конвертировать в числа'
+            return messagebox.showerror('Ошибка', message_)
+
+    # название оси X
+    name_of_X_axis = hue_name_for_sheet
+    # создаем новый DataFrame только с колонками для обработки
+    new_df = df[columns_of_interest].copy()
+    # и добавляем в него только колонку для значений индекса/концентрации/образца!
+    new_df.insert(loc=0, column='index', value=df[hue_name_for_sheet])  # Диагноз
+    if corr_is_need_matrix:
+        # создаем подпапку для графиков корреляции
+        name_fiqure_folder_corr_matrix = 'correlation_matrix' + '//' + what_sheet
+        path_name_fiqure_folder_corr_matrix = path + name_fiqure_folder_corr_matrix
+        os.makedirs(path_name_fiqure_folder_corr_matrix, exist_ok=True)
+        # создаём корреляционные матрицы и сохраняем
+        corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix)
+
+    if corr_is_need:
+        # создаем подпапку для графиков корреляции
+        name_fiqure_folder_corr = 'correlation'
+        path_name_fiqure_folder_corr = path + name_fiqure_folder_corr
+        os.makedirs(path_name_fiqure_folder_corr, exist_ok=True)
+        # what_is_hue = 'index'
+
+        # найдет все уникальные комбинации признаков
+        ls = list(range(1, len(new_df.columns[1:]) + 1))
+        combinations__ = [(ls[x], ls[x + y]) for y in reversed(ls) for x in range((len(ls) - y))]
+        ###################
+        # пройдемся по всем колонкам из combinations__
+        for i in combinations__:
+            x_, y_ = new_df.columns[i[0]], new_df.columns[i[1]]
+            only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue=hue_name_for_sheet, not_in_hue=plot_feature_data__[7],
+                         color_palette=plot_feature_data__[6], _lim_=plot_feature_data__[5], sort_or_not=plot_feature_data__[15])
+
+    if box_plot_or_not:
+        # создаем подпапку для графиков аппроксимации
+        name_fiqure_folder = 'fiqures'
+        path_name_fiqure_folder = path + name_fiqure_folder
+        os.makedirs(path_name_fiqure_folder, exist_ok=True)
+        # создаем словарь значений параметров
+        dict_for_future = {}
+        # и создаем массив для DataFrame-ов
+        df_list = []
+        index_index = 0
+        for i in new_df.columns:
+            if i != 'index':
+                # делаем словарь для индексов
+                dict_for_future[i] = index_index
+                index_index += 1
+                # разделяем по индексу
+                just_all_we_need = new_df.pivot(columns='index', values=i)
+                # оставляем изначальный порядок значений
+                just_all_we_need = just_all_we_need.reindex(columns=new_df['index'].unique()[::-1])
+                # следующая сточка очень важна, чтобы не потерять какие-то значения, если есть ряд пропусков
+                just_all_we_need2 = pd.DataFrame(index=list(range(0, max(just_all_we_need.count()))))
+                # убираем NaN
+                for j in just_all_we_need.columns:
+                    ignore_nan = just_all_we_need[j]
+                    ignore_nan = ignore_nan.dropna()
+                    ignore_nan = ignore_nan.reset_index(drop=True)
+                    just_all_we_need2.insert(loc=0, column=j, value=ignore_nan)
+                # изменяем порядок колонок - сортируем, если это надо
+                if plot_feature_data__[15]:
+                    just_all_we_need2 = just_all_we_need2[just_all_we_need2.columns.sort_values()]
+                elif plot_feature_data__[31]!='':
+                    columns__temp = plot_feature_data__[31].replace(',', '').replace(';', ' ').split()
+
+                    if len(just_all_we_need2.columns) != len(columns__temp):
+                        return messagebox.showerror('Ошибка', 'Графики - box plot - кол-во подписей в поле <Изменить порядок подписей> не верно')
+                    try:
+                        columns__temp = list(map(int, columns__temp))
+                        columns__temp = [x - 1 for x in columns__temp]
+                        columns__ = [just_all_we_need2.columns[x] for x in columns__temp]
+                        just_all_we_need2 = just_all_we_need2.reindex(columns=columns__)
+                    except:
+                        return messagebox.showerror('Ошибка', 'Графики - box plot - что-то не так в поле <Изменить порядок подписей>')
+
+                # сохраняем в список DataFrame-ов
+                df_list.append(just_all_we_need2)
+        if plot_feature_data__[16]:
+            # вот и массив с таблицами p-values
+            df_list_stat = calculate_table_for_p_val(df_list, dict_for_future)
+        # вот и массив для графиков
+        big_G = just_to_numpy_for_plot(df_list, dict_for_future)
+        # построение графиков
+        just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis, path_name_fiqure_folder)
+        if plot_feature_data__[16]:
+            # создаем подпапку для exel файлов
+            os.makedirs(path + 'stat', exist_ok=True)
+            #############
+            with pd.ExcelWriter(path + 'stat' + '//' + what_sheet + ".xlsx") as writer:
+                for i in dict_for_future:
+                    name_of_sheet = i
+                    name_of_sheet = safe_name(name_of_sheet)
+
+                    if len(name_of_sheet) > 31:
+                        name_of_sheet = name_of_sheet[0:30]
+                    df_list[dict_for_future[i]].to_excel(writer, sheet_name=name_of_sheet)
+            #############
+            with pd.ExcelWriter(
+                    path + 'stat' + '//' + what_sheet + '_' + plot_feature_data__[12] + "_p-values.xlsx") as writer:
+                for i in dict_for_future:
+                    name_of_sheet = i
+                    name_of_sheet = safe_name(name_of_sheet)
+
+                    if len(name_of_sheet) > 31:
+                        name_of_sheet = name_of_sheet[0:30]
+                    df_list_stat[dict_for_future[i]].to_excel(writer, sheet_name=name_of_sheet)
+    return '__'
+
+
+
+##############################################################
+#
+# BOX PLOT
+#
+##############################################################
 # функцию эту я не всю придумал сам, а взял часть с сайта https://rowannicholls.github.io/python/graphs/ax_based/boxplots_significance.html#test-for-statistical-significance
 # также см. ссылку: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.boxplot.html
-def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, bottom_lim='', make_an_SD=True):
-    global stat_znachimost
+def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_name_fiqure_folder, bottom_lim='', make_an_SD=True):
     sns.reset_orig()
     """
     Create a box-and-whisker plot with significance bars.
@@ -108,7 +264,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, botto
     # Colour of the median lines
     plt.setp(bp['medians'], color='k')
 
-    if stat_znachimost:
+    if plot_feature_data__[16]:
         # Check for statistical significance
         significant_combinations = []
         # Check from the outside pairs of boxes inwards
@@ -239,13 +395,12 @@ def just_to_numpy_for_plot(df_list, dict_for_future):
 
 
 # Функция для построения графиков по входному массиву
-def just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis):
+def just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis, path_name_fiqure_folder):
     for parameter_ in dict_for_future:
-        global plot_feature_data__
-        global do_SD
+        do_SD = True if plot_feature_data__[4] == 'SD' else False
         ylabel = parameter_
         check=box_and_whisker(big_G[dict_for_future[parameter_]], '', name_of_X_axis, ylabel,
-                        df_list[dict_for_future[parameter_]].columns, parameter_, plot_feature_data__[5],
+                        df_list[dict_for_future[parameter_]].columns, parameter_, path_name_fiqure_folder, plot_feature_data__[5],
                         make_an_SD=do_SD)
         if check != 0:
             break
@@ -303,8 +458,12 @@ def calculate_table_for_p_val(df_list, dict_for_future):
     return df_list_stat
 
 
-# Функция для построения графика корреляций #1
-def only_regplot(df, x_, y_, what_is_hue, color_palette=None, not_in_hue=[], _lim_='', sort_or_not=False):
+##############################################################
+#
+# Функция для построения графиков корреляций
+#
+##############################################################
+def only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue, color_palette=None, not_in_hue=[], _lim_='', sort_or_not=False):
     sns.reset_orig()
     sns.set(font_scale=plot_feature_data__[28])
     #стиль
@@ -368,8 +527,13 @@ def only_regplot(df, x_, y_, what_is_hue, color_palette=None, not_in_hue=[], _li
     plt.clf()
 
 
+
+##############################################################
+#
 # Функция для построения корреляционных матриц
-def corr_matrix_for_all_indexes(new_df):
+#
+##############################################################
+def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
     sns.reset_orig()
     # определим, по каким параметрам будут корреляции
     all_things = set(new_df['index'])
@@ -407,208 +571,6 @@ def corr_matrix_for_all_indexes(new_df):
         plt.clf()
 
 
-def do_for_one_sheet(what_sheet):
-    global hue_name
-    global path_name_fiqure_folder_corr_matrix
-    global path_name_fiqure_folder_corr
-    global path_name_fiqure_folder
-    global plot_feature_data__
-    global name_of_X_axis
-    global stat_znachimost
-
-    # читаем exel файл - index_col=0,
-    df = pd.read_excel(files, sheet_name=what_sheet)
-    df.index.rename(None, inplace=True)
-    # на всякий случай почистим
-    df.columns = df.columns.str.replace('\\n', '\n', regex=False)
-    # выделяем те колонки, которые нас будут интерисовать с точки зрения обработки!
-    columns_of_interest = df.columns[:]
-    # если ничего не введено, то тогда первый столбец будет hue
-    if hue_name == '':
-        hue_name_for_sheet = columns_of_interest[0]
-        columns_of_interest = columns_of_interest[1:]
-    else:
-        hue_name_for_sheet = hue_name.replace('\\n', '\n')
-
-        if hue_name_for_sheet not in columns_of_interest:
-            return messagebox.showerror('Ошибка', 'В таблице нет такого столбца:' + str(hue_name_for_sheet))
-        index_for_col_interest = list(columns_of_interest).index(hue_name_for_sheet)
-        columns_of_interest = columns_of_interest[index_for_col_interest + 1:]
-
-    # все столбцы с данными приводим к численному виду
-
-    for dd in columns_of_interest:
-        try:
-            df[dd] = df[dd].apply(pd.to_numeric)
-        except:
-            message_ = 'В колонке ' + str(dd) + ' представлены значения, \nкоторые нельзя конвертировать в числа'
-            return messagebox.showerror('Ошибка', message_)
-
-    # название оси X
-    name_of_X_axis = hue_name_for_sheet
-    # создаем новый DataFrame только с колонками для обработки
-    new_df = df[columns_of_interest].copy()
-    # и добавляем в него только колонку для значений индекса/концентрации/образца!
-    new_df.insert(loc=0, column='index', value=df[hue_name_for_sheet])  # Диагноз
-    if corr_is_need_matrix:
-        # создаем подпапку для графиков корреляции
-        name_fiqure_folder_corr_matrix = 'correlation_matrix' + '//' + what_sheet
-        path_name_fiqure_folder_corr_matrix = path + name_fiqure_folder_corr_matrix
-        os.makedirs(path_name_fiqure_folder_corr_matrix, exist_ok=True)
-        # создаём корреляционные матрицы и сохраняем
-        corr_matrix_for_all_indexes(new_df)
-
-    if corr_is_need:
-        # создаем подпапку для графиков корреляции
-        name_fiqure_folder_corr = 'correlation'
-        path_name_fiqure_folder_corr = path + name_fiqure_folder_corr
-        os.makedirs(path_name_fiqure_folder_corr, exist_ok=True)
-        # what_is_hue = 'index'
-
-        # найдет все уникальные комбинации признаков
-        ls = list(range(1, len(new_df.columns[1:]) + 1))
-        combinations__ = [(ls[x], ls[x + y]) for y in reversed(ls) for x in range((len(ls) - y))]
-        ###################
-        # пройдемся по всем колонкам из combinations__
-        for i in combinations__:
-            x_, y_ = new_df.columns[i[0]], new_df.columns[i[1]]
-            only_regplot(df, x_, y_, what_is_hue=hue_name_for_sheet, not_in_hue=plot_feature_data__[7],
-                         color_palette=plot_feature_data__[6], _lim_=plot_feature_data__[5], sort_or_not=plot_feature_data__[15])
-
-    if box_plot_or_not:
-        # создаем подпапку для графиков аппроксимации
-        name_fiqure_folder = 'fiqures'
-        path_name_fiqure_folder = path + name_fiqure_folder
-        os.makedirs(path_name_fiqure_folder, exist_ok=True)
-        # создаем словарь значений параметров
-        dict_for_future = {}
-        # и создаем массив для DataFrame-ов
-        df_list = []
-        index_index = 0
-        for i in new_df.columns:
-            if i != 'index':
-                # делаем словарь для индексов
-                dict_for_future[i] = index_index
-                index_index += 1
-                # разделяем по индексу
-                just_all_we_need = new_df.pivot(columns='index', values=i)
-                # оставляем изначальный порядок значений
-                just_all_we_need = just_all_we_need.reindex(columns=new_df['index'].unique()[::-1])
-                # следующая сточка очень важна, чтобы не потерять какие-то значения, если есть ряд пропусков
-                just_all_we_need2 = pd.DataFrame(index=list(range(0, max(just_all_we_need.count()))))
-                # убираем NaN
-                for j in just_all_we_need.columns:
-                    ignore_nan = just_all_we_need[j]
-                    ignore_nan = ignore_nan.dropna()
-                    ignore_nan = ignore_nan.reset_index(drop=True)
-                    just_all_we_need2.insert(loc=0, column=j, value=ignore_nan)
-                # изменяем порядок колонок - сортируем, если это надо
-                if plot_feature_data__[15]:
-                    just_all_we_need2 = just_all_we_need2[just_all_we_need2.columns.sort_values()]
-                elif plot_feature_data__[31]!='':
-                    columns__temp = plot_feature_data__[31].replace(',', '').replace(';', ' ').split()
-
-                    if len(just_all_we_need2.columns) != len(columns__temp):
-                        return messagebox.showerror('Ошибка', 'Графики - box plot - кол-во подписей в поле <Изменить порядок подписей> не верно')
-                    try:
-                        columns__temp = list(map(int, columns__temp))
-                        columns__temp = [x - 1 for x in columns__temp]
-                        columns__ = [just_all_we_need2.columns[x] for x in columns__temp]
-                        just_all_we_need2 = just_all_we_need2.reindex(columns=columns__)
-                    except:
-                        return messagebox.showerror('Ошибка', 'Графики - box plot - что-то не так в поле <Изменить порядок подписей>')
-
-                # сохраняем в список DataFrame-ов
-                df_list.append(just_all_we_need2)
-        if stat_znachimost:
-            # вот и массив с таблицами p-values
-            df_list_stat = calculate_table_for_p_val(df_list, dict_for_future)
-        # вот и массив для графиков
-        big_G = just_to_numpy_for_plot(df_list, dict_for_future)
-        # построение графиков
-        just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis)
-        if stat_znachimost:
-            # создаем подпапку для exel файлов
-            os.makedirs(path + 'stat', exist_ok=True)
-            #############
-            with pd.ExcelWriter(path + 'stat' + '//' + what_sheet + ".xlsx") as writer:
-                for i in dict_for_future:
-                    name_of_sheet = i
-                    name_of_sheet = safe_name(name_of_sheet)
-
-                    if len(name_of_sheet) > 31:
-                        name_of_sheet = name_of_sheet[0:30]
-                    df_list[dict_for_future[i]].to_excel(writer, sheet_name=name_of_sheet)
-            #############
-            with pd.ExcelWriter(
-                    path + 'stat' + '//' + what_sheet + '_' + plot_feature_data__[12] + "_p-values.xlsx") as writer:
-                for i in dict_for_future:
-                    name_of_sheet = i
-                    name_of_sheet = safe_name(name_of_sheet)
-
-                    if len(name_of_sheet) > 31:
-                        name_of_sheet = name_of_sheet[0:30]
-                    df_list_stat[dict_for_future[i]].to_excel(writer, sheet_name=name_of_sheet)
-    return '__'
-
-
-##############################################################
-#
-# главная функция
-#
-##############################################################
-def figs_plot(plot_feature_data__from_ui, path_from_ui, exel_name, hue_name_from_ui, check_box_plot, check_matrix,
-              check_corr_figs):
-    global path
-    global files
-    global corr_is_need
-    global plot_feature_data__
-    global corr_is_need_matrix
-    global box_plot_or_not
-    global hue_name
-    global do_SD
-    global stat_znachimost
-
-    checc = error_for_val_plot(plot_feature_data__from_ui, path_from_ui, exel_name)
-    if checc != '':
-        return messagebox.showerror('Ошибка', checc)
-
-    # записываем в другую переменную
-    plot_feature_data__ = plot_feature_data__from_ui
-
-    # stat значимость делаем или нет?
-    stat_znachimost = plot_feature_data__[16]
-
-    # погрешности на графиках -- SD or MIN-MAX
-    do_SD = True if plot_feature_data__[4] == 'SD' else False
-
-    path = path_from_ui + '//'
-    # путь до файла
-    files = path + exel_name
-    # от чего смотрится зависимость?
-    hue_name = hue_name_from_ui
-
-    # нужно ли считать корреляции?
-    corr_is_need = check_corr_figs
-    corr_is_need_matrix = check_matrix
-
-    # строить ли обычные графики
-    box_plot_or_not = check_box_plot
-
-    try:
-        names = pd.ExcelFile(files).sheet_names
-    except:
-        return messagebox.showerror('Ошибка', 'Нет такого файла или директории')
-
-    # выполяем основной цикл по всем листам в excel файле
-    check_cykle = '__'
-    for i in names:
-        check_cykle = do_for_one_sheet(i)
-        if check_cykle != '__':
-            break
-    if check_cykle == '__':
-        return messagebox.showinfo('Построение графиков', f'Все графики успешно сохранены')
-
 
 ##############################################################
 #
@@ -616,8 +578,8 @@ def figs_plot(plot_feature_data__from_ui, path_from_ui, exel_name, hue_name_from
 #
 ##############################################################
 
-def error_for_val_plot(plot_feature_data__from_ui, path_from_ui, exel_name):
-    if path_from_ui == '':
+def error_for_val_plot(plot_feature_data__from_ui, path, exel_name):
+    if path == '':
         return 'Путь для файла отсутствует'
     if exel_name == '':
         return 'Имя файла отсутствует'
@@ -632,3 +594,84 @@ def error_for_val_plot(plot_feature_data__from_ui, path_from_ui, exel_name):
         print(plot_feature_data__from_ui[10])
         return 'Параметр для корреляционной матрицы содержит буквы'
     return ''
+
+# функция для безопасного имени при сохранении
+def safe_name(name) -> str:
+    name = name.replace('/', '').replace('\n', '').replace('\\frac', '').replace('\\', '').replace('$', '').replace('{', '').replace('}', '').replace('*', '').replace('%', '').replace(':', '')
+    return name
+
+
+# добавляем в массив plot_feature_data__ всё, что мы хотим -- я его так отдельно выделил в качестве безопасности при объявлении его global
+def lets_add_all_parameters_for_figs_here(self):
+    #так, конечно, не очень хорошо делать, но я не думаю, что это прям очень неудобный кастыль -- я так всё пишу, потому что я всё это переписывал и данная запись наиболее читаема
+    plot_feature_data__ = [0] * 100
+
+    # цвет для box - палитра
+    plot_feature_data__[0] = self.ui.comboBox_color_pal_box.currentText()
+    # цвет для points - палитра
+    plot_feature_data__[1] = self.ui.comboBox_color_pal_points.currentText()
+    # цвет для box
+    plot_feature_data__[2] = self.ui.color_box.text()
+    # цвет для points
+    plot_feature_data__[3] = self.ui.color_points.text()
+    # SD or MAX-MIN
+    plot_feature_data__[4] = self.ui.comboBox_sd_or_minmax.currentText()
+    # bottom limit
+    plot_feature_data__[5] = self.ui.bottom_lim.text()
+    # цвет для corr
+    plot_feature_data__[6] = self.ui.comboBox_color_pal_corr.currentText()
+    # del hue для корреляционных графиков
+    plot_feature_data__[7] = self.ui.del_hue.text()
+    # matrix corr fig size
+    plot_feature_data__[8] = self.ui.corr_mat_figsize.text()
+    # matrix font corr for in
+    plot_feature_data__[9] = self.ui.font_for_in.text()
+    # matrix font corr for out
+    plot_feature_data__[10] = self.ui.font_for_out.text()
+    # matrix name of corr figure
+    plot_feature_data__[11] = self.ui.name_of_corr_matrix.text()
+    # stat test
+    plot_feature_data__[12] = self.ui.comboBox_stat_test.currentText()
+    # alter heposisis
+    plot_feature_data__[13] = self.ui.comboBox_alter_hep.currentText()
+    # spin x_label
+    plot_feature_data__[14] = self.ui.comboBox_spin_x_.currentText()
+    # sort x_label or not
+    plot_feature_data__[15] = self.ui.check_sort_or_not.isChecked()
+    # делать стат значимость или нет
+    plot_feature_data__[16] = self.ui.check_stat_znachimost.isChecked()
+    # размер шрифт для оси x -- подпись
+    plot_feature_data__[17] = self.ui.spinBox_x_label.value()
+    # размер шрифт для оси y -- подпись
+    plot_feature_data__[18] = self.ui.spinBox_y_label.value()
+    # размер шрифт для оси x -- значения
+    plot_feature_data__[19] = self.ui.spinBox_x_val.value()
+    # размер шрифт для оси y -- значения
+    plot_feature_data__[20] = self.ui.spinBox_y_vals.value()
+    # какой шрифт - только для Box
+    plot_feature_data__[21] = self.ui.comboBox_fonts.currentText()
+    # размер точек для среднего значения
+    plot_feature_data__[22] = self.ui.spinBox_mean_val_size.value()
+    # нужно ли внизу размечать N
+    plot_feature_data__[23] = self.ui.check_N_.isChecked()
+    # сделать фон прозрачным или нет
+    plot_feature_data__[24] = self.ui.check_background.isChecked()
+    # корреляционные кривые - надо изменять нижнюю границу или нет
+    plot_feature_data__[25] = self.ui.check_change_corr_fig_down_limit.isChecked()
+    # корреляционные кривые - нижняя граница
+    plot_feature_data__[26] = self.ui.doubleSpinBox_corr_figs.value()
+    # корреляционные кривые - размер точек
+    plot_feature_data__[27] = self.ui.spinBox_points_corrFIGS.value()
+    # корреляционные кривые - размер шрифта на графике
+    plot_feature_data__[28] = self.ui.doubleSpinBox_corr_figs_fontscale.value()
+    # корреляционные кривые - сортировать значения в группах или нет
+    plot_feature_data__[29] = self.ui.check_sort_or_not_corr_figs.isChecked()
+    # корреляционные кривые - сетка
+    plot_feature_data__[30] = self.ui.check_setka.isChecked()
+    # порядок подписей к box plot
+    plot_feature_data__[31] = self.ui.order_box_plot.text()
+    # изменить порядок стат. значимости
+    plot_feature_data__[32] = self.ui.STAT_znachimost_order_box_plot.text()
+
+    return plot_feature_data__
+

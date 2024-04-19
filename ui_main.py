@@ -235,7 +235,7 @@ class Ui_MainWindow(object):
         self.tua_1_agg.setSizePolicy(sizePolicy)
         self.tua_1_agg.setFont(font5)
         self.tua_1_agg.setMinimum(1)
-        self.tua_1_agg.setMaximum(100)
+        self.tua_1_agg.setMaximum(200)
         self.tua_1_agg.setValue(20)
 
         self.horizontalLayout_2.addWidget(self.tua_1_agg)
@@ -953,13 +953,14 @@ class Ui_MainWindow(object):
         self.check_biola_plot_figs.setObjectName(u"check_biola_plot_figs")
         self.check_biola_plot_figs.setEnabled(True)
         self.check_biola_plot_figs.setFont(font4)
-        self.check_biola_plot_figs.setChecked(True)
+        self.check_biola_plot_figs.setChecked(False)
         self.check_biola_plot_figs.setTristate(False)
 
         self.verticalLayout_31.addWidget(self.check_biola_plot_figs, 0, Qt.AlignHCenter)
 
         self.plp = QFrame(self.tab_5)
         self.plp.setObjectName(u"plp")
+        self.plp.setEnabled(False)
         sizePolicy10.setHeightForWidth(self.plp.sizePolicy().hasHeightForWidth())
         self.plp.setSizePolicy(sizePolicy10)
         self.plp.setStyleSheet(u"QFrame#plp{\n"
@@ -1049,7 +1050,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_63.setObjectName(u"horizontalLayout_63")
         self.check_setka_biola = QCheckBox(self.plp)
         self.check_setka_biola.setObjectName(u"check_setka_biola")
-        self.check_setka_biola.setEnabled(True)
+        self.check_setka_biola.setEnabled(False)
         sizePolicy9.setHeightForWidth(self.check_setka_biola.sizePolicy().hasHeightForWidth())
         self.check_setka_biola.setSizePolicy(sizePolicy9)
         self.check_setka_biola.setFont(font5)
@@ -3717,8 +3718,9 @@ class Ui_MainWindow(object):
         self.check_approx_deform.toggled.connect(self.spinBox_n_max_deform.setEnabled)
         self.vibros_delete.toggled.connect(self.iqr_vibros.setEnabled)
         self.check_approx_deform.toggled.connect(self.check_approx_deform_raw_data.setEnabled)
+        self.check_biola_plot_figs.toggled.connect(self.plp.setEnabled)
 
-        self.Lab_stuff.setCurrentIndex(3)
+        self.Lab_stuff.setCurrentIndex(1)
         self.tabWidget_2.setCurrentIndex(2)
         self.tabWidget.setCurrentIndex(0)
 
