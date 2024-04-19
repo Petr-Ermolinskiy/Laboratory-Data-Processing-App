@@ -1,8 +1,3 @@
-############################
-from tkinter import messagebox
-#библиотеки для функций
-############################
-##############################
 ####################
 import glob
 import math
@@ -18,23 +13,15 @@ from pandas import Series, read_table, ExcelWriter, DataFrame, to_numeric, conca
 from sklearn.metrics import r2_score
 ############################
 
-def subfold(level, path):
-    global s
-    if level == 1:
-        s.add(path)
-        return
-    for i in os.scandir(path):
-        if i.is_dir():
-            if level !=1:
-                subfold(level-1, i.path)
-            else:
-                s.add(i.path)
-    return
+
+############################
+from tkinter import messagebox
 
 def level_(level, massive_of_all_parameters):
     #переменные
     global s
     s = set()
+    # сюда будут сохраняться все данные
     all_and_all = DataFrame()
     #идём по подпапкам
     subfold(level, massive_of_all_parameters[1])
@@ -49,16 +36,18 @@ def level_(level, massive_of_all_parameters):
             all_and_all.T.reset_index().drop(columns=['index']).to_excel(writer, sheet_name='All_data')
         messagebox.showinfo('RheoScan', f'Все данные успешно записаны в excel/csv файл(ы)')
 
-#Функция для вычисления выбросов - ничего не возвращает и очищает 1 Data Frame от выбросов - определение выбросов стандартное
-def out_lets_quartile(all_Data_Frame, factor):
-    for i in all_Data_Frame.columns:
-        if i == 'Patient' or len(all_Data_Frame[i]) <= 3:
-            continue
-        q1=all_Data_Frame.loc[:,i].quantile(0.25)
-        q3=all_Data_Frame.loc[:,i].quantile(0.75)
-        for j in range(len(all_Data_Frame[i])):
-            if all_Data_Frame.loc[j,i]<q1-(q3-q1)*factor or all_Data_Frame.loc[j,i]>q3+(q3-q1)*factor:
-                all_Data_Frame.loc[j,i] = np.nan
+def subfold(level, path):
+    global s
+    if level == 1:
+        s.add(path)
+        return
+    for i in os.scandir(path):
+        if i.is_dir():
+            if level !=1:
+                subfold(level-1, i.path)
+            else:
+                s.add(i.path)
+    return None
 
 #основная функция для извлечения данных
 def main_thingy(massive_of_all_parameters, changed_path):
@@ -561,3 +550,13 @@ def main_thingy(massive_of_all_parameters, changed_path):
         return [1, DataFrame()]
     return [0, concat([Series([path.split('\\')[-2], path.split('\\')[-3]], index=["Patient", 'Date or smth']), all_agg_des.loc['mean'], all_CSS_des.loc['mean'], all_def_des.loc['mean'], fit_res_des.loc['mean'], fit_res_deform_des.loc['mean']], axis=0, ignore_index=False)]
 
+#Функция для вычисления выбросов - ничего не возвращает и очищает 1 Data Frame от выбросов - определение выбросов стандартное
+def out_lets_quartile(all_Data_Frame, factor):
+    for i in all_Data_Frame.columns:
+        if i == 'Patient' or len(all_Data_Frame[i]) <= 3:
+            continue
+        q1=all_Data_Frame.loc[:,i].quantile(0.25)
+        q3=all_Data_Frame.loc[:,i].quantile(0.75)
+        for j in range(len(all_Data_Frame[i])):
+            if all_Data_Frame.loc[j,i]<q1-(q3-q1)*factor or all_Data_Frame.loc[j,i]>q3+(q3-q1)*factor:
+                all_Data_Frame.loc[j,i] = np.nan

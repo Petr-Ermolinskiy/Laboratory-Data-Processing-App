@@ -1,7 +1,3 @@
-#this is the main file
-
-###############
-##############
 ##############
 import sys
 ############################
@@ -10,19 +6,26 @@ from PySide6.QtWidgets import (QApplication, QMainWindow)
 from PySide6.QtGui import QIcon
 from PySide6.QtCore import Slot
 ############################
-#обработка RheoScan
+# обработка RheoScan
 from __RheoScan__ import *
 from __RheoScan_sort__ import *
-from __Profile__ import *
-from __Figs__ import *
-from __Pivot_table_and_corr__ import *
-from __Catplot__ import *
+# Biola
 from __Biola__ import *
 from __Biola_concentration__ import *
+# Лазерный пинцет
 from __LT__ import *
+# Микрореологический профиль
+from __Profile__ import *
+# Рисунки
+from __Figs__ import *
+from __Catplot__ import *
+# Сводные таблицы
+from __Pivot_table_and_corr__ import *
+############################
 # основное окно приложения
 from ui_main import Ui_MainWindow
-#дополнительные библиотеки
+############################
+#дополнительные библиотеки - pandas нужен для добавления листов excel в соответствующие окна
 import pandas as pd
 import os
 ############################
@@ -81,7 +84,7 @@ class Main_window(QMainWindow):
         self.ui.comboBox_excel_catplot.currentTextChanged.connect(self.catplot_add_sheets)
         self.ui.comboBox_excel_sheet_catplot.currentTextChanged.connect(self.catplot_add_x_y_hue)
     ##############################
-    #изменим стиль
+    #изменим стиль - светлая или темная тема
     ##############################
     @Slot(int)
     def on_comboBox_style_sheet_currentIndexChanged(self, index):
@@ -92,8 +95,11 @@ class Main_window(QMainWindow):
             self.setStyleSheet(_style)
         else:
             self.setStyleSheet('')
+
+    ##############################
     ##############################
     #функции при нажатии на кнопки
+    ##############################
     ##############################
 
     ############
@@ -137,10 +143,10 @@ class Main_window(QMainWindow):
 
     #сводная таблица
     def pivot_table(self):
-        do_for_each_sheet(self.ui.path_for_pivot_table.text(), self.ui.comboBox_pivot_table.currentText(), self.ui.comboBox_pivot_hue.currentText(), self.ui.spinBox_pivot_table.value(), self.ui.comboBox_sd_or_se_pivot.currentText())
+        pivot_do_for_each_sheet(self)
     # корреляционная матрица
     def corr_table(self):
-        corr_for_each_sheeeeeeet(self.ui.path_for_pivot_table.text(), self.ui.comboBox_pivot_table.currentText(), self.ui.comboBox_pivot_hue.currentText(), self.ui.comboBox_correlation_person_or_not.currentText(), self.ui.check_color_for_corr_pivot.isChecked(), self.ui.comboBox_correlation_color_map.currentText())
+        corr_for_each_sheet(self)
     # Catplot
     def cat_plot(self):
         plot_catplot(self)
@@ -174,9 +180,6 @@ class Main_window(QMainWindow):
         self.ui.comboBox_catplot_y.addItems(df.columns)
         self.ui.comboBox_catplot_hue.addItems(df.columns.insert(0, '--без подгруппы'))
 
-
-
-######################################
     def add_excel_files_to_combobox(self):
         #files = get_name_out_of_path(glob.glob(self.ui.path_for_plot.text() + '//' +'*.xlsx'))
         files = glob.glob(self.ui.path_for_plot.text() + '//' + '*.xlsx')
