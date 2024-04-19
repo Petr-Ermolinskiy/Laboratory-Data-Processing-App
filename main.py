@@ -75,6 +75,8 @@ class Main_window(QMainWindow):
         self.ui.path_for_pivot_table.textChanged.connect(self.add_excel_files_to_combobox_pivot)
         #обновим какие есть sheets - pivot
         self.ui.comboBox_pivot_table.currentTextChanged.connect(self.add_sheets_to_combobox_pivot)
+        # обновим какие есть колонки - pivot
+        self.ui.comboBox_pivot_table_excel_sheet.currentTextChanged.connect(self.add_columns_to_combobox_pivot)
 
         #для нахождения файла Biola
         self.ui.path_for_biola.textChanged.connect(self.add_biola_file)
@@ -83,6 +85,7 @@ class Main_window(QMainWindow):
         self.ui.path_for_catplot.textChanged.connect(self.add_excel_catplot)
         self.ui.comboBox_excel_catplot.currentTextChanged.connect(self.catplot_add_sheets)
         self.ui.comboBox_excel_sheet_catplot.currentTextChanged.connect(self.catplot_add_x_y_hue)
+
     ##############################
     #изменим стиль - светлая или темная тема
     ##############################
@@ -106,7 +109,7 @@ class Main_window(QMainWindow):
     # RheoScan
     ############
     def RheoScan(self):
-        level_(self.ui.spinBox_level.value(),[[self.ui.tua_1_agg.text(), self.ui.tau_2_agg.text(), self.ui.r2_def.text(), self.ui.spinBox_n_max_deform.value()], self.ui.main_path.text(), self.ui.check_agg.isChecked(), self.ui.check_stress.isChecked(), self.ui.check_deform.isChecked(), self.ui.check_save_exel.isChecked(), self.ui.check_save_csv.isChecked(), self.ui.separator_for_data.text(), self.ui.check_stat_for_column.isChecked(), self.ui.check_figs_for_agg.isChecked(), self.ui.check_approx_agg.isChecked(), self.ui.check_approx_deform.isChecked(), self.ui.check_for_deform.isChecked(), self.ui.vibros_delete.isChecked(), self.ui.iqr_vibros.value()])
+        all_RheoScan_level(self)
     # сортировка данных RheoScan
     def RheoScan_sort_data(self):
         sort_RheoScan_data(self)
@@ -143,10 +146,10 @@ class Main_window(QMainWindow):
 
     #сводная таблица
     def pivot_table(self):
-        pivot_do_for_each_sheet(self)
+        pivot_do_for_sheet(self)
     # корреляционная матрица
     def corr_table(self):
-        corr_for_each_sheet(self)
+        corr_for_sheet(self)
     # Catplot
     def cat_plot(self):
         plot_catplot(self)
@@ -156,6 +159,10 @@ class Main_window(QMainWindow):
     #добавление списка файлов в папке в comboBox'ы
     ###
     ################################################
+
+    ############
+    # Catplot
+    ############
     def add_excel_catplot(self):
         #files = get_name_out_of_path(glob.glob(self.ui.path_for_plot.text() + '//' +'*.xlsx'))
         files = glob.glob(self.ui.path_for_catplot.text() + '//' + '*.xlsx')
@@ -180,6 +187,9 @@ class Main_window(QMainWindow):
         self.ui.comboBox_catplot_y.addItems(df.columns)
         self.ui.comboBox_catplot_hue.addItems(df.columns.insert(0, '--без подгруппы'))
 
+    ############
+    # Графики
+    ############
     def add_excel_files_to_combobox(self):
         #files = get_name_out_of_path(glob.glob(self.ui.path_for_plot.text() + '//' +'*.xlsx'))
         files = glob.glob(self.ui.path_for_plot.text() + '//' + '*.xlsx')
@@ -194,6 +204,9 @@ class Main_window(QMainWindow):
         self.ui.comboBox_2.clear()  #удалить все элементы из combobox
         self.ui.comboBox_2.addItems(df.columns)
 
+    ############
+    # Сводные таблицы
+    ############
     def add_excel_files_to_combobox_pivot(self):
         files = glob.glob(self.ui.path_for_pivot_table.text() + '//' + '*.xlsx')
         files = get_name_out_of_path(files)
@@ -203,12 +216,19 @@ class Main_window(QMainWindow):
     def add_sheets_to_combobox_pivot(self):
         path_file = self.ui.path_for_pivot_table.text() + '//' + self.ui.comboBox_pivot_table.currentText()
         sheets = pd.ExcelFile(path_file).sheet_names
+        self.ui.comboBox_pivot_table_excel_sheet.clear()  #удалить все элементы из combobox
+        self.ui.comboBox_pivot_table_excel_sheet.addItems(sheets)
+
+    def add_columns_to_combobox_pivot(self):
         # прочитаем файл
-        df = pd.read_excel(path_file, sheet_name=sheets[0])
+        path_file = self.ui.path_for_pivot_table.text() + '//' + self.ui.comboBox_pivot_table.currentText()
+        df = pd.read_excel(path_file, sheet_name=self.ui.comboBox_pivot_table_excel_sheet.currentText())
         self.ui.comboBox_pivot_hue.clear()  # удалить все элементы из combobox
         self.ui.comboBox_pivot_hue.addItems(df.columns)
 
-
+    ############
+    # Биола -- одновременно добавляем файлы txt и pdf
+    ############
     def add_biola_file(self):
         files = glob.glob(self.ui.path_for_biola.text() + '//' + '*.txt')
         files = get_name_out_of_path(files)

@@ -3,8 +3,6 @@ import glob
 import math
 # для работы с папками
 import os
-# также для графиков понадобится библиотека matplotlib
-import matplotlib.pyplot as plt
 ############################
 # библиотеки для обработки данных
 import numpy as np
@@ -12,35 +10,53 @@ import scipy.optimize as opt
 from pandas import Series, read_table, ExcelWriter, DataFrame, to_numeric, concat
 from sklearn.metrics import r2_score
 ############################
-
-
+# также для графиков понадобится библиотека matplotlib
+import matplotlib.pyplot as plt
 ############################
 from tkinter import messagebox
 
-def level_(level, massive_of_all_parameters):
-    #переменные
-    global s
-    s = set()
+# для вывода диалогового окна
+from PySide6.QtWidgets import QMessageBox
+
+
+
+def all_RheoScan_level(self) -> None:
+    # это на каком мы уровне находимся
+    level = self.ui.spinBox_level.value()
+    # какой путь был введен пользователем
+    path = self.ui.main_path.text()
+
     # сюда будут сохраняться все данные
     all_and_all = DataFrame()
-    #идём по подпапкам
-    subfold(level, massive_of_all_parameters[1])
+
+    #переменная для сохранения всех путей
+    global s
+    s = set()
+    #идём по подпапкам и сохраняем в s все возможные пути папок, где будет выполняться обработка
+    subfold(level, path)
+
+    # проходимся по каждому пути
     for path_for_one in s:
-        check = main_thingy(massive_of_all_parameters, path_for_one)
+        check = main_thingy(self, path_for_one)
         if check[0] != 0:
             break
         all_and_all=concat([all_and_all, check[1]], axis=1, ignore_index=False)
     #сохраняем общий массив
-    if check[0] == 0:
-        with ExcelWriter(massive_of_all_parameters[1] + '\\' + 'overall_data_' + massive_of_all_parameters[1].split('\\')[-1] + ".xlsx") as writer:
+    if check[0] == 0 and self.ui.check_save_RheoScan_overall.isChecked():
+        with ExcelWriter(path + '\\' + 'overall_data_' + path.split('\\')[-1] + ".xlsx") as writer:
             all_and_all.T.reset_index().drop(columns=['index']).to_excel(writer, sheet_name='All_data')
-        messagebox.showinfo('RheoScan', f'Все данные успешно записаны в excel/csv файл(ы)')
+    if check[0] == 0:
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("RheoScan")
+        dlg.setText("Все данные успешно записаны в excel/csv файл(ы)")
+        dlg.exec()
+    return None
 
 def subfold(level, path):
     global s
     if level == 1:
         s.add(path)
-        return
+        return None
     for i in os.scandir(path):
         if i.is_dir():
             if level !=1:
@@ -50,30 +66,46 @@ def subfold(level, path):
     return None
 
 #основная функция для извлечения данных
-def main_thingy(massive_of_all_parameters, changed_path):
-    agg_approx_data__, path_r, var_agg, var_stress, var_deform, exel_, csv_, sep_r, var_stat, fiting_aggreg, var_fit, var_fit_deform, fiting_deform, vibros_check, iqr_val=massive_of_all_parameters
-    path_r=changed_path
+def main_thingy(self, path_for_one) -> [int, DataFrame]:
+    dlg = QMessageBox(self)
+    #########################
+    # параметры, которые нам понадобятся
+    #########################
+    # данные для аппроксимации
+    agg_approx_data__ = [self.ui.tua_1_agg.value(), self.ui.tua_2_agg.value(), self.ui.r2_def.value(), self.ui.spinBox_n_max_deform.value()]
+    # изначальный путь
+    path_r = self.ui.main_path.text()
+    # проверка на флажки
+    var_agg = self.ui.check_agg.isChecked()
+    var_stress = self.ui.check_stress.isChecked()
+    var_deform = self.ui.check_deform.isChecked()
+    exel_ = self.ui.check_save_exel.isChecked()
+    csv_ = self.ui.check_save_csv.isChecked()
+    var_stat = self.ui.check_stat_for_column.isChecked()
+    fiting_aggreg = self.ui.check_figs_for_agg.isChecked()
+    var_fit = self.ui.check_approx_agg.isChecked()
+    var_fit_deform = self.ui.check_approx_deform.isChecked()
+    fiting_deform = self.ui.check_for_deform.isChecked()
+    vibros_check = self.ui.vibros_delete.isChecked()
+    save_only_one_name = self.ui.check_name_rheoscan.isChecked()
+    save_raw_deform_data = self.ui.check_approx_deform_raw_data.isChecked()
+    # позиция имени, которое будет сохранено
+    name_position = self.ui.spinBox_check_name_rheoscan.value()
+    # разделитель данных
+    sep_r = self.ui.separator_for_data.text()
+    # отклонение на сколько интерквартильных размаха считать выбором
+    iqr_val = self.ui.iqr_vibros.value()
+    #########################
+
     #для того, чтобы избежать ошибок
     all_def_des, all_CSS_des, fit_res_des, all_agg_des, fit_res_deform_des = DataFrame(index=['mean']), DataFrame(index = ['mean']), DataFrame(index = ['mean']), DataFrame(index = ['mean']), DataFrame(index = ['mean'])
-    # в самом начале проверим, всё ли хорошо со значениями аппроксимации
-    try:
-        float(agg_approx_data__[0])
-        float(agg_approx_data__[1])
-    except Exception:
-        messagebox.showerror('Ошибка', f'Неправильные значения в поле max значений для аппроксимации')
-        return [1,DataFrame()]
-    try:
-        float(agg_approx_data__[2])
-        if float(agg_approx_data__[2]) > 1:
-            messagebox.showerror('Ошибка', f'Пороговое значение R^2 > 1')
-            return [1,DataFrame()]
-    except Exception:
-        messagebox.showerror('Ошибка', f'Вы ввели неправильное значение в поле для порогового значения R^2 deform')
-        return [1, DataFrame()]
+
     # это путь к папке, в которой должны быть следующие подпапки: agg, stress, deform.
-    path = path_r
+    path = path_for_one
     if path == '':
-        messagebox.showerror('Ошибка', f'В поле <путь к папке с подпапками> ничего не введено')
+        dlg.setWindowTitle("RheoScan")
+        dlg.setText("Не введен путь к подпапкам")
+        dlg.exec()
         return [1, DataFrame()]
     path = path + '\\'
     # имя файла
@@ -87,7 +119,10 @@ def main_thingy(massive_of_all_parameters, changed_path):
     files_css = glob.glob(path_css + '*.txt')
     files_def = glob.glob(path_def + '*.txt')
     if files_agg == [] and files_css == [] and files_def == []:
-        messagebox.showerror('Ошибка', f'По пути {path} либо нет подпапок, либо в этих подпапках нет txt файлов')
+        dlg.setWindowTitle("RheoScan - Ошибка")
+        dlg.setText(f'По пути {path} либо нет подпапок, либо в этих подпапках нет txt файлов')
+        dlg.setIcon(QMessageBox.Icon.Critical)
+        dlg.exec()
         return [1, DataFrame()]
     #############################################################
     # сохраняем файл в какой-то из двух форматов exel или csv
@@ -160,16 +195,18 @@ def main_thingy(massive_of_all_parameters, changed_path):
             ############
             x = read_table(i, skiprows=22, header=None, decimal=',')
             x.columns = ['Time, s', 'Raw data, a.u.', 'Approx. data, a.u.']
+            # находим assim
+            Up = x['Raw data, a.u.'][0]
+            Bottom = x['Raw data, a.u.'].min()
+            Bottom_index = x['Raw data, a.u.'].idxmin()
+            #assim -- это скорее ассиметрия эритроцитов
+            assim = Up - Bottom
             # непосредственно сама аппроксимация (функция opt.curve_fit). Если вдруг не удается хорошо аппроксимировать ф-ию, надо изменить bounds
-            (y0_, A1_, A2_, t1_, t2_), _ = opt.curve_fit(f, x['Time, s'], x['Raw data, a.u.'], bounds=((0, -10, -10, 0, 0), (10, 10, 10, float(agg_approx_data__[0]), float(agg_approx_data__[1]))))
-            Up = x['Raw data, a.u.']
-            Upppp = Up[0]
-            Botttom = x['Raw data, a.u.'].min()
-            JJ = Upppp - Botttom
+            (y0_, A1_, A2_, t1_, t2_), _ = opt.curve_fit(f, x['Time, s'][Bottom_index+3:], x['Raw data, a.u.'][Bottom_index+3:], bounds=((0, -10, -10, 0, 0), (10, 10, 10, float(agg_approx_data__[0]), float(agg_approx_data__[1]))))
             # расчет r^2
             r2 = r2_score(f(x['Time, s'], *[y0_, A1_, A2_, t1_, t2_]), x['Raw data, a.u.'])
             # сохранение значений аппроксимации в строку и далее в Data Frame
-            mm = (Name_fit_agg, y0_, abs(A1_), abs(A2_), abs(A1_) + abs(A2_), t1_, t2_, JJ, r2)
+            mm = (Name_fit_agg, y0_, abs(A1_), abs(A2_), abs(A1_) + abs(A2_), t1_, t2_, assim, r2)
             fit_res.loc[jkd] = mm
             jkd += 1
             if fiting_aggreg:
@@ -445,28 +482,38 @@ def main_thingy(massive_of_all_parameters, changed_path):
     '''
 
     # функция для того, чтобы разделить столбец 'Patient'
-    def splitting(all_split):
-        for_index_stuff = all_split['Patient'].str.split(how_to_split, expand=True)
-        # лучше не использовать следующее, а то значения поплывут (могут поплыть): for_index_stuff=for_index_stuff.reset_index(drop=True)
-        # если можно разделить на больше столбцов, то делим!
-        if len(for_index_stuff.columns) > 2:
-            all_split.insert(loc=1, column='Name_3', value=for_index_stuff[2])
-        if len(for_index_stuff.columns) > 1:
-            all_split.insert(loc=1, column='Name_2', value=for_index_stuff[1])
-        all_split.insert(loc=1, column='Name_1', value=for_index_stuff[0])
+    def splitting(all_split, self):
+        try:
+            for_index_stuff = all_split['Patient'].str.split(how_to_split, expand=True)
+            if save_only_one_name:
+                all_split['Patient'] = for_index_stuff[name_position-1]
+            else:
+                # лучше не использовать следующее, а то значения поплывут (могут поплыть): for_index_stuff=for_index_stuff.reset_index(drop=True)
+                # если можно разделить на больше столбцов, то делим!
+                if len(for_index_stuff.columns) > 2:
+                    all_split.insert(loc=1, column='Name_3', value=for_index_stuff[2])
+                if len(for_index_stuff.columns) > 1:
+                    all_split.insert(loc=1, column='Name_2', value=for_index_stuff[1])
+                all_split.insert(loc=1, column='Name_1', value=for_index_stuff[0])
+        except Exception as e:
+            dlg = QMessageBox(self)
+            dlg.setWindowTitle("RheoScan - Ошибка")
+            dlg.setText('Не удалось разделить имена по разделителю.\nПуть ' + str(path) + '\n Ошибка: ' + str(e))
+            dlg.setIcon(QMessageBox.Icon.Critical)
+            dlg.exec()
 
     # применяем эту функцию ко всем Data Frame, которые нас интерисуют
     if how_to_split != '':
         if var_agg and files_agg != []:
-            splitting(all_agg)
+            splitting(all_agg, self)
         if var_stress and files_css != []:
-            splitting(all_CSS)
+            splitting(all_CSS, self)
         if var_deform and files_def != []:
-            splitting(all_def)
+            splitting(all_def, self)
         if var_fit and files_agg != []:
-            splitting(fit_res)
+            splitting(fit_res, self)
         if var_fit_deform and files_def != []:
-            splitting(fit_res_deform)
+            splitting(fit_res_deform, self)
     '''
     Обновление индексов
     '''
@@ -499,10 +546,14 @@ def main_thingy(massive_of_all_parameters, changed_path):
     '''
     Сохранение
     '''
+    # если нужно, то сохраняем файлы не по подпапкам, а в одном месте
+    path_of_the_folder = path
+    if self.ui.comboBox_RheoScan_path_save.currentText() == 'Сохранить excel/cvs файлы в одном месте':
+        ### path_r - изначальный путь
+        path = path_r + '\\'
     # сохраняем все полученные данные
     try:
         if saving_s_exel:
-            ### massive_of_all_parameters[1]     path
             with ExcelWriter(path + name_of_patient + '.xlsx') as writer:
                 if var_agg and files_agg != []:
                     all_agg.to_excel(writer, index_label='Номер', sheet_name='Agg')
@@ -524,31 +575,26 @@ def main_thingy(massive_of_all_parameters, changed_path):
                     fit_res_deform.to_excel(writer, index_label='Номер', sheet_name='Deform-Fit')
                     if stat_need:
                         fit_res_deform_des.to_excel(writer, index_label='Номер', sheet_name='Deform-Fit-Stat')
-                    r_sq.to_excel(writer, index_label='Номер', sheet_name='Deform-Fit-Raw')
+                    if save_raw_deform_data:
+                        r_sq.to_excel(writer, index_label='Номер', sheet_name='Deform-Fit-Raw')
         if saving_s_csv:
             if var_agg and files_agg != []:
-                all_agg.to_csv(path + 'Agg' + '__' + '.csv')
+                all_agg.to_csv(path + 'Agg' + '__' + name_of_patient +  '.csv')
             if var_fit and files_agg != []:
-                fit_res_without.to_csv(path + 'Agg-Fit' + '__' + '.csv')
+                fit_res_without.to_csv(path + 'Agg-Fit' + '__' + name_of_patient +'.csv')
             if var_stress and files_css != []:
-                all_CSS.to_csv(path + 'CSS' + '__' + '.csv')
+                all_CSS.to_csv(path + 'CSS' + '__' + name_of_patient + '.csv')
             if var_deform and files_def != []:
-                all_def.to_csv(path + 'Deform' + '__' + '.csv')
+                all_def.to_csv(path + 'Deform' + '__' + name_of_patient + '.csv')
             if var_fit_deform and files_def != []:
-                fit_res_deform.to_csv(path + 'Deform-Fit' + '__' + '.csv')
-        if saving_s_exel and saving_s_csv:
-            pass
-        elif saving_s_exel:
-            pass
-        elif saving_s_csv:
-            pass
-        else:
-            messagebox.showinfo('RheoScan', f'Кажется что-то пошло не так... Скорее всего нет доступа к пути сохранения: \n {path}')
-            return [1, DataFrame()]
-    except Exception:
-        messagebox.showerror('Ошибка', f'Скорее всего у вас сейчас открыт файл, который программа хочет перезаписать, или неправильно указан уровень подпапок. Закройте, пожалуйста, файл и повторите расчет.\n Путь: {path_r}')
+                fit_res_deform.to_csv(path + 'Deform-Fit' + '__' + name_of_patient + '.csv')
+    except Exception as e:
+        dlg.setWindowTitle("RheoScan - Ошибка сохранения")
+        dlg.setText('Скорее всего у вас сейчас открыт файл, который программа хочет перезаписать, или неправильно указан уровень подпапок.\n' + str(e))
+        dlg.setIcon(QMessageBox.Icon.Critical)
+        dlg.exec()
         return [1, DataFrame()]
-    return [0, concat([Series([path.split('\\')[-2], path.split('\\')[-3]], index=["Patient", 'Date or smth']), all_agg_des.loc['mean'], all_CSS_des.loc['mean'], all_def_des.loc['mean'], fit_res_des.loc['mean'], fit_res_deform_des.loc['mean']], axis=0, ignore_index=False)]
+    return [0, concat([Series([path_of_the_folder.split('\\')[-2], path_of_the_folder.split('\\')[-3]], index=["Patient", 'Date or smth']), all_agg_des.loc['mean'], all_CSS_des.loc['mean'], all_def_des.loc['mean'], fit_res_des.loc['mean'], fit_res_deform_des.loc['mean']], axis=0, ignore_index=False)]
 
 #Функция для вычисления выбросов - ничего не возвращает и очищает 1 Data Frame от выбросов - определение выбросов стандартное
 def out_lets_quartile(all_Data_Frame, factor):

@@ -3,13 +3,14 @@ import pandas as pd
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
 
-# сводная таблица
-def pivot_do_for_each_sheet(self) -> None:
+# сводная таблица - изначальный функционал предполагал, что программа будет автоматически проходиться по всем листам. Однако было решено, что лист мы выбираем сами.
+def pivot_do_for_sheet(self) -> None:
     dlg = QMessageBox(self)
     #########################
     # параметры, которые нам понадобятся
     path = self.ui.path_for_pivot_table.text()
     exel_name = self.ui.comboBox_pivot_table.currentText()
+    sheet_we_need = self.ui.comboBox_pivot_table_excel_sheet.currentText()
     hue_name = self.ui.comboBox_pivot_hue.currentText()
     __round__ = self.ui.spinBox_pivot_table.value()
     error = self.ui.comboBox_sd_or_se_pivot.currentText()
@@ -29,9 +30,9 @@ def pivot_do_for_each_sheet(self) -> None:
         dlg.exec()
         return None
 
-    # выполяем основной цикл по всем листам в excel файле
+    # выполяем основной цикл по всем листам в excel файле - тогда нужно указать "names" вместо "[sheet_we_need]"
     check_cykle = '__'
-    for i in names:
+    for i in [sheet_we_need]:
         check_cykle = do_pivot(path, exel_name, i, hue_name, __round__, error, self)
         if check_cykle != '__':
             break
@@ -48,12 +49,13 @@ def pivot_do_for_each_sheet(self) -> None:
 
 
 # корреляционная матрица
-def corr_for_each_sheet(self) -> None:
+def corr_for_sheet(self) -> None:
     dlg = QMessageBox(self)
     #########################
     # параметры, которые нам понадобятся
     path = self.ui.path_for_pivot_table.text()
     exel_name = self.ui.comboBox_pivot_table.currentText()
+    sheet_we_need = self.ui.comboBox_pivot_table_excel_sheet.currentText()
     hue_name = self.ui.comboBox_pivot_hue.currentText()
     pierson_or_not = self.ui.comboBox_correlation_person_or_not.currentText()
     color_or_not = self.ui.check_color_for_corr_pivot.isChecked()
@@ -75,9 +77,9 @@ def corr_for_each_sheet(self) -> None:
         dlg.exec()
         return None
 
-    # выполяем основной цикл по всем листам в excel файле
+    # выполяем основной цикл по всем листам в excel файле - тогда нужно указать "names" вместо "[sheet_we_need]"
     check_cykle = '__'
-    for i in names:
+    for i in [sheet_we_need]:
         check_cykle = corr_sheet(path, exel_name, hue_name, i, pierson_or_not, color_or_not, __color_map__, self)
         if check_cykle != '__':
             break

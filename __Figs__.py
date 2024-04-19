@@ -47,6 +47,9 @@ plot_feature_data__[32] - изменить порядок стат. значим
 
 
 ##############################################################
+def safe_name(name) -> str:
+    name = name.replace('/', '').replace('\n', '').replace('\\frac', '').replace('\\', '').replace('$', '').replace('{', '').replace('}', '').replace('*', '').replace('%', '').replace(':', '')
+    return name
 
 
 # функцию эту я не всю придумал сам, а взял часть с сайта https://rowannicholls.github.io/python/graphs/ax_based/boxplots_significance.html#test-for-statistical-significance
@@ -213,20 +216,10 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, botto
     # Clean up the appearance
     ax.tick_params(axis='x', which='minor', length=3, width=1)
 
-    #########
-
-    Name_fiqure = Name_fiqure.replace('/', '')
-    Name_fiqure = Name_fiqure.replace('\n', '')
-    Name_fiqure = Name_fiqure.replace('\\frac', '')
-    Name_fiqure = Name_fiqure.replace('\\', '')
-    Name_fiqure = Name_fiqure.replace('$', '')
-    Name_fiqure = Name_fiqure.replace('{', '')
-    Name_fiqure = Name_fiqure.replace('}', '')
-
     # очень важно, чтобы не обрезалось
     plt.tight_layout()
     # сохранение рисунка
-    plt.savefig(path_name_fiqure_folder + '//' + Name_fiqure + '.png', dpi=600, format='png', transparent=plot_feature_data__[24])
+    plt.savefig(path_name_fiqure_folder + '//' + safe_name(Name_fiqure) + '.png', dpi=600, format='png', transparent=plot_feature_data__[24])
     plt.close()
     ax.cla()
     plt.clf()
@@ -366,14 +359,7 @@ def only_regplot(df, x_, y_, what_is_hue, color_palette=None, not_in_hue=[], _li
 
     # переименовываем название графика
     name_of_g = (x_ + '_vs_' + y_).replace('\n', '')
-    name_of_g = name_of_g.replace('/', '')
-    name_of_g = name_of_g.replace('\\frac', '')
-    name_of_g = name_of_g.replace('\\', '')
-    name_of_g = name_of_g.replace('$', '')
-    name_of_g = name_of_g.replace('{', '')
-    name_of_g = name_of_g.replace('}', '')
-    name_of_g = name_of_g.replace('%', '')
-    name_of_g = name_of_g.replace('*', '')
+    name_of_g = safe_name(name_of_g)
 
     # сохраняем рисунок
     fig.savefig(path_name_fiqure_folder_corr + '//' + name_of_g + '.png', dpi=600, format='png', bbox_inches='tight')
@@ -414,9 +400,9 @@ def corr_matrix_for_all_indexes(new_df):
         plt.tight_layout()
         name_of_file_ = str(i).replace('<', 'less')
         name_of_file_ = name_of_file_.replace('>=', 'more')
-        plt.savefig(path_name_fiqure_folder_corr_matrix + '//' + name_of_file_ + '.png', dpi=600, format='png')
+        plt.savefig(path_name_fiqure_folder_corr_matrix + '//' + safe_name(name_of_file_) + '.png', dpi=600, format='png')
         #также экспортируем в excel
-        corr.to_excel(path_name_fiqure_folder_corr_matrix + '//' + name_of_file_ + ".xlsx", engine="openpyxl")
+        corr.to_excel(path_name_fiqure_folder_corr_matrix + '//' + safe_name(name_of_file_) + ".xlsx", engine="openpyxl")
         plt.close()
         plt.clf()
 
@@ -548,10 +534,8 @@ def do_for_one_sheet(what_sheet):
             with pd.ExcelWriter(path + 'stat' + '//' + what_sheet + ".xlsx") as writer:
                 for i in dict_for_future:
                     name_of_sheet = i
-                    name_of_sheet = name_of_sheet.replace('/', '')
-                    name_of_sheet = name_of_sheet.replace('\n', '')
-                    name_of_sheet = name_of_sheet.replace('\\', '')
-                    name_of_sheet = name_of_sheet.replace(':', '')
+                    name_of_sheet = safe_name(name_of_sheet)
+
                     if len(name_of_sheet) > 31:
                         name_of_sheet = name_of_sheet[0:30]
                     df_list[dict_for_future[i]].to_excel(writer, sheet_name=name_of_sheet)
@@ -560,9 +544,8 @@ def do_for_one_sheet(what_sheet):
                     path + 'stat' + '//' + what_sheet + '_' + plot_feature_data__[12] + "_p-values.xlsx") as writer:
                 for i in dict_for_future:
                     name_of_sheet = i
-                    name_of_sheet = name_of_sheet.replace('/', '')
-                    name_of_sheet = name_of_sheet.replace('\n', '')
-                    name_of_sheet = name_of_sheet.replace('\\', '')
+                    name_of_sheet = safe_name(name_of_sheet)
+
                     if len(name_of_sheet) > 31:
                         name_of_sheet = name_of_sheet[0:30]
                     df_list_stat[dict_for_future[i]].to_excel(writer, sheet_name=name_of_sheet)
