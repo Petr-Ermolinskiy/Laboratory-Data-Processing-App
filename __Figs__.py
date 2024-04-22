@@ -33,8 +33,6 @@ def figs_plot(self):
     corr_is_need = self.ui.check_corr_figs.isChecked()
     #########################
 
-
-
     checc = error_for_val_plot(plot_feature_data__, path, exel_name)
 
     if checc != '':
@@ -248,9 +246,9 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
         sns.set(style="ticks", rc={"lines.linewidth": 0.7})
         sns.pointplot(data=data, palette=['black'] * len(bp['boxes']), ax=ax, errorbar="sd", capsize=0.2)
 
-    # добавить точки! важный параметр palette=take_a_color_point
+    # добавить точки! цвет: palette=take_a_color_point
     try:
-        sns.stripplot(data=data, alpha=0.6, palette=take_a_color_point, ax=ax, linewidth=1, size=6)
+        sns.stripplot(data=data, alpha=0.6, palette=take_a_color_point, ax=ax, linewidth=1, size=plot_feature_data__[33])
     except:
         return messagebox.showerror('Ошибка', 'Скорее всего вы ввели неправильный цвет HEX')
 
@@ -417,7 +415,7 @@ def calculate_table_for_p_val(df_list, dict_for_future):
                 if col1 == col2:
                     dop_DF.loc[col1, col2] = 1.0
                     continue
-                # рассчитаем стат.значимости
+                # рассчитаем стат. значимости
                 if plot_feature_data__[12] == 'U-критерий Манна — Уитни':
                     statistic, p_value = stats.mannwhitneyu(df_list[dict_for_future[i]][col1].dropna(),
                                                             df_list[dict_for_future[i]][col2].dropna(),
@@ -547,17 +545,17 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         # title_ = "Correlation matrix of the capillary blood flow characteristics\n for the " + i +' group (n=' + str(int(len(df_for_corr))) + ')'
         title_ = plot_feature_data__[11] + str(i) + ' (n=' + str(int(len(df_for_corr))) + ')'
         # корреляции делаем
-        corr = df_for_corr.corr(method='spearman')
+        corr = df_for_corr.corr(method=plot_feature_data__[34])
         # изменить параметр font_scale, если много значений: по дефолту -- font_scale=0.8 figsize=(16,8) fontsize=20
         # sns.set(font_scale=0.9)
         # plt.figure(figsize=(6,6))
         # plt.title(title_, fontsize=12)
 
-        sns.set(font_scale=float(plot_feature_data__[9]))
-        plt.figure(figsize=(float(plot_feature_data__[8]), float(plot_feature_data__[8])))
-        plt.title(title_, fontsize=float(plot_feature_data__[10]))
+        sns.set(font_scale=plot_feature_data__[9])
+        plt.figure(figsize=(plot_feature_data__[8], plot_feature_data__[8]))
+        plt.title(title_, fontsize=plot_feature_data__[10])
         sns.heatmap(corr,
-                    cmap='RdBu_r',  # задаёт цветовую схему
+                    cmap=plot_feature_data__[35],  # задаёт цветовую схему
                     annot=True,  # рисует значения внутри ячеек
                     linewidth=.9,
                     vmin=-1, vmax=1)  # указывает начало цветовых кодов от -1 до 1.
@@ -566,7 +564,7 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         name_of_file_ = name_of_file_.replace('>=', 'more')
         plt.savefig(path_name_fiqure_folder_corr_matrix + '//' + safe_name(name_of_file_) + '.png', dpi=600, format='png')
         #также экспортируем в excel
-        corr.to_excel(path_name_fiqure_folder_corr_matrix + '//' + safe_name(name_of_file_) + ".xlsx", engine="openpyxl")
+        corr.to_excel(path_name_fiqure_folder_corr_matrix + '//' + safe_name(name_of_file_) + '_' + plot_feature_data__[34] + ".xlsx", engine="openpyxl")
         plt.close()
         plt.clf()
 
@@ -587,12 +585,6 @@ def error_for_val_plot(plot_feature_data__from_ui, path, exel_name):
         return 'Имя файла отсутствует'
     if plot_feature_data__from_ui[5].replace(".", "").replace(",", "").isdigit() is False and plot_feature_data__from_ui[5] != '':
         return 'Параметр нижней границы содержит буквы'
-    if plot_feature_data__from_ui[8].replace(".", "").replace(",", "").isdigit() is False and plot_feature_data__from_ui[8] != '':
-        print(plot_feature_data__from_ui[8])
-        return 'Параметр для корреляционной матрицы содержит буквы'
-    if plot_feature_data__from_ui[10].replace(".", "").replace(",", "").isdigit() is False and plot_feature_data__from_ui[10] != '':
-        print(plot_feature_data__from_ui[10])
-        return 'Параметр для корреляционной матрицы содержит буквы'
     return ''
 
 # функция для безопасного имени при сохранении
@@ -603,7 +595,8 @@ def safe_name(name) -> str:
 
 # добавляем в массив plot_feature_data__ всё, что мы хотим -- я его так отдельно выделил в качестве безопасности при объявлении его global
 def lets_add_all_parameters_for_figs_here(self):
-    #так, конечно, не очень хорошо делать, но я не думаю, что это прям очень неудобный кастыль -- я так всё пишу, потому что я всё это переписывал и данная запись наиболее читаема
+    # так, конечно, не очень хорошо делать, но я не думаю, что это прям очень неудобный кастыль
+    # я так всё пишу, потому что я всё это переписывал и данная запись наиболее читаема
     plot_feature_data__ = [0] * 100
 
     # цвет для box - палитра
@@ -623,11 +616,11 @@ def lets_add_all_parameters_for_figs_here(self):
     # del hue для корреляционных графиков
     plot_feature_data__[7] = self.ui.del_hue.text()
     # matrix corr fig size
-    plot_feature_data__[8] = self.ui.corr_mat_figsize.text()
+    plot_feature_data__[8] = self.ui.corr_mat_figsize.value()
     # matrix font corr for in
-    plot_feature_data__[9] = self.ui.font_for_in.text()
+    plot_feature_data__[9] = self.ui.font_for_in.value()
     # matrix font corr for out
-    plot_feature_data__[10] = self.ui.font_for_out.text()
+    plot_feature_data__[10] = self.ui.font_for_out.value()
     # matrix name of corr figure
     plot_feature_data__[11] = self.ui.name_of_corr_matrix.text()
     # stat test
@@ -672,6 +665,11 @@ def lets_add_all_parameters_for_figs_here(self):
     plot_feature_data__[31] = self.ui.order_box_plot.text()
     # изменить порядок стат. значимости
     plot_feature_data__[32] = self.ui.STAT_znachimost_order_box_plot.text()
-
+    # размер точек на графике box plot
+    plot_feature_data__[33] = self.ui.spinBox_point_size.value()
+    # корреляционная матрица -- по чему считать корреляции -- по пирсону или др
+    plot_feature_data__[34] = self.ui.comboBox_correlation_figs_matrix.currentText()
+    # корреляционная матрица -- цветовая палитра
+    plot_feature_data__[35] = self.ui.comboBox_correlation_color_map_for_figs.currentText()
     return plot_feature_data__
 

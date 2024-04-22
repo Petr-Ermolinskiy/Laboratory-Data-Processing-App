@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>712</width>
-    <height>679</height>
+    <width>918</width>
+    <height>683</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -3111,13 +3111,13 @@ border-radius: 17px;
                  </font>
                 </property>
                 <property name="currentIndex">
-                 <number>2</number>
+                 <number>4</number>
                 </property>
                 <widget class="QWidget" name="tab_3">
                  <attribute name="title">
                   <string>Box plot (1)</string>
                  </attribute>
-                 <layout class="QFormLayout" name="formLayout_4">
+                 <layout class="QGridLayout" name="gridLayout_12">
                   <item row="0" column="0">
                    <layout class="QHBoxLayout" name="horizontalLayout_38">
                     <property name="spacing">
@@ -3350,6 +3350,16 @@ border-radius: 17px;
                              <string>tab20c</string>
                             </property>
                            </item>
+                           <item>
+                            <property name="text">
+                             <string>BuPu</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>BuPu_r</string>
+                            </property>
+                           </item>
                           </widget>
                          </item>
                         </layout>
@@ -3557,6 +3567,16 @@ border-radius: 17px;
                              <string>tab20c</string>
                             </property>
                            </item>
+                           <item>
+                            <property name="text">
+                             <string>BuPu</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>BuPu_r</string>
+                            </property>
+                           </item>
                           </widget>
                          </item>
                         </layout>
@@ -3636,6 +3656,52 @@ border-radius: 17px;
                             <font>
                              <pointsize>11</pointsize>
                             </font>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_122">
+                         <item>
+                          <widget class="QLabel" name="lb_color_pal_box_19">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Размер точек на графике</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QSpinBox" name="spinBox_point_size">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="minimum">
+                            <number>0</number>
+                           </property>
+                           <property name="maximum">
+                            <number>20</number>
+                           </property>
+                           <property name="value">
+                            <number>4</number>
                            </property>
                           </widget>
                          </item>
@@ -4953,7 +5019,7 @@ border-radius: 17px;
                  <attribute name="title">
                   <string>Корреляционные матрицы</string>
                  </attribute>
-                 <layout class="QFormLayout" name="formLayout_3">
+                 <layout class="QFormLayout" name="formLayout_2">
                   <item row="0" column="0">
                    <widget class="QFrame" name="frame">
                     <property name="sizePolicy">
@@ -4966,6 +5032,161 @@ border-radius: 17px;
                      <enum>Qt::LeftToRight</enum>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_19">
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_123">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="lb_sd_or_minmax_6">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Корреляция по</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QComboBox" name="comboBox_correlation_figs_matrix">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>pearson</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>kendall</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>spearman</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_124">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="lb_sd_or_minmax_7">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Цветовая схема</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QComboBox" name="comboBox_correlation_color_map_for_figs">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                          </font>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>coolwarm</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>YlGn</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>BuGn</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>GnBu</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>bwr</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>seismic</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>PiYG</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>RdGy</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>seismic</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>hot</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>inferno</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>gist_heat</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_28">
                        <item>
@@ -4984,20 +5205,26 @@ border-radius: 17px;
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="corr_mat_figsize">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
+                        <widget class="QDoubleSpinBox" name="corr_mat_figsize">
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
                           </font>
                          </property>
-                         <property name="text">
-                          <string>20</string>
+                         <property name="decimals">
+                          <number>0</number>
+                         </property>
+                         <property name="minimum">
+                          <double>1.000000000000000</double>
+                         </property>
+                         <property name="maximum">
+                          <double>100.000000000000000</double>
+                         </property>
+                         <property name="singleStep">
+                          <double>1.000000000000000</double>
+                         </property>
+                         <property name="value">
+                          <double>20.000000000000000</double>
                          </property>
                         </widget>
                        </item>
@@ -5021,20 +5248,23 @@ border-radius: 17px;
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="font_for_in">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
+                        <widget class="QDoubleSpinBox" name="font_for_in">
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
                           </font>
                          </property>
-                         <property name="text">
-                          <string>1.3</string>
+                         <property name="decimals">
+                          <number>1</number>
+                         </property>
+                         <property name="minimum">
+                          <double>0.100000000000000</double>
+                         </property>
+                         <property name="singleStep">
+                          <double>0.100000000000000</double>
+                         </property>
+                         <property name="value">
+                          <double>1.300000000000000</double>
                          </property>
                         </widget>
                        </item>
@@ -5058,20 +5288,26 @@ border-radius: 17px;
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="font_for_out">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
+                        <widget class="QDoubleSpinBox" name="font_for_out">
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
                           </font>
                          </property>
-                         <property name="text">
-                          <string>26</string>
+                         <property name="decimals">
+                          <number>0</number>
+                         </property>
+                         <property name="minimum">
+                          <double>1.000000000000000</double>
+                         </property>
+                         <property name="maximum">
+                          <double>100.000000000000000</double>
+                         </property>
+                         <property name="singleStep">
+                          <double>1.000000000000000</double>
+                         </property>
+                         <property name="value">
+                          <double>26.000000000000000</double>
                          </property>
                         </widget>
                        </item>
@@ -7565,9 +7801,6 @@ border-radius: 10px;</string>
   <tabstop>doubleSpinBox_corr_figs_fontscale</tabstop>
   <tabstop>check_sort_or_not_corr_figs</tabstop>
   <tabstop>check_setka</tabstop>
-  <tabstop>corr_mat_figsize</tabstop>
-  <tabstop>font_for_in</tabstop>
-  <tabstop>font_for_out</tabstop>
   <tabstop>name_of_corr_matrix</tabstop>
   <tabstop>btn_plot_and_save_figs</tabstop>
   <tabstop>path_for_profile</tabstop>
