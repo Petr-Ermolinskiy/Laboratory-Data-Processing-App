@@ -78,6 +78,7 @@ class Main_window(QMainWindow):
         #обновим какие есть sheets - графики
         self.ui.comboBox.currentTextChanged.connect(self.add_sheets_to_combobox)
 
+        #########################################
         #путь к папке с файлами - pivot
         self.ui.path_for_pivot_table.textChanged.connect(self.add_excel_files_to_combobox_pivot)
         #обновим какие есть sheets - pivot
@@ -85,14 +86,17 @@ class Main_window(QMainWindow):
         # обновим какие есть колонки - pivot
         self.ui.comboBox_pivot_table_excel_sheet.currentTextChanged.connect(self.add_columns_to_combobox_pivot)
 
+        #########################################
         #для нахождения файла Biola
         self.ui.path_for_biola.textChanged.connect(self.add_biola_file)
 
+        #########################################
         #catplot
         self.ui.path_for_catplot.textChanged.connect(self.add_excel_catplot)
         self.ui.comboBox_excel_catplot.currentTextChanged.connect(self.catplot_add_sheets)
         self.ui.comboBox_excel_sheet_catplot.currentTextChanged.connect(self.catplot_add_x_y_hue)
 
+        #########################################
         # дополнительная статистика - расчет p-value
         self.ui.path_for_dop_stat.textChanged.connect(self.add_excel_dop_stat)
         self.ui.comboBox_excel_dop_stat.currentTextChanged.connect(self.dop_stat_add_sheets)
@@ -100,6 +104,10 @@ class Main_window(QMainWindow):
 
         self.ui.comboBox_stat_test_dop_stat.currentTextChanged.connect(self.p_value_calc)
         self.ui.comboBox_alter_hep_dop_stat.currentTextChanged.connect(self.p_value_calc)
+
+        #########################################
+        # изменяем каллибровку
+        self.ui.comboBox_LT_calibration.currentTextChanged.connect(self.LT_change_calibration)
 
     ##############################
     #изменим стиль - светлая или темная тема
@@ -284,7 +292,16 @@ class Main_window(QMainWindow):
         self.ui.comboBox_biola_concentration.clear()  # удалить все элементы из combobox
         self.ui.comboBox_biola_concentration.addItems(files2)
 
-
+    ############
+    # Лазерный пинцет -- изменим калибровку
+    ############
+    def LT_change_calibration(self):
+        if self.ui.comboBox_LT_calibration.currentText() == 'Линейная':
+            self.ui.hhhhh.setEnabled(True)
+            self.ui.hhhhh_exp.setEnabled(False)
+        else:
+            self.ui.hhhhh.setEnabled(False)
+            self.ui.hhhhh_exp.setEnabled(True)
 
 #функция, чтобы разделить путь до файла на название файла без расширений
 def get_name_out_of_path(files):

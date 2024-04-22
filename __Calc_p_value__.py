@@ -5,6 +5,9 @@ import numpy as np
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
 
+# надо будет добавить pip install permutations-stats
+# https://pypi.org/project/permutations-stats/
+
 def p_value_calc_for_two_columns(self) -> None:
     dlg = QMessageBox(self)
 

@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(780, 683)
+        MainWindow.resize(780, 721)
         icon = QIcon()
         icon.addFile(u"LOGO.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -33,26 +33,26 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.label_10 = QLabel(self.centralwidget)
-        self.label_10.setObjectName(u"label_10")
-        font = QFont()
-        font.setFamilies([u"Segoe UI"])
-        font.setPointSize(9)
-        font.setBold(True)
-        self.label_10.setFont(font)
-        self.label_10.setStyleSheet(u"color: rgb(128, 160, 165);")
-
-        self.gridLayout.addWidget(self.label_10, 1, 0, 1, 1)
-
         self.comboBox_style_sheet = QComboBox(self.centralwidget)
         self.comboBox_style_sheet.addItem("")
         self.comboBox_style_sheet.addItem("")
         self.comboBox_style_sheet.setObjectName(u"comboBox_style_sheet")
+        font = QFont()
+        font.setFamilies([u"Segoe UI"])
+        font.setPointSize(9)
+        font.setBold(True)
         self.comboBox_style_sheet.setFont(font)
         self.comboBox_style_sheet.setStyleSheet(u"color: rgb(128, 160, 165);\n"
 "background-color: rgba(255, 255, 255, 0);")
 
         self.gridLayout.addWidget(self.comboBox_style_sheet, 1, 1, 1, 1)
+
+        self.label_10 = QLabel(self.centralwidget)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setFont(font)
+        self.label_10.setStyleSheet(u"color: rgb(128, 160, 165);")
+
+        self.gridLayout.addWidget(self.label_10, 1, 0, 1, 1)
 
         self.Lab_stuff = QTabWidget(self.centralwidget)
         self.Lab_stuff.setObjectName(u"Lab_stuff")
@@ -1114,8 +1114,441 @@ class Ui_MainWindow(object):
         self.Lab_stuff.addTab(self.tab_5, "")
         self.tab_7 = QWidget()
         self.tab_7.setObjectName(u"tab_7")
-        self.gridLayout_9 = QGridLayout(self.tab_7)
-        self.gridLayout_9.setObjectName(u"gridLayout_9")
+        self.formLayout = QFormLayout(self.tab_7)
+        self.formLayout.setObjectName(u"formLayout")
+        self.horizontalLayout_131 = QHBoxLayout()
+        self.horizontalLayout_131.setObjectName(u"horizontalLayout_131")
+        self.lb_stattest_13 = QLabel(self.tab_7)
+        self.lb_stattest_13.setObjectName(u"lb_stattest_13")
+        self.lb_stattest_13.setEnabled(True)
+        self.lb_stattest_13.setFont(font5)
+
+        self.horizontalLayout_131.addWidget(self.lb_stattest_13)
+
+        self.comboBox_LT_calibration = QComboBox(self.tab_7)
+        self.comboBox_LT_calibration.addItem("")
+        self.comboBox_LT_calibration.addItem("")
+        self.comboBox_LT_calibration.setObjectName(u"comboBox_LT_calibration")
+        self.comboBox_LT_calibration.setEnabled(True)
+        self.comboBox_LT_calibration.setFont(font5)
+
+        self.horizontalLayout_131.addWidget(self.comboBox_LT_calibration)
+
+
+        self.formLayout.setLayout(1, QFormLayout.LabelRole, self.horizontalLayout_131)
+
+        self.verticalLayout_50 = QVBoxLayout()
+        self.verticalLayout_50.setObjectName(u"verticalLayout_50")
+        self.asd = QFrame(self.tab_7)
+        self.asd.setObjectName(u"asd")
+        sizePolicy15 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
+        sizePolicy15.setHorizontalStretch(0)
+        sizePolicy15.setVerticalStretch(0)
+        sizePolicy15.setHeightForWidth(self.asd.sizePolicy().hasHeightForWidth())
+        self.asd.setSizePolicy(sizePolicy15)
+        self.asd.setStyleSheet(u"QFrame#asd{\n"
+"border: 5px solid rgb(128, 160, 165);\n"
+"border-radius: 17px;\n"
+"}")
+        self.verticalLayout_26 = QVBoxLayout(self.asd)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.verticalLayout_26.setContentsMargins(5, 5, 5, 5)
+        self.lb_path_5 = QLabel(self.asd)
+        self.lb_path_5.setObjectName(u"lb_path_5")
+        sizePolicy16 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)
+        sizePolicy16.setHorizontalStretch(0)
+        sizePolicy16.setVerticalStretch(0)
+        sizePolicy16.setHeightForWidth(self.lb_path_5.sizePolicy().hasHeightForWidth())
+        self.lb_path_5.setSizePolicy(sizePolicy16)
+        font9 = QFont()
+        font9.setFamilies([u"Segoe UI"])
+        font9.setPointSize(11)
+        font9.setUnderline(True)
+        self.lb_path_5.setFont(font9)
+        self.lb_path_5.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_26.addWidget(self.lb_path_5)
+
+        self.verticalLayout_25 = QVBoxLayout()
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.horizontalLayout_48 = QHBoxLayout()
+        self.horizontalLayout_48.setObjectName(u"horizontalLayout_48")
+        self.lb_path_17 = QLabel(self.asd)
+        self.lb_path_17.setObjectName(u"lb_path_17")
+        sizePolicy16.setHeightForWidth(self.lb_path_17.sizePolicy().hasHeightForWidth())
+        self.lb_path_17.setSizePolicy(sizePolicy16)
+        self.lb_path_17.setFont(font4)
+
+        self.horizontalLayout_48.addWidget(self.lb_path_17)
+
+        self.lb_path_7 = QLabel(self.asd)
+        self.lb_path_7.setObjectName(u"lb_path_7")
+        sizePolicy16.setHeightForWidth(self.lb_path_7.sizePolicy().hasHeightForWidth())
+        self.lb_path_7.setSizePolicy(sizePolicy16)
+        self.lb_path_7.setFont(font4)
+
+        self.horizontalLayout_48.addWidget(self.lb_path_7)
+
+        self.a_main = QDoubleSpinBox(self.asd)
+        self.a_main.setObjectName(u"a_main")
+        self.a_main.setFont(font5)
+        self.a_main.setDecimals(5)
+        self.a_main.setMaximum(50.000000000000000)
+        self.a_main.setValue(0.220000000000000)
+
+        self.horizontalLayout_48.addWidget(self.a_main)
+
+        self.lb_path_18 = QLabel(self.asd)
+        self.lb_path_18.setObjectName(u"lb_path_18")
+        sizePolicy16.setHeightForWidth(self.lb_path_18.sizePolicy().hasHeightForWidth())
+        self.lb_path_18.setSizePolicy(sizePolicy16)
+        self.lb_path_18.setFont(font4)
+
+        self.horizontalLayout_48.addWidget(self.lb_path_18)
+
+        self.horizontalLayout_49 = QHBoxLayout()
+        self.horizontalLayout_49.setObjectName(u"horizontalLayout_49")
+        self.lb_path_8 = QLabel(self.asd)
+        self.lb_path_8.setObjectName(u"lb_path_8")
+        sizePolicy16.setHeightForWidth(self.lb_path_8.sizePolicy().hasHeightForWidth())
+        self.lb_path_8.setSizePolicy(sizePolicy16)
+        self.lb_path_8.setFont(font4)
+
+        self.horizontalLayout_49.addWidget(self.lb_path_8)
+
+        self.b_main = QDoubleSpinBox(self.asd)
+        self.b_main.setObjectName(u"b_main")
+        self.b_main.setFont(font5)
+        self.b_main.setDecimals(5)
+        self.b_main.setMinimum(-200.000000000000000)
+        self.b_main.setMaximum(200.000000000000000)
+        self.b_main.setValue(-0.800000000000000)
+
+        self.horizontalLayout_49.addWidget(self.b_main)
+
+
+        self.horizontalLayout_48.addLayout(self.horizontalLayout_49)
+
+
+        self.verticalLayout_25.addLayout(self.horizontalLayout_48)
+
+        self.horizontalLayout_50 = QHBoxLayout()
+        self.horizontalLayout_50.setObjectName(u"horizontalLayout_50")
+        self.lb_path_12 = QLabel(self.asd)
+        self.lb_path_12.setObjectName(u"lb_path_12")
+        sizePolicy16.setHeightForWidth(self.lb_path_12.sizePolicy().hasHeightForWidth())
+        self.lb_path_12.setSizePolicy(sizePolicy16)
+        self.lb_path_12.setFont(font4)
+
+        self.horizontalLayout_50.addWidget(self.lb_path_12)
+
+        self.dateEdit = QDateEdit(self.asd)
+        self.dateEdit.setObjectName(u"dateEdit")
+        self.dateEdit.setFont(font5)
+        self.dateEdit.setDate(QDate(2024, 1, 1))
+
+        self.horizontalLayout_50.addWidget(self.dateEdit)
+
+
+        self.verticalLayout_25.addLayout(self.horizontalLayout_50)
+
+
+        self.verticalLayout_26.addLayout(self.verticalLayout_25)
+
+
+        self.verticalLayout_50.addWidget(self.asd)
+
+        self.hhhhh = QFrame(self.tab_7)
+        self.hhhhh.setObjectName(u"hhhhh")
+        sizePolicy15.setHeightForWidth(self.hhhhh.sizePolicy().hasHeightForWidth())
+        self.hhhhh.setSizePolicy(sizePolicy15)
+        self.hhhhh.setStyleSheet(u"QFrame#hhhhh{\n"
+"border: 5px solid rgb(128, 160, 165);\n"
+"border-radius: 17px;\n"
+"}")
+        self.verticalLayout_27 = QVBoxLayout(self.hhhhh)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.verticalLayout_27.setContentsMargins(5, 5, 5, 5)
+        self.lb_path_6 = QLabel(self.hhhhh)
+        self.lb_path_6.setObjectName(u"lb_path_6")
+        sizePolicy17 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy17.setHorizontalStretch(0)
+        sizePolicy17.setVerticalStretch(0)
+        sizePolicy17.setHeightForWidth(self.lb_path_6.sizePolicy().hasHeightForWidth())
+        self.lb_path_6.setSizePolicy(sizePolicy17)
+        self.lb_path_6.setFont(font9)
+        self.lb_path_6.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_27.addWidget(self.lb_path_6)
+
+        self.verticalLayout_46 = QVBoxLayout()
+        self.verticalLayout_46.setObjectName(u"verticalLayout_46")
+        self.horizontalLayout_115 = QHBoxLayout()
+        self.horizontalLayout_115.setObjectName(u"horizontalLayout_115")
+        self.lb_path_19 = QLabel(self.hhhhh)
+        self.lb_path_19.setObjectName(u"lb_path_19")
+        sizePolicy16.setHeightForWidth(self.lb_path_19.sizePolicy().hasHeightForWidth())
+        self.lb_path_19.setSizePolicy(sizePolicy16)
+        self.lb_path_19.setFont(font4)
+
+        self.horizontalLayout_115.addWidget(self.lb_path_19)
+
+        self.lb_path_9 = QLabel(self.hhhhh)
+        self.lb_path_9.setObjectName(u"lb_path_9")
+        sizePolicy16.setHeightForWidth(self.lb_path_9.sizePolicy().hasHeightForWidth())
+        self.lb_path_9.setSizePolicy(sizePolicy16)
+        self.lb_path_9.setFont(font4)
+
+        self.horizontalLayout_115.addWidget(self.lb_path_9)
+
+        self.a_dop = QDoubleSpinBox(self.hhhhh)
+        self.a_dop.setObjectName(u"a_dop")
+        self.a_dop.setFont(font5)
+        self.a_dop.setDecimals(5)
+        self.a_dop.setMaximum(50.000000000000000)
+        self.a_dop.setValue(1.410000000000000)
+
+        self.horizontalLayout_115.addWidget(self.a_dop)
+
+        self.lb_path_20 = QLabel(self.hhhhh)
+        self.lb_path_20.setObjectName(u"lb_path_20")
+        sizePolicy16.setHeightForWidth(self.lb_path_20.sizePolicy().hasHeightForWidth())
+        self.lb_path_20.setSizePolicy(sizePolicy16)
+        self.lb_path_20.setFont(font4)
+
+        self.horizontalLayout_115.addWidget(self.lb_path_20)
+
+        self.lb_path_21 = QLabel(self.hhhhh)
+        self.lb_path_21.setObjectName(u"lb_path_21")
+        sizePolicy16.setHeightForWidth(self.lb_path_21.sizePolicy().hasHeightForWidth())
+        self.lb_path_21.setSizePolicy(sizePolicy16)
+        self.lb_path_21.setFont(font4)
+
+        self.horizontalLayout_115.addWidget(self.lb_path_21)
+
+        self.b_dop = QDoubleSpinBox(self.hhhhh)
+        self.b_dop.setObjectName(u"b_dop")
+        self.b_dop.setFont(font5)
+        self.b_dop.setDecimals(5)
+        self.b_dop.setMinimum(-200.000000000000000)
+        self.b_dop.setMaximum(200.000000000000000)
+        self.b_dop.setValue(-29.500000000000000)
+
+        self.horizontalLayout_115.addWidget(self.b_dop)
+
+
+        self.verticalLayout_46.addLayout(self.horizontalLayout_115)
+
+        self.horizontalLayout_53 = QHBoxLayout()
+        self.horizontalLayout_53.setObjectName(u"horizontalLayout_53")
+        self.lb_path_11 = QLabel(self.hhhhh)
+        self.lb_path_11.setObjectName(u"lb_path_11")
+        sizePolicy16.setHeightForWidth(self.lb_path_11.sizePolicy().hasHeightForWidth())
+        self.lb_path_11.setSizePolicy(sizePolicy16)
+        self.lb_path_11.setFont(font4)
+
+        self.horizontalLayout_53.addWidget(self.lb_path_11)
+
+        self.dateEdit_2 = QDateEdit(self.hhhhh)
+        self.dateEdit_2.setObjectName(u"dateEdit_2")
+        self.dateEdit_2.setFont(font5)
+        self.dateEdit_2.setDate(QDate(2024, 1, 1))
+
+        self.horizontalLayout_53.addWidget(self.dateEdit_2)
+
+
+        self.verticalLayout_46.addLayout(self.horizontalLayout_53)
+
+
+        self.verticalLayout_27.addLayout(self.verticalLayout_46)
+
+
+        self.verticalLayout_50.addWidget(self.hhhhh)
+
+        self.hhhhh_exp = QFrame(self.tab_7)
+        self.hhhhh_exp.setObjectName(u"hhhhh_exp")
+        self.hhhhh_exp.setEnabled(False)
+        sizePolicy12.setHeightForWidth(self.hhhhh_exp.sizePolicy().hasHeightForWidth())
+        self.hhhhh_exp.setSizePolicy(sizePolicy12)
+        self.hhhhh_exp.setStyleSheet(u"QFrame#hhhhh_exp{\n"
+"border: 5px solid rgb(128, 160, 165);\n"
+"border-radius: 17px;\n"
+"}")
+        self.verticalLayout_47 = QVBoxLayout(self.hhhhh_exp)
+        self.verticalLayout_47.setObjectName(u"verticalLayout_47")
+        self.verticalLayout_47.setContentsMargins(5, 5, 5, 5)
+        self.lb_path_10 = QLabel(self.hhhhh_exp)
+        self.lb_path_10.setObjectName(u"lb_path_10")
+        sizePolicy17.setHeightForWidth(self.lb_path_10.sizePolicy().hasHeightForWidth())
+        self.lb_path_10.setSizePolicy(sizePolicy17)
+        self.lb_path_10.setFont(font9)
+        self.lb_path_10.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_47.addWidget(self.lb_path_10)
+
+        self.verticalLayout_49 = QVBoxLayout()
+        self.verticalLayout_49.setObjectName(u"verticalLayout_49")
+        self.horizontalLayout_51 = QHBoxLayout()
+        self.horizontalLayout_51.setObjectName(u"horizontalLayout_51")
+        self.lb_path_22 = QLabel(self.hhhhh_exp)
+        self.lb_path_22.setObjectName(u"lb_path_22")
+        sizePolicy16.setHeightForWidth(self.lb_path_22.sizePolicy().hasHeightForWidth())
+        self.lb_path_22.setSizePolicy(sizePolicy16)
+        self.lb_path_22.setFont(font4)
+
+        self.horizontalLayout_51.addWidget(self.lb_path_22)
+
+        self.lb_path_23 = QLabel(self.hhhhh_exp)
+        self.lb_path_23.setObjectName(u"lb_path_23")
+        sizePolicy16.setHeightForWidth(self.lb_path_23.sizePolicy().hasHeightForWidth())
+        self.lb_path_23.setSizePolicy(sizePolicy16)
+        self.lb_path_23.setFont(font4)
+
+        self.horizontalLayout_51.addWidget(self.lb_path_23, 0, Qt.AlignHCenter)
+
+        self.dop_cal_k = QDoubleSpinBox(self.hhhhh_exp)
+        self.dop_cal_k.setObjectName(u"dop_cal_k")
+        self.dop_cal_k.setFont(font5)
+        self.dop_cal_k.setDecimals(5)
+        self.dop_cal_k.setMinimum(-50.000000000000000)
+        self.dop_cal_k.setMaximum(50.000000000000000)
+        self.dop_cal_k.setValue(0.500000000000000)
+
+        self.horizontalLayout_51.addWidget(self.dop_cal_k)
+
+        self.lb_path_27 = QLabel(self.hhhhh_exp)
+        self.lb_path_27.setObjectName(u"lb_path_27")
+        sizePolicy16.setHeightForWidth(self.lb_path_27.sizePolicy().hasHeightForWidth())
+        self.lb_path_27.setSizePolicy(sizePolicy16)
+        self.lb_path_27.setFont(font4)
+
+        self.horizontalLayout_51.addWidget(self.lb_path_27, 0, Qt.AlignHCenter)
+
+        self.dop_cal_y0 = QDoubleSpinBox(self.hhhhh_exp)
+        self.dop_cal_y0.setObjectName(u"dop_cal_y0")
+        self.dop_cal_y0.setFont(font5)
+        self.dop_cal_y0.setDecimals(5)
+        self.dop_cal_y0.setMinimum(-50.000000000000000)
+        self.dop_cal_y0.setMaximum(50.000000000000000)
+        self.dop_cal_y0.setValue(-1.000000000000000)
+
+        self.horizontalLayout_51.addWidget(self.dop_cal_y0)
+
+        self.lb_path_28 = QLabel(self.hhhhh_exp)
+        self.lb_path_28.setObjectName(u"lb_path_28")
+        sizePolicy16.setHeightForWidth(self.lb_path_28.sizePolicy().hasHeightForWidth())
+        self.lb_path_28.setSizePolicy(sizePolicy16)
+        self.lb_path_28.setFont(font4)
+
+        self.horizontalLayout_51.addWidget(self.lb_path_28, 0, Qt.AlignHCenter)
+
+        self.dop_cal_A = QDoubleSpinBox(self.hhhhh_exp)
+        self.dop_cal_A.setObjectName(u"dop_cal_A")
+        self.dop_cal_A.setFont(font5)
+        self.dop_cal_A.setDecimals(5)
+        self.dop_cal_A.setMinimum(-50.000000000000000)
+        self.dop_cal_A.setMaximum(50.000000000000000)
+        self.dop_cal_A.setValue(1.000000000000000)
+
+        self.horizontalLayout_51.addWidget(self.dop_cal_A)
+
+
+        self.verticalLayout_49.addLayout(self.horizontalLayout_51)
+
+        self.horizontalLayout_52 = QHBoxLayout()
+        self.horizontalLayout_52.setObjectName(u"horizontalLayout_52")
+        self.lb_path_29 = QLabel(self.hhhhh_exp)
+        self.lb_path_29.setObjectName(u"lb_path_29")
+        sizePolicy16.setHeightForWidth(self.lb_path_29.sizePolicy().hasHeightForWidth())
+        self.lb_path_29.setSizePolicy(sizePolicy16)
+        self.lb_path_29.setFont(font4)
+
+        self.horizontalLayout_52.addWidget(self.lb_path_29)
+
+        self.lb_path_30 = QLabel(self.hhhhh_exp)
+        self.lb_path_30.setObjectName(u"lb_path_30")
+        sizePolicy16.setHeightForWidth(self.lb_path_30.sizePolicy().hasHeightForWidth())
+        self.lb_path_30.setSizePolicy(sizePolicy16)
+        self.lb_path_30.setFont(font4)
+
+        self.horizontalLayout_52.addWidget(self.lb_path_30, 0, Qt.AlignHCenter)
+
+        self.dop_cal_R0 = QDoubleSpinBox(self.hhhhh_exp)
+        self.dop_cal_R0.setObjectName(u"dop_cal_R0")
+        self.dop_cal_R0.setFont(font5)
+        self.dop_cal_R0.setDecimals(5)
+        self.dop_cal_R0.setMinimum(-50.000000000000000)
+        self.dop_cal_R0.setMaximum(50.000000000000000)
+        self.dop_cal_R0.setValue(0.100000000000000)
+
+        self.horizontalLayout_52.addWidget(self.dop_cal_R0)
+
+        self.lb_path_31 = QLabel(self.hhhhh_exp)
+        self.lb_path_31.setObjectName(u"lb_path_31")
+        sizePolicy16.setHeightForWidth(self.lb_path_31.sizePolicy().hasHeightForWidth())
+        self.lb_path_31.setSizePolicy(sizePolicy16)
+        self.lb_path_31.setFont(font4)
+
+        self.horizontalLayout_52.addWidget(self.lb_path_31, 0, Qt.AlignHCenter)
+
+        self.dop_cal_b = QDoubleSpinBox(self.hhhhh_exp)
+        self.dop_cal_b.setObjectName(u"dop_cal_b")
+        self.dop_cal_b.setFont(font5)
+        self.dop_cal_b.setDecimals(5)
+        self.dop_cal_b.setMinimum(-1000.000000000000000)
+        self.dop_cal_b.setMaximum(1000.000000000000000)
+        self.dop_cal_b.setValue(-1.000000000000000)
+
+        self.horizontalLayout_52.addWidget(self.dop_cal_b)
+
+
+        self.verticalLayout_49.addLayout(self.horizontalLayout_52)
+
+
+        self.verticalLayout_47.addLayout(self.verticalLayout_49)
+
+        self.verticalLayout_48 = QVBoxLayout()
+        self.verticalLayout_48.setObjectName(u"verticalLayout_48")
+        self.horizontalLayout_54 = QHBoxLayout()
+        self.horizontalLayout_54.setObjectName(u"horizontalLayout_54")
+        self.lb_path_26 = QLabel(self.hhhhh_exp)
+        self.lb_path_26.setObjectName(u"lb_path_26")
+        sizePolicy16.setHeightForWidth(self.lb_path_26.sizePolicy().hasHeightForWidth())
+        self.lb_path_26.setSizePolicy(sizePolicy16)
+        self.lb_path_26.setFont(font4)
+
+        self.horizontalLayout_54.addWidget(self.lb_path_26)
+
+        self.dateEdit_3 = QDateEdit(self.hhhhh_exp)
+        self.dateEdit_3.setObjectName(u"dateEdit_3")
+        self.dateEdit_3.setFont(font5)
+        self.dateEdit_3.setDate(QDate(2024, 1, 1))
+
+        self.horizontalLayout_54.addWidget(self.dateEdit_3)
+
+
+        self.verticalLayout_48.addLayout(self.horizontalLayout_54)
+
+
+        self.verticalLayout_47.addLayout(self.verticalLayout_48)
+
+
+        self.verticalLayout_50.addWidget(self.hhhhh_exp)
+
+
+        self.formLayout.setLayout(2, QFormLayout.LabelRole, self.verticalLayout_50)
+
+        self.btn_LT = QPushButton(self.tab_7)
+        self.btn_LT.setObjectName(u"btn_LT")
+        self.btn_LT.setFont(font5)
+        self.btn_LT.setStyleSheet(u"background-color: rgba(128, 160, 165, 50);\n"
+"border: 3px solid rgb(128, 160, 165);\n"
+"border-radius: 10px;")
+
+        self.formLayout.setWidget(3, QFormLayout.LabelRole, self.btn_LT)
+
+        self.verticalLayout_24 = QVBoxLayout()
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
         self.horizontalLayout_45 = QHBoxLayout()
         self.horizontalLayout_45.setObjectName(u"horizontalLayout_45")
         self.lb_path_4 = QLabel(self.tab_7)
@@ -1133,7 +1566,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_45.addWidget(self.path_for_LT)
 
 
-        self.gridLayout_9.addLayout(self.horizontalLayout_45, 0, 0, 1, 1)
+        self.verticalLayout_24.addLayout(self.horizontalLayout_45)
 
         self.verticalLayout_38 = QVBoxLayout()
         self.verticalLayout_38.setObjectName(u"verticalLayout_38")
@@ -1156,6 +1589,10 @@ class Ui_MainWindow(object):
         self.sep_for_LT.setFont(font5)
 
         self.horizontalLayout_55.addWidget(self.sep_for_LT)
+
+        self.horizontalSpacer_3 = QSpacerItem(60, 10, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_55.addItem(self.horizontalSpacer_3)
 
 
         self.horizontalLayout_58.addLayout(self.horizontalLayout_55)
@@ -1183,11 +1620,15 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_57.addWidget(self.position)
 
+        self.horizontalSpacer_4 = QSpacerItem(60, 10, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_57.addItem(self.horizontalSpacer_4)
+
 
         self.verticalLayout_38.addLayout(self.horizontalLayout_57)
 
 
-        self.gridLayout_9.addLayout(self.verticalLayout_38, 1, 0, 1, 1)
+        self.verticalLayout_24.addLayout(self.verticalLayout_38)
 
         self.verticalLayout_28 = QVBoxLayout()
         self.verticalLayout_28.setObjectName(u"verticalLayout_28")
@@ -1219,7 +1660,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_56.addWidget(self.sep_for_LT_values)
 
-        self.horizontalSpacer_2 = QSpacerItem(60, 50, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(60, 10, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_56.addItem(self.horizontalSpacer_2)
 
@@ -1237,217 +1678,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_28.addWidget(self.line_5)
 
 
-        self.gridLayout_9.addLayout(self.verticalLayout_28, 2, 0, 1, 1)
-
-        self.horizontalLayout_54 = QHBoxLayout()
-        self.horizontalLayout_54.setObjectName(u"horizontalLayout_54")
-        self.asd = QFrame(self.tab_7)
-        self.asd.setObjectName(u"asd")
-        sizePolicy10.setHeightForWidth(self.asd.sizePolicy().hasHeightForWidth())
-        self.asd.setSizePolicy(sizePolicy10)
-        self.asd.setStyleSheet(u"QFrame#asd{\n"
-"border: 5px solid rgb(128, 160, 165);\n"
-"border-radius: 17px;\n"
-"}")
-        self.verticalLayout_26 = QVBoxLayout(self.asd)
-        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
-        self.verticalLayout_26.setContentsMargins(5, 5, 5, 5)
-        self.lb_path_5 = QLabel(self.asd)
-        self.lb_path_5.setObjectName(u"lb_path_5")
-        sizePolicy15 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)
-        sizePolicy15.setHorizontalStretch(0)
-        sizePolicy15.setVerticalStretch(0)
-        sizePolicy15.setHeightForWidth(self.lb_path_5.sizePolicy().hasHeightForWidth())
-        self.lb_path_5.setSizePolicy(sizePolicy15)
-        font9 = QFont()
-        font9.setFamilies([u"Segoe UI"])
-        font9.setPointSize(11)
-        font9.setUnderline(True)
-        self.lb_path_5.setFont(font9)
-        self.lb_path_5.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_26.addWidget(self.lb_path_5)
-
-        self.verticalLayout_25 = QVBoxLayout()
-        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
-        self.horizontalLayout_48 = QHBoxLayout()
-        self.horizontalLayout_48.setObjectName(u"horizontalLayout_48")
-        self.lb_path_7 = QLabel(self.asd)
-        self.lb_path_7.setObjectName(u"lb_path_7")
-        sizePolicy15.setHeightForWidth(self.lb_path_7.sizePolicy().hasHeightForWidth())
-        self.lb_path_7.setSizePolicy(sizePolicy15)
-        self.lb_path_7.setFont(font4)
-
-        self.horizontalLayout_48.addWidget(self.lb_path_7)
-
-        self.a_main = QDoubleSpinBox(self.asd)
-        self.a_main.setObjectName(u"a_main")
-        self.a_main.setFont(font5)
-        self.a_main.setDecimals(5)
-        self.a_main.setMaximum(50.000000000000000)
-        self.a_main.setValue(0.220000000000000)
-
-        self.horizontalLayout_48.addWidget(self.a_main)
+        self.verticalLayout_24.addLayout(self.verticalLayout_28)
 
 
-        self.verticalLayout_25.addLayout(self.horizontalLayout_48)
-
-        self.horizontalLayout_49 = QHBoxLayout()
-        self.horizontalLayout_49.setObjectName(u"horizontalLayout_49")
-        self.lb_path_8 = QLabel(self.asd)
-        self.lb_path_8.setObjectName(u"lb_path_8")
-        sizePolicy15.setHeightForWidth(self.lb_path_8.sizePolicy().hasHeightForWidth())
-        self.lb_path_8.setSizePolicy(sizePolicy15)
-        self.lb_path_8.setFont(font4)
-
-        self.horizontalLayout_49.addWidget(self.lb_path_8)
-
-        self.b_main = QDoubleSpinBox(self.asd)
-        self.b_main.setObjectName(u"b_main")
-        self.b_main.setFont(font5)
-        self.b_main.setDecimals(5)
-        self.b_main.setMinimum(-200.000000000000000)
-        self.b_main.setMaximum(200.000000000000000)
-        self.b_main.setValue(-0.800000000000000)
-
-        self.horizontalLayout_49.addWidget(self.b_main)
-
-
-        self.verticalLayout_25.addLayout(self.horizontalLayout_49)
-
-        self.horizontalLayout_50 = QHBoxLayout()
-        self.horizontalLayout_50.setObjectName(u"horizontalLayout_50")
-        self.lb_path_12 = QLabel(self.asd)
-        self.lb_path_12.setObjectName(u"lb_path_12")
-        sizePolicy15.setHeightForWidth(self.lb_path_12.sizePolicy().hasHeightForWidth())
-        self.lb_path_12.setSizePolicy(sizePolicy15)
-        self.lb_path_12.setFont(font4)
-
-        self.horizontalLayout_50.addWidget(self.lb_path_12)
-
-        self.dateEdit = QDateEdit(self.asd)
-        self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setFont(font5)
-        self.dateEdit.setDate(QDate(2024, 1, 1))
-
-        self.horizontalLayout_50.addWidget(self.dateEdit)
-
-
-        self.verticalLayout_25.addLayout(self.horizontalLayout_50)
-
-
-        self.verticalLayout_26.addLayout(self.verticalLayout_25)
-
-
-        self.horizontalLayout_54.addWidget(self.asd)
-
-        self.hhhhh = QFrame(self.tab_7)
-        self.hhhhh.setObjectName(u"hhhhh")
-        sizePolicy10.setHeightForWidth(self.hhhhh.sizePolicy().hasHeightForWidth())
-        self.hhhhh.setSizePolicy(sizePolicy10)
-        self.hhhhh.setStyleSheet(u"QFrame#hhhhh{\n"
-"border: 5px solid rgb(128, 160, 165);\n"
-"border-radius: 17px;\n"
-"}")
-        self.verticalLayout_27 = QVBoxLayout(self.hhhhh)
-        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
-        self.verticalLayout_27.setContentsMargins(5, 5, 5, 5)
-        self.lb_path_6 = QLabel(self.hhhhh)
-        self.lb_path_6.setObjectName(u"lb_path_6")
-        sizePolicy16 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-        sizePolicy16.setHorizontalStretch(0)
-        sizePolicy16.setVerticalStretch(0)
-        sizePolicy16.setHeightForWidth(self.lb_path_6.sizePolicy().hasHeightForWidth())
-        self.lb_path_6.setSizePolicy(sizePolicy16)
-        self.lb_path_6.setFont(font9)
-        self.lb_path_6.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_27.addWidget(self.lb_path_6)
-
-        self.verticalLayout_24 = QVBoxLayout()
-        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
-        self.horizontalLayout_51 = QHBoxLayout()
-        self.horizontalLayout_51.setObjectName(u"horizontalLayout_51")
-        self.lb_path_9 = QLabel(self.hhhhh)
-        self.lb_path_9.setObjectName(u"lb_path_9")
-        sizePolicy15.setHeightForWidth(self.lb_path_9.sizePolicy().hasHeightForWidth())
-        self.lb_path_9.setSizePolicy(sizePolicy15)
-        self.lb_path_9.setFont(font4)
-
-        self.horizontalLayout_51.addWidget(self.lb_path_9)
-
-        self.a_dop = QDoubleSpinBox(self.hhhhh)
-        self.a_dop.setObjectName(u"a_dop")
-        self.a_dop.setFont(font5)
-        self.a_dop.setDecimals(5)
-        self.a_dop.setMaximum(50.000000000000000)
-        self.a_dop.setValue(1.410000000000000)
-
-        self.horizontalLayout_51.addWidget(self.a_dop)
-
-
-        self.verticalLayout_24.addLayout(self.horizontalLayout_51)
-
-        self.horizontalLayout_52 = QHBoxLayout()
-        self.horizontalLayout_52.setObjectName(u"horizontalLayout_52")
-        self.lb_path_10 = QLabel(self.hhhhh)
-        self.lb_path_10.setObjectName(u"lb_path_10")
-        sizePolicy15.setHeightForWidth(self.lb_path_10.sizePolicy().hasHeightForWidth())
-        self.lb_path_10.setSizePolicy(sizePolicy15)
-        self.lb_path_10.setFont(font4)
-
-        self.horizontalLayout_52.addWidget(self.lb_path_10)
-
-        self.b_dop = QDoubleSpinBox(self.hhhhh)
-        self.b_dop.setObjectName(u"b_dop")
-        self.b_dop.setFont(font5)
-        self.b_dop.setDecimals(5)
-        self.b_dop.setMinimum(-200.000000000000000)
-        self.b_dop.setMaximum(200.000000000000000)
-        self.b_dop.setValue(-29.500000000000000)
-
-        self.horizontalLayout_52.addWidget(self.b_dop)
-
-
-        self.verticalLayout_24.addLayout(self.horizontalLayout_52)
-
-        self.horizontalLayout_53 = QHBoxLayout()
-        self.horizontalLayout_53.setObjectName(u"horizontalLayout_53")
-        self.lb_path_11 = QLabel(self.hhhhh)
-        self.lb_path_11.setObjectName(u"lb_path_11")
-        sizePolicy15.setHeightForWidth(self.lb_path_11.sizePolicy().hasHeightForWidth())
-        self.lb_path_11.setSizePolicy(sizePolicy15)
-        self.lb_path_11.setFont(font4)
-
-        self.horizontalLayout_53.addWidget(self.lb_path_11)
-
-        self.dateEdit_2 = QDateEdit(self.hhhhh)
-        self.dateEdit_2.setObjectName(u"dateEdit_2")
-        self.dateEdit_2.setFont(font5)
-        self.dateEdit_2.setDate(QDate(2024, 1, 1))
-
-        self.horizontalLayout_53.addWidget(self.dateEdit_2)
-
-
-        self.verticalLayout_24.addLayout(self.horizontalLayout_53)
-
-
-        self.verticalLayout_27.addLayout(self.verticalLayout_24)
-
-
-        self.horizontalLayout_54.addWidget(self.hhhhh)
-
-
-        self.gridLayout_9.addLayout(self.horizontalLayout_54, 3, 0, 1, 1)
-
-        self.btn_LT = QPushButton(self.tab_7)
-        self.btn_LT.setObjectName(u"btn_LT")
-        self.btn_LT.setFont(font5)
-        self.btn_LT.setStyleSheet(u"background-color: rgba(128, 160, 165, 50);\n"
-"border: 3px solid rgb(128, 160, 165);\n"
-"border-radius: 10px;")
-
-        self.gridLayout_9.addWidget(self.btn_LT, 4, 0, 1, 1)
+        self.formLayout.setLayout(0, QFormLayout.SpanningRole, self.verticalLayout_24)
 
         self.Lab_stuff.addTab(self.tab_7, "")
         self.tabWidgetPage4 = QWidget()
@@ -1557,11 +1791,11 @@ class Ui_MainWindow(object):
 
         self.tabWidget = QTabWidget(self.tab)
         self.tabWidget.setObjectName(u"tabWidget")
-        sizePolicy17 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
-        sizePolicy17.setHorizontalStretch(0)
-        sizePolicy17.setVerticalStretch(0)
-        sizePolicy17.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
-        self.tabWidget.setSizePolicy(sizePolicy17)
+        sizePolicy18 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+        sizePolicy18.setHorizontalStretch(0)
+        sizePolicy18.setVerticalStretch(0)
+        sizePolicy18.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
+        self.tabWidget.setSizePolicy(sizePolicy18)
         self.tabWidget.setFont(font5)
         self.tab_3 = QWidget()
         self.tab_3.setObjectName(u"tab_3")
@@ -2050,11 +2284,11 @@ class Ui_MainWindow(object):
         self.check_N_ = QCheckBox(self.tab_9)
         self.check_N_.setObjectName(u"check_N_")
         self.check_N_.setEnabled(True)
-        sizePolicy18 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy18.setHorizontalStretch(0)
-        sizePolicy18.setVerticalStretch(0)
-        sizePolicy18.setHeightForWidth(self.check_N_.sizePolicy().hasHeightForWidth())
-        self.check_N_.setSizePolicy(sizePolicy18)
+        sizePolicy19 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy19.setHorizontalStretch(0)
+        sizePolicy19.setVerticalStretch(0)
+        sizePolicy19.setHeightForWidth(self.check_N_.sizePolicy().hasHeightForWidth())
+        self.check_N_.setSizePolicy(sizePolicy19)
         self.check_N_.setChecked(True)
 
         self.horizontalLayout_60.addWidget(self.check_N_)
@@ -2128,8 +2362,8 @@ class Ui_MainWindow(object):
         self.check_background = QCheckBox(self.tab_9)
         self.check_background.setObjectName(u"check_background")
         self.check_background.setEnabled(True)
-        sizePolicy18.setHeightForWidth(self.check_background.sizePolicy().hasHeightForWidth())
-        self.check_background.setSizePolicy(sizePolicy18)
+        sizePolicy19.setHeightForWidth(self.check_background.sizePolicy().hasHeightForWidth())
+        self.check_background.setSizePolicy(sizePolicy19)
         self.check_background.setChecked(False)
 
         self.horizontalLayout_66.addWidget(self.check_background)
@@ -2871,8 +3105,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_40.setContentsMargins(8, 8, 8, 8)
         self.lb_color_pal_box_17 = QLabel(self.yyy)
         self.lb_color_pal_box_17.setObjectName(u"lb_color_pal_box_17")
-        sizePolicy17.setHeightForWidth(self.lb_color_pal_box_17.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_17.setSizePolicy(sizePolicy17)
+        sizePolicy18.setHeightForWidth(self.lb_color_pal_box_17.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_17.setSizePolicy(sizePolicy18)
         font10 = QFont()
         font10.setPointSize(11)
         font10.setBold(False)
@@ -2954,8 +3188,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_42.setContentsMargins(8, 8, 8, 8)
         self.lb_color_pal_box_18 = QLabel(self.ppp)
         self.lb_color_pal_box_18.setObjectName(u"lb_color_pal_box_18")
-        sizePolicy17.setHeightForWidth(self.lb_color_pal_box_18.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_18.setSizePolicy(sizePolicy17)
+        sizePolicy18.setHeightForWidth(self.lb_color_pal_box_18.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_18.setSizePolicy(sizePolicy18)
         self.lb_color_pal_box_18.setFont(font10)
 
         self.verticalLayout_42.addWidget(self.lb_color_pal_box_18, 0, Qt.AlignHCenter)
@@ -3622,7 +3856,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_13.addLayout(self.verticalLayout_44, 0, 0, 1, 1)
 
-        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_4 = QSpacerItem(10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout_13.addItem(self.verticalSpacer_4, 1, 0, 1, 1)
 
@@ -3871,9 +4105,7 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.sep_for_LT_values, self.a_main)
         QWidget.setTabOrder(self.a_main, self.b_main)
         QWidget.setTabOrder(self.b_main, self.dateEdit)
-        QWidget.setTabOrder(self.dateEdit, self.a_dop)
-        QWidget.setTabOrder(self.a_dop, self.b_dop)
-        QWidget.setTabOrder(self.b_dop, self.dateEdit_2)
+        QWidget.setTabOrder(self.dateEdit, self.dateEdit_2)
         QWidget.setTabOrder(self.dateEdit_2, self.btn_LT)
         QWidget.setTabOrder(self.btn_LT, self.path_for_plot)
         QWidget.setTabOrder(self.path_for_plot, self.comboBox)
@@ -3969,9 +4201,9 @@ class Ui_MainWindow(object):
         self.check_approx_deform.toggled.connect(self.check_approx_deform_raw_data.setEnabled)
         self.check_biola_plot_figs.toggled.connect(self.plp.setEnabled)
 
-        self.Lab_stuff.setCurrentIndex(3)
-        self.tabWidget_2.setCurrentIndex(4)
-        self.tabWidget.setCurrentIndex(1)
+        self.Lab_stuff.setCurrentIndex(0)
+        self.tabWidget_2.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -3979,10 +4211,10 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 \u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u0433\u0440\u0430\u0444\u0438\u043a\u043e\u0432", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f 3.3", None))
         self.comboBox_style_sheet.setItemText(0, QCoreApplication.translate("MainWindow", u"\u041e\u0441\u043d\u043e\u0432\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None))
         self.comboBox_style_sheet.setItemText(1, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u043c\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None))
 
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f 3.3", None))
         self.btn_save_exel_csv.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u0432\u043b\u0435\u0447\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0438\u0437 \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0444\u0430\u0439\u043b\u044b", None))
 #if QT_CONFIG(tooltip)
         self.lb_path.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u041f\u043e \u0434\u0430\u043d\u043d\u043e\u043c\u0443 \u043f\u0443\u0442\u0438 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c 3 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438 (agg, stress, deform), \u0435\u0441\u043b\u0438 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a 1</p></body></html>", None))
@@ -4087,6 +4319,89 @@ class Ui_MainWindow(object):
         self.btn_biola_concentration.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u0432\u043b\u0435\u0447\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0438\u0437 \u0444\u0430\u0439\u043b\u0430 pdf", None))
         self.Lab_stuff.setTabText(self.Lab_stuff.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"\u0411\u0438\u043e\u043b\u0430", None))
 #if QT_CONFIG(tooltip)
+        self.lb_stattest_13.setToolTip(QCoreApplication.translate("MainWindow", u"\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_stattest_13.setText(QCoreApplication.translate("MainWindow", u"\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430 \u0434\u043b\u044f \u0434\u043e\u043f. \u043f\u0443\u0447\u043a\u0430", None))
+        self.comboBox_LT_calibration.setItemText(0, QCoreApplication.translate("MainWindow", u"\u041b\u0438\u043d\u0435\u0439\u043d\u0430\u044f", None))
+        self.comboBox_LT_calibration.setItemText(1, QCoreApplication.translate("MainWindow", u"\u042d\u043a\u0441\u043f\u043e\u043d\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u0430\u044f", None))
+
+#if QT_CONFIG(tooltip)
+        self.lb_path_5.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0412\u0441\u0435 \u0441\u0438\u043b\u044b \u043c\u0435\u0436\u0434\u0443 \u044d\u0440\u0438\u0442\u0440\u043e\u0446\u0438\u0442\u0430\u043c\u0438 \u0438 \u044d\u043d\u0434\u043e\u0442\u0435\u043b\u0438\u0435\u043c \u0447\u0435\u0440\u0435\u0437 \u044d\u0442\u043e \u043f\u0440\u043e\u0433\u043e\u043d\u044f\u044e\u0442\u0441\u044f. \u0421\u0438\u043b\u044b  \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442\u0441\u044f End...</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_5.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u043f\u0443\u0447\u043e\u043a", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_17.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = k*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_17.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = ", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_7.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_7.setText(QCoreApplication.translate("MainWindow", u"k", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_18.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_18.setText(QCoreApplication.translate("MainWindow", u"*\u041c\u043e\u0449\u043d\u043e\u0441\u0442\u044c \u043d\u0430 \u0444\u043e\u0442\u043e\u0434\u0435\u0442\u0435\u043a\u0442\u043e\u0440\u0435", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_8.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_8.setText(QCoreApplication.translate("MainWindow", u" + b", None))
+        self.lb_path_12.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_6.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0412\u0441\u0435 \u0441\u0438\u043b\u044b \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u0438 \u0434\u0435\u0437\u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u0447\u0435\u0440\u0435\u0437 \u044d\u0442\u043e \u043f\u0440\u043e\u0433\u043e\u043d\u044f\u044e\u0442\u0441\u044f. \u0421\u0438\u043b\u044b \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442\u0441\u044f FA..., FD...</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_6.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0443\u0447\u043e\u043a", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_19.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = k*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_19.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = ", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_9.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_9.setText(QCoreApplication.translate("MainWindow", u"k", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_20.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_20.setText(QCoreApplication.translate("MainWindow", u"*\u041c\u043e\u0449\u043d\u043e\u0441\u0442\u044c \u043d\u0430 \u0444\u043e\u0442\u043e\u0434\u0435\u0442\u0435\u043a\u0442\u043e\u0440\u0435", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_21.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_21.setText(QCoreApplication.translate("MainWindow", u" + b", None))
+        self.lb_path_11.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_10.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0412\u0441\u0435 \u0441\u0438\u043b\u044b \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u0438 \u0434\u0435\u0437\u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u0447\u0435\u0440\u0435\u0437 \u044d\u0442\u043e \u043f\u0440\u043e\u0433\u043e\u043d\u044f\u044e\u0442\u0441\u044f. \u0421\u0438\u043b\u044b \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442\u0441\u044f FA..., FD...</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_10.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0443\u0447\u043e\u043a", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_22.setToolTip("")
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_22.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = ", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_23.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_23.setText(QCoreApplication.translate("MainWindow", u"k", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_27.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_27.setText(QCoreApplication.translate("MainWindow", u"*( y0", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_28.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_28.setText(QCoreApplication.translate("MainWindow", u"+ A", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_29.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_29.setText(QCoreApplication.translate("MainWindow", u"* EXP( \u041c\u043e\u0449\u043d\u043e\u0441\u0442\u044c * ", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_30.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_30.setText(QCoreApplication.translate("MainWindow", u"R0", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_31.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_31.setText(QCoreApplication.translate("MainWindow", u")) + b", None))
+        self.lb_path_26.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438", None))
+        self.btn_LT.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u0432\u043b\u0435\u0447\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c excel \u0444\u0430\u0439\u043b", None))
+#if QT_CONFIG(tooltip)
         self.lb_path_4.setToolTip(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u0439 \u0435\u0441\u0442\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438 \u0441 \u0432\u0438\u0434\u0435\u043e avi", None))
 #endif // QT_CONFIG(tooltip)
         self.lb_path_4.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0430\u043c\u0438", None))
@@ -4105,33 +4420,6 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.lb_path_14.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u043c\u0435\u0436\u0434\u0443 \u0441\u0438\u043b\u043e\u0439 \u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435\u043c", None))
         self.sep_for_LT_values.setText(QCoreApplication.translate("MainWindow", u"-", None))
-#if QT_CONFIG(tooltip)
-        self.lb_path_5.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0412\u0441\u0435 \u0441\u0438\u043b\u044b \u043c\u0435\u0436\u0434\u0443 \u044d\u0440\u0438\u0442\u0440\u043e\u0446\u0438\u0442\u0430\u043c\u0438 \u0438 \u044d\u043d\u0434\u043e\u0442\u0435\u043b\u0438\u0435\u043c \u0447\u0435\u0440\u0435\u0437 \u044d\u0442\u043e \u043f\u0440\u043e\u0433\u043e\u043d\u044f\u044e\u0442\u0441\u044f. \u0421\u0438\u043b\u044b  \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442\u0441\u044f End...</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.lb_path_5.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u043f\u0443\u0447\u043e\u043a", None))
-#if QT_CONFIG(tooltip)
-        self.lb_path_7.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.lb_path_7.setText(QCoreApplication.translate("MainWindow", u"a", None))
-#if QT_CONFIG(tooltip)
-        self.lb_path_8.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
-#endif // QT_CONFIG(tooltip)
-        self.lb_path_8.setText(QCoreApplication.translate("MainWindow", u"b", None))
-        self.lb_path_12.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438", None))
-#if QT_CONFIG(tooltip)
-        self.lb_path_6.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0412\u0441\u0435 \u0441\u0438\u043b\u044b \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u0438 \u0434\u0435\u0437\u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u0447\u0435\u0440\u0435\u0437 \u044d\u0442\u043e \u043f\u0440\u043e\u0433\u043e\u043d\u044f\u044e\u0442\u0441\u044f. \u0421\u0438\u043b\u044b \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442\u0441\u044f FA..., FD...</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.lb_path_6.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0443\u0447\u043e\u043a", None))
-#if QT_CONFIG(tooltip)
-        self.lb_path_9.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
-#endif // QT_CONFIG(tooltip)
-        self.lb_path_9.setText(QCoreApplication.translate("MainWindow", u"a", None))
-#if QT_CONFIG(tooltip)
-        self.lb_path_10.setToolTip(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b", None))
-#endif // QT_CONFIG(tooltip)
-        self.lb_path_10.setText(QCoreApplication.translate("MainWindow", u"b", None))
-        self.lb_path_11.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438", None))
-        self.btn_LT.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u0432\u043b\u0435\u0447\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c excel \u0444\u0430\u0439\u043b", None))
         self.Lab_stuff.setTabText(self.Lab_stuff.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"\u041b\u0430\u0437\u0435\u0440\u043d\u044b\u0439 \u043f\u0438\u043d\u0446\u0435\u0442", None))
 #if QT_CONFIG(tooltip)
         self.lb_path_for_plot.setToolTip(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043d\u0430\u0439\u0434\u0435\u043d excel \u0444\u0430\u0439\u043b", None))

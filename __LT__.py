@@ -1,9 +1,10 @@
-#необходимые библиотеки
+# необходимые библиотеки
 import pandas as pd
 import os
 import glob
 import math
-
+# нужно для калибровки
+from numpy import exp as np_exp
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
 
@@ -84,9 +85,14 @@ def laser_tweezers(self) -> None:
         dlg.exec()
         return None
 
-    # переводим значения в силы
-    all_FA['Force, pN'] = all_FA['Force, pN'] * a + b
-    all_FD['Force, pN'] = all_FD['Force, pN'] * a + b
+    # переводим значения в силы - для линейной или экспоненциальной калибровки
+    if self.ui.comboBox_LT_calibration.currentText() == 'Линейная':
+        all_FA['Force, pN'] = all_FA['Force, pN'] * a + b
+        all_FD['Force, pN'] = all_FD['Force, pN'] * a + b
+    else:
+        all_FA['Force, pN'] = self.ui.dop_cal_k.value() *(self.ui.dop_cal_y0.value() + self.ui.dop_cal_A.value() * np_exp(self.ui.dop_cal_R0.value()*all_FA['Force, pN'])) + self.ui.dop_cal_b.value()
+        all_FD['Force, pN'] = self.ui.dop_cal_k.value() *(self.ui.dop_cal_y0.value() + self.ui.dop_cal_A.value() * np_exp(self.ui.dop_cal_R0.value()*all_FD['Force, pN'])) + self.ui.dop_cal_b.value()
+
     all_end['Force, pN'] = all_end['Force, pN'] * a_end + b_end
     all_glass['Force, pN'] = all_glass['Force, pN'] * a_end + b_end
 
@@ -175,16 +181,34 @@ def laser_tweezers(self) -> None:
         text_sheet = writer.book.create_sheet(title='a and b coefficient')
         text_sheet.cell(column=1, row=1,
                         value='Перевод значения измеренное на фотодетекторе (Вольт) в силу (пН) по параметрам калибровки:')
-        text_sheet.cell(column=1, row=2, value='_______________________________________')
-        text_sheet.cell(column=1, row=3, value='Калибровка для дополнительного пучка была сделана:' + date_of_cal)
-        text_sheet.cell(column=1, row=4, value='y(пН)=a*x(Вольт)+b')
-        text_sheet.cell(column=1, row=5, value='a:')
-        text_sheet.cell(column=2, row=5, value='b:')
-        text_sheet.cell(column=1, row=6, value=a)
-        text_sheet.cell(column=2, row=6, value=b)
-        text_sheet.cell(column=1, row=7, value='_______________________________________')
+        if self.ui.comboBox_LT_calibration.currentText() == 'Линейная':
+            text_sheet.cell(column=1, row=2, value='_______________________________________')
+            text_sheet.cell(column=1, row=3, value='Калибровка для дополнительного пучка была сделана:' + date_of_cal)
+            text_sheet.cell(column=1, row=4, value='y(пН)=a*x(Вольт)+b')
+            text_sheet.cell(column=1, row=5, value='a:')
+            text_sheet.cell(column=2, row=5, value='b:')
+            text_sheet.cell(column=1, row=6, value=a)
+            text_sheet.cell(column=2, row=6, value=b)
+            text_sheet.cell(column=1, row=7, value='_______________________________________')
+        else:
+            text_sheet.cell(column=1, row=2, value='_______________________________________')
+            text_sheet.cell(column=1, row=3, value='Калибровка для дополнительного пучка была сделана:' + self.ui.dateEdit_3.text())
+            text_sheet.cell(column=1, row=4, value='y(пН)=k*(y0 + A*exp(R0 * x(Вольт)))+b')
+            text_sheet.cell(column=1, row=5, value='k:')
+            text_sheet.cell(column=2, row=5, value='y0:')
+            text_sheet.cell(column=3, row=5, value='A:')
+            text_sheet.cell(column=4, row=5, value='R0:')
+            text_sheet.cell(column=5, row=5, value='b:')
+            # значения
+            text_sheet.cell(column=1, row=6, value=self.ui.dop_cal_k.value())
+            text_sheet.cell(column=2, row=6, value=self.ui.dop_cal_y0.value())
+            text_sheet.cell(column=3, row=6, value=self.ui.dop_cal_A.value())
+            text_sheet.cell(column=4, row=6, value=self.ui.dop_cal_R0.value())
+            text_sheet.cell(column=5, row=6, value=self.ui.dop_cal_b.value())
+
+            text_sheet.cell(column=1, row=7, value='_______________________________________')
         if all_end.empty == False:
-            text_sheet.cell(column=1, row=8, value='Калибровка для основного пучка была сделана:' + date_of_cal)
+            text_sheet.cell(column=1, row=8, value='Калибровка для основного пучка была сделана:' + date_of_cal_end)
             text_sheet.cell(column=1, row=9, value='y(пН)=a*x(Вольт)+b')
             text_sheet.cell(column=1, row=10, value='a_end:')
             text_sheet.cell(column=2, row=10, value='b_end:')
