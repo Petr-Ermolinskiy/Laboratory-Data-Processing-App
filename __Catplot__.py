@@ -19,6 +19,7 @@ def for_save(Name_fiqure):
     Name_fiqure = Name_fiqure.replace('$', '')
     Name_fiqure = Name_fiqure.replace('{', '')
     Name_fiqure = Name_fiqure.replace('}', '')
+    Name_fiqure = Name_fiqure.replace('*', '')
     return Name_fiqure
 
 def change_type(x, __type__):

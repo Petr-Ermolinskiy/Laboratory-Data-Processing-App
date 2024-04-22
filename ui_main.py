@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(918, 683)
+        MainWindow.resize(780, 683)
         icon = QIcon()
         icon.addFile(u"LOGO.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -1937,6 +1937,7 @@ class Ui_MainWindow(object):
         self.comboBox_stat_test.addItem("")
         self.comboBox_stat_test.addItem("")
         self.comboBox_stat_test.addItem("")
+        self.comboBox_stat_test.addItem("")
         self.comboBox_stat_test.setObjectName(u"comboBox_stat_test")
         self.comboBox_stat_test.setEnabled(True)
         self.comboBox_stat_test.setFont(font5)
@@ -2409,6 +2410,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_124.addWidget(self.lb_sd_or_minmax_7)
 
         self.comboBox_correlation_color_map_for_figs = QComboBox(self.frame2)
+        self.comboBox_correlation_color_map_for_figs.addItem("")
         self.comboBox_correlation_color_map_for_figs.addItem("")
         self.comboBox_correlation_color_map_for_figs.addItem("")
         self.comboBox_correlation_color_map_for_figs.addItem("")
@@ -3032,6 +3034,7 @@ class Ui_MainWindow(object):
         self.comboBox_correlation_color_map.addItem("")
         self.comboBox_correlation_color_map.addItem("")
         self.comboBox_correlation_color_map.addItem("")
+        self.comboBox_correlation_color_map.addItem("")
         self.comboBox_correlation_color_map.setObjectName(u"comboBox_correlation_color_map")
         sizePolicy5.setHeightForWidth(self.comboBox_correlation_color_map.sizePolicy().hasHeightForWidth())
         self.comboBox_correlation_color_map.setSizePolicy(sizePolicy5)
@@ -3540,60 +3543,141 @@ class Ui_MainWindow(object):
         self.formLayout_5.setWidget(7, QFormLayout.SpanningRole, self.btn_plot_and_save_catplot)
 
         self.tabWidget_2.addTab(self.tab_10, "")
-        self.tab_11 = QWidget()
-        self.tab_11.setObjectName(u"tab_11")
-        self.formLayout_6 = QFormLayout(self.tab_11)
-        self.formLayout_6.setObjectName(u"formLayout_6")
+        self.tab_12 = QWidget()
+        self.tab_12.setObjectName(u"tab_12")
+        self.gridLayout_13 = QGridLayout(self.tab_12)
+        self.gridLayout_13.setObjectName(u"gridLayout_13")
+        self.verticalLayout_44 = QVBoxLayout()
+        self.verticalLayout_44.setObjectName(u"verticalLayout_44")
+        self.lb_path_for_plot_7 = QLabel(self.tab_12)
+        self.lb_path_for_plot_7.setObjectName(u"lb_path_for_plot_7")
+        self.lb_path_for_plot_7.setFont(font10)
+
+        self.verticalLayout_44.addWidget(self.lb_path_for_plot_7, 0, Qt.AlignHCenter)
+
+        self.horizontalLayout_128 = QHBoxLayout()
+        self.horizontalLayout_128.setObjectName(u"horizontalLayout_128")
+        self.lb_path_for_plot_5 = QLabel(self.tab_12)
+        self.lb_path_for_plot_5.setObjectName(u"lb_path_for_plot_5")
+        self.lb_path_for_plot_5.setFont(font5)
+
+        self.horizontalLayout_128.addWidget(self.lb_path_for_plot_5)
+
+        self.path_for_RheoScan_describe = QLineEdit(self.tab_12)
+        self.path_for_RheoScan_describe.setObjectName(u"path_for_RheoScan_describe")
+        self.path_for_RheoScan_describe.setFont(font5)
+
+        self.horizontalLayout_128.addWidget(self.path_for_RheoScan_describe)
+
+
+        self.verticalLayout_44.addLayout(self.horizontalLayout_128)
+
+        self.horizontalLayout_129 = QHBoxLayout()
+        self.horizontalLayout_129.setObjectName(u"horizontalLayout_129")
+        self.lb_stattest_12 = QLabel(self.tab_12)
+        self.lb_stattest_12.setObjectName(u"lb_stattest_12")
+        self.lb_stattest_12.setEnabled(True)
+        self.lb_stattest_12.setFont(font5)
+
+        self.horizontalLayout_129.addWidget(self.lb_stattest_12)
+
+        self.comboBox_RheoScan_describe = QComboBox(self.tab_12)
+        self.comboBox_RheoScan_describe.addItem("")
+        self.comboBox_RheoScan_describe.addItem("")
+        self.comboBox_RheoScan_describe.setObjectName(u"comboBox_RheoScan_describe")
+        self.comboBox_RheoScan_describe.setEnabled(True)
+        self.comboBox_RheoScan_describe.setFont(font5)
+
+        self.horizontalLayout_129.addWidget(self.comboBox_RheoScan_describe)
+
+
+        self.verticalLayout_44.addLayout(self.horizontalLayout_129)
+
+        self.horizontalLayout_130 = QHBoxLayout()
+        self.horizontalLayout_130.setObjectName(u"horizontalLayout_130")
+        self.lb_path_for_plot_6 = QLabel(self.tab_12)
+        self.lb_path_for_plot_6.setObjectName(u"lb_path_for_plot_6")
+        self.lb_path_for_plot_6.setFont(font5)
+
+        self.horizontalLayout_130.addWidget(self.lb_path_for_plot_6)
+
+        self.RheoScan_describe_mask_sheets = QLineEdit(self.tab_12)
+        self.RheoScan_describe_mask_sheets.setObjectName(u"RheoScan_describe_mask_sheets")
+        self.RheoScan_describe_mask_sheets.setFont(font5)
+
+        self.horizontalLayout_130.addWidget(self.RheoScan_describe_mask_sheets)
+
+
+        self.verticalLayout_44.addLayout(self.horizontalLayout_130)
+
+        self.btn_RheoScan_describe_file_or_files = QPushButton(self.tab_12)
+        self.btn_RheoScan_describe_file_or_files.setObjectName(u"btn_RheoScan_describe_file_or_files")
+        self.btn_RheoScan_describe_file_or_files.setFont(font5)
+        self.btn_RheoScan_describe_file_or_files.setStyleSheet(u"background-color: rgba(128, 160, 165, 50);\n"
+"border: 3px solid rgb(128, 160, 165);\n"
+"border-radius: 10px;")
+
+        self.verticalLayout_44.addWidget(self.btn_RheoScan_describe_file_or_files)
+
+
+        self.gridLayout_13.addLayout(self.verticalLayout_44, 0, 0, 1, 1)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout_13.addItem(self.verticalSpacer_4, 1, 0, 1, 1)
+
+        self.verticalLayout_45 = QVBoxLayout()
+        self.verticalLayout_45.setObjectName(u"verticalLayout_45")
         self.horizontalLayout_107 = QHBoxLayout()
         self.horizontalLayout_107.setObjectName(u"horizontalLayout_107")
-        self.lb_path_for_plot_4 = QLabel(self.tab_11)
+        self.lb_path_for_plot_4 = QLabel(self.tab_12)
         self.lb_path_for_plot_4.setObjectName(u"lb_path_for_plot_4")
         self.lb_path_for_plot_4.setFont(font5)
 
         self.horizontalLayout_107.addWidget(self.lb_path_for_plot_4)
 
-        self.path_for_catplot_2 = QLineEdit(self.tab_11)
-        self.path_for_catplot_2.setObjectName(u"path_for_catplot_2")
-        self.path_for_catplot_2.setFont(font5)
+        self.path_for_dop_stat = QLineEdit(self.tab_12)
+        self.path_for_dop_stat.setObjectName(u"path_for_dop_stat")
+        self.path_for_dop_stat.setFont(font5)
 
-        self.horizontalLayout_107.addWidget(self.path_for_catplot_2)
+        self.horizontalLayout_107.addWidget(self.path_for_dop_stat)
 
 
-        self.formLayout_6.setLayout(0, QFormLayout.LabelRole, self.horizontalLayout_107)
+        self.verticalLayout_45.addLayout(self.horizontalLayout_107)
 
         self.horizontalLayout_110 = QHBoxLayout()
         self.horizontalLayout_110.setObjectName(u"horizontalLayout_110")
-        self.lb_exel_name_5 = QLabel(self.tab_11)
+        self.lb_exel_name_5 = QLabel(self.tab_12)
         self.lb_exel_name_5.setObjectName(u"lb_exel_name_5")
         self.lb_exel_name_5.setFont(font5)
 
         self.horizontalLayout_110.addWidget(self.lb_exel_name_5)
 
-        self.comboBox_excel_catplot_2 = QComboBox(self.tab_11)
-        self.comboBox_excel_catplot_2.setObjectName(u"comboBox_excel_catplot_2")
+        self.comboBox_excel_dop_stat = QComboBox(self.tab_12)
+        self.comboBox_excel_dop_stat.setObjectName(u"comboBox_excel_dop_stat")
 
-        self.horizontalLayout_110.addWidget(self.comboBox_excel_catplot_2)
+        self.horizontalLayout_110.addWidget(self.comboBox_excel_dop_stat)
 
 
-        self.formLayout_6.setLayout(1, QFormLayout.LabelRole, self.horizontalLayout_110)
+        self.verticalLayout_45.addLayout(self.horizontalLayout_110)
 
         self.horizontalLayout_112 = QHBoxLayout()
         self.horizontalLayout_112.setObjectName(u"horizontalLayout_112")
-        self.lb_exel_name_6 = QLabel(self.tab_11)
+        self.lb_exel_name_6 = QLabel(self.tab_12)
         self.lb_exel_name_6.setObjectName(u"lb_exel_name_6")
         self.lb_exel_name_6.setFont(font5)
 
         self.horizontalLayout_112.addWidget(self.lb_exel_name_6)
 
-        self.comboBox_excel_sheet_catplot_2 = QComboBox(self.tab_11)
-        self.comboBox_excel_sheet_catplot_2.setObjectName(u"comboBox_excel_sheet_catplot_2")
+        self.comboBox_excel_sheet_dop_stat = QComboBox(self.tab_12)
+        self.comboBox_excel_sheet_dop_stat.setObjectName(u"comboBox_excel_sheet_dop_stat")
 
-        self.horizontalLayout_112.addWidget(self.comboBox_excel_sheet_catplot_2)
+        self.horizontalLayout_112.addWidget(self.comboBox_excel_sheet_dop_stat)
 
 
-        self.formLayout_6.setLayout(2, QFormLayout.LabelRole, self.horizontalLayout_112)
+        self.verticalLayout_45.addLayout(self.horizontalLayout_112)
 
-        self.line_12 = QFrame(self.tab_11)
+        self.line_12 = QFrame(self.tab_12)
         self.line_12.setObjectName(u"line_12")
         self.line_12.setFont(font3)
         self.line_12.setStyleSheet(u"color: rgb(128, 160, 165);")
@@ -3601,62 +3685,41 @@ class Ui_MainWindow(object):
         self.line_12.setLineWidth(3)
         self.line_12.setFrameShape(QFrame.HLine)
 
-        self.formLayout_6.setWidget(3, QFormLayout.LabelRole, self.line_12)
-
-        self.horizontalLayout_115 = QHBoxLayout()
-        self.horizontalLayout_115.setObjectName(u"horizontalLayout_115")
-        self.lb_stattest_11 = QLabel(self.tab_11)
-        self.lb_stattest_11.setObjectName(u"lb_stattest_11")
-        self.lb_stattest_11.setEnabled(True)
-        self.lb_stattest_11.setFont(font5)
-
-        self.horizontalLayout_115.addWidget(self.lb_stattest_11)
-
-        self.comboBox_stat_test_catplot_3 = QComboBox(self.tab_11)
-        self.comboBox_stat_test_catplot_3.addItem("")
-        self.comboBox_stat_test_catplot_3.addItem("")
-        self.comboBox_stat_test_catplot_3.setObjectName(u"comboBox_stat_test_catplot_3")
-        self.comboBox_stat_test_catplot_3.setEnabled(True)
-        self.comboBox_stat_test_catplot_3.setFont(font5)
-
-        self.horizontalLayout_115.addWidget(self.comboBox_stat_test_catplot_3)
-
-
-        self.formLayout_6.setLayout(4, QFormLayout.LabelRole, self.horizontalLayout_115)
+        self.verticalLayout_45.addWidget(self.line_12)
 
         self.horizontalLayout_111 = QHBoxLayout()
         self.horizontalLayout_111.setObjectName(u"horizontalLayout_111")
-        self.lb_hue_name_9 = QLabel(self.tab_11)
+        self.lb_hue_name_9 = QLabel(self.tab_12)
         self.lb_hue_name_9.setObjectName(u"lb_hue_name_9")
         self.lb_hue_name_9.setFont(font5)
 
         self.horizontalLayout_111.addWidget(self.lb_hue_name_9)
 
-        self.comboBox_catplot_x_2 = QComboBox(self.tab_11)
-        self.comboBox_catplot_x_2.setObjectName(u"comboBox_catplot_x_2")
+        self.comboBox_dop_stat_x = QComboBox(self.tab_12)
+        self.comboBox_dop_stat_x.setObjectName(u"comboBox_dop_stat_x")
 
-        self.horizontalLayout_111.addWidget(self.comboBox_catplot_x_2)
+        self.horizontalLayout_111.addWidget(self.comboBox_dop_stat_x)
 
 
-        self.formLayout_6.setLayout(5, QFormLayout.LabelRole, self.horizontalLayout_111)
+        self.verticalLayout_45.addLayout(self.horizontalLayout_111)
 
         self.horizontalLayout_114 = QHBoxLayout()
         self.horizontalLayout_114.setObjectName(u"horizontalLayout_114")
-        self.lb_hue_name_10 = QLabel(self.tab_11)
+        self.lb_hue_name_10 = QLabel(self.tab_12)
         self.lb_hue_name_10.setObjectName(u"lb_hue_name_10")
         self.lb_hue_name_10.setFont(font5)
 
         self.horizontalLayout_114.addWidget(self.lb_hue_name_10)
 
-        self.comboBox_catplot_x_3 = QComboBox(self.tab_11)
-        self.comboBox_catplot_x_3.setObjectName(u"comboBox_catplot_x_3")
+        self.comboBox_dop_stat_y = QComboBox(self.tab_12)
+        self.comboBox_dop_stat_y.setObjectName(u"comboBox_dop_stat_y")
 
-        self.horizontalLayout_114.addWidget(self.comboBox_catplot_x_3)
+        self.horizontalLayout_114.addWidget(self.comboBox_dop_stat_y)
 
 
-        self.formLayout_6.setLayout(6, QFormLayout.LabelRole, self.horizontalLayout_114)
+        self.verticalLayout_45.addLayout(self.horizontalLayout_114)
 
-        self.line_13 = QFrame(self.tab_11)
+        self.line_13 = QFrame(self.tab_12)
         self.line_13.setObjectName(u"line_13")
         self.line_13.setFont(font3)
         self.line_13.setStyleSheet(u"color: rgb(128, 160, 165);")
@@ -3664,47 +3727,93 @@ class Ui_MainWindow(object):
         self.line_13.setLineWidth(3)
         self.line_13.setFrameShape(QFrame.HLine)
 
-        self.formLayout_6.setWidget(7, QFormLayout.LabelRole, self.line_13)
+        self.verticalLayout_45.addWidget(self.line_13)
 
+        self.horizontalLayout_127 = QHBoxLayout()
+        self.horizontalLayout_127.setObjectName(u"horizontalLayout_127")
         self.horizontalLayout_113 = QHBoxLayout()
         self.horizontalLayout_113.setObjectName(u"horizontalLayout_113")
-        self.lb_stattest_8 = QLabel(self.tab_11)
+        self.lb_stattest_8 = QLabel(self.tab_12)
         self.lb_stattest_8.setObjectName(u"lb_stattest_8")
         self.lb_stattest_8.setEnabled(True)
         self.lb_stattest_8.setFont(font5)
 
         self.horizontalLayout_113.addWidget(self.lb_stattest_8)
 
-        self.comboBox_stat_test_catplot_2 = QComboBox(self.tab_11)
-        self.comboBox_stat_test_catplot_2.addItem("")
-        self.comboBox_stat_test_catplot_2.addItem("")
-        self.comboBox_stat_test_catplot_2.addItem("")
-        self.comboBox_stat_test_catplot_2.addItem("")
-        self.comboBox_stat_test_catplot_2.addItem("")
-        self.comboBox_stat_test_catplot_2.addItem("")
-        self.comboBox_stat_test_catplot_2.addItem("")
-        self.comboBox_stat_test_catplot_2.addItem("")
-        self.comboBox_stat_test_catplot_2.addItem("")
-        self.comboBox_stat_test_catplot_2.addItem("")
-        self.comboBox_stat_test_catplot_2.setObjectName(u"comboBox_stat_test_catplot_2")
-        self.comboBox_stat_test_catplot_2.setEnabled(True)
-        self.comboBox_stat_test_catplot_2.setFont(font5)
+        self.comboBox_stat_test_dop_stat = QComboBox(self.tab_12)
+        self.comboBox_stat_test_dop_stat.addItem("")
+        self.comboBox_stat_test_dop_stat.addItem("")
+        self.comboBox_stat_test_dop_stat.addItem("")
+        self.comboBox_stat_test_dop_stat.addItem("")
+        self.comboBox_stat_test_dop_stat.addItem("")
+        self.comboBox_stat_test_dop_stat.addItem("")
+        self.comboBox_stat_test_dop_stat.addItem("")
+        self.comboBox_stat_test_dop_stat.addItem("")
+        self.comboBox_stat_test_dop_stat.addItem("")
+        self.comboBox_stat_test_dop_stat.setObjectName(u"comboBox_stat_test_dop_stat")
+        self.comboBox_stat_test_dop_stat.setEnabled(True)
+        self.comboBox_stat_test_dop_stat.setFont(font5)
 
-        self.horizontalLayout_113.addWidget(self.comboBox_stat_test_catplot_2)
+        self.horizontalLayout_113.addWidget(self.comboBox_stat_test_dop_stat)
 
 
-        self.formLayout_6.setLayout(8, QFormLayout.LabelRole, self.horizontalLayout_113)
+        self.horizontalLayout_127.addLayout(self.horizontalLayout_113)
 
-        self.btn_plot_and_save_catplot_2 = QPushButton(self.tab_11)
-        self.btn_plot_and_save_catplot_2.setObjectName(u"btn_plot_and_save_catplot_2")
-        self.btn_plot_and_save_catplot_2.setFont(font5)
-        self.btn_plot_and_save_catplot_2.setStyleSheet(u"background-color: rgba(128, 160, 165, 50);\n"
+        self.horizontalLayout_126 = QHBoxLayout()
+        self.horizontalLayout_126.setObjectName(u"horizontalLayout_126")
+        self.lb__altern_heposisis_2 = QLabel(self.tab_12)
+        self.lb__altern_heposisis_2.setObjectName(u"lb__altern_heposisis_2")
+        self.lb__altern_heposisis_2.setEnabled(True)
+        self.lb__altern_heposisis_2.setFont(font5)
+
+        self.horizontalLayout_126.addWidget(self.lb__altern_heposisis_2)
+
+        self.comboBox_alter_hep_dop_stat = QComboBox(self.tab_12)
+        self.comboBox_alter_hep_dop_stat.addItem("")
+        self.comboBox_alter_hep_dop_stat.addItem("")
+        self.comboBox_alter_hep_dop_stat.addItem("")
+        self.comboBox_alter_hep_dop_stat.setObjectName(u"comboBox_alter_hep_dop_stat")
+        self.comboBox_alter_hep_dop_stat.setEnabled(True)
+        self.comboBox_alter_hep_dop_stat.setFont(font5)
+
+        self.horizontalLayout_126.addWidget(self.comboBox_alter_hep_dop_stat)
+
+
+        self.horizontalLayout_127.addLayout(self.horizontalLayout_126)
+
+
+        self.verticalLayout_45.addLayout(self.horizontalLayout_127)
+
+        self.horizontalLayout_125 = QHBoxLayout()
+        self.horizontalLayout_125.setObjectName(u"horizontalLayout_125")
+        self.lb_hue_name_11 = QLabel(self.tab_12)
+        self.lb_hue_name_11.setObjectName(u"lb_hue_name_11")
+        self.lb_hue_name_11.setFont(font5)
+
+        self.horizontalLayout_125.addWidget(self.lb_hue_name_11)
+
+        self.p_value_dop_stat = QLineEdit(self.tab_12)
+        self.p_value_dop_stat.setObjectName(u"p_value_dop_stat")
+        self.p_value_dop_stat.setFont(font5)
+
+        self.horizontalLayout_125.addWidget(self.p_value_dop_stat)
+
+
+        self.verticalLayout_45.addLayout(self.horizontalLayout_125)
+
+        self.btn_dop_stat_calc = QPushButton(self.tab_12)
+        self.btn_dop_stat_calc.setObjectName(u"btn_dop_stat_calc")
+        self.btn_dop_stat_calc.setFont(font5)
+        self.btn_dop_stat_calc.setStyleSheet(u"background-color: rgba(128, 160, 165, 50);\n"
 "border: 3px solid rgb(128, 160, 165);\n"
 "border-radius: 10px;")
 
-        self.formLayout_6.setWidget(9, QFormLayout.LabelRole, self.btn_plot_and_save_catplot_2)
+        self.verticalLayout_45.addWidget(self.btn_dop_stat_calc)
 
-        self.tabWidget_2.addTab(self.tab_11, "")
+
+        self.gridLayout_13.addLayout(self.verticalLayout_45, 2, 0, 1, 1)
+
+        self.tabWidget_2.addTab(self.tab_12, "")
 
         self.horizontalLayout_64.addWidget(self.tabWidget_2)
 
@@ -3766,8 +3875,7 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.a_dop, self.b_dop)
         QWidget.setTabOrder(self.b_dop, self.dateEdit_2)
         QWidget.setTabOrder(self.dateEdit_2, self.btn_LT)
-        QWidget.setTabOrder(self.btn_LT, self.tabWidget_2)
-        QWidget.setTabOrder(self.tabWidget_2, self.path_for_plot)
+        QWidget.setTabOrder(self.btn_LT, self.path_for_plot)
         QWidget.setTabOrder(self.path_for_plot, self.comboBox)
         QWidget.setTabOrder(self.comboBox, self.comboBox_2)
         QWidget.setTabOrder(self.comboBox_2, self.check_box_plot)
@@ -3843,14 +3951,6 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.comboBox_catplot_mult_stat, self.comboBox_template_catplot)
         QWidget.setTabOrder(self.comboBox_template_catplot, self.comboBox_catplot_SD_or_not)
         QWidget.setTabOrder(self.comboBox_catplot_SD_or_not, self.btn_plot_and_save_catplot)
-        QWidget.setTabOrder(self.btn_plot_and_save_catplot, self.path_for_catplot_2)
-        QWidget.setTabOrder(self.path_for_catplot_2, self.comboBox_excel_catplot_2)
-        QWidget.setTabOrder(self.comboBox_excel_catplot_2, self.comboBox_excel_sheet_catplot_2)
-        QWidget.setTabOrder(self.comboBox_excel_sheet_catplot_2, self.comboBox_stat_test_catplot_3)
-        QWidget.setTabOrder(self.comboBox_stat_test_catplot_3, self.comboBox_catplot_x_2)
-        QWidget.setTabOrder(self.comboBox_catplot_x_2, self.comboBox_catplot_x_3)
-        QWidget.setTabOrder(self.comboBox_catplot_x_3, self.comboBox_stat_test_catplot_2)
-        QWidget.setTabOrder(self.comboBox_stat_test_catplot_2, self.btn_plot_and_save_catplot_2)
 
         self.retranslateUi(MainWindow)
         self.check_name_rheoscan.toggled.connect(self.spinBox_check_name_rheoscan.setEnabled)
@@ -3870,8 +3970,8 @@ class Ui_MainWindow(object):
         self.check_biola_plot_figs.toggled.connect(self.plp.setEnabled)
 
         self.Lab_stuff.setCurrentIndex(3)
-        self.tabWidget_2.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget_2.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -4158,6 +4258,7 @@ class Ui_MainWindow(object):
         self.comboBox_stat_test.setItemText(5, QCoreApplication.translate("MainWindow", u"\u041a\u0440\u0438\u0442\u0435\u0440\u0438\u0439 \u041a\u0440\u0430\u0441\u043a\u0435\u043b\u0430 \u2014 \u0423\u043e\u043b\u043b\u0438\u0441\u0430", None))
         self.comboBox_stat_test.setItemText(6, QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0430\u043d\u043d\u044b\u0439 \u043a\u0440\u0438\u0442\u0435\u0440\u0438\u0439", None))
         self.comboBox_stat_test.setItemText(7, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u0441\u0442 \u0410\u043d\u0441\u0430\u0440\u0438-\u0411\u0440\u044d\u0434\u043b\u0438", None))
+        self.comboBox_stat_test.setItemText(8, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u0441\u0442 \u0424\u0438\u0448\u0435\u0440\u0430-\u041f\u0438\u0442\u043c\u0430\u043d\u0430", None))
 
         self.lb__altern_heposisis.setText(QCoreApplication.translate("MainWindow", u"\u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0433\u0438\u043f\u043e\u0442\u0435\u0437\u0430", None))
         self.comboBox_alter_hep.setItemText(0, QCoreApplication.translate("MainWindow", u"two-sided", None))
@@ -4295,17 +4396,18 @@ class Ui_MainWindow(object):
 
         self.lb_sd_or_minmax_7.setText(QCoreApplication.translate("MainWindow", u"\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u0441\u0445\u0435\u043c\u0430", None))
         self.comboBox_correlation_color_map_for_figs.setItemText(0, QCoreApplication.translate("MainWindow", u"coolwarm", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(1, QCoreApplication.translate("MainWindow", u"YlGn", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(2, QCoreApplication.translate("MainWindow", u"BuGn", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(3, QCoreApplication.translate("MainWindow", u"GnBu", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(4, QCoreApplication.translate("MainWindow", u"bwr", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(5, QCoreApplication.translate("MainWindow", u"seismic", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(6, QCoreApplication.translate("MainWindow", u"PiYG", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(7, QCoreApplication.translate("MainWindow", u"RdGy", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(8, QCoreApplication.translate("MainWindow", u"seismic", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(9, QCoreApplication.translate("MainWindow", u"hot", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(10, QCoreApplication.translate("MainWindow", u"inferno", None))
-        self.comboBox_correlation_color_map_for_figs.setItemText(11, QCoreApplication.translate("MainWindow", u"gist_heat", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(1, QCoreApplication.translate("MainWindow", u"RdBu_r", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(2, QCoreApplication.translate("MainWindow", u"YlGn", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(3, QCoreApplication.translate("MainWindow", u"BuGn", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(4, QCoreApplication.translate("MainWindow", u"GnBu", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(5, QCoreApplication.translate("MainWindow", u"bwr", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(6, QCoreApplication.translate("MainWindow", u"seismic", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(7, QCoreApplication.translate("MainWindow", u"PiYG", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(8, QCoreApplication.translate("MainWindow", u"RdGy", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(9, QCoreApplication.translate("MainWindow", u"seismic", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(10, QCoreApplication.translate("MainWindow", u"hot", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(11, QCoreApplication.translate("MainWindow", u"inferno", None))
+        self.comboBox_correlation_color_map_for_figs.setItemText(12, QCoreApplication.translate("MainWindow", u"gist_heat", None))
 
         self.lb_size_corr_matrix.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u0435\u0440 \u0440\u0438\u0441\u0443\u043d\u043a\u0430", None))
         self.lb_font_in.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0430\u0441\u0448\u0442\u0430\u0444 \u0448\u0440\u0438\u0444\u0442\u0430 \u043f\u043e\u0434\u043f\u0438\u0441\u0435\u0439", None))
@@ -4377,17 +4479,18 @@ class Ui_MainWindow(object):
         self.check_color_for_corr_pivot.setText("")
         self.lb_sd_or_minmax_5.setText(QCoreApplication.translate("MainWindow", u"\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u0441\u0445\u0435\u043c\u0430", None))
         self.comboBox_correlation_color_map.setItemText(0, QCoreApplication.translate("MainWindow", u"coolwarm", None))
-        self.comboBox_correlation_color_map.setItemText(1, QCoreApplication.translate("MainWindow", u"YlGn", None))
-        self.comboBox_correlation_color_map.setItemText(2, QCoreApplication.translate("MainWindow", u"BuGn", None))
-        self.comboBox_correlation_color_map.setItemText(3, QCoreApplication.translate("MainWindow", u"GnBu", None))
-        self.comboBox_correlation_color_map.setItemText(4, QCoreApplication.translate("MainWindow", u"bwr", None))
-        self.comboBox_correlation_color_map.setItemText(5, QCoreApplication.translate("MainWindow", u"seismic", None))
-        self.comboBox_correlation_color_map.setItemText(6, QCoreApplication.translate("MainWindow", u"PiYG", None))
-        self.comboBox_correlation_color_map.setItemText(7, QCoreApplication.translate("MainWindow", u"RdGy", None))
-        self.comboBox_correlation_color_map.setItemText(8, QCoreApplication.translate("MainWindow", u"seismic", None))
-        self.comboBox_correlation_color_map.setItemText(9, QCoreApplication.translate("MainWindow", u"hot", None))
-        self.comboBox_correlation_color_map.setItemText(10, QCoreApplication.translate("MainWindow", u"inferno", None))
-        self.comboBox_correlation_color_map.setItemText(11, QCoreApplication.translate("MainWindow", u"gist_heat", None))
+        self.comboBox_correlation_color_map.setItemText(1, QCoreApplication.translate("MainWindow", u"RdBu_r", None))
+        self.comboBox_correlation_color_map.setItemText(2, QCoreApplication.translate("MainWindow", u"YlGn", None))
+        self.comboBox_correlation_color_map.setItemText(3, QCoreApplication.translate("MainWindow", u"BuGn", None))
+        self.comboBox_correlation_color_map.setItemText(4, QCoreApplication.translate("MainWindow", u"GnBu", None))
+        self.comboBox_correlation_color_map.setItemText(5, QCoreApplication.translate("MainWindow", u"bwr", None))
+        self.comboBox_correlation_color_map.setItemText(6, QCoreApplication.translate("MainWindow", u"seismic", None))
+        self.comboBox_correlation_color_map.setItemText(7, QCoreApplication.translate("MainWindow", u"PiYG", None))
+        self.comboBox_correlation_color_map.setItemText(8, QCoreApplication.translate("MainWindow", u"RdGy", None))
+        self.comboBox_correlation_color_map.setItemText(9, QCoreApplication.translate("MainWindow", u"seismic", None))
+        self.comboBox_correlation_color_map.setItemText(10, QCoreApplication.translate("MainWindow", u"hot", None))
+        self.comboBox_correlation_color_map.setItemText(11, QCoreApplication.translate("MainWindow", u"inferno", None))
+        self.comboBox_correlation_color_map.setItemText(12, QCoreApplication.translate("MainWindow", u"gist_heat", None))
 
         self.btn_plot_and_save_corr_table.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u0443\u044e \u043c\u0430\u0442\u0440\u0438\u0446\u0443 \u043f\u043e \u0432\u0441\u0435\u043c \u0434\u0430\u043d\u043d\u044b\u043c", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_8), QCoreApplication.translate("MainWindow", u"\u0421\u0432\u043e\u0434\u043d\u0430\u044f \u0442\u0430\u0431\u043b\u0438\u0446\u0430", None))
@@ -4539,19 +4642,37 @@ class Ui_MainWindow(object):
         self.btn_plot_and_save_catplot.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_10), QCoreApplication.translate("MainWindow", u"Catplot", None))
 #if QT_CONFIG(tooltip)
+        self.lb_path_for_plot_7.setToolTip(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043d\u0430\u0445\u043e\u0434\u044f\u0442\u0441\u044f excel \u0444\u0430\u0439\u043b\u044b \u0438\u043b\u0438 \u0444\u0430\u0439\u043b. \u0415\u0441\u043b\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u0442\u043e\u043b\u044c\u043a\u043e \u0432 \u043e\u0434\u043d\u043e\u043c \u0444\u0430\u0439\u043b\u0435, \u0442\u043e \u043d\u0443\u0436\u043d\u043e \u0443\u043a\u0430\u0437\u0430\u0442\u044c \u043f\u0443\u0442\u044c \u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e. ", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_for_plot_7.setText(QCoreApplication.translate("MainWindow", u"RheoScan - \u0440\u0430\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0440\u0435\u0434\u043d\u0438\u0435 \u0438 SD \u043f\u043e \u0444\u0430\u0439\u043b\u0443 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u0430\u043c", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_for_plot_5.setToolTip(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043d\u0430\u0445\u043e\u0434\u044f\u0442\u0441\u044f excel \u0444\u0430\u0439\u043b\u044b \u0438\u043b\u0438 \u0444\u0430\u0439\u043b. \u0415\u0441\u043b\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u0442\u043e\u043b\u044c\u043a\u043e \u0432 \u043e\u0434\u043d\u043e\u043c \u0444\u0430\u0439\u043b\u0435, \u0442\u043e \u043d\u0443\u0436\u043d\u043e \u0443\u043a\u0430\u0437\u0430\u0442\u044c \u043f\u0443\u0442\u044c \u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e. ", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_for_plot_5.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c \u043a excel \u0444\u0430\u0439\u043b\u0443 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u0430\u043c", None))
+        self.path_for_RheoScan_describe.setText("")
+#if QT_CONFIG(tooltip)
+        self.lb_stattest_12.setToolTip(QCoreApplication.translate("MainWindow", u"\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_stattest_12.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u043d\u043d\u044b\u0435", None))
+        self.comboBox_RheoScan_describe.setItemText(0, QCoreApplication.translate("MainWindow", u"\u041e\u0434\u0438\u043d \u0444\u0430\u0439\u043b - \u043e\u0434\u0438\u043d \u043e\u0431\u0440\u0430\u0437\u0435\u0446", None))
+        self.comboBox_RheoScan_describe.setItemText(1, QCoreApplication.translate("MainWindow", u"\u041e\u0434\u0438\u043d \u0444\u0430\u0439\u043b - \u043c\u043d\u043e\u0433\u043e \u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432", None))
+
+#if QT_CONFIG(tooltip)
+        self.lb_path_for_plot_6.setToolTip("")
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.lb_path_for_plot_6.setStatusTip(QCoreApplication.translate("MainWindow", u"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u043e\u0431\u0435\u043b\u044b \u043d\u0430\u043f\u0438\u0441\u0430\u0442\u044c True \u0438\u043b\u0438 False, \u0438\u043b\u0438 \u0436\u0435 0, 1, \u0442\u0435\u043c \u0441\u0430\u043c\u044b\u043c \u043f\u043e\u043c\u0435\u0442\u0438\u0432 \u043b\u0438\u0441\u0442\u044b.", None))
+#endif // QT_CONFIG(statustip)
+        self.lb_path_for_plot_6.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0447\u0435\u0442 SD \u043d\u0430 \u0440\u0430\u0437\u043d\u044b\u0445 \u043b\u0438\u0441\u0442\u0430\u0445", None))
+        self.RheoScan_describe_mask_sheets.setText("")
+        self.btn_RheoScan_describe_file_or_files.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0434\u0435\u043b\u0430\u0442\u044c \u0441\u0432\u043e\u0434\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u043f\u043e \u0444\u0430\u0439\u043b\u0443 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u0430\u043c", None))
+#if QT_CONFIG(tooltip)
         self.lb_path_for_plot_4.setToolTip(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043d\u0430\u0439\u0434\u0435\u043d excel \u0444\u0430\u0439\u043b", None))
 #endif // QT_CONFIG(tooltip)
         self.lb_path_for_plot_4.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c \u043a excel \u0444\u0430\u0439\u043b\u0443", None))
-        self.path_for_catplot_2.setText("")
+        self.path_for_dop_stat.setText("")
         self.lb_exel_name_5.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430", None))
         self.lb_exel_name_6.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430 \u0432 \u0444\u0430\u0439\u043b\u0435", None))
-#if QT_CONFIG(tooltip)
-        self.lb_stattest_11.setToolTip(QCoreApplication.translate("MainWindow", u"\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None))
-#endif // QT_CONFIG(tooltip)
-        self.lb_stattest_11.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u043d\u043d\u044b\u0435", None))
-        self.comboBox_stat_test_catplot_3.setItemText(0, QCoreApplication.translate("MainWindow", u"\u0414\u0432\u0435 \u043a\u043e\u043b\u043e\u043d\u043a\u0438", None))
-        self.comboBox_stat_test_catplot_3.setItemText(1, QCoreApplication.translate("MainWindow", u"\u0418\u043d\u0434\u0435\u043a\u0441\u0438\u0440\u0443\u0435\u043c\u044b\u0435", None))
-
 #if QT_CONFIG(tooltip)
         self.lb_hue_name_9.setToolTip("")
 #endif // QT_CONFIG(tooltip)
@@ -4564,19 +4685,28 @@ class Ui_MainWindow(object):
         self.lb_stattest_8.setToolTip(QCoreApplication.translate("MainWindow", u"\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None))
 #endif // QT_CONFIG(tooltip)
         self.lb_stattest_8.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0435\u0441\u0442", None))
-        self.comboBox_stat_test_catplot_2.setItemText(0, QCoreApplication.translate("MainWindow", u"Brunner-Munzel", None))
-        self.comboBox_stat_test_catplot_2.setItemText(1, QCoreApplication.translate("MainWindow", u"Levene", None))
-        self.comboBox_stat_test_catplot_2.setItemText(2, QCoreApplication.translate("MainWindow", u"Mann-Whitney", None))
-        self.comboBox_stat_test_catplot_2.setItemText(3, QCoreApplication.translate("MainWindow", u"Mann-Whitney-gt", None))
-        self.comboBox_stat_test_catplot_2.setItemText(4, QCoreApplication.translate("MainWindow", u"Mann-Whitney-ls", None))
-        self.comboBox_stat_test_catplot_2.setItemText(5, QCoreApplication.translate("MainWindow", u"t-test_ind", None))
-        self.comboBox_stat_test_catplot_2.setItemText(6, QCoreApplication.translate("MainWindow", u"t-test_welch", None))
-        self.comboBox_stat_test_catplot_2.setItemText(7, QCoreApplication.translate("MainWindow", u"t-test_paired", None))
-        self.comboBox_stat_test_catplot_2.setItemText(8, QCoreApplication.translate("MainWindow", u"Wilcoxon", None))
-        self.comboBox_stat_test_catplot_2.setItemText(9, QCoreApplication.translate("MainWindow", u"Kruskal", None))
+        self.comboBox_stat_test_dop_stat.setItemText(0, QCoreApplication.translate("MainWindow", u"U-\u043a\u0440\u0438\u0442\u0435\u0440\u0438\u0439 \u041c\u0430\u043d\u043d\u0430 \u2014 \u0423\u0438\u0442\u043d\u0438", None))
+        self.comboBox_stat_test_dop_stat.setItemText(1, QCoreApplication.translate("MainWindow", u"\u0422-\u043a\u0440\u0438\u0442\u0435\u0440\u0438\u0439 \u0421\u0442\u044c\u044e\u0434\u0435\u043d\u0442\u0430", None))
+        self.comboBox_stat_test_dop_stat.setItemText(2, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u0441\u0442 \u0411\u0440\u0443\u043d\u043d\u0435\u0440\u0430 \u2014 \u041c\u044e\u043d\u0446\u0435\u043b\u044f", None))
+        self.comboBox_stat_test_dop_stat.setItemText(3, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u0441\u0442 \u0411\u0440\u0443\u043d\u043d\u0435\u0440\u0430 \u2014 \u041c\u044e\u043d\u0446\u0435\u043b\u044f (normal)", None))
+        self.comboBox_stat_test_dop_stat.setItemText(4, QCoreApplication.translate("MainWindow", u"\u041a\u0440\u0438\u0442\u0435\u0440\u0438\u0439 \u0423\u0438\u043b\u043a\u043e\u043a\u0441\u043e\u043d\u0430", None))
+        self.comboBox_stat_test_dop_stat.setItemText(5, QCoreApplication.translate("MainWindow", u"\u041a\u0440\u0438\u0442\u0435\u0440\u0438\u0439 \u041a\u0440\u0430\u0441\u043a\u0435\u043b\u0430 \u2014 \u0423\u043e\u043b\u043b\u0438\u0441\u0430", None))
+        self.comboBox_stat_test_dop_stat.setItemText(6, QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0430\u043d\u043d\u044b\u0439 \u043a\u0440\u0438\u0442\u0435\u0440\u0438\u0439", None))
+        self.comboBox_stat_test_dop_stat.setItemText(7, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u0441\u0442 \u0410\u043d\u0441\u0430\u0440\u0438-\u0411\u0440\u044d\u0434\u043b\u0438", None))
+        self.comboBox_stat_test_dop_stat.setItemText(8, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u0441\u0442 \u0424\u0438\u0448\u0435\u0440\u0430-\u041f\u0438\u0442\u043c\u0430\u043d\u0430", None))
 
-        self.btn_plot_and_save_catplot_2.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c", None))
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_11), QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c", None))
+        self.lb__altern_heposisis_2.setText(QCoreApplication.translate("MainWindow", u"\u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0433\u0438\u043f\u043e\u0442\u0435\u0437\u0430", None))
+        self.comboBox_alter_hep_dop_stat.setItemText(0, QCoreApplication.translate("MainWindow", u"two-sided", None))
+        self.comboBox_alter_hep_dop_stat.setItemText(1, QCoreApplication.translate("MainWindow", u"less", None))
+        self.comboBox_alter_hep_dop_stat.setItemText(2, QCoreApplication.translate("MainWindow", u"greater", None))
+
+#if QT_CONFIG(tooltip)
+        self.lb_hue_name_11.setToolTip("")
+#endif // QT_CONFIG(tooltip)
+        self.lb_hue_name_11.setText(QCoreApplication.translate("MainWindow", u"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 p:", None))
+        self.p_value_dop_stat.setText("")
+        self.btn_dop_stat_calc.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c", None))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_12), QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043f. \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430", None))
         self.Lab_stuff.setTabText(self.Lab_stuff.indexOf(self.tabWidgetPage4), QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445", None))
     # retranslateUi
 

@@ -8,6 +8,7 @@ from PySide6.QtCore import Slot
 ############################
 # обработка RheoScan
 from __RheoScan__ import *
+from __RheoScan__describe import *
 from __RheoScan_sort__ import *
 # Biola
 from __Biola__ import *
@@ -21,6 +22,8 @@ from __Figs__ import *
 from __Catplot__ import *
 # Сводные таблицы
 from __Pivot_table_and_corr__ import *
+# Расчет p-value для 2 колонок
+from __Calc_p_value__ import *
 ############################
 # основное окно приложения
 from ui_main import Ui_MainWindow
@@ -62,8 +65,12 @@ class Main_window(QMainWindow):
         self.ui.btn_biola_concentration.pressed.connect(self.biola_concentration)
         #для кнопки по обработки данных лазерного пинцета
         self.ui.btn_LT.pressed.connect(self.LT)
-        #catplot
+        #для кнопки по catplot
         self.ui.btn_plot_and_save_catplot.pressed.connect(self.cat_plot)
+        #для кнопки по доп. обработке данных - RheoScan - описать
+        self.ui.btn_RheoScan_describe_file_or_files.pressed.connect(self.RheoScan_describe)
+        #для кнопки по доп. обработке данных - RheoScan - описать
+        self.ui.btn_dop_stat_calc.pressed.connect(self.p_value_calc)
 
         #########################################
         #путь к папке с файлами - графики
@@ -85,6 +92,14 @@ class Main_window(QMainWindow):
         self.ui.path_for_catplot.textChanged.connect(self.add_excel_catplot)
         self.ui.comboBox_excel_catplot.currentTextChanged.connect(self.catplot_add_sheets)
         self.ui.comboBox_excel_sheet_catplot.currentTextChanged.connect(self.catplot_add_x_y_hue)
+
+        # дополнительная статистика - расчет p-value
+        self.ui.path_for_dop_stat.textChanged.connect(self.add_excel_dop_stat)
+        self.ui.comboBox_excel_dop_stat.currentTextChanged.connect(self.dop_stat_add_sheets)
+        self.ui.comboBox_excel_sheet_dop_stat.currentTextChanged.connect(self.dop_stat_add_x_y_hue)
+
+        self.ui.comboBox_stat_test_dop_stat.currentTextChanged.connect(self.p_value_calc)
+        self.ui.comboBox_alter_hep_dop_stat.currentTextChanged.connect(self.p_value_calc)
 
     ##############################
     #изменим стиль - светлая или темная тема
@@ -113,6 +128,9 @@ class Main_window(QMainWindow):
     # сортировка данных RheoScan
     def RheoScan_sort_data(self):
         sort_RheoScan_data(self)
+    # этот метод находится в отделе обработки данных
+    def RheoScan_describe(self):
+        RheoScan_describe_file_or_files(self)
 
     ############
     # Biola
@@ -150,7 +168,9 @@ class Main_window(QMainWindow):
     # Catplot
     def cat_plot(self):
         plot_catplot(self)
-
+    # дополнительная обработка данных -- расчет p-value
+    def p_value_calc(self):
+        p_value_calc_for_two_columns(self)
     ################################################
     ###
     #добавление списка файлов в папке в comboBox'ы
@@ -183,6 +203,33 @@ class Main_window(QMainWindow):
         self.ui.comboBox_catplot_x.addItems(df.columns)
         self.ui.comboBox_catplot_y.addItems(df.columns)
         self.ui.comboBox_catplot_hue.addItems(df.columns.insert(0, '--без подгруппы'))
+
+    ############
+    # Дополнительная статистика
+    ############
+    def add_excel_dop_stat(self):
+        files = glob.glob(self.ui.path_for_dop_stat.text() + '//' + '*.xlsx')
+        files = get_name_out_of_path(files)
+        self.ui.comboBox_excel_dop_stat.clear()  #удалить все элементы из combobox
+        self.ui.comboBox_excel_sheet_dop_stat.clear()  # удалить все элементы из combobox
+        self.ui.comboBox_dop_stat_x.clear()  #удалить все элементы из combobox
+        self.ui.comboBox_dop_stat_y.clear()  # удалить все элементы из combobox
+        self.ui.comboBox_excel_dop_stat.addItems(files)
+
+    def dop_stat_add_sheets(self):
+        path_file = self.ui.path_for_dop_stat.text() + '//' + self.ui.comboBox_excel_dop_stat.currentText()
+        sheets = pd.ExcelFile(path_file).sheet_names
+        self.ui.comboBox_excel_sheet_dop_stat.clear()  #удалить все элементы из combobox
+        self.ui.comboBox_excel_sheet_dop_stat.addItems(sheets)
+
+    def dop_stat_add_x_y_hue(self):
+        path_file = self.ui.path_for_dop_stat.text() + '//' + self.ui.comboBox_excel_dop_stat.currentText()
+        df = pd.read_excel(path_file, sheet_name=self.ui.comboBox_excel_sheet_dop_stat.currentText())
+        self.ui.comboBox_dop_stat_x.clear()  #удалить все элементы из combobox
+        self.ui.comboBox_dop_stat_y.clear()  # удалить все элементы из combobox
+
+        self.ui.comboBox_dop_stat_x.addItems(df.columns)
+        self.ui.comboBox_dop_stat_y.addItems(df.columns)
 
     ############
     # Графики

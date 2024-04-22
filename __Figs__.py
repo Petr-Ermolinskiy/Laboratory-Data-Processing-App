@@ -4,23 +4,22 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from scipy import stats
+import numpy as np
 
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
-
-
-from tkinter import messagebox
 
 ##############################################################
 #
 # главная функция
 #
 ##############################################################
-def figs_plot(self):
+def figs_plot(self) -> None:
+    dlg = QMessageBox(self)
+    # в этот list будут записываться все доп. функции для графиков -- см. определение ниже
     global plot_feature_data__
     # я решил все особенности и кастомизацию графиков перевести в массив "plot_feature_data__" -- по большей части это связано с тем, что этот код я несколько раз переписывал
     plot_feature_data__ = lets_add_all_parameters_for_figs_here(self)
-
     #########################
     # параметры, которые нам понадобятся
     path = self.ui.path_for_plot.text()
@@ -35,8 +34,11 @@ def figs_plot(self):
 
     checc = error_for_val_plot(plot_feature_data__, path, exel_name)
 
-    if checc != '':
-        return messagebox.showerror('Ошибка', checc)
+    if checc != '__':
+        dlg.setWindowTitle("Графики")
+        dlg.setText(checc)
+        dlg.exec()
+        return None
 
     # основной путь
     path = path + '//'
@@ -45,8 +47,11 @@ def figs_plot(self):
 
     try:
         names = pd.ExcelFile(files).sheet_names
-    except:
-        return messagebox.showerror('Ошибка', 'Нет такого файла или директории')
+    except Exception as e:
+        dlg.setWindowTitle("Графики")
+        dlg.setText('Нет такого файла или директории.\n' + str(e))
+        dlg.exec()
+        return None
 
     # выполяем функцию do_for_one_sheet по всем листам в excel файле
     check_cykle = '__'
@@ -55,7 +60,16 @@ def figs_plot(self):
         if check_cykle != '__':
             break
     if check_cykle == '__':
-        return messagebox.showinfo('Построение графиков', f'Все графики успешно сохранены')
+        dlg.setWindowTitle("Графики")
+        dlg.setText('Все графики успешно сохранены')
+        dlg.exec()
+        return None
+    else:
+        dlg.setWindowTitle("Графики - Ошибка")
+        dlg.setText(check_cykle)
+        dlg.setIcon(QMessageBox.Icon.Critical)
+        dlg.exec()
+        return None
 
 
 ##############################################################
@@ -64,7 +78,6 @@ def figs_plot(self):
 #
 ##############################################################
 def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, corr_is_need_matrix, hue_name):
-
     # читаем exel файл - index_col=0,
     df = pd.read_excel(files, sheet_name=what_sheet)
     df.index.rename(None, inplace=True)
@@ -80,7 +93,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
         hue_name_for_sheet = hue_name.replace('\\n', '\n')
 
         if hue_name_for_sheet not in columns_of_interest:
-            return messagebox.showerror('Ошибка', 'В таблице нет такого столбца:' + str(hue_name_for_sheet))
+            return 'В таблице нет такого столбца:' + str(hue_name_for_sheet)
         index_for_col_interest = list(columns_of_interest).index(hue_name_for_sheet)
         columns_of_interest = columns_of_interest[index_for_col_interest + 1:]
 
@@ -89,9 +102,9 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
     for dd in columns_of_interest:
         try:
             df[dd] = df[dd].apply(pd.to_numeric)
-        except:
-            message_ = 'В колонке ' + str(dd) + ' представлены значения, \nкоторые нельзя конвертировать в числа'
-            return messagebox.showerror('Ошибка', message_)
+        except Exception as e:
+            message = 'В колонке ' + str(dd) + ' представлены значения, которые нельзя конвертировать в числа.\n' + str(e)
+            return message
 
     # название оси X
     name_of_X_axis = hue_name_for_sheet
@@ -158,14 +171,14 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
                     columns__temp = plot_feature_data__[31].replace(',', '').replace(';', ' ').split()
 
                     if len(just_all_we_need2.columns) != len(columns__temp):
-                        return messagebox.showerror('Ошибка', 'Графики - box plot - кол-во подписей в поле <Изменить порядок подписей> не верно')
+                        return f'Кол-во подписей в поле <Изменить порядок подписей> не верно.\n Должно быть {len(just_all_we_need2.columns)}, а введено {len(columns__temp)}.'
                     try:
                         columns__temp = list(map(int, columns__temp))
                         columns__temp = [x - 1 for x in columns__temp]
                         columns__ = [just_all_we_need2.columns[x] for x in columns__temp]
                         just_all_we_need2 = just_all_we_need2.reindex(columns=columns__)
-                    except:
-                        return messagebox.showerror('Ошибка', 'Графики - box plot - что-то не так в поле <Изменить порядок подписей>')
+                    except Exception as e:
+                        return 'Поле <Изменить порядок подписей> заполнено не верно.\n' + str(e)
 
                 # сохраняем в список DataFrame-ов
                 df_list.append(just_all_we_need2)
@@ -175,7 +188,10 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
         # вот и массив для графиков
         big_G = just_to_numpy_for_plot(df_list, dict_for_future)
         # построение графиков
-        just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis, path_name_fiqure_folder)
+        check = just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis, path_name_fiqure_folder)
+        if check != '__':
+            return check
+
         if plot_feature_data__[16]:
             # создаем подпапку для exel файлов
             os.makedirs(path + 'stat', exist_ok=True)
@@ -228,13 +244,21 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
                                                  "markersize": str(plot_feature_data__[22])})
 
     ###изменить цвета! если введен агрумент цвета, то цвет будет один; есть такие цвета хорошие 'Pastel1' 'Blues' 'Greens' 'Purples' или такие https://r02b.github.io/seaborn_palettes/
-    if plot_feature_data__[2] == '' or plot_feature_data__[3] == '':
+    if plot_feature_data__[2] == '' and plot_feature_data__[3] == '':
         # для точек измерений
         take_a_color_point = plot_feature_data__[1]
-        # для box-ов
-        take_a_color = plot_feature_data__[0]
         # специальный массив для box-ов
-        colors = sns.color_palette(take_a_color)
+        colors = sns.color_palette(plot_feature_data__[0])
+    elif plot_feature_data__[2] == '' and plot_feature_data__[3] != '':
+        # для точек измерений
+        take_a_color_point = [plot_feature_data__[3]] * len(bp['boxes'])
+        # специальный массив для box-ов
+        colors = sns.color_palette(plot_feature_data__[0])
+    elif plot_feature_data__[2] != '' and plot_feature_data__[3] == '':
+        # для точек измерений
+        take_a_color_point = plot_feature_data__[1]
+        # специальный массив для box-ов
+        colors = [plot_feature_data__[2]] * len(bp['boxes'])
     else:
         # для точек измерений
         take_a_color_point = [plot_feature_data__[3]] * len(bp['boxes'])
@@ -249,15 +273,18 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
     # добавить точки! цвет: palette=take_a_color_point
     try:
         sns.stripplot(data=data, alpha=0.6, palette=take_a_color_point, ax=ax, linewidth=1, size=plot_feature_data__[33])
-    except:
-        return messagebox.showerror('Ошибка', 'Скорее всего вы ввели неправильный цвет HEX')
+    except Exception as e:
+        return 'Box plot: скорее всего вы ввели неправильный цвет HEX.\n' + str(e)
 
     ####################################
 
     # вот тут добавляются цвета к нашим box-ам
     ##############
-    for patch, color in zip(bp['boxes'], colors):
-        patch.set_facecolor(color)
+    try:
+        for patch, color in zip(bp['boxes'], colors):
+            patch.set_facecolor(color)
+    except Exception as e:
+        return 'Box plot: скорее всего вы ввели неправильный цвет HEX.\n' + str(e)
 
     # Colour of the median lines
     plt.setp(bp['medians'], color='k')
@@ -271,8 +298,8 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
                 combinations = plot_feature_data__[32].split()
                 combinations = [item.replace('(', '').replace(')', '') for item in combinations]
                 combinations = [tuple(map(int, item.split(','))) for item in combinations]
-            except:
-                return messagebox.showerror('Ошибка', 'Графики - box plot - неправильное значение в поле <Расчёт стат.значимости только между следующими группами>')
+            except Exception as e:
+                return 'Box plot: неправильное значение в поле <Расчёт стат.значимости только между следующими группами>' + str(e)
         else:
             ls = list(range(1, len(data) + 1))
             combinations = [(ls[x], ls[x + y]) for y in reversed(ls) for x in range((len(ls) - y))]
@@ -282,22 +309,32 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
 
             # Significance
             if plot_feature_data__[12] == 'U-критерий Манна — Уитни':
-                U, p = stats.mannwhitneyu(data1, data2, alternative=plot_feature_data__[13])
+                _, p = stats.mannwhitneyu(data1, data2, alternative=plot_feature_data__[13])
             elif plot_feature_data__[12] == 'Т-критерий Стьюдента':
-                U, p = stats.ttest_ind(data1, data2, alternative=plot_feature_data__[13])
+                _, p = stats.ttest_ind(data1, data2, alternative=plot_feature_data__[13])
             elif plot_feature_data__[12] == 'Критерий Уилкоксона':
-                U, p = stats.wilcoxon(data1, data2, alternative=plot_feature_data__[13])
+                _, p = stats.wilcoxon(data1, data2, alternative=plot_feature_data__[13])
             elif plot_feature_data__[12] == 'Критерий Краскела — Уоллиса':
-                U, p = stats.kruskal(data1, data2)
+                _, p = stats.kruskal(data1, data2)
             elif plot_feature_data__[12] == 'Медианный критерий':
-                U, p = stats.mood(data1, data2, alternative=plot_feature_data__[13])
+                _, p = stats.mood(data1, data2, alternative=plot_feature_data__[13])
             elif plot_feature_data__[12] == 'Тест Ансари-Брэдли':
-                U, p = stats.ansari(data1, data2, alternative=plot_feature_data__[13])
+                _, p = stats.ansari(data1, data2, alternative=plot_feature_data__[13])
             elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля':
-                U, p = stats.brunnermunzel(data1, data2, alternative=plot_feature_data__[13])
+                _, p = stats.brunnermunzel(data1, data2, alternative=plot_feature_data__[13])
+            elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля (normal)':
+                #distribution='normal' - если что-то не так или данные только одно значение, но в этом случае этот тест лучше не использовать
+                _, p = stats.brunnermunzel(data1, data2, distribution='normal', alternative=plot_feature_data__[13])
+            elif plot_feature_data__[12] == 'Тест Фишера-Питмана':
+                def statistic(x, y, axis):
+                    return np.mean(x, axis=axis) - np.mean(y, axis=axis)
+
+                # вычисляем
+                all_data = stats.permutation_test((data1, data2), statistic, permutation_type='independent', vectorized=True, alternative=plot_feature_data__[13])
+                # само значение p
+                p = all_data.pvalue
             else:
-                #distribution='normal' - если что-то не так или данные только одно значение
-                U, p = stats.brunnermunzel(data1, data2, distribution='normal', alternative=plot_feature_data__[13])
+                pass
 
             if p < 0.05:
                 significant_combinations.append([c, p])
@@ -372,12 +409,15 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
 
     # очень важно, чтобы не обрезалось
     plt.tight_layout()
-    # сохранение рисунка
-    plt.savefig(path_name_fiqure_folder + '//' + safe_name(Name_fiqure) + '.png', dpi=600, format='png', transparent=plot_feature_data__[24])
+    try:
+        # сохранение рисунка
+        plt.savefig(path_name_fiqure_folder + '//' + safe_name(Name_fiqure) + '.png', dpi=600, format='png', transparent=plot_feature_data__[24])
+    except Exception as e:
+        return 'Box plot: ' + str(e)
     plt.close()
     ax.cla()
     plt.clf()
-    return 0
+    return '__'
 
 
 # Функция для преобразования данных для построения
@@ -400,8 +440,9 @@ def just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis, path_name_fiq
         check=box_and_whisker(big_G[dict_for_future[parameter_]], '', name_of_X_axis, ylabel,
                         df_list[dict_for_future[parameter_]].columns, parameter_, path_name_fiqure_folder, plot_feature_data__[5],
                         make_an_SD=do_SD)
-        if check != 0:
-            break
+        if check != '__':
+            return check
+    return '__'
 
 
 # Функция для получения массива датафреймов с таблицами p-values
@@ -417,37 +458,48 @@ def calculate_table_for_p_val(df_list, dict_for_future):
                     continue
                 # рассчитаем стат. значимости
                 if plot_feature_data__[12] == 'U-критерий Манна — Уитни':
-                    statistic, p_value = stats.mannwhitneyu(df_list[dict_for_future[i]][col1].dropna(),
+                    _, p_value = stats.mannwhitneyu(df_list[dict_for_future[i]][col1].dropna(),
                                                             df_list[dict_for_future[i]][col2].dropna(),
                                                             alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Т-критерий Стьюдента':
-                    statistic, p_value = stats.ttest_ind(df_list[dict_for_future[i]][col1].dropna(),
+                    _, p_value = stats.ttest_ind(df_list[dict_for_future[i]][col1].dropna(),
                                                          df_list[dict_for_future[i]][col2].dropna(),
                                                          alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Критерий Уилкоксона':
-                    statistic, p_value = stats.wilcoxon(df_list[dict_for_future[i]][col1].dropna(),
+                    _, p_value = stats.wilcoxon(df_list[dict_for_future[i]][col1].dropna(),
                                                          df_list[dict_for_future[i]][col2].dropna(),
                                                          alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Критерий Краскела — Уоллиса':
-                    statistic, p_value = stats.kruskal(df_list[dict_for_future[i]][col1].dropna(),
+                    _, p_value = stats.kruskal(df_list[dict_for_future[i]][col1].dropna(),
                                                          df_list[dict_for_future[i]][col2].dropna())
                 elif plot_feature_data__[12] == 'Медианный критерий':
-                    statistic, p_value = stats.mood(df_list[dict_for_future[i]][col1].dropna(),
+                    _, p_value = stats.mood(df_list[dict_for_future[i]][col1].dropna(),
                                                          df_list[dict_for_future[i]][col2].dropna(),
                                                          alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Тест Ансари-Брэдли':
-                    statistic, p_value = stats.ansari(df_list[dict_for_future[i]][col1].dropna(),
+                    _, p_value = stats.ansari(df_list[dict_for_future[i]][col1].dropna(),
                                                          df_list[dict_for_future[i]][col2].dropna(),
                                                          alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля':
-                    statistic, p_value = stats.brunnermunzel(df_list[dict_for_future[i]][col1].dropna(),
+                    _, p_value = stats.brunnermunzel(df_list[dict_for_future[i]][col1].dropna(),
                                                              df_list[dict_for_future[i]][col2].dropna(),
                                                              alternative=plot_feature_data__[13])
-                else:
-                    statistic, p_value = stats.brunnermunzel(df_list[dict_for_future[i]][col1].dropna(),
+                elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля (normal)':
+                    _, p_value = stats.brunnermunzel(df_list[dict_for_future[i]][col1].dropna(),
                                                              df_list[dict_for_future[i]][col2].dropna(),
                                                              distribution='normal',
                                                              alternative=plot_feature_data__[13])
+                elif plot_feature_data__[12] == 'Тест Фишера-Питмана':
+                    def statistic(x, y, axis):
+                        return np.mean(x, axis=axis) - np.mean(y, axis=axis)
+                    # вычисляем
+                    all_data = stats.permutation_test((df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna()), statistic, permutation_type='independent',
+                                          vectorized=True, alternative=plot_feature_data__[13])
+                    # само значение p
+                    p_value = all_data.pvalue
+
+                else:
+                    pass
                 # добавим в наш DataFrame
                 dop_DF.loc[col1, col2] = round(p_value, 4)
         df_list_stat.append(dop_DF)
@@ -546,11 +598,6 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         title_ = plot_feature_data__[11] + str(i) + ' (n=' + str(int(len(df_for_corr))) + ')'
         # корреляции делаем
         corr = df_for_corr.corr(method=plot_feature_data__[34])
-        # изменить параметр font_scale, если много значений: по дефолту -- font_scale=0.8 figsize=(16,8) fontsize=20
-        # sns.set(font_scale=0.9)
-        # plt.figure(figsize=(6,6))
-        # plt.title(title_, fontsize=12)
-
         sns.set(font_scale=plot_feature_data__[9])
         plt.figure(figsize=(plot_feature_data__[8], plot_feature_data__[8]))
         plt.title(title_, fontsize=plot_feature_data__[10])
@@ -576,16 +623,14 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
 #
 ##############################################################
 
-def error_for_val_plot(plot_feature_data__from_ui, path, exel_name):
+def error_for_val_plot(plot_feature_data__, path, exel_name):
     if path == '':
         return 'Путь для файла отсутствует'
     if exel_name == '':
         return 'Имя файла отсутствует'
-    if exel_name == '':
-        return 'Имя файла отсутствует'
-    if plot_feature_data__from_ui[5].replace(".", "").replace(",", "").isdigit() is False and plot_feature_data__from_ui[5] != '':
-        return 'Параметр нижней границы содержит буквы'
-    return ''
+    if plot_feature_data__[5].replace(".", "").replace(",", "").isdigit() is False and plot_feature_data__[5] != '':
+        return 'Box plot: параметр нижней границы содержит буквы'
+    return '__'
 
 # функция для безопасного имени при сохранении
 def safe_name(name) -> str:
