@@ -37,6 +37,8 @@ import ctypes
 myappid = 'mycompany.myproduct.subproduct.version' # arbitrary string
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 ############################
+# а это чтобы logo отображалось правильно при переносе на exe
+from pathlib import Path
 
 class Main_window(QMainWindow):
     def __init__(self):
@@ -310,14 +312,17 @@ def get_name_out_of_path(files):
         out[i]=files[i].split('\\')[-1]
     return out
 
-# важно обозначить для того, чтобы лого обозначалось правильно
-basedir = os.path.dirname(__file__)
+
 ###########################################
 # запуск приложения
 ###########################################
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    # важно обозначить для того, чтобы лого обозначалось правильно
+    basedir = os.path.dirname(__file__)
+    # добавляем иконку
     app.setWindowIcon(QIcon(os.path.join(basedir, 'LOGO.ico')))
+    # выполняем всё
     window = Main_window()
     window.show()
     sys.exit(app.exec())

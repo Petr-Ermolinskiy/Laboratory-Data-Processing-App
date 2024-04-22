@@ -953,14 +953,14 @@ class Ui_MainWindow(object):
         self.check_biola_plot_figs.setObjectName(u"check_biola_plot_figs")
         self.check_biola_plot_figs.setEnabled(True)
         self.check_biola_plot_figs.setFont(font4)
-        self.check_biola_plot_figs.setChecked(False)
+        self.check_biola_plot_figs.setChecked(True)
         self.check_biola_plot_figs.setTristate(False)
 
         self.verticalLayout_31.addWidget(self.check_biola_plot_figs, 0, Qt.AlignHCenter)
 
         self.plp = QFrame(self.tab_5)
         self.plp.setObjectName(u"plp")
-        self.plp.setEnabled(False)
+        self.plp.setEnabled(True)
         sizePolicy10.setHeightForWidth(self.plp.sizePolicy().hasHeightForWidth())
         self.plp.setSizePolicy(sizePolicy10)
         self.plp.setStyleSheet(u"QFrame#plp{\n"
@@ -1050,7 +1050,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_63.setObjectName(u"horizontalLayout_63")
         self.check_setka_biola = QCheckBox(self.plp)
         self.check_setka_biola.setObjectName(u"check_setka_biola")
-        self.check_setka_biola.setEnabled(False)
+        self.check_setka_biola.setEnabled(True)
         sizePolicy9.setHeightForWidth(self.check_setka_biola.sizePolicy().hasHeightForWidth())
         self.check_setka_biola.setSizePolicy(sizePolicy9)
         self.check_setka_biola.setFont(font5)
@@ -3005,8 +3005,8 @@ class Ui_MainWindow(object):
         self.tabWidget_2.addTab(self.widget2, "")
         self.tab_8 = QWidget()
         self.tab_8.setObjectName(u"tab_8")
-        self.gridLayout_11 = QGridLayout(self.tab_8)
-        self.gridLayout_11.setObjectName(u"gridLayout_11")
+        self.formLayout_3 = QFormLayout(self.tab_8)
+        self.formLayout_3.setObjectName(u"formLayout_3")
         self.verticalLayout_43 = QVBoxLayout()
         self.verticalLayout_43.setObjectName(u"verticalLayout_43")
         self.verticalLayout_37 = QVBoxLayout()
@@ -3094,6 +3094,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_43.addWidget(self.line_2)
 
+        self.verticalSpacer_6 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_43.addItem(self.verticalSpacer_6)
+
         self.yyy = QFrame(self.tab_8)
         self.yyy.setObjectName(u"yyy")
         self.yyy.setStyleSheet(u"QFrame#yyy{\n"
@@ -3176,6 +3180,10 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_43.addWidget(self.yyy)
+
+        self.verticalSpacer_5 = QSpacerItem(10, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_43.addItem(self.verticalSpacer_5)
 
         self.ppp = QFrame(self.tab_8)
         self.ppp.setObjectName(u"ppp")
@@ -3298,7 +3306,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_43.addWidget(self.ppp)
 
 
-        self.gridLayout_11.addLayout(self.verticalLayout_43, 0, 0, 1, 1)
+        self.formLayout_3.setLayout(0, QFormLayout.SpanningRole, self.verticalLayout_43)
 
         self.tabWidget_2.addTab(self.tab_8, "")
         self.tab_10 = QWidget()
@@ -3779,8 +3787,8 @@ class Ui_MainWindow(object):
         self.tabWidget_2.addTab(self.tab_10, "")
         self.tab_12 = QWidget()
         self.tab_12.setObjectName(u"tab_12")
-        self.gridLayout_13 = QGridLayout(self.tab_12)
-        self.gridLayout_13.setObjectName(u"gridLayout_13")
+        self.gridLayout_9 = QGridLayout(self.tab_12)
+        self.gridLayout_9.setObjectName(u"gridLayout_9")
         self.verticalLayout_44 = QVBoxLayout()
         self.verticalLayout_44.setObjectName(u"verticalLayout_44")
         self.lb_path_for_plot_7 = QLabel(self.tab_12)
@@ -3854,14 +3862,20 @@ class Ui_MainWindow(object):
         self.verticalLayout_44.addWidget(self.btn_RheoScan_describe_file_or_files)
 
 
-        self.gridLayout_13.addLayout(self.verticalLayout_44, 0, 0, 1, 1)
+        self.gridLayout_9.addLayout(self.verticalLayout_44, 0, 0, 1, 1)
 
         self.verticalSpacer_4 = QSpacerItem(10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout_13.addItem(self.verticalSpacer_4, 1, 0, 1, 1)
+        self.gridLayout_9.addItem(self.verticalSpacer_4, 1, 0, 1, 1)
 
         self.verticalLayout_45 = QVBoxLayout()
         self.verticalLayout_45.setObjectName(u"verticalLayout_45")
+        self.lb_path_for_plot_8 = QLabel(self.tab_12)
+        self.lb_path_for_plot_8.setObjectName(u"lb_path_for_plot_8")
+        self.lb_path_for_plot_8.setFont(font10)
+
+        self.verticalLayout_45.addWidget(self.lb_path_for_plot_8, 0, Qt.AlignHCenter)
+
         self.horizontalLayout_107 = QHBoxLayout()
         self.horizontalLayout_107.setObjectName(u"horizontalLayout_107")
         self.lb_path_for_plot_4 = QLabel(self.tab_12)
@@ -4045,7 +4059,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_45.addWidget(self.btn_dop_stat_calc)
 
 
-        self.gridLayout_13.addLayout(self.verticalLayout_45, 2, 0, 1, 1)
+        self.gridLayout_9.addLayout(self.verticalLayout_45, 2, 0, 1, 1)
 
         self.tabWidget_2.addTab(self.tab_12, "")
 
@@ -4954,6 +4968,10 @@ class Ui_MainWindow(object):
         self.lb_path_for_plot_6.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0447\u0435\u0442 SD \u043d\u0430 \u0440\u0430\u0437\u043d\u044b\u0445 \u043b\u0438\u0441\u0442\u0430\u0445", None))
         self.RheoScan_describe_mask_sheets.setText("")
         self.btn_RheoScan_describe_file_or_files.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0434\u0435\u043b\u0430\u0442\u044c \u0441\u0432\u043e\u0434\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u043f\u043e \u0444\u0430\u0439\u043b\u0443 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u0430\u043c", None))
+#if QT_CONFIG(tooltip)
+        self.lb_path_for_plot_8.setToolTip(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043d\u0430\u0445\u043e\u0434\u044f\u0442\u0441\u044f excel \u0444\u0430\u0439\u043b\u044b \u0438\u043b\u0438 \u0444\u0430\u0439\u043b. \u0415\u0441\u043b\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u0442\u043e\u043b\u044c\u043a\u043e \u0432 \u043e\u0434\u043d\u043e\u043c \u0444\u0430\u0439\u043b\u0435, \u0442\u043e \u043d\u0443\u0436\u043d\u043e \u0443\u043a\u0430\u0437\u0430\u0442\u044c \u043f\u0443\u0442\u044c \u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e. ", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_path_for_plot_8.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u043c\u0435\u0436\u0434\u0443 2 \u0432\u044b\u0431\u043e\u0440\u043a\u0430\u043c\u0438", None))
 #if QT_CONFIG(tooltip)
         self.lb_path_for_plot_4.setToolTip(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043d\u0430\u0439\u0434\u0435\u043d excel \u0444\u0430\u0439\u043b", None))
 #endif // QT_CONFIG(tooltip)
