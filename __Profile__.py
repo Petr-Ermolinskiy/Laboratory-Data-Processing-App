@@ -11,6 +11,9 @@ from PySide6.QtWidgets import QMessageBox
 
 def prifile_plot(self) -> None:
     dlg = QMessageBox(self)
+    # закроем все рисунки, если они открыты
+    # если этого не сделать, то может быть такое, что рисунки наложатся друг на друга
+    plt.close()
     #########################
     # параметры, которые нам понадобятся
     #########################
@@ -26,10 +29,23 @@ def prifile_plot(self) -> None:
     pat_sd = self.ui.check_profile_pat_sd.isChecked()
     norm_line = self.ui.check_profile_norm_line.isChecked()
     norm_sd = self.ui.check_profile_norm_sd.isChecked()
+    # название для профилей
+    title_rad = self.ui.profile_title_rad.text()
+    y_line_title = self.ui.profile_title_lin.text()
+    # название для профилей
+    spin_x_for_lin_profile = self.ui.comboBox_profile_lin_spin.currentText()
+    # легенда
+    add_legend = self.ui.check_profile_legend.isChecked()
+    # scale рисунка
+    fond_scale_profile = self.ui.doubleSpinBoX_profile.value()
     #########################
 
-
     sns.reset_orig()
+    # насколько шрифт изменяем
+    sns.set(font_scale=fond_scale_profile)
+    # это будет лучшим
+    sns.set_style("ticks")
+
     # какие группы? 1-ая группа -- пациент; 2-ая группа -- это контрольная группа
     I_index = [prifile_data__[0], prifile_data__[1]]
 
@@ -102,7 +118,6 @@ def prifile_plot(self) -> None:
     SD_df.loc[I_index[0]] = SD_patient_data_norm
     SD_df.loc[I_index[1]] = SD_norm_data_norm
 
-
     # максимальное значение для графика
     MAX_Y = math.ceil(find_max(patient_data_norm))
 
@@ -133,7 +148,8 @@ def prifile_plot(self) -> None:
     plt.rcParams.update(params)
 
     # название профиля
-    plt.title("Микрореологический профиль пациента " + I_index[0])
+    if title_rad != '':
+        plt.title(str(title_rad) + I_index[0])
 
     # сетка
     plt.grid(True, linestyle='dotted', alpha=0.5)
@@ -158,12 +174,16 @@ def prifile_plot(self) -> None:
     # стандартные отклонения для параметров пациента
     SD_values = SD_df.loc[I_index[0]].values.tolist()
     SD_values += SD_values[:1]
+
     # построение
     if pat_line:
         ax.plot(angles, values, linewidth=1.5, linestyle='solid', label=I_index[0], color=color_Patient)
     if pat_sd:
+        label_line_sd_pat = I_index[0]
+        if pat_line:
+            label_line_sd_pat = None
         PATIENT_fill = ax.fill_between(angles, y1=mul_err_plus(values, SD_values), y2=mul_err_minus(values, SD_values),
-                                   alpha=0.3, linewidth=0, color=color_Patient)
+                                   alpha=0.3, linewidth=0, label=label_line_sd_pat, color=color_Patient)
     # сделаем аннотацию в процентах -- также выделим в цвета значения, если они выходят за пределы нормы
     for i in range(len(categories)):
         name = categories[i]
@@ -173,10 +193,10 @@ def prifile_plot(self) -> None:
             what_color = 'blue'
         else:
             what_color = 'black'
-        ax.annotate(to_percent(values)[i], xy=(angles[i], MAX_Y), textcoords='data', size=8, color=what_color, ha='center',
+        ax.annotate(to_percent(values)[i], xy=(angles[i], MAX_Y), textcoords='data', size=int(8*fond_scale_profile), color=what_color, ha='center',
                     va='center', bbox=dict(boxstyle='round', facecolor='w', edgecolor='black'))
     ########################
-    # парметры НОРМЫ
+    # параметры НОРМЫ
     values_N = df.loc[I_index[1]].values.tolist()
     values_N += values_N[:1]
     # стандартные отклонения для параметров нормы
@@ -184,10 +204,13 @@ def prifile_plot(self) -> None:
     SD_values_N += SD_values_N[:1]
     # построение
     if norm_line:
-        ax.plot(angles, values_N, linewidth=1.5, linestyle='solid', label=I_index[1],color=color_NORM)
+        ax.plot(angles, values_N, linewidth=1.5, linestyle='solid', label=I_index[1], color=color_NORM)
     if norm_sd:
+        label_line_sd = I_index[1]
+        if norm_line:
+            label_line_sd = None
         NORM_fill = ax.fill_between(angles, y1=mul_err_plus(values_N, SD_values_N), y2=mul_err_minus(values_N, SD_values_N),
-                                alpha=0.3, linewidth=0, label=I_index[1], color=color_NORM)
+                                alpha=0.3, linewidth=0, label=label_line_sd, color=color_NORM)
     ########################
 
     ########################
@@ -226,7 +249,59 @@ def prifile_plot(self) -> None:
 
     # добавим легенды
     # ...основная легенда
-    ax.legend(bbox_to_anchor=(0.0, 0.0))
+    if add_legend:
+        ax.legend(bbox_to_anchor=(0.0, 0.0))
+
+
+    ########################
+    #
+    #
+    # добавим кастомное обозначение параметров, если это нужно
+    #
+    #
+    ########################
+    try:
+        if self.ui.tableWidget.item(0,0).text() != '':
+            # добавим информацию для типа измеряемых параметрах (агрегация эритроцитов, деформируемость эритроцитов, и др.)
+            # сортируем по категориям -- где параметры агрегации или деформируемости или др. изменить индексы у angles по категориям
+            # linestyle=dashed dashdot dotted
+            EA_Rheo = self.ui.tableWidget.item(0, 0).text()
+            EA_Rheo = EA_Rheo.split('-')
+            EA_Rheo = list(map(int, EA_Rheo))
+            # здесь агрегация эритроцитов или что-то другое
+            name_n_1 = self.ui.tableWidget.item(1, 0).text()
+            x, y = smooth_curve(angles[EA_Rheo[0]], angles[EA_Rheo[1]], MAX_Y)
+            line_EA_Rheo, = ax.plot(x, y, linewidth=4, linestyle=self.ui.tableWidget.item(3, 0).text(), color=self.ui.tableWidget.item(2, 0).text(), label=name_n_1, alpha=0.4)
+
+            if self.ui.tableWidget.item(0, 1) != None:
+                ED_Rheo = self.ui.tableWidget.item(0, 1).text()
+                ED_Rheo = ED_Rheo.split('-')
+                ED_Rheo = list(map(int, ED_Rheo))
+                # здесь деформируемость эритроцитов или что-то другое
+                name_n_2 = self.ui.tableWidget.item(1, 1).text()
+                x, y = smooth_curve(angles[ED_Rheo[0]], angles[ED_Rheo[1]], MAX_Y)
+                line_ED_Rheo, = ax.plot(x, y, linewidth=4, linestyle=self.ui.tableWidget.item(3, 1).text(), color=self.ui.tableWidget.item(2, 1).text(), label=name_n_2, alpha=0.4)
+
+            if self.ui.tableWidget.item(0, 2) != None:
+                PA_Biola = self.ui.tableWidget.item(0, 2).text()
+                PA_Biola = PA_Biola.split('-')
+                PA_Biola = list(map(int, PA_Biola))
+                # здесь агрегация тромбоцитов или что-то другое
+                name_n_3 = self.ui.tableWidget.item(1, 2).text()
+                x, y = smooth_curve(angles[PA_Biola[0]], angles[PA_Biola[1]], MAX_Y)
+                line_PA_Biola, = ax.plot(x, y, linewidth=4, linestyle=self.ui.tableWidget.item(3, 2).text(), color=self.ui.tableWidget.item(2, 2).text(), label=name_n_3, alpha=0.4)
+            # добавим легенду
+            if add_legend:
+                ax.legend(bbox_to_anchor=(1.25, 0.95))
+    except Exception as e:
+        dlg.setWindowTitle("Микрореологический профиль")
+        dlg.setText("Проблема с вводом данных в таблицу.\n" + str(e))
+        dlg.setIcon(QMessageBox.Icon.Critical)
+        dlg.exec()
+        return None
+
+    # на всякий случай
+    plt.tight_layout()
 
     # имена параметров
     names_for_line = list(df.columns)
@@ -250,32 +325,41 @@ def prifile_plot(self) -> None:
     fig2 = plt.figure()
     ax2 = plt.axes()
     # вращаем на 90 градусов подписи
-    plt.xticks(rotation='vertical')
+    plt.xticks(rotation=int(spin_x_for_lin_profile))
     # сетка
     plt.grid(True, axis='x', linestyle='dashed', alpha=0.5)
 
     # подписи к осям
-    plt.ylabel('Отклонение от нормы, %')
+    plt.ylabel(str(y_line_title))
 
     # строим кривую для ПАЦИЕНТА
     if pat_line:
         ax2.plot(names_for_line, patien_values_for_line, color=color_Patient_line, label=I_index[0])
     if pat_sd:
+        label_line_sd_lin_pat = I_index[0]
+        if pat_line:
+            label_line_sd_lin_pat = None
         ax2.fill_between(names_for_line, y1=mul_err_plus(patien_values_for_line, SD_patien_values_for_line),
                      y2=mul_err_minus(patien_values_for_line, SD_patien_values_for_line), alpha=0.3, linewidth=0,
-                     color=color_Patient_line)
+                     color=color_Patient_line, label=label_line_sd_lin_pat)
     # строим кривую для НОРМЫ
     if norm_line:
         ax2.plot(names_for_line,norm_values_for_line, color=color_NORM_line, label = I_index[1])
     if norm_sd:
+        label_line_sd_lin = I_index[1]
+        if norm_line:
+            label_line_sd_lin = None
         ax2.fill_between(names_for_line, y1=mul_err_plus(norm_values_for_line, SD_norm_values_for_line),
                      y2=mul_err_minus(norm_values_for_line, SD_norm_values_for_line), alpha=0.3, linewidth=0,
-                     color=color_NORM_line, label=I_index[1])
+                     color=color_NORM_line, label=label_line_sd_lin)
 
     # удалим отсупы по оси X -- если это нужно, то надо добавить строчку ниже
     # ax2.set_xlim(left=0, right=len(names_for_line)-1)
     # добавим легенду
-    ax2.legend()
+    if add_legend:
+        ax2.legend()
+
+    plt.tight_layout()
 
     try:
         # сохранение графика в радиальных координатах
@@ -428,5 +512,6 @@ def change_name_of_categories(categories):
     new = categories.copy()
     for i in range(len(new)):
         new[i]=new[i].replace('T1/2, сек.', '$T_{1/2}, сек.$')
+        new[i] = new[i].replace('\\n', '\n')
     return new
 

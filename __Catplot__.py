@@ -41,6 +41,9 @@ def change_type(x, __type__):
 
 def plot_catplot(self) -> None:
     dlg = QMessageBox(self)
+    # закроем все рисунки, если они открыты
+    # если этого не сделать, то может быть такое, что рисунки наложатся друг на друга
+    plt.close()
     #########################
     # параметры, которые нам понадобятся
     path = self.ui.path_for_catplot.text()

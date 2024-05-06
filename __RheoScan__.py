@@ -9,6 +9,8 @@ import numpy as np
 import scipy.optimize as opt
 from pandas import Series, read_table, ExcelWriter, DataFrame, to_numeric, concat
 from sklearn.metrics import r2_score
+# для кастомного вычисления AI
+from scipy.integrate import trapz
 ############################
 # также для графиков понадобится библиотека matplotlib
 import matplotlib.pyplot as plt
@@ -21,6 +23,10 @@ from PySide6.QtWidgets import QMessageBox
 
 
 def all_RheoScan_level(self) -> None:
+    # закроем все рисунки, если они открыты
+    # если этого не сделать, то может быть такое, что рисунки наложатся друг на друга
+    plt.close()
+
     # это на каком мы уровне находимся
     level = self.ui.spinBox_level.value()
     # какой путь был введен пользователем
@@ -89,6 +95,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
     vibros_check = self.ui.vibros_delete.isChecked()
     save_only_one_name = self.ui.check_name_rheoscan.isChecked()
     save_raw_deform_data = self.ui.check_approx_deform_raw_data.isChecked()
+    dop_css_parameter = self.ui.check_dop_CSS_parameter.isChecked()
     # позиция имени, которое будет сохранено
     name_position = self.ui.spinBox_check_name_rheoscan.value()
     # разделитель данных
@@ -176,7 +183,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
 
     if var_fit and files_agg != []:
         # Data Frame для апроксимации
-        fit_res = DataFrame(columns=['Patient', 'y0', 'A1', 'A2', 'A1+A2', 't1', 't2', 'assim', 'R^2'])
+        fit_res = DataFrame(columns=['Patient', 'y0', 'A1', 'A2', 'A1+A2', 't1', 't2', 'assim', 'R^2', 'AI (2.5 sec.), %', 'AI (5 sec.), %', 'AI (10 sec.), %', 'AI (50 sec.), %', 'AI (100 sec.), %', 'AI (max), %'])
         # индекс для сохранения
         jkd = 1
 
@@ -205,9 +212,29 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             (y0_, A1_, A2_, t1_, t2_), _ = opt.curve_fit(f, x['Time, s'][Bottom_index+3:], x['Raw data, a.u.'][Bottom_index+3:], bounds=((0, -10, -10, 0, 0), (10, 10, 10, float(agg_approx_data__[0]), float(agg_approx_data__[1]))))
             # расчет r^2
             r2 = r2_score(f(x['Time, s'], *[y0_, A1_, A2_, t1_, t2_]), x['Raw data, a.u.'])
+
+            # далее вычислим AI по сырым данным -- если выходим за пределы датафрейма, то просто возращаем None
+            def calc_AI_in_percent(data_frame, time, bottom_index):
+                try:
+                    integral_raw = trapz(data_frame.iloc[bottom_index:bottom_index + int(time * 10), 1] - data_frame.iloc[:, 1].min(), data_frame.iloc[bottom_index:bottom_index + int(time * 10), 0])
+                    # индекс агрегации определяется, не просто как отношение: площадь под кривой к площади прямоугольника
+                    # а как к площади прямоугольника, верхняя сторона которого лежит на линии max значений
+                    # для просто прямоугольника надо раскомментировать строчку ниже
+                    # integral_rect = (data_frame.at[bottom_index+time*10,'Raw data, a.u.'] - data_frame.iloc[:, 1].min())*time
+                    integral_rect = (data_frame.iloc[:, 1].max() - data_frame.iloc[:, 1].min()) * time
+                    return integral_raw / integral_rect * 100
+                except:
+                    return None
+            # Индексы агрегации для 5 сек., 10 сек., 50 сек., 100 сек.
+            AI_2_5 = calc_AI_in_percent(x, 2.5, Bottom_index)
+            AI_5 = calc_AI_in_percent(x, 5, Bottom_index)
+            AI_10 = calc_AI_in_percent(x, 10, Bottom_index)
+            AI_50 = calc_AI_in_percent(x, 50, Bottom_index)
+            AI_100 = calc_AI_in_percent(x, 100, Bottom_index)
+            AI_max = calc_AI_in_percent(x, math.floor(len(x)/10)-1, Bottom_index)
+
             # сохранение значений аппроксимации в строку и далее в Data Frame
-            mm = (Name_fit_agg, y0_, abs(A1_), abs(A2_), abs(A1_) + abs(A2_), t1_, t2_, assim, r2)
-            fit_res.loc[jkd] = mm
+            fit_res.loc[jkd] = (Name_fit_agg, y0_, abs(A1_), abs(A2_), abs(A1_) + abs(A2_), t1_, t2_, assim, r2, AI_2_5, AI_5, AI_10, AI_50, AI_100, AI_max)
             jkd += 1
             if fiting_aggreg:
                 #####################################
@@ -242,21 +269,61 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             all_lines_CSS = sum(1 for line in open(i))
             # прочтатать каждый файл и извлечь данные
             x = read_table(i, skipfooter=all_lines_CSS - 15, header=None, decimal=',', index_col=False, engine='python')
-            mm = x.drop([0, 2, 3, 4, 5, 6, 7, 8, 11])
-            mm = mm[0].apply(lambda x: Series(x.split(':'))).T
-            all_CSS = all_CSS.append(mm.loc[1])
-            # all_CSS = concat([all_CSS, mm.loc[1]])
-        all_CSS.columns = ['Patient', 'Critical time, s', 'CSS']
+            data_css = x.drop([0, 2, 3, 4, 5, 6, 7, 8, 11])
+            data_css = data_css[0].apply(lambda x: Series(x.split(':'))).T
+            if dop_css_parameter:
+                ############
+                # читаем все остальные данные - новый параметр
+                ############
+                new_css_parameter = read_table(i, skiprows=17, decimal=',', engine='python', header=None)
+                # максимальная интенсивность
+                max_int_css = new_css_parameter.iloc[:, 2].max()
+                # индекс максимальная интенсивность
+                max_int_css_index = new_css_parameter.iloc[:, 2].idxmax()
+                max_int_css_index -= 5
+                # индекс, когда shear stress был порядка 2 Па
+                index_min = new_css_parameter[new_css_parameter[3] < 2].index.min()
+                try:
+                    # аппроксимация
+                    (a_trash, b_trash, new_parameter), _ = opt.curve_fit(lambda t, a, b, c: a + b * np.exp(-t / c),
+                                                                         new_css_parameter[3][index_min:max_int_css_index],
+                                                                         new_css_parameter[2][index_min:max_int_css_index])
+                except Exception as e:
+                    dlg.setWindowTitle("RheoScan - Ошибка")
+                    dlg.setText(f'Проблема при аппроксимации данных CSS в файле по пути:\n{i}\n' + str(e) + '\nПродолжить обсчет?')
+                    dlg.setIcon(QMessageBox.Icon.Critical)
+                    dlg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+                    ret = dlg.exec()
+
+                    if ret == QMessageBox.Yes:
+                        new_parameter = 0
+                    else:
+                        return [1, DataFrame()]
+
+                # добавляем всё в датафрейм
+                all_CSS = all_CSS.append(concat([data_css.loc[1], Series(data=str(new_parameter))], axis=0), ignore_index=True)
+            else:
+                # добавляем всё в датафрейм
+                all_CSS = all_CSS.append(data_css.loc[1])
+
+        if dop_css_parameter:
+            all_CSS.columns = ['Patient', 'Critical time, s', 'CSS', 'New parameter, Pa']
+        else:
+            all_CSS.columns = ['Patient', 'Critical time, s', 'CSS']
         # делаем всё тоже самое, что и для обработки для маленькой кюветы
         all_CSS = all_CSS.applymap(lambda x: str(x.replace(',', '.')))
         # преобразовать тип данных для всех параметров за исключением 'Patient'
         all_CSS['Critical time, s'] = all_CSS['Critical time, s'].astype(float)
         all_CSS['CSS'] = all_CSS['CSS'].astype(float)
-        # изменить порядкок -- для простоты
-        all_CSS = all_CSS[['Patient', 'CSS', 'Critical time, s']]
+        if dop_css_parameter:
+            all_CSS['New parameter, Pa'] = all_CSS['New parameter, Pa'].astype(float)
+            # изменить порядкок -- для простоты
+            all_CSS = all_CSS[['Patient', 'CSS', 'Critical time, s', 'New parameter, Pa']]
+        else:
+            # изменить порядкок -- для простоты
+            all_CSS = all_CSS[['Patient', 'CSS', 'Critical time, s']]
         # обновить индекс
         all_CSS = all_CSS.reset_index(drop=True)
-
 
     '''
     Большая кювета - деформируемость
@@ -278,9 +345,9 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             # всё для того, чтобы не было Inf
             x[1] = x[1].astype(float)
             # убераем повторяющееся значение
-            mm = x.drop([1])
-            all_def = all_def.append(mm[1])
-            # all_def = concat([all_def, mm[1]])
+            data_def = x.drop([1])
+            all_def = all_def.append(data_def[1])
+            # all_def = concat([all_def, data_def[1]])
             # Data Frame для имени
             newx = read_table(i, skipfooter=50, header=None, decimal=',', index_col=False, engine='python')
             newx_x = newx.loc[1]
@@ -352,10 +419,10 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             # всё для того, чтобы не было Inf
             x[1] = x[1].astype(float)
             # убераем повторяющееся значение
-            mm = x.drop([1])
+            data_def_approx = x.drop([1])
             # проверка, что файл не поврежден
-            count_inf = np.isinf(mm[1]).values.any()
-            count_nan = np.isnan(mm[1]).values.any()
+            count_inf = np.isinf(data_def_approx[1]).values.any()
+            count_nan = np.isnan(data_def_approx[1]).values.any()
             sum_count = count_inf + count_nan
             if sum_count:
                 sum_bad_files += 1
@@ -366,7 +433,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             sss = ''.join(iopp)
             ttt = sss.replace("Patient name:", "")
             # df2 - непосредственно значения индекса элонгации для последующей аппроксимации
-            df2 = mm[1]
+            df2 = data_def_approx[1]
             # one3 - непосредственно значения сдвиговых напряжений для последующей аппроксимации
             one3 = one2[1]
             # количество значений индекса элонгации -- всего 13

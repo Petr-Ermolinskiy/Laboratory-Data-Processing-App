@@ -1,12 +1,12 @@
 import pandas as pd
 from scipy import stats
 import numpy as np
+# для Пермутационных тестов
+from permutations_stats.permutations import permutation_test, repeated_permutation_test
+import numba
 
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
-
-# надо будет добавить pip install permutations-stats
-# https://pypi.org/project/permutations-stats/
 
 def p_value_calc_for_two_columns(self) -> None:
     dlg = QMessageBox(self)
@@ -70,8 +70,26 @@ def p_value_calc_for_two_columns(self) -> None:
                                               alternative=alternative)
             # само значение p
             p = all_data.pvalue
+        elif stat_test == 'Пермутационный критерий Бруннера — Мюнцеля':
+            stat = permutation_test(df[x_name].dropna(), df[y_name].dropna(), test="brunner_munzel", alternative=alternative)
+            p = stat.pvalue
+        elif stat_test == 'Пермутационный критерий Манна — Уитни':
+            stat = permutation_test(df[x_name].dropna(), df[y_name].dropna(), test="mann_whitney", alternative=alternative)
+            p = stat.pvalue
+        elif stat_test == 'Пермутационный критерий Уилкоксона':
+            # изменим формат
+            data = np.vstack([df[x_name].dropna(), df[y_name].dropna()]).T
+            # сделаем расчет
+            stat = repeated_permutation_test(data, test="wilcoxon", alternative=alternative)
+            p = stat.pvalue
+        elif stat_test == 'Пермутационный критерий Фридмана':
+            # изменим формат
+            data = np.vstack([df[x_name].dropna(), df[y_name].dropna()]).T
+            # сделаем расчет
+            stat = repeated_permutation_test(data, test="friedman", alternative=alternative)
+            p = stat.pvalue
         else:
-            p='Внутренняя ошибка'
+            p='Внутренняя ошибка - обратитесь в разработчику'
 
     except Exception as e:
         dlg.setWindowTitle("Расчёт p-value")

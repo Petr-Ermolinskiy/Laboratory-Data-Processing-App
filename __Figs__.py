@@ -5,6 +5,9 @@ import pandas as pd
 import seaborn as sns
 from scipy import stats
 import numpy as np
+# для Пермутационных тестов
+from permutations_stats.permutations import permutation_test, repeated_permutation_test
+import numba
 
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
@@ -16,6 +19,9 @@ from PySide6.QtWidgets import QMessageBox
 ##############################################################
 def figs_plot(self) -> None:
     dlg = QMessageBox(self)
+    # закроем все рисунки, если они открыты
+    # если этого не сделать, то может быть такое, что рисунки наложатся друг на друга
+    plt.close()
     # в этот list будут записываться все доп. функции для графиков -- см. определение ниже
     global plot_feature_data__
     # я решил все особенности и кастомизацию графиков перевести в массив "plot_feature_data__" -- по большей части это связано с тем, что этот код я несколько раз переписывал
@@ -184,7 +190,10 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
                 df_list.append(just_all_we_need2)
         if plot_feature_data__[16]:
             # вот и массив с таблицами p-values
-            df_list_stat = calculate_table_for_p_val(df_list, dict_for_future)
+            try:
+                df_list_stat = calculate_table_for_p_val(df_list, dict_for_future)
+            except Exception as e:
+                return 'Скорее всего проблема с данными: в одной из групп отсутствуют данные для обработки.\n' + str(e)
         # вот и массив для графиков
         big_G = just_to_numpy_for_plot(df_list, dict_for_future)
         # построение графиков
@@ -333,6 +342,26 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
                 all_data = stats.permutation_test((data1, data2), statistic, permutation_type='independent', vectorized=True, alternative=plot_feature_data__[13])
                 # само значение p
                 p = all_data.pvalue
+            elif plot_feature_data__[12] == 'Пермутационный критерий Бруннера — Мюнцеля':
+                stat = permutation_test(data1, data2, test="brunner_munzel",
+                                        alternative=plot_feature_data__[13])
+                p = stat.pvalue
+            elif plot_feature_data__[12] == 'Пермутационный критерий Манна — Уитни':
+                stat = permutation_test(data1, data2, test="mann_whitney",
+                                        alternative=plot_feature_data__[13])
+                p = stat.pvalue
+            elif plot_feature_data__[12] == 'Пермутационный критерий Уилкоксона':
+                # изменим формат
+                data_for_paired_permutations = np.vstack([data1, data2]).T
+                # сделаем расчет
+                stat = repeated_permutation_test(data_for_paired_permutations, test="wilcoxon", alternative=plot_feature_data__[13])
+                p = stat.pvalue
+            elif plot_feature_data__[12] == 'Пермутационный критерий Фридмана':
+                # изменим формат
+                data_for_paired_permutations = np.vstack([data1, data2]).T
+                # сделаем расчет
+                stat = repeated_permutation_test(data_for_paired_permutations, test="friedman", alternative=plot_feature_data__[13])
+                p = stat.pvalue
             else:
                 pass
 
@@ -498,6 +527,26 @@ def calculate_table_for_p_val(df_list, dict_for_future):
                     # само значение p
                     p_value = all_data.pvalue
 
+                elif plot_feature_data__[12] == 'Пермутационный критерий Бруннера — Мюнцеля':
+                    stat = permutation_test(df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna(), test="brunner_munzel",
+                                            alternative=plot_feature_data__[13])
+                    p_value = stat.pvalue
+                elif plot_feature_data__[12] == 'Пермутационный критерий Манна — Уитни':
+                    stat = permutation_test(df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna(), test="mann_whitney",
+                                            alternative=plot_feature_data__[13])
+                    p_value = stat.pvalue
+                elif plot_feature_data__[12] == 'Пермутационный критерий Уилкоксона':
+                    # изменим формат
+                    data_for_paired_permutations = np.vstack([df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna()]).T
+                    # сделаем расчет
+                    stat = repeated_permutation_test(data_for_paired_permutations, test="wilcoxon", alternative=plot_feature_data__[13])
+                    p_value = stat.pvalue
+                elif plot_feature_data__[12] == 'Пермутационный критерий Фридмана':
+                    # изменим формат
+                    data_for_paired_permutations = np.vstack([df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna()]).T
+                    # сделаем расчет
+                    stat = repeated_permutation_test(data_for_paired_permutations, test="friedman", alternative=plot_feature_data__[13])
+                    p_value = stat.pvalue
                 else:
                     pass
                 # добавим в наш DataFrame

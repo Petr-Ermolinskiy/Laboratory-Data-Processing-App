@@ -12,7 +12,9 @@ from PySide6.QtWidgets import QMessageBox
 
 def biola_result(self):
     dlg = QMessageBox(self)
-
+    # закроем все рисунки, если они открыты
+    # если этого не сделать, то может быть такое, что рисунки наложатся друг на друга
+    plt.close()
     #########################
     # параметры, которые нам понадобятся
     plot_fiture = self.ui.doubleSpinBox_Biola.value(), self.ui.comboBox_Biola_SD_or.currentText(), self.ui.comboBox_Biola_language.currentText(), self.ui.check_setka_biola.isChecked()
