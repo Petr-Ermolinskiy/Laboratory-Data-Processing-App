@@ -3,6 +3,61 @@ import pandas as pd
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
 
+# функция, конвертирующая данные либо в индексированные либо по столбцам
+def pivot_or_melt_excel_file(self) -> None:
+    dlg = QMessageBox(self)
+    #########################
+    # параметры, которые нам понадобятся
+    path = self.ui.path_for_pivot_table.text()
+    exel_name = self.ui.comboBox_pivot_table.currentText()
+    sheet_we_need = self.ui.comboBox_pivot_table_excel_sheet.currentText()
+    hue_name = str(self.ui.comboBox_pivot_hue.currentText())
+    # как конвертировать данные - индексированные или сырые
+    convert_type = self.ui.comboBox_index_data_or_raw.currentText()
+    #########################
+    if path == '':
+        dlg.setWindowTitle("Сводная таблица")
+        dlg.setText("Не введен путь к excel файлу")
+        dlg.exec()
+        return None
+    file = path + '//' + exel_name
+    try:
+        names = pd.ExcelFile(file).sheet_names
+    except Exception as e:
+        dlg.setWindowTitle("Сводная таблица")
+        dlg.setText("Нет такого файла или директории.\n" + str(e))
+        dlg.exec()
+        return None
+
+    df = pd.read_excel(file, sheet_name=sheet_we_need)
+    df.columns = [str(i) for i in df.columns]
+    # отсекаем всё то, что не нужно
+    index_col = df.columns.get_loc(hue_name)
+    df = df[df.columns[index_col:]]
+
+    if convert_type == 'из индексированных в сырые':
+        pivot_df_with_nan = pd.pivot(df, columns=hue_name)
+        # следующая сточка очень важна, чтобы не потерять какие-то значения, если есть ряд пропусков
+        pivot_df = pd.DataFrame(index=list(range(0, max(pivot_df_with_nan.count()))), columns=pivot_df_with_nan.columns)
+        # убираем NaN
+        for j in pivot_df_with_nan.columns:
+            ignore_nan = pivot_df_with_nan[j]
+            ignore_nan = ignore_nan.dropna().reset_index(drop=True)
+            pivot_df[j] = ignore_nan.copy()
+        # сохраняем датафрейм
+        pivot_df.to_excel(path + '//' + 'pivot_' + exel_name)
+    elif convert_type == 'из сырых в индексируемые':
+        # сохраняем датафрейм - тут всё намного легче
+        df.melt().dropna().to_excel(path + '//' + 'unpivot_' + exel_name)
+    else:
+        pass
+
+    dlg.setWindowTitle("Сводная таблица")
+    dlg.setText("Данные успешно переведены " + convert_type)
+    dlg.exec()
+    return None
+
+
 # сводная таблица - изначальный функционал предполагал, что программа будет автоматически проходиться по всем листам. Однако было решено, что лист мы выбираем сами.
 def pivot_do_for_sheet(self) -> None:
     dlg = QMessageBox(self)

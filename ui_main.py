@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(739, 721)
+        MainWindow.resize(728, 739)
         icon = QIcon()
         icon.addFile(u"LOGO.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -1764,6 +1764,36 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_12.addLayout(self.horizontalLayout_14)
 
+        self.horizontalLayout_138 = QHBoxLayout()
+        self.horizontalLayout_138.setObjectName(u"horizontalLayout_138")
+        self.check_box_figs_all_sheets = QCheckBox(self.tab)
+        self.check_box_figs_all_sheets.setObjectName(u"check_box_figs_all_sheets")
+        self.check_box_figs_all_sheets.setFont(font5)
+        self.check_box_figs_all_sheets.setChecked(True)
+
+        self.horizontalLayout_138.addWidget(self.check_box_figs_all_sheets)
+
+        self.horizontalLayout_137 = QHBoxLayout()
+        self.horizontalLayout_137.setObjectName(u"horizontalLayout_137")
+        self.lb_exel_name_8 = QLabel(self.tab)
+        self.lb_exel_name_8.setObjectName(u"lb_exel_name_8")
+        self.lb_exel_name_8.setEnabled(False)
+        self.lb_exel_name_8.setFont(font5)
+
+        self.horizontalLayout_137.addWidget(self.lb_exel_name_8)
+
+        self.comboBox_figs_sheets = QComboBox(self.tab)
+        self.comboBox_figs_sheets.setObjectName(u"comboBox_figs_sheets")
+        self.comboBox_figs_sheets.setEnabled(False)
+
+        self.horizontalLayout_137.addWidget(self.comboBox_figs_sheets)
+
+
+        self.horizontalLayout_138.addLayout(self.horizontalLayout_137)
+
+
+        self.verticalLayout_12.addLayout(self.horizontalLayout_138)
+
         self.horizontalLayout_15 = QHBoxLayout()
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.lb_hue_name = QLabel(self.tab)
@@ -2797,7 +2827,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.addWidget(self.tabWidget)
 
 
-        self.gridLayout_4.addLayout(self.verticalLayout_17, 0, 0, 2, 2)
+        self.gridLayout_4.addLayout(self.verticalLayout_17, 0, 0, 1, 1)
 
         self.btn_plot_and_save_figs = QPushButton(self.tab)
         self.btn_plot_and_save_figs.setObjectName(u"btn_plot_and_save_figs")
@@ -2806,7 +2836,7 @@ class Ui_MainWindow(object):
 "border: 3px solid rgb(128, 160, 165);\n"
 "border-radius: 10px;")
 
-        self.gridLayout_4.addWidget(self.btn_plot_and_save_figs, 2, 0, 1, 2)
+        self.gridLayout_4.addWidget(self.btn_plot_and_save_figs, 1, 0, 1, 1)
 
         self.tabWidget_2.addTab(self.tab, "")
         self.widget2 = QWidget()
@@ -3132,7 +3162,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 654, 207))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 621, 207))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.tableWidget = QTableWidget(self.scrollAreaWidgetContents)
@@ -3221,8 +3251,8 @@ class Ui_MainWindow(object):
         self.tabWidget_2.addTab(self.widget2, "")
         self.tab_8 = QWidget()
         self.tab_8.setObjectName(u"tab_8")
-        self.formLayout_3 = QFormLayout(self.tab_8)
-        self.formLayout_3.setObjectName(u"formLayout_3")
+        self.gridLayout_13 = QGridLayout(self.tab_8)
+        self.gridLayout_13.setObjectName(u"gridLayout_13")
         self.verticalLayout_43 = QVBoxLayout()
         self.verticalLayout_43.setObjectName(u"verticalLayout_43")
         self.verticalLayout_37 = QVBoxLayout()
@@ -3310,7 +3340,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_43.addWidget(self.line_2)
 
-        self.verticalSpacer_6 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_6 = QSpacerItem(20, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_43.addItem(self.verticalSpacer_6)
 
@@ -3397,7 +3427,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_43.addWidget(self.yyy)
 
-        self.verticalSpacer_5 = QSpacerItem(10, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_5 = QSpacerItem(10, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_43.addItem(self.verticalSpacer_5)
 
@@ -3521,8 +3551,65 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_43.addWidget(self.ppp)
 
+        self.verticalSpacer_7 = QSpacerItem(10, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
-        self.formLayout_3.setLayout(0, QFormLayout.SpanningRole, self.verticalLayout_43)
+        self.verticalLayout_43.addItem(self.verticalSpacer_7)
+
+        self.ppp_2 = QFrame(self.tab_8)
+        self.ppp_2.setObjectName(u"ppp_2")
+        self.ppp_2.setStyleSheet(u"QFrame#ppp_2{\n"
+"border: 5px solid rgb(128, 160, 165);\n"
+"border-radius: 17px;\n"
+"}")
+        self.verticalLayout_53 = QVBoxLayout(self.ppp_2)
+        self.verticalLayout_53.setObjectName(u"verticalLayout_53")
+        self.verticalLayout_53.setContentsMargins(8, 8, 8, 8)
+        self.lb_color_pal_box_22 = QLabel(self.ppp_2)
+        self.lb_color_pal_box_22.setObjectName(u"lb_color_pal_box_22")
+        sizePolicy18.setHeightForWidth(self.lb_color_pal_box_22.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_22.setSizePolicy(sizePolicy18)
+        self.lb_color_pal_box_22.setFont(font10)
+
+        self.verticalLayout_53.addWidget(self.lb_color_pal_box_22, 0, Qt.AlignHCenter)
+
+        self.horizontalLayout_143 = QHBoxLayout()
+        self.horizontalLayout_143.setSpacing(10)
+        self.horizontalLayout_143.setObjectName(u"horizontalLayout_143")
+        self.lb_sd_or_minmax_11 = QLabel(self.ppp_2)
+        self.lb_sd_or_minmax_11.setObjectName(u"lb_sd_or_minmax_11")
+        sizePolicy.setHeightForWidth(self.lb_sd_or_minmax_11.sizePolicy().hasHeightForWidth())
+        self.lb_sd_or_minmax_11.setSizePolicy(sizePolicy)
+        self.lb_sd_or_minmax_11.setFont(font5)
+
+        self.horizontalLayout_143.addWidget(self.lb_sd_or_minmax_11)
+
+        self.comboBox_index_data_or_raw = QComboBox(self.ppp_2)
+        self.comboBox_index_data_or_raw.addItem("")
+        self.comboBox_index_data_or_raw.addItem("")
+        self.comboBox_index_data_or_raw.setObjectName(u"comboBox_index_data_or_raw")
+        sizePolicy5.setHeightForWidth(self.comboBox_index_data_or_raw.sizePolicy().hasHeightForWidth())
+        self.comboBox_index_data_or_raw.setSizePolicy(sizePolicy5)
+        self.comboBox_index_data_or_raw.setFont(font5)
+
+        self.horizontalLayout_143.addWidget(self.comboBox_index_data_or_raw)
+
+
+        self.verticalLayout_53.addLayout(self.horizontalLayout_143)
+
+        self.btn_save_pivot_or_melt = QPushButton(self.ppp_2)
+        self.btn_save_pivot_or_melt.setObjectName(u"btn_save_pivot_or_melt")
+        self.btn_save_pivot_or_melt.setFont(font5)
+        self.btn_save_pivot_or_melt.setStyleSheet(u"background-color: rgba(128, 160, 165, 50);\n"
+"border: 3px solid rgb(128, 160, 165);\n"
+"border-radius: 10px;")
+
+        self.verticalLayout_53.addWidget(self.btn_save_pivot_or_melt)
+
+
+        self.verticalLayout_43.addWidget(self.ppp_2)
+
+
+        self.gridLayout_13.addLayout(self.verticalLayout_43, 0, 0, 1, 1)
 
         self.tabWidget_2.addTab(self.tab_8, "")
         self.tab_10 = QWidget()
@@ -4426,21 +4513,30 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.comboBox_catplot_SD_or_not, self.btn_plot_and_save_catplot)
 
         self.retranslateUi(MainWindow)
-        self.check_name_rheoscan.toggled.connect(self.spinBox_check_name_rheoscan.setEnabled)
-        self.check_name_rheoscan.toggled.connect(self.label_19.setEnabled)
+        self.check_stat_znachimost_catplot.toggled.connect(self.comboBox_stat_test_catplot.setEnabled)
+        self.check_stat_znachimost_catplot.toggled.connect(self.comboBox_catplot_stat_formatt.setEnabled)
+        self.check_stat_znachimost_catplot.toggled.connect(self.comboBox_catplot_mult_stat.setEnabled)
+        self.check_biola_plot_figs.toggled.connect(self.plp.setEnabled)
+        self.check_box_figs_all_sheets.toggled.connect(self.comboBox_figs_sheets.setDisabled)
+        self.check_box_figs_all_sheets.toggled.connect(self.lb_exel_name_8.setDisabled)
+        self.check_stat_znachimost.toggled.connect(self.comboBox_stat_test.setEnabled)
+        self.check_stat_znachimost.toggled.connect(self.comboBox_alter_hep.setEnabled)
+        self.check_stat_znachimost.toggled.connect(self.STAT_znachimost_order_box_plot.setEnabled)
         self.check_approx_agg.toggled.connect(self.check_figs_for_agg.setEnabled)
         self.check_approx_deform.toggled.connect(self.check_for_deform.setEnabled)
-        self.check_approx_agg.toggled.connect(self.label_20.setEnabled)
-        self.check_approx_agg.toggled.connect(self.label_21.setEnabled)
         self.check_approx_agg.toggled.connect(self.tua_1_agg.setEnabled)
         self.check_approx_agg.toggled.connect(self.tua_2_agg.setEnabled)
-        self.check_approx_deform.toggled.connect(self.label_23.setEnabled)
-        self.check_approx_deform.toggled.connect(self.label_18.setEnabled)
+        self.check_approx_agg.toggled.connect(self.label_20.setEnabled)
+        self.check_approx_agg.toggled.connect(self.label_21.setEnabled)
         self.check_approx_deform.toggled.connect(self.r2_def.setEnabled)
         self.check_approx_deform.toggled.connect(self.spinBox_n_max_deform.setEnabled)
-        self.vibros_delete.toggled.connect(self.iqr_vibros.setEnabled)
+        self.check_approx_deform.toggled.connect(self.label_23.setEnabled)
+        self.check_approx_deform.toggled.connect(self.label_18.setEnabled)
         self.check_approx_deform.toggled.connect(self.check_approx_deform_raw_data.setEnabled)
-        self.check_biola_plot_figs.toggled.connect(self.plp.setEnabled)
+        self.vibros_delete.toggled.connect(self.iqr_vibros.setEnabled)
+        self.vibros_delete.toggled.connect(self.label_11.setEnabled)
+        self.check_name_rheoscan.toggled.connect(self.label_19.setEnabled)
+        self.check_name_rheoscan.toggled.connect(self.spinBox_check_name_rheoscan.setEnabled)
 
         self.Lab_stuff.setCurrentIndex(0)
         self.tabWidget_2.setCurrentIndex(0)
@@ -4452,7 +4548,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 \u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u0433\u0440\u0430\u0444\u0438\u043a\u043e\u0432", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f 3.4", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f 3.41", None))
         self.comboBox_style_sheet.setItemText(0, QCoreApplication.translate("MainWindow", u"\u041e\u0441\u043d\u043e\u0432\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None))
         self.comboBox_style_sheet.setItemText(1, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u043c\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None))
 
@@ -4669,6 +4765,8 @@ class Ui_MainWindow(object):
         self.lb_path_for_plot.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c \u043a excel \u0444\u0430\u0439\u043b\u0443", None))
         self.path_for_plot.setText("")
         self.lb_exel_name.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430", None))
+        self.check_box_figs_all_sheets.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e \u0432\u0441\u0435\u043c \u043b\u0438\u0441\u0442\u0430\u043c", None))
+        self.lb_exel_name_8.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430 \u0432 \u0444\u0430\u0439\u043b\u0435", None))
 #if QT_CONFIG(tooltip)
         self.lb_hue_name.setToolTip(QCoreApplication.translate("MainWindow", u"\u0418\u043c\u0435\u043d\u043d\u043e \u043f\u043e\u0441\u043b\u0435 \u044d\u0442\u043e\u0433\u043e \u0441\u0442\u043e\u043b\u0431\u0446\u0430 \u0434\u043e\u043b\u0436\u043d\u044b \u0438\u0434\u0442\u0438 \u0441\u0442\u043e\u043b\u0431\u0446\u044b \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438", None))
 #endif // QT_CONFIG(tooltip)
@@ -5090,6 +5188,12 @@ class Ui_MainWindow(object):
         self.comboBox_correlation_color_map.setItemText(12, QCoreApplication.translate("MainWindow", u"gist_heat", None))
 
         self.btn_plot_and_save_corr_table.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u0443\u044e \u043c\u0430\u0442\u0440\u0438\u0446\u0443 \u043f\u043e \u0432\u0441\u0435\u043c \u0434\u0430\u043d\u043d\u044b\u043c", None))
+        self.lb_color_pal_box_22.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u0432 \u0438\u043d\u0434\u0435\u043a\u0441\u0438\u0440\u0443\u0435\u043c\u044b\u0435/\u043f\u043e \u0441\u0442\u043e\u043b\u0431\u0446\u0430\u043c", None))
+        self.lb_sd_or_minmax_11.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u0434\u0430\u043d\u043d\u044b\u0435", None))
+        self.comboBox_index_data_or_raw.setItemText(0, QCoreApplication.translate("MainWindow", u"\u0438\u0437 \u0438\u043d\u0434\u0435\u043a\u0441\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u0432 \u0441\u044b\u0440\u044b\u0435", None))
+        self.comboBox_index_data_or_raw.setItemText(1, QCoreApplication.translate("MainWindow", u"\u0438\u0437 \u0441\u044b\u0440\u044b\u0445 \u0432 \u0438\u043d\u0434\u0435\u043a\u0441\u0438\u0440\u0443\u0435\u043c\u044b\u0435", None))
+
+        self.btn_save_pivot_or_melt.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c excel \u0444\u0430\u0439\u043b", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_8), QCoreApplication.translate("MainWindow", u"\u0421\u0432\u043e\u0434\u043d\u0430\u044f \u0442\u0430\u0431\u043b\u0438\u0446\u0430", None))
 #if QT_CONFIG(tooltip)
         self.lb_path_for_plot_3.setToolTip(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043d\u0430\u0439\u0434\u0435\u043d excel \u0444\u0430\u0439\u043b", None))

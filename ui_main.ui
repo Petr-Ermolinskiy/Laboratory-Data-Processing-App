@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>739</width>
-    <height>721</height>
+    <width>728</width>
+    <height>739</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
        <string notr="true">color: rgb(128, 160, 165);</string>
       </property>
       <property name="text">
-       <string>Ермолинский Петр — версия 3.4</string>
+       <string>Ермолинский Петр — версия 3.41</string>
       </property>
      </widget>
     </item>
@@ -3523,7 +3523,7 @@ border-radius: 10px;</string>
             <string>Графики</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_4">
-            <item row="0" column="0" rowspan="2" colspan="2">
+            <item row="0" column="0">
              <layout class="QVBoxLayout" name="verticalLayout_17">
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -3576,6 +3576,51 @@ border-radius: 10px;</string>
                     </item>
                     <item>
                      <widget class="QComboBox" name="comboBox"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_138">
+                    <item>
+                     <widget class="QCheckBox" name="check_box_figs_all_sheets">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>По всем листам</string>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_137">
+                      <item>
+                       <widget class="QLabel" name="lb_exel_name_8">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Название листа в файле</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QComboBox" name="comboBox_figs_sheets">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
                     </item>
                    </layout>
                   </item>
@@ -5966,7 +6011,7 @@ border-radius: 17px;
               </item>
              </layout>
             </item>
-            <item row="2" column="0" colspan="2">
+            <item row="1" column="0">
              <widget class="QPushButton" name="btn_plot_and_save_figs">
               <property name="font">
                <font>
@@ -6598,7 +6643,7 @@ border-radius: 10px;</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>654</width>
+                 <width>621</width>
                  <height>207</height>
                 </rect>
                </property>
@@ -6833,8 +6878,8 @@ border-radius: 10px;</string>
            <attribute name="title">
             <string>Сводная таблица</string>
            </attribute>
-           <layout class="QFormLayout" name="formLayout_3">
-            <item row="0" column="0" colspan="2">
+           <layout class="QGridLayout" name="gridLayout_13">
+            <item row="0" column="0">
              <layout class="QVBoxLayout" name="verticalLayout_43">
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_37">
@@ -6968,7 +7013,7 @@ border-radius: 10px;</string>
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>20</height>
+                  <height>5</height>
                  </size>
                 </property>
                </spacer>
@@ -7136,7 +7181,7 @@ border-radius: 10px;</string>
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>10</width>
-                  <height>20</height>
+                  <height>5</height>
                  </size>
                 </property>
                </spacer>
@@ -7404,6 +7449,133 @@ border-radius: 10px;</string>
                    </property>
                    <property name="text">
                     <string>Сохранить корреляционную матрицу по всем данным</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>10</width>
+                  <height>5</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QFrame" name="ppp_2">
+                <property name="styleSheet">
+                 <string notr="true">QFrame#ppp_2{
+border: 5px solid rgb(128, 160, 165);
+border-radius: 17px;
+}</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_53">
+                 <property name="leftMargin">
+                  <number>8</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>8</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>8</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>8</number>
+                 </property>
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="lb_color_pal_box_22">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                     <bold>false</bold>
+                     <underline>true</underline>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Перевести данные в индексируемые/по столбцам</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_143">
+                   <property name="spacing">
+                    <number>10</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="lb_sd_or_minmax_11">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Перевести данные</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="comboBox_index_data_or_raw">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>из индексированных в сырые</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>из сырых в индексируемые</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_save_pivot_or_melt">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgba(128, 160, 165, 50);
+border: 3px solid rgb(128, 160, 165);
+border-radius: 10px;</string>
+                   </property>
+                   <property name="text">
+                    <string>Сохранить excel файл</string>
                    </property>
                   </widget>
                  </item>
@@ -9155,226 +9327,50 @@ border-radius: 10px;</string>
  <resources/>
  <connections>
   <connection>
-   <sender>check_name_rheoscan</sender>
+   <sender>check_stat_znachimost_catplot</sender>
    <signal>toggled(bool)</signal>
-   <receiver>spinBox_check_name_rheoscan</receiver>
+   <receiver>comboBox_stat_test_catplot</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
+     <x>89</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
+     <x>121</x>
+     <y>102</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>check_name_rheoscan</sender>
+   <sender>check_stat_znachimost_catplot</sender>
    <signal>toggled(bool)</signal>
-   <receiver>label_19</receiver>
+   <receiver>comboBox_catplot_stat_formatt</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
+     <x>89</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
+     <x>121</x>
+     <y>102</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>check_approx_agg</sender>
+   <sender>check_stat_znachimost_catplot</sender>
    <signal>toggled(bool)</signal>
-   <receiver>check_figs_for_agg</receiver>
+   <receiver>comboBox_catplot_mult_stat</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
+     <x>89</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_deform</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>check_for_deform</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_agg</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>label_20</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_agg</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>label_21</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_agg</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>tua_1_agg</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_agg</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>tua_2_agg</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_deform</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>label_23</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_deform</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>label_18</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_deform</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>r2_def</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_deform</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>spinBox_n_max_deform</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vibros_delete</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>iqr_vibros</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>check_approx_deform</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>check_approx_deform_raw_data</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>82</y>
+     <x>121</x>
+     <y>102</y>
     </hint>
    </hints>
   </connection>
@@ -9385,12 +9381,332 @@ border-radius: 10px;</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>467</x>
-     <y>428</y>
+     <x>100</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>272</x>
-     <y>587</y>
+     <x>100</x>
+     <y>71</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_box_figs_all_sheets</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBox_figs_sheets</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>651</x>
+     <y>181</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_box_figs_all_sheets</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>lb_exel_name_8</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>476</x>
+     <y>181</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_stat_znachimost</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBox_stat_test</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>474</x>
+     <y>407</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>406</x>
+     <y>468</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_stat_znachimost</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBox_alter_hep</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>474</x>
+     <y>407</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>474</x>
+     <y>523</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_stat_znachimost</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>STAT_znachimost_order_box_plot</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>474</x>
+     <y>407</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>422</x>
+     <y>577</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_agg</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>check_figs_for_agg</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>292</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>59</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_deform</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>check_for_deform</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>450</x>
+     <y>298</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>447</x>
+     <y>325</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_agg</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>tua_1_agg</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>166</x>
+     <y>296</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>310</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_agg</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>tua_2_agg</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>245</x>
+     <y>297</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>325</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_agg</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_20</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>298</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>212</x>
+     <y>399</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_agg</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_21</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>312</x>
+     <y>301</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>245</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_deform</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>r2_def</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>298</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>652</x>
+     <y>394</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_deform</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinBox_n_max_deform</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>560</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>666</x>
+     <y>447</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_deform</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_23</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>491</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>516</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_deform</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_18</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>464</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>501</x>
+     <y>433</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_approx_deform</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>check_approx_deform_raw_data</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>590</x>
+     <y>296</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>588</x>
+     <y>600</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vibros_delete</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>iqr_vibros</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>504</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>470</x>
+     <y>507</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vibros_delete</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_11</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>310</x>
+     <y>507</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>675</x>
+     <y>513</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_name_rheoscan</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_19</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>61</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>112</x>
+     <y>233</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_name_rheoscan</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinBox_check_name_rheoscan</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>229</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>282</x>
+     <y>232</y>
     </hint>
    </hints>
   </connection>

@@ -36,8 +36,11 @@ def figs_plot(self) -> None:
     box_plot_or_not = self.ui.check_box_plot.isChecked()
     corr_is_need_matrix = self.ui.check_corr_matrix.isChecked()
     corr_is_need = self.ui.check_corr_figs.isChecked()
+    # по всем листам проходимся или же только по одному?
+    all_sheets_true = self.ui.check_box_figs_all_sheets.isChecked()
+    one_sheet_name = self.ui.comboBox_figs_sheets.currentText()
     #########################
-
+    # проверяем на ошибки
     checc = error_for_val_plot(plot_feature_data__, path, exel_name)
 
     if checc != '__':
@@ -55,11 +58,16 @@ def figs_plot(self) -> None:
         names = pd.ExcelFile(files).sheet_names
     except Exception as e:
         dlg.setWindowTitle("Графики")
-        dlg.setText('Нет такого файла или директории.\n' + str(e))
+        dlg.setText('Нет такого файла/директории или файл испорчен.\n' + str(e))
         dlg.exec()
         return None
 
-    # выполяем функцию do_for_one_sheet по всем листам в excel файле
+    # если стоит галочка, то проходимся по всем листам, но если же all_sheets_true == False
+    # то выбираем только один лист
+    if all_sheets_true == False:
+        names = [one_sheet_name]
+
+    # выполяем функцию do_for_one_sheet по всем листам (или же только по одному) в excel файле
     check_cykle = '__'
     for i in names:
         check_cykle = do_for_one_sheet(path, files, i, box_plot_or_not, corr_is_need, corr_is_need_matrix, hue_name)

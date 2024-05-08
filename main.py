@@ -73,12 +73,16 @@ class Main_window(QMainWindow):
         self.ui.btn_RheoScan_describe_file_or_files.pressed.connect(self.RheoScan_describe)
         #для кнопки по доп. обработке данных - RheoScan - описать
         self.ui.btn_dop_stat_calc.pressed.connect(self.p_value_calc)
+        #для кнопки по расчету сводных таблиц - перевести данные в индексируемые или в по столбцам
+        self.ui.btn_save_pivot_or_melt.pressed.connect(self.pivot_or_melt)
 
         #########################################
         #путь к папке с файлами - графики
         self.ui.path_for_plot.textChanged.connect(self.add_excel_files_to_combobox)
         #обновим какие есть sheets - графики
-        self.ui.comboBox.currentTextChanged.connect(self.add_sheets_to_combobox)
+        self.ui.comboBox.currentTextChanged.connect(self.figs_add_sheets_to_combobox)
+        #обновим, какие есть колонки
+        self.ui.comboBox_figs_sheets.currentTextChanged.connect(self.add_columns_sheets_to_combobox)
 
         #########################################
         #путь к папке с файлами - pivot
@@ -175,6 +179,10 @@ class Main_window(QMainWindow):
     # корреляционная матрица
     def corr_table(self):
         corr_for_sheet(self)
+    # перевести данные в индексируемые или по столбцам
+    def pivot_or_melt(self):
+        pivot_or_melt_excel_file(self)
+
     # Catplot
     def cat_plot(self):
         plot_catplot(self)
@@ -199,20 +207,28 @@ class Main_window(QMainWindow):
 
     def catplot_add_sheets(self):
         path_file = self.ui.path_for_catplot.text() + '//' + self.ui.comboBox_excel_catplot.currentText()
-        sheets = pd.ExcelFile(path_file).sheet_names
-        self.ui.comboBox_excel_sheet_catplot.clear()  #удалить все элементы из combobox
-        self.ui.comboBox_excel_sheet_catplot.addItems(sheets)
+        try:
+            sheets = pd.ExcelFile(path_file).sheet_names
+            self.ui.comboBox_excel_sheet_catplot.clear()  #удалить все элементы из combobox
+            self.ui.comboBox_excel_sheet_catplot.addItems(sheets)
+        except:
+            self.ui.comboBox_excel_sheet_catplot.clear()  # удалить все элементы из combobox
 
     def catplot_add_x_y_hue(self):
         path_file = self.ui.path_for_catplot.text() + '//' + self.ui.comboBox_excel_catplot.currentText()
-        df = pd.read_excel(path_file, sheet_name=self.ui.comboBox_excel_sheet_catplot.currentText())
-        self.ui.comboBox_catplot_x.clear()  #удалить все элементы из combobox
-        self.ui.comboBox_catplot_y.clear()  # удалить все элементы из combobox
-        self.ui.comboBox_catplot_hue.clear()  # удалить все элементы из combobox
+        try:
+            df = pd.read_excel(path_file, sheet_name=self.ui.comboBox_excel_sheet_catplot.currentText())
+            self.ui.comboBox_catplot_x.clear()  #удалить все элементы из combobox
+            self.ui.comboBox_catplot_y.clear()  # удалить все элементы из combobox
+            self.ui.comboBox_catplot_hue.clear()  # удалить все элементы из combobox
 
-        self.ui.comboBox_catplot_x.addItems(df.columns)
-        self.ui.comboBox_catplot_y.addItems(df.columns)
-        self.ui.comboBox_catplot_hue.addItems(df.columns.insert(0, '--без подгруппы'))
+            self.ui.comboBox_catplot_x.addItems(df.columns)
+            self.ui.comboBox_catplot_y.addItems(df.columns)
+            self.ui.comboBox_catplot_hue.addItems(df.columns.insert(0, '--без подгруппы'))
+        except:
+            self.ui.comboBox_catplot_x.clear()  #удалить все элементы из combobox
+            self.ui.comboBox_catplot_y.clear()  # удалить все элементы из combobox
+            self.ui.comboBox_catplot_hue.clear()  # удалить все элементы из combobox
 
     ############
     # Дополнительная статистика
@@ -228,18 +244,26 @@ class Main_window(QMainWindow):
 
     def dop_stat_add_sheets(self):
         path_file = self.ui.path_for_dop_stat.text() + '//' + self.ui.comboBox_excel_dop_stat.currentText()
-        sheets = pd.ExcelFile(path_file).sheet_names
-        self.ui.comboBox_excel_sheet_dop_stat.clear()  #удалить все элементы из combobox
-        self.ui.comboBox_excel_sheet_dop_stat.addItems(sheets)
+        try:
+            sheets = pd.ExcelFile(path_file).sheet_names
+            self.ui.comboBox_excel_sheet_dop_stat.clear()  # удалить все элементы из combobox
+            self.ui.comboBox_excel_sheet_dop_stat.addItems(sheets)
+        except:
+            self.ui.comboBox_excel_sheet_dop_stat.clear()  # удалить все элементы из combobox
+
 
     def dop_stat_add_x_y_hue(self):
         path_file = self.ui.path_for_dop_stat.text() + '//' + self.ui.comboBox_excel_dop_stat.currentText()
-        df = pd.read_excel(path_file, sheet_name=self.ui.comboBox_excel_sheet_dop_stat.currentText())
-        self.ui.comboBox_dop_stat_x.clear()  #удалить все элементы из combobox
-        self.ui.comboBox_dop_stat_y.clear()  # удалить все элементы из combobox
+        try:
+            df = pd.read_excel(path_file, sheet_name=self.ui.comboBox_excel_sheet_dop_stat.currentText())
+            self.ui.comboBox_dop_stat_x.clear()  #удалить все элементы из combobox
+            self.ui.comboBox_dop_stat_y.clear()  # удалить все элементы из combobox
 
-        self.ui.comboBox_dop_stat_x.addItems(df.columns)
-        self.ui.comboBox_dop_stat_y.addItems(df.columns)
+            self.ui.comboBox_dop_stat_x.addItems(df.columns)
+            self.ui.comboBox_dop_stat_y.addItems(df.columns)
+        except:
+            self.ui.comboBox_dop_stat_x.clear()  # удалить все элементы из combobox
+            self.ui.comboBox_dop_stat_y.clear()  # удалить все элементы из combobox
 
     ############
     # Графики
@@ -250,13 +274,28 @@ class Main_window(QMainWindow):
         files = get_name_out_of_path(files)
         self.ui.comboBox.clear()  #удалить все элементы из combobox
         self.ui.comboBox.addItems(files)
-    def add_sheets_to_combobox(self):
+
+    def figs_add_sheets_to_combobox(self):
         path_file = self.ui.path_for_plot.text() + '//' + self.ui.comboBox.currentText()
-        sheets = pd.ExcelFile(path_file).sheet_names
-        #прочитаем файл
-        df = pd.read_excel(path_file, sheet_name=sheets[0])
-        self.ui.comboBox_2.clear()  #удалить все элементы из combobox
-        self.ui.comboBox_2.addItems(df.columns)
+        try:
+            sheets = pd.ExcelFile(path_file).sheet_names
+            self.ui.comboBox_figs_sheets.clear()  # удалить все элементы из combobox
+            self.ui.comboBox_figs_sheets.addItems(sheets)
+        except:
+            self.ui.comboBox_figs_sheets.clear()  # удалить все элементы из combobox
+
+
+    def add_columns_sheets_to_combobox(self):
+        path_file = self.ui.path_for_plot.text() + '//' + self.ui.comboBox.currentText()
+        try:
+            sheets = pd.ExcelFile(path_file).sheet_names
+            #прочитаем файл
+            df = pd.read_excel(path_file, sheet_name=self.ui.comboBox_figs_sheets.currentText())
+            self.ui.comboBox_2.clear()  # удалить все элементы из combobox
+            self.ui.comboBox_2.addItems(df.columns)
+        except:
+            self.ui.comboBox_2.clear()  # удалить все элементы из combobox
+
 
     ############
     # Сводные таблицы
@@ -269,16 +308,22 @@ class Main_window(QMainWindow):
 
     def add_sheets_to_combobox_pivot(self):
         path_file = self.ui.path_for_pivot_table.text() + '//' + self.ui.comboBox_pivot_table.currentText()
-        sheets = pd.ExcelFile(path_file).sheet_names
-        self.ui.comboBox_pivot_table_excel_sheet.clear()  #удалить все элементы из combobox
-        self.ui.comboBox_pivot_table_excel_sheet.addItems(sheets)
+        try:
+            sheets = pd.ExcelFile(path_file).sheet_names
+            self.ui.comboBox_pivot_table_excel_sheet.clear()  #удалить все элементы из combobox
+            self.ui.comboBox_pivot_table_excel_sheet.addItems(sheets)
+        except:
+            self.ui.comboBox_pivot_table_excel_sheet.clear()  # удалить все элементы из combobox
 
     def add_columns_to_combobox_pivot(self):
         # прочитаем файл
         path_file = self.ui.path_for_pivot_table.text() + '//' + self.ui.comboBox_pivot_table.currentText()
-        df = pd.read_excel(path_file, sheet_name=self.ui.comboBox_pivot_table_excel_sheet.currentText())
-        self.ui.comboBox_pivot_hue.clear()  # удалить все элементы из combobox
-        self.ui.comboBox_pivot_hue.addItems(df.columns)
+        try:
+            df = pd.read_excel(path_file, sheet_name=self.ui.comboBox_pivot_table_excel_sheet.currentText())
+            self.ui.comboBox_pivot_hue.clear()  # удалить все элементы из combobox
+            self.ui.comboBox_pivot_hue.addItems([str(i) for i in df.columns])
+        except:
+            self.ui.comboBox_pivot_hue.clear()  # удалить все элементы из combobox
 
     ############
     # Биола -- одновременно добавляем файлы txt и pdf
