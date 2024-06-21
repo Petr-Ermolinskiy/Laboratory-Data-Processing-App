@@ -201,7 +201,14 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             Name_fit_agg = x_agg_name.iloc[1, 0].split(':')[1]
             ############
             x = read_table(i, skiprows=22, header=None, decimal=',')
-            x.columns = ['Time, s', 'Raw data, a.u.', 'Approx. data, a.u.']
+            try:
+                x.columns = ['Time, s', 'Raw data, a.u.', 'Approx. data, a.u.']
+            except Exception as e:
+                dlg.setWindowTitle("RheoScan - ошибка аппроксимации")
+                dlg.setText('Ошибка чтения данных из файла:\n' + str(i) + '\n' + str(e))
+                dlg.setIcon(QMessageBox.Icon.Critical)
+                dlg.exec()
+                return [1, DataFrame()]
             # находим assim
             Up = x['Raw data, a.u.'][0]
             Bottom = x['Raw data, a.u.'].min()
