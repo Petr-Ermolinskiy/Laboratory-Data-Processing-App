@@ -5,6 +5,7 @@ import pandas as pd
 import seaborn as sns
 from scipy import stats
 import numpy as np
+import math
 # для Пермутационных тестов
 from permutations_stats.permutations import permutation_test, repeated_permutation_test
 import numba
@@ -180,7 +181,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
                     just_all_we_need2.insert(loc=0, column=j, value=ignore_nan)
                 # изменяем порядок колонок - сортируем, если это надо
                 if plot_feature_data__[15]:
-                    just_all_we_need2 = just_all_we_need2[just_all_we_need2.columns.sort_values()]
+                    just_all_we_need2 = just_all_we_need2[just_all_we_need2.columns.sort_values(ascending=plot_feature_data__[39])]
                 elif plot_feature_data__[31]!='':
                     columns__temp = plot_feature_data__[31].replace(',', '').replace(';', ' ').split()
 
@@ -242,7 +243,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
 ##############################################################
 # функцию эту я не всю придумал сам, а взял часть с сайта https://rowannicholls.github.io/python/graphs/ax_based/boxplots_significance.html#test-for-statistical-significance
 # также см. ссылку: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.boxplot.html
-def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_name_fiqure_folder, bottom_lim='', make_an_SD=True):
+def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_name_fiqure_folder, make_an_SD=True):
     sns.reset_orig()
     """
     Create a box-and-whisker plot with significance bars.
@@ -260,7 +261,8 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
                     showfliers=False, meanprops={"marker": "D", "markerfacecolor": "white", "markeredgecolor": "black",
                                                  "markersize": str(plot_feature_data__[22])})
 
-    ###изменить цвета! если введен агрумент цвета, то цвет будет один; есть такие цвета хорошие 'Pastel1' 'Blues' 'Greens' 'Purples' или такие https://r02b.github.io/seaborn_palettes/
+    ###изменить цвета! если введен агрумент цвета, то цвет будет один;
+    # есть такие цвета хорошие 'Pastel1' 'Blues' 'Greens' 'Purples' или такие https://r02b.github.io/seaborn_palettes/
     if plot_feature_data__[2] == '' and plot_feature_data__[3] == '':
         # для точек измерений
         take_a_color_point = plot_feature_data__[1]
@@ -268,19 +270,31 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
         colors = sns.color_palette(plot_feature_data__[0])
     elif plot_feature_data__[2] == '' and plot_feature_data__[3] != '':
         # для точек измерений
-        take_a_color_point = [plot_feature_data__[3]] * len(bp['boxes'])
+        if '&' in plot_feature_data__[3]:
+            take_a_color_point = filter(None, plot_feature_data__[3].split('&'))
+        else:
+            take_a_color_point = [plot_feature_data__[3]] * len(bp['boxes'])
         # специальный массив для box-ов
         colors = sns.color_palette(plot_feature_data__[0])
     elif plot_feature_data__[2] != '' and plot_feature_data__[3] == '':
         # для точек измерений
         take_a_color_point = plot_feature_data__[1]
         # специальный массив для box-ов
-        colors = [plot_feature_data__[2]] * len(bp['boxes'])
+        if '&' in plot_feature_data__[2]:
+            colors = filter(None, plot_feature_data__[2].split('&'))
+        else:
+            colors = [plot_feature_data__[2]] * len(bp['boxes'])
     else:
         # для точек измерений
-        take_a_color_point = [plot_feature_data__[3]] * len(bp['boxes'])
+        if '&' in plot_feature_data__[3]:
+            take_a_color_point = filter(None, plot_feature_data__[3].split('&'))
+        else:
+            take_a_color_point = [plot_feature_data__[3]] * len(bp['boxes'])
         # специальный массив для box-ов
-        colors = [plot_feature_data__[2]] * len(bp['boxes'])
+        if '&' in plot_feature_data__[2]:
+            colors = plot_feature_data__[2].split('&')
+        else:
+            colors = [plot_feature_data__[2]] * len(bp['boxes'])
 
     # стандартное отклонение - добавить вместо разброса между min-max
     if make_an_SD:
@@ -289,9 +303,9 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
 
     # добавить точки! цвет: palette=take_a_color_point
     try:
-        sns.stripplot(data=data, alpha=0.6, palette=take_a_color_point, ax=ax, linewidth=1, size=plot_feature_data__[33])
+        sns.stripplot(data=data, alpha=plot_feature_data__[41], palette=take_a_color_point, ax=ax, linewidth=1, size=plot_feature_data__[33])
     except Exception as e:
-        return 'Box plot: скорее всего вы ввели неправильный цвет HEX.\n' + str(e)
+        return 'Box plot: скорее всего вы ввели неправильный(е) цвет(а) HEX.\nЦвет для HEX должен быть в формате <#XXXXXX>.\nДля нескольких цветов используйте разделительный знак: &.\n' + str(e)
 
     ####################################
 
@@ -301,7 +315,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
         for patch, color in zip(bp['boxes'], colors):
             patch.set_facecolor(color)
     except Exception as e:
-        return 'Box plot: скорее всего вы ввели неправильный цвет HEX.\n' + str(e)
+        return 'Box plot: скорее всего вы ввели неправильный(е) цвет(а) HEX.\nЦвет для HEX должен быть в формате <#XXXXXX>.\nДля нескольких цветов используйте разделительный знак: &.\n' + str(e)
 
     # Colour of the median lines
     plt.setp(bp['medians'], color='k')
@@ -316,7 +330,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
                 combinations = [item.replace('(', '').replace(')', '') for item in combinations]
                 combinations = [tuple(map(int, item.split(','))) for item in combinations]
             except Exception as e:
-                return 'Box plot: неправильное значение в поле <Расчёт стат.значимости только между следующими группами>' + str(e)
+                return 'Box plot: неправильное значение в поле <Расчёт стат.значимости только между следующими группами>:\n' + str(e)
         else:
             ls = list(range(1, len(data) + 1))
             combinations = [(ls[x], ls[x + y]) for y in reversed(ls) for x in range((len(ls) - y))]
@@ -393,27 +407,59 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
             plt.plot(
                 [x1 - 1, x1 - 1, x2 - 1, x2 - 1],
                 [bar_tips, bar_height, bar_height, bar_tips], lw=1, c='k')
+            ##############
+            # эта функция нужна, если нужно точное значение p
+            def round_to(num, digits=2):
+                if num == 0: return 0
+                scale = int(-math.floor(math.log10(abs(num - int(num))))) + digits - 1
+                if scale < digits: scale = digits
+                return round(num, scale)
+            ##############
             # Significance level
             p = significant_combination[1]
             if p < 0.0001:
                 sig_symbol = '****'
+                if plot_feature_data__[38] == 'меньше какого-то значения (p<)':
+                    sig_symbol = 'p < 0.0001'
+                elif plot_feature_data__[38] == 'равно какому-то значению (p=)':
+                    sig_symbol = 'p = ' + str(round_to(p))
             elif p < 0.001:
                 sig_symbol = '***'
+                if plot_feature_data__[38] == 'меньше какого-то значения (p<)':
+                    sig_symbol = 'p < 0.001'
+                elif plot_feature_data__[38] == 'равно какому-то значению (p=)':
+                    sig_symbol = 'p = ' + str(round_to(p))
             elif p < 0.01:
                 sig_symbol = '**'
+                if plot_feature_data__[38] == 'меньше какого-то значения (p<)':
+                    sig_symbol = 'p < 0.01'
+                elif plot_feature_data__[38] == 'равно какому-то значению (p=)':
+                    sig_symbol = 'p = ' + str(round_to(p))
             elif p < 0.05:
                 sig_symbol = '*'
+                if plot_feature_data__[38] == 'меньше какого-то значения (p<)':
+                    sig_symbol = 'p < 0.05'
+                elif plot_feature_data__[38] == 'равно какому-то значению (p=)':
+                    sig_symbol = 'p = ' + str(round_to(p))
             text_height = bar_height + (yrange * 0.01)
-            plt.text((x1 - 1 + x2 - 1) * 0.5, text_height, sig_symbol, ha='center', c='k')
-
-    # Adjust y-axis
+            plt.text((x1 - 1 + x2 - 1) * 0.5, text_height, sig_symbol, ha='center', c='k', fontsize = plot_feature_data__[37])
+    ###############
+    # Изменим границы оси Y
+    ###############
     bottom, top = ax.get_ylim()
     yrange = top - bottom
-    if bottom_lim == '':
-        ax.set_ylim(bottom - 0.02 * yrange, top)
-    else:
-        bottom = float(bottom_lim.replace(",", "."))
+    # <0.02 * yrange> нужно, чтобы смотрелось всё хорошо, если не введена нижняя/верхняя граница
+    ax.set_ylim(bottom - 0.02 * yrange, top + 0.02 * yrange)
+
+    if plot_feature_data__[5] != '':
+        bottom = float(plot_feature_data__[5].replace(",", "."))
         ax.set_ylim(bottom, top)
+    if plot_feature_data__[36] != '':
+        top = float(plot_feature_data__[36].replace(",", "."))
+        ax.set_ylim(bottom, top)
+
+    if plot_feature_data__[5] != '':
+        # это нужно, чтобы N - количество данных отображалось корректно
         bottom = bottom + 0.02 * yrange
 
     # Annotate sample size below each box
@@ -421,7 +467,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
     if plot_feature_data__[23]:
         for i, dataset in enumerate(data):
             sample_size = len(dataset)
-            ax.text(i, bottom, fr'n = {sample_size}', ha='center', size='x-small')
+            ax.text(i, bottom, fr'n = {sample_size}', ha='center', size=plot_feature_data__[40])
     # '''
 
     ######### Шрифт воставляем в самом конце, т.к. из-за изменения осей могут быть ошибки
@@ -475,7 +521,7 @@ def just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis, path_name_fiq
         do_SD = True if plot_feature_data__[4] == 'SD' else False
         ylabel = parameter_
         check=box_and_whisker(big_G[dict_for_future[parameter_]], '', name_of_X_axis, ylabel,
-                        df_list[dict_for_future[parameter_]].columns, parameter_, path_name_fiqure_folder, plot_feature_data__[5],
+                        df_list[dict_for_future[parameter_]].columns, parameter_, path_name_fiqure_folder,
                         make_an_SD=do_SD)
         if check != '__':
             return check
@@ -687,6 +733,8 @@ def error_for_val_plot(plot_feature_data__, path, exel_name):
         return 'Имя файла отсутствует'
     if plot_feature_data__[5].replace(".", "").replace(",", "").isdigit() is False and plot_feature_data__[5] != '':
         return 'Box plot: параметр нижней границы содержит буквы'
+    if plot_feature_data__[36].replace(".", "").replace(",", "").isdigit() is False and plot_feature_data__[5] != '':
+        return 'Box plot: параметр верхней границы содержит буквы'
     return '__'
 
 # функция для безопасного имени при сохранении
@@ -773,5 +821,18 @@ def lets_add_all_parameters_for_figs_here(self):
     plot_feature_data__[34] = self.ui.comboBox_correlation_figs_matrix.currentText()
     # корреляционная матрица -- цветовая палитра
     plot_feature_data__[35] = self.ui.comboBox_correlation_color_map_for_figs.currentText()
+    # box-plot -- верхняя граница
+    plot_feature_data__[36] = self.ui.upper_lim.text()
+    # box-plot -- шрифт значка стат. значимости
+    plot_feature_data__[37] = self.ui.spinBox_size_stat_znachimost.value()
+    # box-plot -- значок стат. значимости (*, p< или p=)
+    plot_feature_data__[38] = self.ui.comboBox_box_plot_sign_stat_znachimost.currentText()
+    # box-plot -- возрастание или убывание -- сортировки
+    plot_feature_data__[39] = self.ui.check_sort_or_not_ascending.isChecked()
+    # box-plot -- размер подписей N
+    plot_feature_data__[40] = self.ui.comboBox_box_check_N_.currentText()
+    # box-plot -- прозрачность точек
+    plot_feature_data__[41] = self.ui.doubleSpinBox_points_opasity.value()
+
     return plot_feature_data__
 

@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(728, 739)
+        MainWindow.resize(743, 739)
         icon = QIcon()
         icon.addFile(u"LOGO.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -1920,8 +1920,8 @@ class Ui_MainWindow(object):
         self.comboBox_color_pal_box.addItem("")
         self.comboBox_color_pal_box.addItem("")
         self.comboBox_color_pal_box.setObjectName(u"comboBox_color_pal_box")
-        sizePolicy.setHeightForWidth(self.comboBox_color_pal_box.sizePolicy().hasHeightForWidth())
-        self.comboBox_color_pal_box.setSizePolicy(sizePolicy)
+        sizePolicy5.setHeightForWidth(self.comboBox_color_pal_box.sizePolicy().hasHeightForWidth())
+        self.comboBox_color_pal_box.setSizePolicy(sizePolicy5)
         self.comboBox_color_pal_box.setFont(font5)
 
         self.horizontalLayout_19.addWidget(self.comboBox_color_pal_box)
@@ -1977,8 +1977,8 @@ class Ui_MainWindow(object):
         self.comboBox_color_pal_points.addItem("")
         self.comboBox_color_pal_points.addItem("")
         self.comboBox_color_pal_points.setObjectName(u"comboBox_color_pal_points")
-        sizePolicy.setHeightForWidth(self.comboBox_color_pal_points.sizePolicy().hasHeightForWidth())
-        self.comboBox_color_pal_points.setSizePolicy(sizePolicy)
+        sizePolicy5.setHeightForWidth(self.comboBox_color_pal_points.sizePolicy().hasHeightForWidth())
+        self.comboBox_color_pal_points.setSizePolicy(sizePolicy5)
         self.comboBox_color_pal_points.setFont(font5)
 
         self.horizontalLayout_24.addWidget(self.comboBox_color_pal_points)
@@ -1998,11 +1998,19 @@ class Ui_MainWindow(object):
 
         self.color_box = QLineEdit(self.frame)
         self.color_box.setObjectName(u"color_box")
-        sizePolicy.setHeightForWidth(self.color_box.sizePolicy().hasHeightForWidth())
-        self.color_box.setSizePolicy(sizePolicy)
+        sizePolicy5.setHeightForWidth(self.color_box.sizePolicy().hasHeightForWidth())
+        self.color_box.setSizePolicy(sizePolicy5)
         self.color_box.setFont(font5)
 
         self.horizontalLayout_20.addWidget(self.color_box)
+
+        self.pushButton_HEX_box = QPushButton(self.frame)
+        self.pushButton_HEX_box.setObjectName(u"pushButton_HEX_box")
+        sizePolicy.setHeightForWidth(self.pushButton_HEX_box.sizePolicy().hasHeightForWidth())
+        self.pushButton_HEX_box.setSizePolicy(sizePolicy)
+        self.pushButton_HEX_box.setMaximumSize(QSize(50, 16777215))
+
+        self.horizontalLayout_20.addWidget(self.pushButton_HEX_box)
 
 
         self.verticalLayout_16.addLayout(self.horizontalLayout_20)
@@ -2019,11 +2027,17 @@ class Ui_MainWindow(object):
 
         self.color_points = QLineEdit(self.frame)
         self.color_points.setObjectName(u"color_points")
-        sizePolicy.setHeightForWidth(self.color_points.sizePolicy().hasHeightForWidth())
-        self.color_points.setSizePolicy(sizePolicy)
+        sizePolicy5.setHeightForWidth(self.color_points.sizePolicy().hasHeightForWidth())
+        self.color_points.setSizePolicy(sizePolicy5)
         self.color_points.setFont(font5)
 
         self.horizontalLayout_25.addWidget(self.color_points)
+
+        self.pushButton_HEX_points = QPushButton(self.frame)
+        self.pushButton_HEX_points.setObjectName(u"pushButton_HEX_points")
+        self.pushButton_HEX_points.setMaximumSize(QSize(50, 16777215))
+
+        self.horizontalLayout_25.addWidget(self.pushButton_HEX_points)
 
 
         self.verticalLayout_16.addLayout(self.horizontalLayout_25)
@@ -2048,6 +2062,28 @@ class Ui_MainWindow(object):
         self.spinBox_point_size.setValue(4)
 
         self.horizontalLayout_122.addWidget(self.spinBox_point_size)
+
+        self.horizontalLayout_147 = QHBoxLayout()
+        self.horizontalLayout_147.setObjectName(u"horizontalLayout_147")
+        self.lb_color_pal_box_23 = QLabel(self.frame)
+        self.lb_color_pal_box_23.setObjectName(u"lb_color_pal_box_23")
+        self.lb_color_pal_box_23.setFont(font5)
+
+        self.horizontalLayout_147.addWidget(self.lb_color_pal_box_23)
+
+        self.doubleSpinBox_points_opasity = QDoubleSpinBox(self.frame)
+        self.doubleSpinBox_points_opasity.setObjectName(u"doubleSpinBox_points_opasity")
+        self.doubleSpinBox_points_opasity.setFont(font5)
+        self.doubleSpinBox_points_opasity.setDecimals(1)
+        self.doubleSpinBox_points_opasity.setMinimum(0.100000000000000)
+        self.doubleSpinBox_points_opasity.setMaximum(1.000000000000000)
+        self.doubleSpinBox_points_opasity.setSingleStep(0.100000000000000)
+        self.doubleSpinBox_points_opasity.setValue(0.600000000000000)
+
+        self.horizontalLayout_147.addWidget(self.doubleSpinBox_points_opasity)
+
+
+        self.horizontalLayout_122.addLayout(self.horizontalLayout_147)
 
 
         self.verticalLayout_16.addLayout(self.horizontalLayout_122)
@@ -2213,6 +2249,76 @@ class Ui_MainWindow(object):
         self.tab_4.setObjectName(u"tab_4")
         self.gridLayout_6 = QGridLayout(self.tab_4)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.horizontalLayout_141 = QHBoxLayout()
+        self.horizontalLayout_141.setObjectName(u"horizontalLayout_141")
+        self.horizontalLayout_21 = QHBoxLayout()
+        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
+        self.lb_stattest_2 = QLabel(self.tab_4)
+        self.lb_stattest_2.setObjectName(u"lb_stattest_2")
+        self.lb_stattest_2.setFont(font5)
+
+        self.horizontalLayout_21.addWidget(self.lb_stattest_2)
+
+        self.check_stat_znachimost = QCheckBox(self.tab_4)
+        self.check_stat_znachimost.setObjectName(u"check_stat_znachimost")
+        self.check_stat_znachimost.setEnabled(True)
+        self.check_stat_znachimost.setFont(font5)
+        self.check_stat_znachimost.setChecked(True)
+
+        self.horizontalLayout_21.addWidget(self.check_stat_znachimost)
+
+
+        self.horizontalLayout_141.addLayout(self.horizontalLayout_21)
+
+        self.horizontalLayout_140 = QHBoxLayout()
+        self.horizontalLayout_140.setObjectName(u"horizontalLayout_140")
+        self.lb_color_pal_box_21 = QLabel(self.tab_4)
+        self.lb_color_pal_box_21.setObjectName(u"lb_color_pal_box_21")
+        sizePolicy1.setHeightForWidth(self.lb_color_pal_box_21.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_21.setSizePolicy(sizePolicy1)
+        self.lb_color_pal_box_21.setFont(font5)
+
+        self.horizontalLayout_140.addWidget(self.lb_color_pal_box_21, 0, Qt.AlignRight)
+
+        self.spinBox_size_stat_znachimost = QSpinBox(self.tab_4)
+        self.spinBox_size_stat_znachimost.setObjectName(u"spinBox_size_stat_znachimost")
+        sizePolicy.setHeightForWidth(self.spinBox_size_stat_znachimost.sizePolicy().hasHeightForWidth())
+        self.spinBox_size_stat_znachimost.setSizePolicy(sizePolicy)
+        self.spinBox_size_stat_znachimost.setFont(font5)
+        self.spinBox_size_stat_znachimost.setMinimum(1)
+        self.spinBox_size_stat_znachimost.setMaximum(100)
+        self.spinBox_size_stat_znachimost.setValue(10)
+
+        self.horizontalLayout_140.addWidget(self.spinBox_size_stat_znachimost)
+
+
+        self.horizontalLayout_141.addLayout(self.horizontalLayout_140)
+
+
+        self.gridLayout_6.addLayout(self.horizontalLayout_141, 0, 0, 1, 1)
+
+        self.horizontalLayout_142 = QHBoxLayout()
+        self.horizontalLayout_142.setObjectName(u"horizontalLayout_142")
+        self.lb__altern_heposisis_4 = QLabel(self.tab_4)
+        self.lb__altern_heposisis_4.setObjectName(u"lb__altern_heposisis_4")
+        self.lb__altern_heposisis_4.setEnabled(True)
+        self.lb__altern_heposisis_4.setFont(font5)
+
+        self.horizontalLayout_142.addWidget(self.lb__altern_heposisis_4)
+
+        self.comboBox_box_plot_sign_stat_znachimost = QComboBox(self.tab_4)
+        self.comboBox_box_plot_sign_stat_znachimost.addItem("")
+        self.comboBox_box_plot_sign_stat_znachimost.addItem("")
+        self.comboBox_box_plot_sign_stat_znachimost.addItem("")
+        self.comboBox_box_plot_sign_stat_znachimost.setObjectName(u"comboBox_box_plot_sign_stat_znachimost")
+        self.comboBox_box_plot_sign_stat_znachimost.setEnabled(True)
+        self.comboBox_box_plot_sign_stat_znachimost.setFont(font5)
+
+        self.horizontalLayout_142.addWidget(self.comboBox_box_plot_sign_stat_znachimost)
+
+
+        self.gridLayout_6.addLayout(self.horizontalLayout_142, 1, 0, 1, 1)
+
         self.horizontalLayout_23 = QHBoxLayout()
         self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
         self.lb_stattest = QLabel(self.tab_4)
@@ -2243,7 +2349,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_23.addWidget(self.comboBox_stat_test)
 
 
-        self.gridLayout_6.addLayout(self.horizontalLayout_23, 1, 0, 1, 1)
+        self.gridLayout_6.addLayout(self.horizontalLayout_23, 2, 0, 1, 1)
 
         self.horizontalLayout_18 = QHBoxLayout()
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
@@ -2265,26 +2371,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_18.addWidget(self.comboBox_alter_hep)
 
 
-        self.gridLayout_6.addLayout(self.horizontalLayout_18, 2, 0, 1, 1)
-
-        self.horizontalLayout_21 = QHBoxLayout()
-        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.lb_stattest_2 = QLabel(self.tab_4)
-        self.lb_stattest_2.setObjectName(u"lb_stattest_2")
-        self.lb_stattest_2.setFont(font5)
-
-        self.horizontalLayout_21.addWidget(self.lb_stattest_2)
-
-        self.check_stat_znachimost = QCheckBox(self.tab_4)
-        self.check_stat_znachimost.setObjectName(u"check_stat_znachimost")
-        self.check_stat_znachimost.setEnabled(True)
-        self.check_stat_znachimost.setFont(font5)
-        self.check_stat_znachimost.setChecked(True)
-
-        self.horizontalLayout_21.addWidget(self.check_stat_znachimost)
-
-
-        self.gridLayout_6.addLayout(self.horizontalLayout_21, 0, 0, 1, 1)
+        self.gridLayout_6.addLayout(self.horizontalLayout_18, 3, 0, 1, 1)
 
         self.horizontalLayout_82 = QHBoxLayout()
         self.horizontalLayout_82.setObjectName(u"horizontalLayout_82")
@@ -2302,7 +2389,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_82.addWidget(self.STAT_znachimost_order_box_plot)
 
 
-        self.gridLayout_6.addLayout(self.horizontalLayout_82, 3, 0, 1, 1)
+        self.gridLayout_6.addLayout(self.horizontalLayout_82, 4, 0, 1, 1)
 
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_9 = QWidget()
@@ -2311,19 +2398,40 @@ class Ui_MainWindow(object):
         self.gridLayout_7.setObjectName(u"gridLayout_7")
         self.verticalLayout_18 = QVBoxLayout()
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.verticalLayout_18.setContentsMargins(-1, 6, -1, 6)
+        self.horizontalLayout_144 = QHBoxLayout()
+        self.horizontalLayout_144.setObjectName(u"horizontalLayout_144")
         self.check_sort_or_not = QCheckBox(self.tab_9)
         self.check_sort_or_not.setObjectName(u"check_sort_or_not")
-        sizePolicy4.setHeightForWidth(self.check_sort_or_not.sizePolicy().hasHeightForWidth())
-        self.check_sort_or_not.setSizePolicy(sizePolicy4)
+        sizePolicy19 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy19.setHorizontalStretch(0)
+        sizePolicy19.setVerticalStretch(0)
+        sizePolicy19.setHeightForWidth(self.check_sort_or_not.sizePolicy().hasHeightForWidth())
+        self.check_sort_or_not.setSizePolicy(sizePolicy19)
         self.check_sort_or_not.setFont(font5)
         self.check_sort_or_not.setChecked(False)
 
-        self.verticalLayout_18.addWidget(self.check_sort_or_not)
+        self.horizontalLayout_144.addWidget(self.check_sort_or_not)
+
+        self.check_sort_or_not_ascending = QCheckBox(self.tab_9)
+        self.check_sort_or_not_ascending.setObjectName(u"check_sort_or_not_ascending")
+        self.check_sort_or_not_ascending.setEnabled(False)
+        sizePolicy19.setHeightForWidth(self.check_sort_or_not_ascending.sizePolicy().hasHeightForWidth())
+        self.check_sort_or_not_ascending.setSizePolicy(sizePolicy19)
+        self.check_sort_or_not_ascending.setFont(font5)
+        self.check_sort_or_not_ascending.setChecked(True)
+
+        self.horizontalLayout_144.addWidget(self.check_sort_or_not_ascending)
+
+
+        self.verticalLayout_18.addLayout(self.horizontalLayout_144)
 
         self.horizontalLayout_81 = QHBoxLayout()
         self.horizontalLayout_81.setObjectName(u"horizontalLayout_81")
         self.lb_del_hue_6 = QLabel(self.tab_9)
         self.lb_del_hue_6.setObjectName(u"lb_del_hue_6")
+        sizePolicy11.setHeightForWidth(self.lb_del_hue_6.sizePolicy().hasHeightForWidth())
+        self.lb_del_hue_6.setSizePolicy(sizePolicy11)
         self.lb_del_hue_6.setFont(font5)
 
         self.horizontalLayout_81.addWidget(self.lb_del_hue_6)
@@ -2337,6 +2445,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_18.addLayout(self.horizontalLayout_81)
 
+        self.horizontalLayout_146 = QHBoxLayout()
+        self.horizontalLayout_146.setObjectName(u"horizontalLayout_146")
         self.horizontalLayout_60 = QHBoxLayout()
         self.horizontalLayout_60.setObjectName(u"horizontalLayout_60")
         self.lb_stattest_3 = QLabel(self.tab_9)
@@ -2348,17 +2458,43 @@ class Ui_MainWindow(object):
         self.check_N_ = QCheckBox(self.tab_9)
         self.check_N_.setObjectName(u"check_N_")
         self.check_N_.setEnabled(True)
-        sizePolicy19 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy19.setHorizontalStretch(0)
-        sizePolicy19.setVerticalStretch(0)
-        sizePolicy19.setHeightForWidth(self.check_N_.sizePolicy().hasHeightForWidth())
-        self.check_N_.setSizePolicy(sizePolicy19)
+        sizePolicy.setHeightForWidth(self.check_N_.sizePolicy().hasHeightForWidth())
+        self.check_N_.setSizePolicy(sizePolicy)
         self.check_N_.setChecked(True)
 
         self.horizontalLayout_60.addWidget(self.check_N_)
 
 
-        self.verticalLayout_18.addLayout(self.horizontalLayout_60)
+        self.horizontalLayout_146.addLayout(self.horizontalLayout_60)
+
+        self.horizontalLayout_145 = QHBoxLayout()
+        self.horizontalLayout_145.setObjectName(u"horizontalLayout_145")
+        self.lb__altern_heposisis_5 = QLabel(self.tab_9)
+        self.lb__altern_heposisis_5.setObjectName(u"lb__altern_heposisis_5")
+        self.lb__altern_heposisis_5.setEnabled(True)
+        self.lb__altern_heposisis_5.setFont(font5)
+
+        self.horizontalLayout_145.addWidget(self.lb__altern_heposisis_5, 0, Qt.AlignRight)
+
+        self.comboBox_box_check_N_ = QComboBox(self.tab_9)
+        self.comboBox_box_check_N_.addItem("")
+        self.comboBox_box_check_N_.addItem("")
+        self.comboBox_box_check_N_.addItem("")
+        self.comboBox_box_check_N_.addItem("")
+        self.comboBox_box_check_N_.addItem("")
+        self.comboBox_box_check_N_.addItem("")
+        self.comboBox_box_check_N_.addItem("")
+        self.comboBox_box_check_N_.setObjectName(u"comboBox_box_check_N_")
+        self.comboBox_box_check_N_.setEnabled(True)
+        self.comboBox_box_check_N_.setFont(font5)
+
+        self.horizontalLayout_145.addWidget(self.comboBox_box_check_N_)
+
+
+        self.horizontalLayout_146.addLayout(self.horizontalLayout_145)
+
+
+        self.verticalLayout_18.addLayout(self.horizontalLayout_146)
 
         self.line_7 = QFrame(self.tab_9)
         self.line_7.setObjectName(u"line_7")
@@ -2461,6 +2597,8 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_84.addLayout(self.horizontalLayout_17)
 
+        self.verticalLayout_51 = QVBoxLayout()
+        self.verticalLayout_51.setObjectName(u"verticalLayout_51")
         self.horizontalLayout_16 = QHBoxLayout()
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
         self.lb_bottom_lim = QLabel(self.tab_9)
@@ -2478,7 +2616,29 @@ class Ui_MainWindow(object):
         self.horizontalLayout_16.addWidget(self.bottom_lim)
 
 
-        self.horizontalLayout_84.addLayout(self.horizontalLayout_16)
+        self.verticalLayout_51.addLayout(self.horizontalLayout_16)
+
+        self.horizontalLayout_139 = QHBoxLayout()
+        self.horizontalLayout_139.setObjectName(u"horizontalLayout_139")
+        self.lb_bottom_lim_2 = QLabel(self.tab_9)
+        self.lb_bottom_lim_2.setObjectName(u"lb_bottom_lim_2")
+        sizePolicy11.setHeightForWidth(self.lb_bottom_lim_2.sizePolicy().hasHeightForWidth())
+        self.lb_bottom_lim_2.setSizePolicy(sizePolicy11)
+        self.lb_bottom_lim_2.setFont(font5)
+
+        self.horizontalLayout_139.addWidget(self.lb_bottom_lim_2)
+
+        self.upper_lim = QLineEdit(self.tab_9)
+        self.upper_lim.setObjectName(u"upper_lim")
+        self.upper_lim.setFont(font5)
+
+        self.horizontalLayout_139.addWidget(self.upper_lim)
+
+
+        self.verticalLayout_51.addLayout(self.horizontalLayout_139)
+
+
+        self.horizontalLayout_84.addLayout(self.verticalLayout_51)
 
 
         self.gridLayout_7.addLayout(self.horizontalLayout_84, 2, 0, 1, 1)
@@ -4456,8 +4616,7 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.comboBox_stat_test, self.comboBox_alter_hep)
         QWidget.setTabOrder(self.comboBox_alter_hep, self.check_stat_znachimost)
         QWidget.setTabOrder(self.check_stat_znachimost, self.STAT_znachimost_order_box_plot)
-        QWidget.setTabOrder(self.STAT_znachimost_order_box_plot, self.check_sort_or_not)
-        QWidget.setTabOrder(self.check_sort_or_not, self.order_box_plot)
+        QWidget.setTabOrder(self.STAT_znachimost_order_box_plot, self.order_box_plot)
         QWidget.setTabOrder(self.order_box_plot, self.check_N_)
         QWidget.setTabOrder(self.check_N_, self.comboBox_spin_x_)
         QWidget.setTabOrder(self.comboBox_spin_x_, self.check_background)
@@ -4537,8 +4696,12 @@ class Ui_MainWindow(object):
         self.vibros_delete.toggled.connect(self.label_11.setEnabled)
         self.check_name_rheoscan.toggled.connect(self.label_19.setEnabled)
         self.check_name_rheoscan.toggled.connect(self.spinBox_check_name_rheoscan.setEnabled)
+        self.check_stat_znachimost.toggled.connect(self.spinBox_size_stat_znachimost.setEnabled)
+        self.check_stat_znachimost.toggled.connect(self.comboBox_box_plot_sign_stat_znachimost.setEnabled)
+        self.check_sort_or_not.toggled.connect(self.check_sort_or_not_ascending.setEnabled)
+        self.check_N_.toggled.connect(self.comboBox_box_check_N_.setEnabled)
 
-        self.Lab_stuff.setCurrentIndex(0)
+        self.Lab_stuff.setCurrentIndex(3)
         self.tabWidget_2.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
 
@@ -4548,7 +4711,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 \u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u0433\u0440\u0430\u0444\u0438\u043a\u043e\u0432", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f 3.41", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f 3.5", None))
         self.comboBox_style_sheet.setItemText(0, QCoreApplication.translate("MainWindow", u"\u041e\u0441\u043d\u043e\u0432\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None))
         self.comboBox_style_sheet.setItemText(1, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u043c\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None))
 
@@ -4854,11 +5017,14 @@ class Ui_MainWindow(object):
         self.lb_color_for_box.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0415\u0441\u043b\u0438 \u043f\u043e\u043b\u0435 \u043f\u0443\u0441\u0442\u043e\u0435, \u0442\u043e \u0431\u0443\u0434\u0435\u0442 \u0446\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430. \u0412\u0430\u0436\u043d\u043e, \u0447\u0442\u043e\u0431\u044b \u0446\u0432\u0435\u0442 \u0431\u044b\u043b \u0432 \u0444\u043e\u0440\u043c\u0430\u0442\u0435 HEX: #......</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.lb_color_for_box.setText(QCoreApplication.translate("MainWindow", u"\u0426\u0432\u0435\u0442 \u0434\u043b\u044f box (HEX)", None))
+        self.pushButton_HEX_box.setText(QCoreApplication.translate("MainWindow", u"HEX", None))
 #if QT_CONFIG(tooltip)
         self.lb_color_forpoints.setToolTip(QCoreApplication.translate("MainWindow", u"\u0415\u0441\u043b\u0438 \u043f\u043e\u043b\u0435 \u043f\u0443\u0441\u0442\u043e\u0435, \u0442\u043e \u0431\u0443\u0434\u0435\u0442 \u0446\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430. \u0412\u0430\u0436\u043d\u043e, \u0447\u0442\u043e\u0431\u044b \u0446\u0432\u0435\u0442 \u0431\u044b\u043b \u0432 \u0444\u043e\u0440\u043c\u0430\u0442\u0435 HEX: #......", None))
 #endif // QT_CONFIG(tooltip)
         self.lb_color_forpoints.setText(QCoreApplication.translate("MainWindow", u"\u0426\u0432\u0435\u0442 \u0434\u043b\u044f \u0442\u043e\u0447\u0435\u043a (HEX)", None))
+        self.pushButton_HEX_points.setText(QCoreApplication.translate("MainWindow", u"HEX", None))
         self.lb_color_pal_box_19.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u0435\u0440 \u0442\u043e\u0447\u0435\u043a \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435", None))
+        self.lb_color_pal_box_23.setText(QCoreApplication.translate("MainWindow", u"\u043f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u043e\u0441\u0442\u044c", None))
         self.lb_color_pal_box_7.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u0435\u0440 \u0442\u043e\u0447\u0435\u043a \u0434\u043b\u044f \u0441\u0440\u0435\u0434\u043d\u0435\u0433\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f", None))
         self.lb_color_pal_box_6.setText(QCoreApplication.translate("MainWindow", u"\u0428\u0440\u0438\u0444\u0442", None))
         self.comboBox_fonts.setItemText(0, QCoreApplication.translate("MainWindow", u"DejaVu Sans", None))
@@ -4874,6 +5040,14 @@ class Ui_MainWindow(object):
         self.lb_color_pal_box_5.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 X", None))
         self.lb_color_pal_box_4.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 Y", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"Box plot (1)", None))
+        self.lb_stattest_2.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c?", None))
+        self.check_stat_znachimost.setText("")
+        self.lb_color_pal_box_21.setText(QCoreApplication.translate("MainWindow", u"\u0428\u0440\u0438\u0444\u0442 \u0437\u043d\u0430\u0447\u043a\u043e\u0432 \u0441\u0442\u0430\u0442.\u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438", None))
+        self.lb__altern_heposisis_4.setText(QCoreApplication.translate("MainWindow", u"\u0417\u043d\u0430\u0447\u043e\u043a \u0441\u0442\u0430\u0442.\u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438", None))
+        self.comboBox_box_plot_sign_stat_znachimost.setItemText(0, QCoreApplication.translate("MainWindow", u"\u0437\u0432\u0435\u0437\u0434\u043e\u0447\u043a\u0430 (*)", None))
+        self.comboBox_box_plot_sign_stat_znachimost.setItemText(1, QCoreApplication.translate("MainWindow", u"\u043c\u0435\u043d\u044c\u0448\u0435 \u043a\u0430\u043a\u043e\u0433\u043e-\u0442\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f (p<)", None))
+        self.comboBox_box_plot_sign_stat_znachimost.setItemText(2, QCoreApplication.translate("MainWindow", u"\u0440\u0430\u0432\u043d\u043e \u043a\u0430\u043a\u043e\u043c\u0443-\u0442\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044e (p=)", None))
+
 #if QT_CONFIG(tooltip)
         self.lb_stattest.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0421\u043c. \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u044e \u043a <a href=\"https://docs.scipy.org/doc/scipy/reference/stats.html\"><span style=\" text-decoration: underline; color:#0000ff;\">scipy.stats</span></a></p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
@@ -4897,8 +5071,6 @@ class Ui_MainWindow(object):
         self.comboBox_alter_hep.setItemText(1, QCoreApplication.translate("MainWindow", u"less", None))
         self.comboBox_alter_hep.setItemText(2, QCoreApplication.translate("MainWindow", u"greater", None))
 
-        self.lb_stattest_2.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c?", None))
-        self.check_stat_znachimost.setText("")
 #if QT_CONFIG(tooltip)
         self.lb_del_hue_7.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0415\u0441\u043b\u0438 \u043d\u0435 \u043d\u0443\u0436\u043d\u043e \u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u043c\u0435\u0436\u0434\u0443 \u0432\u0441\u0435\u043c\u0438 \u0433\u0440\u0443\u043f\u043f\u0430\u043c\u0438, \u0442\u043e \u043d\u0443\u0436\u043d\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u044d\u0442\u043e. \u0412\u0432\u0435\u0441\u0442\u0438 \u043d\u0430\u0434\u043e \u0432 \u0441\u0442\u0440\u043e\u043a\u0443 \u043c\u0430\u0441\u0441\u0438\u0432 \u0438\u0437 \u0433\u0440\u0443\u043f\u043f. \u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0435\u0441\u0442\u044c 4 \u0433\u0440\u0443\u043f\u043f\u044b \u0438 \u0445\u043e\u0447\u0435\u0442\u0441\u044f \u043f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0441\u0442\u0430\u0442.\u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u043c\u0435\u0436\u0434\u0443 1 \u0438 2, \u0430"
                         " \u0442\u0430\u043a\u0436\u0435 3 \u0438 4. \u0422\u043e\u0433\u0434\u0430 \u043d\u0430\u0434\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u0441 \u043f\u0440\u043e\u0431\u0435\u043b\u043e\u043c '(1,2) (3,4)'</p></body></html>", None))
@@ -4913,6 +5085,10 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.check_sort_or_not.setText(QCoreApplication.translate("MainWindow", u"\u0423\u043f\u043e\u0440\u044f\u0434\u043e\u0447\u0438\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0432 \u0433\u0440\u0443\u043f\u043f\u0435", None))
 #if QT_CONFIG(tooltip)
+        self.check_sort_or_not_ascending.setToolTip(QCoreApplication.translate("MainWindow", u"\u0411\u0435\u0437 \u0444\u043b\u0430\u0436\u043a\u0430 \u043f\u043e\u0440\u044f\u0434\u043e\u043a \u0431\u0443\u0434\u0435\u0442 \u0442\u0430\u043a\u0438\u043c, \u043a\u0430\u043a\u043e\u0439 \u043e\u043d \u0432 \u0442\u0430\u0431\u043b\u0438\u0446\u0435", None))
+#endif // QT_CONFIG(tooltip)
+        self.check_sort_or_not_ascending.setText(QCoreApplication.translate("MainWindow", u"\u043f\u043e \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u043d\u0438\u044e", None))
+#if QT_CONFIG(tooltip)
         self.lb_del_hue_6.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u043f\u0440\u043e\u043f\u0438\u0441\u0430\u0442\u044c \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u043e\u0431\u0435\u043b, \u043d\u0430\u0447\u0438\u043d\u0430\u044f \u0441 \u043f\u0435\u0440\u0432\u043e\u0433\u043e. \u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, '1 2 4 3'</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.lb_del_hue_6.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u043e\u0440\u044f\u0434\u043e\u043a \u043f\u043e\u0434\u043f\u0438\u0441\u0435\u0439", None))
@@ -4924,6 +5100,15 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.lb_stattest_3.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0434\u043f\u0438\u0441\u0438 N \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 \u0432 \u0433\u0440\u0443\u043f\u043f\u0430\u0445", None))
         self.check_N_.setText("")
+        self.lb__altern_heposisis_5.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0437\u043c\u0435\u0440 N", None))
+        self.comboBox_box_check_N_.setItemText(0, QCoreApplication.translate("MainWindow", u"x-small", None))
+        self.comboBox_box_check_N_.setItemText(1, QCoreApplication.translate("MainWindow", u"small", None))
+        self.comboBox_box_check_N_.setItemText(2, QCoreApplication.translate("MainWindow", u"medium", None))
+        self.comboBox_box_check_N_.setItemText(3, QCoreApplication.translate("MainWindow", u"large", None))
+        self.comboBox_box_check_N_.setItemText(4, QCoreApplication.translate("MainWindow", u"x-large", None))
+        self.comboBox_box_check_N_.setItemText(5, QCoreApplication.translate("MainWindow", u"xx-large", None))
+        self.comboBox_box_check_N_.setItemText(6, QCoreApplication.translate("MainWindow", u"xx-small", None))
+
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0440\u0430\u0449\u0430\u0442\u044c \u043f\u043e\u0434\u043f\u0438\u0441\u0438 \u043d\u0430 \u0443\u0433\u043e\u043b", None))
         self.comboBox_spin_x_.setItemText(0, QCoreApplication.translate("MainWindow", u"0", None))
         self.comboBox_spin_x_.setItemText(1, QCoreApplication.translate("MainWindow", u"5", None))
@@ -4957,6 +5142,10 @@ class Ui_MainWindow(object):
         self.lb_bottom_lim.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0438\u0436\u043d\u044e\u044e \u0433\u0440\u0430\u043d\u0438\u0446\u0443", None))
 #if QT_CONFIG(tooltip)
         self.bottom_lim.setToolTip(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0441\u0442\u0438 \u0447\u0438\u0441\u043b\u043e", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_bottom_lim_2.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0432\u0435\u0440\u0445\u043d\u044e\u044e \u0433\u0440\u0430\u043d\u0438\u0446\u0443", None))
+#if QT_CONFIG(tooltip)
+        self.upper_lim.setToolTip(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0441\u0442\u0438 \u0447\u0438\u0441\u043b\u043e", None))
 #endif // QT_CONFIG(tooltip)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_9), QCoreApplication.translate("MainWindow", u"Box plot (3)", None))
         self.lb_corr_color_pallete_3.setText(QCoreApplication.translate("MainWindow", u"\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430", None))

@@ -39,6 +39,9 @@ ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 ############################
 # а это чтобы logo отображалось правильно при переносе на exe
 from pathlib import Path
+# color picker
+from vcolorpicker import getColor, rgb2hex
+
 
 class Main_window(QMainWindow):
     def __init__(self):
@@ -75,6 +78,10 @@ class Main_window(QMainWindow):
         self.ui.btn_dop_stat_calc.pressed.connect(self.p_value_calc)
         #для кнопки по расчету сводных таблиц - перевести данные в индексируемые или в по столбцам
         self.ui.btn_save_pivot_or_melt.pressed.connect(self.pivot_or_melt)
+        # для кнопки выбора HEX уветов BOX
+        self.ui.pushButton_HEX_box.pressed.connect(self.HEX_box)
+        # для кнопки выбора HEX уветов точек
+        self.ui.pushButton_HEX_points.pressed.connect(self.HEX_points)
 
         #########################################
         #путь к папке с файлами - графики
@@ -114,6 +121,11 @@ class Main_window(QMainWindow):
         #########################################
         # изменяем каллибровку
         self.ui.comboBox_LT_calibration.currentTextChanged.connect(self.LT_change_calibration)
+
+        #########################################
+        # для цветов box plot
+        self.ui.color_box.textChanged.connect(self.box_pallete_off)
+        self.ui.color_points.textChanged.connect(self.point_pallete_off)
 
     ##############################
     #изменим стиль - светлая или темная тема
@@ -349,6 +361,34 @@ class Main_window(QMainWindow):
         else:
             self.ui.hhhhh.setEnabled(False)
             self.ui.hhhhh_exp.setEnabled(True)
+
+    ############
+    # Добавить цвета к BOX или точкам
+    ############
+    def HEX_box(self):
+        color = getColor()
+        self.ui.color_box.setText(self.ui.color_box.text() + '#' + rgb2hex(color) + '&')
+
+    def HEX_points(self):
+        color = getColor()
+        self.ui.color_points.setText(self.ui.color_points.text() + '#' + rgb2hex(color) + '&')
+
+    ############
+    # Сделаем disabled у box и точек для палитр
+    ############
+    @Slot()
+    def box_pallete_off(self):
+        if self.ui.color_box.text() == '':
+            self.ui.comboBox_color_pal_box.setEnabled(True)
+        else:
+            self.ui.comboBox_color_pal_box.setEnabled(False)
+
+    @Slot()
+    def point_pallete_off(self):
+        if self.ui.color_points.text() == '':
+            self.ui.comboBox_color_pal_points.setEnabled(True)
+        else:
+            self.ui.comboBox_color_pal_points.setEnabled(False)
 
 #функция, чтобы разделить путь до файла на название файла без расширений
 def get_name_out_of_path(files):
