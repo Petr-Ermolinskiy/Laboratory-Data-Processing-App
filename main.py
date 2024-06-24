@@ -2,28 +2,28 @@
 import sys
 ############################
 # библиотеки для создания приложения
-from PySide6.QtWidgets import (QApplication, QMainWindow)
+from PySide6.QtWidgets import (QApplication, QMainWindow, QFileDialog)
 from PySide6.QtGui import QIcon
 from PySide6.QtCore import Slot
 ############################
 # обработка RheoScan
-from __RheoScan__ import *
-from __RheoScan__describe import *
-from __RheoScan_sort__ import *
+from RheoScan.__RheoScan__ import *
+from RheoScan.__RheoScan__describe import *
+from RheoScan.__RheoScan_sort__ import *
 # Biola
-from __Biola__ import *
-from __Biola_concentration__ import *
+from Biola.__Biola__ import *
+from Biola.__Biola_concentration__ import *
 # Лазерный пинцет
-from __LT__ import *
+from Laser_Tweezers.__LT__ import *
 # Микрореологический профиль
-from __Profile__ import *
+from Data_Processing.__Profile__ import *
 # Рисунки
-from __Figs__ import *
-from __Catplot__ import *
+from Data_Processing.__Figs__ import *
+from Data_Processing.__Catplot__ import *
 # Сводные таблицы
-from __Pivot_table_and_corr__ import *
+from Data_Processing.__Pivot_table_and_corr__ import *
 # Расчет p-value для 2 колонок
-from __Calc_p_value__ import *
+from Data_Processing.__Calc_p_value__ import *
 ############################
 # основное окно приложения
 from ui_main import Ui_MainWindow
@@ -82,6 +82,8 @@ class Main_window(QMainWindow):
         self.ui.pushButton_HEX_box.pressed.connect(self.HEX_box)
         # для кнопки выбора HEX уветов точек
         self.ui.pushButton_HEX_points.pressed.connect(self.HEX_points)
+        # для кнопки выбора папки
+        self.ui.toolButton_RheoScan.pressed.connect(self.toolButton_RheoScan_file)
 
         #########################################
         #путь к папке с файлами - графики
@@ -391,6 +393,17 @@ class Main_window(QMainWindow):
             self.ui.comboBox_color_pal_points.setEnabled(True)
         else:
             self.ui.comboBox_color_pal_points.setEnabled(False)
+    ############
+    # Нажатие кнопки toolButton_RheoScan и получение имени папки/файла
+    ############
+    def toolButton_RheoScan_file(self):
+        dialog = QFileDialog()
+
+        if self.ui.comboBox_RheoScan_describe.currentText() == 'Один файл - один образец':
+            path = dialog.getExistingDirectory(None, "Путь к папке с файлами RheoScan пациентов/образцов")
+        elif self.ui.comboBox_RheoScan_describe.currentText() == 'Один файл - много образцов':
+            path = dialog.getOpenFileName(None, "Путь к папке с файлом RheoScan", filter="Text Files (*.xlsx)")
+        self.ui.path_for_RheoScan_describe.setText(path)
 
 #функция, чтобы разделить путь до файла на название файла без расширений
 def get_name_out_of_path(files):

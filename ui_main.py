@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QLabel, QLineEdit, QMainWindow, QPushButton,
     QScrollArea, QSizePolicy, QSpacerItem, QSpinBox,
     QStatusBar, QTabWidget, QTableWidget, QTableWidgetItem,
-    QVBoxLayout, QWidget)
+    QToolButton, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -3508,7 +3508,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 621, 207))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 658, 207))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.tableWidget = QTableWidget(self.scrollAreaWidgetContents)
@@ -4460,6 +4460,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_128.addWidget(self.path_for_RheoScan_describe)
 
+        self.toolButton_RheoScan = QToolButton(self.tab_12)
+        self.toolButton_RheoScan.setObjectName(u"toolButton_RheoScan")
+
+        self.horizontalLayout_128.addWidget(self.toolButton_RheoScan)
+
 
         self.verticalLayout_44.addLayout(self.horizontalLayout_128)
 
@@ -4887,7 +4892,7 @@ class Ui_MainWindow(object):
         self.check_sort_or_not.toggled.connect(self.check_sort_or_not_ascending.setEnabled)
         self.check_N_.toggled.connect(self.comboBox_box_check_N_.setEnabled)
 
-        self.Lab_stuff.setCurrentIndex(3)
+        self.Lab_stuff.setCurrentIndex(0)
         self.tabWidget_2.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
 
@@ -5784,6 +5789,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.lb_path_for_plot_5.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0442\u044c \u043a excel \u0444\u0430\u0439\u043b\u0443 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u0430\u043c", None))
         self.path_for_RheoScan_describe.setText("")
+        self.toolButton_RheoScan.setText(QCoreApplication.translate("MainWindow", u"...", None))
 #if QT_CONFIG(tooltip)
         self.lb_stattest_12.setToolTip(QCoreApplication.translate("MainWindow", u"\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None))
 #endif // QT_CONFIG(tooltip)

@@ -52,6 +52,7 @@ def _describe_all_multiple_files(path: str, mask_sheet=None) -> None:
     path = path + '\\'
 
     files_all = glob.glob(path + '*.xlsx')
+    if path + 'RheoScan_summary.xlsx' in files_all: files_all.remove(path + 'RheoScan_summary.xlsx')
 
     describe_all_files = pd.DataFrame()
 
@@ -90,7 +91,7 @@ def _describe_all_multiple_files(path: str, mask_sheet=None) -> None:
         describe_all_files = pd.concat([describe_all_files, describe_data_frame], axis=0)
 
     # сохраняем в excel файл
-    describe_all_files.to_excel(path + 'describe_' + 'ALL' + '.xlsx')
+    describe_all_files.to_excel(path + 'RheoScan_summary.xlsx')
 
 # функция, когда файл один и один файл == много образцов -- причем колонка с индексами -- первая
 def _describe_all_one_file(path: str, mask_sheet=None) -> None:
@@ -126,7 +127,7 @@ def _describe_all_one_file(path: str, mask_sheet=None) -> None:
         describe_file = pd.concat([describe_file, df_describe_for_one_sheet], axis=1)
 
     # save data to the excel file
-    describe_file.to_excel('\\'.join(path.split('\\')[:-1]) + '\\' + 'file_describe.xlsx')
+    describe_file.to_excel('\\'.join(path.split('\\')[:-1]) + '\\' + 'RheoScan_summary.xlsx')
 
 # функция для правильного интерпретирования введенных значений
 def strtobool (val):
