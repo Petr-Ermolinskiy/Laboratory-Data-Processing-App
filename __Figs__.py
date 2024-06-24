@@ -37,6 +37,7 @@ def figs_plot(self) -> None:
     box_plot_or_not = self.ui.check_box_plot.isChecked()
     corr_is_need_matrix = self.ui.check_corr_matrix.isChecked()
     corr_is_need = self.ui.check_corr_figs.isChecked()
+    pairplot_is_need = self.ui.check_box_pairplot.isChecked()
     # по всем листам проходимся или же только по одному?
     all_sheets_true = self.ui.check_box_figs_all_sheets.isChecked()
     one_sheet_name = self.ui.comboBox_figs_sheets.currentText()
@@ -71,7 +72,7 @@ def figs_plot(self) -> None:
     # выполяем функцию do_for_one_sheet по всем листам (или же только по одному) в excel файле
     check_cykle = '__'
     for i in names:
-        check_cykle = do_for_one_sheet(path, files, i, box_plot_or_not, corr_is_need, corr_is_need_matrix, hue_name)
+        check_cykle = do_for_one_sheet(path, files, i, box_plot_or_not, corr_is_need, corr_is_need_matrix, pairplot_is_need, hue_name)
         if check_cykle != '__':
             break
     if check_cykle == '__':
@@ -92,7 +93,7 @@ def figs_plot(self) -> None:
 # проходимся по одному листу и стоим всё, что надо
 #
 ##############################################################
-def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, corr_is_need_matrix, hue_name):
+def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, corr_is_need_matrix, pairplot_is_need, hue_name):
     # читаем exel файл - index_col=0,
     df = pd.read_excel(files, sheet_name=what_sheet)
     df.index.rename(None, inplace=True)
@@ -151,6 +152,14 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
             x_, y_ = new_df.columns[i[0]], new_df.columns[i[1]]
             only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue=hue_name_for_sheet, not_in_hue=plot_feature_data__[7],
                          color_palette=plot_feature_data__[6], _lim_=plot_feature_data__[5], sort_or_not=plot_feature_data__[15])
+
+    if pairplot_is_need:
+        # создаем подпапку для графиков корреляции
+        name_fiqure_folder_pairplot = 'pairplot' + '//'
+        path_name_fiqure_folder_pairplot = path + name_fiqure_folder_pairplot
+        os.makedirs(path_name_fiqure_folder_pairplot, exist_ok=True)
+        # создаём корреляционные матрицы и сохраняем
+        pairplot(new_df, hue_name_for_sheet, what_sheet, path_name_fiqure_folder_pairplot)
 
     if box_plot_or_not:
         # создаем подпапку для графиков аппроксимации
@@ -243,7 +252,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
 ##############################################################
 # функцию эту я не всю придумал сам, а взял часть с сайта https://rowannicholls.github.io/python/graphs/ax_based/boxplots_significance.html#test-for-statistical-significance
 # также см. ссылку: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.boxplot.html
-def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_name_fiqure_folder, make_an_SD=True):
+def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_name_fiqure_folder, make_an_SD=True) -> None:
     sns.reset_orig()
     """
     Create a box-and-whisker plot with significance bars.
@@ -719,6 +728,33 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         plt.clf()
 
 
+##############################################################
+#
+# Функция для парных графиков
+#
+##############################################################
+def pairplot(new_df, hue_name_for_sheet, what_sheet, path):
+    sns.reset_orig()
+    sns.set(font_scale=plot_feature_data__[43])
+    sns.set_style(plot_feature_data__[45])
+
+    if plot_feature_data__[47] == 'reg':
+        plot_kws = {'scatter_kws': {'s': plot_feature_data__[46]}}
+    elif plot_feature_data__[47] == 'hist':
+        plot_kws = None
+    else:
+        plot_kws = {"s": plot_feature_data__[46]}
+
+    # раньше я об этом не думал, но лучше было оставить самый первый столбец с изначальным именем
+    if plot_feature_data__[42]:
+        figure_pairplot = sns.pairplot(data=new_df, kind=plot_feature_data__[47], hue=None, plot_kws=plot_kws)
+    else:
+        new_df = new_df.rename(columns={'index': hue_name_for_sheet})
+        figure_pairplot = sns.pairplot(data=new_df, kind=plot_feature_data__[47], hue=hue_name_for_sheet, plot_kws=plot_kws, palette=plot_feature_data__[44])
+        new_df = new_df.rename(columns={hue_name_for_sheet: 'index'})
+
+    figure_pairplot.savefig(path + safe_name(what_sheet) + '.png', dpi=600, format='png')
+
 
 ##############################################################
 #
@@ -739,7 +775,7 @@ def error_for_val_plot(plot_feature_data__, path, exel_name):
 
 # функция для безопасного имени при сохранении
 def safe_name(name) -> str:
-    name = name.replace('/', '').replace('\n', '').replace('\\frac', '').replace('\\', '').replace('$', '').replace('{', '').replace('}', '').replace('*', '').replace('%', '').replace(':', '')
+    name = str(name).replace('/', '').replace('\n', '').replace('\\frac', '').replace('\\', '').replace('$', '').replace('{', '').replace('}', '').replace('*', '').replace('%', '').replace(':', '')
     return name
 
 
@@ -833,6 +869,17 @@ def lets_add_all_parameters_for_figs_here(self):
     plot_feature_data__[40] = self.ui.comboBox_box_check_N_.currentText()
     # box-plot -- прозрачность точек
     plot_feature_data__[41] = self.ui.doubleSpinBox_points_opasity.value()
-
+    # pairplot: Не учитывать группу
+    plot_feature_data__[42] = self.ui.check_pairplot.isChecked()
+    # pairplot: Относительный размер шрифта
+    plot_feature_data__[43] = self.ui.doubleSpinBox_pairplot.value()
+    # pairplot: Цветовая палитра
+    plot_feature_data__[44] = self.ui.comboBox_color_pairplot.currentText()
+    # pairplot: Стиль
+    plot_feature_data__[45] = self.ui.comboBox_style_pairplot.currentText()
+    # pairplot: Размер точек на графике
+    plot_feature_data__[46] = self.ui.spinBox_point_size_for_pairplot.value()
+    # pairplot: kind
+    plot_feature_data__[47] = self.ui.comboBox_pairplot_kind.currentText()
     return plot_feature_data__
 

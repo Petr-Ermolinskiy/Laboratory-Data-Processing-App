@@ -366,12 +366,14 @@ class Main_window(QMainWindow):
     # Добавить цвета к BOX или точкам
     ############
     def HEX_box(self):
-        color = getColor()
-        self.ui.color_box.setText(self.ui.color_box.text() + '#' + rgb2hex(color) + '&')
+        color = getColor(True if self.ui.comboBox_style_sheet.currentText() == 'Основная тема' else False)
+        if color is not None:
+            self.ui.color_box.setText(self.ui.color_box.text() + '#' + rgb2hex(color) + '&')
 
     def HEX_points(self):
-        color = getColor()
-        self.ui.color_points.setText(self.ui.color_points.text() + '#' + rgb2hex(color) + '&')
+        color = getColor(True if self.ui.comboBox_style_sheet.currentText() == 'Основная тема' else False)
+        if color is not None:
+            self.ui.color_points.setText(self.ui.color_points.text() + '#' + rgb2hex(color) + '&')
 
     ############
     # Сделаем disabled у box и точек для палитр
