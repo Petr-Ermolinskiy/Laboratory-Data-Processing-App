@@ -3,7 +3,8 @@ import pandas as pd
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
 
-# функция, конвертирующая данные либо в индексированные либо по столбцам
+
+# функция, конвертирующая данные либо в индексированные, либо по столбцам
 def pivot_or_melt_excel_file(self) -> None:
     dlg = QMessageBox(self)
     #########################
@@ -58,7 +59,7 @@ def pivot_or_melt_excel_file(self) -> None:
     return None
 
 
-# сводная таблица - изначальный функционал предполагал, что программа будет автоматически проходиться по всем листам. Однако было решено, что лист мы выбираем сами.
+# сводная таблица
 def pivot_do_for_sheet(self) -> None:
     dlg = QMessageBox(self)
     #########################
@@ -132,7 +133,7 @@ def corr_for_sheet(self) -> None:
         dlg.exec()
         return None
 
-    # выполяем основной цикл по всем листам в excel файле - тогда нужно указать "names" вместо "[sheet_we_need]"
+    # если хотим выполнить основной цикл по всем листам в excel файле, тогда нужно указать "names" вместо "[sheet_we_need]"
     check_cykle = '__'
     for i in [sheet_we_need]:
         check_cykle = corr_sheet(path, exel_name, hue_name, i, pierson_or_not, color_or_not, __color_map__, self)
@@ -149,14 +150,17 @@ def corr_for_sheet(self) -> None:
         dlg.exec()
         return None
 
+
 ############
 # доп. функции
 ############
-def describe_this_dataframe(path, _df, __round__, error, what_sheet, _int=False, index='index'):
+def describe_this_dataframe(path, _df, __round__, error, what_sheet, _int=False, index='index') -> None:
     final = pd.DataFrame()
 
     for i in _df['index'].unique():
         final_res = _df[_df[index] == i].dropna()
+        final_res = final_res[final_res.columns[1:]]
+
         column_name = str(i) + ' (N=' + str(len(final_res)) + ')'
         gg = final_res.mean(numeric_only=True).round(__round__)
         if error == 'SD':
@@ -168,7 +172,8 @@ def describe_this_dataframe(path, _df, __round__, error, what_sheet, _int=False,
             gg_error = gg_error.astype(int)
         final[column_name] = gg.apply(str) + '±' + gg_error.apply(str)
         final.to_excel(path + '//' + str(what_sheet) + "_pivot_table.xlsx", engine="openpyxl")
-    return 0
+    return None
+
 
 def do_pivot(path, exel_name, what_sheet, hue_name, __round__, error, self):
     dlg = QMessageBox(self)
@@ -271,7 +276,7 @@ def corr_sheet(path, exel_name, hue_name, what_sheet, pierson_or_not, color_or_n
     # и добавляем в него только колонку для значений индекса/концентрации/образца!
     new_df.insert(loc=0, column='index', value=df[hue_name_for_sheet])  # Диагноз или группа
 
-    ##тут уже идёт корреляции
+    # тут уже идёт корреляции
     new_df = new_df[new_df.columns[1:]]
     corr = new_df.corr(method=pierson_or_not)
 

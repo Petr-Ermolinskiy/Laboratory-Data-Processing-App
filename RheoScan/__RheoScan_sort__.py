@@ -6,7 +6,8 @@ from pathlib2 import Path
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
 
-def replacetext(path_to_file):
+
+def replacetext(path_to_file) -> None:
     # Reading and storing the content of the file in
     file = Path(path_to_file)
     # a data variable
@@ -18,25 +19,27 @@ def replacetext(path_to_file):
     # Writing the replaced data
     # in the text file
     file.write_text(data)
-    return 0
+    return None
 
-def subfold(path, level):
+
+def subfold(path, level) -> None:
     global s
     if level == 1:
         s.add(path)
         return
     for i in os.scandir(path):
         if i.is_dir():
-            if level !=1:
-                subfold(i.path, level-1)
+            if level != 1:
+                subfold(i.path, level - 1)
             else:
                 s.add(i.path)
+    return None
 
 
-def sort_these_files(path, self):
+def sort_these_files(path, self) -> bool:
     path = path + '\\'
     ############
-    #Изменим название папок на маленькие буквы, если такие папки есть
+    # Изменим название папок на маленькие буквы, если такие папки есть
     for sub_folders in os.scandir(path):
         if sub_folders.is_dir():
             name = sub_folders.path.split('\\')[-1]
@@ -47,7 +50,7 @@ def sort_these_files(path, self):
             if name == 'Deform':
                 os.rename(path + "Deform", path + "deform")
     ############
-    files_all = glob.glob(path+'*.txt')
+    files_all = glob.glob(path + '*.txt')
     if files_all == []:
         dlg = QMessageBox(self)
         dlg.setWindowTitle("RheoScan")
@@ -59,7 +62,7 @@ def sort_these_files(path, self):
         if button == QMessageBox.No:
             return True
         else:
-            return None
+            return False
 
     # создаем подпапки для файлов
     os.makedirs(path + 'agg', exist_ok=True)
@@ -70,7 +73,7 @@ def sort_these_files(path, self):
         replacetext(i)
         # правильный срез данных
         all_lines_agg = sum(1 for line in open(i))
-        # прочтатать каждый файл и извлечь данные
+        # прочитать каждый файл и извлечь данные
         x = read_table(i, skipfooter=all_lines_agg - 13, engine='python', header=None, decimal=',')
         var = x.iloc[5][0][0:3]
         if var == 'ATM':
@@ -79,7 +82,8 @@ def sort_these_files(path, self):
             os.rename(i, path + 'agg//' + i.split('\\')[-1])
         elif var == 'Def':
             os.rename(i, path + 'deform//' + i.split('\\')[-1])
-    return None
+    return False
+
 
 def sort_RheoScan_data(self) -> None:
     path, level = self.ui.main_path.text(), self.ui.spinBox_level.value()
@@ -102,4 +106,3 @@ def sort_RheoScan_data(self) -> None:
     dlg.setText("Данные рассортированы по подпапкам")
     dlg.exec()
     return None
-

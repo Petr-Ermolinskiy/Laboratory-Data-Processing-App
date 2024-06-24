@@ -13,6 +13,7 @@ import numba
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
 
+
 ##############################################################
 #
 # главная функция
@@ -23,9 +24,11 @@ def figs_plot(self) -> None:
     # закроем все рисунки, если они открыты
     # если этого не сделать, то может быть такое, что рисунки наложатся друг на друга
     plt.close()
-    # в этот list будут записываться все доп. функции для графиков -- см. определение ниже
+    # В этот list будут записываться все доп. функции для графиков -- см. определение ниже.
     global plot_feature_data__
-    # я решил все особенности и кастомизацию графиков перевести в массив "plot_feature_data__" -- по большей части это связано с тем, что этот код я несколько раз переписывал
+    # Я решил все особенности и доп. функции для построения графиков перевести в массив "plot_feature_data__".
+    # По большей части это связано с тем, что этот код я несколько раз переписывал.
+    # И это удобно, если надо быстро что-то добавить.
     plot_feature_data__ = lets_add_all_parameters_for_figs_here(self)
     #########################
     # параметры, которые нам понадобятся
@@ -52,7 +55,7 @@ def figs_plot(self) -> None:
         return None
 
     # основной путь
-    path = path + '//'
+    path = path + '\\'
     # путь до файла
     files = path + exel_name
 
@@ -64,12 +67,12 @@ def figs_plot(self) -> None:
         dlg.exec()
         return None
 
-    # если стоит галочка, то проходимся по всем листам, но если же all_sheets_true == False
+    # если стоит галочка, то проходимся по всем листам, но если же all_sheets_true == False,
     # то выбираем только один лист
     if all_sheets_true == False:
         names = [one_sheet_name]
 
-    # выполяем функцию do_for_one_sheet по всем листам (или же только по одному) в excel файле
+    # выполняем функцию do_for_one_sheet по всем листам (или же только по одному) в excel файле
     check_cykle = '__'
     for i in names:
         check_cykle = do_for_one_sheet(path, files, i, box_plot_or_not, corr_is_need, corr_is_need_matrix, pairplot_is_need, hue_name)
@@ -114,7 +117,6 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
         columns_of_interest = columns_of_interest[index_for_col_interest + 1:]
 
     # все столбцы с данными приводим к численному виду
-
     for dd in columns_of_interest:
         try:
             df[dd] = df[dd].apply(pd.to_numeric)
@@ -130,7 +132,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
     new_df.insert(loc=0, column='index', value=df[hue_name_for_sheet])  # Диагноз
     if corr_is_need_matrix:
         # создаем подпапку для графиков корреляции
-        name_fiqure_folder_corr_matrix = 'correlation_matrix' + '//' + what_sheet
+        name_fiqure_folder_corr_matrix = 'correlation_matrix' + '\\' + what_sheet
         path_name_fiqure_folder_corr_matrix = path + name_fiqure_folder_corr_matrix
         os.makedirs(path_name_fiqure_folder_corr_matrix, exist_ok=True)
         # создаём корреляционные матрицы и сохраняем
@@ -155,7 +157,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
 
     if pairplot_is_need:
         # создаем подпапку для графиков корреляции
-        name_fiqure_folder_pairplot = 'pairplot' + '//'
+        name_fiqure_folder_pairplot = 'pairplot' + '\\'
         path_name_fiqure_folder_pairplot = path + name_fiqure_folder_pairplot
         os.makedirs(path_name_fiqure_folder_pairplot, exist_ok=True)
         # создаём корреляционные матрицы и сохраняем
@@ -191,7 +193,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
                 # изменяем порядок колонок - сортируем, если это надо
                 if plot_feature_data__[15]:
                     just_all_we_need2 = just_all_we_need2[just_all_we_need2.columns.sort_values(ascending=plot_feature_data__[39])]
-                elif plot_feature_data__[31]!='':
+                elif plot_feature_data__[31] != '':
                     columns__temp = plot_feature_data__[31].replace(',', '').replace(';', ' ').split()
 
                     if len(just_all_we_need2.columns) != len(columns__temp):
@@ -223,7 +225,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
             # создаем подпапку для exel файлов
             os.makedirs(path + 'stat', exist_ok=True)
             #############
-            with pd.ExcelWriter(path + 'stat' + '//' + what_sheet + ".xlsx") as writer:
+            with pd.ExcelWriter(path + 'stat' + '\\' + what_sheet + ".xlsx") as writer:
                 for i in dict_for_future:
                     name_of_sheet = i
                     name_of_sheet = safe_name(name_of_sheet)
@@ -233,7 +235,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
                     df_list[dict_for_future[i]].to_excel(writer, sheet_name=name_of_sheet)
             #############
             with pd.ExcelWriter(
-                    path + 'stat' + '//' + what_sheet + '_' + plot_feature_data__[12] + "_p-values.xlsx") as writer:
+                    path + 'stat' + '\\' + what_sheet + '_' + plot_feature_data__[12] + "_p-values.xlsx") as writer:
                 for i in dict_for_future:
                     name_of_sheet = i
                     name_of_sheet = safe_name(name_of_sheet)
@@ -244,33 +246,34 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
     return '__'
 
 
-
 ##############################################################
 #
 # BOX PLOT
 #
 ##############################################################
-# функцию эту я не всю придумал сам, а взял часть с сайта https://rowannicholls.github.io/python/graphs/ax_based/boxplots_significance.html#test-for-statistical-significance
+# функцию эту я не всю придумал сам, а взял небольшую часть с сайта:
+# https://rowannicholls.github.io/python/graphs/ax_based/boxplots_significance.html#test-for-statistical-significance
 # также см. ссылку: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.boxplot.html
-def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_name_fiqure_folder, make_an_SD=True) -> None:
+def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_name_fiqure_folder, make_an_SD=True) -> str:
     sns.reset_orig()
     """
     Create a box-and-whisker plot with significance bars.
     """
-    # если будем строить со стандарным отклоением, то укажем дополнительный аргумент
+    # если будем строить со стандартным отклонением, то укажем дополнительный аргумент
     if make_an_SD:
         whisk_MIN_MAX = 0
     else:
         whisk_MIN_MAX = 1.5
 
-    # аргумент positions -- очень важен -- без него всё поедет! positions=range(len(data)) !
+    # аргумент positions -- очень важен -- без него всё поедет!
+    # positions=range(len(data)) !
     ax = plt.axes()
     ax.cla()
     bp = ax.boxplot(data, widths=0.6, whis=whisk_MIN_MAX, patch_artist=True, positions=range(len(data)), showmeans=True,
                     showfliers=False, meanprops={"marker": "D", "markerfacecolor": "white", "markeredgecolor": "black",
                                                  "markersize": str(plot_feature_data__[22])})
 
-    ###изменить цвета! если введен агрумент цвета, то цвет будет один;
+    # Изменим цвета. Если введен аргумент цвета, то цвет будет один или несколько;
     # есть такие цвета хорошие 'Pastel1' 'Blues' 'Greens' 'Purples' или такие https://r02b.github.io/seaborn_palettes/
     if plot_feature_data__[2] == '' and plot_feature_data__[3] == '':
         # для точек измерений
@@ -326,13 +329,12 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
     except Exception as e:
         return 'Box plot: скорее всего вы ввели неправильный(е) цвет(а) HEX.\nЦвет для HEX должен быть в формате <#XXXXXX>.\nДля нескольких цветов используйте разделительный знак: &.\n' + str(e)
 
-    # Colour of the median lines
+    # цвет медианы
     plt.setp(bp['medians'], color='k')
 
     if plot_feature_data__[16]:
-        # Check for statistical significance
+        # Стат. Значимость.
         significant_combinations = []
-        # Check from the outside pairs of boxes inwards
         if plot_feature_data__[32] != '':
             try:
                 combinations = plot_feature_data__[32].split()
@@ -363,7 +365,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
             elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля':
                 _, p = stats.brunnermunzel(data1, data2, alternative=plot_feature_data__[13])
             elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля (normal)':
-                #distribution='normal' - если что-то не так или данные только одно значение, но в этом случае этот тест лучше не использовать
+                # distribution='normal' - если что-то не так или данные только одно значение, но в этом случае этот тест лучше не использовать
                 _, p = stats.brunnermunzel(data1, data2, distribution='normal', alternative=plot_feature_data__[13])
             elif plot_feature_data__[12] == 'Тест Фишера-Питмана':
                 def statistic(x, y, axis):
@@ -399,23 +401,24 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
             if p < 0.05:
                 significant_combinations.append([c, p])
 
-        # Get info about y-axis
+        # МИН-МАКС оси Y
         bottom, top = ax.get_ylim()
         yrange = top - bottom
 
-        # Significance bars
+        # Бары статистической значимости
         for i, significant_combination in enumerate(significant_combinations):
-            # Columns corresponding to the datasets of interest
+            # Столбцы, соответствующие интересующим наборам данных
             x1 = significant_combination[0][0]
             x2 = significant_combination[0][1]
-            # What level is this bar among the bars above the plot?
+            # На каком уровне находится этот бар среди других?
             level = len(significant_combinations) - i
-            # Plot the bar
-            bar_height = (yrange * 0.08 * level) + top
+            # построим бары
+            bar_height = (yrange * 0.08 * level * plot_feature_data__[37]/10) + top
             bar_tips = bar_height - (yrange * 0.02)
             plt.plot(
                 [x1 - 1, x1 - 1, x2 - 1, x2 - 1],
                 [bar_tips, bar_height, bar_height, bar_tips], lw=1, c='k')
+
             ##############
             # эта функция нужна, если нужно точное значение p
             def round_to(num, digits=2):
@@ -423,8 +426,9 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
                 scale = int(-math.floor(math.log10(abs(num - int(num))))) + digits - 1
                 if scale < digits: scale = digits
                 return round(num, scale)
+
             ##############
-            # Significance level
+            # Уровень значимости
             p = significant_combination[1]
             if p < 0.0001:
                 sig_symbol = '****'
@@ -451,7 +455,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
                 elif plot_feature_data__[38] == 'равно какому-то значению (p=)':
                     sig_symbol = 'p = ' + str(round_to(p))
             text_height = bar_height + (yrange * 0.01)
-            plt.text((x1 - 1 + x2 - 1) * 0.5, text_height, sig_symbol, ha='center', c='k', fontsize = plot_feature_data__[37])
+            plt.text((x1 - 1 + x2 - 1) * 0.5, text_height, sig_symbol, ha='center', c='k', fontsize=plot_feature_data__[37])
     ###############
     # Изменим границы оси Y
     ###############
@@ -467,11 +471,13 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
         top = float(plot_feature_data__[36].replace(",", "."))
         ax.set_ylim(bottom, top)
 
-    if plot_feature_data__[5] != '':
+    if plot_feature_data__[5] != '' or plot_feature_data__[36] != '':
+        bottom, top = ax.get_ylim()
+        yrange = top - bottom
         # это нужно, чтобы N - количество данных отображалось корректно
         bottom = bottom + 0.02 * yrange
 
-    # Annotate sample size below each box
+    # Укажем размер выборки под каждым полем.
     # ''' внизу чтобы было кол-во данных
     if plot_feature_data__[23]:
         for i, dataset in enumerate(data):
@@ -479,7 +485,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
             ax.text(i, bottom, fr'n = {sample_size}', ha='center', size=plot_feature_data__[40])
     # '''
 
-    ######### Шрифт воставляем в самом конце, т.к. из-за изменения осей могут быть ошибки
+    # Шрифт устанавливаем в самом конце, т.к. из-за изменения осей могут быть ошибки
     # Label y-axis
     ax.set_ylabel(ylabel, fontsize=plot_feature_data__[18], fontname=plot_feature_data__[21])
     # Label x-axis
@@ -487,23 +493,22 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
     # Label x-axis ticks -- если нужно, можно добавить "rotation=40"
     new_x_tick_label = [item.replace('\\n', '\n') for item in map(str, list(xticklabels))]
     ax.set_xticklabels(new_x_tick_label, rotation=int(plot_feature_data__[14]))
-    #################################### размер шрифта подписи
+    # размер шрифта подписи
     plt.yticks(fontsize=plot_feature_data__[20], fontname=plot_feature_data__[21])
     plt.xticks(fontsize=plot_feature_data__[19], fontname=plot_feature_data__[21])
 
-    # Hide x-axis major ticks
+    # Скроем основные деления оси X
     ax.tick_params(axis='x', which='major', length=0)
-    # Show x-axis minor ticks
+    # Покажем мелкие деления оси X
     xticks = [0.5] + [x + 0.5 for x in ax.get_xticks()]
     ax.set_xticks(xticks, minor=True)
-    # Clean up the appearance
     ax.tick_params(axis='x', which='minor', length=3, width=1)
 
     # очень важно, чтобы не обрезалось
     plt.tight_layout()
     try:
         # сохранение рисунка
-        plt.savefig(path_name_fiqure_folder + '//' + safe_name(Name_fiqure) + '.png', dpi=600, format='png', transparent=plot_feature_data__[24])
+        plt.savefig(path_name_fiqure_folder + '\\' + safe_name(Name_fiqure) + '.png', dpi=600, format='png', transparent=plot_feature_data__[24])
     except Exception as e:
         return 'Box plot: ' + str(e)
     plt.close()
@@ -513,7 +518,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
 
 
 # Функция для преобразования данных для построения
-def just_to_numpy_for_plot(df_list, dict_for_future):
+def just_to_numpy_for_plot(df_list, dict_for_future) -> list:
     big_G = []
     small_G = []
     for parameter_ in dict_for_future:
@@ -525,19 +530,19 @@ def just_to_numpy_for_plot(df_list, dict_for_future):
 
 
 # Функция для построения графиков по входному массиву
-def just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis, path_name_fiqure_folder):
+def just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis, path_name_fiqure_folder) -> str:
     for parameter_ in dict_for_future:
         do_SD = True if plot_feature_data__[4] == 'SD' else False
         ylabel = parameter_
-        check=box_and_whisker(big_G[dict_for_future[parameter_]], '', name_of_X_axis, ylabel,
-                        df_list[dict_for_future[parameter_]].columns, parameter_, path_name_fiqure_folder,
-                        make_an_SD=do_SD)
+        check = box_and_whisker(big_G[dict_for_future[parameter_]], '', name_of_X_axis, ylabel,
+                                df_list[dict_for_future[parameter_]].columns, parameter_, path_name_fiqure_folder,
+                                make_an_SD=do_SD)
         if check != '__':
             return check
     return '__'
 
 
-# Функция для получения массива датафреймов с таблицами p-values
+# Функция для получения массива дата фреймов с таблицами p-values
 def calculate_table_for_p_val(df_list, dict_for_future):
     df_list_stat = []
     for i in dict_for_future:
@@ -548,45 +553,47 @@ def calculate_table_for_p_val(df_list, dict_for_future):
                 if col1 == col2:
                     dop_DF.loc[col1, col2] = 1.0
                     continue
-                # рассчитаем стат. значимости
+                # Рассчитаем стат. Значимости.
                 if plot_feature_data__[12] == 'U-критерий Манна — Уитни':
                     _, p_value = stats.mannwhitneyu(df_list[dict_for_future[i]][col1].dropna(),
-                                                            df_list[dict_for_future[i]][col2].dropna(),
-                                                            alternative=plot_feature_data__[13])
+                                                    df_list[dict_for_future[i]][col2].dropna(),
+                                                    alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Т-критерий Стьюдента':
                     _, p_value = stats.ttest_ind(df_list[dict_for_future[i]][col1].dropna(),
-                                                         df_list[dict_for_future[i]][col2].dropna(),
-                                                         alternative=plot_feature_data__[13])
+                                                 df_list[dict_for_future[i]][col2].dropna(),
+                                                 alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Критерий Уилкоксона':
                     _, p_value = stats.wilcoxon(df_list[dict_for_future[i]][col1].dropna(),
-                                                         df_list[dict_for_future[i]][col2].dropna(),
-                                                         alternative=plot_feature_data__[13])
+                                                df_list[dict_for_future[i]][col2].dropna(),
+                                                alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Критерий Краскела — Уоллиса':
                     _, p_value = stats.kruskal(df_list[dict_for_future[i]][col1].dropna(),
-                                                         df_list[dict_for_future[i]][col2].dropna())
+                                               df_list[dict_for_future[i]][col2].dropna())
                 elif plot_feature_data__[12] == 'Медианный критерий':
                     _, p_value = stats.mood(df_list[dict_for_future[i]][col1].dropna(),
-                                                         df_list[dict_for_future[i]][col2].dropna(),
-                                                         alternative=plot_feature_data__[13])
+                                            df_list[dict_for_future[i]][col2].dropna(),
+                                            alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Тест Ансари-Брэдли':
                     _, p_value = stats.ansari(df_list[dict_for_future[i]][col1].dropna(),
-                                                         df_list[dict_for_future[i]][col2].dropna(),
-                                                         alternative=plot_feature_data__[13])
+                                              df_list[dict_for_future[i]][col2].dropna(),
+                                              alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля':
                     _, p_value = stats.brunnermunzel(df_list[dict_for_future[i]][col1].dropna(),
-                                                             df_list[dict_for_future[i]][col2].dropna(),
-                                                             alternative=plot_feature_data__[13])
+                                                     df_list[dict_for_future[i]][col2].dropna(),
+                                                     alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля (normal)':
                     _, p_value = stats.brunnermunzel(df_list[dict_for_future[i]][col1].dropna(),
-                                                             df_list[dict_for_future[i]][col2].dropna(),
-                                                             distribution='normal',
-                                                             alternative=plot_feature_data__[13])
+                                                     df_list[dict_for_future[i]][col2].dropna(),
+                                                     distribution='normal',
+                                                     alternative=plot_feature_data__[13])
                 elif plot_feature_data__[12] == 'Тест Фишера-Питмана':
                     def statistic(x, y, axis):
                         return np.mean(x, axis=axis) - np.mean(y, axis=axis)
+
                     # вычисляем
-                    all_data = stats.permutation_test((df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna()), statistic, permutation_type='independent',
-                                          vectorized=True, alternative=plot_feature_data__[13])
+                    all_data = stats.permutation_test((df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna()), statistic,
+                                                      permutation_type='independent',
+                                                      vectorized=True, alternative=plot_feature_data__[13])
                     # само значение p
                     p_value = all_data.pvalue
 
@@ -628,7 +635,7 @@ def calculate_table_for_p_val(df_list, dict_for_future):
 def only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue, color_palette=None, not_in_hue=[], _lim_='', sort_or_not=False):
     sns.reset_orig()
     sns.set(font_scale=plot_feature_data__[28])
-    #стиль
+    # стиль
     sns.set_style("ticks")
     if plot_feature_data__[30]:
         sns.set_style("whitegrid", {'axes.grid': True, "grid.color": ".9", "grid.linestyle": "--"})
@@ -642,7 +649,7 @@ def only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue, color_pa
         hue_what.sort()
     # удаляем элемент_ы hue, если это нужно
     try:
-        if type(not_in_hue) == str and not_in_hue!='':
+        if type(not_in_hue) == str and not_in_hue != '':
             hue_what.remove(not_in_hue)
         elif type(not_in_hue) == int or type(not_in_hue) == float:
             hue_what.remove(str(not_in_hue))
@@ -683,11 +690,10 @@ def only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue, color_pa
     name_of_g = safe_name(name_of_g)
 
     # сохраняем рисунок
-    fig.savefig(path_name_fiqure_folder_corr + '//' + name_of_g + '.png', dpi=600, format='png', bbox_inches='tight')
+    fig.savefig(path_name_fiqure_folder_corr + '\\' + name_of_g + '.png', dpi=600, format='png', bbox_inches='tight')
     plt.close(fig)
     ax.cla()
     plt.clf()
-
 
 
 ##############################################################
@@ -706,7 +712,6 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         df_for_corr = new_df[new_df['index'] == i]
         df_for_corr = df_for_corr[df_for_corr.columns[1:]]
         # какое будет название?
-        # title_ = "Correlation matrix of the capillary blood flow characteristics\n for the " + i +' group (n=' + str(int(len(df_for_corr))) + ')'
         title_ = plot_feature_data__[11] + str(i) + ' (n=' + str(int(len(df_for_corr))) + ')'
         # корреляции делаем
         corr = df_for_corr.corr(method=plot_feature_data__[34])
@@ -721,9 +726,9 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         plt.tight_layout()
         name_of_file_ = str(i).replace('<', 'less')
         name_of_file_ = name_of_file_.replace('>=', 'more')
-        plt.savefig(path_name_fiqure_folder_corr_matrix + '//' + safe_name(name_of_file_) + '.png', dpi=600, format='png')
-        #также экспортируем в excel
-        corr.to_excel(path_name_fiqure_folder_corr_matrix + '//' + safe_name(name_of_file_) + '_' + plot_feature_data__[34] + ".xlsx", engine="openpyxl")
+        plt.savefig(path_name_fiqure_folder_corr_matrix + '\\' + safe_name(name_of_file_) + '.png', dpi=600, format='png')
+        # также экспортируем в excel
+        corr.to_excel(path_name_fiqure_folder_corr_matrix + '\\' + safe_name(name_of_file_) + '_' + plot_feature_data__[34] + ".xlsx", engine="openpyxl")
         plt.close()
         plt.clf()
 
@@ -762,28 +767,32 @@ def pairplot(new_df, hue_name_for_sheet, what_sheet, path):
 #
 ##############################################################
 
-def error_for_val_plot(plot_feature_data__, path, exel_name):
+def error_for_val_plot(plot_feature_data__, path, exel_name) -> str:
     if path == '':
         return 'Путь для файла отсутствует'
     if exel_name == '':
         return 'Имя файла отсутствует'
-    if plot_feature_data__[5].replace(".", "").replace(",", "").isdigit() is False and plot_feature_data__[5] != '':
-        return 'Box plot: параметр нижней границы содержит буквы'
-    if plot_feature_data__[36].replace(".", "").replace(",", "").isdigit() is False and plot_feature_data__[5] != '':
-        return 'Box plot: параметр верхней границы содержит буквы'
+    if plot_feature_data__[5].replace(".", "").replace(",", "").replace("-", "").isdigit() is False and plot_feature_data__[5] != '':
+        return 'Box plot: параметр нижней границы содержит буквы или неподдерживаемые символы'
+    if plot_feature_data__[36].replace(".", "").replace(",", "").replace("-", "").isdigit() is False and plot_feature_data__[36] != '':
+        return 'Box plot: параметр верхней границы содержит буквы или неподдерживаемые символы'
     return '__'
+
 
 # функция для безопасного имени при сохранении
 def safe_name(name) -> str:
-    name = str(name).replace('/', '').replace('\n', '').replace('\\frac', '').replace('\\', '').replace('$', '').replace('{', '').replace('}', '').replace('*', '').replace('%', '').replace(':', '')
+    name = str(name).replace('/', '').replace('\n', '').replace('\\frac', '').replace('\\', '').replace('$', '').replace('{', '').replace('}', '').replace('*', '').replace('%',
+                                                                                                                                                                            '').replace(
+        ':', '')
     return name
 
 
 # добавляем в массив plot_feature_data__ всё, что мы хотим -- я его так отдельно выделил в качестве безопасности при объявлении его global
 def lets_add_all_parameters_for_figs_here(self):
-    # так, конечно, не очень хорошо делать, но я не думаю, что это прям очень неудобный кастыль
-    # я так всё пишу, потому что я всё это переписывал и данная запись наиболее читаема
-    plot_feature_data__ = [0] * 100
+    # так, конечно, не очень хорошо делать,
+    # но я это очень удобный костыль
+    # лучше было бы сделать словарь
+    plot_feature_data__ = [None] * 100
 
     # цвет для box - палитра
     plot_feature_data__[0] = self.ui.comboBox_color_pal_box.currentText()
@@ -811,7 +820,7 @@ def lets_add_all_parameters_for_figs_here(self):
     plot_feature_data__[11] = self.ui.name_of_corr_matrix.text()
     # stat test
     plot_feature_data__[12] = self.ui.comboBox_stat_test.currentText()
-    # alter heposisis
+    # альтернативная гипотеза
     plot_feature_data__[13] = self.ui.comboBox_alter_hep.currentText()
     # spin x_label
     plot_feature_data__[14] = self.ui.comboBox_spin_x_.currentText()
@@ -882,4 +891,3 @@ def lets_add_all_parameters_for_figs_here(self):
     # pairplot: kind
     plot_feature_data__[47] = self.ui.comboBox_pairplot_kind.currentText()
     return plot_feature_data__
-

@@ -9,17 +9,15 @@ import numpy as np
 import scipy.optimize as opt
 from pandas import Series, read_table, ExcelWriter, DataFrame, to_numeric, concat
 from sklearn.metrics import r2_score
-# для кастомного вычисления AI
+# для вычисления AI
 from scipy.integrate import trapz
 ############################
 # также для графиков понадобится библиотека matplotlib
 import matplotlib.pyplot as plt
 ############################
-from tkinter import messagebox
 
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
-
 
 
 def all_RheoScan_level(self) -> None:
@@ -35,10 +33,10 @@ def all_RheoScan_level(self) -> None:
     # сюда будут сохраняться все данные
     all_and_all = DataFrame()
 
-    #переменная для сохранения всех путей
+    # переменная для сохранения всех путей
     global s
     s = set()
-    #идём по подпапкам и сохраняем в s все возможные пути папок, где будет выполняться обработка
+    # идём по подпапкам и сохраняем в s все возможные пути папок, где будет выполняться обработка
     subfold(level, path)
 
     # проходимся по каждому пути
@@ -46,8 +44,8 @@ def all_RheoScan_level(self) -> None:
         check = main_thingy(self, path_for_one)
         if check[0] != 0:
             break
-        all_and_all=concat([all_and_all, check[1]], axis=1, ignore_index=False)
-    #сохраняем общий массив
+        all_and_all = concat([all_and_all, check[1]], axis=1, ignore_index=False)
+    # сохраняем общий массив
     if check[0] == 0 and self.ui.check_save_RheoScan_overall.isChecked():
         with ExcelWriter(path + '\\' + 'overall_data_' + path.split('\\')[-1] + ".xlsx") as writer:
             all_and_all.T.reset_index().drop(columns=['index']).to_excel(writer, sheet_name='All_data')
@@ -58,6 +56,7 @@ def all_RheoScan_level(self) -> None:
         dlg.exec()
     return None
 
+
 def subfold(level, path):
     global s
     if level == 1:
@@ -65,20 +64,22 @@ def subfold(level, path):
         return None
     for i in os.scandir(path):
         if i.is_dir():
-            if level !=1:
-                subfold(level-1, i.path)
+            if level != 1:
+                subfold(level - 1, i.path)
             else:
                 s.add(i.path)
     return None
 
-#основная функция для извлечения данных
+
+# основная функция для извлечения данных
 def main_thingy(self, path_for_one) -> [int, DataFrame]:
     dlg = QMessageBox(self)
     #########################
     # параметры, которые нам понадобятся
     #########################
     # данные для аппроксимации
-    agg_approx_data__ = [self.ui.tua_1_agg.value(), self.ui.tua_2_agg.value(), self.ui.r2_def.value(), self.ui.spinBox_n_max_deform.value()]
+    agg_approx_data__ = [self.ui.tua_1_agg.value(), self.ui.tua_2_agg.value(), self.ui.r2_def.value(),
+                         self.ui.spinBox_n_max_deform.value()]
     # изначальный путь
     path_r = self.ui.main_path.text()
     # проверка на флажки
@@ -104,8 +105,9 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
     iqr_val = self.ui.iqr_vibros.value()
     #########################
 
-    #для того, чтобы избежать ошибок
-    all_def_des, all_CSS_des, fit_res_des, all_agg_des, fit_res_deform_des = DataFrame(index=['mean']), DataFrame(index = ['mean']), DataFrame(index = ['mean']), DataFrame(index = ['mean']), DataFrame(index = ['mean'])
+    # для того чтобы избежать ошибок
+    all_def_des, all_CSS_des, fit_res_des, all_agg_des, fit_res_deform_des = DataFrame(index=['mean']), DataFrame(
+        index=['mean']), DataFrame(index=['mean']), DataFrame(index=['mean']), DataFrame(index=['mean'])
 
     # это путь к папке, в которой должны быть следующие подпапки: agg, stress, deform.
     path = path_for_one
@@ -153,7 +155,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
         for i in files_agg:
             # правильный срез данных
             all_lines_agg = sum(1 for line in open(i))
-            # прочтатать каждый файл и извлечь данные
+            # прочитать каждый файл и извлечь данные
             x = read_table(i, skipfooter=all_lines_agg - 13, engine='python', header=None, decimal=',')
             yy = x.drop([0, 2, 3, 4, 9, 10])
             jj = yy[0].apply(lambda x: Series(x.split(':'))).T
@@ -183,7 +185,9 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
 
     if var_fit and files_agg != []:
         # Data Frame для апроксимации
-        fit_res = DataFrame(columns=['Patient', 'y0', 'A1', 'A2', 'A1+A2', 't1', 't2', 'assim', 'R^2', 'AI (2.5 sec.), %', 'AI (5 sec.), %', 'AI (10 sec.), %', 'AI (50 sec.), %', 'AI (100 sec.), %', 'AI (max), %'])
+        fit_res = DataFrame(
+            columns=['Patient', 'y0', 'A1', 'A2', 'A1+A2', 't1', 't2', 'assim', 'R^2', 'AI (2.5 sec.), %',
+                     'AI (5 sec.), %', 'AI (10 sec.), %', 'AI (50 sec.), %', 'AI (100 sec.), %', 'AI (max), %'])
         # индекс для сохранения
         jkd = 1
 
@@ -213,35 +217,44 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             Up = x['Raw data, a.u.'][0]
             Bottom = x['Raw data, a.u.'].min()
             Bottom_index = x['Raw data, a.u.'].idxmin()
-            #assim -- это скорее ассиметрия эритроцитов
+            # assim -- это скорее ассиметрия эритроцитов
             assim = Up - Bottom
-            # непосредственно сама аппроксимация (функция opt.curve_fit). Если вдруг не удается хорошо аппроксимировать ф-ию, надо изменить bounds
-            (y0_, A1_, A2_, t1_, t2_), _ = opt.curve_fit(f, x['Time, s'][Bottom_index+3:], x['Raw data, a.u.'][Bottom_index+3:], bounds=((0, -10, -10, 0, 0), (10, 10, 10, float(agg_approx_data__[0]), float(agg_approx_data__[1]))))
+            # Непосредственно сама аппроксимация (функция opt.curve_fit). Если вдруг не удается хорошо аппроксимировать ф-ию, надо изменить bounds
+            # среда может жаловаться, что "Too many values to unpack", но тут всё хорошо
+            (y0_, A1_, A2_, t1_, t2_), _ = opt.curve_fit(f, x['Time, s'][Bottom_index + 3:],
+                                                         x['Raw data, a.u.'][Bottom_index + 3:],
+                                                         bounds=((0, -10, -10, 0, 0), (10, 10, 10, float(agg_approx_data__[0]), float(agg_approx_data__[1]))))
             # расчет r^2
             r2 = r2_score(f(x['Time, s'], *[y0_, A1_, A2_, t1_, t2_]), x['Raw data, a.u.'])
 
             # далее вычислим AI по сырым данным -- если выходим за пределы датафрейма, то просто возращаем None
             def calc_AI_in_percent(data_frame, time, bottom_index):
                 try:
-                    integral_raw = trapz(data_frame.iloc[bottom_index:bottom_index + int(time * 10), 1] - data_frame.iloc[:, 1].min(), data_frame.iloc[bottom_index:bottom_index + int(time * 10), 0])
-                    # индекс агрегации определяется, не просто как отношение: площадь под кривой к площади прямоугольника
-                    # а как к площади прямоугольника, верхняя сторона которого лежит на линии max значений
+                    integral_raw = trapz(
+                        data_frame.iloc[bottom_index:bottom_index + int(time * 10), 1] - data_frame.iloc[:, 1].min(),
+                        data_frame.iloc[bottom_index:bottom_index + int(time * 10), 0])
+                    # индекс агрегации определяется, не просто как отношение: площадь под кривой к площади прямоугольника,
+                    # а как к площади прямоугольника, верхняя сторона которого лежит на линии MAX значений
                     # для просто прямоугольника надо раскомментировать строчку ниже
-                    # integral_rect = (data_frame.at[bottom_index+time*10,'Raw data, a.u.'] - data_frame.iloc[:, 1].min())*time
                     integral_rect = (data_frame.iloc[:, 1].max() - data_frame.iloc[:, 1].min()) * time
+                    # integral_rect = (data_frame.at[bottom_index+time*10,'Raw data, a.u.'] - data_frame.iloc[:, 1].min())*time
                     return integral_raw / integral_rect * 100
                 except:
                     return None
+
             # Индексы агрегации для 5 сек., 10 сек., 50 сек., 100 сек.
             AI_2_5 = calc_AI_in_percent(x, 2.5, Bottom_index)
             AI_5 = calc_AI_in_percent(x, 5, Bottom_index)
             AI_10 = calc_AI_in_percent(x, 10, Bottom_index)
             AI_50 = calc_AI_in_percent(x, 50, Bottom_index)
             AI_100 = calc_AI_in_percent(x, 100, Bottom_index)
-            AI_max = calc_AI_in_percent(x, math.floor(len(x)/10)-1, Bottom_index)
+            AI_max = calc_AI_in_percent(x, math.floor(len(x) / 10) - 1, Bottom_index)
 
             # сохранение значений аппроксимации в строку и далее в Data Frame
-            fit_res.loc[jkd] = (Name_fit_agg, y0_, abs(A1_), abs(A2_), abs(A1_) + abs(A2_), t1_, t2_, assim, r2, AI_2_5, AI_5, AI_10, AI_50, AI_100, AI_max)
+            fit_res.loc[jkd] = (
+                Name_fit_agg, y0_, abs(A1_), abs(A2_), abs(A1_) + abs(A2_), t1_, t2_, assim, r2, AI_2_5, AI_5, AI_10,
+                AI_50,
+                AI_100, AI_max)
             jkd += 1
             if fiting_aggreg:
                 #####################################
@@ -255,7 +268,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                 plt.xlabel('Время, с')
                 plt.ylabel('Светопропускание, отн.ед.')
                 # сохраняем все рисунки в отдельную папку
-                fig.savefig(path_for_agg_fit + '//' + Name_fit_agg + '.png', dpi=600, format='png')
+                fig.savefig(path_for_agg_fit + '\\' + Name_fit_agg + '.png', dpi=600, format='png')
 
                 # закрываем и всё очищаем
                 plt.close()
@@ -274,7 +287,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
         for i in files_css:
             # правильный срез данных
             all_lines_CSS = sum(1 for line in open(i))
-            # прочтатать каждый файл и извлечь данные
+            # прочитать каждый файл и извлечь данные
             x = read_table(i, skipfooter=all_lines_CSS - 15, header=None, decimal=',', index_col=False, engine='python')
             data_css = x.drop([0, 2, 3, 4, 5, 6, 7, 8, 11])
             data_css = data_css[0].apply(lambda x: Series(x.split(':'))).T
@@ -283,18 +296,14 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                 # читаем все остальные данные - новый параметр
                 ############
                 new_css_parameter = read_table(i, skiprows=17, decimal=',', engine='python', header=None)
-                # максимальная интенсивность
-                max_int_css = new_css_parameter.iloc[:, 2].max()
                 # индекс максимальная интенсивность
                 max_int_css_index = new_css_parameter.iloc[:, 2].idxmax()
                 max_int_css_index -= 5
                 # индекс, когда shear stress был порядка 2 Па
                 index_min = new_css_parameter[new_css_parameter[3] < 2].index.min()
                 try:
-                    # аппроксимация
-                    (a_trash, b_trash, new_parameter), _ = opt.curve_fit(lambda t, a, b, c: a + b * np.exp(-t / c),
-                                                                         new_css_parameter[3][index_min:max_int_css_index],
-                                                                         new_css_parameter[2][index_min:max_int_css_index])
+                    # аппроксимация - среда может жаловаться, что "Too many values to unpack", но тут всё хорошо
+                    (_, _, new_parameter), _ = opt.curve_fit(lambda t, a, b, c: a + b * np.exp(-t / c), new_css_parameter[3][index_min:max_int_css_index], new_css_parameter[2][index_min:max_int_css_index])
                 except Exception as e:
                     dlg.setWindowTitle("RheoScan - Ошибка")
                     dlg.setText(f'Проблема при аппроксимации данных CSS в файле по пути:\n{i}\n' + str(e) + '\nПродолжить обсчет?')
@@ -308,7 +317,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                         return [1, DataFrame()]
 
                 # добавляем всё в датафрейм
-                all_CSS = all_CSS.append(concat([data_css.loc[1], Series(data=str(new_parameter))], axis=0), ignore_index=True)
+                all_CSS = all_CSS.append(concat([data_css.loc[1], Series(data=str(new_parameter))], axis=0),ignore_index=True)
             else:
                 # добавляем всё в датафрейм
                 all_CSS = all_CSS.append(data_css.loc[1])
@@ -317,17 +326,17 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             all_CSS.columns = ['Patient', 'Critical time, s', 'CSS', 'New parameter, Pa']
         else:
             all_CSS.columns = ['Patient', 'Critical time, s', 'CSS']
-        # делаем всё тоже самое, что и для обработки для маленькой кюветы
+        # делаем всё то же самое, что и для обработки для маленькой кюветы
         all_CSS = all_CSS.applymap(lambda x: str(x.replace(',', '.')))
         # преобразовать тип данных для всех параметров за исключением 'Patient'
         all_CSS['Critical time, s'] = all_CSS['Critical time, s'].astype(float)
         all_CSS['CSS'] = all_CSS['CSS'].astype(float)
         if dop_css_parameter:
             all_CSS['New parameter, Pa'] = all_CSS['New parameter, Pa'].astype(float)
-            # изменить порядкок -- для простоты
+            # изменить порядок -- для простоты
             all_CSS = all_CSS[['Patient', 'CSS', 'Critical time, s', 'New parameter, Pa']]
         else:
-            # изменить порядкок -- для простоты
+            # изменить порядок -- для простоты
             all_CSS = all_CSS[['Patient', 'CSS', 'Critical time, s']]
         # обновить индекс
         all_CSS = all_CSS.reset_index(drop=True)
@@ -347,11 +356,11 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
         for i in files_def:
             # правильный срез данных
             all_lines_def = sum(1 for line in open(i))
-            # прочтатать каждый файл и извлечь данные
+            # прочитать каждый файл и извлечь данные
             x = read_table(i, skiprows=all_lines_def - 14, header=None, decimal=',', index_col=False, engine='python')
             # всё для того, чтобы не было Inf
             x[1] = x[1].astype(float)
-            # убераем повторяющееся значение
+            # убираем повторяющееся значение
             data_def = x.drop([1])
             all_def = all_def.append(data_def[1])
             # all_def = concat([all_def, data_def[1]])
@@ -360,7 +369,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             newx_x = newx.loc[1]
             s_x = ''.join(newx_x)
             new_str_x = s_x.replace("Patient name:", "")
-            #new_str_x = DataFrame({'Patient': s_x.replace("Patient name:", "")})
+            # new_str_x = DataFrame({'Patient': s_x.replace("Patient name:", "")})
             all_def_name = all_def_name.append({'Patient': new_str_x}, ignore_index=True)
             # all_def_name = concat([all_def_name, new_str_x], ignore_index=True)
         # меняем подписи по колонкам
@@ -391,11 +400,11 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
         os.makedirs(path_for_def_fit, exist_ok=True)
 
     if var_fit_deform and files_def != []:
-        # Data Frame для апроксимации
+        # Data Frame для аппроксимации
         fit_res_deform = DataFrame(
             {'Patient': [], 'r^2': [], 'nn': [], 'Yield strength': [], 'Viscosity': [], 'Extrapol': [], 'Slope': []})
 
-        # функция, которой будем апроксимировать - линейная функция от логарифма напряжений сдвига!
+        # функция, которой будем аппроксимировать - линейная функция от логарифма напряжений сдвига!
         def f(x, a, b):
             return a * x + b
 
@@ -420,12 +429,12 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
         for i in files_def:
             # правильный срез данных
             all_lines_def_dop = sum(1 for line in open(i))
-            # прочтатать каждый файл и извлечь данные
+            # прочитать каждый файл и извлечь данные
             x = read_table(i, skiprows=all_lines_def_dop - 14, header=None, decimal=',', index_col=False,
                            engine='python')
             # всё для того, чтобы не было Inf
             x[1] = x[1].astype(float)
-            # убераем повторяющееся значение
+            # убираем повторяющееся значение
             data_def_approx = x.drop([1])
             # проверка, что файл не поврежден
             count_inf = np.isinf(data_def_approx[1]).values.any()
@@ -464,7 +473,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                 # Найти точку с максимальной ошибкой среди всех
                 dop_val = residuals ** 2
                 max_ind = dop_val.idxmax()
-                # получить из данных апроксимации значения вязкости внутреклеточного содержимого и предела текучести
+                # получить из данных аппроксимации значения вязкости внутриклеточного содержимого и предела текучести
                 viscosity = 1 / popt[0]
                 yieldd = pow(10, -popt[1] / popt[0])
                 # также в отдельные переменные поместим сами значения аппроксимации
@@ -473,7 +482,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                 # добавим полученные данные в наши Data Frame
                 r_sq = r_sq.append(
                     {'Patient': ttt, 'r^2': r_squared, 'nn': n, 'Yield strength': yieldd, 'Viscosity': viscosity,
-                    'Extrapol': extra, 'Slope': sslope, 'r^2-dop': r222}, ignore_index=True)
+                     'Extrapol': extra, 'Slope': sslope, 'r^2-dop': r222}, ignore_index=True)
                 r_sq_seq = r_sq_seq.append(
                     {'Patient': ttt, 'r^2': r_squared, 'nn': n, 'Yield strength': yieldd, 'Viscosity': viscosity,
                      'Extrapol': extra, 'Slope': sslope, 'r^2-dop': r222}, ignore_index=True)
@@ -499,7 +508,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                         plt.xlabel('Сдвиговое напряжение, Log10(Па)')
                         plt.ylabel('Индекс деформируемости, отн.ед.')
                         # сохраняем все рисунки в отдельную папку
-                        fig.savefig(path_for_def_fit + '//' + ttt + '.png', dpi=600, format='png')
+                        fig.savefig(path_for_def_fit + '\\' + ttt + '.png', dpi=600, format='png')
                         # закрываем и всё очищаем
                         plt.close()
                         ax.cla()
@@ -510,7 +519,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             maxValueIndex = r_sq_seq['r^2'].idxmax()
             # по индексу максимального значения находим само значения и записываем всю строку в наш изначальный Data Frame
             fit_res_deform = fit_res_deform.append(r_sq_seq.loc[maxValueIndex])
-            #fit_res_deform = concat([fit_res_deform, r_sq_seq.loc[maxValueIndex]])
+            # fit_res_deform = concat([fit_res_deform, r_sq_seq.loc[maxValueIndex]])
         # обновляем индексы
         fit_res_deform = fit_res_deform.reset_index(drop=True)
         # сохранить только те значения, для которых R^2>0.95
@@ -560,7 +569,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
         try:
             for_index_stuff = all_split['Patient'].str.split(how_to_split, expand=True)
             if save_only_one_name:
-                all_split['Patient'] = for_index_stuff[name_position-1]
+                all_split['Patient'] = for_index_stuff[name_position - 1]
             else:
                 # лучше не использовать следующее, а то значения поплывут (могут поплыть): for_index_stuff=for_index_stuff.reset_index(drop=True)
                 # если можно разделить на больше столбцов, то делим!
@@ -623,7 +632,6 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
     # если нужно, то сохраняем файлы не по подпапкам, а в одном месте
     path_of_the_folder = path
     if self.ui.comboBox_RheoScan_path_save.currentText() == 'Сохранить excel/cvs файлы в одном месте':
-        ### path_r - изначальный путь
         path = path_r + '\\'
     # сохраняем все полученные данные
     try:
@@ -653,9 +661,9 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                         r_sq.to_excel(writer, index_label='Номер', sheet_name='Deform-Fit-Raw')
         if saving_s_csv:
             if var_agg and files_agg != []:
-                all_agg.to_csv(path + 'Agg' + '__' + name_of_patient +  '.csv')
+                all_agg.to_csv(path + 'Agg' + '__' + name_of_patient + '.csv')
             if var_fit and files_agg != []:
-                fit_res_without.to_csv(path + 'Agg-Fit' + '__' + name_of_patient +'.csv')
+                fit_res_without.to_csv(path + 'Agg-Fit' + '__' + name_of_patient + '.csv')
             if var_stress and files_css != []:
                 all_CSS.to_csv(path + 'CSS' + '__' + name_of_patient + '.csv')
             if var_deform and files_def != []:
@@ -664,19 +672,25 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                 fit_res_deform.to_csv(path + 'Deform-Fit' + '__' + name_of_patient + '.csv')
     except Exception as e:
         dlg.setWindowTitle("RheoScan - Ошибка сохранения")
-        dlg.setText('Скорее всего у вас сейчас открыт файл, который программа хочет перезаписать, или неправильно указан уровень подпапок.\n' + str(e))
+        dlg.setText(
+            'Скорее всего у вас сейчас открыт файл, который программа хочет перезаписать, или неправильно указан уровень подпапок.\n' + str(
+                e))
         dlg.setIcon(QMessageBox.Icon.Critical)
         dlg.exec()
         return [1, DataFrame()]
-    return [0, concat([Series([path_of_the_folder.split('\\')[-2], path_of_the_folder.split('\\')[-3]], index=["Patient", 'Date or smth']), all_agg_des.loc['mean'], all_CSS_des.loc['mean'], all_def_des.loc['mean'], fit_res_des.loc['mean'], fit_res_deform_des.loc['mean']], axis=0, ignore_index=False)]
+    return [0, concat([Series([path_of_the_folder.split('\\')[-2], path_of_the_folder.split('\\')[-3]],
+                              index=["Patient", 'Date or smth']), all_agg_des.loc['mean'], all_CSS_des.loc['mean'],
+                       all_def_des.loc['mean'], fit_res_des.loc['mean'], fit_res_deform_des.loc['mean']], axis=0,
+                      ignore_index=False)]
 
-#Функция для вычисления выбросов - ничего не возвращает и очищает 1 Data Frame от выбросов - определение выбросов стандартное
+
+# Функция для вычисления выбросов - ничего не возвращает и очищает 1 Data Frame от выбросов - определение выбросов стандартное
 def out_lets_quartile(all_Data_Frame, factor):
     for i in all_Data_Frame.columns:
         if i == 'Patient' or len(all_Data_Frame[i]) <= 3:
             continue
-        q1=all_Data_Frame.loc[:,i].quantile(0.25)
-        q3=all_Data_Frame.loc[:,i].quantile(0.75)
+        q1 = all_Data_Frame.loc[:, i].quantile(0.25)
+        q3 = all_Data_Frame.loc[:, i].quantile(0.75)
         for j in range(len(all_Data_Frame[i])):
-            if all_Data_Frame.loc[j,i]<q1-(q3-q1)*factor or all_Data_Frame.loc[j,i]>q3+(q3-q1)*factor:
-                all_Data_Frame.loc[j,i] = np.nan
+            if all_Data_Frame.loc[j, i] < q1 - (q3 - q1) * factor or all_Data_Frame.loc[j, i] > q3 + (q3 - q1) * factor:
+                all_Data_Frame.loc[j, i] = np.nan

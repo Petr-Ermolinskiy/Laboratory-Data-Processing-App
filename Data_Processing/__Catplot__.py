@@ -1,17 +1,13 @@
+import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as plt
-#https://github.com/webermarcolivier/statannot
-#pip install statannot -- from statannot import add_stat_annotation
-from statannotations.Annotator import Annotator
-import math
-from itertools import permutations
-import statsmodels
-
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
+# https://github.com/webermarcolivier/statannot
+from statannotations.Annotator import Annotator
 
-def for_save(Name_fiqure):
+
+def for_save(Name_fiqure) -> str:
     Name_fiqure = Name_fiqure.replace('/', '')
     Name_fiqure = Name_fiqure.replace('\n', '')
     Name_fiqure = Name_fiqure.replace('\\frac', '')
@@ -22,13 +18,14 @@ def for_save(Name_fiqure):
     Name_fiqure = Name_fiqure.replace('*', '')
     return Name_fiqure
 
+
 def change_type(x, __type__):
     if __type__ == 'str':
         return str(x)
     elif __type__ == 'int':
-        return int(round(float(str(x).replace(' ','').replace(',','.')),0))
+        return int(round(float(str(x).replace(' ', '').replace(',', '.')), 0))
     elif __type__ == 'float':
-        return float(str(x).replace(' ','').replace(',','.'))
+        return float(str(x).replace(' ', '').replace(',', '.'))
     elif __type__ == 'bool':
         if x == '1' or x == float(1) or x == 1:
             return True
@@ -38,6 +35,7 @@ def change_type(x, __type__):
             return 'nan'
     else:
         return x
+
 
 def plot_catplot(self) -> None:
     dlg = QMessageBox(self)
@@ -79,7 +77,7 @@ def plot_catplot(self) -> None:
     if mult_camparison == 'None':
         mult_camparison = None
 
-    #какие погррешности чертить
+    # какие погррешности чертить
     error_set = {'Среднеквадратическое отклонение': 'sd', 'Среднеквадратическая ошибка': 'se', 'Доверительный интервал': 'ci', 'Перцентильный интервал': 'pi'}
     _error_ = error_set[_error_]
 
@@ -99,16 +97,17 @@ def plot_catplot(self) -> None:
 
     df[args['x']] = df[args['x']].map(lambda x: change_type(x, type_x))
     df[args['y']] = df[args['y']].map(lambda x: change_type(x, type_y))
-    #для стат значимости
+    # для стат значимости
     pop = list(df[args['x']].unique())
-    combinations = [(pop[x], pop[x + y]) for y in range(len(pop),0,-1) for x in range((len(pop) - y))]
+    combinations = [(pop[x], pop[x + y]) for y in range(len(pop), 0, -1) for x in range((len(pop) - y))]
 
     if args['hue'] != None:
         pop2 = list(df[args['hue']].unique())
         combinations = []
         # Getting all permutations of pop
         # with length of pop2
-        combinations = [[(pop[i], pop2[j]), (pop[li], pop2[k])] for i in range(len(pop) - 1, 0, -1) for li in range(len(pop) - i) for j in range(len(pop2)) for k in range(len(pop2))]
+        combinations = [[(pop[i], pop2[j]), (pop[li], pop2[k])] for i in range(len(pop) - 1, 0, -1) for li in range(len(pop) - i) for j in range(len(pop2)) for k in
+                        range(len(pop2))]
         combinations2 = [[(pop[i], pop2[j]), (pop[i], pop2[k])] for i in range(len(pop)) for j in range(len(pop2) - 1, 0, -1) for k in range(len(pop2) - j)]
         for val in combinations2:
             if val[0] == val[1]:
@@ -123,7 +122,7 @@ def plot_catplot(self) -> None:
         cat_plot = sns.catplot(edgecolor="black", data=df, **args)
     except:
         cat_plot = sns.catplot(data=df, **args)
-    #edgecolor="black",
+    # edgecolor="black",
     if args['hue'] == None:
         n_and_n = df.groupby(args['x'])[args['y']].count()
 
@@ -141,23 +140,10 @@ def plot_catplot(self) -> None:
                 annot = Annotator(ax, combinations, data=df, **args)
                 annot.configure(test=ttest_stat, text_format=stat_formatter, loc='inside', verbose=2, comparisons_correction=mult_camparison, hide_non_significant=True)
                 annot.apply_test().annotate()
-                ###
-                # test – Union[StatTest, str]: Statistical test to run.
-                # Either a StatTest instance or one of:
-                # - Brunner-Munzel
-                # - Levene
-                # - Mann-Whitney
-                # - Mann-Whitney-gt
-                # - Mann-Whitney-ls
-                # - t-test_ind
-                # - t-test_welch
-                # - t-test_paired
-                # - Wilcoxon
-                # - Kruskal
-                ###
-
+                # Один из следующих:
+                # - Brunner-Munzel, Levene, Mann-Whitney, Mann-Whitney-gt, Mann-Whitney-ls, t-test_ind, t-test_welch, t-test_paired, Wilcoxon, Kruskal
     try:
-        cat_plot.savefig(path + '//' + for_save(str(x_name) +'_'+ str(y_name) +'_'+ str(hue_name)) + '.png', dpi=600)
+        cat_plot.savefig(path + '//' + for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name)) + '.png', dpi=600)
     except Exception as e:
         dlg.setWindowTitle("Ошибка - Catplot")
         dlg.setText("График не сохранен.\n" + str(e))
@@ -165,7 +151,7 @@ def plot_catplot(self) -> None:
         return None
 
     try:
-        file1 = open(path + '//' + for_save(str(x_name) +'_'+ str(y_name) +'_'+ str(hue_name)) + '.txt', "w")
+        file1 = open(path + '//' + for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name)) + '.txt', "w")
         if stat_or_not:
             L0 = 'Был использован тест: ' + ttest_stat + '\n'
             L1 = 'Была использована поправка на множественную проверку гипотез: ' + str(mult_camparison) + '\n'
@@ -179,7 +165,7 @@ def plot_catplot(self) -> None:
         file1.close()
     except Exception as e:
         dlg.setWindowTitle("Ошибка - Catplot")
-        dlg.setText("TXT файл для графика.\n"+str(e))
+        dlg.setText("TXT файл для графика.\n" + str(e))
         dlg.exec()
         return None
 
@@ -188,10 +174,10 @@ def plot_catplot(self) -> None:
             jjj = df.groupby(args['x'])[args['y']].count()
         else:
             jjj = df.groupby([args['x'], args['hue']])[args['y']].count()
-        jjj.rename("N").to_csv(path + '//' + for_save(str(x_name) +'_'+ str(y_name) +'_'+ str(hue_name)) + '_N_of_data.txt', sep='\t')
+        jjj.rename("N").to_csv(path + '//' + for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name)) + '_N_of_data.txt', sep='\t')
     except Exception as e:
         dlg.setWindowTitle("Ошибка - Catplot")
-        dlg.setText("TXT файл для N в группах не сохранен.\n"+str(e))
+        dlg.setText("TXT файл для N в группах не сохранен.\n" + str(e))
         dlg.exec()
         return None
 

@@ -1,12 +1,12 @@
 # необходимые библиотеки
-import pandas as pd
-import os
 import glob
-import math
-# нужно для калибровки
-from numpy import exp as np_exp
+import os
+import pandas as pd
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
+# нужно для калибровки
+from numpy import exp as np_exp
+
 
 def laser_tweezers(self) -> None:
     dlg = QMessageBox(self)
@@ -30,7 +30,9 @@ def laser_tweezers(self) -> None:
     path = path + '\\'
     # имя файла
     name_of_exp = path.split('\\')[-2]
-    # считываем все данные и сохраняем их в 2 DataFrame. Считываются все имена подпапок, и в каждой подпапке считываются имена файлов, в которых есть значения сил агрегации и дезагрегации
+    # Считываем все данные и сохраняем их в 2 DataFrame.
+    # Считываются все имена подпапок, и в каждой подпапке считываются имена файлов,
+    # в которых есть значения сил агрегации и дезагрегации
     all_FA = pd.DataFrame({'Concentration': [], 'Force, pN': []})
     all_FD = pd.DataFrame({'Concentration': [], 'Force, pN': []})
     all_end = pd.DataFrame({'Concentration': [], 'Force, pN': []})
@@ -167,16 +169,23 @@ def laser_tweezers(self) -> None:
     with pd.ExcelWriter(path + name_of_exp + '.xlsx', engine='openpyxl') as writer:
         if all_end.empty == False:
             all_end.to_excel(writer, sheet_name='Endothilium')
-        all_FA.to_excel(writer, sheet_name='FA')
-        all_FD.to_excel(writer, sheet_name='FD')
-        if for_END.empty == False:
-            for_END.to_excel(writer, sheet_name='sorted-Endothilium')
-        for_FA.to_excel(writer, sheet_name='sorted-FA')
-        for_FD.to_excel(writer, sheet_name='sorted-FD')
-        all_FD_OVER_FA.to_excel(writer, sheet_name='FD_over_FA')
+        if all_FA.empty == False:
+            all_FA.to_excel(writer, sheet_name='FA')
+        if all_FD.empty == False:
+            all_FD.to_excel(writer, sheet_name='FD')
+        if self.ui.check_LT_raw_data.isChecked():
+            if for_END.empty == False:
+                for_END.to_excel(writer, sheet_name='sorted-Endothilium')
+            if for_FA.empty == False:
+                for_FA.to_excel(writer, sheet_name='sorted-FA')
+            if for_FD.empty == False:
+                for_FD.to_excel(writer, sheet_name='sorted-FD')
+        if all_FD_OVER_FA.empty == False:
+            all_FD_OVER_FA.to_excel(writer, sheet_name='FD_over_FA')
         if all_glass.empty == False:
             all_glass.to_excel(writer, sheet_name='glass')
-            for_GLASS.to_excel(writer, sheet_name='sorted-glass')
+            if self.ui.check_LT_raw_data.isChecked():
+                for_GLASS.to_excel(writer, sheet_name='sorted-glass')
         # отдельный лист для калибровки
         text_sheet = writer.book.create_sheet(title='a and b coefficient')
         text_sheet.cell(column=1, row=1,

@@ -1,14 +1,13 @@
 #необходимые библиотеки
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import scipy as sc
-import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy as np
-import scipy.optimize as opt
-from scipy.signal import savgol_filter
-
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
+from scipy.signal import savgol_filter
+
 
 def biola_result(self):
     dlg = QMessageBox(self)
@@ -50,7 +49,7 @@ def biola_result(self):
     # добавляем дополнительный столбец
     dff['индекс для split'] = ""
 
-    # используем at вместо loc, т.к. это сделает большой выигрышь в скорости
+    # Используем at вместо loc, т.к. это сделает большой выигрыш в скорости
     for i in range(len(dff)):
         if type(dff.iat[i, 1]) != float:
             if ':' in dff.iat[i, 1] and i + 1 < len(dff):

@@ -1,4 +1,4 @@
-#необходимые библиотеки
+# необходимые библиотеки
 import math
 from math import pi
 
@@ -9,6 +9,7 @@ import seaborn as sns
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
 
+
 def prifile_plot(self) -> None:
     dlg = QMessageBox(self)
     # закроем все рисунки, если они открыты
@@ -17,7 +18,7 @@ def prifile_plot(self) -> None:
     #########################
     # параметры, которые нам понадобятся
     #########################
-    #это цвета
+    # это цвета
     prifile_data__ = [self.ui.patient_prof.text(), self.ui.norm_prof.text(), self.ui.color_for_patient.text(), self.ui.color_for_norm.text()]
     # это всё остальное
     patient_d = self.ui.patient_data.text()
@@ -46,7 +47,7 @@ def prifile_plot(self) -> None:
     # это будет лучшим
     sns.set_style("ticks")
 
-    # какие группы? 1-ая группа -- пациент; 2-ая группа -- это контрольная группа
+    # Первая группа -- пациент; Вторая группа -- это контрольная группа
     I_index = [prifile_data__[0], prifile_data__[1]]
 
     if path == '':
@@ -84,15 +85,15 @@ def prifile_plot(self) -> None:
         dlg.exec()
         return None
 
-    # получаем словарь для средних значениях и стандарного отклонения для ПАЦИЕНТА
+    # получаем словарь для средних значений и стандартного отклонения для ПАЦИЕНТА
     patient_data, SD_patient_data = get_data_from_clipboard(patient_d, self)
     # проверка
-    if patient_data==None or SD_patient_data==None:
+    if patient_data == None or SD_patient_data == None:
         return None
-    # получаем словарь для средних значениях и стандарного отклонения для НОРМЫ
+    # получаем словарь для средних значений и стандартного отклонения для НОРМЫ
     norm_data, SD_norm_data = get_data_from_clipboard(norm_d, self)
     # проверка
-    if norm_data==None or SD_norm_data==None:
+    if norm_data == None or SD_norm_data == None:
         return None
     # создаём нормированные значения параметров пациента и нормы
     patient_data_norm = {}
@@ -113,7 +114,7 @@ def prifile_plot(self) -> None:
     df = pd.DataFrame(columns=list(patient_data_norm), index=I_index)
     df.loc[I_index[0]] = patient_data_norm
     df.loc[I_index[1]] = norm_data_norm
-    # создаём DataFrame с стандартными отклонениями нормированных значений пациента и нормы
+    # создаём DataFrame со стандартными отклонениями нормированных значений пациента и нормы
     SD_df = pd.DataFrame(columns=list(patient_data_norm), index=I_index)
     SD_df.loc[I_index[0]] = SD_patient_data_norm
     SD_df.loc[I_index[1]] = SD_norm_data_norm
@@ -183,7 +184,7 @@ def prifile_plot(self) -> None:
         if pat_line:
             label_line_sd_pat = None
         PATIENT_fill = ax.fill_between(angles, y1=mul_err_plus(values, SD_values), y2=mul_err_minus(values, SD_values),
-                                   alpha=0.3, linewidth=0, label=label_line_sd_pat, color=color_Patient)
+                                       alpha=0.3, linewidth=0, label=label_line_sd_pat, color=color_Patient)
     # сделаем аннотацию в процентах -- также выделим в цвета значения, если они выходят за пределы нормы
     for i in range(len(categories)):
         name = categories[i]
@@ -193,7 +194,7 @@ def prifile_plot(self) -> None:
             what_color = 'blue'
         else:
             what_color = 'black'
-        ax.annotate(to_percent(values)[i], xy=(angles[i], MAX_Y), textcoords='data', size=int(8*fond_scale_profile), color=what_color, ha='center',
+        ax.annotate(to_percent(values, self.ui.check_profile_relative.isChecked())[i], xy=(angles[i], MAX_Y), textcoords='data', size=int(8 * fond_scale_profile), color=what_color, ha='center',
                     va='center', bbox=dict(boxstyle='round', facecolor='w', edgecolor='black'))
     ########################
     # параметры НОРМЫ
@@ -210,7 +211,7 @@ def prifile_plot(self) -> None:
         if norm_line:
             label_line_sd = None
         NORM_fill = ax.fill_between(angles, y1=mul_err_plus(values_N, SD_values_N), y2=mul_err_minus(values_N, SD_values_N),
-                                alpha=0.3, linewidth=0, label=label_line_sd, color=color_NORM)
+                                    alpha=0.3, linewidth=0, label=label_line_sd, color=color_NORM)
     ########################
 
     ########################
@@ -252,7 +253,6 @@ def prifile_plot(self) -> None:
     if add_legend:
         ax.legend(bbox_to_anchor=(0.0, 0.0))
 
-
     ########################
     #
     #
@@ -261,9 +261,9 @@ def prifile_plot(self) -> None:
     #
     ########################
     try:
-        if self.ui.tableWidget.item(0,0).text() != '':
-            # добавим информацию для типа измеряемых параметрах (агрегация эритроцитов, деформируемость эритроцитов, и др.)
-            # сортируем по категориям -- где параметры агрегации или деформируемости или др. изменить индексы у angles по категориям
+        if self.ui.tableWidget.item(0, 0).text() != '':
+            # Добавим информацию для типа измеряемых о параметрах (агрегация эритроцитов, деформируемость эритроцитов, и др.)
+            # сортируем по категориям, где параметры агрегации или деформируемости или др. изменить индексы у angles по категориям
             # linestyle=dashed dashdot dotted
             EA_Rheo = self.ui.tableWidget.item(0, 0).text()
             EA_Rheo = EA_Rheo.split('-')
@@ -306,10 +306,10 @@ def prifile_plot(self) -> None:
     # имена параметров
     names_for_line = list(df.columns)
     names_for_line = change_name_of_categories(names_for_line)
-    # параметры ПАЦИЕНТА + стандарное отклонение
+    # параметры ПАЦИЕНТА + стандартное отклонение
     patien_values_for_line = to_percent_for_line(df.loc[I_index[0]].values.tolist(), 'mean')
     SD_patien_values_for_line = to_percent_for_line(SD_df.loc[I_index[0]].values.tolist(), 'SD')
-    # параметры -- стандарное отклонение
+    # параметры -- стандартное отклонение
     norm_values_for_line = to_percent_for_line(df.loc[I_index[1]].values.tolist(), 'mean')
     SD_norm_values_for_line = to_percent_for_line(SD_df.loc[I_index[1]].values.tolist(), 'SD')
 
@@ -340,20 +340,20 @@ def prifile_plot(self) -> None:
         if pat_line:
             label_line_sd_lin_pat = None
         ax2.fill_between(names_for_line, y1=mul_err_plus(patien_values_for_line, SD_patien_values_for_line),
-                     y2=mul_err_minus(patien_values_for_line, SD_patien_values_for_line), alpha=0.3, linewidth=0,
-                     color=color_Patient_line, label=label_line_sd_lin_pat)
+                         y2=mul_err_minus(patien_values_for_line, SD_patien_values_for_line), alpha=0.3, linewidth=0,
+                         color=color_Patient_line, label=label_line_sd_lin_pat)
     # строим кривую для НОРМЫ
     if norm_line:
-        ax2.plot(names_for_line,norm_values_for_line, color=color_NORM_line, label = I_index[1])
+        ax2.plot(names_for_line, norm_values_for_line, color=color_NORM_line, label=I_index[1])
     if norm_sd:
         label_line_sd_lin = I_index[1]
         if norm_line:
             label_line_sd_lin = None
         ax2.fill_between(names_for_line, y1=mul_err_plus(norm_values_for_line, SD_norm_values_for_line),
-                     y2=mul_err_minus(norm_values_for_line, SD_norm_values_for_line), alpha=0.3, linewidth=0,
-                     color=color_NORM_line, label=label_line_sd_lin)
+                         y2=mul_err_minus(norm_values_for_line, SD_norm_values_for_line), alpha=0.3, linewidth=0,
+                         color=color_NORM_line, label=label_line_sd_lin)
 
-    # удалим отсупы по оси X -- если это нужно, то надо добавить строчку ниже
+    # удалим отступы по оси X -- если это нужно, то надо добавить строчку ниже
     # ax2.set_xlim(left=0, right=len(names_for_line)-1)
     # добавим легенду
     if add_legend:
@@ -386,46 +386,46 @@ def prifile_plot(self) -> None:
         dlg.exec()
         return None
 
+
 #######
 # доп. функции
 #######
 
-#функция превращения данных из буфера обмена в 2 словаря -- среднее и погрешность
-def get_data_from_clipboard(just_DATA, self):
-
-    if just_DATA=='norm':
-        # словарь с значениями параметров нормы
+# функция превращения данных из буфера обмена в 2 словаря -- среднее и погрешность
+def get_data_from_clipboard(just_DATA, self) -> (dict, dict):
+    if just_DATA == 'norm':
+        # словарь со значениями параметров нормы
         norm_data = {'CSS, мПа': 250, 'AI, %': 41, 'AMP': 0.0527, 'T1/2, сек.': 5.9, 'DI (3 Па)': 0.322,
                      'DI (20 Па)': 0.525, 'ВА, сек.': 6.6, 'СА, пН': 6.2, 'СД, пН': 3.36, 'СА/СД': 1.05, 'DA, %': 33,
                      'VA, %/мин': 30}
-        # словарь с значениями стандартных отклонений параметров  нормы
+        # словарь со значениями стандартных отклонений параметров  нормы
         SD_norm_data = {'CSS, мПа': 20, 'AI, %': 2, 'AMP': 0.001, 'T1/2, сек.': 1, 'DI (3 Па)': 0.03,
                         'DI (20 Па)': 0.05, 'ВА, сек.': 1, 'СА, пН': 0.5, 'СД, пН': 0.2, 'СА/СД': 0.1, 'DA, %': 5,
                         'VA, %/мин': 5}
         return norm_data, SD_norm_data
-    #данные, скопированные из exel -- 3 столбца: (1) параметры; (2) среднее; (3) погрешность
-    #разделим данные по \t
-    just_DATA=just_DATA.split("\t")
-    #сделаем подготовку данных
-    for i in range(1,len(just_DATA)):
-        if i%2==0 and i != len(just_DATA)-1:
-            just_DATA[i]=just_DATA[i].split("\n", 1)
-            just_DATA[i][0]=just_DATA[i][0].replace(',','.')
+    # данные, скопированные из exel -- 3 столбца: (1) параметры; (2) среднее; (3) погрешность
+    # разделим данные по \t
+    just_DATA = just_DATA.split("\t")
+    # сделаем подготовку данных
+    for i in range(1, len(just_DATA)):
+        if i % 2 == 0 and i != len(just_DATA) - 1:
+            just_DATA[i] = just_DATA[i].split("\n", 1)
+            just_DATA[i][0] = just_DATA[i][0].replace(',', '.')
         else:
-            just_DATA[i]=just_DATA[i].replace(',','.')
+            just_DATA[i] = just_DATA[i].replace(',', '.')
             just_DATA[i] = just_DATA[i].replace('\n', '')
-    #массив чтобы flatten данные
+    # массив чтобы flatten данные
     clear_DATA = []
-    #необходимый цикл, чтобы избавится от list of list
+    # необходимый цикл, чтобы избавится от list of list
     for i in just_DATA:
-        if type(i)==list and len(i)==2:
+        if type(i) == list and len(i) == 2:
             clear_DATA.append(i[0])
             clear_DATA.append(i[1])
-        elif type(i)==list and len(i)==1:
+        elif type(i) == list and len(i) == 1:
             clear_DATA.append(i[0])
         else:
             clear_DATA.append(i)
-    if len(clear_DATA)%3!=0:
+    if len(clear_DATA) % 3 != 0:
         dlg = QMessageBox(self)
         dlg.setWindowTitle("Микрореологический профиль - Ошибка")
         dlg.setText("Введенными данные для микрореологического профиля не подходят. Данные должны представлять собой 3 столбца - параметр, среднее и стандартное отклонение")
@@ -433,85 +433,87 @@ def get_data_from_clipboard(just_DATA, self):
         dlg.exec()
         return None, None
 
-    #сделаем 2 словаря (среднее и погрешность) на основе списка clear_DATA
+    # сделаем 2 словаря (среднее и погрешность) на основе списка clear_DATA
 
-    #словарь с значениями параметров пациентов
+    # словарь со значениями параметров пациентов
     patient_data = {}
-    #словарь с значениями стандартных отклонений параметров  пациентов
+    # словарь со значениями стандартных отклонений параметров  пациентов
     SD_patient_data = {}
 
-    #заполним данные словари значениями
+    # заполним данные словари значениями
     k = 0
     while k < len(clear_DATA) - 1:
-        patient_data[clear_DATA[k]] = float(clear_DATA[k+1])
-        SD_patient_data[clear_DATA[k]] = float(clear_DATA[k+2])
-        k=k+3
+        patient_data[clear_DATA[k]] = float(clear_DATA[k + 1])
+        SD_patient_data[clear_DATA[k]] = float(clear_DATA[k + 2])
+        k = k + 3
     return patient_data, SD_patient_data
 
 
-#функция для вычисления положительного отклонения
+# функция для вычисления положительного отклонения
 def mul_err_plus(values, SD_values):
-    dop=values.copy()
+    dop = values.copy()
     SD_dop = SD_values.copy()
     for i in range(len(dop)):
-        dop[i]=dop[i]+SD_dop[i]
+        dop[i] = dop[i] + SD_dop[i]
     return dop
 
 
-#функция для вычисления отрицательного отклонения
+# функция для вычисления отрицательного отклонения
 def mul_err_minus(values, SD_values):
-    dop=values.copy()
+    dop = values.copy()
     SD_dop = SD_values.copy()
     for i in range(len(dop)):
-        dop[i]=dop[i]-SD_dop[i]
+        dop[i] = dop[i] - SD_dop[i]
     return dop
 
 
-#функция нахождения максимального значения
+# функция нахождения максимального значения
 def find_max(dict_):
-    max_=0.0
+    max_ = 0.0
     for i in dict_:
-        if max_<dict_[i]:
-            max_= dict_[i]
+        if max_ < dict_[i]:
+            max_ = dict_[i]
     return max_
 
 
-#функция перевода значения в %
-def to_percent(list_):
+# функция перевода значения в %
+def to_percent(list_, relative: bool):
+    rel = 0
+    if relative:
+        rel = 100
     list_percent = []
     for i in list_:
-        list_percent.append(str(int(round(i*100,0)))+'%')
+        list_percent.append(str(int(round(i * 100 - rel, 0))) + '%')
     return list_percent
 
 
-#функция перевода значения в относительные % для построения профиля в линейных координатах
-def to_percent_for_line(list_,mean_or_SD):
+# функция перевода значения в относительные % для построения профиля в линейных координатах
+def to_percent_for_line(list_, mean_or_SD):
     list_percent = []
     for i in list_:
-        if mean_or_SD=='mean':
-            list_percent.append((i-1)*100)
-        if mean_or_SD=='SD':
-            list_percent.append(i*100)
+        if mean_or_SD == 'mean':
+            list_percent.append((i - 1) * 100)
+        if mean_or_SD == 'SD':
+            list_percent.append(i * 100)
     return list_percent
 
 
-#функция получения массива для построения гладкой линии
+# функция получения массива для построения гладкой линии
 def smooth_curve(start, finish, up_limit):
-    xxx=[]
-    yyy=[]
-    i=start
-    while i<=finish:
+    xxx = []
+    yyy = []
+    i = start
+    while i <= finish:
         xxx.append(i)
-        yyy.append(up_limit-0.1)
-        i=i+0.05
+        yyy.append(up_limit - 0.1)
+        i = i + 0.05
     return xxx, yyy
 
 
-#функция для переименования категорий для красоты некоторых параметров
+# функция для переименования категорий для красоты некоторых параметров
 def change_name_of_categories(categories):
     new = categories.copy()
     for i in range(len(new)):
-        new[i]=new[i].replace('T1/2, сек.', '$T_{1/2}, сек.$')
+        new[i] = new[i].replace('T1/2, сек.', '$T_{1/2}, сек.$')
         new[i] = new[i].replace('\\n', '\n')
     return new
-

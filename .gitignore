@@ -1,18 +1,9 @@
 # created by virtualenv automatically
+/.idea/
 /Scripts/
 /share/
 /UI_files/
 /build/
 /dist/
 /Lib/
-/!temp.txt
-/figsandstuff.spec
-/Lab App.spec
-/Lab App_3.41.spec
-/Labs stuff.spec
-/logo.psd
-/main.spec
-/pyvenv.cfg
-/qodana.yaml
-/old_things/
-/reg.txt
+/venv/

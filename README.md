@@ -7,10 +7,12 @@
 
 ## Ручная установка
 
-Если вы используете **git**, вы можете клонировать проект, используя Python 3.11.6 (тестировалась только эта версия) в [PyCharm](https://www.jetbrains.com/ru-ru/pycharm/) или где-либо ещё:
+Если вы используете **git**, вы можете клонировать проект в [PyCharm](https://www.jetbrains.com/ru-ru/pycharm/) или где-либо ещё:
 ```bash
 git clone https://github.com/Petr-Ermolinskiy/OCT_B-Scan-processing_GUI.git
 ```
+И далее создать виртуальное окружение, используя Python 3.11.6 (тестировалась только эта версия).
+
 В противном случае вы можете загрузить файлы вручную. Затем вы можете открыть терминал или командную строку и перейти в папку, куда вы поместили файлы из этого репозитория. Можно использовать команду `cd your/path/to/the/directory`.
 
 Выполните следующую команду для создания нового виртуального окружения с именем `venv` (убедитесь, что у вас установлен Python 3.11.5):
@@ -33,6 +35,12 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+Если у вас установилась версия _seaborn_ 0.11 ввиду конфликта с пакетом _statannotations_, то вручную установите версию 0.12:
+```bash
+pip install seaborn==0.12.2
+```
+
+
 Запустите программу:
 ```bash
 python main.py
@@ -42,13 +50,15 @@ python main.py
 
 Чтобы создать _exe_-файл в Windows, нужно выполнить следующую команду в терминале или командной строке:
 ```bash
-pyinstaller --windowed --add-data "LOGO.ico;." --add-data "style_dark.qss;." --name='Lab_App_version' --icon=LOGO.ico main.py
+pyinstaller --windowed --add-data "logo.ico;." --add-data "style_dark.qss;." --name='Lab_App_version' --icon=logo.ico main.py
 ```
 Я настоятельно рекомендую вам использовать [UPX](https://upx.github.io/) для уменьшения размера исполняемого файла. В этом случае вы можете выполнить следующую команду:
 ```bash
-pyinstaller --windowed --add-data "LOGO.ico;." --add-data "style_dark.qss;." --name='Lab_App_version' --icon=LOGO.ico --upx-dir Path\to\the\upx-4.2.2-win64 main.py
+pyinstaller --windowed --add-data "logo.ico;." --add-data "style_dark.qss;." --name='Lab_App_version' --icon=logo.ico --upx-dir Path\to\the\upx-4.2.2-win64 main.py
 ```
+Размер exe будет составлять порядка 130 МБ.
 
 ## Автор
 
 Ермолинский Петр Борисович.
+

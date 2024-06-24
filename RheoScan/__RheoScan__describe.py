@@ -1,9 +1,9 @@
-#необходимые библиотеки
-import pandas as pd
+# необходимые библиотеки
 import glob
-import os
+import pandas as pd
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
+
 
 def RheoScan_describe_file_or_files(self):
     dlg = QMessageBox(self)
@@ -71,7 +71,6 @@ def _describe_all_multiple_files(path: str, mask_sheet=None) -> None:
         describe_data_frame = pd.DataFrame()
         # file name
         name_of_file = file.split('\\')[-1].split('.')[0]
-        # file name
         for one_sheet, mask in zip(sheets, mask_sheet):
             # читаем exel файл
             df = pd.read_excel(file, one_sheet)
@@ -93,19 +92,17 @@ def _describe_all_multiple_files(path: str, mask_sheet=None) -> None:
     # сохраняем в excel файл
     describe_all_files.to_excel(path + 'RheoScan_summary.xlsx')
 
+
 # функция, когда файл один и один файл == много образцов -- причем колонка с индексами -- первая
 def _describe_all_one_file(path: str, mask_sheet=None) -> None:
     describe_file = pd.DataFrame()
-
-    describe_data_frame = pd.DataFrame()
-
     sheets = pd.ExcelFile(path).sheet_names
-    if mask_sheet == None:
+    if mask_sheet is None:
         mask_sheet = [True] * len(sheets)
     elif type(mask_sheet) != list:
-        return 0
+        return None
     elif len(mask_sheet) > len(sheets):
-        return 0
+        return None
     elif len(mask_sheet) < len(sheets):
         mask_sheet = [*mask_sheet, *[False] * (len(sheets) - len(mask_sheet))]
 
@@ -123,14 +120,15 @@ def _describe_all_one_file(path: str, mask_sheet=None) -> None:
         else:
             df_describe_for_one_sheet = mean_df
 
-        # describe
+        # статистика
         describe_file = pd.concat([describe_file, df_describe_for_one_sheet], axis=1)
 
-    # save data to the excel file
+    # сохраняем
     describe_file.to_excel('\\'.join(path.split('\\')[:-1]) + '\\' + 'RheoScan_summary.xlsx')
 
-# функция для правильного интерпретирования введенных значений
-def strtobool (val):
+
+# функция для правильной интерпретации введенных значений
+def strtobool(val):
     val = val.lower()
     if val in ('y', 'yes', 't', 'true', 'on', '1'):
         return 1

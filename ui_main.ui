@@ -13,52 +13,26 @@
   <property name="windowTitle">
    <string>Извлечение данных и построение графиков</string>
   </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>LOGO.ico</normaloff>LOGO.ico</iconset>
-  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="0">
-     <widget class="QLabel" name="label_10">
+     <widget class="QLabel" name="label_info">
       <property name="font">
        <font>
         <family>Segoe UI</family>
         <pointsize>9</pointsize>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(128, 160, 165);</string>
       </property>
       <property name="text">
-       <string>Ермолинский Петр — версия 3.5</string>
+       <string>Лаборатория Биомедицинской фотоники МГУ — Ермолинский Петр — версия 3.5</string>
       </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QComboBox" name="comboBox_style_sheet">
-      <property name="font">
-       <font>
-        <family>Segoe UI</family>
-        <pointsize>9</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(128, 160, 165);
-background-color: rgba(255, 255, 255, 0);</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>Основная тема</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Темная тема</string>
-       </property>
-      </item>
      </widget>
     </item>
     <item row="0" column="0" colspan="2">
@@ -1057,7 +1031,7 @@ border-radius: 17px;
                </font>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Если данные просто нагромождены в одну папку, то нажмите эту кнопку. Уровень подпапок поддерживается тут&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Если все файлы txt в одной папке, то данный метод рассортирует их по папкам agg, stress, deform. Уровень подпапок тут поддерживается.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="autoFillBackground">
                <bool>false</bool>
@@ -1460,6 +1434,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="toolTip">
+                    <string>Это параметр аппроксимации кривой CSS - см. информацию в обучающем видео</string>
+                   </property>
                    <property name="text">
                     <string>Доп. параметр CSS</string>
                    </property>
@@ -1561,6 +1538,9 @@ border-radius: 17px;
                 <family>Segoe UI</family>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="toolTip">
+               <string>Файл должен быть сохранен из официальной программы Биолы.</string>
               </property>
               <property name="text">
                <string>Название файла для агрегатограмм (txt)</string>
@@ -1673,7 +1653,7 @@ border-radius: 17px;
                 </font>
                </property>
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Это фильтр Савицкого-голея&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Это фильтр Савицкого-Голея&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Длина окна для сглаживания кривых</string>
@@ -1854,7 +1834,7 @@ border-radius: 17px;
                 </font>
                </property>
                <property name="toolTip">
-                <string>Это фильтр Савицкого-голея</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Это фильтр Савицкого-Голея&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Длина окна для сглаживания производных</string>
@@ -2219,9 +2199,6 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
-                   <property name="toolTip">
-                    <string>Без флажка порядок будет таким, какой он в таблице</string>
-                   </property>
                    <property name="text">
                     <string>Сетка</string>
                    </property>
@@ -2340,7 +2317,7 @@ border-radius: 10px;</string>
              </font>
             </property>
             <property name="toolTip">
-             <string>см. пакет statannotations</string>
+             <string>Калибровка для доп. пучка сейчас делается только экспоненциальной, однако можно выбрать и линейную</string>
             </property>
             <property name="text">
              <string>Калибровка для доп. пучка</string>
@@ -2371,864 +2348,6 @@ border-radius: 10px;</string>
           </item>
          </layout>
         </item>
-        <item row="2" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout_50">
-          <item>
-           <widget class="QFrame" name="asd">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QFrame#asd{
-border: 5px solid rgb(128, 160, 165);
-border-radius: 17px;
-}</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_26">
-             <property name="leftMargin">
-              <number>5</number>
-             </property>
-             <property name="topMargin">
-              <number>5</number>
-             </property>
-             <property name="rightMargin">
-              <number>5</number>
-             </property>
-             <property name="bottomMargin">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="lb_path_5">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>11</pointsize>
-                 <underline>true</underline>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Все силы между эритроцитами и эндотелием через это прогоняются. Силы  обозначаются End...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="text">
-                <string>Основной пучок</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_25">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_48">
-                 <item>
-                  <widget class="QLabel" name="lb_path_17">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Сила = k*(значение мощности)+b</string>
-                   </property>
-                   <property name="text">
-                    <string>Сила = </string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="lb_path_7">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сила = a*(значение мощности)+b&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
-                   <property name="text">
-                    <string>k</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="a_main">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="decimals">
-                    <number>5</number>
-                   </property>
-                   <property name="maximum">
-                    <double>50.000000000000000</double>
-                   </property>
-                   <property name="value">
-                    <double>0.220000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="lb_path_18">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сила = a*(значение мощности)+b&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
-                   <property name="text">
-                    <string>*Мощность на фотодетекторе</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_49">
-                   <item>
-                    <widget class="QLabel" name="lb_path_8">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="toolTip">
-                      <string>Сила = a*(значение мощности)+b</string>
-                     </property>
-                     <property name="text">
-                      <string> + b</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QDoubleSpinBox" name="b_main">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="decimals">
-                      <number>5</number>
-                     </property>
-                     <property name="minimum">
-                      <double>-200.000000000000000</double>
-                     </property>
-                     <property name="maximum">
-                      <double>200.000000000000000</double>
-                     </property>
-                     <property name="value">
-                      <double>-0.800000000000000</double>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_50">
-                 <item>
-                  <widget class="QLabel" name="lb_path_12">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Дата калибровки</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDateEdit" name="dateEdit">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="date">
-                    <date>
-                     <year>2024</year>
-                     <month>1</month>
-                     <day>1</day>
-                    </date>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="hhhhh">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QFrame#hhhhh{
-border: 5px solid rgb(128, 160, 165);
-border-radius: 17px;
-}</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_27">
-             <property name="leftMargin">
-              <number>5</number>
-             </property>
-             <property name="topMargin">
-              <number>5</number>
-             </property>
-             <property name="rightMargin">
-              <number>5</number>
-             </property>
-             <property name="bottomMargin">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="lb_path_6">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>11</pointsize>
-                 <underline>true</underline>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Все силы агрегации и дезагрегации через это прогоняются. Силы агрегации обозначаются FA..., FD...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="text">
-                <string>Дополнительный пучок</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_46">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_115">
-                 <item>
-                  <widget class="QLabel" name="lb_path_19">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Сила = k*(значение мощности)+b</string>
-                   </property>
-                   <property name="text">
-                    <string>Сила = </string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="lb_path_9">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Сила = a*(значение мощности)+b</string>
-                   </property>
-                   <property name="text">
-                    <string>k</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="a_dop">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="decimals">
-                    <number>5</number>
-                   </property>
-                   <property name="maximum">
-                    <double>50.000000000000000</double>
-                   </property>
-                   <property name="value">
-                    <double>1.410000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="lb_path_20">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сила = a*(значение мощности)+b&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
-                   <property name="text">
-                    <string>*Мощность на фотодетекторе</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="lb_path_21">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Сила = a*(значение мощности)+b</string>
-                   </property>
-                   <property name="text">
-                    <string> + b</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="b_dop">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="decimals">
-                    <number>5</number>
-                   </property>
-                   <property name="minimum">
-                    <double>-200.000000000000000</double>
-                   </property>
-                   <property name="maximum">
-                    <double>200.000000000000000</double>
-                   </property>
-                   <property name="value">
-                    <double>-29.500000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_53">
-                 <item>
-                  <widget class="QLabel" name="lb_path_11">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Дата калибровки</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDateEdit" name="dateEdit_2">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="date">
-                    <date>
-                     <year>2024</year>
-                     <month>1</month>
-                     <day>1</day>
-                    </date>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="hhhhh_exp">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QFrame#hhhhh_exp{
-border: 5px solid rgb(128, 160, 165);
-border-radius: 17px;
-}</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_47">
-             <property name="leftMargin">
-              <number>5</number>
-             </property>
-             <property name="topMargin">
-              <number>5</number>
-             </property>
-             <property name="rightMargin">
-              <number>5</number>
-             </property>
-             <property name="bottomMargin">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="lb_path_10">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>11</pointsize>
-                 <underline>true</underline>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Все силы агрегации и дезагрегации через это прогоняются. Силы агрегации обозначаются FA..., FD...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="text">
-                <string>Дополнительный пучок</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_49">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_51">
-                 <item>
-                  <widget class="QLabel" name="lb_path_22">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string/>
-                   </property>
-                   <property name="text">
-                    <string>Сила = </string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QLabel" name="lb_path_23">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Сила = a*(значение мощности)+b</string>
-                   </property>
-                   <property name="text">
-                    <string>k</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="dop_cal_k">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="decimals">
-                    <number>5</number>
-                   </property>
-                   <property name="minimum">
-                    <double>-50.000000000000000</double>
-                   </property>
-                   <property name="maximum">
-                    <double>50.000000000000000</double>
-                   </property>
-                   <property name="value">
-                    <double>0.500000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QLabel" name="lb_path_27">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Сила = a*(значение мощности)+b</string>
-                   </property>
-                   <property name="text">
-                    <string>*( y0</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="dop_cal_y0">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="decimals">
-                    <number>5</number>
-                   </property>
-                   <property name="minimum">
-                    <double>-50.000000000000000</double>
-                   </property>
-                   <property name="maximum">
-                    <double>50.000000000000000</double>
-                   </property>
-                   <property name="value">
-                    <double>-1.000000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QLabel" name="lb_path_28">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Сила = a*(значение мощности)+b</string>
-                   </property>
-                   <property name="text">
-                    <string>+ A</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="dop_cal_A">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="decimals">
-                    <number>5</number>
-                   </property>
-                   <property name="minimum">
-                    <double>-50.000000000000000</double>
-                   </property>
-                   <property name="maximum">
-                    <double>50.000000000000000</double>
-                   </property>
-                   <property name="value">
-                    <double>1.000000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_52">
-                 <item>
-                  <widget class="QLabel" name="lb_path_29">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Сила = a*(значение мощности)+b</string>
-                   </property>
-                   <property name="text">
-                    <string>* EXP( Мощность * </string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QLabel" name="lb_path_30">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Сила = a*(значение мощности)+b</string>
-                   </property>
-                   <property name="text">
-                    <string>R0</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="dop_cal_R0">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="decimals">
-                    <number>5</number>
-                   </property>
-                   <property name="minimum">
-                    <double>-50.000000000000000</double>
-                   </property>
-                   <property name="maximum">
-                    <double>50.000000000000000</double>
-                   </property>
-                   <property name="value">
-                    <double>0.100000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QLabel" name="lb_path_31">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Сила = a*(значение мощности)+b</string>
-                   </property>
-                   <property name="text">
-                    <string>)) + b</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="dop_cal_b">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="decimals">
-                    <number>5</number>
-                   </property>
-                   <property name="minimum">
-                    <double>-1000.000000000000000</double>
-                   </property>
-                   <property name="maximum">
-                    <double>1000.000000000000000</double>
-                   </property>
-                   <property name="value">
-                    <double>-1.000000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_48">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_54">
-                 <item>
-                  <widget class="QLabel" name="lb_path_26">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Segoe UI</family>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Дата калибровки</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDateEdit" name="dateEdit_3">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="date">
-                    <date>
-                     <year>2024</year>
-                     <month>1</month>
-                     <day>1</day>
-                    </date>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="3" column="0">
-         <widget class="QPushButton" name="btn_LT">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(128, 160, 165, 50);
-border: 3px solid rgb(128, 160, 165);
-border-radius: 10px;</string>
-          </property>
-          <property name="text">
-           <string>Извлечь данные и сохранить excel файл</string>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="0" colspan="2">
          <layout class="QVBoxLayout" name="verticalLayout_24">
           <item>
@@ -3248,7 +2367,7 @@ border-radius: 10px;</string>
                </font>
               </property>
               <property name="toolTip">
-               <string>Путь к папке, в которой есть подпапки с видео avi</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Путь к папке, в которой есть подпапки с видео AVI&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
                <string>Путь к папке с подпапками</string>
@@ -3290,7 +2409,7 @@ border-radius: 10px;</string>
                    </font>
                   </property>
                   <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Если подпапки называются '1-Name1-Name2', то можно ввести разделитель '-'&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Если подпапки называются '1-Name1-Name2', то можно ввести разделитель '-' и позицию '2', тогда будет сохранено только 'Name1'.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="text">
                    <string>Разделитель для имени подпапок</string>
@@ -3501,6 +2620,883 @@ border-radius: 10px;</string>
           </item>
          </layout>
         </item>
+        <item row="3" column="0" colspan="2">
+         <layout class="QHBoxLayout" name="horizontalLayout_149">
+          <item>
+           <widget class="QPushButton" name="btn_LT">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(128, 160, 165, 50);
+border: 3px solid rgb(128, 160, 165);
+border-radius: 10px;</string>
+            </property>
+            <property name="text">
+             <string>Извлечь данные и сохранить excel файл</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="check_LT_raw_data">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>сохранить данные по столбцам</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_50">
+          <item>
+           <widget class="QFrame" name="asd">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame#asd{
+border: 5px solid rgb(128, 160, 165);
+border-radius: 17px;
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_26">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="lb_path_5">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>11</pointsize>
+                 <underline>true</underline>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Силы между эндотелием и эритроцитами обозначаются End, END, или end&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Основной пучок</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_25">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_48">
+                 <item>
+                  <widget class="QLabel" name="lb_path_17">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Сила = k*(значение мощности)+b</string>
+                   </property>
+                   <property name="text">
+                    <string>Сила = </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lb_path_7">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сила = a*(значение мощности)+b&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="text">
+                    <string>k</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="a_main">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="decimals">
+                    <number>5</number>
+                   </property>
+                   <property name="maximum">
+                    <double>50.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>0.220000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lb_path_18">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сила = a*(значение мощности)+b&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="text">
+                    <string>*Мощность на фотодетекторе</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_49">
+                   <item>
+                    <widget class="QLabel" name="lb_path_8">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="toolTip">
+                      <string>Сила = a*(значение мощности)+b</string>
+                     </property>
+                     <property name="text">
+                      <string> + b</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDoubleSpinBox" name="b_main">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="decimals">
+                      <number>5</number>
+                     </property>
+                     <property name="minimum">
+                      <double>-200.000000000000000</double>
+                     </property>
+                     <property name="maximum">
+                      <double>200.000000000000000</double>
+                     </property>
+                     <property name="value">
+                      <double>-0.800000000000000</double>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_50">
+                 <item>
+                  <widget class="QLabel" name="lb_path_12">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Указывайте дату, чтобы не запутаться</string>
+                   </property>
+                   <property name="text">
+                    <string>Дата калибровки</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDateEdit" name="dateEdit">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="date">
+                    <date>
+                     <year>2024</year>
+                     <month>1</month>
+                     <day>1</day>
+                    </date>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="hhhhh">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame#hhhhh{
+border: 5px solid rgb(128, 160, 165);
+border-radius: 17px;
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_27">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="lb_path_6">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>11</pointsize>
+                 <underline>true</underline>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Силы агрегации обозначаются FA (или Fa, fa), а силы дезагрегации, как FD (или Fd, fd)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Дополнительный пучок</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_46">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_115">
+                 <item>
+                  <widget class="QLabel" name="lb_path_19">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Сила = k*(значение мощности)+b</string>
+                   </property>
+                   <property name="text">
+                    <string>Сила = </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lb_path_9">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Сила = a*(значение мощности)+b</string>
+                   </property>
+                   <property name="text">
+                    <string>k</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="a_dop">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="decimals">
+                    <number>5</number>
+                   </property>
+                   <property name="maximum">
+                    <double>50.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>1.410000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lb_path_20">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="text">
+                    <string>*Мощность на фотодетекторе</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lb_path_21">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string/>
+                   </property>
+                   <property name="text">
+                    <string> + b</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="b_dop">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="decimals">
+                    <number>5</number>
+                   </property>
+                   <property name="minimum">
+                    <double>-200.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>200.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>-29.500000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_53">
+                 <item>
+                  <widget class="QLabel" name="lb_path_11">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Указывайте дату, чтобы не запутаться</string>
+                   </property>
+                   <property name="text">
+                    <string>Дата калибровки</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDateEdit" name="dateEdit_2">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="date">
+                    <date>
+                     <year>2024</year>
+                     <month>1</month>
+                     <day>1</day>
+                    </date>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="hhhhh_exp">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame#hhhhh_exp{
+border: 5px solid rgb(128, 160, 165);
+border-radius: 17px;
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_47">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="lb_path_10">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>11</pointsize>
+                 <underline>true</underline>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Силы агрегации обозначаются FA (или Fa, fa), а силы дезагрегации, как FD (или Fd, fd)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Дополнительный пучок</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_49">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_51">
+                 <item>
+                  <widget class="QLabel" name="lb_path_22">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string/>
+                   </property>
+                   <property name="text">
+                    <string>Сила = </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="lb_path_23">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>k</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="dop_cal_k">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="decimals">
+                    <number>5</number>
+                   </property>
+                   <property name="minimum">
+                    <double>-50.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>50.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>0.500000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="lb_path_27">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>*( y0</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="dop_cal_y0">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="decimals">
+                    <number>5</number>
+                   </property>
+                   <property name="minimum">
+                    <double>-50.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>50.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>-1.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="lb_path_28">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>+ A</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="dop_cal_A">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="decimals">
+                    <number>5</number>
+                   </property>
+                   <property name="minimum">
+                    <double>-50.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>50.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>1.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_52">
+                 <item>
+                  <widget class="QLabel" name="lb_path_29">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>* EXP( Мощность * </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="lb_path_30">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>R0</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="dop_cal_R0">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="decimals">
+                    <number>5</number>
+                   </property>
+                   <property name="minimum">
+                    <double>-50.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>50.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>0.100000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QLabel" name="lb_path_31">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>)) + b</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="dop_cal_b">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="decimals">
+                    <number>5</number>
+                   </property>
+                   <property name="minimum">
+                    <double>-1000.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>1000.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>-1.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_48">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_54">
+                 <item>
+                  <widget class="QLabel" name="lb_path_26">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Указывайте дату, чтобы не запутаться</string>
+                   </property>
+                   <property name="text">
+                    <string>Дата калибровки</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDateEdit" name="dateEdit_3">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="date">
+                    <date>
+                     <year>2024</year>
+                     <month>1</month>
+                     <day>1</day>
+                    </date>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tabWidgetPage4">
@@ -3587,6 +3583,9 @@ border-radius: 10px;</string>
                        <font>
                         <pointsize>11</pointsize>
                        </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Если выделана галочка, то программа пройдется по всем листам</string>
                       </property>
                       <property name="text">
                        <string>По всем листам</string>
@@ -3697,6 +3696,9 @@ border-radius: 17px;
                        <pointsize>11</pointsize>
                       </font>
                      </property>
+                     <property name="toolTip">
+                      <string>seaborn.heatmap</string>
+                     </property>
                      <property name="text">
                       <string>Корреляционные матрицы</string>
                      </property>
@@ -3720,6 +3722,9 @@ border-radius: 17px;
                       <font>
                        <pointsize>11</pointsize>
                       </font>
+                     </property>
+                     <property name="toolTip">
+                      <string>seaborn.pairplot</string>
                      </property>
                      <property name="text">
                       <string>Парный график</string>
@@ -4237,7 +4242,7 @@ border-radius: 17px;
                             </font>
                            </property>
                            <property name="toolTip">
-                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Если поле пустое, то будет цветовая палитра. Важно, чтобы цвет был в формате HEX: #......&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Цвет в формате HEX. Если несколько цветов, то разделительный знак между ними: &amp;quot;&amp;amp;&amp;quot;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                            </property>
                            <property name="text">
                             <string>Цвет для box (HEX)</string>
@@ -4296,7 +4301,7 @@ border-radius: 17px;
                             </font>
                            </property>
                            <property name="toolTip">
-                            <string>Если поле пустое, то будет цветовая палитра. Важно, чтобы цвет был в формате HEX: #......</string>
+                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Цвет в формате HEX. Если несколько цветов, то разделительный знак между ними: &amp;quot;&amp;amp;&amp;quot;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                            </property>
                            <property name="text">
                             <string>Цвет для точек (HEX)</string>
@@ -4385,6 +4390,9 @@ border-radius: 17px;
                               <font>
                                <pointsize>11</pointsize>
                               </font>
+                             </property>
+                             <property name="toolTip">
+                              <string>прозрачность точек</string>
                              </property>
                              <property name="text">
                               <string>прозрачность</string>
@@ -4876,7 +4884,7 @@ border-radius: 17px;
                        </font>
                       </property>
                       <property name="toolTip">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;См. документацию к &lt;a href=&quot;https://docs.scipy.org/doc/scipy/reference/stats.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;scipy.stats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;См. информацию по разным статистическим тестам&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="text">
                        <string>Статистический тест</string>
@@ -5018,7 +5026,7 @@ border-radius: 17px;
                        </font>
                       </property>
                       <property name="toolTip">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Если не нужно считать стат. значимость между всеми группами, то нужно выбрать это. Ввести надо в строку массив из групп. К примеру, есть 4 группы и хочется посмотреть стат.значимость только между 1 и 2, а также 3 и 4. Тогда надо ввести с пробелом '(1,2) (3,4)'&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Выбрать, если нужно считать стат. значимость только между определенными группами. В строку вводится массив из кортежей групп с разделительным пробелом. К примеру, есть 4 группы и хочется посмотреть стат.значимость только между 1 и 2, а также 3 и 4. Тогда надо ввести с пробелом '(1,2) (3,4)'&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="text">
                        <string>Расчёт стат.значимости только между следующими группами</string>
@@ -5098,9 +5106,6 @@ border-radius: 17px;
                          <font>
                           <pointsize>11</pointsize>
                          </font>
-                        </property>
-                        <property name="toolTip">
-                         <string>Без флажка порядок будет таким, какой он в таблице</string>
                         </property>
                         <property name="text">
                          <string>по возрастанию</string>
@@ -5200,6 +5205,9 @@ border-radius: 17px;
                            <font>
                             <pointsize>11</pointsize>
                            </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>N - кол-во образцов/пациентов в группе</string>
                           </property>
                           <property name="text">
                            <string>Размер N</string>
@@ -5424,9 +5432,6 @@ border-radius: 17px;
                           <pointsize>11</pointsize>
                          </font>
                         </property>
-                        <property name="toolTip">
-                         <string>Кол-во образцов в каждой группе -- подпись снизу</string>
-                        </property>
                         <property name="text">
                          <string>Сделать фон прозрачным</string>
                         </property>
@@ -5465,6 +5470,9 @@ border-radius: 17px;
                          <font>
                           <pointsize>11</pointsize>
                          </font>
+                        </property>
+                        <property name="toolTip">
+                         <string>Стандартное отклонение или разброс между MIN-MAX</string>
                         </property>
                         <property name="text">
                          <string>Обозначение погрешностей</string>
@@ -5515,6 +5523,9 @@ border-radius: 17px;
                             <pointsize>11</pointsize>
                            </font>
                           </property>
+                          <property name="toolTip">
+                           <string>Не вставляйте лишние пробелы</string>
+                          </property>
                           <property name="text">
                            <string>Изменить нижнюю границу</string>
                           </property>
@@ -5548,6 +5559,9 @@ border-radius: 17px;
                            <font>
                             <pointsize>11</pointsize>
                            </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>Не вставляйте лишние пробелы</string>
                           </property>
                           <property name="text">
                            <string>Изменить верхнюю границу</string>
@@ -5787,9 +5801,6 @@ border-radius: 17px;
                             <pointsize>11</pointsize>
                            </font>
                           </property>
-                          <property name="toolTip">
-                           <string>Далеко не обязательный параметр. Можно ввести несколько значений.</string>
-                          </property>
                           <property name="text">
                            <string>Изменить нижнюю границу</string>
                           </property>
@@ -5843,7 +5854,7 @@ border-radius: 17px;
                            </font>
                           </property>
                           <property name="toolTip">
-                           <string>Далеко не обязательный параметр. Можно ввести несколько значений.</string>
+                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Далеко не обязательный параметр. &lt;/p&gt;&lt;p&gt;Можно ввести только одно значение.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                           </property>
                           <property name="text">
                            <string>Удалить значение из группы</string>
@@ -5876,9 +5887,6 @@ border-radius: 17px;
                            <font>
                             <pointsize>11</pointsize>
                            </font>
-                          </property>
-                          <property name="toolTip">
-                           <string>Далеко не обязательный параметр. Можно ввести несколько значений.</string>
                           </property>
                           <property name="text">
                            <string>Размер точек</string>
@@ -5965,7 +5973,7 @@ border-radius: 17px;
                          </font>
                         </property>
                         <property name="toolTip">
-                         <string>Без флажка порядок будет таким, какой он в таблице</string>
+                         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Без флажка порядок будет таким, какой он в таблице.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                         </property>
                         <property name="text">
                          <string>Упорядочить значения в группе</string>
@@ -6358,9 +6366,6 @@ border-radius: 17px;
                         <pointsize>11</pointsize>
                        </font>
                       </property>
-                      <property name="toolTip">
-                       <string>Кол-во образцов в каждой группе -- подпись снизу</string>
-                      </property>
                       <property name="text">
                        <string>Не учитывать группу</string>
                       </property>
@@ -6652,6 +6657,9 @@ border-radius: 17px;
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="toolTip">
+                       <string>см. seaborn.pairplot</string>
+                      </property>
                       <property name="text">
                        <string>kind</string>
                       </property>
@@ -6891,7 +6899,7 @@ border-radius: 10px;</string>
                     </font>
                    </property>
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Данные должны быть скопированы из таблицы, где есть 3 столбца: имя параметра, среднее значение, погрешность.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Данные должны быть скопированы из excel таблицы, где есть 3 столбца: имя параметра, среднее значение, погрешность. Все ячейки должны быть не пустыми.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
                     <string>Данные пациента</string>
@@ -6928,7 +6936,7 @@ border-radius: 10px;</string>
                     </font>
                    </property>
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Данные должны быть скопированы из таблицы, где есть 3 столбца: имя параметра, среднее значение, погрешность.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Данные должны быть скопированы из excel таблицы, где есть 3 столбца: имя параметра, среднее значение, погрешность. Все ячейки должны быть не пустыми.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
                     <string>Данные нормы</string>
@@ -6986,9 +6994,6 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
-                   <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Данные должны быть скопированы из таблицы, где есть 3 столбца: имя параметра, среднее значение, погрешность.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
                    <property name="text">
                     <string>Название для радиального профиля</string>
                    </property>
@@ -7023,9 +7028,6 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
-                   <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Данные должны быть скопированы из таблицы, где есть 3 столбца: имя параметра, среднее значение, погрешность.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
                    <property name="text">
                     <string>Название для оси для линейного профиля</string>
                    </property>
@@ -7052,6 +7054,9 @@ border-radius: 10px;</string>
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Иногда лучше отключить, чтобы она не накладывалась на график</string>
                    </property>
                    <property name="text">
                     <string>Легенда</string>
@@ -7204,7 +7209,7 @@ border-radius: 17px;
                     </font>
                    </property>
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Важно, чтобы цвет был в формате HEX: #......&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Важно, чтобы цвет был в формате HEX (пример, &amp;quot;#FFFFFF&amp;quot;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
                     <string>Цвет для пациента (HEX)</string>
@@ -7333,7 +7338,7 @@ border-radius: 17px;
                     </font>
                    </property>
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Важно, чтобы цвет был в формате HEX: #......&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Важно, чтобы цвет был в формате HEX (пример, &amp;quot;#FFFFFF&amp;quot;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
                     <string>Цвет для нормы (HEX)</string>
@@ -7414,21 +7419,46 @@ border-radius: 17px;
              </widget>
             </item>
             <item row="3" column="0">
-             <widget class="QPushButton" name="btn_plot_and_save_profile">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: rgba(128, 160, 165, 50);
+             <layout class="QHBoxLayout" name="horizontalLayout_155">
+              <item>
+               <widget class="QPushButton" name="btn_plot_and_save_profile">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(128, 160, 165, 50);
 border: 3px solid rgb(128, 160, 165);
 border-radius: 10px;</string>
-              </property>
-              <property name="text">
-               <string>Построить и сохранить профили</string>
-              </property>
-             </widget>
+                </property>
+                <property name="text">
+                 <string>Построить и сохранить профили</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="check_profile_relative">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Если отличия относительные, то на радиальном графике будет указываться отличия в процентах от нормы; в противном случае, за 100% принимается норма.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Относительные отличия на радиальном графике</string>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
             <item row="4" column="0">
              <widget class="QScrollArea" name="scrollArea">
@@ -7655,7 +7685,7 @@ border-radius: 10px;</string>
                    </font>
                   </property>
                   <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Интервал параметров нужно писать через тире.&lt;/p&gt;&lt;p&gt;Пример: 0-3&lt;/p&gt;&lt;p&gt;Цвета: matplotlib.colors&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Интервал параметров нужно писать через тире.&lt;/p&gt;&lt;p&gt;Пример: 0-3&lt;/p&gt;&lt;p&gt;Цвета: matplotlib.colors&lt;/p&gt;&lt;p&gt;Стиль линии: см. matplotlib &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:9.8pt; color:#000000;&quot;&gt;solid, dashed, dashdot, dotted&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="whatsThis">
                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Интервал параметров нужно писать через тире.&lt;/p&gt;&lt;p&gt;Пример: 0-3&lt;/p&gt;&lt;p&gt;Цвета: matplotlib.colors&lt;/p&gt;&lt;p&gt;Стиль линии: см. matplotlib &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:9.8pt; color:#7a7e85;&quot;&gt;solid, dashed, dashdot, dotted&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -7872,6 +7902,9 @@ border-radius: 17px;
                         <font>
                          <pointsize>11</pointsize>
                         </font>
+                       </property>
+                       <property name="toolTip">
+                        <string>Округляются все значения</string>
                        </property>
                        <property name="text">
                         <string>Округлить значения до знака после запятой</string>
@@ -8654,7 +8687,7 @@ border-radius: 10px;</string>
                      </font>
                     </property>
                     <property name="toolTip">
-                     <string>Не обязательно</string>
+                     <string>Не обязательно - дополнительная группа</string>
                     </property>
                     <property name="text">
                      <string>Подгруппа</string>
@@ -9440,7 +9473,7 @@ border-radius: 10px;</string>
                  </font>
                 </property>
                 <property name="toolTip">
-                 <string>Путь, по которому находятся excel файлы или файл. Если данные только в одном файле, то нужно указать путь полностью. </string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
                  <string>RheoScan - расчитать средние и SD по файлу или файлам</string>
@@ -9457,7 +9490,7 @@ border-radius: 10px;</string>
                    </font>
                   </property>
                   <property name="toolTip">
-                   <string>Путь, по которому находятся excel файлы или файл. Если данные только в одном файле, то нужно указать путь полностью. </string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Путь, по которому находятся excel файлы или файл. Если данные только в одном файле, то нужно указать путь полностью. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="text">
                    <string>Путь к excel файлу или файлам</string>
@@ -9498,7 +9531,7 @@ border-radius: 10px;</string>
                    </font>
                   </property>
                   <property name="toolTip">
-                   <string>см. пакет statannotations</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;quot;Один файл - один образец&amp;quot; - подразумевает, что все в файле будет усредняться&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="text">
                    <string>Данные</string>
@@ -9539,7 +9572,7 @@ border-radius: 10px;</string>
                    </font>
                   </property>
                   <property name="toolTip">
-                   <string/>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Надо ввести через пробел строку из (0 и 1) или (f и t) или (false и true) или (n и y) в каких листах считать SD, а в каких не считать. К примеру, есть 3 листа (Agg, Stress, Deform) и мы ввели &amp;quot;0 1 0&amp;quot;, тогда SD посчитается только на листе &amp;quot;Stress&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="statusTip">
                    <string>Необходимо через пробелы написать True или False, или же 0, 1, тем самым пометив листы.</string>
@@ -9607,7 +9640,7 @@ border-radius: 10px;</string>
                  </font>
                 </property>
                 <property name="toolTip">
-                 <string>Путь, по которому находятся excel файлы или файл. Если данные только в одном файле, то нужно указать путь полностью. </string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
                  <string>Рассчитать стат. значимость между 2 выборками</string>
@@ -9786,7 +9819,7 @@ border-radius: 10px;</string>
                      </font>
                     </property>
                     <property name="toolTip">
-                     <string>см. пакет statannotations</string>
+                     <string>Для пермутационных тестов счет может быть долгим.</string>
                     </property>
                     <property name="text">
                      <string>Статистический тест</string>
@@ -9998,6 +10031,31 @@ border-radius: 10px;</string>
         </item>
        </layout>
       </widget>
+     </widget>
+    </item>
+    <item row="1" column="1" alignment="Qt::AlignRight">
+     <widget class="QComboBox" name="comboBox_style_sheet">
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(128, 160, 165);
+background-color: rgba(255, 255, 255, 0);</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Основная тема</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Темная тема</string>
+       </property>
+      </item>
      </widget>
     </item>
    </layout>

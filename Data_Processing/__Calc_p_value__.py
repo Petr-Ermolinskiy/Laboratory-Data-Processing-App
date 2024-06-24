@@ -3,10 +3,12 @@ from scipy import stats
 import numpy as np
 # для Пермутационных тестов
 from permutations_stats.permutations import permutation_test, repeated_permutation_test
+# нужно для Пермутационных тестов, даже если светит серым
 import numba
 
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
+
 
 def p_value_calc_for_two_columns(self) -> None:
     dlg = QMessageBox(self)
@@ -42,7 +44,7 @@ def p_value_calc_for_two_columns(self) -> None:
         return None
 
     try:
-        # расчитываем стат. тест.
+        # Расчитываем стат. Тест.
         if stat_test == 'U-критерий Манна — Уитни':
             _, p = stats.mannwhitneyu(df[x_name].dropna(), df[y_name].dropna(), alternative=alternative)
         elif stat_test == 'Т-критерий Стьюдента':
@@ -89,7 +91,7 @@ def p_value_calc_for_two_columns(self) -> None:
             stat = repeated_permutation_test(data, test="friedman", alternative=alternative)
             p = stat.pvalue
         else:
-            p='Внутренняя ошибка - обратитесь в разработчику'
+            p = 'Внутренняя ошибка - обратитесь в разработчику'
 
     except Exception as e:
         dlg.setWindowTitle("Расчёт p-value")
@@ -101,12 +103,3 @@ def p_value_calc_for_two_columns(self) -> None:
     self.ui.p_value_dop_stat.setText(str(p))
 
     return None
-
-
-
-
-
-
-
-
-

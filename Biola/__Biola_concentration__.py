@@ -11,9 +11,9 @@ if sys.version_info[0] < 3:
     from StringIO import StringIO
 else:
     from io import StringIO
-####################################
 
-def conentration_to_excel(path, file) -> None:
+
+def conentration_to_excel(self, path, file) -> None:
     dlg = QMessageBox(self)
     # DataFrame основной
     final_dataframe = pd.DataFrame()
