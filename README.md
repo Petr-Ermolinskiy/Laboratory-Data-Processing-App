@@ -9,9 +9,9 @@
 
 Если вы используете **git**, вы можете клонировать проект в [PyCharm](https://www.jetbrains.com/ru-ru/pycharm/) или где-либо ещё:
 ```bash
-git clone https://github.com/Petr-Ermolinskiy/OCT_B-Scan-processing_GUI.git
+git clone https://github.com/Petr-Ermolinskiy/Laboratory-Data-Processing-App.git
 ```
-И далее создать виртуальное окружение, используя Python 3.11.6 (тестировалась только эта версия).
+И далее создать виртуальное окружение, используя Python 3.11.5 (тестировалась только эта версия).
 
 В противном случае вы можете загрузить файлы вручную. Затем вы можете открыть терминал или командную строку и перейти в папку, куда вы поместили файлы из этого репозитория. Можно использовать команду `cd your/path/to/the/directory`.
 
