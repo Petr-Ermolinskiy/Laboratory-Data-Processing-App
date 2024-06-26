@@ -7,9 +7,9 @@
 
 ## Ручная установка
 
-Если вы используете **git**, вы можете клонировать проект в [PyCharm](https://github.com/Petr-Ermolinskiy/Laboratory-Data-Processing-App) или где-либо ещё:
+Если вы используете **git**, вы можете клонировать проект в [PyCharm](https://www.jetbrains.com/ru-ru/pycharm/) или где-либо ещё:
 ```bash
-git clone https://github.com/Petr-Ermolinskiy/OCT_B-Scan-processing_GUI.git
+git clone https://github.com/Petr-Ermolinskiy/Laboratory-Data-Processing-App.git
 ```
 И далее создать виртуальное окружение, используя Python 3.11.6 (тестировалась только эта версия).
 
