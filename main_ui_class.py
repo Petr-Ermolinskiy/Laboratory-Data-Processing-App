@@ -406,8 +406,11 @@ class Main_window(QMainWindow):
         path = 'ошибка'
         if self.ui.comboBox_RheoScan_describe.currentText() == 'Один файл - один образец':
             path = dialog.getExistingDirectory(None, "Путь к папке с файлами RheoScan пациентов/образцов")
+            path = path.replace('/', '\\')
         elif self.ui.comboBox_RheoScan_describe.currentText() == 'Один файл - много образцов':
             path = dialog.getOpenFileName(None, "Путь к папке с файлом RheoScan", filter="Text Files (*.xlsx)")
+            path = path[0]
+            path = path.replace('/', '\\')
         self.ui.path_for_RheoScan_describe.setText(path)
 
 

@@ -154,7 +154,13 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
         # прочитать все файлы и добавить данные в DataFrame
         for i in files_agg:
             # правильный срез данных
-            all_lines_agg = sum(1 for line in open(i))
+            try:
+                all_lines_agg = sum(1 for line in open(i))
+            except Exception as e:
+                dlg.setWindowTitle("RheoScan")
+                dlg.setText("Ошибка в чтении файла:\n" + i +'\n' + str(e))
+                dlg.exec()
+                return [1, DataFrame()]
             # прочитать каждый файл и извлечь данные
             x = read_table(i, skipfooter=all_lines_agg - 13, engine='python', header=None, decimal=',')
             yy = x.drop([0, 2, 3, 4, 9, 10])
@@ -565,7 +571,24 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
     '''
 
     # функция для того, чтобы разделить столбец 'Patient'
+
+    '''
+                
+            if how_to_split != '' and how_to_split.split('=')[0] == 'symbols':
+                if type(how_to_split.split('=')[1]) == int:
+                    jj.loc[1][1] = jj.loc[1][1][0:int(how_to_split.split('=')[1])]
+                else:
+                    pass
+    '''
+
+
     def splitting(all_split, self):
+        # также можно оставить только определенное количество символов
+        if how_to_split.split('=')[0] == 'symbols':
+            if how_to_split.split('=')[1].isdigit():
+                all_split['Patient'] = all_split['Patient'].map(lambda x: x[0:1+int(how_to_split.split('=')[1])])
+            else:
+                pass
         try:
             for_index_stuff = all_split['Patient'].str.split(how_to_split, expand=True)
             if save_only_one_name:
