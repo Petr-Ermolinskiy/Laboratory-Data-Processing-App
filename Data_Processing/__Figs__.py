@@ -1,6 +1,7 @@
 # необходимые библиотеки
 import os
 import matplotlib.pyplot as plt
+from matplotlib.colors import Normalize
 import pandas as pd
 import seaborn as sns
 from scipy import stats
@@ -36,11 +37,14 @@ def figs_plot(self) -> None:
     exel_name = self.ui.comboBox.currentText()
     # от чего смотрится зависимость?
     hue_name = self.ui.comboBox_2.currentText()
-    # стоим или не строим - box plot, корреляционные графики или матрицы
+    # стоим или не строим - box plot, корреляционные графики, матрицы и др.
     box_plot_or_not = self.ui.check_box_plot.isChecked()
     corr_is_need_matrix = self.ui.check_corr_matrix.isChecked()
     corr_is_need = self.ui.check_corr_figs.isChecked()
     pairplot_is_need = self.ui.check_box_pairplot.isChecked()
+    jointplot_is_need = self.ui.check_jointplot.isChecked()
+    # корреляции одного параметра
+    corr_one_parameter_is_need = self.ui.check_corr_one_parameter.isChecked()
     # по всем листам проходимся или же только по одному?
     all_sheets_true = self.ui.check_box_figs_all_sheets.isChecked()
     one_sheet_name = self.ui.comboBox_figs_sheets.currentText()
@@ -67,6 +71,23 @@ def figs_plot(self) -> None:
         dlg.exec()
         return None
 
+    # если стоит галочка corr_one_parameter_is_need, то выполняем только корреляции по одному параметру, а на другие не обращаем
+    if corr_one_parameter_is_need:
+        try:
+            corr_one_parameter(path, files, one_sheet_name, hue_name)
+            #############################
+            # завершаем работу
+            ############################
+            dlg.setWindowTitle("Графики")
+            dlg.setText('Все графики успешно сохранены')
+            dlg.exec()
+            return None
+        except Exception as e:
+            dlg.setWindowTitle("Корреляция одного параметра")
+            dlg.setText('Ошибка в обработке.\n' + str(e))
+            dlg.exec()
+            return None
+
     # если стоит галочка, то проходимся по всем листам, но если же all_sheets_true == False,
     # то выбираем только один лист
     if all_sheets_true == False:
@@ -75,7 +96,7 @@ def figs_plot(self) -> None:
     # выполняем функцию do_for_one_sheet по всем листам (или же только по одному) в excel файле
     check_cykle = '__'
     for i in names:
-        check_cykle = do_for_one_sheet(path, files, i, box_plot_or_not, corr_is_need, corr_is_need_matrix, pairplot_is_need, hue_name)
+        check_cykle = do_for_one_sheet(path, files, i, box_plot_or_not, corr_is_need, corr_is_need_matrix, pairplot_is_need, jointplot_is_need, hue_name)
         if check_cykle != '__':
             break
     if check_cykle == '__':
@@ -93,10 +114,77 @@ def figs_plot(self) -> None:
 
 ##############################################################
 #
+# строим корреляции только одного параметра
+#
+##############################################################
+def  corr_one_parameter(path, files, what_sheet, hue_name) -> None:
+    # читаем exel файл - index_col=0,
+    df = pd.read_excel(files, sheet_name=what_sheet)
+    df.index.rename(None, inplace=True)
+    # на всякий случай почистим
+    df.columns = df.columns.str.replace('\\n', '\n', regex=False)
+    # выделяем те колонки, которые нас будут интерисовать с точки зрения обработки!
+
+    # будем смотреть один параметр если строит галочка, иначе все
+    if plot_feature_data__[56]:
+        corr_list = [hue_name]
+    else:
+        corr_list = df.columns
+
+    ###
+    # корреляционная матрица
+    ###
+    correlation_matrix = df.corr(method=plot_feature_data__[53])
+    limit_ = plot_feature_data__[54]
+    correlation_matrix = correlation_matrix.applymap(lambda x: x if x > limit_ or x < -limit_ else 0)
+    for i in correlation_matrix.columns:
+        correlation_matrix.loc[i, i] = 0
+    for i in correlation_matrix.columns:
+        if (correlation_matrix[i] == 0).all():
+            correlation_matrix = correlation_matrix.drop(columns=i).drop(i)
+
+    # папка для сохранения результатов
+    path_one_corr = path + 'one_corr' + '\\'
+    os.makedirs(path_one_corr, exist_ok=True)
+
+    # размер шрифта
+    font_for_one_corr = int(15*plot_feature_data__[55])
+
+    # строим корреляции для одного параметра или для многих
+    for name_var in corr_list:
+        target_variable = name_var
+
+        target_correlations = correlation_matrix[target_variable][correlation_matrix[target_variable] != 0]
+        target_correlations = target_correlations.sort_values(ascending=False)
+
+        # Нормализуем значения корреляции в диапазоне 0-1
+        norm = Normalize(vmin=-1, vmax=1)
+        colors = [plt.cm.coolwarm(norm(value)) for value in target_correlations.values]
+
+        # построим график
+        one_corr_plot = plt.figure(figsize=(12, 6))
+        target_correlations.plot(kind='barh', color=colors)
+        plt.title(f'Корреляции параметров с {target_variable}', size=font_for_one_corr)
+        plt.xlabel('Коэффициент корреляции ' + {'pearson': 'Пирсона','kendall': 'Кендалла','spearman': 'Спирмена'}[plot_feature_data__[53]], size=font_for_one_corr)
+        plt.ylabel('Параметры', size=font_for_one_corr)
+        plt.xlim(-1, 1)
+        plt.yticks(size=font_for_one_corr)
+        plt.xticks(size=font_for_one_corr-3)
+        plt.xticks(np.arange(-1, +1.1, 0.1))
+        plt.tight_layout()
+        one_corr_plot.savefig(path_one_corr + safe_name(target_variable) + '.png')
+    # построим график в отдельном окне
+    if plot_feature_data__[56] and plot_feature_data__[57]:
+        plt.show()
+    return None
+
+
+##############################################################
+#
 # проходимся по одному листу и стоим всё, что надо
 #
 ##############################################################
-def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, corr_is_need_matrix, pairplot_is_need, hue_name):
+def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, corr_is_need_matrix, pairplot_is_need, jointplot_is_need, hue_name):
     # читаем exel файл - index_col=0,
     df = pd.read_excel(files, sheet_name=what_sheet)
     df.index.rename(None, inplace=True)
@@ -162,6 +250,14 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
         os.makedirs(path_name_fiqure_folder_pairplot, exist_ok=True)
         # создаём корреляционные матрицы и сохраняем
         pairplot(new_df, hue_name_for_sheet, what_sheet, path_name_fiqure_folder_pairplot)
+
+    if jointplot_is_need:
+        # создаем подпапку для графиков корреляции
+        name_fiqure_folder_jointplot = 'jointplot' + '\\'
+        path_name_fiqure_folder_jointplot = path + name_fiqure_folder_jointplot
+        os.makedirs(path_name_fiqure_folder_jointplot, exist_ok=True)
+        # создаём графики jointplot
+        jointplot(new_df, hue_name_for_sheet, what_sheet, path_name_fiqure_folder_jointplot)
 
     if box_plot_or_not:
         # создаем подпапку для графиков аппроксимации
@@ -761,6 +857,42 @@ def pairplot(new_df, hue_name_for_sheet, what_sheet, path):
     figure_pairplot.savefig(path + safe_name(what_sheet) + '.png', dpi=600, format='png')
 
 
+
+##############################################################
+#
+# Функция для построения распределения по двум переменным
+#
+##############################################################
+def jointplot(new_df, hue_name_for_sheet, what_sheet, path):
+    sns.reset_orig()
+    sns.set(font_scale=plot_feature_data__[48])
+    sns.set_style(plot_feature_data__[51])
+
+    if plot_feature_data__[50] == 'reg':
+        plot_kws = {'scatter_kws': {'s': plot_feature_data__[52]}}
+    elif plot_feature_data__[50] == 'hist':
+        plot_kws = {}
+    else:
+        plot_kws = {"s": plot_feature_data__[52]}
+
+    # переименуем колонку для удобства
+    new_df = new_df.rename(columns={'index': hue_name_for_sheet})
+
+    # найдем все уникальные комбинации колонок
+    ls = list(range(1, len(new_df.columns[1:]) + 1))
+    combinations__ = [(ls[x], ls[x + y]) for y in reversed(ls) for x in range((len(ls) - y))]
+    ###################
+    # пройдемся по всем колонкам из combinations__
+    for i in combinations__:
+        x_, y_ = new_df.columns[i[0]], new_df.columns[i[1]]
+        figure_jointplot = sns.jointplot(data=new_df, x=x_, y=y_, kind=plot_feature_data__[50], hue=hue_name_for_sheet, palette=plot_feature_data__[49], **plot_kws)
+        figure_jointplot.savefig(path + safe_name(what_sheet) + '__' + safe_name(x_) + '__' + safe_name(y_) + '.png', dpi=600, format='png')
+
+    # на всякий случай вернем, как всё было
+    new_df = new_df.rename(columns={hue_name_for_sheet: 'index'})
+    return None
+
+
 ##############################################################
 #
 # функция для ошибок
@@ -890,4 +1022,32 @@ def lets_add_all_parameters_for_figs_here(self):
     plot_feature_data__[46] = self.ui.spinBox_point_size_for_pairplot.value()
     # pairplot: kind
     plot_feature_data__[47] = self.ui.comboBox_pairplot_kind.currentText()
+    ######
+    #jointplot
+    ######
+    # jointplot: Относительный размер шрифта
+    plot_feature_data__[48] = self.ui.doubleSpinBox_jointplot.value()
+    # jointplot: Цветовая палитра
+    plot_feature_data__[49] = self.ui.comboBox_color_jointplot.currentText()
+    # jointplot: kind
+    plot_feature_data__[50] = self.ui.comboBox_pairplot_jointplot.currentText()
+    # jointplot: стиль
+    plot_feature_data__[51] = self.ui.comboBox_style_jointplot.currentText()
+    # jointplot: Размер точек на графике
+    plot_feature_data__[52] = self.ui.spinBox_point_size_for_jointplot.value()
+    ######
+    #корреляции по одному параметру
+    ######
+    # корреляции по одному параметру: Пирсон или др.
+    plot_feature_data__[53] = self.ui.comboBox_correlation_one_parameter.currentText()
+    # корреляции по одному параметру: мин.знач. для корреляции
+    plot_feature_data__[54] = self.ui.doubleSpinBox_one_correlation.value()
+    # корреляции по одному параметру: относительный шрифт
+    plot_feature_data__[55] = self.ui.doubleSpinBox_size_for_one_correlation.value()
+    # корреляции по одному параметру: построить по всем параметрам
+    plot_feature_data__[56] = self.ui.check_corr_one_parameter_only_one.isChecked()
+    # корреляции по одному параметру: Построить график в отдельном окне
+    plot_feature_data__[57] = self.ui.check_corr_one_parameter_plot_sep_wind.isChecked()
+
+
     return plot_feature_data__
