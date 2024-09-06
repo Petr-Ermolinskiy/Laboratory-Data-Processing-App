@@ -213,6 +213,9 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             x = read_table(i, skiprows=22, header=None, decimal=',')
             try:
                 x.columns = ['Time, s', 'Raw data, a.u.', 'Approx. data, a.u.']
+                x = x.replace({',': '.'}, regex=True)
+                for col_name in x.columns:
+                    x[col_name] = to_numeric(x[col_name], errors='coerce')
             except Exception as e:
                 dlg.setWindowTitle("RheoScan - ошибка аппроксимации")
                 dlg.setText('Ошибка чтения данных из файла:\n' + str(i) + '\n' + str(e))
@@ -292,7 +295,13 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
         # прочитать все файлы и добавить данные в DataFrame
         for i in files_css:
             # правильный срез данных
-            all_lines_CSS = sum(1 for line in open(i))
+            try:
+                all_lines_CSS = sum(1 for line in open(i))
+            except Exception as e:
+                dlg.setWindowTitle("RheoScan")
+                dlg.setText("Ошибка в чтении файла:\n" + i +'\n' + str(e))
+                dlg.exec()
+                return [1, DataFrame()]
             # прочитать каждый файл и извлечь данные
             x = read_table(i, skipfooter=all_lines_CSS - 15, header=None, decimal=',', index_col=False, engine='python')
             data_css = x.drop([0, 2, 3, 4, 5, 6, 7, 8, 11])
@@ -361,7 +370,13 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
         # прочитать все файлы и добавить данные в DataFrame
         for i in files_def:
             # правильный срез данных
-            all_lines_def = sum(1 for line in open(i))
+            try:
+                all_lines_def = sum(1 for line in open(i))
+            except Exception as e:
+                dlg.setWindowTitle("RheoScan")
+                dlg.setText("Ошибка в чтении файла:\n" + i +'\n' + str(e))
+                dlg.exec()
+                return [1, DataFrame()]
             # прочитать каждый файл и извлечь данные
             x = read_table(i, skiprows=all_lines_def - 14, header=None, decimal=',', index_col=False, engine='python')
             # всё для того, чтобы не было Inf

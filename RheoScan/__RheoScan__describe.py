@@ -48,35 +48,33 @@ def RheoScan_describe_file_or_files(self):
 
 
 # функция, когда файлов много и один файл == один образец
-def _describe_all_multiple_files(path: str, mask_sheet=None) -> None:
+def _describe_all_multiple_files(path: str, mask_sheet_main=None) -> None:
     path = path + '\\'
 
     files_all = glob.glob(path + '*.xlsx')
-    if path + 'RheoScan_summary.xlsx' in files_all: files_all.remove(path + 'RheoScan_summary.xlsx')
+    if path + 'RheoScan_summary.xlsx' in files_all:
+        files_all.remove(path + 'RheoScan_summary.xlsx')
 
     describe_all_files = pd.DataFrame()
 
     for file in files_all:
         sheets = pd.ExcelFile(file).sheet_names
 
-        if mask_sheet == None:
+        if mask_sheet_main == None:
             mask_sheet = [True] * len(sheets)
-        elif type(mask_sheet) != list:
+        elif type(mask_sheet_main) != list:
             return 0
-        elif len(mask_sheet) > len(sheets):
+        elif len(mask_sheet_main) > len(sheets):
             return 0
-        elif len(mask_sheet) < len(sheets):
-            mask_sheet = [*mask_sheet, *[False] * (len(sheets) - len(mask_sheet))]
-
+        elif len(mask_sheet_main) < len(sheets):
+            mask_sheet = [*mask_sheet_main, *[False] * (len(sheets) - len(mask_sheet_main))]
         describe_data_frame = pd.DataFrame()
         # file name
         name_of_file = file.split('\\')[-1].split('.')[0]
         for one_sheet, mask in zip(sheets, mask_sheet):
             # читаем exel файл
             df = pd.read_excel(file, one_sheet)
-
             mean_vals = df[df.columns[2:]].mean()
-
             if mask:
                 std_vals = df[df.columns[2:]].std()
                 std_vals.index = std_vals.index + '_SD'
@@ -85,7 +83,6 @@ def _describe_all_multiple_files(path: str, mask_sheet=None) -> None:
             else:
                 one_sheet = pd.DataFrame([mean_vals], index=[name_of_file])
             describe_data_frame = pd.concat([describe_data_frame, one_sheet], axis=1)
-
         # сохраняем в основной DataFrame
         describe_all_files = pd.concat([describe_all_files, describe_data_frame], axis=0)
 
@@ -122,7 +119,6 @@ def _describe_all_one_file(path: str, mask_sheet=None) -> None:
 
         # статистика
         describe_file = pd.concat([describe_file, df_describe_for_one_sheet], axis=1)
-
     # сохраняем
     describe_file.to_excel('\\'.join(path.split('\\')[:-1]) + '\\' + 'RheoScan_summary.xlsx')
 

@@ -735,7 +735,7 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
 
 ##############################################################
 #
-# Функция для парных графиков
+# Функция для парных графиков - диаграмм рассеяния
 #
 ##############################################################
 def pairplot(new_df, hue_name_for_sheet, what_sheet, path):
