@@ -59,6 +59,8 @@ def plot_catplot(self) -> None:
     scale_ = self.ui.doubleSpinBox_catplot.value()
     mult_camparison = self.ui.comboBox_catplot_mult_stat.currentText()
     stat_formatter = self.ui.comboBox_catplot_stat_formatt.currentText()
+    # Рассчитать стат. Значимость внутри подгруппы.
+    stat_inside_subgroup = self.ui.check_stat_znachimost_catplot_inside_subgroup.isChecked()
     #########################
     if path == '':
         dlg.setWindowTitle("Catplot")
@@ -99,20 +101,24 @@ def plot_catplot(self) -> None:
     df[args['y']] = df[args['y']].map(lambda x: change_type(x, type_y))
     # для стат значимости
     pop = list(df[args['x']].unique())
+    # комбинации для расчета стат. значимости между ними
     combinations = [(pop[x], pop[x + y]) for y in range(len(pop), 0, -1) for x in range((len(pop) - y))]
 
     if args['hue'] != None:
         pop2 = list(df[args['hue']].unique())
-        combinations = []
-        # Getting all permutations of pop
-        # with length of pop2
+        # комбинация между всеми кроме комбинаций внутри подгруппы
         combinations = [[(pop[i], pop2[j]), (pop[li], pop2[k])] for i in range(len(pop) - 1, 0, -1) for li in range(len(pop) - i) for j in range(len(pop2)) for k in
                         range(len(pop2))]
+        # комбинация внутри подгруппы
         combinations2 = [[(pop[i], pop2[j]), (pop[i], pop2[k])] for i in range(len(pop)) for j in range(len(pop2) - 1, 0, -1) for k in range(len(pop2) - j)]
         for val in combinations2:
             if val[0] == val[1]:
                 combinations2.remove(val)
-        combinations = combinations + combinations2
+        # Если комбинации по всем, то тогда сохраняем 2 списка, а если только внутри подгруппы, то только combinations2
+        if stat_inside_subgroup:
+            combinations = combinations2
+        else:
+            combinations = combinations + combinations2
 
     sns.reset_orig()
     sns.set(font_scale=scale_)
@@ -128,7 +134,8 @@ def plot_catplot(self) -> None:
 
         for cat_ax in cat_plot.axes:
             for sm_cat_ax in cat_ax:
-                # важно проходиться по xlabels, а не просто по n_and_n, иначе будет неправильный порядок. см. https://stackoverflow.com/questions/64783410/adding-number-of-observations-to-seaborn-catplot-stirpplot
+                # Важно проходиться по xlabels, а не просто по n_and_n, иначе будет неправильный порядок.
+                # См. https://stackoverflow.com/questions/64783410/adding-number-of-observations-to-seaborn-catplot-stirpplot
                 xlabels = [x.get_text() for x in sm_cat_ax.get_xticklabels()]
                 for i, n in enumerate(xlabels):
                     sm_cat_ax.annotate(f'n={n_and_n[n]}', xy=(i, 0.01), xycoords=('data', 'axes fraction'), ha='center',

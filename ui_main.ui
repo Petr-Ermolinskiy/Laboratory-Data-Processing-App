@@ -144,7 +144,7 @@
        <string notr="true">/*background-color: rgb(249, 249, 249);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tabWidgetPage1">
        <attribute name="title">
@@ -3518,7 +3518,7 @@ border-radius: 17px;
            </font>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
@@ -9244,21 +9244,8 @@ border-radius: 10px;</string>
            <attribute name="title">
             <string>Catplot</string>
            </attribute>
-           <layout class="QFormLayout" name="formLayout_5">
-            <item row="8" column="0">
-             <spacer name="verticalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="0" colspan="2">
+           <layout class="QGridLayout" name="gridLayout_15">
+            <item row="0" column="0">
              <layout class="QHBoxLayout" name="horizontalLayout_87">
               <item>
                <widget class="QLabel" name="lb_path_for_plot_3">
@@ -9289,7 +9276,7 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="1" column="0" colspan="2">
+            <item row="1" column="0">
              <layout class="QHBoxLayout" name="horizontalLayout_88">
               <item>
                <widget class="QLabel" name="lb_exel_name_3">
@@ -9308,7 +9295,7 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="2" column="0" colspan="2">
+            <item row="2" column="0">
              <layout class="QHBoxLayout" name="horizontalLayout_99">
               <item>
                <widget class="QLabel" name="lb_exel_name_4">
@@ -9327,7 +9314,7 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="3" column="0" colspan="2">
+            <item row="3" column="0">
              <layout class="QVBoxLayout" name="verticalLayout_15">
               <item>
                <widget class="Line" name="line_9">
@@ -9597,7 +9584,7 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="4" column="0" colspan="2">
+            <item row="4" column="0">
              <layout class="QHBoxLayout" name="horizontalLayout_106">
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_93">
@@ -9851,7 +9838,7 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="5" column="0" colspan="2">
+            <item row="5" column="0">
              <layout class="QVBoxLayout" name="verticalLayout_39">
               <item>
                <widget class="Line" name="line_11">
@@ -9997,6 +9984,43 @@ border-radius: 10px;</string>
                </layout>
               </item>
               <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_165">
+                <item>
+                 <widget class="QLabel" name="lb_stattest_14">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>см. пакет statannotations</string>
+                  </property>
+                  <property name="text">
+                   <string>Рассчитать статистическую значимость только внутри подгруппы</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="check_stat_znachimost_catplot_inside_subgroup">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
                <layout class="QHBoxLayout" name="horizontalLayout_108">
                 <item>
                  <widget class="QLabel" name="lb_stattest_9">
@@ -10128,7 +10152,7 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="6" column="0" colspan="2">
+            <item row="6" column="0">
              <layout class="QHBoxLayout" name="horizontalLayout_104">
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_98">
@@ -10261,7 +10285,7 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="7" column="0" colspan="2">
+            <item row="7" column="0">
              <widget class="QPushButton" name="btn_plot_and_save_catplot">
               <property name="font">
                <font>
@@ -10277,6 +10301,19 @@ border-radius: 10px;</string>
                <string>Построить и сохранить график</string>
               </property>
              </widget>
+            </item>
+            <item row="8" column="0">
+             <spacer name="verticalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </widget>
@@ -11009,12 +11046,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>78</x>
-     <y>105</y>
+     <x>378</x>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>106</y>
+     <x>639</x>
+     <y>374</y>
     </hint>
    </hints>
   </connection>
@@ -11025,12 +11062,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>78</x>
-     <y>105</y>
+     <x>378</x>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>107</y>
+     <x>457</x>
+     <y>437</y>
     </hint>
    </hints>
   </connection>
@@ -11041,12 +11078,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>78</x>
-     <y>105</y>
+     <x>378</x>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>108</y>
+     <x>467</x>
+     <y>471</y>
     </hint>
    </hints>
   </connection>
@@ -11345,12 +11382,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>142</x>
-     <y>405</y>
+     <x>79</x>
+     <y>377</y>
     </hint>
     <hint type="destinationlabel">
-     <x>142</x>
-     <y>405</y>
+     <x>122</x>
+     <y>377</y>
     </hint>
    </hints>
   </connection>
@@ -11361,12 +11398,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>142</x>
-     <y>405</y>
+     <x>79</x>
+     <y>377</y>
     </hint>
     <hint type="destinationlabel">
-     <x>142</x>
-     <y>421</y>
+     <x>123</x>
+     <y>392</y>
     </hint>
    </hints>
   </connection>
@@ -11377,12 +11414,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>142</x>
-     <y>405</y>
+     <x>79</x>
+     <y>377</y>
     </hint>
     <hint type="destinationlabel">
-     <x>142</x>
-     <y>413</y>
+     <x>123</x>
+     <y>384</y>
     </hint>
    </hints>
   </connection>
@@ -11393,12 +11430,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>142</x>
-     <y>405</y>
+     <x>79</x>
+     <y>377</y>
     </hint>
     <hint type="destinationlabel">
-     <x>142</x>
-     <y>409</y>
+     <x>123</x>
+     <y>380</y>
     </hint>
    </hints>
   </connection>
@@ -11409,12 +11446,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>142</x>
-     <y>405</y>
+     <x>79</x>
+     <y>377</y>
     </hint>
     <hint type="destinationlabel">
-     <x>142</x>
-     <y>417</y>
+     <x>123</x>
+     <y>388</y>
     </hint>
    </hints>
   </connection>
@@ -11505,12 +11542,28 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>99</x>
-     <y>460</y>
+     <x>115</x>
+     <y>375</y>
     </hint>
     <hint type="destinationlabel">
-     <x>87</x>
-     <y>483</y>
+     <x>103</x>
+     <y>380</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_stat_znachimost_catplot</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>check_stat_znachimost_catplot_inside_subgroup</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>328</x>
+     <y>359</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>501</x>
+     <y>391</y>
     </hint>
    </hints>
   </connection>

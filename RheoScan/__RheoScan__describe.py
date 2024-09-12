@@ -68,9 +68,11 @@ def _describe_all_multiple_files(path: str, mask_sheet_main=None) -> None:
             return 0
         elif len(mask_sheet_main) < len(sheets):
             mask_sheet = [*mask_sheet_main, *[False] * (len(sheets) - len(mask_sheet_main))]
+        else:
+            mask_sheet = [False] * len(sheets)
         describe_data_frame = pd.DataFrame()
         # file name
-        name_of_file = file.split('\\')[-1].split('.')[0]
+        name_of_file = ''.join(file.split('\\')[-1].split('.')[:-1])
         for one_sheet, mask in zip(sheets, mask_sheet):
             # читаем exel файл
             df = pd.read_excel(file, one_sheet)

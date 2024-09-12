@@ -4326,12 +4326,8 @@ class Ui_MainWindow(object):
         self.tabWidget_2.addTab(self.tab_8, "")
         self.tab_10 = QWidget()
         self.tab_10.setObjectName(u"tab_10")
-        self.formLayout_5 = QFormLayout(self.tab_10)
-        self.formLayout_5.setObjectName(u"formLayout_5")
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.formLayout_5.setItem(8, QFormLayout.LabelRole, self.verticalSpacer_3)
-
+        self.gridLayout_15 = QGridLayout(self.tab_10)
+        self.gridLayout_15.setObjectName(u"gridLayout_15")
         self.horizontalLayout_87 = QHBoxLayout()
         self.horizontalLayout_87.setObjectName(u"horizontalLayout_87")
         self.lb_path_for_plot_3 = QLabel(self.tab_10)
@@ -4347,7 +4343,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_87.addWidget(self.path_for_catplot)
 
 
-        self.formLayout_5.setLayout(0, QFormLayout.SpanningRole, self.horizontalLayout_87)
+        self.gridLayout_15.addLayout(self.horizontalLayout_87, 0, 0, 1, 1)
 
         self.horizontalLayout_88 = QHBoxLayout()
         self.horizontalLayout_88.setObjectName(u"horizontalLayout_88")
@@ -4363,7 +4359,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_88.addWidget(self.comboBox_excel_catplot)
 
 
-        self.formLayout_5.setLayout(1, QFormLayout.SpanningRole, self.horizontalLayout_88)
+        self.gridLayout_15.addLayout(self.horizontalLayout_88, 1, 0, 1, 1)
 
         self.horizontalLayout_99 = QHBoxLayout()
         self.horizontalLayout_99.setObjectName(u"horizontalLayout_99")
@@ -4379,7 +4375,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_99.addWidget(self.comboBox_excel_sheet_catplot)
 
 
-        self.formLayout_5.setLayout(2, QFormLayout.SpanningRole, self.horizontalLayout_99)
+        self.gridLayout_15.addLayout(self.horizontalLayout_99, 2, 0, 1, 1)
 
         self.verticalLayout_15 = QVBoxLayout()
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
@@ -4530,7 +4526,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.addWidget(self.line_8)
 
 
-        self.formLayout_5.setLayout(3, QFormLayout.SpanningRole, self.verticalLayout_15)
+        self.gridLayout_15.addLayout(self.verticalLayout_15, 3, 0, 1, 1)
 
         self.horizontalLayout_106 = QHBoxLayout()
         self.horizontalLayout_106.setObjectName(u"horizontalLayout_106")
@@ -4613,7 +4609,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_106.addLayout(self.horizontalLayout_105)
 
 
-        self.formLayout_5.setLayout(4, QFormLayout.SpanningRole, self.horizontalLayout_106)
+        self.gridLayout_15.addLayout(self.horizontalLayout_106, 4, 0, 1, 1)
 
         self.verticalLayout_39 = QVBoxLayout()
         self.verticalLayout_39.setObjectName(u"verticalLayout_39")
@@ -4675,6 +4671,25 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_39.addLayout(self.horizontalLayout_94)
 
+        self.horizontalLayout_165 = QHBoxLayout()
+        self.horizontalLayout_165.setObjectName(u"horizontalLayout_165")
+        self.lb_stattest_14 = QLabel(self.tab_10)
+        self.lb_stattest_14.setObjectName(u"lb_stattest_14")
+        self.lb_stattest_14.setFont(font5)
+
+        self.horizontalLayout_165.addWidget(self.lb_stattest_14)
+
+        self.check_stat_znachimost_catplot_inside_subgroup = QCheckBox(self.tab_10)
+        self.check_stat_znachimost_catplot_inside_subgroup.setObjectName(u"check_stat_znachimost_catplot_inside_subgroup")
+        self.check_stat_znachimost_catplot_inside_subgroup.setEnabled(True)
+        self.check_stat_znachimost_catplot_inside_subgroup.setFont(font5)
+        self.check_stat_znachimost_catplot_inside_subgroup.setChecked(False)
+
+        self.horizontalLayout_165.addWidget(self.check_stat_znachimost_catplot_inside_subgroup)
+
+
+        self.verticalLayout_39.addLayout(self.horizontalLayout_165)
+
         self.horizontalLayout_108 = QHBoxLayout()
         self.horizontalLayout_108.setObjectName(u"horizontalLayout_108")
         self.lb_stattest_9 = QLabel(self.tab_10)
@@ -4732,7 +4747,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_39.addWidget(self.line_10)
 
 
-        self.formLayout_5.setLayout(5, QFormLayout.SpanningRole, self.verticalLayout_39)
+        self.gridLayout_15.addLayout(self.verticalLayout_39, 5, 0, 1, 1)
 
         self.horizontalLayout_104 = QHBoxLayout()
         self.horizontalLayout_104.setObjectName(u"horizontalLayout_104")
@@ -4788,7 +4803,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_104.addLayout(self.horizontalLayout_103)
 
 
-        self.formLayout_5.setLayout(6, QFormLayout.SpanningRole, self.horizontalLayout_104)
+        self.gridLayout_15.addLayout(self.horizontalLayout_104, 6, 0, 1, 1)
 
         self.btn_plot_and_save_catplot = QPushButton(self.tab_10)
         self.btn_plot_and_save_catplot.setObjectName(u"btn_plot_and_save_catplot")
@@ -4797,7 +4812,11 @@ class Ui_MainWindow(object):
 "border: 3px solid rgb(128, 160, 165);\n"
 "border-radius: 10px;")
 
-        self.formLayout_5.setWidget(7, QFormLayout.SpanningRole, self.btn_plot_and_save_catplot)
+        self.gridLayout_15.addWidget(self.btn_plot_and_save_catplot, 7, 0, 1, 1)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout_15.addItem(self.verticalSpacer_3, 8, 0, 1, 1)
 
         self.tabWidget_2.addTab(self.tab_10, "")
         self.tab_12 = QWidget()
@@ -5262,9 +5281,10 @@ class Ui_MainWindow(object):
         self.check_corr_one_parameter.toggled.connect(self.check_box_pairplot.setDisabled)
         self.check_corr_one_parameter.toggled.connect(self.check_jointplot.setDisabled)
         self.check_corr_one_parameter_only_one.toggled.connect(self.check_corr_one_parameter_plot_sep_wind.setEnabled)
+        self.check_stat_znachimost_catplot.toggled.connect(self.check_stat_znachimost_catplot_inside_subgroup.setEnabled)
 
-        self.Lab_stuff.setCurrentIndex(0)
-        self.tabWidget_2.setCurrentIndex(0)
+        self.Lab_stuff.setCurrentIndex(3)
+        self.tabWidget_2.setCurrentIndex(3)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -6191,6 +6211,11 @@ class Ui_MainWindow(object):
         self.comboBox_stat_test_catplot.setItemText(8, QCoreApplication.translate("MainWindow", u"Wilcoxon", None))
         self.comboBox_stat_test_catplot.setItemText(9, QCoreApplication.translate("MainWindow", u"Kruskal", None))
 
+#if QT_CONFIG(tooltip)
+        self.lb_stattest_14.setToolTip(QCoreApplication.translate("MainWindow", u"\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_stattest_14.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u043d\u0443\u0442\u0440\u0438 \u043f\u043e\u0434\u0433\u0440\u0443\u043f\u043f\u044b", None))
+        self.check_stat_znachimost_catplot_inside_subgroup.setText("")
 #if QT_CONFIG(tooltip)
         self.lb_stattest_9.setToolTip(QCoreApplication.translate("MainWindow", u"\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None))
 #endif // QT_CONFIG(tooltip)
