@@ -3260,7 +3260,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.spinBox_point_size_for_pairplot.sizePolicy().hasHeightForWidth())
         self.spinBox_point_size_for_pairplot.setSizePolicy(sizePolicy1)
         self.spinBox_point_size_for_pairplot.setFont(font5)
-        self.spinBox_point_size_for_pairplot.setMinimum(25)
+        self.spinBox_point_size_for_pairplot.setMinimum(1)
         self.spinBox_point_size_for_pairplot.setMaximum(1000)
         self.spinBox_point_size_for_pairplot.setValue(25)
 
@@ -5283,8 +5283,8 @@ class Ui_MainWindow(object):
         self.check_corr_one_parameter_only_one.toggled.connect(self.check_corr_one_parameter_plot_sep_wind.setEnabled)
         self.check_stat_znachimost_catplot.toggled.connect(self.check_stat_znachimost_catplot_inside_subgroup.setEnabled)
 
-        self.Lab_stuff.setCurrentIndex(3)
-        self.tabWidget_2.setCurrentIndex(3)
+        self.Lab_stuff.setCurrentIndex(0)
+        self.tabWidget_2.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
 
 

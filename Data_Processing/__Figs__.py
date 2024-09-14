@@ -811,14 +811,19 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         title_ = plot_feature_data__[11] + str(i) + ' (n=' + str(int(len(df_for_corr))) + ')'
         # корреляции делаем
         corr = df_for_corr.corr(method=plot_feature_data__[34])
+        corr = corr.apply(lambda x: round(x, 2))
         sns.set(font_scale=plot_feature_data__[9])
         plt.figure(figsize=(plot_feature_data__[8], plot_feature_data__[8]))
         plt.title(title_, fontsize=plot_feature_data__[10])
-        sns.heatmap(corr,
+        corr_matrix = sns.heatmap(corr,
                     cmap=plot_feature_data__[35],  # задаёт цветовую схему
                     annot=True,  # рисует значения внутри ячеек
                     linewidth=.9,
                     vmin=-1, vmax=1)  # указывает начало цветовых кодов от -1 до 1.
+        # Если нужно вращать подписи
+        #corr_matrix.set_xticklabels(corr_matrix.get_xticklabels(), rotation=45)
+        #corr_matrix.set_yticklabels(corr_matrix.get_yticklabels(), rotation=0)
+
         plt.tight_layout()
         name_of_file_ = str(i).replace('<', 'less')
         name_of_file_ = name_of_file_.replace('>=', 'more')
@@ -852,6 +857,11 @@ def pairplot(new_df, hue_name_for_sheet, what_sheet, path):
     else:
         new_df = new_df.rename(columns={'index': hue_name_for_sheet})
         figure_pairplot = sns.pairplot(data=new_df, kind=plot_feature_data__[47], hue=hue_name_for_sheet, plot_kws=plot_kws, palette=plot_feature_data__[44])
+        # раскомментировать ниже, если нужно выставить нижний предел
+        '''
+        for ax in figure_pairplot.axes.flatten():
+            ax.set_ylim(bottom=-10)
+        '''
         new_df = new_df.rename(columns={hue_name_for_sheet: 'index'})
 
     figure_pairplot.savefig(path + safe_name(what_sheet) + '.png', dpi=600, format='png')
