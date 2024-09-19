@@ -37,7 +37,7 @@
        <string notr="true">color: rgb(128, 160, 165);</string>
       </property>
       <property name="text">
-       <string>Лаборатория Биомедицинской фотоники МГУ — Ермолинский Петр — версия 3.6</string>
+       <string>Лаборатория Биомедицинской фотоники МГУ — Ермолинский Петр — версия 3.61</string>
       </property>
      </widget>
     </item>
@@ -9314,7 +9314,7 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="3" column="0">
+            <item row="3" column="0" colspan="2">
              <layout class="QVBoxLayout" name="verticalLayout_15">
               <item>
                <widget class="Line" name="line_9">
@@ -9584,7 +9584,7 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="4" column="0">
+            <item row="4" column="0" colspan="2">
              <layout class="QHBoxLayout" name="horizontalLayout_106">
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_93">
@@ -9626,6 +9626,19 @@ border-radius: 10px;</string>
                    <double>1.000000000000000</double>
                   </property>
                  </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_8">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
                 </item>
                </layout>
               </item>
@@ -9838,8 +9851,207 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="5" column="0">
+            <item row="5" column="0" colspan="2">
              <layout class="QVBoxLayout" name="verticalLayout_39">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_104">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_98">
+                  <item>
+                   <widget class="QLabel" name="lb_stattest_7">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="toolTip">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;см. seaborn catplot&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                    <property name="text">
+                     <string>Шаблон для графика</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="comboBox_template_catplot">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>bar</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>box</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>strip</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>swarm</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>violin</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>boxen</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>point</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_10">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_103">
+                  <item>
+                   <widget class="QLabel" name="lb_color_pal_box_15">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="toolTip">
+                     <string>Обозначение погрешностей на графике</string>
+                    </property>
+                    <property name="text">
+                     <string>Погрешности</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="comboBox_catplot_SD_or_not">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Среднеквадратическое отклонение</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Среднеквадратическая ошибка</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Доверительный интервал</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Перцентильный интервал</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_166">
+                <item>
+                 <widget class="QLabel" name="label_10">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Вращать подписи на угол</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="spinBox_catplot_angle">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="minimum">
+                   <number>-90</number>
+                  </property>
+                  <property name="maximum">
+                   <number>90</number>
+                  </property>
+                  <property name="singleStep">
+                   <number>5</number>
+                  </property>
+                  <property name="value">
+                   <number>0</number>
+                  </property>
+                  <property name="displayIntegerBase">
+                   <number>10</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_9">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>900</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
               <item>
                <widget class="Line" name="line_11">
                 <property name="font">
@@ -10153,139 +10365,6 @@ border-radius: 10px;</string>
              </layout>
             </item>
             <item row="6" column="0">
-             <layout class="QHBoxLayout" name="horizontalLayout_104">
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_98">
-                <item>
-                 <widget class="QLabel" name="lb_stattest_7">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;см. seaborn catplot&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="text">
-                   <string>Шаблон для графика</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QComboBox" name="comboBox_template_catplot">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>bar</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>box</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>strip</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>swarm</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>violin</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>boxen</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>point</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_103">
-                <item>
-                 <widget class="QLabel" name="lb_color_pal_box_15">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Обозначение погрешностей на графике</string>
-                  </property>
-                  <property name="text">
-                   <string>Погрешности</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QComboBox" name="comboBox_catplot_SD_or_not">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>Среднеквадратическое отклонение</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Среднеквадратическая ошибка</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Доверительный интервал</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Перцентильный интервал</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-            <item row="7" column="0">
              <widget class="QPushButton" name="btn_plot_and_save_catplot">
               <property name="font">
                <font>
@@ -10302,7 +10381,7 @@ border-radius: 10px;</string>
               </property>
              </widget>
             </item>
-            <item row="8" column="0">
+            <item row="7" column="1">
              <spacer name="verticalSpacer_3">
               <property name="orientation">
                <enum>Qt::Vertical</enum>

@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+from itertools import product
 # для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
 # https://github.com/webermarcolivier/statannot
@@ -61,6 +62,8 @@ def plot_catplot(self) -> None:
     stat_formatter = self.ui.comboBox_catplot_stat_formatt.currentText()
     # Рассчитать стат. Значимость внутри подгруппы.
     stat_inside_subgroup = self.ui.check_stat_znachimost_catplot_inside_subgroup.isChecked()
+    # вращать подписи на такой угол
+    spin_angle = self.ui.spinBox_catplot_angle.value()
     #########################
     if path == '':
         dlg.setWindowTitle("Catplot")
@@ -101,24 +104,30 @@ def plot_catplot(self) -> None:
     df[args['y']] = df[args['y']].map(lambda x: change_type(x, type_y))
     # для стат значимости
     pop = list(df[args['x']].unique())
-    # комбинации для расчета стат. значимости между ними
+    # всевозможные комбинации для расчета стат. значимости между ними
     combinations = [(pop[x], pop[x + y]) for y in range(len(pop), 0, -1) for x in range((len(pop) - y))]
 
+    # однако если есть HUE, то тогда рассчитываем по-другому
     if args['hue'] != None:
         pop2 = list(df[args['hue']].unique())
-        # комбинация между всеми кроме комбинаций внутри подгруппы
-        combinations = [[(pop[i], pop2[j]), (pop[li], pop2[k])] for i in range(len(pop) - 1, 0, -1) for li in range(len(pop) - i) for j in range(len(pop2)) for k in
-                        range(len(pop2))]
-        # комбинация внутри подгруппы
-        combinations2 = [[(pop[i], pop2[j]), (pop[i], pop2[k])] for i in range(len(pop)) for j in range(len(pop2) - 1, 0, -1) for k in range(len(pop2) - j)]
-        for val in combinations2:
-            if val[0] == val[1]:
-                combinations2.remove(val)
-        # Если комбинации по всем, то тогда сохраняем 2 списка, а если только внутри подгруппы, то только combinations2
+
+        # генирируем все возможные комбинации
+        all_pairs = list(product(pop, pop2))
+        # очищаем список
+        combinations = []
+
         if stat_inside_subgroup:
-            combinations = combinations2
+            # проходимся по комбинациям внутри группы
+            for i in range(len(all_pairs)):
+                for j in range(i + 1, len(all_pairs)):
+                    if all_pairs[i] != all_pairs[j] and all_pairs[i][0] == all_pairs[j][0]:
+                        combinations.append((all_pairs[i], all_pairs[j]))
         else:
-            combinations = combinations + combinations2
+            # проходимся по всем возможным комбинациям
+            for i in range(len(all_pairs)):
+                for j in range(i + 1, len(all_pairs)):
+                    if all_pairs[i] != all_pairs[j]:
+                        combinations.append((all_pairs[i], all_pairs[j]))
 
     sns.reset_orig()
     sns.set(font_scale=scale_)
@@ -126,8 +135,10 @@ def plot_catplot(self) -> None:
 
     try:
         cat_plot = sns.catplot(edgecolor="black", data=df, **args)
+        cat_plot.set_xticklabels(rotation=spin_angle)
     except:
         cat_plot = sns.catplot(data=df, **args)
+        cat_plot.set_xticklabels(rotation=spin_angle)
     # edgecolor="black",
     if args['hue'] == None:
         n_and_n = df.groupby(args['x'])[args['y']].count()

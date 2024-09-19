@@ -4526,7 +4526,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.addWidget(self.line_8)
 
 
-        self.gridLayout_15.addLayout(self.verticalLayout_15, 3, 0, 1, 1)
+        self.gridLayout_15.addLayout(self.verticalLayout_15, 3, 0, 1, 2)
 
         self.horizontalLayout_106 = QHBoxLayout()
         self.horizontalLayout_106.setObjectName(u"horizontalLayout_106")
@@ -4549,6 +4549,10 @@ class Ui_MainWindow(object):
         self.doubleSpinBox_catplot.setValue(1.000000000000000)
 
         self.horizontalLayout_93.addWidget(self.doubleSpinBox_catplot)
+
+        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_93.addItem(self.horizontalSpacer_8)
 
 
         self.horizontalLayout_106.addLayout(self.horizontalLayout_93)
@@ -4609,10 +4613,96 @@ class Ui_MainWindow(object):
         self.horizontalLayout_106.addLayout(self.horizontalLayout_105)
 
 
-        self.gridLayout_15.addLayout(self.horizontalLayout_106, 4, 0, 1, 1)
+        self.gridLayout_15.addLayout(self.horizontalLayout_106, 4, 0, 1, 2)
 
         self.verticalLayout_39 = QVBoxLayout()
         self.verticalLayout_39.setObjectName(u"verticalLayout_39")
+        self.horizontalLayout_104 = QHBoxLayout()
+        self.horizontalLayout_104.setObjectName(u"horizontalLayout_104")
+        self.horizontalLayout_98 = QHBoxLayout()
+        self.horizontalLayout_98.setObjectName(u"horizontalLayout_98")
+        self.lb_stattest_7 = QLabel(self.tab_10)
+        self.lb_stattest_7.setObjectName(u"lb_stattest_7")
+        self.lb_stattest_7.setEnabled(True)
+        self.lb_stattest_7.setFont(font5)
+
+        self.horizontalLayout_98.addWidget(self.lb_stattest_7)
+
+        self.comboBox_template_catplot = QComboBox(self.tab_10)
+        self.comboBox_template_catplot.addItem("")
+        self.comboBox_template_catplot.addItem("")
+        self.comboBox_template_catplot.addItem("")
+        self.comboBox_template_catplot.addItem("")
+        self.comboBox_template_catplot.addItem("")
+        self.comboBox_template_catplot.addItem("")
+        self.comboBox_template_catplot.addItem("")
+        self.comboBox_template_catplot.setObjectName(u"comboBox_template_catplot")
+        self.comboBox_template_catplot.setEnabled(True)
+        self.comboBox_template_catplot.setFont(font5)
+
+        self.horizontalLayout_98.addWidget(self.comboBox_template_catplot)
+
+
+        self.horizontalLayout_104.addLayout(self.horizontalLayout_98)
+
+        self.horizontalSpacer_10 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_104.addItem(self.horizontalSpacer_10)
+
+        self.horizontalLayout_103 = QHBoxLayout()
+        self.horizontalLayout_103.setObjectName(u"horizontalLayout_103")
+        self.lb_color_pal_box_15 = QLabel(self.tab_10)
+        self.lb_color_pal_box_15.setObjectName(u"lb_color_pal_box_15")
+        sizePolicy.setHeightForWidth(self.lb_color_pal_box_15.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_15.setSizePolicy(sizePolicy)
+        self.lb_color_pal_box_15.setFont(font5)
+
+        self.horizontalLayout_103.addWidget(self.lb_color_pal_box_15)
+
+        self.comboBox_catplot_SD_or_not = QComboBox(self.tab_10)
+        self.comboBox_catplot_SD_or_not.addItem("")
+        self.comboBox_catplot_SD_or_not.addItem("")
+        self.comboBox_catplot_SD_or_not.addItem("")
+        self.comboBox_catplot_SD_or_not.addItem("")
+        self.comboBox_catplot_SD_or_not.setObjectName(u"comboBox_catplot_SD_or_not")
+        sizePolicy14.setHeightForWidth(self.comboBox_catplot_SD_or_not.sizePolicy().hasHeightForWidth())
+        self.comboBox_catplot_SD_or_not.setSizePolicy(sizePolicy14)
+        self.comboBox_catplot_SD_or_not.setFont(font5)
+
+        self.horizontalLayout_103.addWidget(self.comboBox_catplot_SD_or_not)
+
+
+        self.horizontalLayout_104.addLayout(self.horizontalLayout_103)
+
+
+        self.verticalLayout_39.addLayout(self.horizontalLayout_104)
+
+        self.horizontalLayout_166 = QHBoxLayout()
+        self.horizontalLayout_166.setObjectName(u"horizontalLayout_166")
+        self.label_10 = QLabel(self.tab_10)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setFont(font5)
+
+        self.horizontalLayout_166.addWidget(self.label_10)
+
+        self.spinBox_catplot_angle = QSpinBox(self.tab_10)
+        self.spinBox_catplot_angle.setObjectName(u"spinBox_catplot_angle")
+        self.spinBox_catplot_angle.setFont(font5)
+        self.spinBox_catplot_angle.setMinimum(-90)
+        self.spinBox_catplot_angle.setMaximum(90)
+        self.spinBox_catplot_angle.setSingleStep(5)
+        self.spinBox_catplot_angle.setValue(0)
+        self.spinBox_catplot_angle.setDisplayIntegerBase(10)
+
+        self.horizontalLayout_166.addWidget(self.spinBox_catplot_angle)
+
+        self.horizontalSpacer_9 = QSpacerItem(900, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_166.addItem(self.horizontalSpacer_9)
+
+
+        self.verticalLayout_39.addLayout(self.horizontalLayout_166)
+
         self.line_11 = QFrame(self.tab_10)
         self.line_11.setObjectName(u"line_11")
         self.line_11.setFont(font3)
@@ -4747,63 +4837,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_39.addWidget(self.line_10)
 
 
-        self.gridLayout_15.addLayout(self.verticalLayout_39, 5, 0, 1, 1)
-
-        self.horizontalLayout_104 = QHBoxLayout()
-        self.horizontalLayout_104.setObjectName(u"horizontalLayout_104")
-        self.horizontalLayout_98 = QHBoxLayout()
-        self.horizontalLayout_98.setObjectName(u"horizontalLayout_98")
-        self.lb_stattest_7 = QLabel(self.tab_10)
-        self.lb_stattest_7.setObjectName(u"lb_stattest_7")
-        self.lb_stattest_7.setEnabled(True)
-        self.lb_stattest_7.setFont(font5)
-
-        self.horizontalLayout_98.addWidget(self.lb_stattest_7)
-
-        self.comboBox_template_catplot = QComboBox(self.tab_10)
-        self.comboBox_template_catplot.addItem("")
-        self.comboBox_template_catplot.addItem("")
-        self.comboBox_template_catplot.addItem("")
-        self.comboBox_template_catplot.addItem("")
-        self.comboBox_template_catplot.addItem("")
-        self.comboBox_template_catplot.addItem("")
-        self.comboBox_template_catplot.addItem("")
-        self.comboBox_template_catplot.setObjectName(u"comboBox_template_catplot")
-        self.comboBox_template_catplot.setEnabled(True)
-        self.comboBox_template_catplot.setFont(font5)
-
-        self.horizontalLayout_98.addWidget(self.comboBox_template_catplot)
-
-
-        self.horizontalLayout_104.addLayout(self.horizontalLayout_98)
-
-        self.horizontalLayout_103 = QHBoxLayout()
-        self.horizontalLayout_103.setObjectName(u"horizontalLayout_103")
-        self.lb_color_pal_box_15 = QLabel(self.tab_10)
-        self.lb_color_pal_box_15.setObjectName(u"lb_color_pal_box_15")
-        sizePolicy.setHeightForWidth(self.lb_color_pal_box_15.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_15.setSizePolicy(sizePolicy)
-        self.lb_color_pal_box_15.setFont(font5)
-
-        self.horizontalLayout_103.addWidget(self.lb_color_pal_box_15)
-
-        self.comboBox_catplot_SD_or_not = QComboBox(self.tab_10)
-        self.comboBox_catplot_SD_or_not.addItem("")
-        self.comboBox_catplot_SD_or_not.addItem("")
-        self.comboBox_catplot_SD_or_not.addItem("")
-        self.comboBox_catplot_SD_or_not.addItem("")
-        self.comboBox_catplot_SD_or_not.setObjectName(u"comboBox_catplot_SD_or_not")
-        sizePolicy14.setHeightForWidth(self.comboBox_catplot_SD_or_not.sizePolicy().hasHeightForWidth())
-        self.comboBox_catplot_SD_or_not.setSizePolicy(sizePolicy14)
-        self.comboBox_catplot_SD_or_not.setFont(font5)
-
-        self.horizontalLayout_103.addWidget(self.comboBox_catplot_SD_or_not)
-
-
-        self.horizontalLayout_104.addLayout(self.horizontalLayout_103)
-
-
-        self.gridLayout_15.addLayout(self.horizontalLayout_104, 6, 0, 1, 1)
+        self.gridLayout_15.addLayout(self.verticalLayout_39, 5, 0, 1, 2)
 
         self.btn_plot_and_save_catplot = QPushButton(self.tab_10)
         self.btn_plot_and_save_catplot.setObjectName(u"btn_plot_and_save_catplot")
@@ -4812,11 +4846,11 @@ class Ui_MainWindow(object):
 "border: 3px solid rgb(128, 160, 165);\n"
 "border-radius: 10px;")
 
-        self.gridLayout_15.addWidget(self.btn_plot_and_save_catplot, 7, 0, 1, 1)
+        self.gridLayout_15.addWidget(self.btn_plot_and_save_catplot, 6, 0, 1, 1)
 
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout_15.addItem(self.verticalSpacer_3, 8, 0, 1, 1)
+        self.gridLayout_15.addItem(self.verticalSpacer_3, 7, 1, 1, 1)
 
         self.tabWidget_2.addTab(self.tab_10, "")
         self.tab_12 = QWidget()
@@ -5296,7 +5330,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.label_info.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><br/></p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
-        self.label_info.setText(QCoreApplication.translate("MainWindow", u"\u041b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u0438\u044f \u0411\u0438\u043e\u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0439 \u0444\u043e\u0442\u043e\u043d\u0438\u043a\u0438 \u041c\u0413\u0423 \u2014 \u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f 3.6", None))
+        self.label_info.setText(QCoreApplication.translate("MainWindow", u"\u041b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u0438\u044f \u0411\u0438\u043e\u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0439 \u0444\u043e\u0442\u043e\u043d\u0438\u043a\u0438 \u041c\u0413\u0423 \u2014 \u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f 3.61", None))
         self.btn_save_exel_csv.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u0432\u043b\u0435\u0447\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0438\u0437 \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0444\u0430\u0439\u043b\u044b", None))
 #if QT_CONFIG(tooltip)
         self.lb_path.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u041f\u043e \u0434\u0430\u043d\u043d\u043e\u043c\u0443 \u043f\u0443\u0442\u0438 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c 3 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438 (agg, stress, deform), \u0435\u0441\u043b\u0438 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a 1</p></body></html>", None))
@@ -6192,6 +6226,28 @@ class Ui_MainWindow(object):
         self.comboBox_color_catplot.setItemText(33, QCoreApplication.translate("MainWindow", u"tab20c", None))
 
 #if QT_CONFIG(tooltip)
+        self.lb_stattest_7.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0441\u043c. seaborn catplot</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_stattest_7.setText(QCoreApplication.translate("MainWindow", u"\u0428\u0430\u0431\u043b\u043e\u043d \u0434\u043b\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430", None))
+        self.comboBox_template_catplot.setItemText(0, QCoreApplication.translate("MainWindow", u"bar", None))
+        self.comboBox_template_catplot.setItemText(1, QCoreApplication.translate("MainWindow", u"box", None))
+        self.comboBox_template_catplot.setItemText(2, QCoreApplication.translate("MainWindow", u"strip", None))
+        self.comboBox_template_catplot.setItemText(3, QCoreApplication.translate("MainWindow", u"swarm", None))
+        self.comboBox_template_catplot.setItemText(4, QCoreApplication.translate("MainWindow", u"violin", None))
+        self.comboBox_template_catplot.setItemText(5, QCoreApplication.translate("MainWindow", u"boxen", None))
+        self.comboBox_template_catplot.setItemText(6, QCoreApplication.translate("MainWindow", u"point", None))
+
+#if QT_CONFIG(tooltip)
+        self.lb_color_pal_box_15.setToolTip(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0435\u0439 \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435", None))
+#endif // QT_CONFIG(tooltip)
+        self.lb_color_pal_box_15.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0438", None))
+        self.comboBox_catplot_SD_or_not.setItemText(0, QCoreApplication.translate("MainWindow", u"\u0421\u0440\u0435\u0434\u043d\u0435\u043a\u0432\u0430\u0434\u0440\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435", None))
+        self.comboBox_catplot_SD_or_not.setItemText(1, QCoreApplication.translate("MainWindow", u"\u0421\u0440\u0435\u0434\u043d\u0435\u043a\u0432\u0430\u0434\u0440\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430", None))
+        self.comboBox_catplot_SD_or_not.setItemText(2, QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0432\u0435\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b", None))
+        self.comboBox_catplot_SD_or_not.setItemText(3, QCoreApplication.translate("MainWindow", u"\u041f\u0435\u0440\u0446\u0435\u043d\u0442\u0438\u043b\u044c\u043d\u044b\u0439 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b", None))
+
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0440\u0430\u0449\u0430\u0442\u044c \u043f\u043e\u0434\u043f\u0438\u0441\u0438 \u043d\u0430 \u0443\u0433\u043e\u043b", None))
+#if QT_CONFIG(tooltip)
         self.lb_stattest_6.setToolTip(QCoreApplication.translate("MainWindow", u"\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None))
 #endif // QT_CONFIG(tooltip)
         self.lb_stattest_6.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c?", None))
@@ -6233,27 +6289,6 @@ class Ui_MainWindow(object):
         self.comboBox_catplot_mult_stat.setItemText(2, QCoreApplication.translate("MainWindow", u"holm-bonferroni", None))
         self.comboBox_catplot_mult_stat.setItemText(3, QCoreApplication.translate("MainWindow", u"benjamini-hochberg", None))
         self.comboBox_catplot_mult_stat.setItemText(4, QCoreApplication.translate("MainWindow", u"Benjamini-Yekutieli", None))
-
-#if QT_CONFIG(tooltip)
-        self.lb_stattest_7.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u0441\u043c. seaborn catplot</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.lb_stattest_7.setText(QCoreApplication.translate("MainWindow", u"\u0428\u0430\u0431\u043b\u043e\u043d \u0434\u043b\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430", None))
-        self.comboBox_template_catplot.setItemText(0, QCoreApplication.translate("MainWindow", u"bar", None))
-        self.comboBox_template_catplot.setItemText(1, QCoreApplication.translate("MainWindow", u"box", None))
-        self.comboBox_template_catplot.setItemText(2, QCoreApplication.translate("MainWindow", u"strip", None))
-        self.comboBox_template_catplot.setItemText(3, QCoreApplication.translate("MainWindow", u"swarm", None))
-        self.comboBox_template_catplot.setItemText(4, QCoreApplication.translate("MainWindow", u"violin", None))
-        self.comboBox_template_catplot.setItemText(5, QCoreApplication.translate("MainWindow", u"boxen", None))
-        self.comboBox_template_catplot.setItemText(6, QCoreApplication.translate("MainWindow", u"point", None))
-
-#if QT_CONFIG(tooltip)
-        self.lb_color_pal_box_15.setToolTip(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0435\u0439 \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435", None))
-#endif // QT_CONFIG(tooltip)
-        self.lb_color_pal_box_15.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0438", None))
-        self.comboBox_catplot_SD_or_not.setItemText(0, QCoreApplication.translate("MainWindow", u"\u0421\u0440\u0435\u0434\u043d\u0435\u043a\u0432\u0430\u0434\u0440\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435", None))
-        self.comboBox_catplot_SD_or_not.setItemText(1, QCoreApplication.translate("MainWindow", u"\u0421\u0440\u0435\u0434\u043d\u0435\u043a\u0432\u0430\u0434\u0440\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430", None))
-        self.comboBox_catplot_SD_or_not.setItemText(2, QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0432\u0435\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b", None))
-        self.comboBox_catplot_SD_or_not.setItemText(3, QCoreApplication.translate("MainWindow", u"\u041f\u0435\u0440\u0446\u0435\u043d\u0442\u0438\u043b\u044c\u043d\u044b\u0439 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b", None))
 
         self.btn_plot_and_save_catplot.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_10), QCoreApplication.translate("MainWindow", u"Catplot", None))
