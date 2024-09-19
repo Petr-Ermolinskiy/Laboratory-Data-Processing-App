@@ -1,6 +1,6 @@
 # библиотеки для создания приложения
-from PySide6.QtWidgets import (QMainWindow, QFileDialog, QLabel)
-from PySide6.QtCore import Slot, QUrl
+from PySide6.QtWidgets import (QMainWindow, QFileDialog)
+from PySide6.QtCore import Slot
 ############################
 # обработка RheoScan
 from RheoScan.__RheoScan__ import *
@@ -22,7 +22,7 @@ from Data_Processing.__Pivot_table_and_corr__ import *
 from Data_Processing.__Calc_p_value__ import *
 ############################
 # основное окно приложения
-from ui_main import Ui_MainWindow
+from ui.ui_main import Ui_MainWindow
 ############################
 # дополнительные библиотеки - pandas нужен для добавления листов excel в соответствующие окна
 import pandas as pd
@@ -135,7 +135,7 @@ class Main_window(QMainWindow):
     def on_comboBox_style_sheet_currentIndexChanged(self, index):
         # меняем стили, как перчатки
         if index == 1:
-            with open("style_dark.qss", "r") as f:
+            with open("style/style_dark.qss", "r") as f:
                 _style = f.read()
             self.setStyleSheet(_style)
         else:

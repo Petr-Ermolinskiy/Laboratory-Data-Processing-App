@@ -54,7 +54,7 @@ pyinstaller --windowed --add-data "logo.ico;." --add-data "style_dark.qss;." --n
 ```
 Я настоятельно рекомендую вам использовать [UPX](https://upx.github.io/) для уменьшения размера исполняемого файла. В этом случае вы можете выполнить следующую команду:
 ```bash
-pyinstaller --windowed --add-data "logo.ico;." --add-data "style_dark.qss;." --name='Lab_App_version' --icon=logo.ico --upx-dir Path\to\the\upx-4.2.2-win64 main.py
+pyinstaller --windowed --add-data "style/logo.ico;." --add-data "style/style_dark.qss;." --name='Lab_App_version' --icon=style/logo.ico --upx-dir Path\to\the\upx-4.2.2-win64 main.py
 ```
 Размер exe будет составлять порядка 130 МБ.
 

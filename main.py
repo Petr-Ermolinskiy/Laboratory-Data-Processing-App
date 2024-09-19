@@ -30,7 +30,7 @@ if __name__ == '__main__':
     # важно обозначить для того, чтобы лого обозначалось правильно
     basedir = os.path.dirname(__file__)
     # добавляем иконку
-    app.setWindowIcon(QIcon(os.path.join(basedir, 'logo.ico')))
+    app.setWindowIcon(QIcon(os.path.join(basedir, 'style/logo.ico')))
 
     # выполняем всё
     window = Main_window()
