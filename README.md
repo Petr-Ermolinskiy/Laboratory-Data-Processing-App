@@ -46,6 +46,11 @@ pip install seaborn==0.12.2
 python main.py
 ```
 
+## Проблемы с установкой
+- Если при установке библиотек не устанавливается pandas, то скорее всего это из-за отсутствия 
+[Microsoft C++ Build Tools](https://visualstudio.microsoft.com/ru/visual-cpp-build-tools/).
+- Если всё ещё выдается ошибка, то надо провести установку последней версии pandas, и далее выполнить `pip install -r requirements.txt`.
+
 ## Создание _exe_ файла
 
 Чтобы создать _exe_-файл в Windows, нужно выполнить следующую команду в терминале или командной строке:
@@ -54,7 +59,7 @@ pyinstaller --onefile --windowed --add-data "style/*;style/" --name='Lab_App_ver
 ```
 Я настоятельно рекомендую вам использовать [UPX](https://upx.github.io/) для уменьшения размера исполняемого файла. В этом случае вы можете выполнить следующую команду:
 ```bash
-pyinstaller --onefile --windowed --add-data "style/*;style/" --name='Lab_App_version' --icon=style/logo.ico --upx-dir Path\to\the\upx-4.2.2-win64 main.py
+pyinstaller --onefile --windowed --add-data "style/*;style/" --name='Lab_App_version' --icon=style/logo.ico --upx-dir Path\to\the\upx-version-win64 main.py
 ```
 Размер exe будет составлять порядка 130 МБ.
 

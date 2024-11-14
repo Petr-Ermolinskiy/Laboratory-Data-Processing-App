@@ -507,15 +507,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                 r_sq_seq = r_sq_seq.append(
                     {'Patient': ttt, 'r^2': r_squared, 'nn': n, 'Yield strength': yieldd, 'Viscosity': viscosity,
                      'Extrapol': extra, 'Slope': sslope, 'r^2-dop': r222}, ignore_index=True)
-                # уберем точку с максимальной ошибкой по индексу элонгации
-                df2.pop(max_ind)
-                # уберем точку с максимальной ошибкой по сдвиговому напряжению
-                one3.pop(max_ind)
-                # обновляем индексы! это очень важно, иначе просто у вас неправильно всё посчитается
-                df2 = df2.reset_index(drop=True)
-                one3 = one3.reset_index(drop=True)
-                # уменьшаем на 1 количество точек и если убрано больше 3 точек или R^2 больше 0.95, то останавливаемся и выходим из цикла
-                n -= 1
+
                 if n < agg_approx_data__[3] or r_squared > float(agg_approx_data__[2]):
                     if fiting_deform:
                         #####################################
@@ -536,6 +528,16 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                         plt.clf()
                         #####################################
                     break
+                else:
+                    # уберем точку с максимальной ошибкой по индексу элонгации
+                    df2.pop(max_ind)
+                    # уберем точку с максимальной ошибкой по сдвиговому напряжению
+                    one3.pop(max_ind)
+                    # обновляем индексы! это очень важно, иначе просто у вас неправильно всё посчитается
+                    df2 = df2.reset_index(drop=True)
+                    one3 = one3.reset_index(drop=True)
+                    # уменьшаем на 1 количество точек и если убрано больше 3 точек или R^2 больше 0.95, то останавливаемся и выходим из цикла
+                    n -= 1
             # выбираем только значение с максимальным R^2 - находим индекс с максимальным R^2
             maxValueIndex = r_sq_seq['r^2'].idxmax()
             # по индексу максимального значения находим само значения и записываем всю строку в наш изначальный Data Frame
