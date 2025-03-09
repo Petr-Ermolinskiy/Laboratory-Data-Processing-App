@@ -125,8 +125,8 @@ def  corr_one_parameter(path, files, what_sheet, hue_name) -> None:
     df.columns = df.columns.str.replace('\\n', '\n', regex=False)
     # выделяем те колонки, которые нас будут интерисовать с точки зрения обработки!
 
-    # будем смотреть один параметр если строит галочка, иначе все
-    if plot_feature_data__[56]:
+    # будем смотреть один параметр если строит галочка, иначе все параметры
+    if plot_feature_data__["corr_one_parameter_only_one"]:
         corr_list = [hue_name]
     else:
         corr_list = df.columns
@@ -134,8 +134,8 @@ def  corr_one_parameter(path, files, what_sheet, hue_name) -> None:
     ###
     # корреляционная матрица
     ###
-    correlation_matrix = df.corr(method=plot_feature_data__[53])
-    limit_ = plot_feature_data__[54]
+    correlation_matrix = df.corr(method=plot_feature_data__["correlation_one_parameter"])
+    limit_ = plot_feature_data__["one_correlation"]
     correlation_matrix = correlation_matrix.applymap(lambda x: x if x > limit_ or x < -limit_ else 0)
     for i in correlation_matrix.columns:
         correlation_matrix.loc[i, i] = 0
@@ -148,7 +148,7 @@ def  corr_one_parameter(path, files, what_sheet, hue_name) -> None:
     os.makedirs(path_one_corr, exist_ok=True)
 
     # размер шрифта
-    font_for_one_corr = int(15*plot_feature_data__[55])
+    font_for_one_corr = int(15*plot_feature_data__["size_for_one_correlation"])
 
     # строим корреляции для одного параметра или для многих
     for name_var in corr_list:
@@ -165,7 +165,7 @@ def  corr_one_parameter(path, files, what_sheet, hue_name) -> None:
         one_corr_plot = plt.figure(figsize=(12, 6))
         target_correlations.plot(kind='barh', color=colors)
         plt.title(f'Корреляции параметров с {target_variable}', size=font_for_one_corr)
-        plt.xlabel('Коэффициент корреляции ' + {'pearson': 'Пирсона','kendall': 'Кендалла','spearman': 'Спирмена'}[plot_feature_data__[53]], size=font_for_one_corr)
+        plt.xlabel('Коэффициент корреляции ' + {'pearson': 'Пирсона','kendall': 'Кендалла','spearman': 'Спирмена'}[plot_feature_data__["correlation_one_parameter"]], size=font_for_one_corr)
         plt.ylabel('Параметры', size=font_for_one_corr)
         plt.xlim(-1, 1)
         plt.yticks(size=font_for_one_corr)
@@ -174,7 +174,7 @@ def  corr_one_parameter(path, files, what_sheet, hue_name) -> None:
         plt.tight_layout()
         one_corr_plot.savefig(path_one_corr + safe_name(target_variable) + '.png')
     # построим график в отдельном окне
-    if plot_feature_data__[56] and plot_feature_data__[57]:
+    if plot_feature_data__["corr_one_parameter_only_one"] and plot_feature_data__["corr_one_parameter_plot_sep_wind"]:
         plt.show()
     return None
 
@@ -240,8 +240,8 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
         # пройдемся по всем колонкам из combinations__
         for i in combinations__:
             x_, y_ = new_df.columns[i[0]], new_df.columns[i[1]]
-            only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue=hue_name_for_sheet, not_in_hue=plot_feature_data__[7],
-                         color_palette=plot_feature_data__[6], _lim_=plot_feature_data__[5], sort_or_not=plot_feature_data__[15])
+            only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue=hue_name_for_sheet, not_in_hue=plot_feature_data__["del_hue"],
+                         color_palette=plot_feature_data__["color_pal_corr"], _lim_=plot_feature_data__["bottom_lim"], sort_or_not=plot_feature_data__["check_sort_or_not"])
 
     if pairplot_is_need:
         # создаем подпапку для графиков корреляции
@@ -287,10 +287,10 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
                     ignore_nan = ignore_nan.reset_index(drop=True)
                     just_all_we_need2.insert(loc=0, column=j, value=ignore_nan)
                 # изменяем порядок колонок - сортируем, если это надо
-                if plot_feature_data__[15]:
-                    just_all_we_need2 = just_all_we_need2[just_all_we_need2.columns.sort_values(ascending=plot_feature_data__[39])]
-                elif plot_feature_data__[31] != '':
-                    columns__temp = plot_feature_data__[31].replace(',', '').replace(';', ' ').split()
+                if plot_feature_data__["check_sort_or_not"]:
+                    just_all_we_need2 = just_all_we_need2[just_all_we_need2.columns.sort_values(ascending=plot_feature_data__["check_sort_or_not_ascending"])]
+                elif plot_feature_data__["order_box_plot"] != '':
+                    columns__temp = plot_feature_data__["order_box_plot"].replace(',', '').replace(';', ' ').split()
 
                     if len(just_all_we_need2.columns) != len(columns__temp):
                         return f'Кол-во подписей в поле <Изменить порядок подписей> не верно.\n Должно быть {len(just_all_we_need2.columns)}, а введено {len(columns__temp)}.'
@@ -304,7 +304,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
 
                 # сохраняем в список DataFrame-ов
                 df_list.append(just_all_we_need2)
-        if plot_feature_data__[16]:
+        if plot_feature_data__["check_stat_znachimost"]:
             # вот и массив с таблицами p-values
             try:
                 df_list_stat = calculate_table_for_p_val(df_list, dict_for_future)
@@ -317,7 +317,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
         if check != '__':
             return check
 
-        if plot_feature_data__[16]:
+        if plot_feature_data__["check_stat_znachimost"]:
             # создаем подпапку для exel файлов
             os.makedirs(path + 'stat', exist_ok=True)
             #############
@@ -331,7 +331,7 @@ def do_for_one_sheet(path, files, what_sheet, box_plot_or_not, corr_is_need, cor
                     df_list[dict_for_future[i]].to_excel(writer, sheet_name=name_of_sheet)
             #############
             with pd.ExcelWriter(
-                    path + 'stat' + '\\' + what_sheet + '_' + plot_feature_data__[12] + "_p-values.xlsx") as writer:
+                    path + 'stat' + '\\' + what_sheet + '_' + plot_feature_data__["comboBox_stat_test"] + "_p-values.xlsx") as writer:
                 for i in dict_for_future:
                     name_of_sheet = i
                     name_of_sheet = safe_name(name_of_sheet)
@@ -367,42 +367,42 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
     ax.cla()
     bp = ax.boxplot(data, widths=0.6, whis=whisk_MIN_MAX, patch_artist=True, positions=range(len(data)), showmeans=True,
                     showfliers=False, meanprops={"marker": "D", "markerfacecolor": "white", "markeredgecolor": "black",
-                                                 "markersize": str(plot_feature_data__[22])})
+                                                 "markersize": str(plot_feature_data__["spinBox_mean_val_size"])})
 
     # Изменим цвета. Если введен аргумент цвета, то цвет будет один или несколько;
     # есть такие цвета хорошие 'Pastel1' 'Blues' 'Greens' 'Purples' или такие https://r02b.github.io/seaborn_palettes/
-    if plot_feature_data__[2] == '' and plot_feature_data__[3] == '':
+    if plot_feature_data__["color_box"] == '' and plot_feature_data__["color_points"] == '':
         # для точек измерений
-        take_a_color_point = plot_feature_data__[1]
+        take_a_color_point = plot_feature_data__["color_pal_points"]
         # специальный массив для box-ов
-        colors = sns.color_palette(plot_feature_data__[0])
-    elif plot_feature_data__[2] == '' and plot_feature_data__[3] != '':
+        colors = sns.color_palette(plot_feature_data__["color_pal_box"])
+    elif plot_feature_data__["color_box"] == '' and plot_feature_data__["color_points"] != '':
         # для точек измерений
-        if '&' in plot_feature_data__[3]:
-            take_a_color_point = filter(None, plot_feature_data__[3].split('&'))
+        if '&' in plot_feature_data__["color_points"]:
+            take_a_color_point = filter(None, plot_feature_data__["color_points"].split('&'))
         else:
-            take_a_color_point = [plot_feature_data__[3]] * len(bp['boxes'])
+            take_a_color_point = [plot_feature_data__["color_points"]] * len(bp['boxes'])
         # специальный массив для box-ов
-        colors = sns.color_palette(plot_feature_data__[0])
-    elif plot_feature_data__[2] != '' and plot_feature_data__[3] == '':
+        colors = sns.color_palette(plot_feature_data__["color_pal_box"])
+    elif plot_feature_data__["color_box"] != '' and plot_feature_data__["color_points"] == '':
         # для точек измерений
-        take_a_color_point = plot_feature_data__[1]
+        take_a_color_point = plot_feature_data__["color_pal_points"]
         # специальный массив для box-ов
-        if '&' in plot_feature_data__[2]:
-            colors = filter(None, plot_feature_data__[2].split('&'))
+        if '&' in plot_feature_data__["color_box"]:
+            colors = filter(None, plot_feature_data__["color_box"].split('&'))
         else:
-            colors = [plot_feature_data__[2]] * len(bp['boxes'])
+            colors = [plot_feature_data__["color_box"]] * len(bp['boxes'])
     else:
         # для точек измерений
-        if '&' in plot_feature_data__[3]:
-            take_a_color_point = filter(None, plot_feature_data__[3].split('&'))
+        if '&' in plot_feature_data__["color_points"]:
+            take_a_color_point = filter(None, plot_feature_data__["color_points"].split('&'))
         else:
-            take_a_color_point = [plot_feature_data__[3]] * len(bp['boxes'])
+            take_a_color_point = [plot_feature_data__["color_points"]] * len(bp['boxes'])
         # специальный массив для box-ов
-        if '&' in plot_feature_data__[2]:
-            colors = plot_feature_data__[2].split('&')
+        if '&' in plot_feature_data__["color_box"]:
+            colors = plot_feature_data__["color_box"].split('&')
         else:
-            colors = [plot_feature_data__[2]] * len(bp['boxes'])
+            colors = [plot_feature_data__["color_box"]] * len(bp['boxes'])
 
     # стандартное отклонение - добавить вместо разброса между min-max
     if make_an_SD:
@@ -411,7 +411,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
 
     # добавить точки! цвет: palette=take_a_color_point
     try:
-        sns.stripplot(data=data, alpha=plot_feature_data__[41], palette=take_a_color_point, ax=ax, linewidth=1, size=plot_feature_data__[33])
+        sns.stripplot(data=data, alpha=plot_feature_data__["points_opasity"], palette=take_a_color_point, ax=ax, linewidth=1, size=plot_feature_data__["point_size"])
     except Exception as e:
         return 'Box plot: скорее всего вы ввели неправильный(е) цвет(а) HEX.\nЦвет для HEX должен быть в формате <#XXXXXX>.\nДля нескольких цветов используйте разделительный знак: &.\n' + str(e)
 
@@ -428,12 +428,12 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
     # цвет медианы
     plt.setp(bp['medians'], color='k')
 
-    if plot_feature_data__[16]:
+    if plot_feature_data__["check_stat_znachimost"]:
         # Стат. Значимость.
         significant_combinations = []
-        if plot_feature_data__[32] != '':
+        if plot_feature_data__["STAT_znachimost_order_box_plot"] != '':
             try:
-                combinations = plot_feature_data__[32].split()
+                combinations = plot_feature_data__["STAT_znachimost_order_box_plot"].split()
                 combinations = [item.replace('(', '').replace(')', '') for item in combinations]
                 combinations = [tuple(map(int, item.split(','))) for item in combinations]
             except Exception as e:
@@ -446,50 +446,50 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
             data2 = data[c[1] - 1]
 
             # Significance
-            if plot_feature_data__[12] == 'U-критерий Манна — Уитни':
-                _, p = stats.mannwhitneyu(data1, data2, alternative=plot_feature_data__[13])
-            elif plot_feature_data__[12] == 'Т-критерий Стьюдента':
-                _, p = stats.ttest_ind(data1, data2, alternative=plot_feature_data__[13])
-            elif plot_feature_data__[12] == 'Критерий Уилкоксона':
-                _, p = stats.wilcoxon(data1, data2, alternative=plot_feature_data__[13])
-            elif plot_feature_data__[12] == 'Критерий Краскела — Уоллиса':
+            if plot_feature_data__["comboBox_stat_test"] == 'U-критерий Манна — Уитни':
+                _, p = stats.mannwhitneyu(data1, data2, alternative=plot_feature_data__["comboBox_alter_hep"])
+            elif plot_feature_data__["comboBox_stat_test"] == 'Т-критерий Стьюдента':
+                _, p = stats.ttest_ind(data1, data2, alternative=plot_feature_data__["comboBox_alter_hep"])
+            elif plot_feature_data__["comboBox_stat_test"] == 'Критерий Уилкоксона':
+                _, p = stats.wilcoxon(data1, data2, alternative=plot_feature_data__["comboBox_alter_hep"])
+            elif plot_feature_data__["comboBox_stat_test"] == 'Критерий Краскела — Уоллиса':
                 _, p = stats.kruskal(data1, data2)
-            elif plot_feature_data__[12] == 'Медианный критерий':
-                _, p = stats.mood(data1, data2, alternative=plot_feature_data__[13])
-            elif plot_feature_data__[12] == 'Тест Ансари-Брэдли':
-                _, p = stats.ansari(data1, data2, alternative=plot_feature_data__[13])
-            elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля':
-                _, p = stats.brunnermunzel(data1, data2, alternative=plot_feature_data__[13])
-            elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля (normal)':
+            elif plot_feature_data__["comboBox_stat_test"] == 'Медианный критерий':
+                _, p = stats.mood(data1, data2, alternative=plot_feature_data__["comboBox_alter_hep"])
+            elif plot_feature_data__["comboBox_stat_test"] == 'Тест Ансари-Брэдли':
+                _, p = stats.ansari(data1, data2, alternative=plot_feature_data__["comboBox_alter_hep"])
+            elif plot_feature_data__["comboBox_stat_test"] == 'Тест Бруннера — Мюнцеля':
+                _, p = stats.brunnermunzel(data1, data2, alternative=plot_feature_data__["comboBox_alter_hep"])
+            elif plot_feature_data__["comboBox_stat_test"] == 'Тест Бруннера — Мюнцеля (normal)':
                 # distribution='normal' - если что-то не так или данные только одно значение, но в этом случае этот тест лучше не использовать
-                _, p = stats.brunnermunzel(data1, data2, distribution='normal', alternative=plot_feature_data__[13])
-            elif plot_feature_data__[12] == 'Тест Фишера-Питмана':
+                _, p = stats.brunnermunzel(data1, data2, distribution='normal', alternative=plot_feature_data__["comboBox_alter_hep"])
+            elif plot_feature_data__["comboBox_stat_test"] == 'Тест Фишера-Питмана':
                 def statistic(x, y, axis):
                     return np.mean(x, axis=axis) - np.mean(y, axis=axis)
 
                 # вычисляем
-                all_data = stats.permutation_test((data1, data2), statistic, permutation_type='independent', vectorized=True, alternative=plot_feature_data__[13])
+                all_data = stats.permutation_test((data1, data2), statistic, permutation_type='independent', vectorized=True, alternative=plot_feature_data__["comboBox_alter_hep"])
                 # само значение p
                 p = all_data.pvalue
-            elif plot_feature_data__[12] == 'Пермутационный критерий Бруннера — Мюнцеля':
+            elif plot_feature_data__["comboBox_stat_test"] == 'Пермутационный критерий Бруннера — Мюнцеля':
                 stat = permutation_test(data1, data2, test="brunner_munzel",
-                                        alternative=plot_feature_data__[13])
+                                        alternative=plot_feature_data__["comboBox_alter_hep"])
                 p = stat.pvalue
-            elif plot_feature_data__[12] == 'Пермутационный критерий Манна — Уитни':
+            elif plot_feature_data__["comboBox_stat_test"] == 'Пермутационный критерий Манна — Уитни':
                 stat = permutation_test(data1, data2, test="mann_whitney",
-                                        alternative=plot_feature_data__[13])
+                                        alternative=plot_feature_data__["comboBox_alter_hep"])
                 p = stat.pvalue
-            elif plot_feature_data__[12] == 'Пермутационный критерий Уилкоксона':
+            elif plot_feature_data__["comboBox_stat_test"] == 'Пермутационный критерий Уилкоксона':
                 # изменим формат
                 data_for_paired_permutations = np.vstack([data1, data2]).T
                 # сделаем расчет
-                stat = repeated_permutation_test(data_for_paired_permutations, test="wilcoxon", alternative=plot_feature_data__[13])
+                stat = repeated_permutation_test(data_for_paired_permutations, test="wilcoxon", alternative=plot_feature_data__["comboBox_alter_hep"])
                 p = stat.pvalue
-            elif plot_feature_data__[12] == 'Пермутационный критерий Фридмана':
+            elif plot_feature_data__["comboBox_stat_test"] == 'Пермутационный критерий Фридмана':
                 # изменим формат
                 data_for_paired_permutations = np.vstack([data1, data2]).T
                 # сделаем расчет
-                stat = repeated_permutation_test(data_for_paired_permutations, test="friedman", alternative=plot_feature_data__[13])
+                stat = repeated_permutation_test(data_for_paired_permutations, test="friedman", alternative=plot_feature_data__["comboBox_alter_hep"])
                 p = stat.pvalue
             else:
                 pass
@@ -509,7 +509,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
             # На каком уровне находится этот бар среди других?
             level = len(significant_combinations) - i
             # построим бары
-            bar_height = (yrange * 0.08 * level * plot_feature_data__[37]/10) + top
+            bar_height = (yrange * 0.08 * level * plot_feature_data__["size_stat_znachimost"]/10) + top
             bar_tips = bar_height - (yrange * 0.02)
             plt.plot(
                 [x1 - 1, x1 - 1, x2 - 1, x2 - 1],
@@ -528,30 +528,30 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
             p = significant_combination[1]
             if p < 0.0001:
                 sig_symbol = '****'
-                if plot_feature_data__[38] == 'меньше какого-то значения (p<)':
+                if plot_feature_data__["box_plot_sign_stat_znachimost"] == 'меньше какого-то значения (p<)':
                     sig_symbol = 'p < 0.0001'
-                elif plot_feature_data__[38] == 'равно какому-то значению (p=)':
+                elif plot_feature_data__["box_plot_sign_stat_znachimost"] == 'равно какому-то значению (p=)':
                     sig_symbol = 'p = ' + str(round_to(p))
             elif p < 0.001:
                 sig_symbol = '***'
-                if plot_feature_data__[38] == 'меньше какого-то значения (p<)':
+                if plot_feature_data__["box_plot_sign_stat_znachimost"] == 'меньше какого-то значения (p<)':
                     sig_symbol = 'p < 0.001'
-                elif plot_feature_data__[38] == 'равно какому-то значению (p=)':
+                elif plot_feature_data__["box_plot_sign_stat_znachimost"] == 'равно какому-то значению (p=)':
                     sig_symbol = 'p = ' + str(round_to(p))
             elif p < 0.01:
                 sig_symbol = '**'
-                if plot_feature_data__[38] == 'меньше какого-то значения (p<)':
+                if plot_feature_data__["box_plot_sign_stat_znachimost"] == 'меньше какого-то значения (p<)':
                     sig_symbol = 'p < 0.01'
-                elif plot_feature_data__[38] == 'равно какому-то значению (p=)':
+                elif plot_feature_data__["box_plot_sign_stat_znachimost"] == 'равно какому-то значению (p=)':
                     sig_symbol = 'p = ' + str(round_to(p))
             elif p < 0.05:
                 sig_symbol = '*'
-                if plot_feature_data__[38] == 'меньше какого-то значения (p<)':
+                if plot_feature_data__["box_plot_sign_stat_znachimost"] == 'меньше какого-то значения (p<)':
                     sig_symbol = 'p < 0.05'
-                elif plot_feature_data__[38] == 'равно какому-то значению (p=)':
+                elif plot_feature_data__["box_plot_sign_stat_znachimost"] == 'равно какому-то значению (p=)':
                     sig_symbol = 'p = ' + str(round_to(p))
             text_height = bar_height + (yrange * 0.01)
-            plt.text((x1 - 1 + x2 - 1) * 0.5, text_height, sig_symbol, ha='center', c='k', fontsize=plot_feature_data__[37])
+            plt.text((x1 - 1 + x2 - 1) * 0.5, text_height, sig_symbol, ha='center', c='k', fontsize=plot_feature_data__["size_stat_znachimost"])
     ###############
     # Изменим границы оси Y
     ###############
@@ -560,14 +560,14 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
     # <0.02 * yrange> нужно, чтобы смотрелось всё хорошо, если не введена нижняя/верхняя граница
     ax.set_ylim(bottom - 0.02 * yrange, top + 0.02 * yrange)
 
-    if plot_feature_data__[5] != '':
-        bottom = float(plot_feature_data__[5].replace(",", "."))
+    if plot_feature_data__["bottom_lim"] != '':
+        bottom = float(plot_feature_data__["bottom_lim"].replace(",", "."))
         ax.set_ylim(bottom, top)
-    if plot_feature_data__[36] != '':
-        top = float(plot_feature_data__[36].replace(",", "."))
+    if plot_feature_data__["upper_lim"] != '':
+        top = float(plot_feature_data__["upper_lim"].replace(",", "."))
         ax.set_ylim(bottom, top)
 
-    if plot_feature_data__[5] != '' or plot_feature_data__[36] != '':
+    if plot_feature_data__["bottom_lim"] != '' or plot_feature_data__["upper_lim"] != '':
         bottom, top = ax.get_ylim()
         yrange = top - bottom
         # это нужно, чтобы N - количество данных отображалось корректно
@@ -575,23 +575,23 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
 
     # Укажем размер выборки под каждым полем.
     # ''' внизу чтобы было кол-во данных
-    if plot_feature_data__[23]:
+    if plot_feature_data__["check_N_"]:
         for i, dataset in enumerate(data):
             sample_size = len(dataset)
-            ax.text(i, bottom, fr'n = {sample_size}', ha='center', size=plot_feature_data__[40])
+            ax.text(i, bottom, fr'n = {sample_size}', ha='center', size=plot_feature_data__["box_check_N_"])
     # '''
 
     # Шрифт устанавливаем в самом конце, т.к. из-за изменения осей могут быть ошибки
     # Label y-axis
-    ax.set_ylabel(ylabel, fontsize=plot_feature_data__[18], fontname=plot_feature_data__[21])
+    ax.set_ylabel(ylabel, fontsize=plot_feature_data__["spinBox_y_label"], fontname=plot_feature_data__["comboBox_fonts"])
     # Label x-axis
-    ax.set_xlabel(xlabel, fontsize=plot_feature_data__[17], fontname=plot_feature_data__[21])
+    ax.set_xlabel(xlabel, fontsize=plot_feature_data__["spinBox_x_label"], fontname=plot_feature_data__["comboBox_fonts"])
     # Label x-axis ticks -- если нужно, можно добавить "rotation=40"
     new_x_tick_label = [item.replace('\\n', '\n') for item in map(str, list(xticklabels))]
-    ax.set_xticklabels(new_x_tick_label, rotation=int(plot_feature_data__[14]))
+    ax.set_xticklabels(new_x_tick_label, rotation=int(plot_feature_data__["comboBox_spin_x_"]))
     # размер шрифта подписи
-    plt.yticks(fontsize=plot_feature_data__[20], fontname=plot_feature_data__[21])
-    plt.xticks(fontsize=plot_feature_data__[19], fontname=plot_feature_data__[21])
+    plt.yticks(fontsize=plot_feature_data__["spinBox_x_val"], fontname=plot_feature_data__["comboBox_fonts"])
+    plt.xticks(fontsize=plot_feature_data__["spinBox_y_vals"], fontname=plot_feature_data__["comboBox_fonts"])
 
     # Скроем основные деления оси X
     ax.tick_params(axis='x', which='major', length=0)
@@ -604,7 +604,7 @@ def box_and_whisker(data, title, xlabel, ylabel, xticklabels, Name_fiqure, path_
     plt.tight_layout()
     try:
         # сохранение рисунка
-        plt.savefig(path_name_fiqure_folder + '\\' + safe_name(Name_fiqure) + '.png', dpi=600, format='png', transparent=plot_feature_data__[24])
+        plt.savefig(path_name_fiqure_folder + '\\' + safe_name(Name_fiqure) + '.png', dpi=600, format='png', transparent=plot_feature_data__["check_background"])
     except Exception as e:
         return 'Box plot: ' + str(e)
     plt.close()
@@ -628,7 +628,7 @@ def just_to_numpy_for_plot(df_list, dict_for_future) -> list:
 # Функция для построения графиков по входному массиву
 def just_plot_it_(big_G, dict_for_future, df_list, name_of_X_axis, path_name_fiqure_folder) -> str:
     for parameter_ in dict_for_future:
-        do_SD = True if plot_feature_data__[4] == 'SD' else False
+        do_SD = True if plot_feature_data__["comboBox_sd_or_minmax"] == 'SD' else False
         ylabel = parameter_
         check = box_and_whisker(big_G[dict_for_future[parameter_]], '', name_of_X_axis, ylabel,
                                 df_list[dict_for_future[parameter_]].columns, parameter_, path_name_fiqure_folder,
@@ -650,68 +650,68 @@ def calculate_table_for_p_val(df_list, dict_for_future):
                     dop_DF.loc[col1, col2] = 1.0
                     continue
                 # Рассчитаем стат. Значимости.
-                if plot_feature_data__[12] == 'U-критерий Манна — Уитни':
+                if plot_feature_data__["comboBox_stat_test"] == 'U-критерий Манна — Уитни':
                     _, p_value = stats.mannwhitneyu(df_list[dict_for_future[i]][col1].dropna(),
                                                     df_list[dict_for_future[i]][col2].dropna(),
-                                                    alternative=plot_feature_data__[13])
-                elif plot_feature_data__[12] == 'Т-критерий Стьюдента':
+                                                    alternative=plot_feature_data__["comboBox_alter_hep"])
+                elif plot_feature_data__["comboBox_stat_test"] == 'Т-критерий Стьюдента':
                     _, p_value = stats.ttest_ind(df_list[dict_for_future[i]][col1].dropna(),
                                                  df_list[dict_for_future[i]][col2].dropna(),
-                                                 alternative=plot_feature_data__[13])
-                elif plot_feature_data__[12] == 'Критерий Уилкоксона':
+                                                 alternative=plot_feature_data__["comboBox_alter_hep"])
+                elif plot_feature_data__["comboBox_stat_test"] == 'Критерий Уилкоксона':
                     _, p_value = stats.wilcoxon(df_list[dict_for_future[i]][col1].dropna(),
                                                 df_list[dict_for_future[i]][col2].dropna(),
-                                                alternative=plot_feature_data__[13])
-                elif plot_feature_data__[12] == 'Критерий Краскела — Уоллиса':
+                                                alternative=plot_feature_data__["comboBox_alter_hep"])
+                elif plot_feature_data__["comboBox_stat_test"] == 'Критерий Краскела — Уоллиса':
                     _, p_value = stats.kruskal(df_list[dict_for_future[i]][col1].dropna(),
                                                df_list[dict_for_future[i]][col2].dropna())
-                elif plot_feature_data__[12] == 'Медианный критерий':
+                elif plot_feature_data__["comboBox_stat_test"] == 'Медианный критерий':
                     _, p_value = stats.mood(df_list[dict_for_future[i]][col1].dropna(),
                                             df_list[dict_for_future[i]][col2].dropna(),
-                                            alternative=plot_feature_data__[13])
-                elif plot_feature_data__[12] == 'Тест Ансари-Брэдли':
+                                            alternative=plot_feature_data__["comboBox_alter_hep"])
+                elif plot_feature_data__["comboBox_stat_test"] == 'Тест Ансари-Брэдли':
                     _, p_value = stats.ansari(df_list[dict_for_future[i]][col1].dropna(),
                                               df_list[dict_for_future[i]][col2].dropna(),
-                                              alternative=plot_feature_data__[13])
-                elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля':
+                                              alternative=plot_feature_data__["comboBox_alter_hep"])
+                elif plot_feature_data__["comboBox_stat_test"] == 'Тест Бруннера — Мюнцеля':
                     _, p_value = stats.brunnermunzel(df_list[dict_for_future[i]][col1].dropna(),
                                                      df_list[dict_for_future[i]][col2].dropna(),
-                                                     alternative=plot_feature_data__[13])
-                elif plot_feature_data__[12] == 'Тест Бруннера — Мюнцеля (normal)':
+                                                     alternative=plot_feature_data__["comboBox_alter_hep"])
+                elif plot_feature_data__["comboBox_stat_test"] == 'Тест Бруннера — Мюнцеля (normal)':
                     _, p_value = stats.brunnermunzel(df_list[dict_for_future[i]][col1].dropna(),
                                                      df_list[dict_for_future[i]][col2].dropna(),
                                                      distribution='normal',
-                                                     alternative=plot_feature_data__[13])
-                elif plot_feature_data__[12] == 'Тест Фишера-Питмана':
+                                                     alternative=plot_feature_data__["comboBox_alter_hep"])
+                elif plot_feature_data__["comboBox_stat_test"] == 'Тест Фишера-Питмана':
                     def statistic(x, y, axis):
                         return np.mean(x, axis=axis) - np.mean(y, axis=axis)
 
                     # вычисляем
                     all_data = stats.permutation_test((df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna()), statistic,
                                                       permutation_type='independent',
-                                                      vectorized=True, alternative=plot_feature_data__[13])
+                                                      vectorized=True, alternative=plot_feature_data__["comboBox_alter_hep"])
                     # само значение p
                     p_value = all_data.pvalue
 
-                elif plot_feature_data__[12] == 'Пермутационный критерий Бруннера — Мюнцеля':
+                elif plot_feature_data__["comboBox_stat_test"] == 'Пермутационный критерий Бруннера — Мюнцеля':
                     stat = permutation_test(df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna(), test="brunner_munzel",
-                                            alternative=plot_feature_data__[13])
+                                            alternative=plot_feature_data__["comboBox_alter_hep"])
                     p_value = stat.pvalue
-                elif plot_feature_data__[12] == 'Пермутационный критерий Манна — Уитни':
+                elif plot_feature_data__["comboBox_stat_test"] == 'Пермутационный критерий Манна — Уитни':
                     stat = permutation_test(df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna(), test="mann_whitney",
-                                            alternative=plot_feature_data__[13])
+                                            alternative=plot_feature_data__["comboBox_alter_hep"])
                     p_value = stat.pvalue
-                elif plot_feature_data__[12] == 'Пермутационный критерий Уилкоксона':
+                elif plot_feature_data__["comboBox_stat_test"] == 'Пермутационный критерий Уилкоксона':
                     # изменим формат
                     data_for_paired_permutations = np.vstack([df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna()]).T
                     # сделаем расчет
-                    stat = repeated_permutation_test(data_for_paired_permutations, test="wilcoxon", alternative=plot_feature_data__[13])
+                    stat = repeated_permutation_test(data_for_paired_permutations, test="wilcoxon", alternative=plot_feature_data__["comboBox_alter_hep"])
                     p_value = stat.pvalue
-                elif plot_feature_data__[12] == 'Пермутационный критерий Фридмана':
+                elif plot_feature_data__["comboBox_stat_test"] == 'Пермутационный критерий Фридмана':
                     # изменим формат
                     data_for_paired_permutations = np.vstack([df_list[dict_for_future[i]][col1].dropna(), df_list[dict_for_future[i]][col2].dropna()]).T
                     # сделаем расчет
-                    stat = repeated_permutation_test(data_for_paired_permutations, test="friedman", alternative=plot_feature_data__[13])
+                    stat = repeated_permutation_test(data_for_paired_permutations, test="friedman", alternative=plot_feature_data__["comboBox_alter_hep"])
                     p_value = stat.pvalue
                 else:
                     pass
@@ -730,10 +730,10 @@ def calculate_table_for_p_val(df_list, dict_for_future):
 ##############################################################
 def only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue, color_palette=None, not_in_hue=[], _lim_='', sort_or_not=False):
     sns.reset_orig()
-    sns.set(font_scale=plot_feature_data__[28])
+    sns.set(font_scale=plot_feature_data__["doubleSpinBox_corr_figs_fontscale"])
     # стиль
     sns.set_style("ticks")
-    if plot_feature_data__[30]:
+    if plot_feature_data__["check_setka"]:
         sns.set_style("whitegrid", {'axes.grid': True, "grid.color": ".9", "grid.linestyle": "--"})
 
     # узнаем в каком цвете нам строить задний фон под аннотацией к коэффициенту Пирсона
@@ -741,7 +741,7 @@ def only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue, color_pa
     # создаём лист по интерисующим группам
     hue_what = df[what_is_hue].unique()
     hue_what = list(hue_what)
-    if plot_feature_data__[29]:
+    if plot_feature_data__["check_sort_or_not_corr_figs"]:
         hue_what.sort()
     # удаляем элемент_ы hue, если это нужно
     try:
@@ -764,12 +764,12 @@ def only_regplot(df, x_, y_, path_name_fiqure_folder_corr, what_is_hue, color_pa
     max_ylim = 0
     # с линиями это regplot
     for i, color__ in zip(hue_what, current_color):
-        sns.regplot(data=df[df[what_is_hue] == i], x=x_, y=y_, ax=ax, color=color__, label=i, scatter_kws={'s': plot_feature_data__[27]})
+        sns.regplot(data=df[df[what_is_hue] == i], x=x_, y=y_, ax=ax, color=color__, label=i, scatter_kws={'s': plot_feature_data__["spinBox_points_corrFIGS"]})
         _, top = ax.get_ylim()
         max_ylim = max(max_ylim, top)
     # поменяем пределы значений на оси y
-    if plot_feature_data__[25]:
-        ax.set_ylim(plot_feature_data__[26], max_ylim)
+    if plot_feature_data__["check_change_corr_fig_down_limit"]:
+        ax.set_ylim(plot_feature_data__["doubleSpinBox_corr_figs"], max_ylim)
 
     # и для каждой группы находим коэффициент Пирсона и добавляем его на график
     for val, color__ in zip(hue_what, current_color):
@@ -808,15 +808,15 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         df_for_corr = new_df[new_df['index'] == i]
         df_for_corr = df_for_corr[df_for_corr.columns[1:]]
         # какое будет название?
-        title_ = plot_feature_data__[11] + str(i) + ' (n=' + str(int(len(df_for_corr))) + ')'
+        title_ = plot_feature_data__["name_of_corr_matrix"] + str(i) + ' (n=' + str(int(len(df_for_corr))) + ')'
         # корреляции делаем
-        corr = df_for_corr.corr(method=plot_feature_data__[34])
+        corr = df_for_corr.corr(method=plot_feature_data__["comboBox_correlation_figs_matrix"])
         corr = corr.apply(lambda x: round(x, 2))
-        sns.set(font_scale=plot_feature_data__[9])
-        plt.figure(figsize=(plot_feature_data__[8], plot_feature_data__[8]))
-        plt.title(title_, fontsize=plot_feature_data__[10])
+        sns.set(font_scale=plot_feature_data__["font_for_in"])
+        plt.figure(figsize=(plot_feature_data__["corr_mat_figsize"], plot_feature_data__["corr_mat_figsize"]))
+        plt.title(title_, fontsize=plot_feature_data__["font_for_out"])
         corr_matrix = sns.heatmap(corr,
-                    cmap=plot_feature_data__[35],  # задаёт цветовую схему
+                    cmap=plot_feature_data__["comboBox_correlation_color_map_for_figs"],  # задаёт цветовую схему
                     annot=True,  # рисует значения внутри ячеек
                     linewidth=.9,
                     vmin=-1, vmax=1)  # указывает начало цветовых кодов от -1 до 1.
@@ -829,7 +829,7 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         name_of_file_ = name_of_file_.replace('>=', 'more')
         plt.savefig(path_name_fiqure_folder_corr_matrix + '\\' + safe_name(name_of_file_) + '.png', dpi=600, format='png')
         # также экспортируем в excel
-        corr.to_excel(path_name_fiqure_folder_corr_matrix + '\\' + safe_name(name_of_file_) + '_' + plot_feature_data__[34] + ".xlsx", engine="openpyxl")
+        corr.to_excel(path_name_fiqure_folder_corr_matrix + '\\' + safe_name(name_of_file_) + '_' + plot_feature_data__["comboBox_correlation_figs_matrix"] + ".xlsx", engine="openpyxl")
         plt.close()
         plt.clf()
 
@@ -841,22 +841,22 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
 ##############################################################
 def pairplot(new_df, hue_name_for_sheet, what_sheet, path):
     sns.reset_orig()
-    sns.set(font_scale=plot_feature_data__[43])
-    sns.set_style(plot_feature_data__[45])
+    sns.set(font_scale=plot_feature_data__["doubleSpinBox_pairplot"])
+    sns.set_style(plot_feature_data__["comboBox_style_pairplot"])
 
-    if plot_feature_data__[47] == 'reg':
-        plot_kws = {'scatter_kws': {'s': plot_feature_data__[46]}}
-    elif plot_feature_data__[47] == 'hist':
+    if plot_feature_data__["comboBox_pairplot_kind"] == 'reg':
+        plot_kws = {'scatter_kws': {'s': plot_feature_data__["spinBox_point_size_for_pairplot"]}}
+    elif plot_feature_data__["comboBox_pairplot_kind"] == 'hist':
         plot_kws = None
     else:
-        plot_kws = {"s": plot_feature_data__[46]}
+        plot_kws = {"s": plot_feature_data__["spinBox_point_size_for_pairplot"]}
 
-    # раньше я об этом не думал, но лучше было оставить самый первый столбец с изначальным именем
-    if plot_feature_data__[42]:
-        figure_pairplot = sns.pairplot(data=new_df, kind=plot_feature_data__[47], hue=None, plot_kws=plot_kws)
+    # раньше я об этом не думал, но лучше было бы оставить самый первый столбец с изначальным именем
+    if plot_feature_data__["check_pairplot"]:
+        figure_pairplot = sns.pairplot(data=new_df, kind=plot_feature_data__["comboBox_pairplot_kind"], hue=None, plot_kws=plot_kws)
     else:
         new_df = new_df.rename(columns={'index': hue_name_for_sheet})
-        figure_pairplot = sns.pairplot(data=new_df, kind=plot_feature_data__[47], hue=hue_name_for_sheet, plot_kws=plot_kws, palette=plot_feature_data__[44])
+        figure_pairplot = sns.pairplot(data=new_df, kind=plot_feature_data__["comboBox_pairplot_kind"], hue=hue_name_for_sheet, plot_kws=plot_kws, palette=plot_feature_data__["comboBox_color_pairplot"])
         # раскомментировать ниже, если нужно выставить нижний предел
         '''
         for ax in figure_pairplot.axes.flatten():
@@ -875,15 +875,15 @@ def pairplot(new_df, hue_name_for_sheet, what_sheet, path):
 ##############################################################
 def jointplot(new_df, hue_name_for_sheet, what_sheet, path):
     sns.reset_orig()
-    sns.set(font_scale=plot_feature_data__[48])
-    sns.set_style(plot_feature_data__[51])
+    sns.set(font_scale=plot_feature_data__["doubleSpinBox_jointplot"])
+    sns.set_style(plot_feature_data__["comboBox_style_jointplot"])
 
-    if plot_feature_data__[50] == 'reg':
-        plot_kws = {'scatter_kws': {'s': plot_feature_data__[52]}}
-    elif plot_feature_data__[50] == 'hist':
+    if plot_feature_data__["comboBox_pairplot_jointplot"] == 'reg':
+        plot_kws = {'scatter_kws': {'s': plot_feature_data__["spinBox_point_size_for_jointplot"]}}
+    elif plot_feature_data__["comboBox_pairplot_jointplot"] == 'hist':
         plot_kws = {}
     else:
-        plot_kws = {"s": plot_feature_data__[52]}
+        plot_kws = {"s": plot_feature_data__["spinBox_point_size_for_jointplot"]}
 
     # переименуем колонку для удобства
     new_df = new_df.rename(columns={'index': hue_name_for_sheet})
@@ -895,7 +895,7 @@ def jointplot(new_df, hue_name_for_sheet, what_sheet, path):
     # пройдемся по всем колонкам из combinations__
     for i in combinations__:
         x_, y_ = new_df.columns[i[0]], new_df.columns[i[1]]
-        figure_jointplot = sns.jointplot(data=new_df, x=x_, y=y_, kind=plot_feature_data__[50], hue=hue_name_for_sheet, palette=plot_feature_data__[49], **plot_kws)
+        figure_jointplot = sns.jointplot(data=new_df, x=x_, y=y_, kind=plot_feature_data__["comboBox_pairplot_jointplot"], hue=hue_name_for_sheet, palette=plot_feature_data__["comboBox_color_jointplot"], **plot_kws)
         figure_jointplot.savefig(path + safe_name(what_sheet) + '__' + safe_name(x_) + '__' + safe_name(y_) + '.png', dpi=600, format='png')
 
     # на всякий случай вернем, как всё было
@@ -914,9 +914,9 @@ def error_for_val_plot(plot_feature_data__, path, exel_name) -> str:
         return 'Путь для файла отсутствует'
     if exel_name == '':
         return 'Имя файла отсутствует'
-    if plot_feature_data__[5].replace(".", "").replace(",", "").replace("-", "").isdigit() is False and plot_feature_data__[5] != '':
+    if plot_feature_data__["bottom_lim"].replace(".", "").replace(",", "").replace("-", "").isdigit() is False and plot_feature_data__["bottom_lim"] != '':
         return 'Box plot: параметр нижней границы содержит буквы или неподдерживаемые символы'
-    if plot_feature_data__[36].replace(".", "").replace(",", "").replace("-", "").isdigit() is False and plot_feature_data__[36] != '':
+    if plot_feature_data__["upper_lim"].replace(".", "").replace(",", "").replace("-", "").isdigit() is False and plot_feature_data__["upper_lim"] != '':
         return 'Box plot: параметр верхней границы содержит буквы или неподдерживаемые символы'
     return '__'
 
@@ -934,130 +934,130 @@ def lets_add_all_parameters_for_figs_here(self):
     # так, конечно, не очень хорошо делать,
     # но я это очень удобный костыль
     # лучше было бы сделать словарь
-    plot_feature_data__ = [None] * 100
+    plot_feature_data__ = {}
 
     # цвет для box - палитра
-    plot_feature_data__[0] = self.ui.comboBox_color_pal_box.currentText()
+    plot_feature_data__["color_pal_box"] = self.ui.comboBox_color_pal_box.currentText()
     # цвет для points - палитра
-    plot_feature_data__[1] = self.ui.comboBox_color_pal_points.currentText()
+    plot_feature_data__["color_pal_points"] = self.ui.comboBox_color_pal_points.currentText()
     # цвет для box
-    plot_feature_data__[2] = self.ui.color_box.text()
+    plot_feature_data__["color_box"] = self.ui.color_box.text()
     # цвет для points
-    plot_feature_data__[3] = self.ui.color_points.text()
+    plot_feature_data__["color_points"] = self.ui.color_points.text()
     # SD or MAX-MIN
-    plot_feature_data__[4] = self.ui.comboBox_sd_or_minmax.currentText()
+    plot_feature_data__["comboBox_sd_or_minmax"] = self.ui.comboBox_sd_or_minmax.currentText()
     # bottom limit
-    plot_feature_data__[5] = self.ui.bottom_lim.text()
+    plot_feature_data__["bottom_lim"] = self.ui.bottom_lim.text()
     # цвет для corr
-    plot_feature_data__[6] = self.ui.comboBox_color_pal_corr.currentText()
+    plot_feature_data__["color_pal_corr"] = self.ui.comboBox_color_pal_corr.currentText()
     # del hue для корреляционных графиков
-    plot_feature_data__[7] = self.ui.del_hue.text()
+    plot_feature_data__["del_hue"] = self.ui.del_hue.text()
     # matrix corr fig size
-    plot_feature_data__[8] = self.ui.corr_mat_figsize.value()
+    plot_feature_data__["corr_mat_figsize"] = self.ui.corr_mat_figsize.value()
     # matrix font corr for in
-    plot_feature_data__[9] = self.ui.font_for_in.value()
+    plot_feature_data__["font_for_in"] = self.ui.font_for_in.value()
     # matrix font corr for out
-    plot_feature_data__[10] = self.ui.font_for_out.value()
+    plot_feature_data__["font_for_out"] = self.ui.font_for_out.value()
     # matrix name of corr figure
-    plot_feature_data__[11] = self.ui.name_of_corr_matrix.text()
+    plot_feature_data__["name_of_corr_matrix"] = self.ui.name_of_corr_matrix.text()
     # stat test
-    plot_feature_data__[12] = self.ui.comboBox_stat_test.currentText()
+    plot_feature_data__["comboBox_stat_test"] = self.ui.comboBox_stat_test.currentText()
     # альтернативная гипотеза
-    plot_feature_data__[13] = self.ui.comboBox_alter_hep.currentText()
+    plot_feature_data__["comboBox_alter_hep"] = self.ui.comboBox_alter_hep.currentText()
     # spin x_label
-    plot_feature_data__[14] = self.ui.comboBox_spin_x_.currentText()
+    plot_feature_data__["comboBox_spin_x_"] = self.ui.comboBox_spin_x_.currentText()
     # sort x_label or not
-    plot_feature_data__[15] = self.ui.check_sort_or_not.isChecked()
+    plot_feature_data__["check_sort_or_not"] = self.ui.check_sort_or_not.isChecked()
     # делать стат значимость или нет
-    plot_feature_data__[16] = self.ui.check_stat_znachimost.isChecked()
+    plot_feature_data__["check_stat_znachimost"] = self.ui.check_stat_znachimost.isChecked()
     # размер шрифт для оси x -- подпись
-    plot_feature_data__[17] = self.ui.spinBox_x_label.value()
+    plot_feature_data__["spinBox_x_label"] = self.ui.spinBox_x_label.value()
     # размер шрифт для оси y -- подпись
-    plot_feature_data__[18] = self.ui.spinBox_y_label.value()
+    plot_feature_data__["spinBox_y_label"] = self.ui.spinBox_y_label.value()
     # размер шрифт для оси x -- значения
-    plot_feature_data__[19] = self.ui.spinBox_x_val.value()
+    plot_feature_data__["spinBox_x_val"] = self.ui.spinBox_x_val.value()
     # размер шрифт для оси y -- значения
-    plot_feature_data__[20] = self.ui.spinBox_y_vals.value()
+    plot_feature_data__["spinBox_y_vals"] = self.ui.spinBox_y_vals.value()
     # какой шрифт - только для Box
-    plot_feature_data__[21] = self.ui.comboBox_fonts.currentText()
+    plot_feature_data__["comboBox_fonts"] = self.ui.comboBox_fonts.currentText()
     # размер точек для среднего значения
-    plot_feature_data__[22] = self.ui.spinBox_mean_val_size.value()
+    plot_feature_data__["spinBox_mean_val_size"] = self.ui.spinBox_mean_val_size.value()
     # нужно ли внизу размечать N
-    plot_feature_data__[23] = self.ui.check_N_.isChecked()
+    plot_feature_data__["check_N_"] = self.ui.check_N_.isChecked()
     # сделать фон прозрачным или нет
-    plot_feature_data__[24] = self.ui.check_background.isChecked()
+    plot_feature_data__["check_background"] = self.ui.check_background.isChecked()
     # корреляционные кривые - надо изменять нижнюю границу или нет
-    plot_feature_data__[25] = self.ui.check_change_corr_fig_down_limit.isChecked()
+    plot_feature_data__["check_change_corr_fig_down_limit"] = self.ui.check_change_corr_fig_down_limit.isChecked()
     # корреляционные кривые - нижняя граница
-    plot_feature_data__[26] = self.ui.doubleSpinBox_corr_figs.value()
+    plot_feature_data__["doubleSpinBox_corr_figs"] = self.ui.doubleSpinBox_corr_figs.value()
     # корреляционные кривые - размер точек
-    plot_feature_data__[27] = self.ui.spinBox_points_corrFIGS.value()
+    plot_feature_data__["spinBox_points_corrFIGS"] = self.ui.spinBox_points_corrFIGS.value()
     # корреляционные кривые - размер шрифта на графике
-    plot_feature_data__[28] = self.ui.doubleSpinBox_corr_figs_fontscale.value()
+    plot_feature_data__["doubleSpinBox_corr_figs_fontscale"] = self.ui.doubleSpinBox_corr_figs_fontscale.value()
     # корреляционные кривые - сортировать значения в группах или нет
-    plot_feature_data__[29] = self.ui.check_sort_or_not_corr_figs.isChecked()
+    plot_feature_data__["check_sort_or_not_corr_figs"] = self.ui.check_sort_or_not_corr_figs.isChecked()
     # корреляционные кривые - сетка
-    plot_feature_data__[30] = self.ui.check_setka.isChecked()
+    plot_feature_data__["check_setka"] = self.ui.check_setka.isChecked()
     # порядок подписей к box plot
-    plot_feature_data__[31] = self.ui.order_box_plot.text()
+    plot_feature_data__["order_box_plot"] = self.ui.order_box_plot.text()
     # изменить порядок стат. значимости
-    plot_feature_data__[32] = self.ui.STAT_znachimost_order_box_plot.text()
+    plot_feature_data__["STAT_znachimost_order_box_plot"] = self.ui.STAT_znachimost_order_box_plot.text()
     # размер точек на графике box plot
-    plot_feature_data__[33] = self.ui.spinBox_point_size.value()
-    # корреляционная матрица -- по чему считать корреляции -- по пирсону или др
-    plot_feature_data__[34] = self.ui.comboBox_correlation_figs_matrix.currentText()
+    plot_feature_data__["point_size"] = self.ui.spinBox_point_size.value()
+    # корреляционная матрица -- по чему считать корреляции -- по Пирсону или др
+    plot_feature_data__["comboBox_correlation_figs_matrix"] = self.ui.comboBox_correlation_figs_matrix.currentText()
     # корреляционная матрица -- цветовая палитра
-    plot_feature_data__[35] = self.ui.comboBox_correlation_color_map_for_figs.currentText()
+    plot_feature_data__["comboBox_correlation_color_map_for_figs"] = self.ui.comboBox_correlation_color_map_for_figs.currentText()
     # box-plot -- верхняя граница
-    plot_feature_data__[36] = self.ui.upper_lim.text()
+    plot_feature_data__["upper_lim"] = self.ui.upper_lim.text()
     # box-plot -- шрифт значка стат. значимости
-    plot_feature_data__[37] = self.ui.spinBox_size_stat_znachimost.value()
+    plot_feature_data__["size_stat_znachimost"] = self.ui.spinBox_size_stat_znachimost.value()
     # box-plot -- значок стат. значимости (*, p< или p=)
-    plot_feature_data__[38] = self.ui.comboBox_box_plot_sign_stat_znachimost.currentText()
+    plot_feature_data__["box_plot_sign_stat_znachimost"] = self.ui.comboBox_box_plot_sign_stat_znachimost.currentText()
     # box-plot -- возрастание или убывание -- сортировки
-    plot_feature_data__[39] = self.ui.check_sort_or_not_ascending.isChecked()
+    plot_feature_data__["check_sort_or_not_ascending"] = self.ui.check_sort_or_not_ascending.isChecked()
     # box-plot -- размер подписей N
-    plot_feature_data__[40] = self.ui.comboBox_box_check_N_.currentText()
+    plot_feature_data__["box_check_N_"] = self.ui.comboBox_box_check_N_.currentText()
     # box-plot -- прозрачность точек
-    plot_feature_data__[41] = self.ui.doubleSpinBox_points_opasity.value()
+    plot_feature_data__["points_opasity"] = self.ui.doubleSpinBox_points_opasity.value()
     # pairplot: Не учитывать группу
-    plot_feature_data__[42] = self.ui.check_pairplot.isChecked()
+    plot_feature_data__["check_pairplot"] = self.ui.check_pairplot.isChecked()
     # pairplot: Относительный размер шрифта
-    plot_feature_data__[43] = self.ui.doubleSpinBox_pairplot.value()
+    plot_feature_data__["doubleSpinBox_pairplot"] = self.ui.doubleSpinBox_pairplot.value()
     # pairplot: Цветовая палитра
-    plot_feature_data__[44] = self.ui.comboBox_color_pairplot.currentText()
+    plot_feature_data__["comboBox_color_pairplot"] = self.ui.comboBox_color_pairplot.currentText()
     # pairplot: Стиль
-    plot_feature_data__[45] = self.ui.comboBox_style_pairplot.currentText()
+    plot_feature_data__["comboBox_style_pairplot"] = self.ui.comboBox_style_pairplot.currentText()
     # pairplot: Размер точек на графике
-    plot_feature_data__[46] = self.ui.spinBox_point_size_for_pairplot.value()
+    plot_feature_data__["spinBox_point_size_for_pairplot"] = self.ui.spinBox_point_size_for_pairplot.value()
     # pairplot: kind
-    plot_feature_data__[47] = self.ui.comboBox_pairplot_kind.currentText()
+    plot_feature_data__["comboBox_pairplot_kind"] = self.ui.comboBox_pairplot_kind.currentText()
     ######
     #jointplot
     ######
     # jointplot: Относительный размер шрифта
-    plot_feature_data__[48] = self.ui.doubleSpinBox_jointplot.value()
+    plot_feature_data__["doubleSpinBox_jointplot"] = self.ui.doubleSpinBox_jointplot.value()
     # jointplot: Цветовая палитра
-    plot_feature_data__[49] = self.ui.comboBox_color_jointplot.currentText()
+    plot_feature_data__["comboBox_color_jointplot"] = self.ui.comboBox_color_jointplot.currentText()
     # jointplot: kind
-    plot_feature_data__[50] = self.ui.comboBox_pairplot_jointplot.currentText()
+    plot_feature_data__["comboBox_pairplot_jointplot"] = self.ui.comboBox_pairplot_jointplot.currentText()
     # jointplot: стиль
-    plot_feature_data__[51] = self.ui.comboBox_style_jointplot.currentText()
+    plot_feature_data__["comboBox_style_jointplot"] = self.ui.comboBox_style_jointplot.currentText()
     # jointplot: Размер точек на графике
-    plot_feature_data__[52] = self.ui.spinBox_point_size_for_jointplot.value()
+    plot_feature_data__["spinBox_point_size_for_jointplot"] = self.ui.spinBox_point_size_for_jointplot.value()
     ######
     #корреляции по одному параметру
     ######
     # корреляции по одному параметру: Пирсон или др.
-    plot_feature_data__[53] = self.ui.comboBox_correlation_one_parameter.currentText()
-    # корреляции по одному параметру: мин.знач. для корреляции
-    plot_feature_data__[54] = self.ui.doubleSpinBox_one_correlation.value()
+    plot_feature_data__["correlation_one_parameter"] = self.ui.comboBox_correlation_one_parameter.currentText()
+    # Корреляции по одному параметру: мин.знач. для корреляции
+    plot_feature_data__["one_correlation"] = self.ui.doubleSpinBox_one_correlation.value()
     # корреляции по одному параметру: относительный шрифт
-    plot_feature_data__[55] = self.ui.doubleSpinBox_size_for_one_correlation.value()
+    plot_feature_data__["size_for_one_correlation"] = self.ui.doubleSpinBox_size_for_one_correlation.value()
     # корреляции по одному параметру: построить по всем параметрам
-    plot_feature_data__[56] = self.ui.check_corr_one_parameter_only_one.isChecked()
+    plot_feature_data__["corr_one_parameter_only_one"] = self.ui.check_corr_one_parameter_only_one.isChecked()
     # корреляции по одному параметру: Построить график в отдельном окне
-    plot_feature_data__[57] = self.ui.check_corr_one_parameter_plot_sep_wind.isChecked()
+    plot_feature_data__["corr_one_parameter_plot_sep_wind"] = self.ui.check_corr_one_parameter_plot_sep_wind.isChecked()
 
 
     return plot_feature_data__

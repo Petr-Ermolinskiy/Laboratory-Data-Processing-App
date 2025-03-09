@@ -33,7 +33,7 @@ from vcolorpicker import getColor, rgb2hex
 
 class Main_window(QMainWindow):
     def __init__(self):
-        super(Main_window, self).__init__()
+        super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
