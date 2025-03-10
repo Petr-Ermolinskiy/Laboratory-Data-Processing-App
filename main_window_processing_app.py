@@ -1,5 +1,3 @@
-import pandas as pd
-
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import (QMainWindow, QFileDialog)
 from vcolorpicker import getColor, rgb2hex
@@ -8,23 +6,23 @@ from ui.ui_main import Ui_MainWindow
 
 #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #
 # обработка RheoScan
-from RheoScan.rheo_scan_main import *
-from RheoScan.rheo_scan_describe import *
-from RheoScan.rheo_scan_sort import *
+from source.RheoScan.rheo_scan_main import *
+from source.RheoScan.rheo_scan_describe import *
+from source.RheoScan.rheo_scan_sort import *
 # Biola
-from Biola.biola_main import *
-from Biola.biola_concentration import *
+from source.Biola.biola_main import *
+from source.Biola.biola_concentration import *
 # Лазерный пинцет
-from Laser_Tweezers.laser_tweezers import *
+from source.Laser_Tweezers.laser_tweezers import *
 # Микрореологический профиль
-from Data_Processing.microrheological_profile import *
+from source.Data_Processing.microrheological_profile import *
 # Рисунки
-from Data_Processing.figures import *
-from Data_Processing.catplot_figures import *
+from source.Data_Processing.figures import *
+from source.Data_Processing.catplot_figures import *
 # Сводные таблицы
-from Data_Processing.pivot_table_and_correlation import *
+from source.Data_Processing.pivot_table_and_correlation import *
 # Расчет p-value для 2 колонок
-from Data_Processing.calculation_of_p_value import *
+from source.Data_Processing.calculation_of_p_value import *
 #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #
 
 
@@ -55,8 +53,8 @@ class MainWindowProcessingApp(QMainWindow):
         self.ui.btn_LT.pressed.connect(self.LT)  # для кнопки по обработки данных лазерного пинцета
 
         # Графики
-        self.ui.btn_plot_and_save_profile.pressed.connect(self.Profile) # для кнопки по построению микрореологического профиля
-        self.ui.btn_plot_and_save_figs.pressed.connect(self.Figs_and_stuff) # для кнопки по построению графиков
+        self.ui.btn_plot_and_save_profile.pressed.connect(self.profile_of_patient) # для кнопки по построению микрореологического профиля
+        self.ui.btn_plot_and_save_figs.pressed.connect(self.figures_and_stuff) # для кнопки по построению графиков
         self.ui.btn_plot_and_save_pivot_table.pressed.connect(self.pivot_table) # для кнопки по расчету сводных таблиц
         self.ui.btn_plot_and_save_corr_table.pressed.connect(self.corr_table) # для кнопки по построению корреляционной матрицы
         self.ui.btn_plot_and_save_catplot.pressed.connect(self.cat_plot)# для кнопки по catplot
@@ -182,12 +180,12 @@ class MainWindowProcessingApp(QMainWindow):
     # Обработка данных
     # - - - - - - - - - #
     # Рисунки
-    def Figs_and_stuff(self):
+    def figures_and_stuff(self):
         # основная функция - comboBox и comboBox2 -- это для excel файла
         figs_plot(self)
 
     # Микрореологический профиль
-    def Profile(self):
+    def profile_of_patient(self):
         prifile_plot(self)
 
     # сводная таблица
@@ -403,10 +401,10 @@ class MainWindowProcessingApp(QMainWindow):
         dialog = QFileDialog()
         path = 'ошибка'
         if self.ui.comboBox_RheoScan_describe.currentText() == 'Один файл - один образец':
-            path = dialog.getExistingDirectory(None, "Путь к папке с файлами RheoScan пациентов/образцов")
+            path = dialog.getExistingDirectory(None, "Путь к папке с excel файлами RheoScan пациентов/образцов")
             path = path.replace('/', '\\')
         elif self.ui.comboBox_RheoScan_describe.currentText() == 'Один файл - много образцов':
-            path = dialog.getOpenFileName(None, "Путь к папке с файлом RheoScan", filter="Text Files (*.xlsx)")
+            path = dialog.getOpenFileName(None, "Путь к excel файлу RheoScan", filter="Text Files (*.xlsx)")
             path = path[0]
             path = path.replace('/', '\\')
         self.ui.path_for_RheoScan_describe.setText(path)
