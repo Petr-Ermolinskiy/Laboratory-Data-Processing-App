@@ -159,6 +159,46 @@ QMenu::item {
 	color: #d3dae3;
 	background-color: #151a1e;
 }
+/* Set the background color for the entire QTableWidget */
+QTableWidget {
+    background-color: #151a1e; /* Dark background */
+    color: #ffffff; /* Default text color */
+    gridline-color: #2a2e32; /* Grid line color */
+    border: 1px solid #2a2e32; /* Border color */
+    border-radius: 4px; /* Optional: Rounded corners */
+}
+
+/* Style the viewport (area where the table content is displayed) */
+QTableWidget::viewport {
+    background-color: #151a1e; /* Match the table background */
+}
+
+/* Style the table headers */
+QHeaderView::section {
+    background-color: #1e2328; /* Dark header background */
+    color: #ffffff; /* Header text color */
+    padding: 5px; /* Padding for header text */
+    border: 1px solid #2a2e32; /* Border for headers */
+    font-weight: bold; /* Make header text bold */
+}
+
+/* Style individual cells */
+QTableWidget::item {
+    background-color: #1e2328; /* Cell background color */
+    color: #ffffff; /* Cell text color */
+    border: 1px solid #2a2e32; /* Cell border color */
+}
+
+/* Style selected cells */
+QTableWidget::item:selected {
+    background-color: #2a82da; /* Selected cell background color */
+    color: #ffffff; /* Selected cell text color */
+}
+
+/* Style alternate row colors (zebra-striping) */
+QTableWidget::item:alternate {
+    background-color: #1a1f23; /* Alternate row color */
+}
 QTabWidget {
 	color:rgb(0,0,0);
 	background-color:#000000;
@@ -372,10 +412,16 @@ QToolBox::tab:selected {
 	color: #FFFFFF;
 	background-color:#222b2e;
 }
+
 QScrollArea {
-	color: #FFFFFF;
-	background-color:#222b2e;
+    background: transparent;
+    border: none; /* Optional: Remove border if needed */
 }
+
+QScrollArea > QWidget > QWidget {
+    background: transparent;
+}
+
 QSlider::groove:horizontal {
 	height: 5px;
 	background-color: #52595d;

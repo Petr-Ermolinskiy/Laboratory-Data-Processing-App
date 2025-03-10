@@ -1,38 +1,35 @@
-##############
+import os
 import sys
-############################
-# библиотеки для создания приложения
-from PySide6.QtWidgets import (QApplication)
+import ctypes
+
+from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QIcon
 
-import os
-# главный класс Main_window
-from main_ui_class import Main_window
+# главный класс MainWindowProcessingApp
+from main_window_processing_app import MainWindowProcessingApp
 
 
 def myapp_id_logo() -> None:
-    # чтобы Лого показывалось:
-    # https://stackoverflow.com/questions/1551605/how-to-set-applications-taskbar-icon-in-windows-7/1552105#1552105
-    import ctypes
-
-    myapp_id = 'Petr_Ermolinskiy.GUI_app.processing.v_3'  # arbitrary string
+    """
+    Функция для того, чтобы показывалось лого. См:
+    https://stackoverflow.com/questions/1551605/how-to-set-applications-taskbar-icon-in-windows-7/1552105#1552105
+    """
+    myapp_id = 'Petr_Ermolinskiy.GUI_app.processing.v_3'
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myapp_id)
+    return None
 
 
-###################
-# запуск приложения
-###################
 if __name__ == '__main__':
     myapp_id_logo()
 
     app = QApplication(sys.argv)
 
-    # важно обозначить для того, чтобы лого обозначалось правильно
+    # важно обозначить для того, чтобы лого выводилось на Windows правильно
     basedir = os.path.dirname(__file__)
     # добавляем иконку
     app.setWindowIcon(QIcon(os.path.join(basedir, 'style/logo.ico')))
 
-    # выполняем всё
-    window = Main_window()
+    # запускаем код программы
+    window = MainWindowProcessingApp()
     window.show()
     sys.exit(app.exec())

@@ -1,22 +1,14 @@
-####################
+import os
 import glob
 import math
-# для работы с папками
-import os
-############################
-# библиотеки для обработки данных
+
 import numpy as np
 import scipy.optimize as opt
-from pandas import Series, read_table, ExcelWriter, DataFrame, to_numeric, concat
-from sklearn.metrics import r2_score
-# для вычисления AI
 from scipy.integrate import trapz
-############################
-# также для графиков понадобится библиотека matplotlib
+from sklearn.metrics import r2_score
+from pandas import Series, read_table, ExcelWriter, DataFrame, to_numeric, concat
 import matplotlib.pyplot as plt
-############################
 
-# для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
 
 
@@ -318,7 +310,9 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
                 index_min = new_css_parameter[new_css_parameter[3] < 2].index.min()
                 try:
                     # аппроксимация - среда может жаловаться, что "Too many values to unpack", но тут всё хорошо
-                    (_, _, new_parameter), _ = opt.curve_fit(lambda t, a, b, c: a + b * np.exp(-t / c), new_css_parameter[3][index_min:max_int_css_index], new_css_parameter[2][index_min:max_int_css_index])
+                    (_, _, new_parameter), _ = opt.curve_fit(lambda t, a, b, c: a + b * np.exp(-t / c),
+                                                             new_css_parameter[3][index_min:max_int_css_index],
+                                                             new_css_parameter[2][index_min:max_int_css_index])
                 except Exception as e:
                     dlg.setWindowTitle("RheoScan - Ошибка")
                     dlg.setText(f'Проблема при аппроксимации данных CSS в файле по пути:\n{i}\n' + str(e) + '\nПродолжить обсчет?')
@@ -625,7 +619,7 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
             dlg.setIcon(QMessageBox.Icon.Critical)
             dlg.exec()
 
-    # применяем эту функцию ко всем Data Frame, которые нас интерисуют
+    # применяем эту функцию ко всем Data Frame, которые нас интересуют
     if how_to_split != '':
         if var_agg and files_agg != []:
             splitting(all_agg, self)
