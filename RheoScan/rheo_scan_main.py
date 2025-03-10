@@ -25,14 +25,8 @@ def all_RheoScan_level(self) -> None:
     # сюда будут сохраняться все данные
     all_and_all = DataFrame()
 
-    # переменная для сохранения всех путей
-    global s
-    s = set()
-    # идём по подпапкам и сохраняем в s все возможные пути папок, где будет выполняться обработка
-    subfold(level, path)
-
     # проходимся по каждому пути
-    for path_for_one in s:
+    for path_for_one in get_subfolder_files_paths(level, path):
         check = main_thingy(self, path_for_one)
         if check[0] != 0:
             break
@@ -49,18 +43,22 @@ def all_RheoScan_level(self) -> None:
     return None
 
 
-def subfold(level, path):
-    global s
+def get_subfolder_files_paths(level, path, s=None) -> set:
+    if s is None:
+        s = set()
+
     if level == 1:
         s.add(path)
-        return None
+        return s
+
     for i in os.scandir(path):
         if i.is_dir():
             if level != 1:
-                subfold(level - 1, i.path)
+                get_subfolder_files_paths(level - 1, i.path, s)
             else:
                 s.add(i.path)
-    return None
+
+    return s
 
 
 # основная функция для извлечения данных
@@ -584,7 +582,6 @@ def main_thingy(self, path_for_one) -> [int, DataFrame]:
     # функция для того, чтобы разделить столбец 'Patient'
 
     '''
-                
             if how_to_split != '' and how_to_split.split('=')[0] == 'symbols':
                 if type(how_to_split.split('=')[1]) == int:
                     jj.loc[1][1] = jj.loc[1][1][0:int(how_to_split.split('=')[1])]
