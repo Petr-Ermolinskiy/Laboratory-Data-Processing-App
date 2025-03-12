@@ -2,27 +2,27 @@ from PySide6.QtCore import Slot
 from PySide6.QtWidgets import (QMainWindow, QFileDialog)
 from vcolorpicker import getColor, rgb2hex
 
-from ui.ui_main import Ui_MainWindow
+from app.ui.ui_main import Ui_MainWindow
 
 #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #
 # обработка RheoScan
-from source.RheoScan.rheo_scan_main import *
-from source.RheoScan.rheo_scan_describe import *
-from source.RheoScan.rheo_scan_sort import *
+from scripts.RheoScan.rheo_scan_main import *
+from scripts.RheoScan.rheo_scan_describe import *
+from scripts.RheoScan.rheo_scan_sort import *
 # Biola
-from source.Biola.biola_main import *
-from source.Biola.biola_concentration import *
+from scripts.Biola.biola_main import *
+from scripts.Biola.biola_concentration import *
 # Лазерный пинцет
-from source.Laser_Tweezers.laser_tweezers import *
+from scripts.Laser_Tweezers.laser_tweezers import *
 # Микрореологический профиль
-from source.Data_Processing.microrheological_profile import *
+from scripts.Data_Processing.microrheological_profile import *
 # Рисунки
-from source.Data_Processing.figures import *
-from source.Data_Processing.catplot_figures import *
+from scripts.Data_Processing.figures import *
+from scripts.Data_Processing.catplot_figures import *
 # Сводные таблицы
-from source.Data_Processing.pivot_table_and_correlation import *
+from scripts.Data_Processing.pivot_table_and_correlation import *
 # Расчет p-value для 2 колонок
-from source.Data_Processing.calculation_of_p_value import *
+from scripts.Data_Processing.calculation_of_p_value import *
 #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #
 
 
@@ -133,7 +133,7 @@ class MainWindowProcessingApp(QMainWindow):
         :return: 
         """
         if index == 1:
-            with open("style/style_dark.qss", "r") as f:
+            with open("app/style/style_dark.qss", "r") as f:
                 _style = f.read()
             self.setStyleSheet(_style)
         else:

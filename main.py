@@ -27,7 +27,7 @@ if __name__ == '__main__':
     # важно обозначить для того, чтобы лого выводилось на Windows правильно
     basedir = os.path.dirname(__file__)
     # добавляем иконку
-    app.setWindowIcon(QIcon(os.path.join(basedir, 'style/logo.ico')))
+    app.setWindowIcon(QIcon(os.path.join(basedir, 'app/style/logo.ico')))
 
     # запускаем код программы
     window = MainWindowProcessingApp()

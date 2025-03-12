@@ -27,7 +27,7 @@ venv\Scripts\activate
 ```
 На macOS или Linux:
 ```bash
-source venv/bin/activate
+scripts venv/bin/activate
 ```
 
 Далее установите все необходимые библиотеки:
