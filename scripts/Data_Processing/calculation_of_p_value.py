@@ -101,5 +101,4 @@ def p_value_calc_for_two_columns(self) -> None:
         return None
 
     self.ui.p_value_dop_stat.setText(str(p))
-
     return None

@@ -125,7 +125,7 @@ def  corr_one_parameter(path, files, what_sheet, hue_name) -> None:
     df.columns = df.columns.str.replace('\\n', '\n', regex=False)
     # выделяем те колонки, которые нас будут интерисовать с точки зрения обработки!
 
-    # будем смотреть один параметр если строит галочка, иначе все параметры
+    # будем смотреть один параметр если стоит галочка, иначе все параметры
     if plot_feature_data__["corr_one_parameter_only_one"]:
         corr_list = [hue_name]
     else:
@@ -142,6 +142,9 @@ def  corr_one_parameter(path, files, what_sheet, hue_name) -> None:
     for i in correlation_matrix.columns:
         if (correlation_matrix[i] == 0).all():
             correlation_matrix = correlation_matrix.drop(columns=i).drop(i)
+
+    if correlation_matrix.empty:
+        raise ValueError("Нет корреляций для выставленных границ")
 
     # папка для сохранения результатов
     path_one_corr = path + 'one_corr' + '\\'
