@@ -28,11 +28,13 @@ from scripts.Data_Processing.calculation_of_p_value import *
 
 
 class MainWindowProcessingApp(QMainWindow):
-    def __init__(self):
+    def __init__(self, version="v0.0.0"):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        # выставим необходимую версию
+        self.ui.label_version.setText(version)
         #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #
         # КНОПКИ
         #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #

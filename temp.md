@@ -1,6 +1,6 @@
 ЭТО ДЛЯ ФАЙЛОВ QT
 ```bash
-pyside6-uic ui/ui_main.ui -o ui/ui_main.py
+pyside6-uic app/ui/ui_main.ui -o app/ui/ui_main.py
 ```
 ЭТО ДЛЯ СОЗДАНИЯ exe
 ```bash
