@@ -55,11 +55,11 @@ python main.py
 
 Чтобы создать _exe_-файл в Windows, нужно выполнить следующую команду в терминале или командной строке:
 ```bash
-pyinstaller --onefile --windowed --add-data "style/*;style/" --name='Lab_App_version' --icon=style/logo.ico main.py
+pyinstaller --windowed --add-data "version.json;." --add-data "app/style/logo.ico;app/style" --add-data "app/style/style_dark.qss;app/style/" --name='Lab_App_3.6.3' --icon=app/style/logo.ico main.py
 ```
 Я настоятельно рекомендую вам использовать [UPX](https://upx.github.io/) для уменьшения размера исполняемого файла. В этом случае вы можете выполнить следующую команду:
 ```bash
-pyinstaller --onefile --windowed --add-data "style/*;style/" --name='Lab_App_version' --icon=style/logo.ico --upx-dir Path\to\the\upx-version-win64 main.py
+pyinstaller --windowed --add-data "version.json;." --add-data "app/style/logo.ico;app/style" --add-data "app/style/style_dark.qss;app/style/" --name='Lab_App_3.6.3' --icon=app/style/logo.ico --upx-dir C:\Users\petre\Desktop\Programes\upx-4.2.4-win64 main.py
 ```
 Размер exe будет составлять порядка 130 МБ.
 

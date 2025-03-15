@@ -35,9 +35,10 @@ class Ui_MainWindow(object):
         MainWindow.setSizePolicy(sizePolicy)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
+        self.gridLayout = QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(u"gridLayout")
         self.Lab_stuff = QTabWidget(self.centralwidget)
         self.Lab_stuff.setObjectName(u"Lab_stuff")
-        self.Lab_stuff.setGeometry(QRect(9, 9, 710, 673))
         palette = QPalette()
         brush = QBrush(QColor(249, 249, 249, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -5149,32 +5150,23 @@ class Ui_MainWindow(object):
         self.horizontalLayout_64.addWidget(self.tabWidget_2)
 
         self.Lab_stuff.addTab(self.tabWidgetPage4, "")
-        self.comboBox_style_sheet = QComboBox(self.centralwidget)
-        self.comboBox_style_sheet.addItem("")
-        self.comboBox_style_sheet.addItem("")
-        self.comboBox_style_sheet.setObjectName(u"comboBox_style_sheet")
-        self.comboBox_style_sheet.setGeometry(QRect(603, 688, 116, 20))
+
+        self.gridLayout.addWidget(self.Lab_stuff, 0, 0, 1, 2)
+
+        self.horizontalLayout_167 = QHBoxLayout()
+        self.horizontalLayout_167.setObjectName(u"horizontalLayout_167")
+        self.label_info = QLabel(self.centralwidget)
+        self.label_info.setObjectName(u"label_info")
         font10 = QFont()
         font10.setFamilies([u"Segoe UI"])
         font10.setPointSize(9)
         font10.setBold(True)
-        self.comboBox_style_sheet.setFont(font10)
-        self.comboBox_style_sheet.setStyleSheet(u"color: rgb(128, 160, 165);\n"
-"background-color: rgba(255, 255, 255, 0);")
-        self.widget3 = QWidget(self.centralwidget)
-        self.widget3.setObjectName(u"widget3")
-        self.widget3.setGeometry(QRect(9, 688, 906, 18))
-        self.horizontalLayout_167 = QHBoxLayout(self.widget3)
-        self.horizontalLayout_167.setObjectName(u"horizontalLayout_167")
-        self.horizontalLayout_167.setContentsMargins(0, 0, 0, 0)
-        self.label_info = QLabel(self.widget3)
-        self.label_info.setObjectName(u"label_info")
         self.label_info.setFont(font10)
         self.label_info.setStyleSheet(u"color: rgb(128, 160, 165);")
 
         self.horizontalLayout_167.addWidget(self.label_info)
 
-        self.label_version = QLabel(self.widget3)
+        self.label_version = QLabel(self.centralwidget)
         self.label_version.setObjectName(u"label_version")
         font11 = QFont()
         font11.setBold(True)
@@ -5182,6 +5174,19 @@ class Ui_MainWindow(object):
         self.label_version.setStyleSheet(u"color: rgb(128, 160, 165);")
 
         self.horizontalLayout_167.addWidget(self.label_version)
+
+
+        self.gridLayout.addLayout(self.horizontalLayout_167, 1, 0, 1, 1)
+
+        self.comboBox_style_sheet = QComboBox(self.centralwidget)
+        self.comboBox_style_sheet.addItem("")
+        self.comboBox_style_sheet.addItem("")
+        self.comboBox_style_sheet.setObjectName(u"comboBox_style_sheet")
+        self.comboBox_style_sheet.setFont(font10)
+        self.comboBox_style_sheet.setStyleSheet(u"color: rgb(128, 160, 165);\n"
+"background-color: rgba(255, 255, 255, 0);")
+
+        self.gridLayout.addWidget(self.comboBox_style_sheet, 1, 1, 1, 1, Qt.AlignRight)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
@@ -6381,13 +6386,13 @@ class Ui_MainWindow(object):
         self.btn_dop_stat_calc.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_12), QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043f. \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430", None))
         self.Lab_stuff.setTabText(self.Lab_stuff.indexOf(self.tabWidgetPage4), QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445", None))
-        self.comboBox_style_sheet.setItemText(0, QCoreApplication.translate("MainWindow", u"\u041e\u0441\u043d\u043e\u0432\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None))
-        self.comboBox_style_sheet.setItemText(1, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u043c\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None))
-
 #if QT_CONFIG(tooltip)
         self.label_info.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><br/></p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.label_info.setText(QCoreApplication.translate("MainWindow", u"\u041b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u0438\u044f \u0411\u0438\u043e\u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0439 \u0444\u043e\u0442\u043e\u043d\u0438\u043a\u0438 \u041c\u0413\u0423 \u2014 \u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f", None))
         self.label_version.setText(QCoreApplication.translate("MainWindow", u"3.6.3", None))
+        self.comboBox_style_sheet.setItemText(0, QCoreApplication.translate("MainWindow", u"\u041e\u0441\u043d\u043e\u0432\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None))
+        self.comboBox_style_sheet.setItemText(1, QCoreApplication.translate("MainWindow", u"\u0422\u0435\u043c\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None))
+
     # retranslateUi
 
