@@ -169,7 +169,7 @@ def plot_catplot(self) -> None:
         return None
 
     try:
-        file1 = open(path + '//' + for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name)) + '.txt', "w")
+        file1 = open(path + '//' + for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name)) + '.txt', "w", encoding="utf-8")
         if stat_or_not:
             L0 = 'Был использован тест: ' + ttest_stat + '\n'
             L1 = 'Была использована поправка на множественную проверку гипотез: ' + str(mult_camparison) + '\n'
@@ -177,7 +177,7 @@ def plot_catplot(self) -> None:
             L0 = 'Не было использовано стат. теста \n'
             L1 = '\n'
 
-        L2 = '*: 1.00e-02 < p <= 5.00e-02 \n**: 1.00e-03 < p <= 1.00e-02 \n***: 1.00e-04 < p <= 1.00e-03 \n****: p <= 1.00e-04'
+        L2 = ' *: 1.00e-02 < p <= 5.00e-02 \n **: 1.00e-03 < p <= 1.00e-02 \n ***: 1.00e-04 < p <= 1.00e-03 \n ****: p <= 1.00e-04'
 
         file1.writelines(L0 + L1 + L2)
         file1.close()
@@ -192,7 +192,7 @@ def plot_catplot(self) -> None:
             jjj = df.groupby(args['x'])[args['y']].count()
         else:
             jjj = df.groupby([args['x'], args['hue']])[args['y']].count()
-        jjj.rename("N").to_csv(path + '//' + for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name)) + '_N_of_data.txt', sep='\t')
+        jjj.rename("N").to_csv(path + '//' + for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name)) + '_N_of_data.txt', sep='\t', encoding="utf-8")
     except Exception as e:
         dlg.setWindowTitle("Ошибка - Catplot")
         dlg.setText("TXT файл для N в группах не сохранен.\n" + str(e))
