@@ -33,13 +33,8 @@ scripts venv/bin/activate
 Далее установите все необходимые библиотеки:
 
 ```bash
-pip install -r requirements.txt
+pip install --no-deps -r requirements.txt
 ```
-Если у вас установилась версия _seaborn_ 0.11 ввиду конфликта с пакетом _statannotations_, то вручную установите версию 0.12:
-```bash
-pip install seaborn==0.12.2
-```
-
 
 Запустите программу:
 ```bash
@@ -49,21 +44,45 @@ python main.py
 ## Проблемы с установкой
 - Если при установке библиотек не устанавливается pandas, то скорее всего это из-за отсутствия 
 [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/ru/visual-cpp-build-tools/).
-- Если всё ещё выдается ошибка, то надо провести установку последней версии pandas, и далее выполнить `pip install -r requirements.txt`.
+- Если всё ещё выдается ошибка, то надо провести установку последней версии pandas, и далее выполнить `pip install --no-deps -r requirements.txt`.
+
+## Тесты
+
+Для тестов используйте: 
+```bash
+pytest -s
+```
 
 ## Создание _exe_ файла
 
-Чтобы создать _exe_-файл в Windows, нужно выполнить следующую команду в терминале или командной строке:
+Для создания _exe_ файла можно запустить скрипт [build_application/build.py](build_application/build.py) с изменением переменных в [config.json](config.json):
+- version": 
+- UPX_DIR": путь к [UPX](https://upx.github.io/), к примеру "C:/Users/petre/Desktop/Programes/upx-4.2.4-win64"
+- APP_NAME": имя приложения
+- MAIN_SCRIPT": входная точка приложения, т.е., "main.py"
+- ICON_PATH": доп. файлы для добавления в архив -- "app/style/logo.ico"
+- VERSION_JSON": доп. файлы для добавления в архив -- "version.json"
+- STYLE_QSS": доп. файлы для добавления в архив -- "app/style/style_dark.qss"
+
+Или же, чтобы создать _exe_-файл в Windows, можно выполнить следующую команду в терминале или командной строке:
 ```bash
 pyinstaller --windowed --add-data "version.json;." --add-data "app/style/logo.ico;app/style" --add-data "app/style/style_dark.qss;app/style/" --name='Lab_App_3.6.3' --icon=app/style/logo.ico main.py
 ```
-Я настоятельно рекомендую вам использовать [UPX](https://upx.github.io/) для уменьшения размера исполняемого файла. В этом случае вы можете выполнить следующую команду:
+Я настоятельно рекомендую вам использовать [UPX](https://upx.github.io/) для уменьшения размера исполняемого файла. В этом случае вы можете выполнить следующую команду (изменив путь):
 ```bash
-pyinstaller --windowed --add-data "version.json;." --add-data "app/style/logo.ico;app/style" --add-data "app/style/style_dark.qss;app/style/" --name='Lab_App_3.6.3' --icon=app/style/logo.ico --upx-dir C:\Users\petre\Desktop\Programes\upx-4.2.4-win64 main.py
+pyinstaller --windowed --add-data "version.json;." --add-data "app/style/logo.ico;app/style" --add-data "app/style/style_dark.qss;app/style/" --name='Lab_App_3.6.3' --icon=app/style/logo.ico --upx-dir C:\path\to\the\folder\upx-4.2.4-win64 main.py
 ```
-Размер exe будет составлять порядка 130 МБ.
+
+Размер _exe_ будет составлять порядка 130 МБ.
 
 ## Автор
 
 Ермолинский Петр Борисович.
 
+```bash
+pyinstaller --windowed --add-data "config.json;." --add-data "app/style/*;app/style/" --name='Lab_App_3.6.3' --icon=app/style/logo.ico --upx-dir C:\path\to\the\folder\upx-4.2.4-win64 main.py
+```
+
+```bash
+pyinstaller --onefile --windowed --add-data "config.json;." --add-data "app/style/*;app/style/" --name='Lab_App_3.6.3' --icon=app/style/logo.ico --upx-dir C:\path\to\the\folder\upx-4.2.4-win64 main.py
+```

@@ -1,8 +1,9 @@
 import os
-import sys
 import shutil
-import pytest
+import sys
 from datetime import datetime
+
+import pytest
 
 # добавим возможность импорта из директории выше
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -20,11 +21,14 @@ from main_window_processing_app import MainWindowProcessingApp
 Общее для всех тестов
 ===============
 """
+
+
 def get_abs_path(path: str):
     return os.path.abspath(os.path.join(os.path.dirname(__file__), path))
 
-# Monkey patch для сообщений
-def auto_close_message_box(timeout=1):
+
+def auto_close_message_box(timeout: int = 1):
+    """Monkey patch для сообщений."""
     original_exec = QMessageBox.exec
 
     def patched_exec(self):
@@ -35,10 +39,11 @@ def auto_close_message_box(timeout=1):
 
     QMessageBox.exec = patched_exec
 
+
 @pytest.fixture(autouse=True)
 def auto_close_message_boxes():
     auto_close_message_box(timeout=3)
-    yield
+
 
 @pytest.fixture(scope="session")
 def app():
@@ -50,23 +55,25 @@ def app():
     # завершаем работу
     application.quit()
 
+
 @pytest.fixture(scope="session")
 def data_folder():
     # сегодняшняя дата
-    now_date = datetime.now().strftime('%Y-%m-%d')
+    now_date = datetime.now().strftime("%Y-%m-%d")  # noqa: DTZ005
     # путь к новой папке
     path_to_test_folder = get_abs_path(f"temp_data_{now_date}")
     # копируем папку с данными и в ней будем проводить тесты
-    shutil.copytree(get_abs_path("data"),
-                    path_to_test_folder, dirs_exist_ok=True)
+    shutil.copytree(get_abs_path("data"), path_to_test_folder, dirs_exist_ok=True)
     yield path_to_test_folder
     # завершаем работу
     shutil.rmtree(path_to_test_folder)
 
+
 @pytest.fixture(scope="session")
 def window():
     window = MainWindowProcessingApp()
-    yield window
+    return window
+
 
 """
 ===============
@@ -74,9 +81,10 @@ def window():
 ===============
 """
 
+
 def test_rheo_scan(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.main_path.setText(str(data_folder) + "\RheoScan")
+    window.ui.main_path.setText(str(data_folder) + r"\RheoScan")
     window.ui.spinBox_level.setValue(2)
 
     window.ui.check_approx_agg.setChecked(True)
@@ -96,7 +104,7 @@ def test_rheo_scan(app, window, data_folder):
 
 def test_lt(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_LT.setText(str(data_folder) + "\Лазерный_пинцет")
+    window.ui.path_for_LT.setText(str(data_folder) + r"\Лазерный_пинцет")
 
     # выполняем обработку данных
     window.LT()
@@ -106,7 +114,7 @@ def test_lt(app, window, data_folder):
 
 def test_biola(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_biola.setText(str(data_folder) + "\Biola")
+    window.ui.path_for_biola.setText(str(data_folder) + r"\Biola")
     window.ui.comboBox_biola.setCurrentText("test.txt")
 
     # выполняем обработку данных
@@ -114,9 +122,10 @@ def test_biola(app, window, data_folder):
 
     print("Все проверки для Биола прошли")
 
+
 def test_figs(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_plot.setText(str(data_folder) + "\Обработка_данных")
+    window.ui.path_for_plot.setText(str(data_folder) + r"\Обработка_данных")
     window.ui.comboBox.setCurrentText("test.xlsx")
     window.ui.comboBox_2.setCurrentText("пол")
 
@@ -142,19 +151,20 @@ def test_figs(app, window, data_folder):
 
 def test_profile(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_profile.setText(str(data_folder) + "\Обработка_данных")
+    window.ui.path_for_profile.setText(str(data_folder) + r"\Обработка_данных")
 
-    window.ui.patient_data.setText('norm')
-    window.ui.norm_data.setText('norm')
+    window.ui.patient_data.setText("norm")
+    window.ui.norm_data.setText("norm")
 
     # выполняем обработку данных
     window.profile_of_patient()
 
     print("Все проверки для построения микрореологического профиля прошли")
 
+
 def test_table(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_pivot_table.setText(str(data_folder) + "\Обработка_данных")
+    window.ui.path_for_pivot_table.setText(str(data_folder) + r"\Обработка_данных")
     window.ui.comboBox_pivot_table.setCurrentText("test2.xlsx")
 
     # выполняем обработку данных
@@ -167,7 +177,7 @@ def test_table(app, window, data_folder):
 
 def test_catplot(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_catplot.setText(str(data_folder) + "\Обработка_данных")
+    window.ui.path_for_catplot.setText(str(data_folder) + r"\Обработка_данных")
     window.ui.comboBox_excel_catplot.setCurrentText("test.xlsx")
 
     # выполняем обработку данных
@@ -177,9 +187,10 @@ def test_catplot(app, window, data_folder):
 
     print("Все проверки для сводных таблиц прошли")
 
+
 def test_calc_stat_significance(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_dop_stat.setText(str(data_folder) + "\Обработка_данных")
+    window.ui.path_for_dop_stat.setText(str(data_folder) + r"\Обработка_данных")
     window.ui.comboBox_excel_dop_stat.setCurrentText("test2.xlsx")
 
     # выполняем обработку данных
@@ -194,7 +205,7 @@ def test_calc_stat_significance(app, window, data_folder):
 
 def test_rheo_scan_post_processing(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_RheoScan_describe.setText(str(data_folder) + "\RheoScan")
+    window.ui.path_for_RheoScan_describe.setText(str(data_folder) + r"\RheoScan")
 
     # выполняем обработку данных
     window.RheoScan_describe()
