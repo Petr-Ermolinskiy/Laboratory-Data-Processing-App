@@ -1,41 +1,38 @@
+from itertools import product
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from itertools import product
-# для вывода диалогового окна
 from PySide6.QtWidgets import QMessageBox
-# https://github.com/webermarcolivier/statannot
 from statannotations.Annotator import Annotator
 
 
-def for_save(Name_fiqure) -> str:
-    Name_fiqure = Name_fiqure.replace('/', '')
-    Name_fiqure = Name_fiqure.replace('\n', '')
-    Name_fiqure = Name_fiqure.replace('\\frac', '')
-    Name_fiqure = Name_fiqure.replace('\\', '')
-    Name_fiqure = Name_fiqure.replace('$', '')
-    Name_fiqure = Name_fiqure.replace('{', '')
-    Name_fiqure = Name_fiqure.replace('}', '')
-    Name_fiqure = Name_fiqure.replace('*', '')
-    return Name_fiqure
+def for_save(name_figure) -> str:
+    name_figure = name_figure.replace("/", "")
+    name_figure = name_figure.replace("\n", "")
+    name_figure = name_figure.replace("\\frac", "")
+    name_figure = name_figure.replace("\\", "")
+    name_figure = name_figure.replace("$", "")
+    name_figure = name_figure.replace("{", "")
+    name_figure = name_figure.replace("}", "")
+    name_figure = name_figure.replace("*", "")
+    return name_figure
 
 
-def change_type(x, __type__):
-    if __type__ == 'str':
+def change_type(x, type_obj):
+    if type_obj == "str":
         return str(x)
-    elif __type__ == 'int':
-        return int(round(float(str(x).replace(' ', '').replace(',', '.')), 0))
-    elif __type__ == 'float':
-        return float(str(x).replace(' ', '').replace(',', '.'))
-    elif __type__ == 'bool':
-        if x == '1' or x == float(1) or x == 1:
+    if type_obj == "int":
+        return int(round(float(str(x).replace(" ", "").replace(",", ".")), 0))
+    if type_obj == "float":
+        return float(str(x).replace(" ", "").replace(",", "."))
+    if type_obj == "bool":
+        if x == "1" or x == float(1) or x == 1:
             return True
-        elif x == '0' or x == float(0) or x == 0:
+        if x == "0" or x == float(0) or x == 0:
             return False
-        else:
-            return 'nan'
-    else:
-        return x
+        return "nan"
+    return x
 
 
 def plot_catplot(self) -> None:
@@ -54,7 +51,11 @@ def plot_catplot(self) -> None:
     pallette_catplot = self.ui.comboBox_color_catplot.currentText()
     _error_ = self.ui.comboBox_catplot_SD_or_not.currentText()
     bar_or_not = self.ui.comboBox_template_catplot.currentText()
-    type_x, type_y, type_hue = self.ui.comboBox_catplot_form_x.currentText(), self.ui.comboBox_catplot_form_y.currentText(), self.ui.comboBox_catplot_form_hue.currentText()
+    type_x, type_y, type_hue = (
+        self.ui.comboBox_catplot_form_x.currentText(),
+        self.ui.comboBox_catplot_form_y.currentText(),
+        self.ui.comboBox_catplot_form_hue.currentText(),
+    )
     ttest_stat = self.ui.comboBox_stat_test_catplot.currentText()
     stat_or_not = self.ui.check_stat_znachimost_catplot.isChecked()
     scale_ = self.ui.doubleSpinBox_catplot.value()
@@ -65,53 +66,67 @@ def plot_catplot(self) -> None:
     # вращать подписи на такой угол
     spin_angle = self.ui.spinBox_catplot_angle.value()
     #########################
-    if path == '':
+    if path == "":
         dlg.setWindowTitle("Catplot")
         dlg.setText("Не введен путь к папкам")
         dlg.exec()
-        return None
+        return
 
-    files = path + '//' + exel_name
-    if hue_name == '--без подгруппы':
+    files = path + "//" + exel_name
+    if hue_name == "--без подгруппы":
         hue_name = None
 
     # какие стат значимости чертить
-    stat_formatter_dict = {'значение p': 'simple', '*': 'star', 'полный': 'full', 'None': None}
+    stat_formatter_dict = {"значение p": "simple", "*": "star", "полный": "full", "None": None}
     stat_formatter = stat_formatter_dict[stat_formatter]
 
-    if mult_camparison == 'None':
+    if mult_camparison == "None":
         mult_camparison = None
 
-    # какие погррешности чертить
-    error_set = {'Среднеквадратическое отклонение': 'sd', 'Среднеквадратическая ошибка': 'se', 'Доверительный интервал': 'ci', 'Перцентильный интервал': 'pi'}
+    # какие погрешности чертить
+    error_set = {
+        "Среднеквадратическое отклонение": "sd",
+        "Среднеквадратическая ошибка": "se",
+        "Доверительный интервал": "ci",
+        "Перцентильный интервал": "pi",
+    }
     _error_ = error_set[_error_]
 
     ############
-    args = dict(x=x_name, y=y_name, hue=hue_name, palette=pallette_catplot, errorbar=_error_, kind=bar_or_not)
-    # errorbar either “ci”, “pi”, “se”, or “sd”
+    args = {
+        "x": x_name,
+        "y": y_name,
+        "hue": hue_name,
+        "palette": pallette_catplot,
+        "errorbar": _error_,
+        "kind": bar_or_not,
+    }
+    # error bar either “ci”, “pi”, “se”, or “sd”
 
     # читаем exel файл - index_col=0,
     df = pd.read_excel(files, sheet_name=sheet_name)
-    df.index.rename(None, inplace=True)
+    df.index = df.index.rename(None)
 
-    if args['hue'] != None:
-        df = df.dropna(subset=[args['x'], args['y'], args['hue']])
-        df[args['hue']] = df[args['hue']].map(lambda x: change_type(x, type_hue))
+    if args["hue"] is not None:
+        df = df.dropna(subset=[args["x"], args["y"], args["hue"]])
+        df[args["hue"]] = df[args["hue"]].map(lambda x: change_type(x, type_hue))
     else:
-        df = df.dropna(subset=[args['x'], args['y']])
+        df = df.dropna(subset=[args["x"], args["y"]])
 
-    df[args['x']] = df[args['x']].map(lambda x: change_type(x, type_x))
-    df[args['y']] = df[args['y']].map(lambda x: change_type(x, type_y))
+    df[args["x"]] = df[args["x"]].map(lambda x: change_type(x, type_x))
+    df[args["y"]] = df[args["y"]].map(lambda x: change_type(x, type_y))
     # для стат значимости
-    pop = list(df[args['x']].unique())
+    pop = list(df[args["x"]].unique())
     # всевозможные комбинации для расчета стат. значимости между ними
-    combinations = [(pop[x], pop[x + y]) for y in range(len(pop), 0, -1) for x in range((len(pop) - y))]
+    combinations = [
+        (pop[x], pop[x + y]) for y in range(len(pop), 0, -1) for x in range(len(pop) - y)
+    ]
 
     # однако если есть HUE, то тогда рассчитываем по-другому
-    if args['hue'] != None:
-        pop2 = list(df[args['hue']].unique())
+    if args["hue"] is not None:
+        pop2 = list(df[args["hue"]].unique())
 
-        # генирируем все возможные комбинации
+        # генерируем все возможные комбинации
         all_pairs = list(product(pop, pop2))
         # очищаем список
         combinations = []
@@ -139,9 +154,8 @@ def plot_catplot(self) -> None:
     except:
         cat_plot = sns.catplot(data=df, **args)
         cat_plot.set_xticklabels(rotation=spin_angle)
-    # edgecolor="black",
-    if args['hue'] == None:
-        n_and_n = df.groupby(args['x'])[args['y']].count()
+    if args["hue"] is None:
+        n_and_n = df.groupby(args["x"])[args["y"]].count()
 
         for cat_ax in cat_plot.axes:
             for sm_cat_ax in cat_ax:
@@ -149,35 +163,59 @@ def plot_catplot(self) -> None:
                 # См. https://stackoverflow.com/questions/64783410/adding-number-of-observations-to-seaborn-catplot-stirpplot
                 xlabels = [x.get_text() for x in sm_cat_ax.get_xticklabels()]
                 for i, n in enumerate(xlabels):
-                    sm_cat_ax.annotate(f'n={n_and_n[n]}', xy=(i, 0.01), xycoords=('data', 'axes fraction'), ha='center',
-                                       size='small')
+                    sm_cat_ax.annotate(
+                        f"n={n_and_n[n]}",
+                        xy=(i, 0.01),
+                        xycoords=("data", "axes fraction"),
+                        ha="center",
+                        size="small",
+                    )
 
     if stat_or_not:
         for ax_n in cat_plot.axes:
             for ax in ax_n:
                 annot = Annotator(ax, combinations, data=df, **args)
-                annot.configure(test=ttest_stat, text_format=stat_formatter, loc='inside', verbose=2, comparisons_correction=mult_camparison, hide_non_significant=True)
+                annot.configure(
+                    test=ttest_stat,
+                    text_format=stat_formatter,
+                    loc="inside",
+                    verbose=2,
+                    comparisons_correction=mult_camparison,
+                    hide_non_significant=True,
+                )
                 annot.apply_test().annotate()
                 # Один из следующих:
-                # - Brunner-Munzel, Levene, Mann-Whitney, Mann-Whitney-gt, Mann-Whitney-ls, t-test_ind, t-test_welch, t-test_paired, Wilcoxon, Kruskal
+                # - Brunner-Munzel, Levene, Mann-Whitney, Mann-Whitney-gt,
+                #   Mann-Whitney-ls, t-test_ind, t-test_welch, t-test_paired, Wilcoxon, Kruskal
     try:
-        cat_plot.savefig(path + '//' + for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name)) + '.png', dpi=600)
+        cat_plot.savefig(
+            path + "//" + for_save(str(x_name) + "_" + str(y_name) + "_" + str(hue_name)) + ".png",
+            dpi=600,
+        )
     except Exception as e:
         dlg.setWindowTitle("Ошибка - Catplot")
         dlg.setText("График не сохранен.\n" + str(e))
         dlg.exec()
-        return None
+        return
 
     try:
-        file1 = open(path + '//' + for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name)) + '.txt', "w", encoding="utf-8")
+        file1 = open(
+            path + "//" + for_save(str(x_name) + "_" + str(y_name) + "_" + str(hue_name)) + ".txt",
+            "w",
+            encoding="utf-8",
+        )
         if stat_or_not:
-            L0 = 'Был использован тест: ' + ttest_stat + '\n'
-            L1 = 'Была использована поправка на множественную проверку гипотез: ' + str(mult_camparison) + '\n'
+            L0 = "Был использован тест: " + ttest_stat + "\n"
+            L1 = (
+                "Была использована поправка на множественную проверку гипотез: "
+                + str(mult_camparison)
+                + "\n"
+            )
         else:
-            L0 = 'Не было использовано стат. теста \n'
-            L1 = '\n'
+            L0 = "Не было использовано стат. теста \n"
+            L1 = "\n"
 
-        L2 = ' *: 1.00e-02 < p <= 5.00e-02 \n **: 1.00e-03 < p <= 1.00e-02 \n ***: 1.00e-04 < p <= 1.00e-03 \n ****: p <= 1.00e-04'
+        L2 = " *: 1.00e-02 < p <= 5.00e-02 \n **: 1.00e-03 < p <= 1.00e-02 \n ***: 1.00e-04 < p <= 1.00e-03 \n ****: p <= 1.00e-04"
 
         file1.writelines(L0 + L1 + L2)
         file1.close()
@@ -185,21 +223,28 @@ def plot_catplot(self) -> None:
         dlg.setWindowTitle("Ошибка - Catplot")
         dlg.setText("TXT файл для графика.\n" + str(e))
         dlg.exec()
-        return None
+        return
 
     try:
-        if args['hue'] == None:
-            jjj = df.groupby(args['x'])[args['y']].count()
+        if args["hue"] is None:
+            jjj = df.groupby(args["x"])[args["y"]].count()
         else:
-            jjj = df.groupby([args['x'], args['hue']])[args['y']].count()
-        jjj.rename("N").to_csv(path + '//' + for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name)) + '_N_of_data.txt', sep='\t', encoding="utf-8")
+            jjj = df.groupby([args["x"], args["hue"]])[args["y"]].count()
+        jjj.rename("N").to_csv(
+            path
+            + "//"
+            + for_save(str(x_name) + "_" + str(y_name) + "_" + str(hue_name))
+            + "_N_of_data.txt",
+            sep="\t",
+            encoding="utf-8",
+        )
     except Exception as e:
         dlg.setWindowTitle("Ошибка - Catplot")
         dlg.setText("TXT файл для N в группах не сохранен.\n" + str(e))
         dlg.exec()
-        return None
+        return
 
     dlg.setWindowTitle("Catplot")
     dlg.setText("График успешно сохранен")
     dlg.exec()
-    return None
+    return
