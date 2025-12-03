@@ -5,12 +5,11 @@ from datetime import datetime
 from pathlib import Path
 
 import pytest
+from PySide6.QtCore import QTimer
+from PySide6.QtWidgets import QApplication, QMessageBox
 
 # добавим возможность импорта из директории выше
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from PySide6.QtCore import QTimer
-from PySide6.QtWidgets import QApplication, QMessageBox
 
 # главный класс MainWindowProcessingApp
 from main_window_processing_app import MainWindowProcessingApp
@@ -83,7 +82,7 @@ def window():
 """
 
 
-def test_rheo_scan(app, window, data_folder):
+def test_rheo_scan(app, window, data_folder)->None:
     # выставляем нужные переменные
     window.ui.main_path.setText(str(Path(str(data_folder)) / "RheoScan"))
     window.ui.spinBox_level.setValue(2)
@@ -103,7 +102,7 @@ def test_rheo_scan(app, window, data_folder):
     print("Все проверки для RheoScan прошли")
 
 
-def test_lt(app, window, data_folder):
+def test_lt(app, window, data_folder)->None:
     # выставляем нужные переменные
     window.ui.path_for_LT.setText(str(Path(str(data_folder)) / "Лазерный_пинцет"))
 
@@ -113,7 +112,7 @@ def test_lt(app, window, data_folder):
     print("Все проверки для Лазерного пинцета прошли")
 
 
-def test_biola(app, window, data_folder):
+def test_biola(app, window, data_folder)->None:
     # выставляем нужные переменные
     window.ui.path_for_biola.setText(str(Path(str(data_folder)) / "Biola"))
     window.ui.comboBox_biola.setCurrentText("test.txt")
@@ -124,7 +123,7 @@ def test_biola(app, window, data_folder):
     print("Все проверки для Биола прошли")
 
 
-def test_figs(app, window, data_folder):
+def test_figs(app, window, data_folder)->None:
     # выставляем нужные переменные
     window.ui.path_for_plot.setText(str(Path(str(data_folder)) / "Обработка_данных"))
     window.ui.comboBox.setCurrentText("test.xlsx")
@@ -150,7 +149,7 @@ def test_figs(app, window, data_folder):
     print("Все проверки для построения рисунков прошли")
 
 
-def test_profile(app, window, data_folder):
+def test_profile(app, window, data_folder)->None:
     # выставляем нужные переменные
     window.ui.path_for_profile.setText(str(Path(str(data_folder)) / "Обработка_данных"))
 
@@ -163,7 +162,7 @@ def test_profile(app, window, data_folder):
     print("Все проверки для построения микрореологического профиля прошли")
 
 
-def test_table(app, window, data_folder):
+def test_table(app, window, data_folder)->None:
     # выставляем нужные переменные
     window.ui.path_for_pivot_table.setText(str(Path(str(data_folder)) / "Обработка_данных"))
     window.ui.comboBox_pivot_table.setCurrentText("test2.xlsx")
@@ -176,7 +175,7 @@ def test_table(app, window, data_folder):
     print("Все проверки для сводных таблиц прошли")
 
 
-def test_catplot(app, window, data_folder):
+def test_catplot(app, window, data_folder)->None:
     # выставляем нужные переменные
     window.ui.path_for_catplot.setText(str(Path(str(data_folder)) / "Обработка_данных"))
     window.ui.comboBox_excel_catplot.setCurrentText("test.xlsx")
@@ -189,7 +188,7 @@ def test_catplot(app, window, data_folder):
     print("Все проверки для сводных таблиц прошли")
 
 
-def test_calc_stat_significance(app, window, data_folder):
+def test_calc_stat_significance(app, window, data_folder)->None:
     # выставляем нужные переменные
     window.ui.path_for_dop_stat.setText(str(Path(str(data_folder)) / "Обработка_данных"))
     window.ui.comboBox_excel_dop_stat.setCurrentText("test2.xlsx")
@@ -204,7 +203,7 @@ def test_calc_stat_significance(app, window, data_folder):
     print("Все проверки по расчету стат.значимости прошли")
 
 
-def test_rheo_scan_post_processing(app, window, data_folder):
+def test_rheo_scan_post_processing(app, window, data_folder)->None:
     # выставляем нужные переменные
     window.ui.path_for_RheoScan_describe.setText(str(Path(str(data_folder)) / "RheoScan"))
 
