@@ -33,7 +33,7 @@ scripts venv/bin/activate
 Далее установите все необходимые библиотеки:
 
 ```bash
-pip install --no-deps -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Запустите программу:
