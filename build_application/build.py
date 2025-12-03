@@ -16,7 +16,7 @@ def run_command(command: str, description: str | None = None, *, shell: bool = T
     try:
         result = subprocess.run(
             command, shell=shell, check=True, capture_output=True, text=True, encoding="utf-8"
-        )  # noqa: S603
+        )
         if result.stdout:
             print(result.stdout)
     except subprocess.CalledProcessError as e:

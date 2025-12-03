@@ -2,11 +2,12 @@ import os
 import shutil
 import sys
 from datetime import datetime
+from pathlib import Path
 
 import pytest
 
 # добавим возможность импорта из директории выше
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QApplication, QMessageBox
@@ -24,7 +25,7 @@ from main_window_processing_app import MainWindowProcessingApp
 
 
 def get_abs_path(path: str):
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), path))
+    return str(Path(__file__).parent / path)
 
 
 def auto_close_message_box(timeout: int = 1):
@@ -84,7 +85,7 @@ def window():
 
 def test_rheo_scan(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.main_path.setText(str(data_folder) + r"\RheoScan")
+    window.ui.main_path.setText(str(Path(str(data_folder)) / "RheoScan"))
     window.ui.spinBox_level.setValue(2)
 
     window.ui.check_approx_agg.setChecked(True)
@@ -104,7 +105,7 @@ def test_rheo_scan(app, window, data_folder):
 
 def test_lt(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_LT.setText(str(data_folder) + r"\Лазерный_пинцет")
+    window.ui.path_for_LT.setText(str(Path(str(data_folder)) / "Лазерный_пинцет"))
 
     # выполняем обработку данных
     window.LT()
@@ -114,7 +115,7 @@ def test_lt(app, window, data_folder):
 
 def test_biola(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_biola.setText(str(data_folder) + r"\Biola")
+    window.ui.path_for_biola.setText(str(Path(str(data_folder)) / "Biola"))
     window.ui.comboBox_biola.setCurrentText("test.txt")
 
     # выполняем обработку данных
@@ -125,7 +126,7 @@ def test_biola(app, window, data_folder):
 
 def test_figs(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_plot.setText(str(data_folder) + r"\Обработка_данных")
+    window.ui.path_for_plot.setText(str(Path(str(data_folder)) / "Обработка_данных"))
     window.ui.comboBox.setCurrentText("test.xlsx")
     window.ui.comboBox_2.setCurrentText("пол")
 
@@ -151,7 +152,7 @@ def test_figs(app, window, data_folder):
 
 def test_profile(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_profile.setText(str(data_folder) + r"\Обработка_данных")
+    window.ui.path_for_profile.setText(str(Path(str(data_folder)) / "Обработка_данных"))
 
     window.ui.patient_data.setText("norm")
     window.ui.norm_data.setText("norm")
@@ -164,7 +165,7 @@ def test_profile(app, window, data_folder):
 
 def test_table(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_pivot_table.setText(str(data_folder) + r"\Обработка_данных")
+    window.ui.path_for_pivot_table.setText(str(Path(str(data_folder)) / "Обработка_данных"))
     window.ui.comboBox_pivot_table.setCurrentText("test2.xlsx")
 
     # выполняем обработку данных
@@ -177,7 +178,7 @@ def test_table(app, window, data_folder):
 
 def test_catplot(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_catplot.setText(str(data_folder) + r"\Обработка_данных")
+    window.ui.path_for_catplot.setText(str(Path(str(data_folder)) / "Обработка_данных"))
     window.ui.comboBox_excel_catplot.setCurrentText("test.xlsx")
 
     # выполняем обработку данных
@@ -190,7 +191,7 @@ def test_catplot(app, window, data_folder):
 
 def test_calc_stat_significance(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_dop_stat.setText(str(data_folder) + r"\Обработка_данных")
+    window.ui.path_for_dop_stat.setText(str(Path(str(data_folder)) / "Обработка_данных"))
     window.ui.comboBox_excel_dop_stat.setCurrentText("test2.xlsx")
 
     # выполняем обработку данных
@@ -205,7 +206,7 @@ def test_calc_stat_significance(app, window, data_folder):
 
 def test_rheo_scan_post_processing(app, window, data_folder):
     # выставляем нужные переменные
-    window.ui.path_for_RheoScan_describe.setText(str(data_folder) + r"\RheoScan")
+    window.ui.path_for_RheoScan_describe.setText(str(Path(str(data_folder)) / "RheoScan"))
 
     # выполняем обработку данных
     window.RheoScan_describe()

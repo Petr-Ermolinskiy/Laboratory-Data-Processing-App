@@ -1,6 +1,7 @@
 import ctypes
 import json
 import os
+import platform
 import sys
 
 from PySide6.QtGui import QIcon
@@ -14,8 +15,9 @@ def myapp_id_logo(_version_app: str) -> None:
 
     См: https://stackoverflow.com/questions/1551605/how-to-set-applications-taskbar-icon-in-windows-7/1552105#1552105.
     """
-    myapp_id = f"Petr_Ermolinskiy.GUI_app.processing.{_version_app}"
-    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myapp_id)
+    if platform.system() == "Windows":
+        myapp_id = f"Petr_Ermolinskiy.GUI_app.processing.{_version_app}"
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myapp_id)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 import os
 import sys
+from pathlib import Path
 
 import pandas as pd
 from PySide6.QtCore import Slot
@@ -35,14 +36,14 @@ from scripts.RheoScan.rheo_scan_describe import rheo_scan_describe_file_or_files
 
 # обработка RheoScan
 from scripts.RheoScan.rheo_scan_main import all_rheo_scan_level
-from scripts.RheoScan.rheo_scan_sort import glob, sort_rheo_scan_data
+from scripts.RheoScan.rheo_scan_sort import sort_rheo_scan_data
 
 #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #
 
 
 def get_name_out_of_path(files: list) -> list:
     """Функция, чтобы разделить путь до файла на название файла без расширений."""
-    return [i.split("\\")[-1] for i in files]
+    return [Path(i).name for i in files]
 
 
 def resource_path(relative_path: str) -> str:
@@ -288,29 +289,26 @@ class MainWindowProcessingApp(QMainWindow):
     # Catplot
     # - - - - - - - - - #
     def add_excel_catplot(self) -> None:
-        files = glob.glob(self.ui.path_for_catplot.text() + "//" + "*.xlsx")
-        files = get_name_out_of_path(files)
+        path = Path(self.ui.path_for_catplot.text())
+        files = list(path.glob("*.xlsx"))
+        files = get_name_out_of_path([str(f) for f in files])
         self.ui.comboBox_excel_catplot.clear()  # удалить все элементы из combobox
         self.ui.comboBox_excel_catplot.addItems(files)
 
     def catplot_add_sheets(self) -> None:
-        path_file = (
-            self.ui.path_for_catplot.text() + "//" + self.ui.comboBox_excel_catplot.currentText()
-        )
+        path_file = Path(self.ui.path_for_catplot.text()) / self.ui.comboBox_excel_catplot.currentText()
         try:
-            sheets = pd.ExcelFile(path_file).sheet_names
+            sheets = pd.ExcelFile(str(path_file)).sheet_names
             self.ui.comboBox_excel_sheet_catplot.clear()  # удалить все элементы из combobox
             self.ui.comboBox_excel_sheet_catplot.addItems(sheets)
         except:  # noqa: E722
             self.ui.comboBox_excel_sheet_catplot.clear()  # удалить все элементы из combobox
 
     def catplot_add_x_y_hue(self) -> None:
-        path_file = (
-            self.ui.path_for_catplot.text() + "//" + self.ui.comboBox_excel_catplot.currentText()
-        )
+        path_file = Path(self.ui.path_for_catplot.text()) / self.ui.comboBox_excel_catplot.currentText()
         try:
             df = pd.read_excel(
-                path_file,
+                str(path_file),
                 sheet_name=self.ui.comboBox_excel_sheet_catplot.currentText(),
             )
             self.ui.comboBox_catplot_x.clear()  # удалить все элементы из combobox
@@ -329,8 +327,9 @@ class MainWindowProcessingApp(QMainWindow):
     # Дополнительная статистика
     # - - - - - - - - - #
     def add_excel_dop_stat(self) -> None:
-        files = glob.glob(self.ui.path_for_dop_stat.text() + "//" + "*.xlsx")
-        files = get_name_out_of_path(files)
+        path = Path(self.ui.path_for_dop_stat.text())
+        files = list(path.glob("*.xlsx"))
+        files = get_name_out_of_path([str(f) for f in files])
         self.ui.comboBox_excel_dop_stat.clear()  # удалить все элементы из combobox
         self.ui.comboBox_excel_sheet_dop_stat.clear()  # удалить все элементы из combobox
         self.ui.comboBox_dop_stat_x.clear()  # удалить все элементы из combobox
@@ -338,23 +337,19 @@ class MainWindowProcessingApp(QMainWindow):
         self.ui.comboBox_excel_dop_stat.addItems(files)
 
     def dop_stat_add_sheets(self) -> None:
-        path_file = (
-            self.ui.path_for_dop_stat.text() + "//" + self.ui.comboBox_excel_dop_stat.currentText()
-        )
+        path_file = Path(self.ui.path_for_dop_stat.text()) / self.ui.comboBox_excel_dop_stat.currentText()
         try:
-            sheets = pd.ExcelFile(path_file).sheet_names
+            sheets = pd.ExcelFile(str(path_file)).sheet_names
             self.ui.comboBox_excel_sheet_dop_stat.clear()  # удалить все элементы из combobox
             self.ui.comboBox_excel_sheet_dop_stat.addItems(sheets)
         except:  # noqa: E722
             self.ui.comboBox_excel_sheet_dop_stat.clear()  # удалить все элементы из combobox
 
     def dop_stat_add_x_y_hue(self) -> None:
-        path_file = (
-            self.ui.path_for_dop_stat.text() + "//" + self.ui.comboBox_excel_dop_stat.currentText()
-        )
+        path_file = Path(self.ui.path_for_dop_stat.text()) / self.ui.comboBox_excel_dop_stat.currentText()
         try:
             df = pd.read_excel(
-                path_file,
+                str(path_file),
                 sheet_name=self.ui.comboBox_excel_sheet_dop_stat.currentText(),
             )
             self.ui.comboBox_dop_stat_x.clear()  # удалить все элементы из combobox
@@ -370,25 +365,26 @@ class MainWindowProcessingApp(QMainWindow):
     # Графики
     # - - - - - - - - - #
     def add_excel_files_to_combobox(self) -> None:
-        files = glob.glob(self.ui.path_for_plot.text() + "//" + "*.xlsx")
-        files = get_name_out_of_path(files)
+        path = Path(self.ui.path_for_plot.text())
+        files = list(path.glob("*.xlsx"))
+        files = get_name_out_of_path([str(f) for f in files])
         self.ui.comboBox.clear()  # удалить все элементы из combobox
         self.ui.comboBox.addItems(files)
 
     def figs_add_sheets_to_combobox(self) -> None:
-        path_file = self.ui.path_for_plot.text() + "//" + self.ui.comboBox.currentText()
+        path_file = Path(self.ui.path_for_plot.text()) / self.ui.comboBox.currentText()
         try:
-            sheets = pd.ExcelFile(path_file).sheet_names
+            sheets = pd.ExcelFile(str(path_file)).sheet_names
             self.ui.comboBox_figs_sheets.clear()  # удалить все элементы из combobox
             self.ui.comboBox_figs_sheets.addItems(sheets)
         except:  # noqa: E722
             self.ui.comboBox_figs_sheets.clear()  # удалить все элементы из combobox
 
     def add_columns_sheets_to_combobox(self) -> None:
-        path_file = self.ui.path_for_plot.text() + "//" + self.ui.comboBox.currentText()
+        path_file = Path(self.ui.path_for_plot.text()) / self.ui.comboBox.currentText()
         try:
             # прочитаем файл
-            df = pd.read_excel(path_file, sheet_name=self.ui.comboBox_figs_sheets.currentText())
+            df = pd.read_excel(str(path_file), sheet_name=self.ui.comboBox_figs_sheets.currentText())
             self.ui.comboBox_2.clear()  # удалить все элементы из combobox
             self.ui.comboBox_2.addItems(df.columns)
         except:  # noqa: E722
@@ -398,17 +394,16 @@ class MainWindowProcessingApp(QMainWindow):
     # Сводные таблицы
     # - - - - - - - - - #
     def add_excel_files_to_combobox_pivot(self) -> None:
-        files = glob.glob(self.ui.path_for_pivot_table.text() + "//" + "*.xlsx")
-        files = get_name_out_of_path(files)
+        path = Path(self.ui.path_for_pivot_table.text())
+        files = list(path.glob("*.xlsx"))
+        files = get_name_out_of_path([str(f) for f in files])
         self.ui.comboBox_pivot_table.clear()  # удалить все элементы из combobox
         self.ui.comboBox_pivot_table.addItems(files)
 
     def add_sheets_to_combobox_pivot(self) -> None:
-        path_file = (
-            self.ui.path_for_pivot_table.text() + "//" + self.ui.comboBox_pivot_table.currentText()
-        )
+        path_file = Path(self.ui.path_for_pivot_table.text()) / self.ui.comboBox_pivot_table.currentText()
         try:
-            sheets = pd.ExcelFile(path_file).sheet_names
+            sheets = pd.ExcelFile(str(path_file)).sheet_names
             self.ui.comboBox_pivot_table_excel_sheet.clear()  # удалить все элементы из combobox
             self.ui.comboBox_pivot_table_excel_sheet.addItems(sheets)
         except:  # noqa: E722
@@ -416,12 +411,10 @@ class MainWindowProcessingApp(QMainWindow):
 
     def add_columns_to_combobox_pivot(self) -> None:
         # прочитаем файл
-        path_file = (
-            self.ui.path_for_pivot_table.text() + "//" + self.ui.comboBox_pivot_table.currentText()
-        )
+        path_file = Path(self.ui.path_for_pivot_table.text()) / self.ui.comboBox_pivot_table.currentText()
         try:
             df = pd.read_excel(
-                path_file,
+                str(path_file),
                 sheet_name=self.ui.comboBox_pivot_table_excel_sheet.currentText(),
             )
             self.ui.comboBox_pivot_hue.clear()  # удалить все элементы из combobox
@@ -433,13 +426,14 @@ class MainWindowProcessingApp(QMainWindow):
     # Биола -- одновременно добавляем файлы txt и pdf
     # - - - - - - - - - #
     def add_biola_file(self) -> None:
-        files = glob.glob(self.ui.path_for_biola.text() + "//" + "*.txt")
-        files = get_name_out_of_path(files)
+        path = Path(self.ui.path_for_biola.text())
+        files = list(path.glob("*.txt"))
+        files = get_name_out_of_path([str(f) for f in files])
         self.ui.comboBox_biola.clear()  # удалить все элементы из combobox
         self.ui.comboBox_biola.addItems(files)
 
-        files2 = glob.glob(self.ui.path_for_biola.text() + "//" + "*.pdf")
-        files2 = get_name_out_of_path(files2)
+        files2 = list(path.glob("*.pdf"))
+        files2 = get_name_out_of_path([str(f) for f in files2])
         self.ui.comboBox_biola_concentration.clear()  # удалить все элементы из combobox
         self.ui.comboBox_biola_concentration.addItems(files2)
 
@@ -495,7 +489,7 @@ class MainWindowProcessingApp(QMainWindow):
                 None,
                 "Путь к папке с excel файлами RheoScan пациентов/образцов",
             )
-            path = path.replace("/", "\\")
+            path = str(Path(path))
         elif self.ui.comboBox_RheoScan_describe.currentText() == "Один файл - много образцов":
             path = dialog.getOpenFileName(
                 None,
@@ -503,5 +497,5 @@ class MainWindowProcessingApp(QMainWindow):
                 filter="Text Files (*.xlsx)",
             )
             path = path[0]
-            path = path.replace("/", "\\")
+            path = str(Path(path))
         self.ui.path_for_RheoScan_describe.setText(path)

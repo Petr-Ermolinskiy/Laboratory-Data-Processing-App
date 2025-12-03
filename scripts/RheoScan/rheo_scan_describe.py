@@ -1,4 +1,4 @@
-import glob
+from pathlib import Path
 
 import pandas as pd
 from PySide6.QtWidgets import QMessageBox
@@ -48,11 +48,12 @@ def rheo_scan_describe_file_or_files(self):
 
 # функция, когда файлов много и один файл == один образец
 def _describe_all_multiple_files(path: str, mask_sheet_main=None) -> None:
-    path = path + "\\"
+    path_obj = Path(path)
+    summary_file = path_obj / "RheoScan_summary.xlsx"
 
-    files_all = glob.glob(path + "*.xlsx")
-    if path + "RheoScan_summary.xlsx" in files_all:
-        files_all.remove(path + "RheoScan_summary.xlsx")
+    files_all = list(path_obj.glob("*.xlsx"))
+    if summary_file in files_all:
+        files_all.remove(summary_file)
 
     describe_all_files = pd.DataFrame()
 
@@ -69,10 +70,11 @@ def _describe_all_multiple_files(path: str, mask_sheet_main=None) -> None:
             mask_sheet = [False] * len(sheets)
         describe_data_frame = pd.DataFrame()
         # file name
-        name_of_file = "".join(file.split("\\")[-1].split(".")[:-1])
+        file_path = Path(file)
+        name_of_file = file_path.stem
         for one_sheet, mask in zip(sheets, mask_sheet, strict=False):
             # читаем exel файл
-            df = pd.read_excel(file, one_sheet)
+            df = pd.read_excel(str(file_path), one_sheet)
             mean_vals = df[df.columns[2:]].mean()
             if mask:
                 std_vals = df[df.columns[2:]].std()
@@ -86,7 +88,7 @@ def _describe_all_multiple_files(path: str, mask_sheet_main=None) -> None:
         describe_all_files = pd.concat([describe_all_files, describe_data_frame], axis=0)
 
     # сохраняем в excel файл
-    describe_all_files.to_excel(path + "RheoScan_summary.xlsx")
+    describe_all_files.to_excel(str(summary_file))
     return None
 
 
@@ -120,7 +122,8 @@ def _describe_all_one_file(path: str, mask_sheet: list | None = None) -> None:
         # статистика
         describe_file = pd.concat([describe_file, df_describe_for_one_sheet], axis=1)
     # сохраняем
-    describe_file.to_excel("\\".join(path.split("\\")[:-1]) + "\\" + "RheoScan_summary.xlsx")
+    path_obj = Path(path)
+    describe_file.to_excel(str(path_obj.parent / "RheoScan_summary.xlsx"))
 
 
 def strtobool(val: str) -> int:

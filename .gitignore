@@ -9,3 +9,5 @@
 /.venv/
 /atrash/
 *.spec
+**/__pycache__
+*.DS_Store

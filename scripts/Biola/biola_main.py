@@ -1,4 +1,6 @@
 # необходимые библиотеки
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -35,12 +37,12 @@ def biola_result(self) -> None:
         dlg.exec()
         return
 
-    path = path + "//"
+    path_obj = Path(path)
     # изначальный DataFrame - читаем файл
     try:
         # для кодировки на английском
         dff = pd.read_csv(
-            path + name_of_file,
+            str(path_obj / name_of_file),
             sep=" ",
             engine="python",
             error_bad_lines=False,
@@ -53,7 +55,7 @@ def biola_result(self) -> None:
         print("Biola: кодировка на русском")
         # для кодировки на русском
         dff = pd.read_csv(
-            path + name_of_file,
+            str(path_obj / name_of_file),
             sep=" ",
             engine="python",
             on_bad_lines="skip",
@@ -376,12 +378,12 @@ def biola_result(self) -> None:
         plt.tight_layout()
 
         # сохраняем усредненные графики
-        fig.savefig(path + "Светопропускание.png", dpi=600)
-        fig2.savefig(path + "Производная_светопропускания.png", dpi=600)
-        fig3.savefig(path + "Средний_радиус.png", dpi=600)
-        fig4.savefig(path + "Производная_среднего_радиуса.png", dpi=600)
+        fig.savefig(str(path_obj / "Светопропускание.png"), dpi=600)
+        fig2.savefig(str(path_obj / "Производная_светопропускания.png"), dpi=600)
+        fig3.savefig(str(path_obj / "Средний_радиус.png"), dpi=600)
+        fig4.savefig(str(path_obj / "Производная_среднего_радиуса.png"), dpi=600)
 
-    with pd.ExcelWriter(path + name_of_file.replace(".txt", "") + "_agg" + ".xlsx") as writer:
+    with pd.ExcelWriter(str(path_obj / f"{name_of_file.replace('.txt', '')}_agg.xlsx")) as writer:
         result_main.to_excel(writer, sheet_name="полученные данные")
         time.to_excel(writer, sheet_name="время")
         smooth_born.to_excel(writer, sheet_name="Светопропускание, %")

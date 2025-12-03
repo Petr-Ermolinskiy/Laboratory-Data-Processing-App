@@ -1,5 +1,4 @@
-import glob
-import os
+from pathlib import Path
 
 import pandas as pd
 from numpy import exp as np_exp
@@ -25,9 +24,9 @@ def laser_tweezers(self) -> None:
         dlg.exec()
         return
 
-    path = path + "\\"
+    path_obj = Path(path)
     # имя файла
-    name_of_exp = path.split("\\")[-2]
+    name_of_exp = path_obj.name
     # Считываем все данные и сохраняем их в 2 DataFrame.
     # Считываются все имена подпапок, и в каждой подпапке считываются имена файлов,
     # в которых есть значения сил агрегации и дезагрегации
@@ -35,10 +34,10 @@ def laser_tweezers(self) -> None:
     all_FD = pd.DataFrame({"Concentration": [], "Force, pN": []})
     all_end = pd.DataFrame({"Concentration": [], "Force, pN": []})
     all_glass = pd.DataFrame({"Concentration": [], "Force, pN": []})
-    for sub_folders in os.scandir(path):
+    for sub_folders in path_obj.iterdir():
         if sub_folders.is_dir():
-            name = sub_folders.path.split("\\")[-1]
-            files = glob.glob(path + name + "\\" + "*.avi")
+            name = sub_folders.name
+            files = list(sub_folders.glob("*.avi"))
             # разделить имя подпапки, если это нужно
             if split_subfold != "":
                 name_dop = name.split(split_subfold)
@@ -47,7 +46,7 @@ def laser_tweezers(self) -> None:
                 except:
                     continue
             for i in files:
-                m = i.split("\\")[-1]
+                m = i.name
                 m = m.replace(".avi", "")
                 # разделитель между FA или FD или др и разделителем "-"! Указать другой, если он другой.
                 m = m.split(split)
@@ -186,7 +185,7 @@ def laser_tweezers(self) -> None:
     for_GLASS.index += 1
     all_FD_OVER_FA.index += 1
 
-    with pd.ExcelWriter(path + name_of_exp + ".xlsx", engine="openpyxl") as writer:
+    with pd.ExcelWriter(str(path_obj / f"{name_of_exp}.xlsx"), engine="openpyxl") as writer:
         if all_end.empty == False:
             all_end.to_excel(writer, sheet_name="Endothilium")
         if all_FA.empty == False:

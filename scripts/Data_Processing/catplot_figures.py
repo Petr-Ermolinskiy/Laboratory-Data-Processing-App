@@ -1,4 +1,5 @@
 from itertools import product
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -72,7 +73,7 @@ def plot_catplot(self) -> None:
         dlg.exec()
         return
 
-    files = path + "//" + exel_name
+    files = Path(path) / exel_name
     if hue_name == "--без подгруппы":
         hue_name = None
 
@@ -104,7 +105,7 @@ def plot_catplot(self) -> None:
     # error bar either “ci”, “pi”, “se”, or “sd”
 
     # читаем exel файл - index_col=0,
-    df = pd.read_excel(files, sheet_name=sheet_name)
+    df = pd.read_excel(str(files), sheet_name=sheet_name)
     df.index = df.index.rename(None)
 
     if args["hue"] is not None:
@@ -187,9 +188,10 @@ def plot_catplot(self) -> None:
                 # Один из следующих:
                 # - Brunner-Munzel, Levene, Mann-Whitney, Mann-Whitney-gt,
                 #   Mann-Whitney-ls, t-test_ind, t-test_welch, t-test_paired, Wilcoxon, Kruskal
+    path_obj = Path(path)
     try:
         cat_plot.savefig(
-            path + "//" + for_save(str(x_name) + "_" + str(y_name) + "_" + str(hue_name)) + ".png",
+            str(path_obj / f"{for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name))}.png"),
             dpi=600,
         )
     except Exception as e:
@@ -200,7 +202,7 @@ def plot_catplot(self) -> None:
 
     try:
         file1 = open(
-            path + "//" + for_save(str(x_name) + "_" + str(y_name) + "_" + str(hue_name)) + ".txt",
+            str(path_obj / f"{for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name))}.txt"),
             "w",
             encoding="utf-8",
         )
@@ -231,10 +233,7 @@ def plot_catplot(self) -> None:
         else:
             jjj = df.groupby([args["x"], args["hue"]])[args["y"]].count()
         jjj.rename("N").to_csv(
-            path
-            + "//"
-            + for_save(str(x_name) + "_" + str(y_name) + "_" + str(hue_name))
-            + "_N_of_data.txt",
+            str(path_obj / f"{for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name))}_N_of_data.txt"),
             sep="\t",
             encoding="utf-8",
         )

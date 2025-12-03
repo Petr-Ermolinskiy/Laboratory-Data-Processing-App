@@ -1,6 +1,6 @@
 import math
 import os
-from glob import glob
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -33,8 +33,9 @@ def all_rheo_scan_level(self) -> None:
         all_and_all = pd.concat([all_and_all, check[1]], axis=1, ignore_index=False)
     # сохраняем общий массив
     if check[0] == 0 and self.ui.check_save_RheoScan_overall.isChecked():
+        path_obj = Path(path)
         with pd.ExcelWriter(
-            path + "\\" + "overall_data_" + path.split("\\")[-1] + ".xlsx"
+            str(path_obj / f"overall_data_{path_obj.name}.xlsx")
         ) as writer:
             all_and_all.T.reset_index().drop(columns=["index"]).to_excel(
                 writer,
@@ -119,17 +120,18 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
         dlg.setText("Не введен путь к подпапкам")
         dlg.exec()
         return [1, pd.DataFrame()]
-    path = path + "\\"
+
     # имя файла
-    name_of_patient = path.split("\\")[-2]
-    # подпапки
-    path_agg = path + "agg//"
-    path_css = path + "stress//"
-    path_def = path + "deform//"
-    # массив всех txt файлов во всех подпапках
-    files_agg = glob(path_agg + "*.txt")
-    files_css = glob(path_css + "*.txt")
-    files_def = glob(path_def + "*.txt")
+    path_obj = Path(path)
+    name_of_patient = path_obj.name
+    # используем pathlib -- чтобы работало для Mac и Windows
+    path_agg = path_obj / "agg"
+    path_css = path_obj / "stress"
+    path_def = path_obj / "deform"
+
+    files_agg = list(path_agg.glob("*.txt"))
+    files_css = list(path_css.glob("*.txt"))
+    files_def = list(path_def.glob("*.txt"))
     if files_agg == [] and files_css == [] and files_def == []:
         dlg.setWindowTitle("RheoScan - Ошибка")
         dlg.setText(f"По пути {path} либо нет подпапок, либо в этих подпапках нет txt файлов")
@@ -171,7 +173,7 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             )
             yy = x.drop([0, 2, 3, 4, 9, 10])
             jj = yy[0].apply(lambda x: pd.Series(x.split(":"))).T
-            all_agg = all_agg.append(jj.loc[1], ignore_index=True)
+            all_agg = pd.concat([all_agg, jj.loc[1].to_frame().T], ignore_index=True)
         all_agg.columns = ["Patient", "AI", "T1/2", "AMP", "M"]
         # изменить ',' на '.'
         all_agg = all_agg.replace(",", ".", regex=True)
@@ -191,8 +193,8 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
     if fiting_aggreg:
         # создаем подпапку для графиков аппроксимации
         name_of_agg_fit_folder = "!Fit agg fiqures"
-        path_for_agg_fit = path + name_of_agg_fit_folder
-        os.makedirs(path_for_agg_fit, exist_ok=True)
+        path_for_agg_fit = path_obj / name_of_agg_fit_folder
+        path_for_agg_fit.mkdir(parents=True, exist_ok=True)
 
     if var_fit and files_agg != []:
         # Data Frame для апроксимации
@@ -326,7 +328,7 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                 plt.xlabel("Время, с")
                 plt.ylabel("Светопропускание, отн.ед.")
                 # сохраняем все рисунки в отдельную папку
-                fig.savefig(path_for_agg_fit + "\\" + Name_fit_agg + ".png", dpi=600, format="png")
+                fig.savefig(str(path_for_agg_fit / f"{Name_fit_agg}.png"), dpi=600, format="png")
 
                 # закрываем и всё очищаем
                 plt.close()
@@ -402,20 +404,19 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                         return [1, pd.DataFrame()]
 
                 # добавляем всё в датафрейм
-                all_CSS = all_CSS.append(
-                    pd.concat([data_css.loc[1], pd.Series(data=str(new_parameter))], axis=0),
-                    ignore_index=True,
-                )
+                new_row = pd.concat([data_css.loc[1], pd.Series(data=str(new_parameter))], axis=0).to_frame().T
+                all_CSS = pd.concat([all_CSS, new_row], ignore_index=True)
+
             else:
                 # добавляем всё в датафрейм
-                all_CSS = all_CSS.append(data_css.loc[1])
+                all_CSS = pd.concat([all_CSS, data_css.loc[1].to_frame().T], ignore_index=True)
 
         if dop_css_parameter:
             all_CSS.columns = ["Patient", "Critical time, s", "CSS", "New parameter, Pa"]
         else:
             all_CSS.columns = ["Patient", "Critical time, s", "CSS"]
         # делаем всё то же самое, что и для обработки для маленькой кюветы
-        all_CSS = all_CSS.applymap(lambda x: str(x.replace(",", ".")))
+        all_CSS = all_CSS.map(lambda x: str(x.replace(",", ".")))
         # преобразовать тип данных для всех параметров за исключением 'Patient'
         all_CSS["Critical time, s"] = all_CSS["Critical time, s"].astype(float)
         all_CSS["CSS"] = all_CSS["CSS"].astype(float)
@@ -463,7 +464,12 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             x[1] = x[1].astype(float)
             # убираем повторяющееся значение
             data_def = x.drop([1])
-            all_def = all_def.append(data_def[1])
+
+            all_def = pd.concat([
+                                all_def,
+                                data_def[1].to_frame().T
+                            ], ignore_index=True)
+
             # Data Frame для имени
             newx = pd.read_table(
                 i,
@@ -476,7 +482,9 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             newx_x = newx.loc[1]
             s_x = "".join(newx_x)
             new_str_x = s_x.replace("Patient name:", "")
-            all_def_name = all_def_name.append({"Patient": new_str_x}, ignore_index=True)
+
+            new_row = pd.DataFrame([{"Patient": new_str_x}])
+            all_def_name = pd.concat([all_def_name, new_row], ignore_index=True)
         # меняем подписи по колонкам
         all_def.columns = [
             "1 Pa",
@@ -514,8 +522,8 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
     if fiting_deform:
         # создаем подпапка для графиков аппроксимации
         name_of_def_fit_folder = "!Fit def fiqures"
-        path_for_def_fit = path + name_of_def_fit_folder
-        os.makedirs(path_for_def_fit, exist_ok=True)
+        path_for_def_fit = path_obj / name_of_def_fit_folder
+        path_for_def_fit.mkdir(parents=True, exist_ok=True)
 
     if var_fit_deform and files_def != []:
         # Data Frame для аппроксимации
@@ -542,7 +550,7 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
         )
         one1 = one1.T
         # дополнительный Data Frame для сдвиговых напряжений в логарифме
-        one2 = one1.applymap(lambda x: str(math.log10(x))).T
+        one2 = one1.map(lambda x: str(math.log10(x))).T
         one2 = one2.apply(to_numeric)
         # Data Frame для всех полученных данных
         # r_sq - для накопления всех данных
@@ -642,32 +650,33 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                 extra = popt[1]
                 sslope = popt[0]
                 # добавим полученные данные в наши Data Frame
-                r_sq = r_sq.append(
-                    {
-                        "Patient": ttt,
-                        "r^2": r_squared,
-                        "nn": n,
-                        "Yield strength": yieldd,
-                        "Viscosity": viscosity,
-                        "Extrapol": extra,
-                        "Slope": sslope,
-                        "r^2-dop": r222,
-                    },
-                    ignore_index=True,
-                )
-                r_sq_seq = r_sq_seq.append(
-                    {
-                        "Patient": ttt,
-                        "r^2": r_squared,
-                        "nn": n,
-                        "Yield strength": yieldd,
-                        "Viscosity": viscosity,
-                        "Extrapol": extra,
-                        "Slope": sslope,
-                        "r^2-dop": r222,
-                    },
-                    ignore_index=True,
-                )
+
+                # For r_sq
+                new_row = pd.DataFrame([{
+                    "Patient": ttt,
+                    "r^2": r_squared,
+                    "nn": n,
+                    "Yield strength": yieldd,
+                    "Viscosity": viscosity,
+                    "Extrapol": extra,
+                    "Slope": sslope,
+                    "r^2-dop": r222,
+                }])
+                r_sq = pd.concat([r_sq, new_row], ignore_index=True)
+
+                # For r_sq_seq
+                new_row_seq = pd.DataFrame([{
+                    "Patient": ttt,
+                    "r^2": r_squared,
+                    "nn": n,
+                    "Yield strength": yieldd,
+                    "Viscosity": viscosity,
+                    "Extrapol": extra,
+                    "Slope": sslope,
+                    "r^2-dop": r222,
+                }])
+                r_sq_seq = pd.concat([r_sq_seq, new_row_seq], ignore_index=True)
+
 
                 if n < agg_approx_data__[3] or r_squared > float(agg_approx_data__[2]):
                     if fiting_deform:
@@ -689,7 +698,7 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                         plt.xlabel("Сдвиговое напряжение, Log10(Па)")
                         plt.ylabel("Индекс деформируемости, отн.ед.")
                         # сохраняем все рисунки в отдельную папку
-                        fig.savefig(path_for_def_fit + "\\" + ttt + ".png", dpi=600, format="png")
+                        fig.savefig(str(path_for_def_fit / f"{ttt}.png"), dpi=600, format="png")
                         # закрываем и всё очищаем
                         plt.close()
                         ax.cla()
@@ -708,7 +717,11 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             # выбираем только значение с максимальным R^2 - находим индекс с максимальным R^2
             max_value_index = r_sq_seq["r^2"].idxmax()
             # по индексу максимального значения находим само значения и записываем всю строку в наш изначальный Data Frame
-            fit_res_deform = fit_res_deform.append(r_sq_seq.loc[max_value_index])
+            fit_res_deform = pd.concat([
+                                        fit_res_deform,
+                                        r_sq_seq.loc[[max_value_index]]
+                                    ], ignore_index=True)
+
         # обновляем индексы
         fit_res_deform = fit_res_deform.reset_index(drop=True)
         # сохранить только те значения, для которых R^2>0.95
@@ -845,16 +858,18 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
     Сохранение
     """
     # если нужно, то сохраняем файлы не по подпапкам, а в одном месте
-    path_of_the_folder = path
+    path_of_the_folder = path_obj
     if (
         self.ui.comboBox_RheoScan_path_save.currentText()
         == "Сохранить excel/cvs файлы в одном месте"
     ):
-        path = path_r + "\\"
+        path_save = Path(path_r)
+    else:
+        path_save = path_obj
     # сохраняем все полученные данные
     try:
         if saving_s_exel:
-            with pd.ExcelWriter(path + name_of_patient + ".xlsx") as writer:
+            with pd.ExcelWriter(str(path_save / f"{name_of_patient}.xlsx")) as writer:
                 if var_agg and files_agg != []:
                     all_agg.to_excel(writer, index_label="Номер", sheet_name="Agg")
                     if stat_need:
@@ -883,15 +898,15 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                         r_sq.to_excel(writer, index_label="Номер", sheet_name="Deform-Fit-Raw")
         if saving_s_csv:
             if var_agg and files_agg != []:
-                all_agg.to_csv(path + "Agg" + "__" + name_of_patient + ".csv")
+                all_agg.to_csv(str(path_save / f"Agg__{name_of_patient}.csv"))
             if var_fit and files_agg != []:
-                fit_res_without.to_csv(path + "Agg-Fit" + "__" + name_of_patient + ".csv")
+                fit_res_without.to_csv(str(path_save / f"Agg-Fit__{name_of_patient}.csv"))
             if var_stress and files_css != []:
-                all_CSS.to_csv(path + "CSS" + "__" + name_of_patient + ".csv")
+                all_CSS.to_csv(str(path_save / f"CSS__{name_of_patient}.csv"))
             if var_deform and files_def != []:
-                all_def.to_csv(path + "Deform" + "__" + name_of_patient + ".csv")
+                all_def.to_csv(str(path_save / f"Deform__{name_of_patient}.csv"))
             if var_fit_deform and files_def != []:
-                fit_res_deform.to_csv(path + "Deform-Fit" + "__" + name_of_patient + ".csv")
+                fit_res_deform.to_csv(str(path_save / f"Deform-Fit__{name_of_patient}.csv"))
     except Exception as e:
         dlg.setWindowTitle("RheoScan - Ошибка сохранения")
         dlg.setText(
@@ -906,7 +921,7 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
         pd.concat(
             [
                 pd.Series(
-                    [path_of_the_folder.split("\\")[-2], path_of_the_folder.split("\\")[-3]],
+                    [path_of_the_folder.parent.name, path_of_the_folder.parent.parent.name],
                     index=["Patient", "Date or smth"],
                 ),
                 all_agg_des.loc["mean"],

@@ -1,8 +1,7 @@
-import glob
 import os
+from pathlib import Path
 
 from pandas import read_table
-from pathlib2 import Path
 from PySide6.QtWidgets import QMessageBox
 
 
@@ -35,20 +34,20 @@ def subfold(path, level) -> None:
 
 
 def sort_these_files(path, self) -> bool:
-    path = path + "\\"
+    path_obj = Path(path)
     ############
     # Изменим название папок на маленькие буквы, если такие папки есть
-    for sub_folders in os.scandir(path):
+    for sub_folders in path_obj.iterdir():
         if sub_folders.is_dir():
-            name = sub_folders.path.split("\\")[-1]
+            name = sub_folders.name
             if name == "Agg":
-                os.rename(path + "Agg", path + "agg")
+                (path_obj / "Agg").rename(path_obj / "agg")
             if name == "Stress":
-                os.rename(path + "Stress", path + "stress")
+                (path_obj / "Stress").rename(path_obj / "stress")
             if name == "Deform":
-                os.rename(path + "Deform", path + "deform")
+                (path_obj / "Deform").rename(path_obj / "deform")
     ############
-    files_all = glob.glob(path + "*.txt")
+    files_all = list(path_obj.glob("*.txt"))
     if files_all == []:
         dlg = QMessageBox(self)
         dlg.setWindowTitle("RheoScan")
@@ -60,23 +59,23 @@ def sort_these_files(path, self) -> bool:
         return button == QMessageBox.No
 
     # создаем подпапки для файлов
-    os.makedirs(path + "agg", exist_ok=True)
-    os.makedirs(path + "stress", exist_ok=True)
-    os.makedirs(path + "deform", exist_ok=True)
+    (path_obj / "agg").mkdir(parents=True, exist_ok=True)
+    (path_obj / "stress").mkdir(parents=True, exist_ok=True)
+    (path_obj / "deform").mkdir(parents=True, exist_ok=True)
     # прочитать все файлы и добавить данные в DataFrame
     for i in files_all:
-        replacetext(i)
+        replacetext(str(i))
         # правильный срез данных
         all_lines_agg = sum(1 for line in open(i))
         # прочитать каждый файл и извлечь данные
         x = read_table(i, skipfooter=all_lines_agg - 13, engine="python", header=None, decimal=",")
         var = x.iloc[5][0][0:3]
         if var == "ATM":
-            os.rename(i, path + "stress//" + i.split("\\")[-1])
+            i.rename(path_obj / "stress" / i.name)
         elif var == "AI:":
-            os.rename(i, path + "agg//" + i.split("\\")[-1])
+            i.rename(path_obj / "agg" / i.name)
         elif var == "Def":
-            os.rename(i, path + "deform//" + i.split("\\")[-1])
+            i.rename(path_obj / "deform" / i.name)
     return False
 
 

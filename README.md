@@ -50,7 +50,7 @@ python main.py
 
 Для тестов используйте: 
 ```bash
-pytest -s
+python -m pytest -s tests/
 ```
 
 ## Создание _exe_ файла

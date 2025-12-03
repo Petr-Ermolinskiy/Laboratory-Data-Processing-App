@@ -1,5 +1,5 @@
 import math
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numba  # noqa: F401
@@ -56,12 +56,12 @@ def figs_plot(self) -> None:
         return
 
     # основной путь
-    path = path + "\\"
+    path_obj = Path(path)
     # путь до файла
-    files = path + exel_name
+    files = path_obj / exel_name
 
     try:
-        names = pd.ExcelFile(files).sheet_names
+        names = pd.ExcelFile(str(files)).sheet_names
     except Exception as e:
         dlg.setWindowTitle("Графики")
         dlg.setText("Нет такого файла/директории или файл испорчен.\n" + str(e))
@@ -71,7 +71,7 @@ def figs_plot(self) -> None:
     # если стоит галочка corr_one_parameter_is_need, то выполняем только корреляции по одному параметру, а на другие не обращаем
     if corr_one_parameter_is_need:
         try:
-            corr_one_parameter(path, files, one_sheet_name, hue_name)
+            corr_one_parameter(path_obj, files, one_sheet_name, hue_name)
             #############################
             # завершаем работу
             ############################
@@ -94,7 +94,7 @@ def figs_plot(self) -> None:
     check_cykle = "__"
     for i in names:
         check_cykle = do_for_one_sheet(
-            path,
+            path_obj,
             files,
             i,
             box_plot_or_not,
@@ -123,9 +123,9 @@ def figs_plot(self) -> None:
 # строим корреляции только одного параметра
 #
 ##############################################################
-def corr_one_parameter(path, files, what_sheet, hue_name) -> None:
+def corr_one_parameter(path_obj, files, what_sheet, hue_name) -> None:
     # читаем exel файл - index_col=0,
-    df = pd.read_excel(files, sheet_name=what_sheet)
+    df = pd.read_excel(str(files), sheet_name=what_sheet)
     df.index.rename(None, inplace=True)
     # на всякий случай почистим
     df.columns = df.columns.str.replace("\\n", "\n", regex=False)
@@ -142,7 +142,7 @@ def corr_one_parameter(path, files, what_sheet, hue_name) -> None:
     ###
     correlation_matrix = df.corr(method=plot_feature_data__["correlation_one_parameter"])
     limit_ = plot_feature_data__["one_correlation"]
-    correlation_matrix = correlation_matrix.applymap(
+    correlation_matrix = correlation_matrix.map(
         lambda x: x if x > limit_ or x < -limit_ else 0,
     )
     for i in correlation_matrix.columns:
@@ -155,8 +155,8 @@ def corr_one_parameter(path, files, what_sheet, hue_name) -> None:
         raise ValueError("Нет корреляций для выставленных границ")
 
     # папка для сохранения результатов
-    path_one_corr = path + "one_corr" + "\\"
-    os.makedirs(path_one_corr, exist_ok=True)
+    path_one_corr = path_obj / "one_corr"
+    path_one_corr.mkdir(parents=True, exist_ok=True)
 
     # размер шрифта
     font_for_one_corr = int(15 * plot_feature_data__["size_for_one_correlation"])
@@ -191,7 +191,7 @@ def corr_one_parameter(path, files, what_sheet, hue_name) -> None:
         plt.xticks(size=font_for_one_corr - 3)
         plt.xticks(np.arange(-1, +1.1, 0.1))
         plt.tight_layout()
-        one_corr_plot.savefig(path_one_corr + safe_name(target_variable) + ".png")
+        one_corr_plot.savefig(str(path_one_corr / f"{safe_name(target_variable)}.png"))
     # построим график в отдельном окне
     if (
         plot_feature_data__["corr_one_parameter_only_one"]
@@ -206,7 +206,7 @@ def corr_one_parameter(path, files, what_sheet, hue_name) -> None:
 #
 ##############################################################
 def do_for_one_sheet(
-    path,
+    path_obj,
     files,
     what_sheet,
     box_plot_or_not,
@@ -217,7 +217,7 @@ def do_for_one_sheet(
     hue_name,
 ):
     # читаем exel файл - index_col=0,
-    df = pd.read_excel(files, sheet_name=what_sheet)
+    df = pd.read_excel(str(files), sheet_name=what_sheet)
     df.index.rename(None, inplace=True)
     # на всякий случай почистим
     df.columns = df.columns.str.replace("\\n", "\n", regex=False)
@@ -256,17 +256,15 @@ def do_for_one_sheet(
     new_df.insert(loc=0, column="index", value=df[hue_name_for_sheet])  # Диагноз
     if corr_is_need_matrix:
         # создаем подпапку для графиков корреляции
-        name_fiqure_folder_corr_matrix = "correlation_matrix" + "\\" + what_sheet
-        path_name_fiqure_folder_corr_matrix = path + name_fiqure_folder_corr_matrix
-        os.makedirs(path_name_fiqure_folder_corr_matrix, exist_ok=True)
+        path_name_fiqure_folder_corr_matrix = path_obj / "correlation_matrix" / what_sheet
+        path_name_fiqure_folder_corr_matrix.mkdir(parents=True, exist_ok=True)
         # создаём корреляционные матрицы и сохраняем
         corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix)
 
     if corr_is_need:
         # создаем подпапку для графиков корреляции
-        name_fiqure_folder_corr = "correlation"
-        path_name_fiqure_folder_corr = path + name_fiqure_folder_corr
-        os.makedirs(path_name_fiqure_folder_corr, exist_ok=True)
+        path_name_fiqure_folder_corr = path_obj / "correlation"
+        path_name_fiqure_folder_corr.mkdir(parents=True, exist_ok=True)
 
         # найдет все уникальные комбинации признаков
         ls = list(range(1, len(new_df.columns[1:]) + 1))
@@ -289,25 +287,22 @@ def do_for_one_sheet(
 
     if pairplot_is_need:
         # создаем подпапку для графиков корреляции
-        name_fiqure_folder_pairplot = "pairplot" + "\\"
-        path_name_fiqure_folder_pairplot = path + name_fiqure_folder_pairplot
-        os.makedirs(path_name_fiqure_folder_pairplot, exist_ok=True)
+        path_name_fiqure_folder_pairplot = path_obj / "pairplot"
+        path_name_fiqure_folder_pairplot.mkdir(parents=True, exist_ok=True)
         # создаём корреляционные матрицы и сохраняем
         pairplot(new_df, hue_name_for_sheet, what_sheet, path_name_fiqure_folder_pairplot)
 
     if jointplot_is_need:
         # создаем подпапку для графиков корреляции
-        name_fiqure_folder_jointplot = "jointplot" + "\\"
-        path_name_fiqure_folder_jointplot = path + name_fiqure_folder_jointplot
-        os.makedirs(path_name_fiqure_folder_jointplot, exist_ok=True)
+        path_name_fiqure_folder_jointplot = path_obj / "jointplot"
+        path_name_fiqure_folder_jointplot.mkdir(parents=True, exist_ok=True)
         # создаём графики jointplot
         jointplot(new_df, hue_name_for_sheet, what_sheet, path_name_fiqure_folder_jointplot)
 
     if box_plot_or_not:
         # создаем подпапку для графиков аппроксимации
-        name_fiqure_folder = "fiqures"
-        path_name_fiqure_folder = path + name_fiqure_folder
-        os.makedirs(path_name_fiqure_folder, exist_ok=True)
+        path_name_fiqure_folder = path_obj / "fiqures"
+        path_name_fiqure_folder.mkdir(parents=True, exist_ok=True)
         # создаем словарь значений параметров
         dict_for_future = {}
         # и создаем массив для DataFrame-ов
@@ -381,9 +376,10 @@ def do_for_one_sheet(
 
         if plot_feature_data__["check_stat_znachimost"]:
             # создаем подпапку для exel файлов
-            os.makedirs(path + "stat", exist_ok=True)
+            stat_path = path_obj / "stat"
+            stat_path.mkdir(parents=True, exist_ok=True)
             #############
-            with pd.ExcelWriter(path + "stat" + "\\" + what_sheet + ".xlsx") as writer:
+            with pd.ExcelWriter(str(stat_path / f"{what_sheet}.xlsx")) as writer:
                 for i in dict_for_future:
                     name_of_sheet = i
                     name_of_sheet = safe_name(name_of_sheet)
@@ -393,13 +389,7 @@ def do_for_one_sheet(
                     df_list[dict_for_future[i]].to_excel(writer, sheet_name=name_of_sheet)
             #############
             with pd.ExcelWriter(
-                path
-                + "stat"
-                + "\\"
-                + what_sheet
-                + "_"
-                + plot_feature_data__["comboBox_stat_test"]
-                + "_p-values.xlsx",
+                str(stat_path / f"{what_sheet}_{plot_feature_data__['comboBox_stat_test']}_p-values.xlsx"),
             ) as writer:
                 for i in dict_for_future:
                     name_of_sheet = i
@@ -831,7 +821,7 @@ def box_and_whisker(
     try:
         # сохранение рисунка
         plt.savefig(
-            path_name_fiqure_folder + "\\" + safe_name(Name_fiqure) + ".png",
+            str(path_name_fiqure_folder / f"{safe_name(Name_fiqure)}.png"),
             dpi=600,
             format="png",
             transparent=plot_feature_data__["check_background"],
@@ -1022,7 +1012,7 @@ def calculate_table_for_p_val(df_list, dict_for_future):
                 # добавим в наш DataFrame
                 dop_DF.loc[col1, col2] = round(p_value, 4)
         df_list_stat.append(dop_DF)
-        df_list_stat[dict_for_future[i]] = df_list_stat[dict_for_future[i]].style.applymap(
+        df_list_stat[dict_for_future[i]] = df_list_stat[dict_for_future[i]].style.map(
             lambda x: "color:red" if x < 0.05 else "color:black",
         )
     return df_list_stat
@@ -1113,7 +1103,7 @@ def only_regplot(
 
     # сохраняем рисунок
     fig.savefig(
-        path_name_fiqure_folder_corr + "\\" + name_of_g + ".png",
+        str(path_name_fiqure_folder_corr / f"{name_of_g}.png"),
         dpi=600,
         format="png",
         bbox_inches="tight",
@@ -1175,18 +1165,13 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         name_of_file_ = str(i).replace("<", "less")
         name_of_file_ = name_of_file_.replace(">=", "more")
         plt.savefig(
-            path_name_fiqure_folder_corr_matrix + "\\" + safe_name(name_of_file_) + ".png",
+            str(path_name_fiqure_folder_corr_matrix / f"{safe_name(name_of_file_)}.png"),
             dpi=600,
             format="png",
         )
         # также экспортируем в excel
         corr.to_excel(
-            path_name_fiqure_folder_corr_matrix
-            + "\\"
-            + safe_name(name_of_file_)
-            + "_"
-            + plot_feature_data__["comboBox_correlation_figs_matrix"]
-            + ".xlsx",
+            str(path_name_fiqure_folder_corr_matrix / f"{safe_name(name_of_file_)}_{plot_feature_data__['comboBox_correlation_figs_matrix']}.xlsx"),
             engine="openpyxl",
         )
         plt.close()
@@ -1234,7 +1219,7 @@ def pairplot(new_df, hue_name_for_sheet, what_sheet, path):
         """
         new_df = new_df.rename(columns={hue_name_for_sheet: "index"})
 
-    figure_pairplot.savefig(path + safe_name(what_sheet) + ".png", dpi=600, format="png")
+    figure_pairplot.savefig(str(path / f"{safe_name(what_sheet)}.png"), dpi=600, format="png")
 
 
 ##############################################################
@@ -1274,7 +1259,7 @@ def jointplot(new_df, hue_name_for_sheet, what_sheet, path):
             **plot_kws,
         )
         figure_jointplot.savefig(
-            path + safe_name(what_sheet) + "__" + safe_name(x_) + "__" + safe_name(y_) + ".png",
+            str(path / f"{safe_name(what_sheet)}__{ safe_name(x_)}__{safe_name(y_)}.png"),
             dpi=600,
             format="png",
         )

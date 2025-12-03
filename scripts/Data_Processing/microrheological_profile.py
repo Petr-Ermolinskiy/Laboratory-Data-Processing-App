@@ -1,5 +1,6 @@
 import math
 from math import pi
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -58,7 +59,7 @@ def prifile_plot(self) -> None:
         dlg.exec()
         return
 
-    path = path + "//"
+    path_obj = Path(path)
     if (
         len(prifile_data__[2]) != 7
         or len(prifile_data__[3]) != 7
@@ -441,9 +442,9 @@ def prifile_plot(self) -> None:
 
     try:
         # сохранение графика в радиальных координатах
-        fig.savefig(path + I_index[0] + ".png", dpi=600, bbox_inches="tight")
+        fig.savefig(str(path_obj / f"{I_index[0]}.png"), dpi=600, bbox_inches="tight")
         # сохранение графика в линейных координатах
-        fig2.savefig(path + I_index[0] + "_line" + ".png", dpi=600, bbox_inches="tight")
+        fig2.savefig(str(path_obj / f"{I_index[0]}_line.png"), dpi=600, bbox_inches="tight")
         # очистим графики -- у меня почему-то без этого иногда графики при повторном построении накладывались
         ax.cla()
         ax2.cla()

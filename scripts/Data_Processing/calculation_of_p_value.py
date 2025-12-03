@@ -1,4 +1,6 @@
 # нужно для Пермутационных тестов, даже если светит серым
+from pathlib import Path
+
 import numba  # noqa: F401
 import numpy as np
 import pandas as pd
@@ -25,11 +27,11 @@ def p_value_calc_for_two_columns(self) -> None:
         dlg.exec()
         return
 
-    files = path + "//" + exel_name
+    files = Path(path) / exel_name
 
     try:
         # читаем exel файл - index_col=0,
-        df = pd.read_excel(files, sheet_name=sheet_name)
+        df = pd.read_excel(str(files), sheet_name=sheet_name)
         df[x_name] = df[x_name].map(lambda x: float(x))
         df[y_name] = df[y_name].map(lambda x: float(x))
     except Exception as e:

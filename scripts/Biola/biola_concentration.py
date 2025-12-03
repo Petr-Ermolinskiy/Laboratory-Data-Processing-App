@@ -1,5 +1,6 @@
 import re
 from io import StringIO
+from pathlib import Path
 
 import pandas as pd
 from PyPDF2 import PdfReader
@@ -17,9 +18,9 @@ def conentration_to_excel(self, path, file) -> None:
         dlg.exec()
         return
 
-    path += "//"
+    path_obj = Path(path)
     # читаем PDF файл
-    reader = PdfReader(path + file)
+    reader = PdfReader(str(path_obj / file))
 
     # читаем каждую страницу файла
     for i in range(len(reader.pages)):
@@ -72,7 +73,7 @@ def conentration_to_excel(self, path, file) -> None:
         dlg.exec()
         return
     try:
-        final_dataframe.to_excel(path + "platelets_concentration.xlsx")
+        final_dataframe.to_excel(str(path_obj / "platelets_concentration.xlsx"))
     except Exception as e:
         dlg.setWindowTitle("Biola - PDF")
         dlg.setText("Excel файл с концентрациями не сохранился.\n" + str(e))

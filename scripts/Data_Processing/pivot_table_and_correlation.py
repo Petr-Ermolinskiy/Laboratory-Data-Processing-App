@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 from PySide6.QtWidgets import QMessageBox
 
@@ -19,16 +21,16 @@ def pivot_or_melt_excel_file(self) -> None:
         dlg.setText("Не введен путь к excel файлу")
         dlg.exec()
         return
-    file = path + "//" + exel_name
+    file = Path(path) / exel_name
     try:
-        names = pd.ExcelFile(file).sheet_names
+        names = pd.ExcelFile(str(file)).sheet_names
     except Exception as e:
         dlg.setWindowTitle("Сводная таблица")
         dlg.setText("Нет такого файла или директории.\n" + str(e))
         dlg.exec()
         return
 
-    df = pd.read_excel(file, sheet_name=sheet_we_need)
+    df = pd.read_excel(str(file), sheet_name=sheet_we_need)
     df.columns = [str(i) for i in df.columns]
     # отсекаем всё то, что не нужно
     index_col = df.columns.get_loc(hue_name)
@@ -47,10 +49,10 @@ def pivot_or_melt_excel_file(self) -> None:
             ignore_nan = ignore_nan.dropna().reset_index(drop=True)
             pivot_df[j] = ignore_nan.copy()
         # сохраняем датафрейм
-        pivot_df.to_excel(path + "//" + "pivot_" + exel_name)
+        pivot_df.to_excel(str(Path(path) / f"pivot_{exel_name}"))
     elif convert_type == "из сырых в индексируемые":
         # сохраняем датафрейм - тут всё намного легче
-        df.melt().dropna().to_excel(path + "//" + "unpivot_" + exel_name)
+        df.melt().dropna().to_excel(str(Path(path) / f"unpivot_{exel_name}"))
     else:
         pass
 
@@ -78,9 +80,9 @@ def pivot_do_for_sheet(self) -> None:
         dlg.exec()
         return
 
-    files = path + "//" + exel_name
+    files = Path(path) / exel_name
     try:
-        names = pd.ExcelFile(files).sheet_names
+        names = pd.ExcelFile(str(files)).sheet_names
     except Exception as e:
         dlg.setWindowTitle("Сводная таблица")
         dlg.setText("Нет такого файла или директории.\n" + str(e))
@@ -124,9 +126,9 @@ def corr_for_sheet(self) -> None:
         dlg.exec()
         return
 
-    files = path + "//" + exel_name
+    files = Path(path) / exel_name
     try:
-        names = pd.ExcelFile(files).sheet_names
+        names = pd.ExcelFile(str(files)).sheet_names
     except Exception as e:
         dlg.setWindowTitle("Корреляционная матрица")
         dlg.setText("Нет такого файла или директории.\n" + str(e))
@@ -187,16 +189,16 @@ def describe_this_dataframe(
             gg = gg.astype(int)
             gg_error = gg_error.astype(int)
         final[column_name] = gg.apply(str) + "±" + gg_error.apply(str)
-        final.to_excel(path + "//" + str(what_sheet) + "_pivot_table.xlsx", engine="openpyxl")
+        final.to_excel(str(Path(path) / f"{what_sheet}_pivot_table.xlsx"), engine="openpyxl")
 
 
 def do_pivot(path, exel_name, what_sheet, hue_name, __round__, error, self):
     dlg = QMessageBox(self)
 
-    files = path + "//" + exel_name
+    files = Path(path) / exel_name
 
     # читаем exel файл - index_col=0,
-    df = pd.read_excel(files, sheet_name=what_sheet)
+    df = pd.read_excel(str(files), sheet_name=what_sheet)
     df.index.rename(None, inplace=True)
     # на всякий случай почистим
     df.columns = df.columns.str.replace("\\n", "\n", regex=False)
@@ -259,10 +261,10 @@ def corr_sheet(
 ):
     dlg = QMessageBox(self)
 
-    files = path + "//" + exel_name
+    files = Path(path) / exel_name
 
     # читаем exel файл - index_col=0,
-    df = pd.read_excel(files, sheet_name=what_sheet)
+    df = pd.read_excel(str(files), sheet_name=what_sheet)
     df.index = df.index.rename(None)
     # на всякий случай почистим
     df.columns = df.columns.str.replace("\\n", "\n", regex=False)
@@ -314,10 +316,10 @@ def corr_sheet(
     if color_or_not:
         (
             corr.style.background_gradient(cmap=__color_map__).to_excel(
-                path + "//" + what_sheet + "_corr_matrix.xlsx",
+                str(Path(path) / f"{what_sheet}_corr_matrix.xlsx"),
                 engine="openpyxl",
             )
         )
     else:
-        corr.to_excel(path + "//" + what_sheet + "_corr_matrix.xlsx", engine="openpyxl")
+        corr.to_excel(str(Path(path) / f"{what_sheet}_corr_matrix.xlsx"), engine="openpyxl")
     return "__"
