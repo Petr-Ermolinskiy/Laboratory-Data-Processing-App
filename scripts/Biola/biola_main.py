@@ -45,7 +45,7 @@ def biola_result(self) -> None:
             str(path_obj / name_of_file),
             sep=" ",
             engine="python",
-            error_bad_lines=False,
+            on_bad_lines="skip",
             index_col=False,
             header=None,
         )
@@ -60,6 +60,7 @@ def biola_result(self) -> None:
             engine="python",
             on_bad_lines="skip",
             index_col=False,
+            header=None,
             encoding="cp1251",
         )
         # добавляем индексы для того, чтобы в дальнейшем разделить данные
