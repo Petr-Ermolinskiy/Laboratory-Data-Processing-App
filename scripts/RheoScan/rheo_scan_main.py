@@ -34,9 +34,7 @@ def all_rheo_scan_level(self) -> None:
     # сохраняем общий массив
     if check[0] == 0 and self.ui.check_save_RheoScan_overall.isChecked():
         path_obj = Path(path)
-        with pd.ExcelWriter(
-            str(path_obj / f"overall_data_{path_obj.name}.xlsx")
-        ) as writer:
+        with pd.ExcelWriter(str(path_obj / f"overall_data_{path_obj.name}.xlsx")) as writer:
             all_and_all.T.reset_index().drop(columns=["index"]).to_excel(
                 writer,
                 sheet_name="All_data",
@@ -404,7 +402,11 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                         return [1, pd.DataFrame()]
 
                 # добавляем всё в датафрейм
-                new_row = pd.concat([data_css.loc[1], pd.Series(data=str(new_parameter))], axis=0).to_frame().T
+                new_row = (
+                    pd.concat([data_css.loc[1], pd.Series(data=str(new_parameter))], axis=0)
+                    .to_frame()
+                    .T
+                )
                 all_CSS = pd.concat([all_CSS, new_row], ignore_index=True)
 
             else:
@@ -465,10 +467,7 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             # убираем повторяющееся значение
             data_def = x.drop([1])
 
-            all_def = pd.concat([
-                                all_def,
-                                data_def[1].to_frame().T
-                            ], ignore_index=True)
+            all_def = pd.concat([all_def, data_def[1].to_frame().T], ignore_index=True)
 
             # Data Frame для имени
             newx = pd.read_table(
@@ -652,31 +651,34 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                 # добавим полученные данные в наши Data Frame
 
                 # For r_sq
-                new_row = pd.DataFrame([{
-                    "Patient": ttt,
-                    "r^2": r_squared,
-                    "nn": n,
-                    "Yield strength": yieldd,
-                    "Viscosity": viscosity,
-                    "Extrapol": extra,
-                    "Slope": sslope,
-                    "r^2-dop": r222,
-                }])
+                new_row = pd.DataFrame([
+                    {
+                        "Patient": ttt,
+                        "r^2": r_squared,
+                        "nn": n,
+                        "Yield strength": yieldd,
+                        "Viscosity": viscosity,
+                        "Extrapol": extra,
+                        "Slope": sslope,
+                        "r^2-dop": r222,
+                    }
+                ])
                 r_sq = pd.concat([r_sq, new_row], ignore_index=True)
 
                 # For r_sq_seq
-                new_row_seq = pd.DataFrame([{
-                    "Patient": ttt,
-                    "r^2": r_squared,
-                    "nn": n,
-                    "Yield strength": yieldd,
-                    "Viscosity": viscosity,
-                    "Extrapol": extra,
-                    "Slope": sslope,
-                    "r^2-dop": r222,
-                }])
+                new_row_seq = pd.DataFrame([
+                    {
+                        "Patient": ttt,
+                        "r^2": r_squared,
+                        "nn": n,
+                        "Yield strength": yieldd,
+                        "Viscosity": viscosity,
+                        "Extrapol": extra,
+                        "Slope": sslope,
+                        "r^2-dop": r222,
+                    }
+                ])
                 r_sq_seq = pd.concat([r_sq_seq, new_row_seq], ignore_index=True)
-
 
                 if n < agg_approx_data__[3] or r_squared > float(agg_approx_data__[2]):
                     if fiting_deform:
@@ -717,10 +719,9 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             # выбираем только значение с максимальным R^2 - находим индекс с максимальным R^2
             max_value_index = r_sq_seq["r^2"].idxmax()
             # по индексу максимального значения находим само значения и записываем всю строку в наш изначальный Data Frame
-            fit_res_deform = pd.concat([
-                                        fit_res_deform,
-                                        r_sq_seq.loc[[max_value_index]]
-                                    ], ignore_index=True)
+            fit_res_deform = pd.concat(
+                [fit_res_deform, r_sq_seq.loc[[max_value_index]]], ignore_index=True
+            )
 
         # обновляем индексы
         fit_res_deform = fit_res_deform.reset_index(drop=True)

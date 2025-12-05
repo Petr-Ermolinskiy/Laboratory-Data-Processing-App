@@ -389,7 +389,10 @@ def do_for_one_sheet(
                     df_list[dict_for_future[i]].to_excel(writer, sheet_name=name_of_sheet)
             #############
             with pd.ExcelWriter(
-                str(stat_path / f"{what_sheet}_{plot_feature_data__['comboBox_stat_test']}_p-values.xlsx"),
+                str(
+                    stat_path
+                    / f"{what_sheet}_{plot_feature_data__['comboBox_stat_test']}_p-values.xlsx"
+                ),
             ) as writer:
                 for i in dict_for_future:
                     name_of_sheet = i
@@ -1171,7 +1174,10 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         )
         # также экспортируем в excel
         corr.to_excel(
-            str(path_name_fiqure_folder_corr_matrix / f"{safe_name(name_of_file_)}_{plot_feature_data__['comboBox_correlation_figs_matrix']}.xlsx"),
+            str(
+                path_name_fiqure_folder_corr_matrix
+                / f"{safe_name(name_of_file_)}_{plot_feature_data__['comboBox_correlation_figs_matrix']}.xlsx"
+            ),
             engine="openpyxl",
         )
         plt.close()
@@ -1259,7 +1265,7 @@ def jointplot(new_df, hue_name_for_sheet, what_sheet, path):
             **plot_kws,
         )
         figure_jointplot.savefig(
-            str(path / f"{safe_name(what_sheet)}__{ safe_name(x_)}__{safe_name(y_)}.png"),
+            str(path / f"{safe_name(what_sheet)}__{safe_name(x_)}__{safe_name(y_)}.png"),
             dpi=600,
             format="png",
         )

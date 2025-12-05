@@ -296,7 +296,9 @@ class MainWindowProcessingApp(QMainWindow):
         self.ui.comboBox_excel_catplot.addItems(files)
 
     def catplot_add_sheets(self) -> None:
-        path_file = Path(self.ui.path_for_catplot.text()) / self.ui.comboBox_excel_catplot.currentText()
+        path_file = (
+            Path(self.ui.path_for_catplot.text()) / self.ui.comboBox_excel_catplot.currentText()
+        )
         try:
             sheets = pd.ExcelFile(str(path_file)).sheet_names
             self.ui.comboBox_excel_sheet_catplot.clear()  # удалить все элементы из combobox
@@ -305,7 +307,9 @@ class MainWindowProcessingApp(QMainWindow):
             self.ui.comboBox_excel_sheet_catplot.clear()  # удалить все элементы из combobox
 
     def catplot_add_x_y_hue(self) -> None:
-        path_file = Path(self.ui.path_for_catplot.text()) / self.ui.comboBox_excel_catplot.currentText()
+        path_file = (
+            Path(self.ui.path_for_catplot.text()) / self.ui.comboBox_excel_catplot.currentText()
+        )
         try:
             df = pd.read_excel(
                 str(path_file),
@@ -337,7 +341,9 @@ class MainWindowProcessingApp(QMainWindow):
         self.ui.comboBox_excel_dop_stat.addItems(files)
 
     def dop_stat_add_sheets(self) -> None:
-        path_file = Path(self.ui.path_for_dop_stat.text()) / self.ui.comboBox_excel_dop_stat.currentText()
+        path_file = (
+            Path(self.ui.path_for_dop_stat.text()) / self.ui.comboBox_excel_dop_stat.currentText()
+        )
         try:
             sheets = pd.ExcelFile(str(path_file)).sheet_names
             self.ui.comboBox_excel_sheet_dop_stat.clear()  # удалить все элементы из combobox
@@ -346,7 +352,9 @@ class MainWindowProcessingApp(QMainWindow):
             self.ui.comboBox_excel_sheet_dop_stat.clear()  # удалить все элементы из combobox
 
     def dop_stat_add_x_y_hue(self) -> None:
-        path_file = Path(self.ui.path_for_dop_stat.text()) / self.ui.comboBox_excel_dop_stat.currentText()
+        path_file = (
+            Path(self.ui.path_for_dop_stat.text()) / self.ui.comboBox_excel_dop_stat.currentText()
+        )
         try:
             df = pd.read_excel(
                 str(path_file),
@@ -384,7 +392,9 @@ class MainWindowProcessingApp(QMainWindow):
         path_file = Path(self.ui.path_for_plot.text()) / self.ui.comboBox.currentText()
         try:
             # прочитаем файл
-            df = pd.read_excel(str(path_file), sheet_name=self.ui.comboBox_figs_sheets.currentText())
+            df = pd.read_excel(
+                str(path_file), sheet_name=self.ui.comboBox_figs_sheets.currentText()
+            )
             self.ui.comboBox_2.clear()  # удалить все элементы из combobox
             self.ui.comboBox_2.addItems(df.columns)
         except:  # noqa: E722
@@ -401,7 +411,9 @@ class MainWindowProcessingApp(QMainWindow):
         self.ui.comboBox_pivot_table.addItems(files)
 
     def add_sheets_to_combobox_pivot(self) -> None:
-        path_file = Path(self.ui.path_for_pivot_table.text()) / self.ui.comboBox_pivot_table.currentText()
+        path_file = (
+            Path(self.ui.path_for_pivot_table.text()) / self.ui.comboBox_pivot_table.currentText()
+        )
         try:
             sheets = pd.ExcelFile(str(path_file)).sheet_names
             self.ui.comboBox_pivot_table_excel_sheet.clear()  # удалить все элементы из combobox
@@ -411,7 +423,9 @@ class MainWindowProcessingApp(QMainWindow):
 
     def add_columns_to_combobox_pivot(self) -> None:
         # прочитаем файл
-        path_file = Path(self.ui.path_for_pivot_table.text()) / self.ui.comboBox_pivot_table.currentText()
+        path_file = (
+            Path(self.ui.path_for_pivot_table.text()) / self.ui.comboBox_pivot_table.currentText()
+        )
         try:
             df = pd.read_excel(
                 str(path_file),

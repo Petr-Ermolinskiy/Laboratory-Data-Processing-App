@@ -191,7 +191,9 @@ def plot_catplot(self) -> None:
     path_obj = Path(path)
     try:
         cat_plot.savefig(
-            str(path_obj / f"{for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name))}.png"),
+            str(
+                path_obj / f"{for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name))}.png"
+            ),
             dpi=600,
         )
     except Exception as e:
@@ -202,7 +204,9 @@ def plot_catplot(self) -> None:
 
     try:
         file1 = open(
-            str(path_obj / f"{for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name))}.txt"),
+            str(
+                path_obj / f"{for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name))}.txt"
+            ),
             "w",
             encoding="utf-8",
         )
@@ -233,7 +237,10 @@ def plot_catplot(self) -> None:
         else:
             jjj = df.groupby([args["x"], args["hue"]])[args["y"]].count()
         jjj.rename("N").to_csv(
-            str(path_obj / f"{for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name))}_N_of_data.txt"),
+            str(
+                path_obj
+                / f"{for_save(str(x_name) + '_' + str(y_name) + '_' + str(hue_name))}_N_of_data.txt"
+            ),
             sep="\t",
             encoding="utf-8",
         )
