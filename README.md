@@ -53,16 +53,19 @@ python main.py
 python -m pytest -s tests/
 ```
 
-## Создание _exe_ файла
+## Создание _exe_ файла (Windows)
 
 Для создания _exe_ файла можно запустить скрипт [build_application/build.py](build_application/build.py) с изменением переменных в [config.json](config.json):
-- version": 
-- UPX_DIR": путь к [UPX](https://upx.github.io/), к примеру "C:/Users/petre/Desktop/Programes/upx-4.2.4-win64"
-- APP_NAME": имя приложения
-- MAIN_SCRIPT": входная точка приложения, т.е., "main.py"
-- ICON_PATH": доп. файлы для добавления в архив -- "app/style/logo.ico"
-- VERSION_JSON": доп. файлы для добавления в архив -- "version.json"
-- STYLE_QSS": доп. файлы для добавления в архив -- "app/style/style_dark.qss"
+
+| Параметр в JSON | Описание                                                                                           |
+| --------------- | -------------------------------------------------------------------------------------------------- |
+| version         | версия приложения                                                                                  |
+| UPX_DIR         | путь к [UPX](https://upx.github.io/), к примеру "C:/Users/petre/Desktop/Programes/upx-4.2.4-win64" |
+| APP_NAME        | имя приложения -- "Lab_App"                                                                        |
+| MAIN_SCRIPT     | входная точка приложения, т.е., "main.py"                                                          |
+| ICON_PATH       | доп. файлы для добавления в архив -- "app/style/logo.ico"                                          |
+| VERSION_JSON    | доп. файлы для добавления в архив -- "version.json"                                                |
+| STYLE_QSS       | доп. файлы для добавления в архив -- "app/style/style_dark.qss"                                    |
 
 Или же, чтобы создать _exe_-файл в Windows, можно выполнить следующую команду в терминале или командной строке:
 ```bash
