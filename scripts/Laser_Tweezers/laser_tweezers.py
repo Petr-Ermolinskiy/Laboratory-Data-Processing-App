@@ -1,8 +1,16 @@
+import sys
 from pathlib import Path
 
 import pandas as pd
+from loguru import logger
 from numpy import exp as np_exp
 from PySide6.QtWidgets import QMessageBox
+
+# ----------------------------------------------- #
+logger.remove()
+
+logger.add(sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO")
+# ----------------------------------------------- #
 
 
 def laser_tweezers(self) -> None:
@@ -64,14 +72,14 @@ def laser_tweezers(self) -> None:
                         all_FD = pd.concat([all_FD, add__add], ignore_index=True)
                     if kk[0:2] == "Gl" or kk[0:2] == "gl" or kk[0:2] == "Gl":
                         all_glass = pd.concat([all_glass, add__add], ignore_index=True)
-    # не обязательная вещь! не всегда нужна! привести имена папок к цифровому виду -- если имена содержат буквы, то надо изменить!
+    # не обязательная вещь! не всегда нужна! привести имена папок к INT -- если имена содержат буквы, то надо изменить!
     try:
         all_FA["Concentration"] = all_FA["Concentration"].astype(int)
         all_FD["Concentration"] = all_FD["Concentration"].astype(int)
         all_end["Concentration"] = all_end["Concentration"].astype(int)
         all_glass["Concentration"] = all_glass["Concentration"].astype(int)
     except Exception:
-        print("Нельзя перевести имена папок в формат int")
+        logger.info("Нельзя перевести имена папок в формат int")
     # приводим значения к float
     try:
         all_FA["Force, pN"] = all_FA["Force, pN"].astype(float)

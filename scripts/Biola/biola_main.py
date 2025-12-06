@@ -1,4 +1,4 @@
-# необходимые библиотеки
+import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -6,7 +6,14 @@ import numpy as np
 import pandas as pd
 import scipy as sc
 import seaborn as sns
+from loguru import logger
 from PySide6.QtWidgets import QMessageBox
+
+# ----------------------------------------------- #
+logger.remove()
+
+logger.add(sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO")
+# ----------------------------------------------- #
 
 
 def biola_result(self) -> None:
@@ -52,7 +59,7 @@ def biola_result(self) -> None:
         # добавляем индексы для того, чтобы в дальнейшем разделить данные
         name = dff.iat[1, 0] + " " + dff.iat[2, 0] + "мкМ" + " " + dff.iat[0, 0]
     except Exception:
-        print("Biola: кодировка на русском")
+        logger.info("Biola: кодировка на русском")
         # для кодировки на русском
         dff = pd.read_csv(
             str(path_obj / name_of_file),

@@ -1,3 +1,4 @@
+import gc
 import json
 import os
 import shutil
@@ -8,6 +9,7 @@ from pathlib import Path
 
 import pytest
 from compare_excel import compare_excel_files
+from loguru import logger
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QApplication, QMessageBox
 
@@ -17,6 +19,10 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 # главный класс MainWindowProcessingApp
 from main_window_processing_app import MainWindowProcessingApp
 
+# ----------------------------------------------- #
+logger.remove()
+
+logger.add(sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO")
 # ----------------------------------------------- #
 
 """
@@ -55,12 +61,13 @@ def app() -> QApplication:
     if application is None:
         application = QApplication(sys.argv)
     yield application
+    logger.info("------ application.quit()")
     # завершаем работу
     application.quit()
 
 
 @pytest.fixture(scope="session")
-def data_folder(pytestconfig) -> str:
+def data_folder() -> str:
     # сегодняшняя дата
     now_date = datetime.now().strftime("%Y-%m-%d")  # noqa: DTZ005
     # путь к новой папке
@@ -68,9 +75,19 @@ def data_folder(pytestconfig) -> str:
 
     # копируем папку с данными и в ней будем проводить тесты
     shutil.copytree(get_abs_path("data"), path_to_test_folder, dirs_exist_ok=True)
-    yield path_to_test_folder
+    return path_to_test_folder
 
-    time.sleep(2)
+
+@pytest.fixture(scope="session")
+def window() -> None:
+    window = MainWindowProcessingApp()
+    return window
+
+
+@pytest.fixture(scope="session", autouse=True)
+def cleanup_folder_after_app(pytestconfig, data_folder, app) -> None:
+    """Отдельный fixture для очистки папки ПОСЛЕ закрытия app."""
+    yield  # Все тесты выполняются здесь
 
     # завершаем работу -- проверим, не было ли ошибок
     session = pytestconfig.pluginmanager.get_plugin("terminalreporter")
@@ -78,17 +95,30 @@ def data_folder(pytestconfig) -> str:
         failed = len(session.stats.get("failed", []))
 
         if failed == 0:  # все тесты прошли
-            if os.path.exists(path_to_test_folder):
-                shutil.rmtree(path_to_test_folder)
-                print("✓ Все тесты прошли -- очистка папки...")
+            if os.path.exists(data_folder):
+                logger.info("✓ Все тесты прошли -- очистка папки...")
+
+                # Добавляем retry логику с принудительным закрытием файлов
+                max_retries = 5
+                for attempt in range(max_retries):
+                    try:
+                        shutil.rmtree(data_folder)
+                        logger.info(f"✓ Папка успешно удалена (попытка {attempt + 1})")
+                        break
+                    except PermissionError as e:
+                        if attempt == max_retries - 1:
+                            logger.error(
+                                f"✗ Не удалось удалить папку после {max_retries} попыток: {e}"
+                            )
+                            raise
+
+                        logger.warning(
+                            f"Попытка {attempt + 1}: файлы все еще открыты, жду 0.5 сек..."
+                        )
+                        time.sleep(0.5)
+                        gc.collect()  # Принудительный сбор мусора
         else:
-            print("✗ папка не будет пока очищена")
-
-
-@pytest.fixture(scope="session")
-def window() -> None:
-    window = MainWindowProcessingApp()
-    return window
+            logger.info("✗ Тесты упали - папка не будет очищена")
 
 
 """
@@ -101,6 +131,8 @@ def window() -> None:
 def test_rheo_scan_1_level(
     app: QApplication, window: MainWindowProcessingApp, data_folder: str
 ) -> None:
+    logger.info("--- RheoScan: level=1  ---")
+
     # выставляем нужные переменные
     window.ui.main_path.setText(str(Path(data_folder) / "RheoScan_1_level"))
     window.ui.spinBox_level.setValue(1)
@@ -110,12 +142,14 @@ def test_rheo_scan_1_level(
     # выполняем обработку данных
     window.RheoScan()
 
-    print("Все проверки для RheoScan прошли (level=1)")
+    logger.info("Все проверки для RheoScan прошли (level=1)")
 
 
 def test_rheo_scan_2_level(
     app: QApplication, window: MainWindowProcessingApp, data_folder: str
 ) -> None:
+    logger.info("--- RheoScan: level=2  ---")
+
     # выставляем нужные переменные
     window.ui.main_path.setText(str(Path(data_folder) / "RheoScan_2_level"))
     window.ui.spinBox_level.setValue(2)
@@ -134,10 +168,12 @@ def test_rheo_scan_2_level(
     # выполняем обработку данных
     window.RheoScan()
 
-    print("Все проверки для RheoScan прошли (level=2)")
+    logger.info("Все проверки для RheoScan прошли (level=2)")
 
 
 def test_lt(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+    logger.info("--- Лазерный пинцет  ---")
+
     # выставляем нужные переменные
     window.ui.path_for_LT.setText(str(Path(data_folder) / "Лазерный_пинцет"))
 
@@ -160,10 +196,12 @@ def test_lt(app: QApplication, window: MainWindowProcessingApp, data_folder: str
         msg = "Файлы отличаются"
         raise AssertionError(msg)
 
-    print("Все проверки для Лазерного пинцета прошли")
+    logger.info("Все проверки для Лазерного пинцета прошли")
 
 
 def test_biola(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+    logger.info("--- Biola  ---")
+
     # выставляем нужные переменные
     window.ui.path_for_biola.setText(str(Path(data_folder) / "Biola"))
     window.ui.comboBox_biola.setCurrentText("test.txt")
@@ -185,10 +223,12 @@ def test_biola(app: QApplication, window: MainWindowProcessingApp, data_folder: 
         msg = "Файлы отличаются"
         raise AssertionError(msg)
 
-    print("Все проверки для Биола прошли")
+    logger.info("Все проверки для Биола прошли")
 
 
 def test_figs(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+    logger.info("--- Обработка данных: графики  ---")
+
     # выставляем нужные переменные
     window.ui.path_for_plot.setText(str(Path(data_folder) / "Обработка_данных"))
     window.ui.comboBox.setCurrentText("test.xlsx")
@@ -211,10 +251,12 @@ def test_figs(app: QApplication, window: MainWindowProcessingApp, data_folder: s
     # выполняем обработку данных
     window.figures_and_stuff()
 
-    print("Все проверки для построения рисунков прошли")
+    logger.info("Все проверки для построения рисунков прошли")
 
 
 def test_profile(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+    logger.info("--- Обработка данных: микрореологический профиль  ---")
+
     # выставляем нужные переменные
     window.ui.path_for_profile.setText(str(Path(data_folder) / "Обработка_данных"))
 
@@ -224,10 +266,12 @@ def test_profile(app: QApplication, window: MainWindowProcessingApp, data_folder
     # выполняем обработку данных
     window.profile_of_patient()
 
-    print("Все проверки для построения микрореологического профиля прошли")
+    logger.info("Все проверки для построения микрореологического профиля прошли")
 
 
 def test_table(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+    logger.info("--- Обработка данных: сводные таблицы  ---")
+
     # выставляем нужные переменные
     window.ui.path_for_pivot_table.setText(str(Path(data_folder) / "Обработка_данных"))
     window.ui.comboBox_pivot_table.setCurrentText("test2.xlsx")
@@ -237,10 +281,12 @@ def test_table(app: QApplication, window: MainWindowProcessingApp, data_folder: 
     window.corr_table()
     window.pivot_or_melt()
 
-    print("Все проверки для сводных таблиц прошли")
+    logger.info("Все проверки для сводных таблиц прошли")
 
 
 def test_catplot(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+    logger.info("--- Обработка данных: catplot  ---")
+
     # выставляем нужные переменные
     window.ui.path_for_catplot.setText(str(Path(data_folder) / "Обработка_данных"))
     window.ui.comboBox_excel_catplot.setCurrentText("test.xlsx")
@@ -250,12 +296,13 @@ def test_catplot(app: QApplication, window: MainWindowProcessingApp, data_folder
     window.corr_table()
     window.pivot_or_melt()
 
-    print("Все проверки для сводных таблиц прошли")
+    logger.info("Все проверки для сводных таблиц прошли")
 
 
 def test_calc_stat_significance(
     app: QApplication, window: MainWindowProcessingApp, data_folder: str
 ) -> None:
+    logger.info("--- Обработка данных: стат.значимость  ---")
     # выставляем нужные переменные
     window.ui.path_for_dop_stat.setText(str(Path(data_folder) / "Обработка_данных"))
     window.ui.comboBox_excel_dop_stat.setCurrentText("test2.xlsx")
@@ -267,12 +314,14 @@ def test_calc_stat_significance(
 
     assert float(p_value) == 1.0, "p_value должен быть 1.0"
 
-    print("Все проверки по расчету стат.значимости прошли")
+    logger.info("Все проверки по расчету стат.значимости прошли")
 
 
 def test_rheo_scan_post_processing(
     app: QApplication, window: MainWindowProcessingApp, data_folder: str
 ) -> None:
+    logger.info("--- RheoScan: сводные таблицы  ---")
+
     # выставляем нужные переменные
     window.ui.path_for_RheoScan_describe.setText(str(Path(data_folder) / "RheoScan_2_level"))
 
@@ -295,4 +344,4 @@ def test_rheo_scan_post_processing(
         msg = "Файлы отличаются"
         raise AssertionError(msg)
 
-    print("Все проверки по обработки данных RheoScan прошли")
+    logger.info("Все проверки по обработки данных RheoScan прошли")
