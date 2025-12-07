@@ -41,6 +41,11 @@ pip install -r requirements.txt
 python main.py
 ```
 
+NOTE: для обновления UI используйте команду в терминале:
+```bash
+pyside6-uic app/ui/ui_main.ui -o app/ui/ui_main.py
+```
+
 ## Проблемы с установкой
 - Если при установке библиотек не устанавливается pandas, то скорее всего это из-за отсутствия 
 [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/ru/visual-cpp-build-tools/).

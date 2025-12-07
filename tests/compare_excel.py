@@ -1,7 +1,15 @@
 import os
+import sys
 
 import numpy as np
 import pandas as pd
+from loguru import logger
+
+# ----------------------------------------------- #
+logger.remove()
+
+logger.add(sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO")
+# ----------------------------------------------- #
 
 
 def compare_excel_files(  # noqa: C901, PLR0912, PLR0915
@@ -154,29 +162,51 @@ def compare_excel_files(  # noqa: C901, PLR0912, PLR0915
                                     sheet_comparison["data_match"] = False
 
                             except (ValueError, TypeError):
+                                logger.info(
+                                    "Сравнение данных в excel: сравнение через numpy не удалось"
+                                )
+
                                 # Резервный вариант: точное сравнение, если сравнение через numpy не удалось
                                 sheet_comparison["data_match"] = False
 
                             # Если данные не совпадают, находим конкретные различия
                             if not sheet_comparison["data_match"]:
-                                # Создаем маску различий
-                                diff_mask = ~(df1_reset == df2_reset)
+                                # Создаем маску различий -- заполняем изначально пропуски
+                                diff_mask = ~(df1_reset.fillna(-1) == df2_reset.fillna(-1))
                                 diff_locations = diff_mask.stack()  # noqa: PD013
                                 diff_cells = diff_locations[diff_locations].index.tolist()
 
                                 if diff_cells:
                                     sample_diffs = []
-                                    # Ограничиваем вывод 5 различиями для читаемости
-                                    for row_idx, col_name in diff_cells[:5]:
+                                    # Ограничиваем вывод 10 различиями для читаемости
+                                    for row_idx, col_name in diff_cells[:10]:
                                         val1 = df1_reset.at[row_idx, col_name]
                                         val2 = df2_reset.at[row_idx, col_name]
+
+                                        if (
+                                            isinstance(val1, float)
+                                            and isinstance(val2, float)
+                                            and np.allclose(
+                                                val1,
+                                                val2,
+                                                rtol=tolerance,
+                                                atol=tolerance,
+                                                equal_nan=True,
+                                            )
+                                        ):
+                                            continue
+
                                         sample_diffs.append({
                                             "row": row_idx,
                                             "column": col_name,
                                             "file1_value": val1,
                                             "file2_value": val2,
                                         })
-                                    sheet_comparison["differences"] = sample_diffs
+                                    # может быть такая ситуация, что нет ошибок, тогда все данные идентичны
+                                    if len(sample_diffs) == 0:
+                                        sheet_comparison["data_match"] = True
+                                    else:
+                                        sheet_comparison["differences"] = sample_diffs
 
                     except Exception as e:
                         sheet_comparison["data_match"] = False
@@ -213,7 +243,7 @@ def compare_excel_files(  # noqa: C901, PLR0912, PLR0915
         # Сохраняем общий результат сравнения всех листов
         comparison_result["sheets_match"] = all_sheets_match
 
-        return all_sheets_match, comparison_result
+        return all_sheets_match, comparison_result  # noqa: TRY300
 
     except Exception as e:
         # Обработка ошибок при чтении файлов или сравнении

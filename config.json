@@ -1,5 +1,5 @@
 {
-  "version": "v3.6.3",
+  "version": "v3.6.4",
   "UPX_DIR": "C:/Users/petre/Desktop/Programes/upx-4.2.4-win64",
   "APP_NAME": "Lab_App",
   "MAIN_SCRIPT": "main.py",

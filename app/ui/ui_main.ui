@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>728</width>
-    <height>760</height>
+    <height>834</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -124,7 +124,7 @@
        <string notr="true">/*background-color: rgb(249, 249, 249);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tabWidgetPage1">
        <attribute name="title">
@@ -3841,8 +3841,8 @@ border-radius: 17px;
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>669</width>
-                       <height>528</height>
+                       <width>582</width>
+                       <height>577</height>
                       </rect>
                      </property>
                      <layout class="QGridLayout" name="gridLayout_12">
@@ -8286,8 +8286,8 @@ border-radius: 10px;</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>623</width>
-                 <height>209</height>
+                 <width>633</width>
+                 <height>206</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -11004,7 +11004,7 @@ border-radius: 10px;</string>
          <string notr="true">color: rgb(128, 160, 165);</string>
         </property>
         <property name="text">
-         <string>3.6.3</string>
+         <string>_._._</string>
         </property>
        </widget>
       </item>
@@ -11162,12 +11162,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>378</x>
-     <y>367</y>
+     <x>157</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
-     <x>639</x>
-     <y>374</y>
+     <x>157</x>
+     <y>111</y>
     </hint>
    </hints>
   </connection>
@@ -11178,12 +11178,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>378</x>
-     <y>367</y>
+     <x>157</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
-     <x>457</x>
-     <y>437</y>
+     <x>157</x>
+     <y>111</y>
     </hint>
    </hints>
   </connection>
@@ -11194,12 +11194,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>378</x>
-     <y>367</y>
+     <x>157</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
-     <x>467</x>
-     <y>471</y>
+     <x>157</x>
+     <y>111</y>
     </hint>
    </hints>
   </connection>
@@ -11210,8 +11210,8 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>394</x>
-     <y>460</y>
+     <x>429</x>
+     <y>478</y>
     </hint>
     <hint type="destinationlabel">
      <x>131</x>
@@ -11230,8 +11230,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>173</y>
     </hint>
     <hint type="destinationlabel">
-     <x>687</x>
-     <y>181</y>
+     <x>665</x>
+     <y>188</y>
     </hint>
    </hints>
   </connection>
@@ -11246,8 +11246,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>173</y>
     </hint>
     <hint type="destinationlabel">
-     <x>534</x>
-     <y>181</y>
+     <x>512</x>
+     <y>184</y>
     </hint>
    </hints>
   </connection>
@@ -11294,8 +11294,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>326</y>
     </hint>
     <hint type="destinationlabel">
-     <x>349</x>
-     <y>422</y>
+     <x>345</x>
+     <y>425</y>
     </hint>
    </hints>
   </connection>
@@ -11310,8 +11310,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>326</y>
     </hint>
     <hint type="destinationlabel">
-     <x>349</x>
-     <y>473</y>
+     <x>345</x>
+     <y>461</y>
     </hint>
    </hints>
   </connection>
@@ -11326,8 +11326,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>326</y>
     </hint>
     <hint type="destinationlabel">
-     <x>142</x>
-     <y>432</y>
+     <x>172</x>
+     <y>431</y>
     </hint>
    </hints>
   </connection>
@@ -11342,8 +11342,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>326</y>
     </hint>
     <hint type="destinationlabel">
-     <x>142</x>
-     <y>482</y>
+     <x>172</x>
+     <y>461</y>
     </hint>
    </hints>
   </connection>
@@ -11358,7 +11358,7 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>326</y>
     </hint>
     <hint type="destinationlabel">
-     <x>693</x>
+     <x>677</x>
      <y>421</y>
     </hint>
    </hints>
@@ -11374,8 +11374,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>326</y>
     </hint>
     <hint type="destinationlabel">
-     <x>693</x>
-     <y>472</y>
+     <x>677</x>
+     <y>457</y>
     </hint>
    </hints>
   </connection>
@@ -11390,8 +11390,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>326</y>
     </hint>
     <hint type="destinationlabel">
-     <x>486</x>
-     <y>431</y>
+     <x>524</x>
+     <y>423</y>
     </hint>
    </hints>
   </connection>
@@ -11406,8 +11406,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>326</y>
     </hint>
     <hint type="destinationlabel">
-     <x>486</x>
-     <y>482</y>
+     <x>632</x>
+     <y>461</y>
     </hint>
    </hints>
   </connection>
@@ -11434,12 +11434,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>345</x>
-     <y>538</y>
+     <x>445</x>
+     <y>532</y>
     </hint>
     <hint type="destinationlabel">
-     <x>490</x>
-     <y>538</y>
+     <x>487</x>
+     <y>532</y>
     </hint>
    </hints>
   </connection>
@@ -11450,8 +11450,8 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>345</x>
-     <y>538</y>
+     <x>445</x>
+     <y>532</y>
     </hint>
     <hint type="destinationlabel">
      <x>607</x>
@@ -11466,12 +11466,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>147</x>
-     <y>234</y>
+     <x>204</x>
+     <y>255</y>
     </hint>
     <hint type="destinationlabel">
-     <x>199</x>
-     <y>265</y>
+     <x>193</x>
+     <y>280</y>
     </hint>
    </hints>
   </connection>
@@ -11482,12 +11482,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>147</x>
-     <y>234</y>
+     <x>204</x>
+     <y>255</y>
     </hint>
     <hint type="destinationlabel">
-     <x>290</x>
-     <y>265</y>
+     <x>286</x>
+     <y>280</y>
     </hint>
    </hints>
   </connection>
@@ -11578,8 +11578,8 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>399</x>
-     <y>304</y>
+     <x>657</x>
+     <y>313</y>
     </hint>
     <hint type="destinationlabel">
      <x>125</x>
@@ -11614,8 +11614,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>301</y>
     </hint>
     <hint type="destinationlabel">
-     <x>128</x>
-     <y>253</y>
+     <x>158</x>
+     <y>275</y>
     </hint>
    </hints>
   </connection>
@@ -11630,8 +11630,8 @@ background-color: rgba(255, 255, 255, 0);</string>
      <y>306</y>
     </hint>
     <hint type="destinationlabel">
-     <x>473</x>
-     <y>250</y>
+     <x>657</x>
+     <y>275</y>
     </hint>
    </hints>
   </connection>
@@ -11658,12 +11658,12 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>115</x>
-     <y>375</y>
+     <x>137</x>
+     <y>366</y>
     </hint>
     <hint type="destinationlabel">
-     <x>103</x>
-     <y>380</y>
+     <x>125</x>
+     <y>370</y>
     </hint>
    </hints>
   </connection>
@@ -11674,12 +11674,28 @@ background-color: rgba(255, 255, 255, 0);</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>328</x>
-     <y>359</y>
+     <x>157</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
-     <x>501</x>
-     <y>391</y>
+     <x>157</x>
+     <y>111</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_sort_or_not</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>check_sort_or_not_ascending</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>227</x>
+     <y>712</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>712</y>
     </hint>
    </hints>
   </connection>

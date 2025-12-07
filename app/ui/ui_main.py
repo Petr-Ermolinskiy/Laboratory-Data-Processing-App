@@ -6,20 +6,8 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (
-    QCoreApplication,
-    QDate,
-    QMetaObject,
-    QRect,
-    QSize,
-    Qt,
-)
-from PySide6.QtGui import (
-    QBrush,
-    QColor,
-    QFont,
-    QPalette,
-)
+from PySide6.QtCore import QCoreApplication, QDate, QMetaObject, QRect, QSize, Qt
+from PySide6.QtGui import QBrush, QColor, QFont, QPalette
 from PySide6.QtWidgets import (
     QAbstractItemView,
     QAbstractScrollArea,
@@ -52,7 +40,7 @@ class Ui_MainWindow:
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(728, 760)
+        MainWindow.resize(728, 834)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -110,7 +98,9 @@ class Ui_MainWindow:
         self.btn_save_exel_csv.setFont(font1)
         self.btn_save_exel_csv.setAutoFillBackground(False)
         self.btn_save_exel_csv.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
         self.btn_save_exel_csv.setFlat(False)
 
@@ -174,7 +164,7 @@ class Ui_MainWindow:
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(
-            self.comboBox_RheoScan_path_save.sizePolicy().hasHeightForWidth(),
+            self.comboBox_RheoScan_path_save.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_RheoScan_path_save.setSizePolicy(sizePolicy1)
         self.comboBox_RheoScan_path_save.setFont(font4)
@@ -185,7 +175,7 @@ class Ui_MainWindow:
         self.check_approx_deform_raw_data.setObjectName("check_approx_deform_raw_data")
         self.check_approx_deform_raw_data.setEnabled(False)
         sizePolicy.setHeightForWidth(
-            self.check_approx_deform_raw_data.sizePolicy().hasHeightForWidth(),
+            self.check_approx_deform_raw_data.sizePolicy().hasHeightForWidth()
         )
         self.check_approx_deform_raw_data.setSizePolicy(sizePolicy)
         self.check_approx_deform_raw_data.setFont(font3)
@@ -361,7 +351,7 @@ class Ui_MainWindow:
         sizePolicy5.setHeightForWidth(self.dfd.sizePolicy().hasHeightForWidth())
         self.dfd.setSizePolicy(sizePolicy5)
         self.dfd.setStyleSheet(
-            "QFrame#dfd{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#dfd{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_5 = QVBoxLayout(self.dfd)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
@@ -394,7 +384,7 @@ class Ui_MainWindow:
         sizePolicy.setHeightForWidth(self.qwe.sizePolicy().hasHeightForWidth())
         self.qwe.setSizePolicy(sizePolicy)
         self.qwe.setStyleSheet(
-            "QFrame#qwe{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#qwe{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_2 = QVBoxLayout(self.qwe)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -478,7 +468,9 @@ class Ui_MainWindow:
         self.btn_sort_data_RheoScan.setFont(font1)
         self.btn_sort_data_RheoScan.setAutoFillBackground(False)
         self.btn_sort_data_RheoScan.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
         self.btn_sort_data_RheoScan.setFlat(False)
 
@@ -553,7 +545,7 @@ class Ui_MainWindow:
         sizePolicy.setHeightForWidth(self.hjgf.sizePolicy().hasHeightForWidth())
         self.hjgf.setSizePolicy(sizePolicy)
         self.hjgf.setStyleSheet(
-            "QFrame#hjgf{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#hjgf{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_32 = QVBoxLayout(self.hjgf)
         self.verticalLayout_32.setObjectName("verticalLayout_32")
@@ -605,7 +597,7 @@ class Ui_MainWindow:
         self.spinBox_check_name_rheoscan.setObjectName("spinBox_check_name_rheoscan")
         self.spinBox_check_name_rheoscan.setEnabled(False)
         sizePolicy1.setHeightForWidth(
-            self.spinBox_check_name_rheoscan.sizePolicy().hasHeightForWidth(),
+            self.spinBox_check_name_rheoscan.sizePolicy().hasHeightForWidth()
         )
         self.spinBox_check_name_rheoscan.setSizePolicy(sizePolicy1)
         self.spinBox_check_name_rheoscan.setFont(font3)
@@ -625,7 +617,7 @@ class Ui_MainWindow:
         self.vbn.setSizePolicy(sizePolicy)
         self.vbn.setAutoFillBackground(False)
         self.vbn.setStyleSheet(
-            "QFrame#vbn{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}\n",
+            "QFrame#vbn{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}\n"
         )
         self.verticalLayout_4 = QVBoxLayout(self.vbn)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
@@ -761,7 +753,7 @@ class Ui_MainWindow:
         self.comboBox_biola_concentration = QComboBox(self.tab_5)
         self.comboBox_biola_concentration.setObjectName("comboBox_biola_concentration")
         sizePolicy11.setHeightForWidth(
-            self.comboBox_biola_concentration.sizePolicy().hasHeightForWidth(),
+            self.comboBox_biola_concentration.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_biola_concentration.setSizePolicy(sizePolicy11)
         self.comboBox_biola_concentration.setFont(font4)
@@ -777,7 +769,7 @@ class Ui_MainWindow:
         sizePolicy11.setHeightForWidth(self.vvvv.sizePolicy().hasHeightForWidth())
         self.vvvv.setSizePolicy(sizePolicy11)
         self.vvvv.setStyleSheet(
-            "QFrame#vvvv{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#vvvv{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.vvv = QHBoxLayout(self.vvvv)
         self.vvv.setObjectName("vvv")
@@ -865,7 +857,7 @@ class Ui_MainWindow:
         sizePolicy11.setHeightForWidth(self.lll.sizePolicy().hasHeightForWidth())
         self.lll.setSizePolicy(sizePolicy11)
         self.lll.setStyleSheet(
-            "QFrame#lll{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#lll{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.horizontalLayout_44 = QHBoxLayout(self.lll)
         self.horizontalLayout_44.setObjectName("horizontalLayout_44")
@@ -963,7 +955,7 @@ class Ui_MainWindow:
         sizePolicy11.setHeightForWidth(self.plp.sizePolicy().hasHeightForWidth())
         self.plp.setSizePolicy(sizePolicy11)
         self.plp.setStyleSheet(
-            "QFrame#plp{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#plp{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_30 = QVBoxLayout(self.plp)
         self.verticalLayout_30.setObjectName("verticalLayout_30")
@@ -1067,7 +1059,7 @@ class Ui_MainWindow:
         self.comboBox_Biola_language.addItem("")
         self.comboBox_Biola_language.setObjectName("comboBox_Biola_language")
         sizePolicy14.setHeightForWidth(
-            self.comboBox_Biola_language.sizePolicy().hasHeightForWidth(),
+            self.comboBox_Biola_language.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_Biola_language.setSizePolicy(sizePolicy14)
         self.comboBox_Biola_language.setFont(font4)
@@ -1088,7 +1080,9 @@ class Ui_MainWindow:
         self.btn_biola.setObjectName("btn_biola")
         self.btn_biola.setFont(font4)
         self.btn_biola.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.horizontalLayout_74.addWidget(self.btn_biola)
@@ -1097,7 +1091,9 @@ class Ui_MainWindow:
         self.btn_biola_concentration.setObjectName("btn_biola_concentration")
         self.btn_biola_concentration.setFont(font4)
         self.btn_biola_concentration.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.horizontalLayout_74.addWidget(self.btn_biola_concentration)
@@ -1263,7 +1259,9 @@ class Ui_MainWindow:
         self.btn_LT.setObjectName("btn_LT")
         self.btn_LT.setFont(font4)
         self.btn_LT.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.horizontalLayout_149.addWidget(self.btn_LT)
@@ -1290,7 +1288,7 @@ class Ui_MainWindow:
         sizePolicy15.setHeightForWidth(self.asd.sizePolicy().hasHeightForWidth())
         self.asd.setSizePolicy(sizePolicy15)
         self.asd.setStyleSheet(
-            "QFrame#asd{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#asd{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_26 = QVBoxLayout(self.asd)
         self.verticalLayout_26.setObjectName("verticalLayout_26")
@@ -1400,7 +1398,7 @@ class Ui_MainWindow:
         sizePolicy15.setHeightForWidth(self.hhhhh.sizePolicy().hasHeightForWidth())
         self.hhhhh.setSizePolicy(sizePolicy15)
         self.hhhhh.setStyleSheet(
-            "QFrame#hhhhh{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#hhhhh{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_27 = QVBoxLayout(self.hhhhh)
         self.verticalLayout_27.setObjectName("verticalLayout_27")
@@ -1503,7 +1501,7 @@ class Ui_MainWindow:
         sizePolicy10.setHeightForWidth(self.hhhhh_exp.sizePolicy().hasHeightForWidth())
         self.hhhhh_exp.setSizePolicy(sizePolicy10)
         self.hhhhh_exp.setStyleSheet(
-            "QFrame#hhhhh_exp{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#hhhhh_exp{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_47 = QVBoxLayout(self.hhhhh_exp)
         self.verticalLayout_47.setObjectName("verticalLayout_47")
@@ -1763,7 +1761,7 @@ class Ui_MainWindow:
         sizePolicy5.setHeightForWidth(self.nmn.sizePolicy().hasHeightForWidth())
         self.nmn.setSizePolicy(sizePolicy5)
         self.nmn.setStyleSheet(
-            "QFrame#nmn{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#nmn{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_13 = QVBoxLayout(self.nmn)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
@@ -1852,7 +1850,7 @@ class Ui_MainWindow:
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 669, 528))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 582, 577))
         self.gridLayout_12 = QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_12.setObjectName("gridLayout_12")
         self.label_2 = QLabel(self.scrollAreaWidgetContents_2)
@@ -1978,7 +1976,7 @@ class Ui_MainWindow:
         self.comboBox_color_pal_points.addItem("")
         self.comboBox_color_pal_points.setObjectName("comboBox_color_pal_points")
         sizePolicy5.setHeightForWidth(
-            self.comboBox_color_pal_points.sizePolicy().hasHeightForWidth(),
+            self.comboBox_color_pal_points.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_color_pal_points.setSizePolicy(sizePolicy5)
         self.comboBox_color_pal_points.setFont(font4)
@@ -2296,7 +2294,7 @@ class Ui_MainWindow:
         self.check_sort_or_not_ascending.setObjectName("check_sort_or_not_ascending")
         self.check_sort_or_not_ascending.setEnabled(False)
         sizePolicy20.setHeightForWidth(
-            self.check_sort_or_not_ascending.sizePolicy().hasHeightForWidth(),
+            self.check_sort_or_not_ascending.sizePolicy().hasHeightForWidth()
         )
         self.check_sort_or_not_ascending.setSizePolicy(sizePolicy20)
         self.check_sort_or_not_ascending.setFont(font4)
@@ -2554,7 +2552,7 @@ class Ui_MainWindow:
         self.spinBox_size_stat_znachimost = QSpinBox(self.tab_4)
         self.spinBox_size_stat_znachimost.setObjectName("spinBox_size_stat_znachimost")
         sizePolicy1.setHeightForWidth(
-            self.spinBox_size_stat_znachimost.sizePolicy().hasHeightForWidth(),
+            self.spinBox_size_stat_znachimost.sizePolicy().hasHeightForWidth()
         )
         self.spinBox_size_stat_znachimost.setSizePolicy(sizePolicy1)
         self.spinBox_size_stat_znachimost.setFont(font4)
@@ -2582,7 +2580,7 @@ class Ui_MainWindow:
         self.comboBox_box_plot_sign_stat_znachimost.addItem("")
         self.comboBox_box_plot_sign_stat_znachimost.addItem("")
         self.comboBox_box_plot_sign_stat_znachimost.setObjectName(
-            "comboBox_box_plot_sign_stat_znachimost",
+            "comboBox_box_plot_sign_stat_znachimost"
         )
         self.comboBox_box_plot_sign_stat_znachimost.setEnabled(True)
         self.comboBox_box_plot_sign_stat_znachimost.setFont(font4)
@@ -2689,7 +2687,7 @@ class Ui_MainWindow:
         self.comboBox_correlation_figs_matrix.addItem("")
         self.comboBox_correlation_figs_matrix.setObjectName("comboBox_correlation_figs_matrix")
         sizePolicy5.setHeightForWidth(
-            self.comboBox_correlation_figs_matrix.sizePolicy().hasHeightForWidth(),
+            self.comboBox_correlation_figs_matrix.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_correlation_figs_matrix.setSizePolicy(sizePolicy5)
         self.comboBox_correlation_figs_matrix.setFont(font4)
@@ -2724,10 +2722,10 @@ class Ui_MainWindow:
         self.comboBox_correlation_color_map_for_figs.addItem("")
         self.comboBox_correlation_color_map_for_figs.addItem("")
         self.comboBox_correlation_color_map_for_figs.setObjectName(
-            "comboBox_correlation_color_map_for_figs",
+            "comboBox_correlation_color_map_for_figs"
         )
         sizePolicy5.setHeightForWidth(
-            self.comboBox_correlation_color_map_for_figs.sizePolicy().hasHeightForWidth(),
+            self.comboBox_correlation_color_map_for_figs.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_correlation_color_map_for_figs.setSizePolicy(sizePolicy5)
         self.comboBox_correlation_color_map_for_figs.setFont(font4)
@@ -3152,7 +3150,7 @@ class Ui_MainWindow:
         self.spinBox_point_size_for_pairplot = QSpinBox(self.tab_11)
         self.spinBox_point_size_for_pairplot.setObjectName("spinBox_point_size_for_pairplot")
         sizePolicy1.setHeightForWidth(
-            self.spinBox_point_size_for_pairplot.sizePolicy().hasHeightForWidth(),
+            self.spinBox_point_size_for_pairplot.sizePolicy().hasHeightForWidth()
         )
         self.spinBox_point_size_for_pairplot.setSizePolicy(sizePolicy1)
         self.spinBox_point_size_for_pairplot.setFont(font4)
@@ -3238,7 +3236,7 @@ class Ui_MainWindow:
         self.comboBox_color_jointplot.addItem("")
         self.comboBox_color_jointplot.setObjectName("comboBox_color_jointplot")
         sizePolicy1.setHeightForWidth(
-            self.comboBox_color_jointplot.sizePolicy().hasHeightForWidth(),
+            self.comboBox_color_jointplot.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_color_jointplot.setSizePolicy(sizePolicy1)
         self.comboBox_color_jointplot.setFont(font4)
@@ -3263,7 +3261,7 @@ class Ui_MainWindow:
         self.comboBox_pairplot_jointplot.addItem("")
         self.comboBox_pairplot_jointplot.setObjectName("comboBox_pairplot_jointplot")
         sizePolicy1.setHeightForWidth(
-            self.comboBox_pairplot_jointplot.sizePolicy().hasHeightForWidth(),
+            self.comboBox_pairplot_jointplot.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_pairplot_jointplot.setSizePolicy(sizePolicy1)
         self.comboBox_pairplot_jointplot.setFont(font4)
@@ -3290,7 +3288,7 @@ class Ui_MainWindow:
         self.comboBox_style_jointplot.addItem("")
         self.comboBox_style_jointplot.setObjectName("comboBox_style_jointplot")
         sizePolicy1.setHeightForWidth(
-            self.comboBox_style_jointplot.sizePolicy().hasHeightForWidth(),
+            self.comboBox_style_jointplot.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_style_jointplot.setSizePolicy(sizePolicy1)
         self.comboBox_style_jointplot.setFont(font4)
@@ -3312,7 +3310,7 @@ class Ui_MainWindow:
         self.spinBox_point_size_for_jointplot = QSpinBox(self.tab_13)
         self.spinBox_point_size_for_jointplot.setObjectName("spinBox_point_size_for_jointplot")
         sizePolicy1.setHeightForWidth(
-            self.spinBox_point_size_for_jointplot.sizePolicy().hasHeightForWidth(),
+            self.spinBox_point_size_for_jointplot.sizePolicy().hasHeightForWidth()
         )
         self.spinBox_point_size_for_jointplot.setSizePolicy(sizePolicy1)
         self.spinBox_point_size_for_jointplot.setFont(font4)
@@ -3346,7 +3344,7 @@ class Ui_MainWindow:
         self.comboBox_correlation_one_parameter.addItem("")
         self.comboBox_correlation_one_parameter.setObjectName("comboBox_correlation_one_parameter")
         sizePolicy5.setHeightForWidth(
-            self.comboBox_correlation_one_parameter.sizePolicy().hasHeightForWidth(),
+            self.comboBox_correlation_one_parameter.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_correlation_one_parameter.setSizePolicy(sizePolicy5)
         self.comboBox_correlation_one_parameter.setFont(font4)
@@ -3367,7 +3365,7 @@ class Ui_MainWindow:
 
         self.doubleSpinBox_size_for_one_correlation = QDoubleSpinBox(self.tab_14)
         self.doubleSpinBox_size_for_one_correlation.setObjectName(
-            "doubleSpinBox_size_for_one_correlation",
+            "doubleSpinBox_size_for_one_correlation"
         )
         self.doubleSpinBox_size_for_one_correlation.setFont(font4)
         self.doubleSpinBox_size_for_one_correlation.setDecimals(1)
@@ -3419,7 +3417,7 @@ class Ui_MainWindow:
 
         self.check_corr_one_parameter_plot_sep_wind = QCheckBox(self.tab_14)
         self.check_corr_one_parameter_plot_sep_wind.setObjectName(
-            "check_corr_one_parameter_plot_sep_wind",
+            "check_corr_one_parameter_plot_sep_wind"
         )
         self.check_corr_one_parameter_plot_sep_wind.setFont(font4)
         self.check_corr_one_parameter_plot_sep_wind.setChecked(True)
@@ -3436,7 +3434,9 @@ class Ui_MainWindow:
         self.btn_plot_and_save_figs.setObjectName("btn_plot_and_save_figs")
         self.btn_plot_and_save_figs.setFont(font4)
         self.btn_plot_and_save_figs.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.gridLayout_4.addWidget(self.btn_plot_and_save_figs, 1, 0, 1, 1)
@@ -3575,7 +3575,7 @@ class Ui_MainWindow:
         self.comboBox_profile_lin_spin.setObjectName("comboBox_profile_lin_spin")
         self.comboBox_profile_lin_spin.setEnabled(True)
         sizePolicy1.setHeightForWidth(
-            self.comboBox_profile_lin_spin.sizePolicy().hasHeightForWidth(),
+            self.comboBox_profile_lin_spin.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_profile_lin_spin.setSizePolicy(sizePolicy1)
         self.comboBox_profile_lin_spin.setFont(font4)
@@ -3614,7 +3614,7 @@ class Ui_MainWindow:
         self.tyt.setSizePolicy(sizePolicy11)
         self.tyt.setFont(font4)
         self.tyt.setStyleSheet(
-            "QFrame#tyt{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#tyt{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.horizontalLayout_9 = QHBoxLayout(self.tyt)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
@@ -3678,7 +3678,7 @@ class Ui_MainWindow:
         sizePolicy11.setHeightForWidth(self.opo.sizePolicy().hasHeightForWidth())
         self.opo.setSizePolicy(sizePolicy11)
         self.opo.setStyleSheet(
-            "QFrame#opo{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#opo{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.horizontalLayout_6 = QHBoxLayout(self.opo)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
@@ -3743,7 +3743,9 @@ class Ui_MainWindow:
         self.btn_plot_and_save_profile.setObjectName("btn_plot_and_save_profile")
         self.btn_plot_and_save_profile.setFont(font4)
         self.btn_plot_and_save_profile.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.horizontalLayout_155.addWidget(self.btn_plot_and_save_profile)
@@ -3763,7 +3765,7 @@ class Ui_MainWindow:
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 623, 209))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 633, 206))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.tableWidget = QTableWidget(self.scrollAreaWidgetContents)
@@ -3944,7 +3946,7 @@ class Ui_MainWindow:
         self.yyy = QFrame(self.tab_8)
         self.yyy.setObjectName("yyy")
         self.yyy.setStyleSheet(
-            "QFrame#yyy{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#yyy{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_40 = QVBoxLayout(self.yyy)
         self.verticalLayout_40.setObjectName("verticalLayout_40")
@@ -4008,7 +4010,9 @@ class Ui_MainWindow:
         self.btn_plot_and_save_pivot_table.setObjectName("btn_plot_and_save_pivot_table")
         self.btn_plot_and_save_pivot_table.setFont(font4)
         self.btn_plot_and_save_pivot_table.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.verticalLayout_40.addWidget(self.btn_plot_and_save_pivot_table)
@@ -4022,7 +4026,7 @@ class Ui_MainWindow:
         self.ppp = QFrame(self.tab_8)
         self.ppp.setObjectName("ppp")
         self.ppp.setStyleSheet(
-            "QFrame#ppp{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#ppp{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_42 = QVBoxLayout(self.ppp)
         self.verticalLayout_42.setObjectName("verticalLayout_42")
@@ -4054,7 +4058,7 @@ class Ui_MainWindow:
         self.comboBox_correlation_person_or_not.addItem("")
         self.comboBox_correlation_person_or_not.setObjectName("comboBox_correlation_person_or_not")
         sizePolicy5.setHeightForWidth(
-            self.comboBox_correlation_person_or_not.sizePolicy().hasHeightForWidth(),
+            self.comboBox_correlation_person_or_not.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_correlation_person_or_not.setSizePolicy(sizePolicy5)
         self.comboBox_correlation_person_or_not.setFont(font4)
@@ -4112,7 +4116,7 @@ class Ui_MainWindow:
         self.comboBox_correlation_color_map.addItem("")
         self.comboBox_correlation_color_map.setObjectName("comboBox_correlation_color_map")
         sizePolicy5.setHeightForWidth(
-            self.comboBox_correlation_color_map.sizePolicy().hasHeightForWidth(),
+            self.comboBox_correlation_color_map.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_correlation_color_map.setSizePolicy(sizePolicy5)
         self.comboBox_correlation_color_map.setFont(font4)
@@ -4129,7 +4133,9 @@ class Ui_MainWindow:
         self.btn_plot_and_save_corr_table.setObjectName("btn_plot_and_save_corr_table")
         self.btn_plot_and_save_corr_table.setFont(font4)
         self.btn_plot_and_save_corr_table.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.verticalLayout_42.addWidget(self.btn_plot_and_save_corr_table)
@@ -4143,7 +4149,7 @@ class Ui_MainWindow:
         self.ppp_2 = QFrame(self.tab_8)
         self.ppp_2.setObjectName("ppp_2")
         self.ppp_2.setStyleSheet(
-            "QFrame#ppp_2{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}",
+            "QFrame#ppp_2{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
         self.verticalLayout_53 = QVBoxLayout(self.ppp_2)
         self.verticalLayout_53.setObjectName("verticalLayout_53")
@@ -4172,7 +4178,7 @@ class Ui_MainWindow:
         self.comboBox_index_data_or_raw.addItem("")
         self.comboBox_index_data_or_raw.setObjectName("comboBox_index_data_or_raw")
         sizePolicy5.setHeightForWidth(
-            self.comboBox_index_data_or_raw.sizePolicy().hasHeightForWidth(),
+            self.comboBox_index_data_or_raw.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_index_data_or_raw.setSizePolicy(sizePolicy5)
         self.comboBox_index_data_or_raw.setFont(font4)
@@ -4185,7 +4191,9 @@ class Ui_MainWindow:
         self.btn_save_pivot_or_melt.setObjectName("btn_save_pivot_or_melt")
         self.btn_save_pivot_or_melt.setFont(font4)
         self.btn_save_pivot_or_melt.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.verticalLayout_53.addWidget(self.btn_save_pivot_or_melt)
@@ -4520,7 +4528,7 @@ class Ui_MainWindow:
         self.comboBox_catplot_SD_or_not.addItem("")
         self.comboBox_catplot_SD_or_not.setObjectName("comboBox_catplot_SD_or_not")
         sizePolicy14.setHeightForWidth(
-            self.comboBox_catplot_SD_or_not.sizePolicy().hasHeightForWidth(),
+            self.comboBox_catplot_SD_or_not.sizePolicy().hasHeightForWidth()
         )
         self.comboBox_catplot_SD_or_not.setSizePolicy(sizePolicy14)
         self.comboBox_catplot_SD_or_not.setFont(font4)
@@ -4622,7 +4630,7 @@ class Ui_MainWindow:
 
         self.check_stat_znachimost_catplot_inside_subgroup = QCheckBox(self.tab_10)
         self.check_stat_znachimost_catplot_inside_subgroup.setObjectName(
-            "check_stat_znachimost_catplot_inside_subgroup",
+            "check_stat_znachimost_catplot_inside_subgroup"
         )
         self.check_stat_znachimost_catplot_inside_subgroup.setEnabled(True)
         self.check_stat_znachimost_catplot_inside_subgroup.setFont(font4)
@@ -4692,7 +4700,9 @@ class Ui_MainWindow:
         self.btn_plot_and_save_catplot.setObjectName("btn_plot_and_save_catplot")
         self.btn_plot_and_save_catplot.setFont(font4)
         self.btn_plot_and_save_catplot.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.gridLayout_15.addWidget(self.btn_plot_and_save_catplot, 6, 0, 1, 1)
@@ -4773,11 +4783,13 @@ class Ui_MainWindow:
 
         self.btn_RheoScan_describe_file_or_files = QPushButton(self.tab_12)
         self.btn_RheoScan_describe_file_or_files.setObjectName(
-            "btn_RheoScan_describe_file_or_files",
+            "btn_RheoScan_describe_file_or_files"
         )
         self.btn_RheoScan_describe_file_or_files.setFont(font4)
         self.btn_RheoScan_describe_file_or_files.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.verticalLayout_44.addWidget(self.btn_RheoScan_describe_file_or_files)
@@ -4978,7 +4990,9 @@ class Ui_MainWindow:
         self.btn_dop_stat_calc.setObjectName("btn_dop_stat_calc")
         self.btn_dop_stat_calc.setFont(font4)
         self.btn_dop_stat_calc.setStyleSheet(
-            "background-color: rgba(128, 160, 165, 50);\nborder: 3px solid rgb(128, 160, 165);\nborder-radius: 10px;",
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
         )
 
         self.verticalLayout_45.addWidget(self.btn_dop_stat_calc)
@@ -5023,7 +5037,7 @@ class Ui_MainWindow:
         self.comboBox_style_sheet.setObjectName("comboBox_style_sheet")
         self.comboBox_style_sheet.setFont(font10)
         self.comboBox_style_sheet.setStyleSheet(
-            "color: rgb(128, 160, 165);\nbackground-color: rgba(255, 255, 255, 0);",
+            "color: rgb(128, 160, 165);\nbackground-color: rgba(255, 255, 255, 0);"
         )
 
         self.gridLayout.addWidget(self.comboBox_style_sheet, 1, 1, 1, 1, Qt.AlignRight)
@@ -5102,8 +5116,7 @@ class Ui_MainWindow:
         QWidget.setTabOrder(self.del_hue, self.spinBox_points_corrFIGS)
         QWidget.setTabOrder(self.spinBox_points_corrFIGS, self.doubleSpinBox_corr_figs_fontscale)
         QWidget.setTabOrder(
-            self.doubleSpinBox_corr_figs_fontscale,
-            self.check_sort_or_not_corr_figs,
+            self.doubleSpinBox_corr_figs_fontscale, self.check_sort_or_not_corr_figs
         )
         QWidget.setTabOrder(self.check_sort_or_not_corr_figs, self.check_setka)
         QWidget.setTabOrder(self.check_setka, self.name_of_corr_matrix)
@@ -5127,8 +5140,7 @@ class Ui_MainWindow:
         QWidget.setTabOrder(self.spinBox_pivot_table, self.comboBox_sd_or_se_pivot)
         QWidget.setTabOrder(self.comboBox_sd_or_se_pivot, self.comboBox_correlation_person_or_not)
         QWidget.setTabOrder(
-            self.comboBox_correlation_person_or_not,
-            self.check_color_for_corr_pivot,
+            self.comboBox_correlation_person_or_not, self.check_color_for_corr_pivot
         )
         QWidget.setTabOrder(self.check_color_for_corr_pivot, self.comboBox_correlation_color_map)
         QWidget.setTabOrder(self.comboBox_correlation_color_map, self.path_for_catplot)
@@ -5152,13 +5164,13 @@ class Ui_MainWindow:
 
         self.retranslateUi(MainWindow)
         self.check_stat_znachimost_catplot.toggled.connect(
-            self.comboBox_stat_test_catplot.setEnabled,
+            self.comboBox_stat_test_catplot.setEnabled
         )
         self.check_stat_znachimost_catplot.toggled.connect(
-            self.comboBox_catplot_stat_formatt.setEnabled,
+            self.comboBox_catplot_stat_formatt.setEnabled
         )
         self.check_stat_znachimost_catplot.toggled.connect(
-            self.comboBox_catplot_mult_stat.setEnabled,
+            self.comboBox_catplot_mult_stat.setEnabled
         )
         self.check_biola_plot_figs.toggled.connect(self.plp.setEnabled)
         self.check_box_figs_all_sheets.toggled.connect(self.comboBox_figs_sheets.setDisabled)
@@ -5182,7 +5194,7 @@ class Ui_MainWindow:
         self.check_stat_znachimost.toggled.connect(self.STAT_znachimost_order_box_plot.setEnabled)
         self.check_stat_znachimost.toggled.connect(self.comboBox_stat_test.setEnabled)
         self.check_stat_znachimost.toggled.connect(
-            self.comboBox_box_plot_sign_stat_znachimost.setEnabled,
+            self.comboBox_box_plot_sign_stat_znachimost.setEnabled
         )
         self.check_stat_znachimost.toggled.connect(self.comboBox_alter_hep.setEnabled)
         self.check_corr_one_parameter.toggled.connect(self.check_corr_figs.setDisabled)
@@ -5191,13 +5203,14 @@ class Ui_MainWindow:
         self.check_corr_one_parameter.toggled.connect(self.check_box_pairplot.setDisabled)
         self.check_corr_one_parameter.toggled.connect(self.check_jointplot.setDisabled)
         self.check_corr_one_parameter_only_one.toggled.connect(
-            self.check_corr_one_parameter_plot_sep_wind.setEnabled,
+            self.check_corr_one_parameter_plot_sep_wind.setEnabled
         )
         self.check_stat_znachimost_catplot.toggled.connect(
-            self.check_stat_znachimost_catplot_inside_subgroup.setEnabled,
+            self.check_stat_znachimost_catplot_inside_subgroup.setEnabled
         )
+        self.check_sort_or_not.toggled.connect(self.check_sort_or_not_ascending.setEnabled)
 
-        self.Lab_stuff.setCurrentIndex(0)
+        self.Lab_stuff.setCurrentIndex(3)
         self.tabWidget_2.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
 
@@ -5211,14 +5224,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u0437\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 \u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435 \u0433\u0440\u0430\u0444\u0438\u043a\u043e\u0432",
                 None,
-            ),
+            )
         )
         self.btn_save_exel_csv.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0418\u0437\u0432\u043b\u0435\u0447\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0438\u0437 \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0444\u0430\u0439\u043b\u044b",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path.setToolTip(
@@ -5226,7 +5239,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041f\u043e \u0434\u0430\u043d\u043d\u043e\u043c\u0443 \u043f\u0443\u0442\u0438 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c 3 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438 (agg, stress, deform), \u0435\u0441\u043b\u0438 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a 1</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path.setText(
@@ -5234,7 +5247,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0430\u043c\u0438",
                 None,
-            ),
+            )
         )
         self.main_path.setText("")
         self.comboBox_RheoScan_path_save.setItemText(
@@ -5259,7 +5272,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0441\u044b\u0440\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u043f\u043e deform",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.label_20.setToolTip(
@@ -5267,7 +5280,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f \u0434\u043b\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 \u043b\u0438\u043d\u0435\u0439\u043d\u043e\u0439 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label_20.setText(
@@ -5275,7 +5288,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 '<html><head/><body><p align="center">Max \u0432\u0440\u0435\u043c\u044f \u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u044f \u043b\u0438\u043d\u0435\u0439\u043d\u044b\u0445 \u0430\u0433\u0440\u0435\u0433\u0430\u0442\u043e\u0432</p></body></html>',
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.label_21.setToolTip(
@@ -5283,7 +5296,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f \u0434\u043b\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 \u043b\u0438\u043d\u0435\u0439\u043d\u043e\u0439 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label_21.setText(
@@ -5291,7 +5304,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 '<html><head/><body><p align="center">Max \u0432\u0440\u0435\u043c\u044f \u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u044f 3D \u0430\u0433\u0440\u0435\u0433\u0430\u0442\u043e\u0432</p></body></html>',
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.label_23.setToolTip(
@@ -5299,7 +5312,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 '<html><head/><body><p>\u0421\u043a\u043e\u043b\u044c\u043a\u043e \u0442\u043e\u0447\u0435\u043a \u0442\u043e\u0447\u043d\u043e \u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0434\u043b\u044f \u0430\u043f\u0440\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438. \u0415\u0441\u043b\u0438 R<span style=" vertical-align:super;">2</span> \u0431\u0443\u0434\u0435\u0442 \u043c\u0435\u043d\u044c\u0448\u0435, \u0447\u0435\u043c \u0437\u0430\u044f\u0432\u043b\u0435\u043d\u043d\u044b\u0439, \u043d\u043e \u0442\u043e\u0447\u0435\u043a \u0443\u0436\u0435 \u043c\u0435\u043d\u044c\u0448\u0435, \u0442\u043e \u0434\u0430\u043b\u044c\u043d\u0435\u0439\u0448\u0435\u0433\u043e \u0443\u043c\u0435\u043d\u044c\u0448\u0435\u043d\u0438\u044f \u043d\u0435 \u0431\u0443\u0434\u0435\u0442. </p></body></html>',
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label_23.setText(
@@ -5307,7 +5320,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>R-\u043a\u0432\u0430\u0434\u0440\u0430\u0442 \u0434\u043b\u044f \u043e\u0442\u0441\u0435\u0447\u043a\u0438</p></body></html>",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.label_18.setToolTip(
@@ -5315,7 +5328,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 '<html><head/><body><p>\u0421\u043a\u043e\u043b\u044c\u043a\u043e \u0442\u043e\u0447\u0435\u043a \u0442\u043e\u0447\u043d\u043e \u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0434\u043b\u044f \u0430\u043f\u0440\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438. \u0415\u0441\u043b\u0438 R<span style=" vertical-align:super;">2</span> \u0431\u0443\u0434\u0435\u0442 \u043c\u0435\u043d\u044c\u0448\u0435, \u0447\u0435\u043c \u0437\u0430\u044f\u0432\u043b\u0435\u043d\u043d\u044b\u0439, \u043d\u043e \u0442\u043e\u0447\u0435\u043a \u0443\u0436\u0435 \u043c\u0435\u043d\u044c\u0448\u0435, \u0442\u043e \u0434\u0430\u043b\u044c\u043d\u0435\u0439\u0448\u0435\u0433\u043e \u0443\u043c\u0435\u043d\u044c\u0448\u0435\u043d\u0438\u044f \u043d\u0435 \u0431\u0443\u0434\u0435\u0442. </p></body></html>',
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label_18.setText(
@@ -5323,42 +5336,42 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u043e\u043b-\u0432\u043e \u0442\u043e\u0447\u0435\u043a \u0434\u043b\u044f \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438</p></body></html>",
                 None,
-            ),
+            )
         )
         self.check_approx_agg.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0410\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u044f \u0434\u043b\u044f agg",
                 None,
-            ),
+            )
         )
         self.check_figs_for_agg.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a\u0438",
                 None,
-            ),
+            )
         )
         self.check_approx_deform.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0410\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u044f \u0434\u043b\u044f deform",
                 None,
-            ),
+            )
         )
         self.check_for_deform.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a\u0438",
                 None,
-            ),
+            )
         )
         self.check_stat_for_column.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430 \u043f\u043e \u0441\u0442\u043e\u043b\u0431\u0446\u0430\u043c",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.vibros_delete.setToolTip(
@@ -5366,7 +5379,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0412\u044b\u0431\u0440\u043e\u0441\u044b \u0443\u0431\u0438\u0440\u0430\u044e\u0442\u0441\u044f \u043f\u043e \u0438\u043d\u0442\u0435\u0440\u043a\u0430\u043d\u0442\u0438\u043b\u044c\u043d\u043e\u043c\u0443 \u0440\u0430\u0437\u043c\u0430\u0445\u0443 -- \u0441\u043c. \u0438\u043d\u0444\u0443 \u043f\u043e \u0442\u043e\u043c\u0443, \u0447\u0442\u043e \u0442\u0430\u043a\u043e\u0435 \u0432\u044b\u0431\u0440\u043e\u0441\u044b</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.vibros_delete.setText(
@@ -5374,14 +5387,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0423\u0431\u0440\u0430\u0442\u044c \u0432\u044b\u0431\u0440\u043e\u0441\u044b",
                 None,
-            ),
+            )
         )
         self.label_11.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0438\u043d\u0442\u0435\u0440\u043a\u0432\u0430\u0440\u0442\u0438\u043b\u044c\u043d\u044b\u0445 \u0440\u0430\u0437\u043c\u0430\u0445\u0430",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.btn_sort_data_RheoScan.setToolTip(
@@ -5389,7 +5402,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 '<html><head/><body><p><span style=" color:#ffffff;">\u0415\u0441\u043b\u0438 \u0432\u0441\u0435 \u0444\u0430\u0439\u043b\u044b txt \u0432 \u043e\u0434\u043d\u043e\u0439 \u043f\u0430\u043f\u043a\u0435, \u0442\u043e \u0434\u0430\u043d\u043d\u044b\u0439 \u043c\u0435\u0442\u043e\u0434 \u0440\u0430\u0441\u0441\u043e\u0440\u0442\u0438\u0440\u0443\u0435\u0442 \u0438\u0445 \u043f\u043e \u043f\u0430\u043f\u043a\u0430\u043c agg, stress, deform. \u0423\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a \u0442\u0443\u0442 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f.</span></p></body></html>',
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.btn_sort_data_RheoScan.setText(
@@ -5397,7 +5410,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0441\u0441\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043d\u0435\u0441\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u043f\u043e \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0430\u043c",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.label.setToolTip(
@@ -5405,7 +5418,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0415\u0441\u043b\u0438 \u0443 \u0432\u0430\u0441 \u0435\u0441\u0442\u044c \u043f\u0430\u043f\u043a\u0430 \u0441 \u043f\u0430\u043f\u043a\u0430\u043c\u0438, \u0432 \u043a\u0430\u0436\u0434\u043e\u0439 \u0438\u0437 \u043a\u043e\u0442\u043e\u0440\u044b\u0445 \u0435\u0441\u0442\u044c 3 \u043f\u0430\u043f\u043a\u0438, \u0442\u043e \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a \u0434\u043e\u043b\u0436\u0435\u043d \u0431\u044b\u0442\u044c 2, \u0438 \u0442.\u0434.</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label.setText(
@@ -5413,28 +5426,28 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a           ",
                 None,
-            ),
+            )
         )
         self.check_save_exel.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c excel \u0444\u0430\u0439\u043b",
                 None,
-            ),
+            )
         )
         self.check_save_csv.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c csv \u0444\u0430\u0439\u043b(\u044b)",
                 None,
-            ),
+            )
         )
         self.check_save_RheoScan_overall.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0441\u0432\u043e\u0434\u043d\u0443\u044e \u0442\u0430\u0431\u043b\u0438\u0446\u0443",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_separator.setToolTip(
@@ -5442,7 +5455,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u042d\u0442\u043e \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u0434\u043b\u044f \u0438\u043c\u0435\u043d\u0438 \u0444\u0430\u0439\u043b\u043e\u0432. \u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0435\u0441\u043b\u0438 \u0444\u0430\u0439\u043b\u044b \u043d\u0430\u0437\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u043c \u043e\u0431\u0440\u0430\u0437\u043e\u043c: &quot;NAME-##-#&quot;, \u0442\u043e \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c &quot;-&quot;.</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_separator.setText(
@@ -5450,7 +5463,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u0434\u0430\u043d\u043d\u044b\u0445",
                 None,
-            ),
+            )
         )
         self.separator_for_data.setText("")
         self.check_name_rheoscan.setText(
@@ -5458,7 +5471,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u043e\u0434\u043d\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0438\u043c\u0435\u043d\u0438",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.label_19.setToolTip(
@@ -5466,7 +5479,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0415\u0441\u043b\u0438 \u0443 \u0432\u0430\u0441 \u0435\u0441\u0442\u044c \u043f\u0430\u043f\u043a\u0430 \u0441 \u043f\u0430\u043f\u043a\u0430\u043c\u0438, \u0432 \u043a\u0430\u0436\u0434\u043e\u0439 \u0438\u0437 \u043a\u043e\u0442\u043e\u0440\u044b\u0445 \u0435\u0441\u0442\u044c 3 \u043f\u0430\u043f\u043a\u0438, \u0442\u043e \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a \u0434\u043e\u043b\u0436\u0435\u043d \u0431\u044b\u0442\u044c 2, \u0438 \u0442.\u0434.</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label_19.setText(
@@ -5474,16 +5487,16 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u043e\u0437\u0438\u0446\u0438\u044f \u0438\u043c\u0435\u043d\u0438",
                 None,
-            ),
+            )
         )
         self.check_agg.setText(
-            QCoreApplication.translate("MainWindow", "\u041f\u0430\u043f\u043a\u0430 agg", None),
+            QCoreApplication.translate("MainWindow", "\u041f\u0430\u043f\u043a\u0430 agg", None)
         )
         self.check_stress.setText(
-            QCoreApplication.translate("MainWindow", "\u041f\u0430\u043f\u043a\u0430 stress", None),
+            QCoreApplication.translate("MainWindow", "\u041f\u0430\u043f\u043a\u0430 stress", None)
         )
         self.check_deform.setText(
-            QCoreApplication.translate("MainWindow", "\u041f\u0430\u043f\u043a\u0430 deform", None),
+            QCoreApplication.translate("MainWindow", "\u041f\u0430\u043f\u043a\u0430 deform", None)
         )
         # if QT_CONFIG(tooltip)
         self.check_dop_CSS_parameter.setToolTip(
@@ -5491,7 +5504,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u042d\u0442\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438 \u043a\u0440\u0438\u0432\u043e\u0439 CSS - \u0441\u043c. \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u0432 \u043e\u0431\u0443\u0447\u0430\u044e\u0449\u0435\u043c \u0432\u0438\u0434\u0435\u043e",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.check_dop_CSS_parameter.setText(
@@ -5499,7 +5512,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u043e\u043f. \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 CSS",
                 None,
-            ),
+            )
         )
         self.Lab_stuff.setTabText(
             self.Lab_stuff.indexOf(self.tabWidgetPage1),
@@ -5510,7 +5523,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 \u0444\u0430\u0439\u043b\u043e\u043c",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.path_for_biola.setToolTip(
@@ -5518,7 +5531,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 \u0444\u0430\u0439\u043b\u043e\u043c txt, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0431\u044b\u043b \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d \u0438\u0437 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b \u0434\u043b\u044f \u0411\u0438\u043e\u043b\u044b</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.path_for_biola.setText("")
@@ -5528,7 +5541,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0424\u0430\u0439\u043b \u0434\u043e\u043b\u0436\u0435\u043d \u0431\u044b\u0442\u044c \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d \u0438\u0437 \u043e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0439 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b \u0411\u0438\u043e\u043b\u044b.",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_3.setText(
@@ -5536,14 +5549,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0444\u0430\u0439\u043b\u0430 \u0434\u043b\u044f \u0430\u0433\u0440\u0435\u0433\u0430\u0442\u043e\u0433\u0440\u0430\u043c\u043c (txt)",
                 None,
-            ),
+            )
         )
         self.lb_path_16.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0444\u0430\u0439\u043b\u0430 \u0434\u043b\u044f \u043a\u043e\u043d\u0446\u0435\u043d\u0442\u0440\u0430\u0446\u0438\u0438 \u0442\u0440\u043e\u043c\u0431\u043e\u0446\u0438\u0442\u043e\u0432 (pdf)",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.label_15.setToolTip(
@@ -5551,7 +5564,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u042d\u0442\u043e \u0444\u0438\u043b\u044c\u0442\u0440 \u0421\u0430\u0432\u0438\u0446\u043a\u043e\u0433\u043e-\u0413\u043e\u043b\u0435\u044f</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label_15.setText(
@@ -5559,17 +5572,15 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u043b\u0438\u043d\u0430 \u043e\u043a\u043d\u0430 \u0434\u043b\u044f \u0441\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u044f \u043a\u0440\u0438\u0432\u044b\u0445",
                 None,
-            ),
+            )
         )
         self.label_16.setText(
-            QCoreApplication.translate("MainWindow", "\u0411\u043e\u0440\u043d", None),
+            QCoreApplication.translate("MainWindow", "\u0411\u043e\u0440\u043d", None)
         )
         self.label_17.setText(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0424\u043b\u0443\u043a\u0442\u0430\u0446\u0438\u0438",
-                None,
-            ),
+                "MainWindow", "\u0424\u043b\u0443\u043a\u0442\u0430\u0446\u0438\u0438", None
+            )
         )
         # if QT_CONFIG(tooltip)
         self.label_12.setToolTip(
@@ -5577,7 +5588,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u042d\u0442\u043e \u0444\u0438\u043b\u044c\u0442\u0440 \u0421\u0430\u0432\u0438\u0446\u043a\u043e\u0433\u043e-\u0413\u043e\u043b\u0435\u044f</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label_12.setText(
@@ -5585,38 +5596,36 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u043b\u0438\u043d\u0430 \u043e\u043a\u043d\u0430 \u0434\u043b\u044f \u0441\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u044f \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u043d\u044b\u0445",
                 None,
-            ),
+            )
         )
         self.label_13.setText(
-            QCoreApplication.translate("MainWindow", "\u0411\u043e\u0440\u043d", None),
+            QCoreApplication.translate("MainWindow", "\u0411\u043e\u0440\u043d", None)
         )
         self.label_14.setText(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0424\u043b\u0443\u043a\u0442\u0430\u0446\u0438\u0438",
-                None,
-            ),
+                "MainWindow", "\u0424\u043b\u0443\u043a\u0442\u0430\u0446\u0438\u0438", None
+            )
         )
         self.check_biola_plot_figs.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041d\u0430\u0447\u0435\u0440\u0442\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a\u0438",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_13.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0414\u043b\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u043e\u0432",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_9.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_color_pal_box_10.setToolTip(
@@ -5624,7 +5633,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u0431\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0435\u0439 \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_color_pal_box_10.setText(
@@ -5632,7 +5641,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0438",
                 None,
-            ),
+            )
         )
         self.comboBox_Biola_SD_or.setItemText(
             0,
@@ -5668,18 +5677,16 @@ class Ui_MainWindow:
         )
 
         self.check_setka_biola.setText(
-            QCoreApplication.translate("MainWindow", "\u0421\u0435\u0442\u043a\u0430", None),
+            QCoreApplication.translate("MainWindow", "\u0421\u0435\u0442\u043a\u0430", None)
         )
         self.lb_color_pal_box_11.setText(
-            QCoreApplication.translate("MainWindow", "\u042f\u0437\u044b\u043a  ", None),
+            QCoreApplication.translate("MainWindow", "\u042f\u0437\u044b\u043a  ", None)
         )
         self.comboBox_Biola_language.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "Rus", None),
+            0, QCoreApplication.translate("MainWindow", "Rus", None)
         )
         self.comboBox_Biola_language.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "Eng", None),
+            1, QCoreApplication.translate("MainWindow", "Eng", None)
         )
 
         self.btn_biola.setText(
@@ -5687,14 +5694,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u0437\u0432\u043b\u0435\u0447\u044c \u0434\u0430\u043d\u043d\u044b\u0435, \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0440\u0438\u0441\u0443\u043d\u043a\u0438 \u0438 excel \u0444\u0430\u0439\u043b",
                 None,
-            ),
+            )
         )
         self.btn_biola_concentration.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0418\u0437\u0432\u043b\u0435\u0447\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0438\u0437 \u0444\u0430\u0439\u043b\u0430 pdf",
                 None,
-            ),
+            )
         )
         self.Lab_stuff.setTabText(
             self.Lab_stuff.indexOf(self.tab_5),
@@ -5706,7 +5713,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430 \u0434\u043b\u044f \u0434\u043e\u043f. \u043f\u0443\u0447\u043a\u0430 \u0441\u0435\u0439\u0447\u0430\u0441 \u0434\u0435\u043b\u0430\u0435\u0442\u0441\u044f \u0442\u043e\u043b\u044c\u043a\u043e \u044d\u043a\u0441\u043f\u043e\u043d\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0439, \u043e\u0434\u043d\u0430\u043a\u043e \u043c\u043e\u0436\u043d\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u0438 \u043b\u0438\u043d\u0435\u0439\u043d\u0443\u044e",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest_13.setText(
@@ -5714,14 +5721,12 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430 \u0434\u043b\u044f \u0434\u043e\u043f. \u043f\u0443\u0447\u043a\u0430",
                 None,
-            ),
+            )
         )
         self.comboBox_LT_calibration.setItemText(
             0,
             QCoreApplication.translate(
-                "MainWindow",
-                "\u041b\u0438\u043d\u0435\u0439\u043d\u0430\u044f",
-                None,
+                "MainWindow", "\u041b\u0438\u043d\u0435\u0439\u043d\u0430\u044f", None
             ),
         )
         self.comboBox_LT_calibration.setItemText(
@@ -5739,7 +5744,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u0439 \u0435\u0441\u0442\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438 \u0441 \u0432\u0438\u0434\u0435\u043e AVI</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_4.setText(
@@ -5747,7 +5752,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0430\u043c\u0438",
                 None,
-            ),
+            )
         )
         self.path_for_LT.setText("")
         # if QT_CONFIG(tooltip)
@@ -5756,7 +5761,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0415\u0441\u043b\u0438 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438 \u043d\u0430\u0437\u044b\u0432\u0430\u044e\u0442\u0441\u044f '1-Name1-Name2', \u0442\u043e \u043c\u043e\u0436\u043d\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c '-' \u0438 \u043f\u043e\u0437\u0438\u0446\u0438\u044e '2', \u0442\u043e\u0433\u0434\u0430 \u0431\u0443\u0434\u0435\u0442 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043e \u0442\u043e\u043b\u044c\u043a\u043e 'Name1'.</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_13.setText(
@@ -5764,7 +5769,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u0434\u043b\u044f \u0438\u043c\u0435\u043d\u0438 \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a",
                 None,
-            ),
+            )
         )
         self.sep_for_LT.setText("")
         # if QT_CONFIG(tooltip)
@@ -5773,7 +5778,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0415\u0441\u043b\u0438 \u0432\u044b\u0431\u0440\u0430\u043d \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c '-' \u0434\u043b\u044f \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a '1-Name1-Name2', \u0442\u043e \u043f\u0440\u0438 \u043f\u043e\u0437\u0438\u0446\u0438\u0438 2 \u0431\u0443\u0434\u0435\u0442 Name1</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_15.setText(
@@ -5781,7 +5786,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u043e\u0437\u0438\u0446\u0438\u044f, \u043d\u0430 \u043a\u043e\u0442\u043e\u0440\u043e\u0439 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0438\u043d\u0442\u0435\u0440\u0438\u0441\u0443\u044e\u0449\u0435\u0435 \u0438\u043c\u044f",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_14.setToolTip(
@@ -5789,7 +5794,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0435\u0441\u043b\u0438 \u0443 \u0432\u0430\u0441 \u0432\u0441\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0441\u0438\u043b \u0432 \u0432\u0438\u0434\u0435 &quot;FA-18.9.avi&quot;, \u0442\u043e \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u0435\u043c \u0431\u0443\u0434\u0435\u0442 &quot;-&quot;. \u0422\u0430\u043a \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0434\u043b\u044f \u0432\u0441\u0435\u0445. </p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_14.setText(
@@ -5797,7 +5802,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u043c\u0435\u0436\u0434\u0443 \u0441\u0438\u043b\u043e\u0439 \u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435\u043c",
                 None,
-            ),
+            )
         )
         self.sep_for_LT_values.setText(QCoreApplication.translate("MainWindow", "-", None))
         self.btn_LT.setText(
@@ -5805,14 +5810,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u0437\u0432\u043b\u0435\u0447\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c excel \u0444\u0430\u0439\u043b",
                 None,
-            ),
+            )
         )
         self.check_LT_raw_data.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u043f\u043e \u0441\u0442\u043e\u043b\u0431\u0446\u0430\u043c",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_5.setToolTip(
@@ -5820,7 +5825,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0421\u0438\u043b\u044b \u043c\u0435\u0436\u0434\u0443 \u044d\u043d\u0434\u043e\u0442\u0435\u043b\u0438\u0435\u043c \u0438 \u044d\u0440\u0438\u0442\u0440\u043e\u0446\u0438\u0442\u0430\u043c\u0438 \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442\u0441\u044f End, END, \u0438\u043b\u0438 end</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_5.setText(
@@ -5828,7 +5833,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u043f\u0443\u0447\u043e\u043a",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_17.setToolTip(
@@ -5836,11 +5841,11 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u0438\u043b\u0430 = k*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_17.setText(
-            QCoreApplication.translate("MainWindow", "\u0421\u0438\u043b\u0430 = ", None),
+            QCoreApplication.translate("MainWindow", "\u0421\u0438\u043b\u0430 = ", None)
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_7.setToolTip(
@@ -5848,7 +5853,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_7.setText(QCoreApplication.translate("MainWindow", "k", None))
@@ -5858,7 +5863,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_18.setText(
@@ -5866,7 +5871,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "*\u041c\u043e\u0449\u043d\u043e\u0441\u0442\u044c \u043d\u0430 \u0444\u043e\u0442\u043e\u0434\u0435\u0442\u0435\u043a\u0442\u043e\u0440\u0435",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_8.setToolTip(
@@ -5874,7 +5879,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_8.setText(QCoreApplication.translate("MainWindow", " + b", None))
@@ -5884,7 +5889,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0423\u043a\u0430\u0437\u044b\u0432\u0430\u0439\u0442\u0435 \u0434\u0430\u0442\u0443, \u0447\u0442\u043e\u0431\u044b \u043d\u0435 \u0437\u0430\u043f\u0443\u0442\u0430\u0442\u044c\u0441\u044f",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_12.setText(
@@ -5892,7 +5897,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u0430\u0442\u0430 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_6.setToolTip(
@@ -5900,7 +5905,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0421\u0438\u043b\u044b \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442\u0441\u044f FA (\u0438\u043b\u0438 Fa, fa), \u0430 \u0441\u0438\u043b\u044b \u0434\u0435\u0437\u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438, \u043a\u0430\u043a FD (\u0438\u043b\u0438 Fd, fd)</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_6.setText(
@@ -5908,7 +5913,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0443\u0447\u043e\u043a",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_19.setToolTip(
@@ -5916,11 +5921,11 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u0438\u043b\u0430 = k*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_19.setText(
-            QCoreApplication.translate("MainWindow", "\u0421\u0438\u043b\u0430 = ", None),
+            QCoreApplication.translate("MainWindow", "\u0421\u0438\u043b\u0430 = ", None)
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_9.setToolTip(
@@ -5928,17 +5933,15 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u0438\u043b\u0430 = a*(\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438)+b",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_9.setText(QCoreApplication.translate("MainWindow", "k", None))
         # if QT_CONFIG(tooltip)
         self.lb_path_20.setToolTip(
             QCoreApplication.translate(
-                "MainWindow",
-                "<html><head/><body><p><br/></p></body></html>",
-                None,
-            ),
+                "MainWindow", "<html><head/><body><p><br/></p></body></html>", None
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_20.setText(
@@ -5946,7 +5949,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "*\u041c\u043e\u0449\u043d\u043e\u0441\u0442\u044c \u043d\u0430 \u0444\u043e\u0442\u043e\u0434\u0435\u0442\u0435\u043a\u0442\u043e\u0440\u0435",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_21.setToolTip("")
@@ -5958,7 +5961,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0423\u043a\u0430\u0437\u044b\u0432\u0430\u0439\u0442\u0435 \u0434\u0430\u0442\u0443, \u0447\u0442\u043e\u0431\u044b \u043d\u0435 \u0437\u0430\u043f\u0443\u0442\u0430\u0442\u044c\u0441\u044f",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_11.setText(
@@ -5966,7 +5969,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u0430\u0442\u0430 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_10.setToolTip(
@@ -5974,7 +5977,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0421\u0438\u043b\u044b \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442\u0441\u044f FA (\u0438\u043b\u0438 Fa, fa), \u0430 \u0441\u0438\u043b\u044b \u0434\u0435\u0437\u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438, \u043a\u0430\u043a FD (\u0438\u043b\u0438 Fd, fd)</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_10.setText(
@@ -5982,23 +5985,21 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0443\u0447\u043e\u043a",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_22.setToolTip("")
         # endif // QT_CONFIG(tooltip)
         self.lb_path_22.setText(
-            QCoreApplication.translate("MainWindow", "\u0421\u0438\u043b\u0430 = ", None),
+            QCoreApplication.translate("MainWindow", "\u0421\u0438\u043b\u0430 = ", None)
         )
         self.lb_path_23.setText(QCoreApplication.translate("MainWindow", "k", None))
         self.lb_path_27.setText(QCoreApplication.translate("MainWindow", "*( y0", None))
         self.lb_path_28.setText(QCoreApplication.translate("MainWindow", "+ A", None))
         self.lb_path_29.setText(
             QCoreApplication.translate(
-                "MainWindow",
-                "* EXP( \u041c\u043e\u0449\u043d\u043e\u0441\u0442\u044c * ",
-                None,
-            ),
+                "MainWindow", "* EXP( \u041c\u043e\u0449\u043d\u043e\u0441\u0442\u044c * ", None
+            )
         )
         self.lb_path_30.setText(QCoreApplication.translate("MainWindow", "R0", None))
         self.lb_path_31.setText(QCoreApplication.translate("MainWindow", ")) + b", None))
@@ -6008,7 +6009,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0423\u043a\u0430\u0437\u044b\u0432\u0430\u0439\u0442\u0435 \u0434\u0430\u0442\u0443, \u0447\u0442\u043e\u0431\u044b \u043d\u0435 \u0437\u0430\u043f\u0443\u0442\u0430\u0442\u044c\u0441\u044f",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_26.setText(
@@ -6016,7 +6017,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u0430\u0442\u0430 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438",
                 None,
-            ),
+            )
         )
         self.Lab_stuff.setTabText(
             self.Lab_stuff.indexOf(self.tab_7),
@@ -6032,7 +6033,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043d\u0430\u0439\u0434\u0435\u043d excel \u0444\u0430\u0439\u043b",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_for_plot.setText(
@@ -6040,7 +6041,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c \u043a excel \u0444\u0430\u0439\u043b\u0443",
                 None,
-            ),
+            )
         )
         self.path_for_plot.setText("")
         self.lb_exel_name.setText(
@@ -6048,7 +6049,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.check_box_figs_all_sheets.setToolTip(
@@ -6056,7 +6057,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0415\u0441\u043b\u0438 \u0432\u044b\u0434\u0435\u043b\u0430\u043d\u0430 \u0433\u0430\u043b\u043e\u0447\u043a\u0430, \u0442\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u043f\u0440\u043e\u0439\u0434\u0435\u0442\u0441\u044f \u043f\u043e \u0432\u0441\u0435\u043c \u043b\u0438\u0441\u0442\u0430\u043c",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.check_box_figs_all_sheets.setText(
@@ -6064,14 +6065,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u043e \u0432\u0441\u0435\u043c \u043b\u0438\u0441\u0442\u0430\u043c",
                 None,
-            ),
+            )
         )
         self.lb_exel_name_8.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430 \u0432 \u0444\u0430\u0439\u043b\u0435",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_hue_name.setToolTip(
@@ -6079,7 +6080,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u043c\u0435\u043d\u043d\u043e \u043f\u043e\u0441\u043b\u0435 \u044d\u0442\u043e\u0433\u043e \u0441\u0442\u043e\u043b\u0431\u0446\u0430 \u0434\u043e\u043b\u0436\u043d\u044b \u0438\u0434\u0442\u0438 \u0441\u0442\u043e\u043b\u0431\u0446\u044b \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_hue_name.setText(
@@ -6087,12 +6088,12 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0441\u0442\u043e\u043b\u0431\u0446\u0430 \u0434\u043b\u044f \u0433\u0440\u0443\u043f\u043f",
                 None,
-            ),
+            )
         )
         self.check_box_plot.setText(QCoreApplication.translate("MainWindow", "Box plot", None))
         # if QT_CONFIG(tooltip)
         self.check_corr_matrix.setToolTip(
-            QCoreApplication.translate("MainWindow", "seaborn.heatmap", None),
+            QCoreApplication.translate("MainWindow", "seaborn.heatmap", None)
         )
         # endif // QT_CONFIG(tooltip)
         self.check_corr_matrix.setText(
@@ -6100,18 +6101,18 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u043c\u0430\u0442\u0440\u0438\u0446\u0430",
                 None,
-            ),
+            )
         )
         self.check_corr_figs.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0433\u0440\u0430\u0444\u0438\u043a",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.check_box_pairplot.setToolTip(
-            QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.pairplot", None),
+            QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.pairplot", None)
         )
         # endif // QT_CONFIG(tooltip)
         self.check_box_pairplot.setText(
@@ -6119,11 +6120,11 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041c\u0430\u0442\u0440\u0438\u0446\u0430 \u0440\u0430\u0441\u0441\u0435\u044f\u043d\u0438\u044f",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.check_jointplot.setToolTip(
-            QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.jointplot", None),
+            QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.jointplot", None)
         )
         # endif // QT_CONFIG(tooltip)
         self.check_jointplot.setText(
@@ -6131,172 +6132,136 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0434\u0432\u0443\u043c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c",
                 None,
-            ),
+            )
         )
         self.check_corr_one_parameter.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430",
                 None,
-            ),
+            )
         )
         self.label_2.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0428\u0440\u0438\u0444\u0442, \u0446\u0432\u0435\u0442\u0430, \u0440\u0430\u0437\u043c\u0435\u0440 \u0442\u043e\u0447\u0435\u043a",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u0434\u043b\u044f box",
                 None,
-            ),
+            )
         )
         self.comboBox_color_pal_box.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "Set1", None),
+            0, QCoreApplication.translate("MainWindow", "Set1", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "Set2", None),
+            1, QCoreApplication.translate("MainWindow", "Set2", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "Set3", None),
+            2, QCoreApplication.translate("MainWindow", "Set3", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "Paired", None),
+            3, QCoreApplication.translate("MainWindow", "Paired", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "Accent", None),
+            4, QCoreApplication.translate("MainWindow", "Accent", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "Pastel1", None),
+            5, QCoreApplication.translate("MainWindow", "Pastel1", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "Pastel2", None),
+            6, QCoreApplication.translate("MainWindow", "Pastel2", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            7,
-            QCoreApplication.translate("MainWindow", "Dark2", None),
+            7, QCoreApplication.translate("MainWindow", "Dark2", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            8,
-            QCoreApplication.translate("MainWindow", "rocket", None),
+            8, QCoreApplication.translate("MainWindow", "rocket", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            9,
-            QCoreApplication.translate("MainWindow", "mako", None),
+            9, QCoreApplication.translate("MainWindow", "mako", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            10,
-            QCoreApplication.translate("MainWindow", "flare", None),
+            10, QCoreApplication.translate("MainWindow", "flare", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            11,
-            QCoreApplication.translate("MainWindow", "crest", None),
+            11, QCoreApplication.translate("MainWindow", "crest", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            12,
-            QCoreApplication.translate("MainWindow", "viridis", None),
+            12, QCoreApplication.translate("MainWindow", "viridis", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            13,
-            QCoreApplication.translate("MainWindow", "plasma", None),
+            13, QCoreApplication.translate("MainWindow", "plasma", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            14,
-            QCoreApplication.translate("MainWindow", "inferno", None),
+            14, QCoreApplication.translate("MainWindow", "inferno", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            15,
-            QCoreApplication.translate("MainWindow", "magma", None),
+            15, QCoreApplication.translate("MainWindow", "magma", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            16,
-            QCoreApplication.translate("MainWindow", "cividis", None),
+            16, QCoreApplication.translate("MainWindow", "cividis", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            17,
-            QCoreApplication.translate("MainWindow", "Greys", None),
+            17, QCoreApplication.translate("MainWindow", "Greys", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            18,
-            QCoreApplication.translate("MainWindow", "Reds", None),
+            18, QCoreApplication.translate("MainWindow", "Reds", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            19,
-            QCoreApplication.translate("MainWindow", "Greens", None),
+            19, QCoreApplication.translate("MainWindow", "Greens", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            20,
-            QCoreApplication.translate("MainWindow", "Blues", None),
+            20, QCoreApplication.translate("MainWindow", "Blues", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            21,
-            QCoreApplication.translate("MainWindow", "Oranges", None),
+            21, QCoreApplication.translate("MainWindow", "Oranges", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            22,
-            QCoreApplication.translate("MainWindow", "Purples", None),
+            22, QCoreApplication.translate("MainWindow", "Purples", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            23,
-            QCoreApplication.translate("MainWindow", "YlOrRd", None),
+            23, QCoreApplication.translate("MainWindow", "YlOrRd", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            24,
-            QCoreApplication.translate("MainWindow", "tab10", None),
+            24, QCoreApplication.translate("MainWindow", "tab10", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            25,
-            QCoreApplication.translate("MainWindow", "deep", None),
+            25, QCoreApplication.translate("MainWindow", "deep", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            26,
-            QCoreApplication.translate("MainWindow", "muted", None),
+            26, QCoreApplication.translate("MainWindow", "muted", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            27,
-            QCoreApplication.translate("MainWindow", "pastel", None),
+            27, QCoreApplication.translate("MainWindow", "pastel", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            28,
-            QCoreApplication.translate("MainWindow", "bright", None),
+            28, QCoreApplication.translate("MainWindow", "bright", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            29,
-            QCoreApplication.translate("MainWindow", "dark", None),
+            29, QCoreApplication.translate("MainWindow", "dark", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            30,
-            QCoreApplication.translate("MainWindow", "colorblind", None),
+            30, QCoreApplication.translate("MainWindow", "colorblind", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            31,
-            QCoreApplication.translate("MainWindow", "tab20", None),
+            31, QCoreApplication.translate("MainWindow", "tab20", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            32,
-            QCoreApplication.translate("MainWindow", "tab20b", None),
+            32, QCoreApplication.translate("MainWindow", "tab20b", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            33,
-            QCoreApplication.translate("MainWindow", "tab20c", None),
+            33, QCoreApplication.translate("MainWindow", "tab20c", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            34,
-            QCoreApplication.translate("MainWindow", "BuPu", None),
+            34, QCoreApplication.translate("MainWindow", "BuPu", None)
         )
         self.comboBox_color_pal_box.setItemText(
-            35,
-            QCoreApplication.translate("MainWindow", "BuPu_r", None),
+            35, QCoreApplication.translate("MainWindow", "BuPu_r", None)
         )
 
         self.lb_color_pal_points.setText(
@@ -6304,151 +6269,115 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u0434\u043b\u044f \u0442\u043e\u0447\u0435\u043a",
                 None,
-            ),
+            )
         )
         self.comboBox_color_pal_points.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "Set1", None),
+            0, QCoreApplication.translate("MainWindow", "Set1", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "Set2", None),
+            1, QCoreApplication.translate("MainWindow", "Set2", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "Set3", None),
+            2, QCoreApplication.translate("MainWindow", "Set3", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "Paired", None),
+            3, QCoreApplication.translate("MainWindow", "Paired", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "Accent", None),
+            4, QCoreApplication.translate("MainWindow", "Accent", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "Pastel1", None),
+            5, QCoreApplication.translate("MainWindow", "Pastel1", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "Pastel2", None),
+            6, QCoreApplication.translate("MainWindow", "Pastel2", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            7,
-            QCoreApplication.translate("MainWindow", "Dark2", None),
+            7, QCoreApplication.translate("MainWindow", "Dark2", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            8,
-            QCoreApplication.translate("MainWindow", "rocket", None),
+            8, QCoreApplication.translate("MainWindow", "rocket", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            9,
-            QCoreApplication.translate("MainWindow", "mako", None),
+            9, QCoreApplication.translate("MainWindow", "mako", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            10,
-            QCoreApplication.translate("MainWindow", "flare", None),
+            10, QCoreApplication.translate("MainWindow", "flare", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            11,
-            QCoreApplication.translate("MainWindow", "crest", None),
+            11, QCoreApplication.translate("MainWindow", "crest", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            12,
-            QCoreApplication.translate("MainWindow", "viridis", None),
+            12, QCoreApplication.translate("MainWindow", "viridis", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            13,
-            QCoreApplication.translate("MainWindow", "plasma", None),
+            13, QCoreApplication.translate("MainWindow", "plasma", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            14,
-            QCoreApplication.translate("MainWindow", "inferno", None),
+            14, QCoreApplication.translate("MainWindow", "inferno", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            15,
-            QCoreApplication.translate("MainWindow", "magma", None),
+            15, QCoreApplication.translate("MainWindow", "magma", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            16,
-            QCoreApplication.translate("MainWindow", "cividis", None),
+            16, QCoreApplication.translate("MainWindow", "cividis", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            17,
-            QCoreApplication.translate("MainWindow", "Greys", None),
+            17, QCoreApplication.translate("MainWindow", "Greys", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            18,
-            QCoreApplication.translate("MainWindow", "Reds", None),
+            18, QCoreApplication.translate("MainWindow", "Reds", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            19,
-            QCoreApplication.translate("MainWindow", "Greens", None),
+            19, QCoreApplication.translate("MainWindow", "Greens", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            20,
-            QCoreApplication.translate("MainWindow", "Blues", None),
+            20, QCoreApplication.translate("MainWindow", "Blues", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            21,
-            QCoreApplication.translate("MainWindow", "Oranges", None),
+            21, QCoreApplication.translate("MainWindow", "Oranges", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            22,
-            QCoreApplication.translate("MainWindow", "Purples", None),
+            22, QCoreApplication.translate("MainWindow", "Purples", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            23,
-            QCoreApplication.translate("MainWindow", "YlOrRd", None),
+            23, QCoreApplication.translate("MainWindow", "YlOrRd", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            24,
-            QCoreApplication.translate("MainWindow", "tab10", None),
+            24, QCoreApplication.translate("MainWindow", "tab10", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            25,
-            QCoreApplication.translate("MainWindow", "deep", None),
+            25, QCoreApplication.translate("MainWindow", "deep", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            26,
-            QCoreApplication.translate("MainWindow", "muted", None),
+            26, QCoreApplication.translate("MainWindow", "muted", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            27,
-            QCoreApplication.translate("MainWindow", "pastel", None),
+            27, QCoreApplication.translate("MainWindow", "pastel", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            28,
-            QCoreApplication.translate("MainWindow", "bright", None),
+            28, QCoreApplication.translate("MainWindow", "bright", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            29,
-            QCoreApplication.translate("MainWindow", "dark", None),
+            29, QCoreApplication.translate("MainWindow", "dark", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            30,
-            QCoreApplication.translate("MainWindow", "colorblind", None),
+            30, QCoreApplication.translate("MainWindow", "colorblind", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            31,
-            QCoreApplication.translate("MainWindow", "tab20", None),
+            31, QCoreApplication.translate("MainWindow", "tab20", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            32,
-            QCoreApplication.translate("MainWindow", "tab20b", None),
+            32, QCoreApplication.translate("MainWindow", "tab20b", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            33,
-            QCoreApplication.translate("MainWindow", "tab20c", None),
+            33, QCoreApplication.translate("MainWindow", "tab20c", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            34,
-            QCoreApplication.translate("MainWindow", "BuPu", None),
+            34, QCoreApplication.translate("MainWindow", "BuPu", None)
         )
         self.comboBox_color_pal_points.setItemText(
-            35,
-            QCoreApplication.translate("MainWindow", "BuPu_r", None),
+            35, QCoreApplication.translate("MainWindow", "BuPu_r", None)
         )
 
         # if QT_CONFIG(tooltip)
@@ -6457,15 +6386,13 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0426\u0432\u0435\u0442 \u0432 \u0444\u043e\u0440\u043c\u0430\u0442\u0435 HEX. \u0415\u0441\u043b\u0438 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0446\u0432\u0435\u0442\u043e\u0432, \u0442\u043e \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0437\u043d\u0430\u043a \u043c\u0435\u0436\u0434\u0443 \u043d\u0438\u043c\u0438: &quot;&amp;&quot;</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_color_for_box.setText(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0426\u0432\u0435\u0442 \u0434\u043b\u044f box (HEX)",
-                None,
-            ),
+                "MainWindow", "\u0426\u0432\u0435\u0442 \u0434\u043b\u044f box (HEX)", None
+            )
         )
         self.pushButton_HEX_box.setText(QCoreApplication.translate("MainWindow", "HEX", None))
         # if QT_CONFIG(tooltip)
@@ -6474,7 +6401,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0426\u0432\u0435\u0442 \u0432 \u0444\u043e\u0440\u043c\u0430\u0442\u0435 HEX. \u0415\u0441\u043b\u0438 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0446\u0432\u0435\u0442\u043e\u0432, \u0442\u043e \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0437\u043d\u0430\u043a \u043c\u0435\u0436\u0434\u0443 \u043d\u0438\u043c\u0438: &quot;&amp;&quot;</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_color_forpoints.setText(
@@ -6482,7 +6409,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442 \u0434\u043b\u044f \u0442\u043e\u0447\u0435\u043a (HEX)",
                 None,
-            ),
+            )
         )
         self.pushButton_HEX_points.setText(QCoreApplication.translate("MainWindow", "HEX", None))
         self.lb_color_pal_box_19.setText(
@@ -6490,7 +6417,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0442\u043e\u0447\u0435\u043a \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_color_pal_box_23.setToolTip(
@@ -6498,7 +6425,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u043f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u043e\u0441\u0442\u044c \u0442\u043e\u0447\u0435\u043a",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_color_pal_box_23.setText(
@@ -6506,39 +6433,34 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u043f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u043e\u0441\u0442\u044c",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_7.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0442\u043e\u0447\u0435\u043a \u0434\u043b\u044f \u0441\u0440\u0435\u0434\u043d\u0435\u0433\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_6.setText(
-            QCoreApplication.translate("MainWindow", "\u0428\u0440\u0438\u0444\u0442", None),
+            QCoreApplication.translate("MainWindow", "\u0428\u0440\u0438\u0444\u0442", None)
         )
         self.comboBox_fonts.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "DejaVu Sans", None),
+            0, QCoreApplication.translate("MainWindow", "DejaVu Sans", None)
         )
         self.comboBox_fonts.setItemText(1, QCoreApplication.translate("MainWindow", "Tahoma", None))
         self.comboBox_fonts.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "Verdana", None),
+            2, QCoreApplication.translate("MainWindow", "Verdana", None)
         )
         self.comboBox_fonts.setItemText(3, QCoreApplication.translate("MainWindow", "Arial", None))
         self.comboBox_fonts.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "Trebuchet MS", None),
+            4, QCoreApplication.translate("MainWindow", "Trebuchet MS", None)
         )
         self.comboBox_fonts.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "Times New Roman", None),
+            5, QCoreApplication.translate("MainWindow", "Times New Roman", None)
         )
         self.comboBox_fonts.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "Georgia", None),
+            6, QCoreApplication.translate("MainWindow", "Georgia", None)
         )
 
         self.lb_color_pal_box_2.setText(
@@ -6546,35 +6468,35 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u043f\u043e\u0434\u043f\u0438\u0441\u0438 X",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_3.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u043f\u043e\u0434\u043f\u0438\u0441\u0438 Y",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_5.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 X",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_4.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 Y",
                 None,
-            ),
+            )
         )
         self.label_3.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u043f\u043e\u0434\u043f\u0438\u0441\u0435\u0439 \u0438 \u0433\u0440\u0430\u043d\u0438\u0446",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.check_sort_or_not.setToolTip(
@@ -6582,7 +6504,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0411\u0435\u0437 \u0444\u043b\u0430\u0436\u043a\u0430 \u043f\u043e\u0440\u044f\u0434\u043e\u043a \u0431\u0443\u0434\u0435\u0442 \u0442\u0430\u043a\u0438\u043c, \u043a\u0430\u043a\u043e\u0439 \u043e\u043d \u0432 \u0442\u0430\u0431\u043b\u0438\u0446\u0435",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.check_sort_or_not.setText(
@@ -6590,14 +6512,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0423\u043f\u043e\u0440\u044f\u0434\u043e\u0447\u0438\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0432 \u0433\u0440\u0443\u043f\u043f\u0435",
                 None,
-            ),
+            )
         )
         self.check_sort_or_not_ascending.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u043f\u043e \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u043d\u0438\u044e",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_del_hue_6.setToolTip(
@@ -6605,7 +6527,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u043f\u0440\u043e\u043f\u0438\u0441\u0430\u0442\u044c \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u043e\u0431\u0435\u043b, \u043d\u0430\u0447\u0438\u043d\u0430\u044f \u0441 \u043f\u0435\u0440\u0432\u043e\u0433\u043e. \u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, '1 2 4 3'</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_del_hue_6.setText(
@@ -6613,7 +6535,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u043e\u0440\u044f\u0434\u043e\u043a \u043f\u043e\u0434\u043f\u0438\u0441\u0435\u0439",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.order_box_plot.setToolTip("")
@@ -6624,7 +6546,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041a\u043e\u043b-\u0432\u043e \u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432 \u0432 \u043a\u0430\u0436\u0434\u043e\u0439 \u0433\u0440\u0443\u043f\u043f\u0435 -- \u043f\u043e\u0434\u043f\u0438\u0441\u044c \u0441\u043d\u0438\u0437\u0443",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest_3.setText(
@@ -6632,7 +6554,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u043e\u0434\u043f\u0438\u0441\u0438 N \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 \u0432 \u0433\u0440\u0443\u043f\u043f\u0430\u0445",
                 None,
-            ),
+            )
         )
         self.check_N_.setText("")
         # if QT_CONFIG(tooltip)
@@ -6641,41 +6563,32 @@ class Ui_MainWindow:
                 "MainWindow",
                 "N - \u043a\u043e\u043b-\u0432\u043e \u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432/\u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \u0432 \u0433\u0440\u0443\u043f\u043f\u0435",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb__altern_heposisis_5.setText(
-            QCoreApplication.translate(
-                "MainWindow", "\u0420\u0430\u0437\u043c\u0435\u0440 N", None
-            ),
+            QCoreApplication.translate("MainWindow", "\u0420\u0430\u0437\u043c\u0435\u0440 N", None)
         )
         self.comboBox_box_check_N_.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "x-small", None),
+            0, QCoreApplication.translate("MainWindow", "x-small", None)
         )
         self.comboBox_box_check_N_.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "small", None),
+            1, QCoreApplication.translate("MainWindow", "small", None)
         )
         self.comboBox_box_check_N_.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "medium", None),
+            2, QCoreApplication.translate("MainWindow", "medium", None)
         )
         self.comboBox_box_check_N_.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "large", None),
+            3, QCoreApplication.translate("MainWindow", "large", None)
         )
         self.comboBox_box_check_N_.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "x-large", None),
+            4, QCoreApplication.translate("MainWindow", "x-large", None)
         )
         self.comboBox_box_check_N_.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "xx-large", None),
+            5, QCoreApplication.translate("MainWindow", "xx-large", None)
         )
         self.comboBox_box_check_N_.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "xx-small", None),
+            6, QCoreApplication.translate("MainWindow", "xx-small", None)
         )
 
         self.label_9.setText(
@@ -6683,7 +6596,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0412\u0440\u0430\u0449\u0430\u0442\u044c \u043f\u043e\u0434\u043f\u0438\u0441\u0438 \u043d\u0430 \u0443\u0433\u043e\u043b",
                 None,
-            ),
+            )
         )
         self.comboBox_spin_x_.setItemText(0, QCoreApplication.translate("MainWindow", "0", None))
         self.comboBox_spin_x_.setItemText(1, QCoreApplication.translate("MainWindow", "5", None))
@@ -6710,7 +6623,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u0434\u0435\u043b\u0430\u0442\u044c \u0444\u043e\u043d \u043f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u044b\u043c",
                 None,
-            ),
+            )
         )
         self.check_background.setText("")
         # if QT_CONFIG(tooltip)
@@ -6719,7 +6632,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435 \u0438\u043b\u0438 \u0440\u0430\u0437\u0431\u0440\u043e\u0441 \u043c\u0435\u0436\u0434\u0443 MIN-MAX",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_sd_or_minmax.setText(
@@ -6727,15 +6640,13 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u0431\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0435\u0439",
                 None,
-            ),
+            )
         )
         self.comboBox_sd_or_minmax.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "SD", None),
+            0, QCoreApplication.translate("MainWindow", "SD", None)
         )
         self.comboBox_sd_or_minmax.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "MIN-MAX", None),
+            1, QCoreApplication.translate("MainWindow", "MIN-MAX", None)
         )
 
         # if QT_CONFIG(tooltip)
@@ -6744,7 +6655,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0435 \u0432\u0441\u0442\u0430\u0432\u043b\u044f\u0439\u0442\u0435 \u043b\u0438\u0448\u043d\u0438\u0435 \u043f\u0440\u043e\u0431\u0435\u043b\u044b",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_bottom_lim.setText(
@@ -6752,7 +6663,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0438\u0436\u043d\u044e\u044e \u0433\u0440\u0430\u043d\u0438\u0446\u0443",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.bottom_lim.setToolTip(
@@ -6760,7 +6671,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0412\u0432\u0435\u0441\u0442\u0438 \u0447\u0438\u0441\u043b\u043e",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         # if QT_CONFIG(tooltip)
@@ -6769,7 +6680,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0435 \u0432\u0441\u0442\u0430\u0432\u043b\u044f\u0439\u0442\u0435 \u043b\u0438\u0448\u043d\u0438\u0435 \u043f\u0440\u043e\u0431\u0435\u043b\u044b",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_bottom_lim_2.setText(
@@ -6777,7 +6688,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0432\u0435\u0440\u0445\u043d\u044e\u044e \u0433\u0440\u0430\u043d\u0438\u0446\u0443",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.upper_lim.setToolTip(
@@ -6785,7 +6696,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0412\u0432\u0435\u0441\u0442\u0438 \u0447\u0438\u0441\u043b\u043e",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.tabWidget.setTabText(
@@ -6797,7 +6708,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c?",
                 None,
-            ),
+            )
         )
         self.check_stat_znachimost.setText("")
         self.lb_color_pal_box_21.setText(
@@ -6805,21 +6716,19 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0428\u0440\u0438\u0444\u0442 \u0437\u043d\u0430\u0447\u043a\u043e\u0432 \u0441\u0442\u0430\u0442.\u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438",
                 None,
-            ),
+            )
         )
         self.lb__altern_heposisis_4.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0417\u043d\u0430\u0447\u043e\u043a \u0441\u0442\u0430\u0442.\u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438",
                 None,
-            ),
+            )
         )
         self.comboBox_box_plot_sign_stat_znachimost.setItemText(
             0,
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0437\u0432\u0435\u0437\u0434\u043e\u0447\u043a\u0430 (*)",
-                None,
+                "MainWindow", "\u0437\u0432\u0435\u0437\u0434\u043e\u0447\u043a\u0430 (*)", None
             ),
         )
         self.comboBox_box_plot_sign_stat_znachimost.setItemText(
@@ -6845,7 +6754,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0421\u043c. \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043f\u043e \u0440\u0430\u0437\u043d\u044b\u043c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u043c \u0442\u0435\u0441\u0442\u0430\u043c</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest.setText(
@@ -6853,7 +6762,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0435\u0441\u0442",
                 None,
-            ),
+            )
         )
         self.comboBox_stat_test.setItemText(
             0,
@@ -6965,19 +6874,16 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0433\u0438\u043f\u043e\u0442\u0435\u0437\u0430",
                 None,
-            ),
+            )
         )
         self.comboBox_alter_hep.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "two-sided", None),
+            0, QCoreApplication.translate("MainWindow", "two-sided", None)
         )
         self.comboBox_alter_hep.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "less", None),
+            1, QCoreApplication.translate("MainWindow", "less", None)
         )
         self.comboBox_alter_hep.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "greater", None),
+            2, QCoreApplication.translate("MainWindow", "greater", None)
         )
 
         # if QT_CONFIG(tooltip)
@@ -6987,7 +6893,7 @@ class Ui_MainWindow:
                 "<html><head/><body><p>\u0412\u044b\u0431\u0440\u0430\u0442\u044c, \u0435\u0441\u043b\u0438 \u043d\u0443\u0436\u043d\u043e \u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u043c\u0435\u0436\u0434\u0443 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u043c\u0438 \u0433\u0440\u0443\u043f\u043f\u0430\u043c\u0438. \u0412 \u0441\u0442\u0440\u043e\u043a\u0443 \u0432\u0432\u043e\u0434\u0438\u0442\u0441\u044f \u043c\u0430\u0441\u0441\u0438\u0432 \u0438\u0437 \u043a\u043e\u0440\u0442\u0435\u0436\u0435\u0439 \u0433\u0440\u0443\u043f\u043f \u0441 \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u043c \u043f\u0440\u043e\u0431\u0435\u043b\u043e\u043c. \u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0435\u0441\u0442\u044c 4 \u0433\u0440\u0443\u043f\u043f\u044b \u0438 \u0445\u043e\u0447\u0435\u0442\u0441\u044f \u043f\u043e\u0441\u043c\u043e\u0442\u0440\u0435"
                 "\u0442\u044c \u0441\u0442\u0430\u0442.\u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u043c\u0435\u0436\u0434\u0443 1 \u0438 2, \u0430 \u0442\u0430\u043a\u0436\u0435 3 \u0438 4. \u0422\u043e\u0433\u0434\u0430 \u043d\u0430\u0434\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u0441 \u043f\u0440\u043e\u0431\u0435\u043b\u043e\u043c '(1,2) (3,4)'</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_del_hue_7.setText(
@@ -6995,7 +6901,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0441\u0447\u0451\u0442 \u0441\u0442\u0430\u0442.\u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438 \u0442\u043e\u043b\u044c\u043a\u043e \u043c\u0435\u0436\u0434\u0443 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u043c\u0438 \u0433\u0440\u0443\u043f\u043f\u0430\u043c\u0438",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.STAT_znachimost_order_box_plot.setToolTip("")
@@ -7013,19 +6919,16 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u044f \u043f\u043e",
                 None,
-            ),
+            )
         )
         self.comboBox_correlation_figs_matrix.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "pearson", None),
+            0, QCoreApplication.translate("MainWindow", "pearson", None)
         )
         self.comboBox_correlation_figs_matrix.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "kendall", None),
+            1, QCoreApplication.translate("MainWindow", "kendall", None)
         )
         self.comboBox_correlation_figs_matrix.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "spearman", None),
+            2, QCoreApplication.translate("MainWindow", "spearman", None)
         )
 
         self.lb_sd_or_minmax_7.setText(
@@ -7033,59 +6936,46 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u0441\u0445\u0435\u043c\u0430",
                 None,
-            ),
+            )
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "coolwarm", None),
+            0, QCoreApplication.translate("MainWindow", "coolwarm", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "RdBu_r", None),
+            1, QCoreApplication.translate("MainWindow", "RdBu_r", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "YlGn", None),
+            2, QCoreApplication.translate("MainWindow", "YlGn", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "BuGn", None),
+            3, QCoreApplication.translate("MainWindow", "BuGn", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "GnBu", None),
+            4, QCoreApplication.translate("MainWindow", "GnBu", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "bwr", None),
+            5, QCoreApplication.translate("MainWindow", "bwr", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "seismic", None),
+            6, QCoreApplication.translate("MainWindow", "seismic", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            7,
-            QCoreApplication.translate("MainWindow", "PiYG", None),
+            7, QCoreApplication.translate("MainWindow", "PiYG", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            8,
-            QCoreApplication.translate("MainWindow", "RdGy", None),
+            8, QCoreApplication.translate("MainWindow", "RdGy", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            9,
-            QCoreApplication.translate("MainWindow", "seismic", None),
+            9, QCoreApplication.translate("MainWindow", "seismic", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            10,
-            QCoreApplication.translate("MainWindow", "hot", None),
+            10, QCoreApplication.translate("MainWindow", "hot", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            11,
-            QCoreApplication.translate("MainWindow", "inferno", None),
+            11, QCoreApplication.translate("MainWindow", "inferno", None)
         )
         self.comboBox_correlation_color_map_for_figs.setItemText(
-            12,
-            QCoreApplication.translate("MainWindow", "gist_heat", None),
+            12, QCoreApplication.translate("MainWindow", "gist_heat", None)
         )
 
         self.lb_size_corr_matrix.setText(
@@ -7093,21 +6983,21 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0440\u0438\u0441\u0443\u043d\u043a\u0430",
                 None,
-            ),
+            )
         )
         self.lb_font_in.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041c\u0430\u0441\u0448\u0442\u0430\u0444 \u0448\u0440\u0438\u0444\u0442\u0430 \u043f\u043e\u0434\u043f\u0438\u0441\u0435\u0439",
                 None,
-            ),
+            )
         )
         self.lb_font_out.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_name_of_title.setToolTip(
@@ -7115,7 +7005,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0441\u0432\u0435\u0440\u0445\u0443</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_name_of_title.setText(
@@ -7123,7 +7013,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430",
                 None,
-            ),
+            )
         )
         self.tabWidget.setTabText(
             self.tabWidget.indexOf(self.tab_6),
@@ -7138,143 +7028,109 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430",
                 None,
-            ),
+            )
         )
         self.comboBox_color_pal_corr.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "Set1", None),
+            0, QCoreApplication.translate("MainWindow", "Set1", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "Set2", None),
+            1, QCoreApplication.translate("MainWindow", "Set2", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "Set3", None),
+            2, QCoreApplication.translate("MainWindow", "Set3", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "Paired", None),
+            3, QCoreApplication.translate("MainWindow", "Paired", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "Accent", None),
+            4, QCoreApplication.translate("MainWindow", "Accent", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "Pastel1", None),
+            5, QCoreApplication.translate("MainWindow", "Pastel1", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "Pastel2", None),
+            6, QCoreApplication.translate("MainWindow", "Pastel2", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            7,
-            QCoreApplication.translate("MainWindow", "Dark2", None),
+            7, QCoreApplication.translate("MainWindow", "Dark2", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            8,
-            QCoreApplication.translate("MainWindow", "rocket", None),
+            8, QCoreApplication.translate("MainWindow", "rocket", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            9,
-            QCoreApplication.translate("MainWindow", "mako", None),
+            9, QCoreApplication.translate("MainWindow", "mako", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            10,
-            QCoreApplication.translate("MainWindow", "flare", None),
+            10, QCoreApplication.translate("MainWindow", "flare", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            11,
-            QCoreApplication.translate("MainWindow", "crest", None),
+            11, QCoreApplication.translate("MainWindow", "crest", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            12,
-            QCoreApplication.translate("MainWindow", "viridis", None),
+            12, QCoreApplication.translate("MainWindow", "viridis", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            13,
-            QCoreApplication.translate("MainWindow", "plasma", None),
+            13, QCoreApplication.translate("MainWindow", "plasma", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            14,
-            QCoreApplication.translate("MainWindow", "inferno", None),
+            14, QCoreApplication.translate("MainWindow", "inferno", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            15,
-            QCoreApplication.translate("MainWindow", "magma", None),
+            15, QCoreApplication.translate("MainWindow", "magma", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            16,
-            QCoreApplication.translate("MainWindow", "cividis", None),
+            16, QCoreApplication.translate("MainWindow", "cividis", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            17,
-            QCoreApplication.translate("MainWindow", "Greys", None),
+            17, QCoreApplication.translate("MainWindow", "Greys", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            18,
-            QCoreApplication.translate("MainWindow", "Reds", None),
+            18, QCoreApplication.translate("MainWindow", "Reds", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            19,
-            QCoreApplication.translate("MainWindow", "Greens", None),
+            19, QCoreApplication.translate("MainWindow", "Greens", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            20,
-            QCoreApplication.translate("MainWindow", "Blues", None),
+            20, QCoreApplication.translate("MainWindow", "Blues", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            21,
-            QCoreApplication.translate("MainWindow", "Oranges", None),
+            21, QCoreApplication.translate("MainWindow", "Oranges", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            22,
-            QCoreApplication.translate("MainWindow", "Purples", None),
+            22, QCoreApplication.translate("MainWindow", "Purples", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            23,
-            QCoreApplication.translate("MainWindow", "YlOrRd", None),
+            23, QCoreApplication.translate("MainWindow", "YlOrRd", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            24,
-            QCoreApplication.translate("MainWindow", "tab10", None),
+            24, QCoreApplication.translate("MainWindow", "tab10", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            25,
-            QCoreApplication.translate("MainWindow", "deep", None),
+            25, QCoreApplication.translate("MainWindow", "deep", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            26,
-            QCoreApplication.translate("MainWindow", "muted", None),
+            26, QCoreApplication.translate("MainWindow", "muted", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            27,
-            QCoreApplication.translate("MainWindow", "pastel", None),
+            27, QCoreApplication.translate("MainWindow", "pastel", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            28,
-            QCoreApplication.translate("MainWindow", "bright", None),
+            28, QCoreApplication.translate("MainWindow", "bright", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            29,
-            QCoreApplication.translate("MainWindow", "dark", None),
+            29, QCoreApplication.translate("MainWindow", "dark", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            30,
-            QCoreApplication.translate("MainWindow", "colorblind", None),
+            30, QCoreApplication.translate("MainWindow", "colorblind", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            31,
-            QCoreApplication.translate("MainWindow", "tab20", None),
+            31, QCoreApplication.translate("MainWindow", "tab20", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            32,
-            QCoreApplication.translate("MainWindow", "tab20b", None),
+            32, QCoreApplication.translate("MainWindow", "tab20b", None)
         )
         self.comboBox_color_pal_corr.setItemText(
-            33,
-            QCoreApplication.translate("MainWindow", "tab20c", None),
+            33, QCoreApplication.translate("MainWindow", "tab20c", None)
         )
 
         self.lb_del_hue_4.setText(
@@ -7282,7 +7138,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0438\u0436\u043d\u044e\u044e \u0433\u0440\u0430\u043d\u0438\u0446\u0443",
                 None,
-            ),
+            )
         )
         self.check_change_corr_fig_down_limit.setText("")
         # if QT_CONFIG(tooltip)
@@ -7291,7 +7147,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0414\u0430\u043b\u0435\u043a\u043e \u043d\u0435 \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440. </p><p>\u041c\u043e\u0436\u043d\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u0442\u043e\u043b\u044c\u043a\u043e \u043e\u0434\u043d\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435.</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_del_hue_3.setText(
@@ -7299,7 +7155,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0438\u0437 \u0433\u0440\u0443\u043f\u043f\u044b",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.del_hue.setToolTip("")
@@ -7309,14 +7165,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0442\u043e\u0447\u0435\u043a",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_12.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.check_sort_or_not_corr_figs.setToolTip(
@@ -7324,7 +7180,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0411\u0435\u0437 \u0444\u043b\u0430\u0436\u043a\u0430 \u043f\u043e\u0440\u044f\u0434\u043e\u043a \u0431\u0443\u0434\u0435\u0442 \u0442\u0430\u043a\u0438\u043c, \u043a\u0430\u043a\u043e\u0439 \u043e\u043d \u0432 \u0442\u0430\u0431\u043b\u0438\u0446\u0435.</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.check_sort_or_not_corr_figs.setText(
@@ -7332,13 +7188,13 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0423\u043f\u043e\u0440\u044f\u0434\u043e\u0447\u0438\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0432 \u0433\u0440\u0443\u043f\u043f\u0435",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.check_setka.setToolTip("")
         # endif // QT_CONFIG(tooltip)
         self.check_setka.setText(
-            QCoreApplication.translate("MainWindow", "\u0421\u0435\u0442\u043a\u0430", None),
+            QCoreApplication.translate("MainWindow", "\u0421\u0435\u0442\u043a\u0430", None)
         )
         self.tabWidget.setTabText(
             self.tabWidget.indexOf(self.tab_2),
@@ -7353,7 +7209,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0435 \u0443\u0447\u0438\u0442\u044b\u0432\u0430\u0442\u044c \u0433\u0440\u0443\u043f\u043f\u0443",
                 None,
-            ),
+            )
         )
         self.check_pairplot.setText("")
         self.lb_color_pal_box_24.setText(
@@ -7361,197 +7217,154 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_25.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430",
                 None,
-            ),
+            )
         )
         self.comboBox_color_pairplot.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "Set1", None),
+            0, QCoreApplication.translate("MainWindow", "Set1", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "Set2", None),
+            1, QCoreApplication.translate("MainWindow", "Set2", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "Set3", None),
+            2, QCoreApplication.translate("MainWindow", "Set3", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "Pastel1", None),
+            3, QCoreApplication.translate("MainWindow", "Pastel1", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "Pastel2", None),
+            4, QCoreApplication.translate("MainWindow", "Pastel2", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "Paired", None),
+            5, QCoreApplication.translate("MainWindow", "Paired", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "Accent", None),
+            6, QCoreApplication.translate("MainWindow", "Accent", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            7,
-            QCoreApplication.translate("MainWindow", "Dark2", None),
+            7, QCoreApplication.translate("MainWindow", "Dark2", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            8,
-            QCoreApplication.translate("MainWindow", "rocket", None),
+            8, QCoreApplication.translate("MainWindow", "rocket", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            9,
-            QCoreApplication.translate("MainWindow", "mako", None),
+            9, QCoreApplication.translate("MainWindow", "mako", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            10,
-            QCoreApplication.translate("MainWindow", "flare", None),
+            10, QCoreApplication.translate("MainWindow", "flare", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            11,
-            QCoreApplication.translate("MainWindow", "crest", None),
+            11, QCoreApplication.translate("MainWindow", "crest", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            12,
-            QCoreApplication.translate("MainWindow", "viridis", None),
+            12, QCoreApplication.translate("MainWindow", "viridis", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            13,
-            QCoreApplication.translate("MainWindow", "plasma", None),
+            13, QCoreApplication.translate("MainWindow", "plasma", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            14,
-            QCoreApplication.translate("MainWindow", "inferno", None),
+            14, QCoreApplication.translate("MainWindow", "inferno", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            15,
-            QCoreApplication.translate("MainWindow", "magma", None),
+            15, QCoreApplication.translate("MainWindow", "magma", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            16,
-            QCoreApplication.translate("MainWindow", "cividis", None),
+            16, QCoreApplication.translate("MainWindow", "cividis", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            17,
-            QCoreApplication.translate("MainWindow", "Greys", None),
+            17, QCoreApplication.translate("MainWindow", "Greys", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            18,
-            QCoreApplication.translate("MainWindow", "Reds", None),
+            18, QCoreApplication.translate("MainWindow", "Reds", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            19,
-            QCoreApplication.translate("MainWindow", "Greens", None),
+            19, QCoreApplication.translate("MainWindow", "Greens", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            20,
-            QCoreApplication.translate("MainWindow", "Blues", None),
+            20, QCoreApplication.translate("MainWindow", "Blues", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            21,
-            QCoreApplication.translate("MainWindow", "Oranges", None),
+            21, QCoreApplication.translate("MainWindow", "Oranges", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            22,
-            QCoreApplication.translate("MainWindow", "Purples", None),
+            22, QCoreApplication.translate("MainWindow", "Purples", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            23,
-            QCoreApplication.translate("MainWindow", "YlOrRd", None),
+            23, QCoreApplication.translate("MainWindow", "YlOrRd", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            24,
-            QCoreApplication.translate("MainWindow", "tab10", None),
+            24, QCoreApplication.translate("MainWindow", "tab10", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            25,
-            QCoreApplication.translate("MainWindow", "deep", None),
+            25, QCoreApplication.translate("MainWindow", "deep", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            26,
-            QCoreApplication.translate("MainWindow", "muted", None),
+            26, QCoreApplication.translate("MainWindow", "muted", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            27,
-            QCoreApplication.translate("MainWindow", "pastel", None),
+            27, QCoreApplication.translate("MainWindow", "pastel", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            28,
-            QCoreApplication.translate("MainWindow", "bright", None),
+            28, QCoreApplication.translate("MainWindow", "bright", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            29,
-            QCoreApplication.translate("MainWindow", "dark", None),
+            29, QCoreApplication.translate("MainWindow", "dark", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            30,
-            QCoreApplication.translate("MainWindow", "colorblind", None),
+            30, QCoreApplication.translate("MainWindow", "colorblind", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            31,
-            QCoreApplication.translate("MainWindow", "tab20", None),
+            31, QCoreApplication.translate("MainWindow", "tab20", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            32,
-            QCoreApplication.translate("MainWindow", "tab20b", None),
+            32, QCoreApplication.translate("MainWindow", "tab20b", None)
         )
         self.comboBox_color_pairplot.setItemText(
-            33,
-            QCoreApplication.translate("MainWindow", "tab20c", None),
+            33, QCoreApplication.translate("MainWindow", "tab20c", None)
         )
 
         # if QT_CONFIG(tooltip)
         self.lb_color_pal_box_28.setToolTip(
-            QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.pairplot", None),
+            QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.pairplot", None)
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_color_pal_box_28.setText(QCoreApplication.translate("MainWindow", "kind", None))
         self.comboBox_pairplot_kind.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "scatter", None),
+            0, QCoreApplication.translate("MainWindow", "scatter", None)
         )
         self.comboBox_pairplot_kind.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "reg", None),
+            1, QCoreApplication.translate("MainWindow", "reg", None)
         )
         self.comboBox_pairplot_kind.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "kde", None),
+            2, QCoreApplication.translate("MainWindow", "kde", None)
         )
         self.comboBox_pairplot_kind.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "hist", None),
+            3, QCoreApplication.translate("MainWindow", "hist", None)
         )
 
         self.lb_color_pal_box_27.setText(
-            QCoreApplication.translate("MainWindow", "\u0421\u0442\u0438\u043b\u044c", None),
+            QCoreApplication.translate("MainWindow", "\u0421\u0442\u0438\u043b\u044c", None)
         )
         self.comboBox_style_pairplot.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "white", None),
+            0, QCoreApplication.translate("MainWindow", "white", None)
         )
         self.comboBox_style_pairplot.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "dark", None),
+            1, QCoreApplication.translate("MainWindow", "dark", None)
         )
         self.comboBox_style_pairplot.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "whitegrid", None),
+            2, QCoreApplication.translate("MainWindow", "whitegrid", None)
         )
         self.comboBox_style_pairplot.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "darkgrid", None),
+            3, QCoreApplication.translate("MainWindow", "darkgrid", None)
         )
         self.comboBox_style_pairplot.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "ticks", None),
+            4, QCoreApplication.translate("MainWindow", "ticks", None)
         )
 
         self.lb_color_pal_box_26.setText(
@@ -7559,7 +7372,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0442\u043e\u0447\u0435\u043a \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435",
                 None,
-            ),
+            )
         )
         self.tabWidget.setTabText(
             self.tabWidget.indexOf(self.tab_11),
@@ -7574,193 +7387,151 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_30.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430",
                 None,
-            ),
+            )
         )
         self.comboBox_color_jointplot.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "Set1", None),
+            0, QCoreApplication.translate("MainWindow", "Set1", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "Set2", None),
+            1, QCoreApplication.translate("MainWindow", "Set2", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "Set3", None),
+            2, QCoreApplication.translate("MainWindow", "Set3", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "Pastel1", None),
+            3, QCoreApplication.translate("MainWindow", "Pastel1", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "Pastel2", None),
+            4, QCoreApplication.translate("MainWindow", "Pastel2", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "Paired", None),
+            5, QCoreApplication.translate("MainWindow", "Paired", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "Accent", None),
+            6, QCoreApplication.translate("MainWindow", "Accent", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            7,
-            QCoreApplication.translate("MainWindow", "Dark2", None),
+            7, QCoreApplication.translate("MainWindow", "Dark2", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            8,
-            QCoreApplication.translate("MainWindow", "rocket", None),
+            8, QCoreApplication.translate("MainWindow", "rocket", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            9,
-            QCoreApplication.translate("MainWindow", "mako", None),
+            9, QCoreApplication.translate("MainWindow", "mako", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            10,
-            QCoreApplication.translate("MainWindow", "flare", None),
+            10, QCoreApplication.translate("MainWindow", "flare", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            11,
-            QCoreApplication.translate("MainWindow", "crest", None),
+            11, QCoreApplication.translate("MainWindow", "crest", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            12,
-            QCoreApplication.translate("MainWindow", "viridis", None),
+            12, QCoreApplication.translate("MainWindow", "viridis", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            13,
-            QCoreApplication.translate("MainWindow", "plasma", None),
+            13, QCoreApplication.translate("MainWindow", "plasma", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            14,
-            QCoreApplication.translate("MainWindow", "inferno", None),
+            14, QCoreApplication.translate("MainWindow", "inferno", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            15,
-            QCoreApplication.translate("MainWindow", "magma", None),
+            15, QCoreApplication.translate("MainWindow", "magma", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            16,
-            QCoreApplication.translate("MainWindow", "cividis", None),
+            16, QCoreApplication.translate("MainWindow", "cividis", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            17,
-            QCoreApplication.translate("MainWindow", "Greys", None),
+            17, QCoreApplication.translate("MainWindow", "Greys", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            18,
-            QCoreApplication.translate("MainWindow", "Reds", None),
+            18, QCoreApplication.translate("MainWindow", "Reds", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            19,
-            QCoreApplication.translate("MainWindow", "Greens", None),
+            19, QCoreApplication.translate("MainWindow", "Greens", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            20,
-            QCoreApplication.translate("MainWindow", "Blues", None),
+            20, QCoreApplication.translate("MainWindow", "Blues", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            21,
-            QCoreApplication.translate("MainWindow", "Oranges", None),
+            21, QCoreApplication.translate("MainWindow", "Oranges", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            22,
-            QCoreApplication.translate("MainWindow", "Purples", None),
+            22, QCoreApplication.translate("MainWindow", "Purples", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            23,
-            QCoreApplication.translate("MainWindow", "YlOrRd", None),
+            23, QCoreApplication.translate("MainWindow", "YlOrRd", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            24,
-            QCoreApplication.translate("MainWindow", "tab10", None),
+            24, QCoreApplication.translate("MainWindow", "tab10", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            25,
-            QCoreApplication.translate("MainWindow", "deep", None),
+            25, QCoreApplication.translate("MainWindow", "deep", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            26,
-            QCoreApplication.translate("MainWindow", "muted", None),
+            26, QCoreApplication.translate("MainWindow", "muted", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            27,
-            QCoreApplication.translate("MainWindow", "pastel", None),
+            27, QCoreApplication.translate("MainWindow", "pastel", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            28,
-            QCoreApplication.translate("MainWindow", "bright", None),
+            28, QCoreApplication.translate("MainWindow", "bright", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            29,
-            QCoreApplication.translate("MainWindow", "dark", None),
+            29, QCoreApplication.translate("MainWindow", "dark", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            30,
-            QCoreApplication.translate("MainWindow", "colorblind", None),
+            30, QCoreApplication.translate("MainWindow", "colorblind", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            31,
-            QCoreApplication.translate("MainWindow", "tab20", None),
+            31, QCoreApplication.translate("MainWindow", "tab20", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            32,
-            QCoreApplication.translate("MainWindow", "tab20b", None),
+            32, QCoreApplication.translate("MainWindow", "tab20b", None)
         )
         self.comboBox_color_jointplot.setItemText(
-            33,
-            QCoreApplication.translate("MainWindow", "tab20c", None),
+            33, QCoreApplication.translate("MainWindow", "tab20c", None)
         )
 
         # if QT_CONFIG(tooltip)
         self.lb_color_pal_box_32.setToolTip(
-            QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.pairplot", None),
+            QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.pairplot", None)
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_color_pal_box_32.setText(QCoreApplication.translate("MainWindow", "kind", None))
         self.comboBox_pairplot_jointplot.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "scatter", None),
+            0, QCoreApplication.translate("MainWindow", "scatter", None)
         )
         self.comboBox_pairplot_jointplot.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "kde", None),
+            1, QCoreApplication.translate("MainWindow", "kde", None)
         )
         self.comboBox_pairplot_jointplot.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "hist", None),
+            2, QCoreApplication.translate("MainWindow", "hist", None)
         )
 
         self.lb_color_pal_box_33.setText(
-            QCoreApplication.translate("MainWindow", "\u0421\u0442\u0438\u043b\u044c", None),
+            QCoreApplication.translate("MainWindow", "\u0421\u0442\u0438\u043b\u044c", None)
         )
         self.comboBox_style_jointplot.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "white", None),
+            0, QCoreApplication.translate("MainWindow", "white", None)
         )
         self.comboBox_style_jointplot.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "dark", None),
+            1, QCoreApplication.translate("MainWindow", "dark", None)
         )
         self.comboBox_style_jointplot.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "whitegrid", None),
+            2, QCoreApplication.translate("MainWindow", "whitegrid", None)
         )
         self.comboBox_style_jointplot.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "darkgrid", None),
+            3, QCoreApplication.translate("MainWindow", "darkgrid", None)
         )
         self.comboBox_style_jointplot.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "ticks", None),
+            4, QCoreApplication.translate("MainWindow", "ticks", None)
         )
 
         self.lb_color_pal_box_31.setText(
@@ -7768,7 +7539,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0437\u043c\u0435\u0440 \u0442\u043e\u0447\u0435\u043a \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435",
                 None,
-            ),
+            )
         )
         self.tabWidget.setTabText(
             self.tabWidget.indexOf(self.tab_13),
@@ -7783,19 +7554,16 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u044f \u043f\u043e",
                 None,
-            ),
+            )
         )
         self.comboBox_correlation_one_parameter.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "pearson", None),
+            0, QCoreApplication.translate("MainWindow", "pearson", None)
         )
         self.comboBox_correlation_one_parameter.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "kendall", None),
+            1, QCoreApplication.translate("MainWindow", "kendall", None)
         )
         self.comboBox_correlation_one_parameter.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "spearman", None),
+            2, QCoreApplication.translate("MainWindow", "spearman", None)
         )
 
         self.lb_color_pal_box_34.setText(
@@ -7803,28 +7571,28 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_35.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0423\u0447\u0438\u0442\u044b\u0432\u0430\u0442\u044c \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0438, \u0433\u0434\u0435 \u043a\u043e\u044d\u0444\u0444\u0438\u0446\u0438\u0435\u043d\u0442 \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0438 \u0431\u043e\u043b\u044c\u0448\u0435",
                 None,
-            ),
+            )
         )
         self.check_corr_one_parameter_only_one.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u044f \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e \u0441\u0442\u043e\u043b\u0431\u0446\u0443 \u0434\u043b\u044f \u0433\u0440\u0443\u043f\u043f",
                 None,
-            ),
+            )
         )
         self.check_corr_one_parameter_plot_sep_wind.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a \u0432 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u043c \u043e\u043a\u043d\u0435",
                 None,
-            ),
+            )
         )
         self.tabWidget.setTabText(
             self.tabWidget.indexOf(self.tab_14),
@@ -7839,14 +7607,12 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a\u0438",
                 None,
-            ),
+            )
         )
         self.tabWidget_2.setTabText(
             self.tabWidget_2.indexOf(self.tab),
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0413\u0440\u0430\u0444\u0438\u043a\u0438",
-                None,
+                "MainWindow", "\u0413\u0440\u0430\u0444\u0438\u043a\u0438", None
             ),
         )
         self.lb_path_for_profile.setText(
@@ -7854,7 +7620,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0434\u043b\u044f \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f",
                 None,
-            ),
+            )
         )
         self.path_for_profile.setText("")
         # if QT_CONFIG(tooltip)
@@ -7863,7 +7629,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0414\u0430\u043d\u043d\u044b\u0435 \u0434\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u044b \u0438\u0437 excel \u0442\u0430\u0431\u043b\u0438\u0446\u044b, \u0433\u0434\u0435 \u0435\u0441\u0442\u044c 3 \u0441\u0442\u043e\u043b\u0431\u0446\u0430: \u0438\u043c\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430, \u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435, \u043f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u044c. \u0412\u0441\u0435 \u044f\u0447\u0435\u0439\u043a\u0438 \u0434\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u043d\u0435 \u043f\u0443\u0441\u0442\u044b\u043c\u0438.</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_patient_data.setText(
@@ -7871,7 +7637,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u0430\u043d\u043d\u044b\u0435 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430",
                 None,
-            ),
+            )
         )
         self.patient_data.setText("")
         # if QT_CONFIG(tooltip)
@@ -7880,7 +7646,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0414\u0430\u043d\u043d\u044b\u0435 \u0434\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u044b \u0438\u0437 excel \u0442\u0430\u0431\u043b\u0438\u0446\u044b, \u0433\u0434\u0435 \u0435\u0441\u0442\u044c 3 \u0441\u0442\u043e\u043b\u0431\u0446\u0430: \u0438\u043c\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430, \u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435, \u043f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u044c. \u0412\u0441\u0435 \u044f\u0447\u0435\u0439\u043a\u0438 \u0434\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u043d\u0435 \u043f\u0443\u0441\u0442\u044b\u043c\u0438.</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_norm_data.setText(
@@ -7888,7 +7654,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u0430\u043d\u043d\u044b\u0435 \u043d\u043e\u0440\u043c\u044b",
                 None,
-            ),
+            )
         )
         self.norm_data.setText("")
         self.lb_norm_data_2.setText(
@@ -7896,28 +7662,28 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0434\u043b\u044f \u0440\u0430\u0434\u0438\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0444\u0438\u043b\u044f",
                 None,
-            ),
+            )
         )
         self.profile_title_rad.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041c\u0438\u043a\u0440\u043e\u0440\u0435\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u043f\u0440\u043e\u0444\u0438\u043b\u044c \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430 ",
                 None,
-            ),
+            )
         )
         self.lb_norm_data_3.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0434\u043b\u044f \u043e\u0441\u0438 \u0434\u043b\u044f \u043b\u0438\u043d\u0435\u0439\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0444\u0438\u043b\u044f",
                 None,
-            ),
+            )
         )
         self.profile_title_lin.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435 \u043e\u0442 \u043d\u043e\u0440\u043c\u044b, %",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.check_profile_legend.setToolTip(
@@ -7925,30 +7691,26 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u043d\u043e\u0433\u0434\u0430 \u043b\u0443\u0447\u0448\u0435 \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c, \u0447\u0442\u043e\u0431\u044b \u043e\u043d\u0430 \u043d\u0435 \u043d\u0430\u043a\u043b\u0430\u0434\u044b\u0432\u0430\u043b\u0430\u0441\u044c \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.check_profile_legend.setText(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u041b\u0435\u0433\u0435\u043d\u0434\u0430",
-                None,
-            ),
+                "MainWindow", "\u041b\u0435\u0433\u0435\u043d\u0434\u0430", None
+            )
         )
         self.lb__altern_heposisis_3.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0412\u0440\u0430\u0449\u0430\u0442\u044c \u043f\u043e\u0434\u043f\u0438\u0441\u0438 \u0434\u043b\u044f \u043b\u0438\u043d\u0435\u0439\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0444\u0438\u043b\u044f",
                 None,
-            ),
+            )
         )
         self.comboBox_profile_lin_spin.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "90", None),
+            0, QCoreApplication.translate("MainWindow", "90", None)
         )
         self.comboBox_profile_lin_spin.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "0", None),
+            1, QCoreApplication.translate("MainWindow", "0", None)
         )
 
         self.lb_color_pal_box_20.setText(
@@ -7956,14 +7718,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430",
                 None,
-            ),
+            )
         )
         self.label_5.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0418\u043c\u044f \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.label_4.setToolTip(
@@ -7971,7 +7733,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0412\u0430\u0436\u043d\u043e, \u0447\u0442\u043e\u0431\u044b \u0446\u0432\u0435\u0442 \u0431\u044b\u043b \u0432 \u0444\u043e\u0440\u043c\u0430\u0442\u0435 HEX (\u043f\u0440\u0438\u043c\u0435\u0440, &quot;#FFFFFF&quot;)</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label_4.setText(
@@ -7979,14 +7741,12 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442 \u0434\u043b\u044f \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430 (HEX)",
                 None,
-            ),
+            )
         )
         self.patient_prof.setText(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u041f\u0430\u0446\u0438\u0435\u043d\u0442",
-                None,
-            ),
+                "MainWindow", "\u041f\u0430\u0446\u0438\u0435\u043d\u0442", None
+            )
         )
         self.color_for_patient.setText(QCoreApplication.translate("MainWindow", "#DB4900", None))
         self.check_profile_pat_line.setText(
@@ -7994,21 +7754,21 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041b\u0438\u043d\u0438\u044f \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435",
                 None,
-            ),
+            )
         )
         self.check_profile_pat_sd.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435",
                 None,
-            ),
+            )
         )
         self.label_8.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0418\u043c\u044f \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u043e\u0439 \u0433\u0440\u0443\u043f\u043f\u044b",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.label_7.setToolTip(
@@ -8016,7 +7776,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0412\u0430\u0436\u043d\u043e, \u0447\u0442\u043e\u0431\u044b \u0446\u0432\u0435\u0442 \u0431\u044b\u043b \u0432 \u0444\u043e\u0440\u043c\u0430\u0442\u0435 HEX (\u043f\u0440\u0438\u043c\u0435\u0440, &quot;#FFFFFF&quot;)</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label_7.setText(
@@ -8024,10 +7784,10 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442 \u0434\u043b\u044f \u043d\u043e\u0440\u043c\u044b (HEX)",
                 None,
-            ),
+            )
         )
         self.norm_prof.setText(
-            QCoreApplication.translate("MainWindow", "\u041d\u043e\u0440\u043c\u0430", None),
+            QCoreApplication.translate("MainWindow", "\u041d\u043e\u0440\u043c\u0430", None)
         )
         self.color_for_norm.setText(QCoreApplication.translate("MainWindow", "#2A968D", None))
         self.check_profile_norm_line.setText(
@@ -8035,21 +7795,21 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041b\u0438\u043d\u0438\u044f \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435",
                 None,
-            ),
+            )
         )
         self.check_profile_norm_sd.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u043e\u0435 \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435",
                 None,
-            ),
+            )
         )
         self.btn_plot_and_save_profile.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043f\u0440\u043e\u0444\u0438\u043b\u0438",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.check_profile_relative.setToolTip(
@@ -8057,7 +7817,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0415\u0441\u043b\u0438 \u043e\u0442\u043b\u0438\u0447\u0438\u044f \u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435, \u0442\u043e \u043d\u0430 \u0440\u0430\u0434\u0438\u0430\u043b\u044c\u043d\u043e\u043c \u0433\u0440\u0430\u0444\u0438\u043a\u0435 \u0431\u0443\u0434\u0435\u0442 \u0443\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u043e\u0442\u043b\u0438\u0447\u0438\u044f \u0432 \u043f\u0440\u043e\u0446\u0435\u043d\u0442\u0430\u0445 \u043e\u0442 \u043d\u043e\u0440\u043c\u044b; \u0432 \u043f\u0440\u043e\u0442\u0438\u0432\u043d\u043e\u043c \u0441\u043b\u0443\u0447\u0430\u0435, \u0437\u0430 100% \u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0435\u0442\u0441\u044f \u043d\u043e\u0440\u043c\u0430.</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.check_profile_relative.setText(
@@ -8065,25 +7825,19 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043e\u0442\u043b\u0438\u0447\u0438\u044f \u043d\u0430 \u0440\u0430\u0434\u0438\u0430\u043b\u044c\u043d\u043e\u043c \u0433\u0440\u0430\u0444\u0438\u043a\u0435",
                 None,
-            ),
+            )
         )
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(
-            QCoreApplication.translate(
-                "MainWindow", "1 \u0433\u0440\u0443\u043f\u043f\u0430", None
-            ),
+            QCoreApplication.translate("MainWindow", "1 \u0433\u0440\u0443\u043f\u043f\u0430", None)
         )
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(
-            QCoreApplication.translate(
-                "MainWindow", "2 \u0433\u0440\u0443\u043f\u043f\u0430", None
-            ),
+            QCoreApplication.translate("MainWindow", "2 \u0433\u0440\u0443\u043f\u043f\u0430", None)
         )
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(
-            QCoreApplication.translate(
-                "MainWindow", "3 \u0433\u0440\u0443\u043f\u043f\u0430", None
-            ),
+            QCoreApplication.translate("MainWindow", "3 \u0433\u0440\u0443\u043f\u043f\u0430", None)
         )
         ___qtablewidgetitem3 = self.tableWidget.verticalHeaderItem(0)
         ___qtablewidgetitem3.setText(
@@ -8091,28 +7845,25 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432",
                 None,
-            ),
+            )
         )
         ___qtablewidgetitem4 = self.tableWidget.verticalHeaderItem(1)
         ___qtablewidgetitem4.setText(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u041f\u043e\u0434\u043f\u0438\u0441\u044c",
-                None,
-            ),
+                "MainWindow", "\u041f\u043e\u0434\u043f\u0438\u0441\u044c", None
+            )
         )
         ___qtablewidgetitem5 = self.tableWidget.verticalHeaderItem(2)
         ___qtablewidgetitem5.setText(
-            QCoreApplication.translate("MainWindow", "\u0426\u0432\u0435\u0442\u0430", None),
+            QCoreApplication.translate("MainWindow", "\u0426\u0432\u0435\u0442\u0430", None)
         )
         ___qtablewidgetitem6 = self.tableWidget.verticalHeaderItem(3)
         ___qtablewidgetitem6.setText(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0421\u0442\u0438\u043b\u044c \u043b\u0438\u043d\u0438\u0438",
-                None,
-            ),
+                "MainWindow", "\u0421\u0442\u0438\u043b\u044c \u043b\u0438\u043d\u0438\u0438", None
+            )
         )
+
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(False)
         ___qtablewidgetitem7 = self.tableWidget.item(1, 0)
@@ -8121,7 +7872,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0410\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u044f \u044d\u0440\u0438\u0442\u0440\u043e\u0446\u0438\u0442\u043e\u0432",
                 None,
-            ),
+            )
         )
         ___qtablewidgetitem8 = self.tableWidget.item(1, 1)
         ___qtablewidgetitem8.setText(
@@ -8129,7 +7880,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u0435\u0444\u043e\u0440\u043c\u0438\u0440\u0443\u0435\u043c\u043e\u0441\u0442\u044c \u044d\u0440\u0438\u0442\u0440\u043e\u0446\u0438\u0442\u043e\u0432",
                 None,
-            ),
+            )
         )
         ___qtablewidgetitem9 = self.tableWidget.item(1, 2)
         ___qtablewidgetitem9.setText(
@@ -8137,7 +7888,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0410\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u044f \u0442\u0440\u043e\u043c\u0431\u043e\u0446\u0438\u0442\u043e\u0432",
                 None,
-            ),
+            )
         )
         ___qtablewidgetitem10 = self.tableWidget.item(2, 0)
         ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", "red", None))
@@ -8159,7 +7910,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0418\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432 \u043d\u0443\u0436\u043d\u043e \u043f\u0438\u0441\u0430\u0442\u044c \u0447\u0435\u0440\u0435\u0437 \u0442\u0438\u0440\u0435.</p><p>\u041f\u0440\u0438\u043c\u0435\u0440: 0-3</p><p>\u0426\u0432\u0435\u0442\u0430:  matplotlib.colors</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
@@ -8168,7 +7919,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0418\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432 \u043d\u0443\u0436\u043d\u043e \u043f\u0438\u0441\u0430\u0442\u044c \u0447\u0435\u0440\u0435\u0437 \u0442\u0438\u0440\u0435.</p><p>\u041f\u0440\u0438\u043c\u0435\u0440: 0-3</p><p>\u0426\u0432\u0435\u0442\u0430: matplotlib.colors</p><p>\u0421\u0442\u0438\u043b\u044c \u043b\u0438\u043d\u0438\u0438: \u0441\u043c. matplotlib </p><p><span style=\" font-family:'JetBrains Mono','monospace'; font-size:9.8pt; color:#000000;\">solid, dashed, dashdot, dotted</span></p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         # if QT_CONFIG(whatsthis)
@@ -8177,7 +7928,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0418\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432 \u043d\u0443\u0436\u043d\u043e \u043f\u0438\u0441\u0430\u0442\u044c \u0447\u0435\u0440\u0435\u0437 \u0442\u0438\u0440\u0435.</p><p>\u041f\u0440\u0438\u043c\u0435\u0440: 0-3</p><p>\u0426\u0432\u0435\u0442\u0430: matplotlib.colors</p><p>\u0421\u0442\u0438\u043b\u044c \u043b\u0438\u043d\u0438\u0438: \u0441\u043c. matplotlib </p><p><span style=\" font-family:'JetBrains Mono','monospace'; font-size:9.8pt; color:#7a7e85;\">solid, dashed, dashdot, dotted</span><br/></p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(whatsthis)
         self.lb_norm_data_4.setText(
@@ -8185,7 +7936,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0422\u0430\u0431\u043b\u0438\u0446\u0430 \u0434\u043b\u044f \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u0445\u0430\u0440\u0430\u043a\u0442\u0435\u0440\u043d\u044b\u0445 \u0433\u0440\u0443\u043f\u043f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432 \u043d\u0430 \u0440\u0430\u0434\u0438\u0430\u043b\u044c\u043d\u043e\u043c \u0433\u0440\u0430\u0444\u0438\u043a\u0435",
                 None,
-            ),
+            )
         )
         self.tabWidget_2.setTabText(
             self.tabWidget_2.indexOf(self.widget2),
@@ -8201,7 +7952,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043d\u0430\u0439\u0434\u0435\u043d excel \u0444\u0430\u0439\u043b",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_for_plot_2.setText(
@@ -8209,7 +7960,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c \u043a excel \u0444\u0430\u0439\u043b\u0443",
                 None,
-            ),
+            )
         )
         self.path_for_pivot_table.setText("")
         self.lb_exel_name_2.setText(
@@ -8217,14 +7968,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430",
                 None,
-            ),
+            )
         )
         self.lb_exel_name_7.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_2.setToolTip(
@@ -8232,7 +7983,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0418\u043c\u0435\u043d\u043d\u043e \u043f\u043e\u0441\u043b\u0435 \u044d\u0442\u043e\u0433\u043e \u0441\u0442\u043e\u043b\u0431\u0446\u0430 \u0434\u043e\u043b\u0436\u043d\u044b \u0438\u0434\u0442\u0438 \u0441\u0442\u043e\u043b\u0431\u0446\u044b \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_hue_name_2.setText(
@@ -8240,14 +7991,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0441\u0442\u043e\u043b\u0431\u0446\u0430 \u0434\u043b\u044f \u0433\u0440\u0443\u043f\u043f",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_17.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0421\u0432\u043e\u0434\u043d\u0430\u044f \u0442\u0430\u0431\u043b\u0438\u0446\u0430",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_color_pal_box_8.setToolTip(
@@ -8255,7 +8006,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u043a\u0440\u0443\u0433\u043b\u044f\u044e\u0442\u0441\u044f \u0432\u0441\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_color_pal_box_8.setText(
@@ -8263,22 +8014,20 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u043a\u0440\u0443\u0433\u043b\u0438\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0434\u043e \u0437\u043d\u0430\u043a\u0430 \u043f\u043e\u0441\u043b\u0435 \u0437\u0430\u043f\u044f\u0442\u043e\u0439",
                 None,
-            ),
+            )
         )
         self.lb_sd_or_minmax_2.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041e\u0431\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0435\u0439",
                 None,
-            ),
+            )
         )
         self.comboBox_sd_or_se_pivot.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "SD", None),
+            0, QCoreApplication.translate("MainWindow", "SD", None)
         )
         self.comboBox_sd_or_se_pivot.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "SE", None),
+            1, QCoreApplication.translate("MainWindow", "SE", None)
         )
 
         self.btn_plot_and_save_pivot_table.setText(
@@ -8286,33 +8035,30 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0441\u0432\u043e\u0434\u043d\u0443\u044e \u0442\u0430\u0431\u043b\u0438\u0446\u0443",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_18.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u043c\u0430\u0442\u0440\u0438\u0446\u0430",
                 None,
-            ),
+            )
         )
         self.lb_sd_or_minmax_3.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u044f \u043f\u043e",
                 None,
-            ),
+            )
         )
         self.comboBox_correlation_person_or_not.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "pearson", None),
+            0, QCoreApplication.translate("MainWindow", "pearson", None)
         )
         self.comboBox_correlation_person_or_not.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "kendall", None),
+            1, QCoreApplication.translate("MainWindow", "kendall", None)
         )
         self.comboBox_correlation_person_or_not.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "spearman", None),
+            2, QCoreApplication.translate("MainWindow", "spearman", None)
         )
 
         self.lb_sd_or_minmax_4.setText(
@@ -8320,7 +8066,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0412\u044b\u0434\u0435\u043b\u0438\u0442\u044c \u044f\u0447\u0435\u0439\u043a\u0438 \u0446\u0432\u0435\u0442\u043e\u043c",
                 None,
-            ),
+            )
         )
         self.check_color_for_corr_pivot.setText("")
         self.lb_sd_or_minmax_5.setText(
@@ -8328,59 +8074,46 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u0441\u0445\u0435\u043c\u0430",
                 None,
-            ),
+            )
         )
         self.comboBox_correlation_color_map.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "coolwarm", None),
+            0, QCoreApplication.translate("MainWindow", "coolwarm", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "RdBu_r", None),
+            1, QCoreApplication.translate("MainWindow", "RdBu_r", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "YlGn", None),
+            2, QCoreApplication.translate("MainWindow", "YlGn", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "BuGn", None),
+            3, QCoreApplication.translate("MainWindow", "BuGn", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "GnBu", None),
+            4, QCoreApplication.translate("MainWindow", "GnBu", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "bwr", None),
+            5, QCoreApplication.translate("MainWindow", "bwr", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "seismic", None),
+            6, QCoreApplication.translate("MainWindow", "seismic", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            7,
-            QCoreApplication.translate("MainWindow", "PiYG", None),
+            7, QCoreApplication.translate("MainWindow", "PiYG", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            8,
-            QCoreApplication.translate("MainWindow", "RdGy", None),
+            8, QCoreApplication.translate("MainWindow", "RdGy", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            9,
-            QCoreApplication.translate("MainWindow", "seismic", None),
+            9, QCoreApplication.translate("MainWindow", "seismic", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            10,
-            QCoreApplication.translate("MainWindow", "hot", None),
+            10, QCoreApplication.translate("MainWindow", "hot", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            11,
-            QCoreApplication.translate("MainWindow", "inferno", None),
+            11, QCoreApplication.translate("MainWindow", "inferno", None)
         )
         self.comboBox_correlation_color_map.setItemText(
-            12,
-            QCoreApplication.translate("MainWindow", "gist_heat", None),
+            12, QCoreApplication.translate("MainWindow", "gist_heat", None)
         )
 
         self.btn_plot_and_save_corr_table.setText(
@@ -8388,21 +8121,21 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u0443\u044e \u043c\u0430\u0442\u0440\u0438\u0446\u0443 \u043f\u043e \u0432\u0441\u0435\u043c \u0434\u0430\u043d\u043d\u044b\u043c",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_22.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u0432 \u0438\u043d\u0434\u0435\u043a\u0441\u0438\u0440\u0443\u0435\u043c\u044b\u0435/\u043f\u043e \u0441\u0442\u043e\u043b\u0431\u0446\u0430\u043c",
                 None,
-            ),
+            )
         )
         self.lb_sd_or_minmax_11.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u0434\u0430\u043d\u043d\u044b\u0435",
                 None,
-            ),
+            )
         )
         self.comboBox_index_data_or_raw.setItemText(
             0,
@@ -8426,7 +8159,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c excel \u0444\u0430\u0439\u043b",
                 None,
-            ),
+            )
         )
         self.tabWidget_2.setTabText(
             self.tabWidget_2.indexOf(self.tab_8),
@@ -8442,7 +8175,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043d\u0430\u0439\u0434\u0435\u043d excel \u0444\u0430\u0439\u043b",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_for_plot_3.setText(
@@ -8450,7 +8183,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c \u043a excel \u0444\u0430\u0439\u043b\u0443",
                 None,
-            ),
+            )
         )
         self.path_for_catplot.setText("")
         self.lb_exel_name_3.setText(
@@ -8458,14 +8191,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430",
                 None,
-            ),
+            )
         )
         self.lb_exel_name_4.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430 \u0432 \u0444\u0430\u0439\u043b\u0435",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_3.setToolTip("")
@@ -8475,33 +8208,28 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0413\u0440\u0443\u043f\u043f\u0430 \u043f\u043e \u043e\u0441\u0438 x",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_7.setToolTip("")
         # endif // QT_CONFIG(tooltip)
         self.lb_hue_name_7.setText(
-            QCoreApplication.translate("MainWindow", "\u0424\u043e\u0440\u043c\u0430\u0442", None),
+            QCoreApplication.translate("MainWindow", "\u0424\u043e\u0440\u043c\u0430\u0442", None)
         )
         self.comboBox_catplot_form_x.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "str", None),
+            0, QCoreApplication.translate("MainWindow", "str", None)
         )
         self.comboBox_catplot_form_x.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "int", None),
+            1, QCoreApplication.translate("MainWindow", "int", None)
         )
         self.comboBox_catplot_form_x.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "float", None),
+            2, QCoreApplication.translate("MainWindow", "float", None)
         )
         self.comboBox_catplot_form_x.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "bool", None),
+            3, QCoreApplication.translate("MainWindow", "bool", None)
         )
         self.comboBox_catplot_form_x.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "default", None),
+            4, QCoreApplication.translate("MainWindow", "default", None)
         )
 
         # if QT_CONFIG(tooltip)
@@ -8512,33 +8240,28 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u043f\u043e \u043e\u0441\u0438 y",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_6.setToolTip("")
         # endif // QT_CONFIG(tooltip)
         self.lb_hue_name_6.setText(
-            QCoreApplication.translate("MainWindow", "\u0424\u043e\u0440\u043c\u0430\u0442", None),
+            QCoreApplication.translate("MainWindow", "\u0424\u043e\u0440\u043c\u0430\u0442", None)
         )
         self.comboBox_catplot_form_y.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "float", None),
+            0, QCoreApplication.translate("MainWindow", "float", None)
         )
         self.comboBox_catplot_form_y.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "int", None),
+            1, QCoreApplication.translate("MainWindow", "int", None)
         )
         self.comboBox_catplot_form_y.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "str", None),
+            2, QCoreApplication.translate("MainWindow", "str", None)
         )
         self.comboBox_catplot_form_y.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "bool", None),
+            3, QCoreApplication.translate("MainWindow", "bool", None)
         )
         self.comboBox_catplot_form_y.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "default", None),
+            4, QCoreApplication.translate("MainWindow", "default", None)
         )
 
         # if QT_CONFIG(tooltip)
@@ -8547,41 +8270,34 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0435 \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e - \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u0433\u0440\u0443\u043f\u043f\u0430",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_hue_name_5.setText(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u041f\u043e\u0434\u0433\u0440\u0443\u043f\u043f\u0430",
-                None,
-            ),
+                "MainWindow", "\u041f\u043e\u0434\u0433\u0440\u0443\u043f\u043f\u0430", None
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_8.setToolTip("")
         # endif // QT_CONFIG(tooltip)
         self.lb_hue_name_8.setText(
-            QCoreApplication.translate("MainWindow", "\u0424\u043e\u0440\u043c\u0430\u0442", None),
+            QCoreApplication.translate("MainWindow", "\u0424\u043e\u0440\u043c\u0430\u0442", None)
         )
         self.comboBox_catplot_form_hue.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "str", None),
+            0, QCoreApplication.translate("MainWindow", "str", None)
         )
         self.comboBox_catplot_form_hue.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "int", None),
+            1, QCoreApplication.translate("MainWindow", "int", None)
         )
         self.comboBox_catplot_form_hue.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "float", None),
+            2, QCoreApplication.translate("MainWindow", "float", None)
         )
         self.comboBox_catplot_form_hue.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "bool", None),
+            3, QCoreApplication.translate("MainWindow", "bool", None)
         )
         self.comboBox_catplot_form_hue.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "default", None),
+            4, QCoreApplication.translate("MainWindow", "default", None)
         )
 
         self.lb_color_pal_box_14.setText(
@@ -8589,150 +8305,116 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430",
                 None,
-            ),
+            )
         )
         self.lb_color_pal_box_16.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430",
                 None,
-            ),
+            )
         )
         self.comboBox_color_catplot.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "Pastel1", None),
+            0, QCoreApplication.translate("MainWindow", "Pastel1", None)
         )
         self.comboBox_color_catplot.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "Pastel2", None),
+            1, QCoreApplication.translate("MainWindow", "Pastel2", None)
         )
         self.comboBox_color_catplot.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "Set1", None),
+            2, QCoreApplication.translate("MainWindow", "Set1", None)
         )
         self.comboBox_color_catplot.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "Set2", None),
+            3, QCoreApplication.translate("MainWindow", "Set2", None)
         )
         self.comboBox_color_catplot.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "Set3", None),
+            4, QCoreApplication.translate("MainWindow", "Set3", None)
         )
         self.comboBox_color_catplot.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "Paired", None),
+            5, QCoreApplication.translate("MainWindow", "Paired", None)
         )
         self.comboBox_color_catplot.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "Accent", None),
+            6, QCoreApplication.translate("MainWindow", "Accent", None)
         )
         self.comboBox_color_catplot.setItemText(
-            7,
-            QCoreApplication.translate("MainWindow", "Dark2", None),
+            7, QCoreApplication.translate("MainWindow", "Dark2", None)
         )
         self.comboBox_color_catplot.setItemText(
-            8,
-            QCoreApplication.translate("MainWindow", "rocket", None),
+            8, QCoreApplication.translate("MainWindow", "rocket", None)
         )
         self.comboBox_color_catplot.setItemText(
-            9,
-            QCoreApplication.translate("MainWindow", "mako", None),
+            9, QCoreApplication.translate("MainWindow", "mako", None)
         )
         self.comboBox_color_catplot.setItemText(
-            10,
-            QCoreApplication.translate("MainWindow", "flare", None),
+            10, QCoreApplication.translate("MainWindow", "flare", None)
         )
         self.comboBox_color_catplot.setItemText(
-            11,
-            QCoreApplication.translate("MainWindow", "crest", None),
+            11, QCoreApplication.translate("MainWindow", "crest", None)
         )
         self.comboBox_color_catplot.setItemText(
-            12,
-            QCoreApplication.translate("MainWindow", "viridis", None),
+            12, QCoreApplication.translate("MainWindow", "viridis", None)
         )
         self.comboBox_color_catplot.setItemText(
-            13,
-            QCoreApplication.translate("MainWindow", "plasma", None),
+            13, QCoreApplication.translate("MainWindow", "plasma", None)
         )
         self.comboBox_color_catplot.setItemText(
-            14,
-            QCoreApplication.translate("MainWindow", "inferno", None),
+            14, QCoreApplication.translate("MainWindow", "inferno", None)
         )
         self.comboBox_color_catplot.setItemText(
-            15,
-            QCoreApplication.translate("MainWindow", "magma", None),
+            15, QCoreApplication.translate("MainWindow", "magma", None)
         )
         self.comboBox_color_catplot.setItemText(
-            16,
-            QCoreApplication.translate("MainWindow", "cividis", None),
+            16, QCoreApplication.translate("MainWindow", "cividis", None)
         )
         self.comboBox_color_catplot.setItemText(
-            17,
-            QCoreApplication.translate("MainWindow", "Greys", None),
+            17, QCoreApplication.translate("MainWindow", "Greys", None)
         )
         self.comboBox_color_catplot.setItemText(
-            18,
-            QCoreApplication.translate("MainWindow", "Reds", None),
+            18, QCoreApplication.translate("MainWindow", "Reds", None)
         )
         self.comboBox_color_catplot.setItemText(
-            19,
-            QCoreApplication.translate("MainWindow", "Greens", None),
+            19, QCoreApplication.translate("MainWindow", "Greens", None)
         )
         self.comboBox_color_catplot.setItemText(
-            20,
-            QCoreApplication.translate("MainWindow", "Blues", None),
+            20, QCoreApplication.translate("MainWindow", "Blues", None)
         )
         self.comboBox_color_catplot.setItemText(
-            21,
-            QCoreApplication.translate("MainWindow", "Oranges", None),
+            21, QCoreApplication.translate("MainWindow", "Oranges", None)
         )
         self.comboBox_color_catplot.setItemText(
-            22,
-            QCoreApplication.translate("MainWindow", "Purples", None),
+            22, QCoreApplication.translate("MainWindow", "Purples", None)
         )
         self.comboBox_color_catplot.setItemText(
-            23,
-            QCoreApplication.translate("MainWindow", "YlOrRd", None),
+            23, QCoreApplication.translate("MainWindow", "YlOrRd", None)
         )
         self.comboBox_color_catplot.setItemText(
-            24,
-            QCoreApplication.translate("MainWindow", "tab10", None),
+            24, QCoreApplication.translate("MainWindow", "tab10", None)
         )
         self.comboBox_color_catplot.setItemText(
-            25,
-            QCoreApplication.translate("MainWindow", "deep", None),
+            25, QCoreApplication.translate("MainWindow", "deep", None)
         )
         self.comboBox_color_catplot.setItemText(
-            26,
-            QCoreApplication.translate("MainWindow", "muted", None),
+            26, QCoreApplication.translate("MainWindow", "muted", None)
         )
         self.comboBox_color_catplot.setItemText(
-            27,
-            QCoreApplication.translate("MainWindow", "pastel", None),
+            27, QCoreApplication.translate("MainWindow", "pastel", None)
         )
         self.comboBox_color_catplot.setItemText(
-            28,
-            QCoreApplication.translate("MainWindow", "bright", None),
+            28, QCoreApplication.translate("MainWindow", "bright", None)
         )
         self.comboBox_color_catplot.setItemText(
-            29,
-            QCoreApplication.translate("MainWindow", "dark", None),
+            29, QCoreApplication.translate("MainWindow", "dark", None)
         )
         self.comboBox_color_catplot.setItemText(
-            30,
-            QCoreApplication.translate("MainWindow", "colorblind", None),
+            30, QCoreApplication.translate("MainWindow", "colorblind", None)
         )
         self.comboBox_color_catplot.setItemText(
-            31,
-            QCoreApplication.translate("MainWindow", "tab20", None),
+            31, QCoreApplication.translate("MainWindow", "tab20", None)
         )
         self.comboBox_color_catplot.setItemText(
-            32,
-            QCoreApplication.translate("MainWindow", "tab20b", None),
+            32, QCoreApplication.translate("MainWindow", "tab20b", None)
         )
         self.comboBox_color_catplot.setItemText(
-            33,
-            QCoreApplication.translate("MainWindow", "tab20c", None),
+            33, QCoreApplication.translate("MainWindow", "tab20c", None)
         )
 
         # if QT_CONFIG(tooltip)
@@ -8741,7 +8423,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u0441\u043c. seaborn catplot</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest_7.setText(
@@ -8749,35 +8431,28 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0428\u0430\u0431\u043b\u043e\u043d \u0434\u043b\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430",
                 None,
-            ),
+            )
         )
         self.comboBox_template_catplot.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "bar", None),
+            0, QCoreApplication.translate("MainWindow", "bar", None)
         )
         self.comboBox_template_catplot.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "box", None),
+            1, QCoreApplication.translate("MainWindow", "box", None)
         )
         self.comboBox_template_catplot.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "strip", None),
+            2, QCoreApplication.translate("MainWindow", "strip", None)
         )
         self.comboBox_template_catplot.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "swarm", None),
+            3, QCoreApplication.translate("MainWindow", "swarm", None)
         )
         self.comboBox_template_catplot.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "violin", None),
+            4, QCoreApplication.translate("MainWindow", "violin", None)
         )
         self.comboBox_template_catplot.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "boxen", None),
+            5, QCoreApplication.translate("MainWindow", "boxen", None)
         )
         self.comboBox_template_catplot.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "point", None),
+            6, QCoreApplication.translate("MainWindow", "point", None)
         )
 
         # if QT_CONFIG(tooltip)
@@ -8786,7 +8461,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041e\u0431\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0435\u0439 \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_color_pal_box_15.setText(
@@ -8794,7 +8469,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0438",
                 None,
-            ),
+            )
         )
         self.comboBox_catplot_SD_or_not.setItemText(
             0,
@@ -8834,15 +8509,13 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0412\u0440\u0430\u0449\u0430\u0442\u044c \u043f\u043e\u0434\u043f\u0438\u0441\u0438 \u043d\u0430 \u0443\u0433\u043e\u043b",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_stattest_6.setToolTip(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations",
-                None,
-            ),
+                "MainWindow", "\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest_6.setText(
@@ -8850,16 +8523,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c?",
                 None,
-            ),
+            )
         )
         self.check_stat_znachimost_catplot.setText("")
         # if QT_CONFIG(tooltip)
         self.lb_stattest_5.setToolTip(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations",
-                None,
-            ),
+                "MainWindow", "\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest_5.setText(
@@ -8867,56 +8538,44 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0435\u0441\u0442",
                 None,
-            ),
+            )
         )
         self.comboBox_stat_test_catplot.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "Brunner-Munzel", None),
+            0, QCoreApplication.translate("MainWindow", "Brunner-Munzel", None)
         )
         self.comboBox_stat_test_catplot.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "Levene", None),
+            1, QCoreApplication.translate("MainWindow", "Levene", None)
         )
         self.comboBox_stat_test_catplot.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "Mann-Whitney", None),
+            2, QCoreApplication.translate("MainWindow", "Mann-Whitney", None)
         )
         self.comboBox_stat_test_catplot.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "Mann-Whitney-gt", None),
+            3, QCoreApplication.translate("MainWindow", "Mann-Whitney-gt", None)
         )
         self.comboBox_stat_test_catplot.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "Mann-Whitney-ls", None),
+            4, QCoreApplication.translate("MainWindow", "Mann-Whitney-ls", None)
         )
         self.comboBox_stat_test_catplot.setItemText(
-            5,
-            QCoreApplication.translate("MainWindow", "t-test_ind", None),
+            5, QCoreApplication.translate("MainWindow", "t-test_ind", None)
         )
         self.comboBox_stat_test_catplot.setItemText(
-            6,
-            QCoreApplication.translate("MainWindow", "t-test_welch", None),
+            6, QCoreApplication.translate("MainWindow", "t-test_welch", None)
         )
         self.comboBox_stat_test_catplot.setItemText(
-            7,
-            QCoreApplication.translate("MainWindow", "t-test_paired", None),
+            7, QCoreApplication.translate("MainWindow", "t-test_paired", None)
         )
         self.comboBox_stat_test_catplot.setItemText(
-            8,
-            QCoreApplication.translate("MainWindow", "Wilcoxon", None),
+            8, QCoreApplication.translate("MainWindow", "Wilcoxon", None)
         )
         self.comboBox_stat_test_catplot.setItemText(
-            9,
-            QCoreApplication.translate("MainWindow", "Kruskal", None),
+            9, QCoreApplication.translate("MainWindow", "Kruskal", None)
         )
 
         # if QT_CONFIG(tooltip)
         self.lb_stattest_14.setToolTip(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations",
-                None,
-            ),
+                "MainWindow", "\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest_14.setText(
@@ -8924,16 +8583,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u043d\u0443\u0442\u0440\u0438 \u043f\u043e\u0434\u0433\u0440\u0443\u043f\u043f\u044b",
                 None,
-            ),
+            )
         )
         self.check_stat_znachimost_catplot_inside_subgroup.setText("")
         # if QT_CONFIG(tooltip)
         self.lb_stattest_9.setToolTip(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations",
-                None,
-            ),
+                "MainWindow", "\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest_9.setText(
@@ -8941,19 +8598,16 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0424\u043e\u0440\u043c\u0430\u0442 \u043f\u043e\u0434\u043f\u0438\u0441\u0435\u0439 \u0434\u043b\u044f \u0441\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438",
                 None,
-            ),
+            )
         )
         self.comboBox_catplot_stat_formatt.setItemText(
             0,
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 p",
-                None,
+                "MainWindow", "\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 p", None
             ),
         )
         self.comboBox_catplot_stat_formatt.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "*", None),
+            1, QCoreApplication.translate("MainWindow", "*", None)
         )
         self.comboBox_catplot_stat_formatt.setItemText(
             2,
@@ -8963,10 +8617,8 @@ class Ui_MainWindow:
         # if QT_CONFIG(tooltip)
         self.lb_stattest_10.setToolTip(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations",
-                None,
-            ),
+                "MainWindow", "\u0441\u043c. \u043f\u0430\u043a\u0435\u0442 statannotations", None
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest_10.setText(
@@ -8974,27 +8626,22 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u043e\u043f\u0440\u0430\u0432\u043a\u0430 \u043d\u0430 \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u0443\u044e \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0443 \u0433\u0438\u043f\u043e\u0442\u0435\u0437",
                 None,
-            ),
+            )
         )
         self.comboBox_catplot_mult_stat.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "None", None),
+            0, QCoreApplication.translate("MainWindow", "None", None)
         )
         self.comboBox_catplot_mult_stat.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "bonferroni", None),
+            1, QCoreApplication.translate("MainWindow", "bonferroni", None)
         )
         self.comboBox_catplot_mult_stat.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "holm-bonferroni", None),
+            2, QCoreApplication.translate("MainWindow", "holm-bonferroni", None)
         )
         self.comboBox_catplot_mult_stat.setItemText(
-            3,
-            QCoreApplication.translate("MainWindow", "benjamini-hochberg", None),
+            3, QCoreApplication.translate("MainWindow", "benjamini-hochberg", None)
         )
         self.comboBox_catplot_mult_stat.setItemText(
-            4,
-            QCoreApplication.translate("MainWindow", "Benjamini-Yekutieli", None),
+            4, QCoreApplication.translate("MainWindow", "Benjamini-Yekutieli", None)
         )
 
         self.btn_plot_and_save_catplot.setText(
@@ -9002,7 +8649,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a",
                 None,
-            ),
+            )
         )
         self.tabWidget_2.setTabText(
             self.tabWidget_2.indexOf(self.tab_10),
@@ -9011,10 +8658,8 @@ class Ui_MainWindow:
         # if QT_CONFIG(tooltip)
         self.lb_path_for_plot_7.setToolTip(
             QCoreApplication.translate(
-                "MainWindow",
-                "<html><head/><body><p><br/></p></body></html>",
-                None,
-            ),
+                "MainWindow", "<html><head/><body><p><br/></p></body></html>", None
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_for_plot_7.setText(
@@ -9022,7 +8667,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "RheoScan - \u0440\u0430\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0440\u0435\u0434\u043d\u0438\u0435 \u0438 SD \u043f\u043e \u0444\u0430\u0439\u043b\u0443 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u0430\u043c",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_for_plot_5.setToolTip(
@@ -9030,7 +8675,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043d\u0430\u0445\u043e\u0434\u044f\u0442\u0441\u044f excel \u0444\u0430\u0439\u043b\u044b \u0438\u043b\u0438 \u0444\u0430\u0439\u043b. \u0415\u0441\u043b\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u0442\u043e\u043b\u044c\u043a\u043e \u0432 \u043e\u0434\u043d\u043e\u043c \u0444\u0430\u0439\u043b\u0435, \u0442\u043e \u043d\u0443\u0436\u043d\u043e \u0443\u043a\u0430\u0437\u0430\u0442\u044c \u043f\u0443\u0442\u044c \u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e. </p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_for_plot_5.setText(
@@ -9038,7 +8683,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c \u043a excel \u0444\u0430\u0439\u043b\u0443 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u0430\u043c",
                 None,
-            ),
+            )
         )
         self.path_for_RheoScan_describe.setText("")
         self.toolButton_RheoScan.setText(QCoreApplication.translate("MainWindow", "...", None))
@@ -9048,11 +8693,11 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>&quot;\u041e\u0434\u0438\u043d \u0444\u0430\u0439\u043b - \u043e\u0434\u0438\u043d \u043e\u0431\u0440\u0430\u0437\u0435\u0446&quot; - \u043f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0435\u0432\u0430\u0435\u0442, \u0447\u0442\u043e \u0432\u0441\u0435 \u0432 \u0444\u0430\u0439\u043b\u0435 \u0431\u0443\u0434\u0435\u0442 \u0443\u0441\u0440\u0435\u0434\u043d\u044f\u0442\u044c\u0441\u044f</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest_12.setText(
-            QCoreApplication.translate("MainWindow", "\u0414\u0430\u043d\u043d\u044b\u0435", None),
+            QCoreApplication.translate("MainWindow", "\u0414\u0430\u043d\u043d\u044b\u0435", None)
         )
         self.comboBox_RheoScan_describe.setItemText(
             0,
@@ -9077,7 +8722,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "<html><head/><body><p>\u041d\u0430\u0434\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u043e\u0431\u0435\u043b \u0441\u0442\u0440\u043e\u043a\u0443 \u0438\u0437 (0 \u0438 1) \u0438\u043b\u0438 (f \u0438 t) \u0438\u043b\u0438 (false \u0438 true) \u0438\u043b\u0438 (n \u0438 y) \u0432 \u043a\u0430\u043a\u0438\u0445 \u043b\u0438\u0441\u0442\u0430\u0445 \u0441\u0447\u0438\u0442\u0430\u0442\u044c SD, \u0430 \u0432 \u043a\u0430\u043a\u0438\u0445 \u043d\u0435 \u0441\u0447\u0438\u0442\u0430\u0442\u044c. \u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0435\u0441\u0442\u044c 3 \u043b\u0438\u0441\u0442\u0430 (Agg, Stress, Deform) \u0438 \u043c\u044b \u0432\u0432\u0435\u043b\u0438 &quot;0 1 0&quot;, \u0442\u043e\u0433\u0434\u0430 SD \u043f\u043e\u0441\u0447\u0438\u0442\u0430\u0435\u0442\u0441\u044f \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430 \u043b\u0438\u0441\u0442\u0435 &quot;Stress&quot;.</p></body></html>",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         # if QT_CONFIG(statustip)
@@ -9086,7 +8731,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u043e\u0431\u0435\u043b\u044b \u043d\u0430\u043f\u0438\u0441\u0430\u0442\u044c True \u0438\u043b\u0438 False, \u0438\u043b\u0438 \u0436\u0435 0, 1, \u0442\u0435\u043c \u0441\u0430\u043c\u044b\u043c \u043f\u043e\u043c\u0435\u0442\u0438\u0432 \u043b\u0438\u0441\u0442\u044b.",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(statustip)
         self.lb_path_for_plot_6.setText(
@@ -9094,7 +8739,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0441\u0447\u0435\u0442 SD \u043d\u0430 \u0440\u0430\u0437\u043d\u044b\u0445 \u043b\u0438\u0441\u0442\u0430\u0445",
                 None,
-            ),
+            )
         )
         self.RheoScan_describe_mask_sheets.setText("")
         self.btn_RheoScan_describe_file_or_files.setText(
@@ -9102,15 +8747,13 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u0434\u0435\u043b\u0430\u0442\u044c \u0441\u0432\u043e\u0434\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u043f\u043e \u0444\u0430\u0439\u043b\u0443 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u0430\u043c",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_for_plot_8.setToolTip(
             QCoreApplication.translate(
-                "MainWindow",
-                "<html><head/><body><p><br/></p></body></html>",
-                None,
-            ),
+                "MainWindow", "<html><head/><body><p><br/></p></body></html>", None
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_for_plot_8.setText(
@@ -9118,7 +8761,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u043c\u0435\u0436\u0434\u0443 2 \u0432\u044b\u0431\u043e\u0440\u043a\u0430\u043c\u0438",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_for_plot_4.setToolTip(
@@ -9126,7 +8769,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043d\u0430\u0439\u0434\u0435\u043d excel \u0444\u0430\u0439\u043b",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_path_for_plot_4.setText(
@@ -9134,7 +8777,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0443\u0442\u044c \u043a excel \u0444\u0430\u0439\u043b\u0443",
                 None,
-            ),
+            )
         )
         self.path_for_dop_stat.setText("")
         self.lb_exel_name_5.setText(
@@ -9142,14 +8785,14 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430",
                 None,
-            ),
+            )
         )
         self.lb_exel_name_6.setText(
             QCoreApplication.translate(
                 "MainWindow",
                 "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430 \u0432 \u0444\u0430\u0439\u043b\u0435",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_9.setToolTip("")
@@ -9159,7 +8802,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041f\u0435\u0440\u0432\u0430\u044f \u0433\u0440\u0443\u043f\u043f\u0430",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_10.setToolTip("")
@@ -9169,7 +8812,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0412\u0442\u043e\u0440\u0430\u044f \u0433\u0440\u0443\u043f\u043f\u0430",
                 None,
-            ),
+            )
         )
         # if QT_CONFIG(tooltip)
         self.lb_stattest_8.setToolTip(
@@ -9177,7 +8820,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0414\u043b\u044f \u043f\u0435\u0440\u043c\u0443\u0442\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u0442\u0435\u0441\u0442\u043e\u0432 \u0441\u0447\u0435\u0442 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0434\u043e\u043b\u0433\u0438\u043c.",
                 None,
-            ),
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.lb_stattest_8.setText(
@@ -9185,7 +8828,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0435\u0441\u0442",
                 None,
-            ),
+            )
         )
         self.comboBox_stat_test_dop_stat.setItemText(
             0,
@@ -9297,19 +8940,16 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0433\u0438\u043f\u043e\u0442\u0435\u0437\u0430",
                 None,
-            ),
+            )
         )
         self.comboBox_alter_hep_dop_stat.setItemText(
-            0,
-            QCoreApplication.translate("MainWindow", "two-sided", None),
+            0, QCoreApplication.translate("MainWindow", "two-sided", None)
         )
         self.comboBox_alter_hep_dop_stat.setItemText(
-            1,
-            QCoreApplication.translate("MainWindow", "less", None),
+            1, QCoreApplication.translate("MainWindow", "less", None)
         )
         self.comboBox_alter_hep_dop_stat.setItemText(
-            2,
-            QCoreApplication.translate("MainWindow", "greater", None),
+            2, QCoreApplication.translate("MainWindow", "greater", None)
         )
 
         # if QT_CONFIG(tooltip)
@@ -9317,10 +8957,8 @@ class Ui_MainWindow:
         # endif // QT_CONFIG(tooltip)
         self.lb_hue_name_11.setText(
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 p:",
-                None,
-            ),
+                "MainWindow", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 p:", None
+            )
         )
         self.p_value_dop_stat.setText("")
         self.btn_dop_stat_calc.setText(
@@ -9328,7 +8966,7 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c",
                 None,
-            ),
+            )
         )
         self.tabWidget_2.setTabText(
             self.tabWidget_2.indexOf(self.tab_12),
@@ -9349,10 +8987,8 @@ class Ui_MainWindow:
         # if QT_CONFIG(tooltip)
         self.label_info.setToolTip(
             QCoreApplication.translate(
-                "MainWindow",
-                "<html><head/><body><p><br/></p></body></html>",
-                None,
-            ),
+                "MainWindow", "<html><head/><body><p><br/></p></body></html>", None
+            )
         )
         # endif // QT_CONFIG(tooltip)
         self.label_info.setText(
@@ -9360,9 +8996,9 @@ class Ui_MainWindow:
                 "MainWindow",
                 "\u041b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u0438\u044f \u0411\u0438\u043e\u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0439 \u0444\u043e\u0442\u043e\u043d\u0438\u043a\u0438 \u041c\u0413\u0423 \u2014 \u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f",
                 None,
-            ),
+            )
         )
-        self.label_version.setText(QCoreApplication.translate("MainWindow", "3.6.3", None))
+        self.label_version.setText(QCoreApplication.translate("MainWindow", "_._._", None))
         self.comboBox_style_sheet.setItemText(
             0,
             QCoreApplication.translate(
@@ -9374,9 +9010,7 @@ class Ui_MainWindow:
         self.comboBox_style_sheet.setItemText(
             1,
             QCoreApplication.translate(
-                "MainWindow",
-                "\u0422\u0435\u043c\u043d\u0430\u044f \u0442\u0435\u043c\u0430",
-                None,
+                "MainWindow", "\u0422\u0435\u043c\u043d\u0430\u044f \u0442\u0435\u043c\u0430", None
             ),
         )
 

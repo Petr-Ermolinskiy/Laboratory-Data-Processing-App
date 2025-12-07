@@ -1,6 +1,7 @@
 import gc
 import json
 import os
+import platform
 import shutil
 import sys
 import time
@@ -328,10 +329,15 @@ def test_rheo_scan_post_processing(
     # выполняем обработку данных
     window.RheoScan_describe()
 
+    # на Windows и Mac могут быть различия в Numpy обработки данных с точки зрения аппроксимации
+    # поэтому надо сделать разный порог для сравнения -- tolerance
+    tolerance = 1e-10 if platform.system() == "Windows" else 1e-6
+
     # проверка на файлы
     check_, diff = compare_excel_files(
         str(Path(data_folder) / "RheoScan_2_level" / "RheoScan_summary.xlsx"),
         str(Path(data_folder) / "check_" / "RheoScan_summary_check.xlsx"),
+        tolerance=tolerance,
     )
 
     if not check_:

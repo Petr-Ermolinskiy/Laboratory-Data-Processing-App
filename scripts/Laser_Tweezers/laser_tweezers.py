@@ -1,4 +1,5 @@
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -13,6 +14,45 @@ logger.add(sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {messa
 # ----------------------------------------------- #
 
 
+def parse_date_string(date_str: str) -> datetime:
+    """Парсинг формата дат.
+
+    - 03.04.2025 (European format: день.месяц.год)
+    - 03/04/2025 (US format: месяц/день/год or день/месяц/год)
+    """
+    # убираем
+    date_str = date_str.strip()
+
+    # пробуем разные форматы
+    formats = [
+        "%d.%m.%Y",  # 03.04.2025 (день.месяц.год)
+        "%d/%m/%Y",  # 03/04/2025 (день/месяц/год)
+    ]
+
+    for fmt in formats:
+        try:
+            return datetime.strptime(date_str, fmt)
+        except ValueError:
+            continue
+
+    # если ничто не сработало, то ошибка
+    msg = f"Unable to parse date string: {date_str}"
+    raise ValueError(msg)
+
+
+def change_format_date(date_str_: str, separator="/") -> str:
+    """Возращает дату в формате день/месяц/год."""
+    # не используем strftime("%d/%m/%Y"), потому что есть разница на Windows и Mac
+    # а изначально день-месяц без нуля сначала
+    parsed_date = parse_date_string(date_str_)
+
+    day = str(parsed_date.day)
+    month = str(parsed_date.month)
+    year = str(parsed_date.year)
+
+    return f"{day}{separator}{month}{separator}{year}"
+
+
 def laser_tweezers(self) -> None:
     dlg = QMessageBox(self)
     #########################
@@ -21,6 +61,7 @@ def laser_tweezers(self) -> None:
     split_subfold = self.ui.sep_for_LT.text()
     a, b = self.ui.a_dop.value(), self.ui.b_dop.value()
     date_of_cal = self.ui.dateEdit_2.text()
+    date_of_cal_quadratic = self.ui.dateEdit_3.text()
     a_end, b_end = self.ui.a_main.value(), self.ui.b_main.value()
     date_of_cal_end = self.ui.dateEdit.text()
     split = self.ui.sep_for_LT_values.text()
@@ -35,6 +76,12 @@ def laser_tweezers(self) -> None:
     path_obj = Path(path)
     # имя файла
     name_of_exp = path_obj.name
+
+    # все даты переводим в единый формат
+    date_of_cal = change_format_date(date_of_cal)
+    date_of_cal_quadratic = change_format_date(date_of_cal_quadratic)
+    date_of_cal_end = change_format_date(date_of_cal_end)
+
     # Считываем все данные и сохраняем их в 2 DataFrame.
     # Считываются все имена подпапок, и в каждой подпапке считываются имена файлов,
     # в которых есть значения сил агрегации и дезагрегации
@@ -51,7 +98,7 @@ def laser_tweezers(self) -> None:
                 name_dop = name.split(split_subfold)
                 try:
                     name = name_dop[position - 1]
-                except:
+                except:  # noqa: E722, S112
                     continue
             for i in files:
                 m = i.name
@@ -122,10 +169,10 @@ def laser_tweezers(self) -> None:
     all_glass["Force, pN"] = all_glass["Force, pN"] * a_end + b_end
 
     # сортируем по концентрации
-    all_FA = all_FA.sort_values(by=["Concentration"])
-    all_FD = all_FD.sort_values(by=["Concentration"])
-    all_end = all_end.sort_values(by=["Concentration"])
-    all_glass = all_glass.sort_values(by=["Concentration"])
+    all_FA = all_FA.sort_values(by=["Concentration", "Force, pN"], ascending=[True, False])
+    all_FD = all_FD.sort_values(by=["Concentration", "Force, pN"], ascending=[True, False])
+    all_end = all_end.sort_values(by=["Concentration", "Force, pN"], ascending=[True, False])
+    all_glass = all_glass.sort_values(by=["Concentration", "Force, pN"], ascending=[True, False])
 
     # сортируем по индексу столбца
     newf_FA = all_FA.pivot(columns="Concentration", values="Force, pN")
@@ -138,7 +185,7 @@ def laser_tweezers(self) -> None:
     for i in newf_FA.columns:
         ignore_nan = newf_FA[i]
         ignore_nan = ignore_nan.dropna()
-        ignore_nan = ignore_nan.reset_index(drop=True)
+        ignore_nan = ignore_nan.reset_index(drop=True).sort_values(ascending=False)
         for_FA.insert(loc=0, column=i, value=ignore_nan)
     for_FA = for_FA[for_FA.columns[::-1]]
     # выбрасываем все NaN там, где они есть для каждого столбца для FD и сохраняем значения в новый DataFrame
@@ -146,7 +193,7 @@ def laser_tweezers(self) -> None:
     for i in newf_FD.columns:
         ignore_nan = newf_FD[i]
         ignore_nan = ignore_nan.dropna()
-        ignore_nan = ignore_nan.reset_index(drop=True)
+        ignore_nan = ignore_nan.reset_index(drop=True).sort_values(ascending=False)
         for_FD.insert(loc=0, column=i, value=ignore_nan)
     for_FD = for_FD[for_FD.columns[::-1]]
     # выбрасываем все NaN там, где они есть для каждого столбца для END и сохраняем значения в новый DataFrame
@@ -154,7 +201,7 @@ def laser_tweezers(self) -> None:
     for i in newf_END.columns:
         ignore_nan = newf_END[i]
         ignore_nan = ignore_nan.dropna()
-        ignore_nan = ignore_nan.reset_index(drop=True)
+        ignore_nan = ignore_nan.reset_index(drop=True).sort_values(ascending=False)
         for_END.insert(loc=0, column=i, value=ignore_nan)
     for_END = for_END[for_END.columns[::-1]]
     # выбрасываем все NaN там, где они есть для каждого столбца для GLASS и сохраняем значения в новый DataFrame
@@ -162,7 +209,7 @@ def laser_tweezers(self) -> None:
     for i in newf_GLASS.columns:
         ignore_nan = newf_GLASS[i]
         ignore_nan = ignore_nan.dropna()
-        ignore_nan = ignore_nan.reset_index(drop=True)
+        ignore_nan = ignore_nan.reset_index(drop=True).sort_values(ascending=False)
         for_GLASS.insert(loc=0, column=i, value=ignore_nan)
     for_GLASS = for_GLASS[for_GLASS.columns[::-1]]
 
@@ -181,6 +228,17 @@ def laser_tweezers(self) -> None:
                 index=[0],
             )
             all_FD_OVER_FA = pd.concat([all_FD_OVER_FA, just______], ignore_index=True)
+
+    # делаем reset_index -- на Mac и Windows индексы будут различаться, если это не сделать
+    all_FA = all_FA.reset_index(drop=True)
+    all_FD = all_FD.reset_index(drop=True)
+    all_end = all_end.reset_index(drop=True)
+    for_FA = for_FA.reset_index(drop=True)
+    for_FD = for_FD.reset_index(drop=True)
+    for_END = for_END.reset_index(drop=True)
+    all_glass = all_glass.reset_index(drop=True)
+    for_GLASS = for_GLASS.reset_index(drop=True)
+    all_FD_OVER_FA = all_FD_OVER_FA.reset_index(drop=True)
 
     # сделаем так, чтобы индекс начинался с 1, а не с 0
     all_FA.index += 1
@@ -238,8 +296,7 @@ def laser_tweezers(self) -> None:
             text_sheet.cell(
                 column=1,
                 row=3,
-                value="Калибровка для дополнительного пучка была сделана:"
-                + self.ui.dateEdit_3.text(),
+                value="Калибровка для дополнительного пучка была сделана:" + date_of_cal_quadratic,
             )
             text_sheet.cell(column=1, row=4, value="y(пН)=k*(y0 + A*exp(R0 * x(Вольт)))+b")
             text_sheet.cell(column=1, row=5, value="k:")
