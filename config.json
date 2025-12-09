@@ -4,6 +4,7 @@
   "APP_NAME": "Lab_App",
   "MAIN_SCRIPT": "main.py",
   "ICON_PATH": "app/style/logo.ico",
+  "ICON_PATH_MAC": "app/style/logo.icns",
   "VERSION_JSON": "config.json",
   "STYLE_QSS": "app/style/style_dark.qss"
 }

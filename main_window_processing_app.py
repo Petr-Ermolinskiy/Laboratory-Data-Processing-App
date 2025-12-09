@@ -199,7 +199,7 @@ class MainWindowProcessingApp(QMainWindow):
         :return:
         """
         if index == 1:
-            with open("app/style/style_dark.qss") as f:
+            with open(resource_path("app/style/style_dark.qss")) as f:
                 _style = f.read()
             self.setStyleSheet(_style)
         else:

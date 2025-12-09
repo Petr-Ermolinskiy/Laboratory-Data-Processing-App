@@ -3,35 +3,45 @@
 import argparse
 import json
 import os
+import platform
 import shutil
 import subprocess
+import sys
+
+from loguru import logger
+
+# ----------------------------------------------- #
+logger.remove()
+
+logger.add(sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO")
+# ----------------------------------------------- #
 
 
 def run_command(command: str, description: str | None = None, *, shell: bool = True) -> bool:
     """Выполнить shell-команду с обработкой ошибок."""
     if description:
-        print(f"Выполнение: {description}...")
-        print(f"Команда: {command}")
+        logger.info(f"Выполнение: {description}...")
+        logger.info(f"Команда: {command}")
 
     try:
-        result = subprocess.run(
+        result = subprocess.run(  # noqa: S603
             command, shell=shell, check=True, capture_output=True, text=True, encoding="utf-8"
         )
         if result.stdout:
-            print(result.stdout)
+            logger.info(result.stdout)
     except subprocess.CalledProcessError as e:
-        print(f"❌ Ошибка выполнения команды: {command}")
-        print(f"   Ошибка: {e.stderr if e.stderr else str(e)}")
+        logger.warning(f"❌ Ошибка выполнения команды: {command}")
+        logger.warning(f"   Ошибка: {e.stderr if e.stderr else str(e)}")
         return False
     except Exception as e:
-        print(f"❌ Неожиданная ошибка: {e!s}")
+        logger.warning(f"❌ Неожиданная ошибка: {e!s}")
         return False
     return True
 
 
 def check_dependencies() -> None:
     """Проверить установлены ли необходимые инструменты."""
-    print("🔍 Проверка зависимостей...")
+    logger.info("🔍 Проверка зависимостей...")
 
     dependencies = [
         ("python", "--version"),
@@ -42,37 +52,29 @@ def check_dependencies() -> None:
     for dep, version_arg in dependencies:
         try:
             subprocess.run([dep, version_arg], capture_output=True, check=True)  # noqa: S603
-            print(f"   ✅ {dep} установлен")
+            logger.info(f"   ✅ {dep} установлен")
         except (subprocess.CalledProcessError, FileNotFoundError):
-            print(f"   ❌ {dep} не установлен или нет в PATH")
+            logger.warning(f"   ❌ {dep} не установлен или нет в PATH")
             if dep == "pytest":
-                print("      Установить: pip install pytest")
+                logger.warning("      Установить: pip install pytest")
             elif dep == "pyinstaller":
-                print("      Установить: pip install pyinstaller")
+                logger.warning("      Установить: pip install pyinstaller")
 
 
 def run_tests() -> bool:
     """Запустить pytest тесты."""
-    print("\n" + "=" * 50)
-    print("--- ЗАПУСК ТЕСТОВ ---")
-    print("=" * 50)
+    logger.info("--- ЗАПУСК ТЕСТОВ ---")
 
     if not run_command("pytest -s", "Запуск тестов"):
-        print("⚠️  Пробуем альтернативный подход...")
+        logger.info("⚠️  Пробуем альтернативный подход...")
         return run_command("python -m pytest -s", "Запуск тестов через python -m")
     return True
 
 
-def build_app(config: dict) -> bool:
-    """Собрать приложение с помощью PyInstaller."""
-    print("\n" + "=" * 50)
-    print("--- СБОРКА ПРИЛОЖЕНИЯ ---")
-    print("=" * 50)
-
-    app_name = config["APP_NAME"] + "_" + config["version"]
-
-    # Сформировать команду pyinstaller
-    cmd = [
+def command_for_build_windows(config: dict) -> list:
+    """Команда для сборки -- Windows."""
+    app_name = config["APP_NAME"] + "_" + config["version"] + "_win"
+    return [
         "pyinstaller",
         "--windowed",
         f"--add-data={config['VERSION_JSON']};.",
@@ -84,6 +86,33 @@ def build_app(config: dict) -> bool:
         config["MAIN_SCRIPT"],
     ]
 
+
+def command_for_build_mac(config: dict) -> list:
+    """Команда для сборки -- Mac."""
+    app_name = config["APP_NAME"] + "_" + config["version"] + "_mac"
+    return [
+        "pyinstaller",
+        "--onefile",
+        "--windowed",
+        f"--add-data={config['VERSION_JSON']}:.",
+        f"--add-data={config['ICON_PATH_MAC']}:app/style",
+        f"--add-data={config['STYLE_QSS']}:app/style",
+        f"--name={app_name}",
+        f"--icon={config['ICON_PATH_MAC']}",
+        config["MAIN_SCRIPT"],
+    ]
+
+
+def build_app(config: dict) -> bool:
+    """Собрать приложение с помощью PyInstaller."""
+    logger.info("--- СБОРКА ПРИЛОЖЕНИЯ ---")
+
+    # Сформировать команду pyinstaller
+    if platform.system() == "Windows":
+        cmd = command_for_build_windows(config)
+    else:
+        cmd = command_for_build_mac(config)
+
     # Преобразовать список в строку для выполнения в shell
     cmd_str = " ".join(cmd)
 
@@ -92,9 +121,7 @@ def build_app(config: dict) -> bool:
 
 def clean_build(config: dict) -> None:
     """Очистить артефакты сборки."""
-    print("\n" + "=" * 50)
-    print("--- ОЧИСТКА ---")
-    print("=" * 50)
+    logger.info("--- ОЧИСТКА ---")
 
     folders_to_remove = ["build", "dist", "__pycache__"]
     files_to_remove = [f"{config['APP_NAME']}.spec"]
@@ -111,9 +138,9 @@ def clean_build(config: dict) -> None:
         if os.path.exists(file):
             try:
                 os.remove(file)
-                print(f"Удален файл: {file}")
+                logger.info(f"Удален файл: {file}")
             except Exception as e:
-                print(f"Ошибка удаления {file}: {e}")
+                logger.error(f"Ошибка удаления {file}: {e}")
 
 
 def main() -> None:
@@ -132,8 +159,7 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    print("~~~ Python Скрипт Сборки ~~~")
-    print("=" * 50)
+    logger.info("~~~ Python Скрипт Сборки ~~~")
 
     # Сначала надо проверить зависимости
     check_dependencies()
@@ -156,15 +182,14 @@ def main() -> None:
         # Просто проверить зависимости, уже сделано выше
         pass
 
-    print("\n" + "=" * 50)
     if success:
-        print("✅ Операции завершены успешно!")
+        logger.info("✅ Операции завершены успешно!")
     else:
-        print("❌ Операция завершилась ошибкой!")
+        logger.error("❌ Операция завершилась ошибкой!")
 
 
 if __name__ == "__main__":
     # на директорию выше
-    os.chdir("..")
-
+    # -- при запуске скрипта не из терминала из папки файла добавить >>> os.chdir("..")
+    logger.info(f"Дирректория: {os.getcwd()}")  # noqa: PTH109
     main()
