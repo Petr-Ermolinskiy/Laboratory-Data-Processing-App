@@ -92,7 +92,6 @@ def command_for_build_mac(config: dict) -> list:
     app_name = config["APP_NAME"] + "_" + config["version"] + "_mac"
     return [
         "pyinstaller",
-        "--onefile",
         "--windowed",
         f"--add-data={config['VERSION_JSON']}:.",
         f"--add-data={config['ICON_PATH_MAC']}:app/style",
