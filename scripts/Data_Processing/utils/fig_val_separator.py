@@ -4,6 +4,7 @@ import warnings
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import seaborn as sns
 from loguru import logger
 from matplotlib import ticker
 
@@ -167,6 +168,9 @@ def apply_global_comma_patch() -> None:
     _ORIGINAL_METHODS["Axes.scatter"] = mpl.axes.Axes.scatter
     _ORIGINAL_METHODS["Axes.plot"] = mpl.axes.Axes.plot
 
+    # СОХРАНЯЕМ ОРИГИНАЛЬНЫЕ МЕТОДЫ SEABORN ЕСЛИ ОН ЕСТЬ
+    _ORIGINAL_METHODS["seaborn.heatmap"] = sns.heatmap
+
     # Модифицируем создание осей для гарантированной установки форматтеров
     def patched_Axes_init(self, *args, **kwargs):
         _ORIGINAL_METHODS["Axes.__init__"](self, *args, **kwargs)
@@ -213,28 +217,44 @@ def apply_global_comma_patch() -> None:
 
     mpl.axes.Axes.boxplot = patched_boxplot
 
-    # ДОБАВЛЯЕМ ПАТЧИ ДЛЯ ДРУГИХ ТИПОВ ГРАФИКОВ
-    def create_patched_plot_method(method_name):
-        """Создает патч для метода построения графика."""
+    # ДОБАВЛЯЕМ ПАТЧ ДЛЯ SEABORN HEATMAP ЕСЛИ SEABORN ЕСТЬ
+    def patched_heatmap(*args, **kwargs):
+        """Патч для seaborn heatmap с автоматической установкой форматтеров."""
+        # Вызываем оригинальный heatmap
+        result = _ORIGINAL_METHODS["seaborn.heatmap"](*args, **kwargs)
+        # Получаем текущие оси
+        ax = plt.gca()
 
-        def patched_method(self, *args, **kwargs):
-            result = _ORIGINAL_METHODS[f"Axes.{method_name}"](self, *args, **kwargs)
-            # Обновляем форматтеры после построения графика
-            self.xaxis.set_major_formatter(CommaDecimalScalarFormatter())
-            self.yaxis.set_major_formatter(CommaDecimalScalarFormatter())
-            return result
+        # ОСОБЕННО ВАЖНО: обрабатываем аннотации (annot=True)
+        if kwargs.get("annot", False):
+            # Получаем текстовые аннотации
+            for text_obj in ax.texts:
+                text = text_obj.get_text()
+                # Заменяем точки на запятые в аннотациях
+                if "." in text:
+                    try:
+                        # Пробуем преобразовать в число и обратно с запятой
+                        num = float(text)
+                        # Форматируем с нужным количеством знаков после запятой
+                        # Определяем количество знаков после запятой из оригинального текста
+                        if "." in text:
+                            decimal_places = len(text.split(".")[1])
+                            new_text = f"{num:.{decimal_places}f}".replace(".", ",")
+                            text_obj.set_text(new_text)
+                    except ValueError:
+                        # Если не число, просто заменяем точки
+                        text_obj.set_text(text.replace(".", ","))
 
-        return patched_method
+        return result
 
-    # Патчим основные методы построения графиков
-    mpl.axes.Axes.hist = create_patched_plot_method("hist")
-    mpl.axes.Axes.scatter = create_patched_plot_method("scatter")
-    mpl.axes.Axes.plot = create_patched_plot_method("plot")
+    # Заменяем оригинальную функцию
+    sns.heatmap = patched_heatmap
+    logger.info("Патч применен для seaborn heatmap")
 
     _IS_PATCHED = True
     logger.info("Глобальный патч с запятыми в качестве десятичного разделителя ПРИМЕНЕН")
     logger.info("Все новые графики будут использовать запятые вместо точек для десятичных дробей")
-    logger.info("Поддерживаемые графики: line, scatter, hist, boxplot, colorbar")
+    logger.info("Поддерживаемые графики: line, scatter, hist, boxplot, heatmap, colorbar")
 
 
 def restore_global_comma_patch() -> None:
@@ -278,6 +298,16 @@ def restore_global_comma_patch() -> None:
 
     if "Axes.plot" in _ORIGINAL_METHODS:
         mpl.axes.Axes.plot = _ORIGINAL_METHODS["Axes.plot"]
+
+    # ВОССТАНАВЛИВАЕМ SEABORN ЕСЛИ ОН БЫЛ ПАТЧЕН
+    if "seaborn.heatmap" in _ORIGINAL_METHODS:
+        sns.heatmap = _ORIGINAL_METHODS["seaborn.heatmap"]
+        logger.info("Восстановлен оригинальный seaborn.heatmap")
+    # Также можно восстановить другие seaborn функции если они были патчены
+    if "seaborn.barplot" in _ORIGINAL_METHODS:
+        sns.barplot = _ORIGINAL_METHODS["seaborn.barplot"]
+    if "seaborn.lineplot" in _ORIGINAL_METHODS:
+        sns.lineplot = _ORIGINAL_METHODS["seaborn.lineplot"]
 
     # Закрываем существующие графики для гарантии, что новые используют восстановленные форматтеры
     plt.close("all")

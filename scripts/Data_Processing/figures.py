@@ -1,4 +1,5 @@
 import math
+import warnings
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -16,6 +17,8 @@ from scripts.Data_Processing.utils.fig_val_separator import (
     is_patched,
     restore_global_comma_patch,
 )
+
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 
 ##############################################################
@@ -612,7 +615,7 @@ def box_and_whisker(
                 )
             elif plot_feature_data__["comboBox_stat_test"] == "Тест Фишера-Питмана":
 
-                def statistic(x, y, axis)->float:
+                def statistic(x, y, axis) -> float:
                     return np.mean(x, axis=axis) - np.mean(y, axis=axis)
 
                 # вычисляем
