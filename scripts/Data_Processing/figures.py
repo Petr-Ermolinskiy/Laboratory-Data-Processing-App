@@ -11,6 +11,12 @@ from permutations_stats.permutations import permutation_test, repeated_permutati
 from PySide6.QtWidgets import QMessageBox
 from scipy import stats
 
+from scripts.Data_Processing.utils.fig_val_separator import (
+    apply_global_comma_patch,
+    is_patched,
+    restore_global_comma_patch,
+)
+
 
 ##############################################################
 #
@@ -21,7 +27,7 @@ def figs_plot(self) -> None:
     dlg = QMessageBox(self)
     # закроем все рисунки, если они открыты
     # если этого не сделать, то может быть такое, что рисунки наложатся друг на друга
-    plt.close()
+    plt.close("all")
     # В этот list будут записываться все доп. Функции для графиков -- см. определение ниже.
     global plot_feature_data__
     # Я решил все особенности и доп. функции для построения графиков перевести в массив "plot_feature_data__".
@@ -55,6 +61,10 @@ def figs_plot(self) -> None:
         dlg.exec()
         return
 
+    # делаем патч, если нужно заменить точки на запятые в качестве разделителя
+    if self.ui.checkBox_point_comma_separator.isChecked() and not is_patched():
+        apply_global_comma_patch()
+
     # основной путь
     path_obj = Path(path)
     # путь до файла
@@ -87,7 +97,7 @@ def figs_plot(self) -> None:
 
     # если стоит галочка, то проходимся по всем листам, но если же all_sheets_true == False,
     # то выбираем только один лист
-    if all_sheets_true == False:
+    if not all_sheets_true:
         names = [one_sheet_name]
 
     # выполняем функцию do_for_one_sheet по всем листам (или же только по одному) в excel файле
@@ -106,6 +116,11 @@ def figs_plot(self) -> None:
         )
         if check_cykle != "__":
             break
+
+    # восстановим патч
+    if is_patched():
+        restore_global_comma_patch()
+
     if check_cykle == "__":
         dlg.setWindowTitle("Графики")
         dlg.setText("Все графики успешно сохранены")
@@ -115,7 +130,13 @@ def figs_plot(self) -> None:
     dlg.setText(check_cykle)
     dlg.setIcon(QMessageBox.Icon.Critical)
     dlg.exec()
+
     return
+
+
+def reset_origin_sns() -> None:
+    """Восстанавливает настройки."""
+    sns.reset_orig()
 
 
 ##############################################################
@@ -132,10 +153,7 @@ def corr_one_parameter(path_obj, files, what_sheet, hue_name) -> None:
     # выделяем те колонки, которые нас будут интерисовать с точки зрения обработки!
 
     # будем смотреть один параметр если стоит галочка, иначе все параметры
-    if plot_feature_data__["corr_one_parameter_only_one"]:
-        corr_list = [hue_name]
-    else:
-        corr_list = df.columns
+    corr_list = [hue_name] if plot_feature_data__["corr_one_parameter_only_one"] else df.columns
 
     ###
     # корреляционная матрица
@@ -152,7 +170,8 @@ def corr_one_parameter(path_obj, files, what_sheet, hue_name) -> None:
             correlation_matrix = correlation_matrix.drop(columns=i).drop(i)
 
     if correlation_matrix.empty:
-        raise ValueError("Нет корреляций для выставленных границ")
+        msg = "Нет корреляций для выставленных границ"
+        raise ValueError(msg)
 
     # папка для сохранения результатов
     path_one_corr = path_obj / "one_corr"
@@ -218,7 +237,7 @@ def do_for_one_sheet(
 ):
     # читаем exel файл - index_col=0,
     df = pd.read_excel(str(files), sheet_name=what_sheet)
-    df.index.rename(None, inplace=True)
+    df.index = df.index.rename(None)
     # на всякий случай почистим
     df.columns = df.columns.str.replace("\\n", "\n", regex=False)
     # выделяем те колонки, которые нас будут интерисовать с точки зрения обработки!
@@ -422,19 +441,14 @@ def box_and_whisker(
     path_name_fiqure_folder,
     make_an_SD=True,
 ) -> str:
+    """Построим BOX plot с стат. значимостью."""
     sns.reset_orig()
-    """
-    Create a box-and-whisker plot with significance bars.
-    """
     # если будем строить со стандартным отклонением, то укажем дополнительный аргумент
-    if make_an_SD:
-        whisk_MIN_MAX = 0
-    else:
-        whisk_MIN_MAX = 1.5
+    whisk_MIN_MAX = 0 if make_an_SD else 1.5
 
-    # аргумент positions -- очень важен -- без него всё поедет!
+    # аргумент positions -- очень важен -- без него всё не поедет!
     # positions=range(len(data)) !
-    ax = plt.axes()
+    fig, ax = plt.subplots()
     ax.cla()
     bp = ax.boxplot(
         data,
@@ -489,7 +503,7 @@ def box_and_whisker(
 
     # стандартное отклонение - добавить вместо разброса между min-max
     if make_an_SD:
-        sns.set(style="ticks", rc={"lines.linewidth": 0.7})
+        sns.set_theme(style="ticks", rc={"lines.linewidth": 0.7})
         sns.pointplot(
             data=data,
             palette=["black"] * len(bp["boxes"]),
@@ -514,8 +528,7 @@ def box_and_whisker(
             + str(e)
         )
 
-    ####################################
-
+    ##############
     # вот тут добавляются цвета к нашим box-ам
     ##############
     try:
@@ -599,7 +612,7 @@ def box_and_whisker(
                 )
             elif plot_feature_data__["comboBox_stat_test"] == "Тест Фишера-Питмана":
 
-                def statistic(x, y, axis):
+                def statistic(x, y, axis)->float:
                     return np.mean(x, axis=axis) - np.mean(y, axis=axis)
 
                 # вычисляем
@@ -804,11 +817,11 @@ def box_and_whisker(
     ax.set_xticklabels(new_x_tick_label, rotation=int(plot_feature_data__["comboBox_spin_x_"]))
     # размер шрифта подписи
     plt.yticks(
-        fontsize=plot_feature_data__["spinBox_x_val"],
+        fontsize=plot_feature_data__["spinBox_y_vals"],
         fontname=plot_feature_data__["comboBox_fonts"],
     )
     plt.xticks(
-        fontsize=plot_feature_data__["spinBox_y_vals"],
+        fontsize=plot_feature_data__["spinBox_x_val"],
         fontname=plot_feature_data__["comboBox_fonts"],
     )
 
@@ -1038,7 +1051,7 @@ def only_regplot(
     sort_or_not=False,
 ):
     sns.reset_orig()
-    sns.set(font_scale=plot_feature_data__["doubleSpinBox_corr_figs_fontscale"])
+    sns.set_theme(font_scale=plot_feature_data__["doubleSpinBox_corr_figs_fontscale"])
     # стиль
     sns.set_style("ticks")
     if plot_feature_data__["check_setka"]:
@@ -1091,10 +1104,13 @@ def only_regplot(
     for val, color__ in zip(hue_what, current_color, strict=False):
         new_massive = df[(df[what_is_hue] == val)][[x_, y_]].dropna()
         r, _ = stats.pearsonr(x=new_massive[x_], y=new_massive[y_])
+        r = round(r, 2)
+        if is_patched():
+            r = str(r).replace(".", ",")
         m = plt.text(
             0.65,
             0.93 - 0.1 * hue_what.index(val),
-            f"{val} (n={len(df[(df[what_is_hue] == val)][x_])}): r = {r:.2f}",
+            f"{val} (n={len(df[(df[what_is_hue] == val)][x_])}): r = {r}",
             transform=ax.transAxes,
         )
         # сделаем красивую рамку под аннотацией
@@ -1142,7 +1158,7 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
         # корреляции делаем
         corr = df_for_corr.corr(method=plot_feature_data__["comboBox_correlation_figs_matrix"])
         corr = corr.apply(lambda x: round(x, 2))
-        sns.set(font_scale=plot_feature_data__["font_for_in"])
+        sns.set_theme(font_scale=plot_feature_data__["font_for_in"])
         plt.figure(
             figsize=(
                 plot_feature_data__["corr_mat_figsize"],
@@ -1191,7 +1207,7 @@ def corr_matrix_for_all_indexes(new_df, path_name_fiqure_folder_corr_matrix):
 ##############################################################
 def pairplot(new_df, hue_name_for_sheet, what_sheet, path):
     sns.reset_orig()
-    sns.set(font_scale=plot_feature_data__["doubleSpinBox_pairplot"])
+    sns.set_theme(font_scale=plot_feature_data__["doubleSpinBox_pairplot"])
     sns.set_style(plot_feature_data__["comboBox_style_pairplot"])
 
     if plot_feature_data__["comboBox_pairplot_kind"] == "reg":
@@ -1235,7 +1251,7 @@ def pairplot(new_df, hue_name_for_sheet, what_sheet, path):
 ##############################################################
 def jointplot(new_df, hue_name_for_sheet, what_sheet, path):
     sns.reset_orig()
-    sns.set(font_scale=plot_feature_data__["doubleSpinBox_jointplot"])
+    sns.set_theme(font_scale=plot_feature_data__["doubleSpinBox_jointplot"])
     sns.set_style(plot_feature_data__["comboBox_style_jointplot"])
 
     if plot_feature_data__["comboBox_pairplot_jointplot"] == "reg":
