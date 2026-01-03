@@ -29,6 +29,12 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>Segoe UI</family>
@@ -94,7 +100,7 @@ background-color: rgba(255, 255, 255, 0);</string>
     <item row="0" column="0" colspan="2">
      <widget class="QTabWidget" name="Lab_stuff">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -3907,11 +3913,17 @@ border-radius: 17px;
                   <pointsize>11</pointsize>
                  </font>
                 </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
                 <property name="currentIndex">
                  <number>0</number>
                 </property>
                 <widget class="QWidget" name="tab_3">
                  <attribute name="title">
+                  <string>Box plot</string>
+                 </attribute>
+                 <attribute name="toolTip">
                   <string>Box plot</string>
                  </attribute>
                  <layout class="QGridLayout" name="gridLayout_6">
@@ -4935,7 +4947,7 @@ border-radius: 17px;
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>579</width>
+                           <width>492</width>
                            <height>260</height>
                           </rect>
                          </property>
@@ -5494,7 +5506,7 @@ border-radius: 17px;
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>579</width>
+                           <width>530</width>
                            <height>212</height>
                           </rect>
                          </property>
@@ -5824,6 +5836,9 @@ border-radius: 17px;
                 </widget>
                 <widget class="QWidget" name="tab_6">
                  <attribute name="title">
+                  <string>Корреляционная матрица</string>
+                 </attribute>
+                 <attribute name="toolTip">
                   <string>Корреляционная матрица</string>
                  </attribute>
                  <layout class="QFormLayout" name="formLayout_2">
@@ -6169,6 +6184,9 @@ border-radius: 17px;
                 </widget>
                 <widget class="QWidget" name="tab_2">
                  <attribute name="title">
+                  <string>Корреляционный график</string>
+                 </attribute>
+                 <attribute name="toolTip">
                   <string>Корреляционный график</string>
                  </attribute>
                  <layout class="QGridLayout" name="gridLayout_8">
@@ -6588,6 +6606,9 @@ border-radius: 17px;
                 </widget>
                 <widget class="QWidget" name="tab_11">
                  <attribute name="title">
+                  <string>Матрица рассеяния</string>
+                 </attribute>
+                 <attribute name="toolTip">
                   <string>Матрица рассеяния</string>
                  </attribute>
                  <layout class="QFormLayout" name="formLayout">
@@ -7054,6 +7075,9 @@ border-radius: 17px;
                  <attribute name="title">
                   <string>Распределение по двум параметрам</string>
                  </attribute>
+                 <attribute name="toolTip">
+                  <string>Распределение по двум параметрам</string>
+                 </attribute>
                  <layout class="QFormLayout" name="formLayout_3">
                   <item row="0" column="0">
                    <layout class="QVBoxLayout" name="verticalLayout_57">
@@ -7478,6 +7502,9 @@ border-radius: 17px;
                  <attribute name="title">
                   <string>Корреляция одного параметра</string>
                  </attribute>
+                 <attribute name="toolTip">
+                  <string>Корреляция одного параметра</string>
+                 </attribute>
                  <layout class="QGridLayout" name="gridLayout_14">
                   <item row="6" column="0">
                    <layout class="QHBoxLayout" name="horizontalLayout_164">
@@ -7675,7 +7702,7 @@ border-radius: 17px;
                      <string>Построить график в отдельном окне</string>
                     </property>
                     <property name="checked">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                    </widget>
                   </item>

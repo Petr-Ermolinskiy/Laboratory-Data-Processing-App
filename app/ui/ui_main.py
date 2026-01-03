@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ################################################################################
 ## Form generated from reading UI file 'ui_main.ui'
 ##
@@ -9,20 +11,39 @@
 from PySide6.QtCore import (
     QCoreApplication,
     QDate,
+    QDateTime,
+    QLocale,
     QMetaObject,
+    QObject,
+    QPoint,
     QRect,
     QSize,
+    QTime,
+    QUrl,
     Qt,
 )
 from PySide6.QtGui import (
     QBrush,
     QColor,
+    QConicalGradient,
+    QCursor,
     QFont,
+    QFontDatabase,
+    QGradient,
+    QIcon,
+    QImage,
+    QKeySequence,
+    QLinearGradient,
+    QPainter,
     QPalette,
+    QPixmap,
+    QRadialGradient,
+    QTransform,
 )
 from PySide6.QtWidgets import (
     QAbstractItemView,
     QAbstractScrollArea,
+    QApplication,
     QCheckBox,
     QComboBox,
     QDateEdit,
@@ -31,24 +52,26 @@ from PySide6.QtWidgets import (
     QFrame,
     QGridLayout,
     QHBoxLayout,
+    QHeaderView,
     QLabel,
     QLineEdit,
+    QMainWindow,
     QPushButton,
     QScrollArea,
     QSizePolicy,
     QSpacerItem,
     QSpinBox,
     QStatusBar,
+    QTabWidget,
     QTableWidget,
     QTableWidgetItem,
-    QTabWidget,
     QToolButton,
     QVBoxLayout,
     QWidget,
 )
 
 
-class Ui_MainWindow:
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName("MainWindow")
@@ -71,6 +94,7 @@ class Ui_MainWindow:
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.comboBox_style_sheet.sizePolicy().hasHeightForWidth())
         self.comboBox_style_sheet.setSizePolicy(sizePolicy1)
+        self.comboBox_style_sheet.setMinimumSize(QSize(120, 0))
         font = QFont()
         font.setFamilies(["Segoe UI"])
         font.setPointSize(9)
@@ -104,7 +128,7 @@ class Ui_MainWindow:
 
         self.Lab_stuff = QTabWidget(self.centralwidget)
         self.Lab_stuff.setObjectName("Lab_stuff")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.Lab_stuff.sizePolicy().hasHeightForWidth())
@@ -403,8 +427,11 @@ class Ui_MainWindow:
         self.horizontalLayout_117.setObjectName("horizontalLayout_117")
         self.dfd = QFrame(self.tabWidgetPage1)
         self.dfd.setObjectName("dfd")
-        sizePolicy2.setHeightForWidth(self.dfd.sizePolicy().hasHeightForWidth())
-        self.dfd.setSizePolicy(sizePolicy2)
+        sizePolicy7 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy7.setHorizontalStretch(0)
+        sizePolicy7.setVerticalStretch(0)
+        sizePolicy7.setHeightForWidth(self.dfd.sizePolicy().hasHeightForWidth())
+        self.dfd.setSizePolicy(sizePolicy7)
         self.dfd.setStyleSheet(
             "QFrame#dfd{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
@@ -413,11 +440,11 @@ class Ui_MainWindow:
         self.check_approx_agg = QCheckBox(self.dfd)
         self.check_approx_agg.setObjectName("check_approx_agg")
         self.check_approx_agg.setEnabled(True)
-        sizePolicy7 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Expanding)
-        sizePolicy7.setHorizontalStretch(0)
-        sizePolicy7.setVerticalStretch(0)
-        sizePolicy7.setHeightForWidth(self.check_approx_agg.sizePolicy().hasHeightForWidth())
-        self.check_approx_agg.setSizePolicy(sizePolicy7)
+        sizePolicy8 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Expanding)
+        sizePolicy8.setHorizontalStretch(0)
+        sizePolicy8.setVerticalStretch(0)
+        sizePolicy8.setHeightForWidth(self.check_approx_agg.sizePolicy().hasHeightForWidth())
+        self.check_approx_agg.setSizePolicy(sizePolicy8)
         self.check_approx_agg.setFont(font5)
         self.check_approx_agg.setChecked(False)
 
@@ -426,8 +453,8 @@ class Ui_MainWindow:
         self.check_figs_for_agg = QCheckBox(self.dfd)
         self.check_figs_for_agg.setObjectName("check_figs_for_agg")
         self.check_figs_for_agg.setEnabled(False)
-        sizePolicy7.setHeightForWidth(self.check_figs_for_agg.sizePolicy().hasHeightForWidth())
-        self.check_figs_for_agg.setSizePolicy(sizePolicy7)
+        sizePolicy8.setHeightForWidth(self.check_figs_for_agg.sizePolicy().hasHeightForWidth())
+        self.check_figs_for_agg.setSizePolicy(sizePolicy8)
         self.check_figs_for_agg.setFont(font5)
 
         self.verticalLayout_5.addWidget(self.check_figs_for_agg)
@@ -445,11 +472,11 @@ class Ui_MainWindow:
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.check_approx_deform = QCheckBox(self.qwe)
         self.check_approx_deform.setObjectName("check_approx_deform")
-        sizePolicy8 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy8.setHorizontalStretch(0)
-        sizePolicy8.setVerticalStretch(0)
-        sizePolicy8.setHeightForWidth(self.check_approx_deform.sizePolicy().hasHeightForWidth())
-        self.check_approx_deform.setSizePolicy(sizePolicy8)
+        sizePolicy9 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy9.setHorizontalStretch(0)
+        sizePolicy9.setVerticalStretch(0)
+        sizePolicy9.setHeightForWidth(self.check_approx_deform.sizePolicy().hasHeightForWidth())
+        self.check_approx_deform.setSizePolicy(sizePolicy9)
         self.check_approx_deform.setFont(font5)
 
         self.verticalLayout_2.addWidget(self.check_approx_deform)
@@ -533,11 +560,11 @@ class Ui_MainWindow:
 
         self.label = QLabel(self.tabWidgetPage1)
         self.label.setObjectName("label")
-        sizePolicy9 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Minimum)
-        sizePolicy9.setHorizontalStretch(0)
-        sizePolicy9.setVerticalStretch(0)
-        sizePolicy9.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy9)
+        sizePolicy10 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Minimum)
+        sizePolicy10.setHorizontalStretch(0)
+        sizePolicy10.setVerticalStretch(0)
+        sizePolicy10.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy10)
         self.label.setFont(font5)
 
         self.horizontalLayout_5.addWidget(self.label)
@@ -608,11 +635,11 @@ class Ui_MainWindow:
         self.horizontalLayout_65.setObjectName("horizontalLayout_65")
         self.lb_separator = QLabel(self.hjgf)
         self.lb_separator.setObjectName("lb_separator")
-        sizePolicy10 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy10.setHorizontalStretch(0)
-        sizePolicy10.setVerticalStretch(0)
-        sizePolicy10.setHeightForWidth(self.lb_separator.sizePolicy().hasHeightForWidth())
-        self.lb_separator.setSizePolicy(sizePolicy10)
+        sizePolicy11 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy11.setHorizontalStretch(0)
+        sizePolicy11.setVerticalStretch(0)
+        sizePolicy11.setHeightForWidth(self.lb_separator.sizePolicy().hasHeightForWidth())
+        self.lb_separator.setSizePolicy(sizePolicy11)
         self.lb_separator.setFont(font5)
 
         self.horizontalLayout_65.addWidget(self.lb_separator, 0, Qt.AlignLeft)
@@ -642,8 +669,8 @@ class Ui_MainWindow:
         self.label_19 = QLabel(self.hjgf)
         self.label_19.setObjectName("label_19")
         self.label_19.setEnabled(False)
-        sizePolicy9.setHeightForWidth(self.label_19.sizePolicy().hasHeightForWidth())
-        self.label_19.setSizePolicy(sizePolicy9)
+        sizePolicy10.setHeightForWidth(self.label_19.sizePolicy().hasHeightForWidth())
+        self.label_19.setSizePolicy(sizePolicy10)
         self.label_19.setFont(font5)
 
         self.horizontalLayout_116.addWidget(self.label_19)
@@ -706,11 +733,11 @@ class Ui_MainWindow:
 
         self.line_22 = QFrame(self.vbn)
         self.line_22.setObjectName("line_22")
-        sizePolicy11 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-        sizePolicy11.setHorizontalStretch(0)
-        sizePolicy11.setVerticalStretch(0)
-        sizePolicy11.setHeightForWidth(self.line_22.sizePolicy().hasHeightForWidth())
-        self.line_22.setSizePolicy(sizePolicy11)
+        sizePolicy12 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy12.setHorizontalStretch(0)
+        sizePolicy12.setVerticalStretch(0)
+        sizePolicy12.setHeightForWidth(self.line_22.sizePolicy().hasHeightForWidth())
+        self.line_22.setSizePolicy(sizePolicy12)
         self.line_22.setStyleSheet("color: rgb(128, 160, 165);")
         self.line_22.setFrameShadow(QFrame.Plain)
         self.line_22.setLineWidth(4)
@@ -752,11 +779,11 @@ class Ui_MainWindow:
         self.horizontalLayout_40.setObjectName("horizontalLayout_40")
         self.lb_path_2 = QLabel(self.tab_5)
         self.lb_path_2.setObjectName("lb_path_2")
-        sizePolicy12 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy12.setHorizontalStretch(0)
-        sizePolicy12.setVerticalStretch(0)
-        sizePolicy12.setHeightForWidth(self.lb_path_2.sizePolicy().hasHeightForWidth())
-        self.lb_path_2.setSizePolicy(sizePolicy12)
+        sizePolicy13 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy13.setHorizontalStretch(0)
+        sizePolicy13.setVerticalStretch(0)
+        sizePolicy13.setHeightForWidth(self.lb_path_2.sizePolicy().hasHeightForWidth())
+        self.lb_path_2.setSizePolicy(sizePolicy13)
         self.lb_path_2.setFont(font5)
 
         self.horizontalLayout_40.addWidget(self.lb_path_2)
@@ -775,8 +802,8 @@ class Ui_MainWindow:
         self.horizontalLayout_41.setObjectName("horizontalLayout_41")
         self.lb_path_3 = QLabel(self.tab_5)
         self.lb_path_3.setObjectName("lb_path_3")
-        sizePolicy9.setHeightForWidth(self.lb_path_3.sizePolicy().hasHeightForWidth())
-        self.lb_path_3.setSizePolicy(sizePolicy9)
+        sizePolicy10.setHeightForWidth(self.lb_path_3.sizePolicy().hasHeightForWidth())
+        self.lb_path_3.setSizePolicy(sizePolicy10)
         self.lb_path_3.setFont(font5)
         self.lb_path_3.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
 
@@ -784,8 +811,8 @@ class Ui_MainWindow:
 
         self.comboBox_biola = QComboBox(self.tab_5)
         self.comboBox_biola.setObjectName("comboBox_biola")
-        sizePolicy12.setHeightForWidth(self.comboBox_biola.sizePolicy().hasHeightForWidth())
-        self.comboBox_biola.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.comboBox_biola.sizePolicy().hasHeightForWidth())
+        self.comboBox_biola.setSizePolicy(sizePolicy13)
         self.comboBox_biola.setFont(font6)
 
         self.horizontalLayout_41.addWidget(self.comboBox_biola)
@@ -798,8 +825,8 @@ class Ui_MainWindow:
         self.horizontalLayout_72.setObjectName("horizontalLayout_72")
         self.lb_path_16 = QLabel(self.tab_5)
         self.lb_path_16.setObjectName("lb_path_16")
-        sizePolicy9.setHeightForWidth(self.lb_path_16.sizePolicy().hasHeightForWidth())
-        self.lb_path_16.setSizePolicy(sizePolicy9)
+        sizePolicy10.setHeightForWidth(self.lb_path_16.sizePolicy().hasHeightForWidth())
+        self.lb_path_16.setSizePolicy(sizePolicy10)
         self.lb_path_16.setFont(font5)
         self.lb_path_16.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
 
@@ -807,10 +834,10 @@ class Ui_MainWindow:
 
         self.comboBox_biola_concentration = QComboBox(self.tab_5)
         self.comboBox_biola_concentration.setObjectName("comboBox_biola_concentration")
-        sizePolicy12.setHeightForWidth(
+        sizePolicy13.setHeightForWidth(
             self.comboBox_biola_concentration.sizePolicy().hasHeightForWidth()
         )
-        self.comboBox_biola_concentration.setSizePolicy(sizePolicy12)
+        self.comboBox_biola_concentration.setSizePolicy(sizePolicy13)
         self.comboBox_biola_concentration.setFont(font6)
 
         self.horizontalLayout_72.addWidget(self.comboBox_biola_concentration)
@@ -821,8 +848,8 @@ class Ui_MainWindow:
         self.verticalLayout_31.setObjectName("verticalLayout_31")
         self.vvvv = QFrame(self.tab_5)
         self.vvvv.setObjectName("vvvv")
-        sizePolicy12.setHeightForWidth(self.vvvv.sizePolicy().hasHeightForWidth())
-        self.vvvv.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.vvvv.sizePolicy().hasHeightForWidth())
+        self.vvvv.setSizePolicy(sizePolicy13)
         self.vvvv.setStyleSheet(
             "QFrame#vvvv{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
@@ -831,19 +858,19 @@ class Ui_MainWindow:
         self.vvv.setContentsMargins(5, 5, 5, 5)
         self.label_15 = QLabel(self.vvvv)
         self.label_15.setObjectName("label_15")
-        sizePolicy13 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.MinimumExpanding)
-        sizePolicy13.setHorizontalStretch(0)
-        sizePolicy13.setVerticalStretch(0)
-        sizePolicy13.setHeightForWidth(self.label_15.sizePolicy().hasHeightForWidth())
-        self.label_15.setSizePolicy(sizePolicy13)
+        sizePolicy14 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.MinimumExpanding)
+        sizePolicy14.setHorizontalStretch(0)
+        sizePolicy14.setVerticalStretch(0)
+        sizePolicy14.setHeightForWidth(self.label_15.sizePolicy().hasHeightForWidth())
+        self.label_15.setSizePolicy(sizePolicy14)
         self.label_15.setFont(font6)
 
         self.vvv.addWidget(self.label_15)
 
         self.line_16 = QFrame(self.vvvv)
         self.line_16.setObjectName("line_16")
-        sizePolicy11.setHeightForWidth(self.line_16.sizePolicy().hasHeightForWidth())
-        self.line_16.setSizePolicy(sizePolicy11)
+        sizePolicy12.setHeightForWidth(self.line_16.sizePolicy().hasHeightForWidth())
+        self.line_16.setSizePolicy(sizePolicy12)
         self.line_16.setStyleSheet("color: rgb(128, 160, 165);")
         self.line_16.setFrameShadow(QFrame.Plain)
         self.line_16.setLineWidth(4)
@@ -866,8 +893,8 @@ class Ui_MainWindow:
 
         self.spinBox_biola_born_odd = QSpinBox(self.vvvv)
         self.spinBox_biola_born_odd.setObjectName("spinBox_biola_born_odd")
-        sizePolicy2.setHeightForWidth(self.spinBox_biola_born_odd.sizePolicy().hasHeightForWidth())
-        self.spinBox_biola_born_odd.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.spinBox_biola_born_odd.sizePolicy().hasHeightForWidth())
+        self.spinBox_biola_born_odd.setSizePolicy(sizePolicy7)
         self.spinBox_biola_born_odd.setFont(font6)
         self.spinBox_biola_born_odd.setMinimum(1)
         self.spinBox_biola_born_odd.setMaximum(201)
@@ -891,8 +918,8 @@ class Ui_MainWindow:
 
         self.spinBox_biola_fluc_odd = QSpinBox(self.vvvv)
         self.spinBox_biola_fluc_odd.setObjectName("spinBox_biola_fluc_odd")
-        sizePolicy2.setHeightForWidth(self.spinBox_biola_fluc_odd.sizePolicy().hasHeightForWidth())
-        self.spinBox_biola_fluc_odd.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.spinBox_biola_fluc_odd.sizePolicy().hasHeightForWidth())
+        self.spinBox_biola_fluc_odd.setSizePolicy(sizePolicy7)
         self.spinBox_biola_fluc_odd.setFont(font6)
         self.spinBox_biola_fluc_odd.setMinimum(1)
         self.spinBox_biola_fluc_odd.setMaximum(201)
@@ -909,8 +936,8 @@ class Ui_MainWindow:
 
         self.lll = QFrame(self.tab_5)
         self.lll.setObjectName("lll")
-        sizePolicy12.setHeightForWidth(self.lll.sizePolicy().hasHeightForWidth())
-        self.lll.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lll.sizePolicy().hasHeightForWidth())
+        self.lll.setSizePolicy(sizePolicy13)
         self.lll.setStyleSheet(
             "QFrame#lll{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
@@ -919,16 +946,16 @@ class Ui_MainWindow:
         self.horizontalLayout_44.setContentsMargins(5, 5, 5, 5)
         self.label_12 = QLabel(self.lll)
         self.label_12.setObjectName("label_12")
-        sizePolicy13.setHeightForWidth(self.label_12.sizePolicy().hasHeightForWidth())
-        self.label_12.setSizePolicy(sizePolicy13)
+        sizePolicy14.setHeightForWidth(self.label_12.sizePolicy().hasHeightForWidth())
+        self.label_12.setSizePolicy(sizePolicy14)
         self.label_12.setFont(font6)
 
         self.horizontalLayout_44.addWidget(self.label_12)
 
         self.line_17 = QFrame(self.lll)
         self.line_17.setObjectName("line_17")
-        sizePolicy11.setHeightForWidth(self.line_17.sizePolicy().hasHeightForWidth())
-        self.line_17.setSizePolicy(sizePolicy11)
+        sizePolicy12.setHeightForWidth(self.line_17.sizePolicy().hasHeightForWidth())
+        self.line_17.setSizePolicy(sizePolicy12)
         self.line_17.setStyleSheet("color: rgb(128, 160, 165);")
         self.line_17.setFrameShadow(QFrame.Plain)
         self.line_17.setLineWidth(4)
@@ -976,8 +1003,8 @@ class Ui_MainWindow:
 
         self.spinBox_biola_fluc = QSpinBox(self.lll)
         self.spinBox_biola_fluc.setObjectName("spinBox_biola_fluc")
-        sizePolicy2.setHeightForWidth(self.spinBox_biola_fluc.sizePolicy().hasHeightForWidth())
-        self.spinBox_biola_fluc.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.spinBox_biola_fluc.sizePolicy().hasHeightForWidth())
+        self.spinBox_biola_fluc.setSizePolicy(sizePolicy7)
         self.spinBox_biola_fluc.setFont(font6)
         self.spinBox_biola_fluc.setMinimum(1)
         self.spinBox_biola_fluc.setMaximum(201)
@@ -1004,8 +1031,8 @@ class Ui_MainWindow:
         self.plp = QFrame(self.tab_5)
         self.plp.setObjectName("plp")
         self.plp.setEnabled(True)
-        sizePolicy12.setHeightForWidth(self.plp.sizePolicy().hasHeightForWidth())
-        self.plp.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.plp.sizePolicy().hasHeightForWidth())
+        self.plp.setSizePolicy(sizePolicy13)
         self.plp.setStyleSheet(
             "QFrame#plp{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
@@ -1014,8 +1041,8 @@ class Ui_MainWindow:
         self.verticalLayout_30.setContentsMargins(6, 6, 6, 6)
         self.lb_color_pal_box_13 = QLabel(self.plp)
         self.lb_color_pal_box_13.setObjectName("lb_color_pal_box_13")
-        sizePolicy2.setHeightForWidth(self.lb_color_pal_box_13.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_13.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.lb_color_pal_box_13.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_13.setSizePolicy(sizePolicy7)
         font9 = QFont()
         font9.setPointSize(11)
         font9.setUnderline(True)
@@ -1075,11 +1102,11 @@ class Ui_MainWindow:
         self.comboBox_Biola_SD_or.addItem("")
         self.comboBox_Biola_SD_or.addItem("")
         self.comboBox_Biola_SD_or.setObjectName("comboBox_Biola_SD_or")
-        sizePolicy14 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
-        sizePolicy14.setHorizontalStretch(0)
-        sizePolicy14.setVerticalStretch(0)
-        sizePolicy14.setHeightForWidth(self.comboBox_Biola_SD_or.sizePolicy().hasHeightForWidth())
-        self.comboBox_Biola_SD_or.setSizePolicy(sizePolicy14)
+        sizePolicy15 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
+        sizePolicy15.setHorizontalStretch(0)
+        sizePolicy15.setVerticalStretch(0)
+        sizePolicy15.setHeightForWidth(self.comboBox_Biola_SD_or.sizePolicy().hasHeightForWidth())
+        self.comboBox_Biola_SD_or.setSizePolicy(sizePolicy15)
         self.comboBox_Biola_SD_or.setFont(font6)
 
         self.horizontalLayout_62.addWidget(self.comboBox_Biola_SD_or)
@@ -1091,8 +1118,8 @@ class Ui_MainWindow:
         self.check_setka_biola = QCheckBox(self.plp)
         self.check_setka_biola.setObjectName("check_setka_biola")
         self.check_setka_biola.setEnabled(True)
-        sizePolicy10.setHeightForWidth(self.check_setka_biola.sizePolicy().hasHeightForWidth())
-        self.check_setka_biola.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.check_setka_biola.sizePolicy().hasHeightForWidth())
+        self.check_setka_biola.setSizePolicy(sizePolicy11)
         self.check_setka_biola.setFont(font6)
         self.check_setka_biola.setChecked(True)
 
@@ -1110,10 +1137,10 @@ class Ui_MainWindow:
         self.comboBox_Biola_language.addItem("")
         self.comboBox_Biola_language.addItem("")
         self.comboBox_Biola_language.setObjectName("comboBox_Biola_language")
-        sizePolicy14.setHeightForWidth(
+        sizePolicy15.setHeightForWidth(
             self.comboBox_Biola_language.sizePolicy().hasHeightForWidth()
         )
-        self.comboBox_Biola_language.setSizePolicy(sizePolicy14)
+        self.comboBox_Biola_language.setSizePolicy(sizePolicy15)
         self.comboBox_Biola_language.setFont(font6)
 
         self.horizontalLayout_63.addWidget(self.comboBox_Biola_language)
@@ -1163,8 +1190,8 @@ class Ui_MainWindow:
         self.horizontalLayout_45.setObjectName("horizontalLayout_45")
         self.lb_path_4 = QLabel(self.tab_7)
         self.lb_path_4.setObjectName("lb_path_4")
-        sizePolicy12.setHeightForWidth(self.lb_path_4.sizePolicy().hasHeightForWidth())
-        self.lb_path_4.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_path_4.sizePolicy().hasHeightForWidth())
+        self.lb_path_4.setSizePolicy(sizePolicy13)
         self.lb_path_4.setFont(font5)
 
         self.horizontalLayout_45.addWidget(self.lb_path_4)
@@ -1185,8 +1212,8 @@ class Ui_MainWindow:
         self.horizontalLayout_55.setObjectName("horizontalLayout_55")
         self.lb_path_13 = QLabel(self.tab_7)
         self.lb_path_13.setObjectName("lb_path_13")
-        sizePolicy12.setHeightForWidth(self.lb_path_13.sizePolicy().hasHeightForWidth())
-        self.lb_path_13.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_path_13.sizePolicy().hasHeightForWidth())
+        self.lb_path_13.setSizePolicy(sizePolicy13)
         self.lb_path_13.setFont(font5)
 
         self.horizontalLayout_55.addWidget(self.lb_path_13)
@@ -1211,8 +1238,8 @@ class Ui_MainWindow:
         self.horizontalLayout_57.setObjectName("horizontalLayout_57")
         self.lb_path_15 = QLabel(self.tab_7)
         self.lb_path_15.setObjectName("lb_path_15")
-        sizePolicy12.setHeightForWidth(self.lb_path_15.sizePolicy().hasHeightForWidth())
-        self.lb_path_15.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_path_15.sizePolicy().hasHeightForWidth())
+        self.lb_path_15.setSizePolicy(sizePolicy13)
         self.lb_path_15.setFont(font5)
 
         self.horizontalLayout_57.addWidget(self.lb_path_15)
@@ -1251,8 +1278,8 @@ class Ui_MainWindow:
         self.horizontalLayout_56.setObjectName("horizontalLayout_56")
         self.lb_path_14 = QLabel(self.tab_7)
         self.lb_path_14.setObjectName("lb_path_14")
-        sizePolicy12.setHeightForWidth(self.lb_path_14.sizePolicy().hasHeightForWidth())
-        self.lb_path_14.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_path_14.sizePolicy().hasHeightForWidth())
+        self.lb_path_14.setSizePolicy(sizePolicy13)
         self.lb_path_14.setFont(font5)
 
         self.horizontalLayout_56.addWidget(self.lb_path_14)
@@ -1321,8 +1348,8 @@ class Ui_MainWindow:
         self.check_LT_raw_data = QCheckBox(self.tab_7)
         self.check_LT_raw_data.setObjectName("check_LT_raw_data")
         self.check_LT_raw_data.setEnabled(True)
-        sizePolicy10.setHeightForWidth(self.check_LT_raw_data.sizePolicy().hasHeightForWidth())
-        self.check_LT_raw_data.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.check_LT_raw_data.sizePolicy().hasHeightForWidth())
+        self.check_LT_raw_data.setSizePolicy(sizePolicy11)
         self.check_LT_raw_data.setFont(font6)
         self.check_LT_raw_data.setChecked(True)
 
@@ -1334,11 +1361,11 @@ class Ui_MainWindow:
         self.verticalLayout_50.setObjectName("verticalLayout_50")
         self.asd = QFrame(self.tab_7)
         self.asd.setObjectName("asd")
-        sizePolicy15 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
-        sizePolicy15.setHorizontalStretch(0)
-        sizePolicy15.setVerticalStretch(0)
-        sizePolicy15.setHeightForWidth(self.asd.sizePolicy().hasHeightForWidth())
-        self.asd.setSizePolicy(sizePolicy15)
+        sizePolicy16 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
+        sizePolicy16.setHorizontalStretch(0)
+        sizePolicy16.setVerticalStretch(0)
+        sizePolicy16.setHeightForWidth(self.asd.sizePolicy().hasHeightForWidth())
+        self.asd.setSizePolicy(sizePolicy16)
         self.asd.setStyleSheet(
             "QFrame#asd{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
@@ -1347,11 +1374,11 @@ class Ui_MainWindow:
         self.verticalLayout_26.setContentsMargins(5, 5, 5, 5)
         self.lb_path_5 = QLabel(self.asd)
         self.lb_path_5.setObjectName("lb_path_5")
-        sizePolicy16 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)
-        sizePolicy16.setHorizontalStretch(0)
-        sizePolicy16.setVerticalStretch(0)
-        sizePolicy16.setHeightForWidth(self.lb_path_5.sizePolicy().hasHeightForWidth())
-        self.lb_path_5.setSizePolicy(sizePolicy16)
+        sizePolicy17 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)
+        sizePolicy17.setHorizontalStretch(0)
+        sizePolicy17.setVerticalStretch(0)
+        sizePolicy17.setHeightForWidth(self.lb_path_5.sizePolicy().hasHeightForWidth())
+        self.lb_path_5.setSizePolicy(sizePolicy17)
         font10 = QFont()
         font10.setFamilies(["Segoe UI"])
         font10.setPointSize(11)
@@ -1367,16 +1394,16 @@ class Ui_MainWindow:
         self.horizontalLayout_48.setObjectName("horizontalLayout_48")
         self.lb_path_17 = QLabel(self.asd)
         self.lb_path_17.setObjectName("lb_path_17")
-        sizePolicy16.setHeightForWidth(self.lb_path_17.sizePolicy().hasHeightForWidth())
-        self.lb_path_17.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_17.sizePolicy().hasHeightForWidth())
+        self.lb_path_17.setSizePolicy(sizePolicy17)
         self.lb_path_17.setFont(font5)
 
         self.horizontalLayout_48.addWidget(self.lb_path_17)
 
         self.lb_path_7 = QLabel(self.asd)
         self.lb_path_7.setObjectName("lb_path_7")
-        sizePolicy16.setHeightForWidth(self.lb_path_7.sizePolicy().hasHeightForWidth())
-        self.lb_path_7.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_7.sizePolicy().hasHeightForWidth())
+        self.lb_path_7.setSizePolicy(sizePolicy17)
         self.lb_path_7.setFont(font5)
 
         self.horizontalLayout_48.addWidget(self.lb_path_7)
@@ -1392,8 +1419,8 @@ class Ui_MainWindow:
 
         self.lb_path_18 = QLabel(self.asd)
         self.lb_path_18.setObjectName("lb_path_18")
-        sizePolicy16.setHeightForWidth(self.lb_path_18.sizePolicy().hasHeightForWidth())
-        self.lb_path_18.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_18.sizePolicy().hasHeightForWidth())
+        self.lb_path_18.setSizePolicy(sizePolicy17)
         self.lb_path_18.setFont(font5)
 
         self.horizontalLayout_48.addWidget(self.lb_path_18)
@@ -1402,8 +1429,8 @@ class Ui_MainWindow:
         self.horizontalLayout_49.setObjectName("horizontalLayout_49")
         self.lb_path_8 = QLabel(self.asd)
         self.lb_path_8.setObjectName("lb_path_8")
-        sizePolicy16.setHeightForWidth(self.lb_path_8.sizePolicy().hasHeightForWidth())
-        self.lb_path_8.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_8.sizePolicy().hasHeightForWidth())
+        self.lb_path_8.setSizePolicy(sizePolicy17)
         self.lb_path_8.setFont(font5)
 
         self.horizontalLayout_49.addWidget(self.lb_path_8)
@@ -1426,8 +1453,8 @@ class Ui_MainWindow:
         self.horizontalLayout_50.setObjectName("horizontalLayout_50")
         self.lb_path_12 = QLabel(self.asd)
         self.lb_path_12.setObjectName("lb_path_12")
-        sizePolicy16.setHeightForWidth(self.lb_path_12.sizePolicy().hasHeightForWidth())
-        self.lb_path_12.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_12.sizePolicy().hasHeightForWidth())
+        self.lb_path_12.setSizePolicy(sizePolicy17)
         self.lb_path_12.setFont(font5)
 
         self.horizontalLayout_50.addWidget(self.lb_path_12)
@@ -1447,8 +1474,8 @@ class Ui_MainWindow:
 
         self.hhhhh = QFrame(self.tab_7)
         self.hhhhh.setObjectName("hhhhh")
-        sizePolicy15.setHeightForWidth(self.hhhhh.sizePolicy().hasHeightForWidth())
-        self.hhhhh.setSizePolicy(sizePolicy15)
+        sizePolicy16.setHeightForWidth(self.hhhhh.sizePolicy().hasHeightForWidth())
+        self.hhhhh.setSizePolicy(sizePolicy16)
         self.hhhhh.setStyleSheet(
             "QFrame#hhhhh{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
@@ -1457,11 +1484,11 @@ class Ui_MainWindow:
         self.verticalLayout_27.setContentsMargins(5, 5, 5, 5)
         self.lb_path_6 = QLabel(self.hhhhh)
         self.lb_path_6.setObjectName("lb_path_6")
-        sizePolicy17 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-        sizePolicy17.setHorizontalStretch(0)
-        sizePolicy17.setVerticalStretch(0)
-        sizePolicy17.setHeightForWidth(self.lb_path_6.sizePolicy().hasHeightForWidth())
-        self.lb_path_6.setSizePolicy(sizePolicy17)
+        sizePolicy18 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy18.setHorizontalStretch(0)
+        sizePolicy18.setVerticalStretch(0)
+        sizePolicy18.setHeightForWidth(self.lb_path_6.sizePolicy().hasHeightForWidth())
+        self.lb_path_6.setSizePolicy(sizePolicy18)
         self.lb_path_6.setFont(font10)
         self.lb_path_6.setAlignment(Qt.AlignCenter)
 
@@ -1473,16 +1500,16 @@ class Ui_MainWindow:
         self.horizontalLayout_115.setObjectName("horizontalLayout_115")
         self.lb_path_19 = QLabel(self.hhhhh)
         self.lb_path_19.setObjectName("lb_path_19")
-        sizePolicy16.setHeightForWidth(self.lb_path_19.sizePolicy().hasHeightForWidth())
-        self.lb_path_19.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_19.sizePolicy().hasHeightForWidth())
+        self.lb_path_19.setSizePolicy(sizePolicy17)
         self.lb_path_19.setFont(font5)
 
         self.horizontalLayout_115.addWidget(self.lb_path_19)
 
         self.lb_path_9 = QLabel(self.hhhhh)
         self.lb_path_9.setObjectName("lb_path_9")
-        sizePolicy16.setHeightForWidth(self.lb_path_9.sizePolicy().hasHeightForWidth())
-        self.lb_path_9.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_9.sizePolicy().hasHeightForWidth())
+        self.lb_path_9.setSizePolicy(sizePolicy17)
         self.lb_path_9.setFont(font5)
 
         self.horizontalLayout_115.addWidget(self.lb_path_9)
@@ -1498,16 +1525,16 @@ class Ui_MainWindow:
 
         self.lb_path_20 = QLabel(self.hhhhh)
         self.lb_path_20.setObjectName("lb_path_20")
-        sizePolicy16.setHeightForWidth(self.lb_path_20.sizePolicy().hasHeightForWidth())
-        self.lb_path_20.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_20.sizePolicy().hasHeightForWidth())
+        self.lb_path_20.setSizePolicy(sizePolicy17)
         self.lb_path_20.setFont(font5)
 
         self.horizontalLayout_115.addWidget(self.lb_path_20)
 
         self.lb_path_21 = QLabel(self.hhhhh)
         self.lb_path_21.setObjectName("lb_path_21")
-        sizePolicy16.setHeightForWidth(self.lb_path_21.sizePolicy().hasHeightForWidth())
-        self.lb_path_21.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_21.sizePolicy().hasHeightForWidth())
+        self.lb_path_21.setSizePolicy(sizePolicy17)
         self.lb_path_21.setFont(font5)
 
         self.horizontalLayout_115.addWidget(self.lb_path_21)
@@ -1528,8 +1555,8 @@ class Ui_MainWindow:
         self.horizontalLayout_53.setObjectName("horizontalLayout_53")
         self.lb_path_11 = QLabel(self.hhhhh)
         self.lb_path_11.setObjectName("lb_path_11")
-        sizePolicy16.setHeightForWidth(self.lb_path_11.sizePolicy().hasHeightForWidth())
-        self.lb_path_11.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_11.sizePolicy().hasHeightForWidth())
+        self.lb_path_11.setSizePolicy(sizePolicy17)
         self.lb_path_11.setFont(font5)
 
         self.horizontalLayout_53.addWidget(self.lb_path_11)
@@ -1550,8 +1577,8 @@ class Ui_MainWindow:
         self.hhhhh_exp = QFrame(self.tab_7)
         self.hhhhh_exp.setObjectName("hhhhh_exp")
         self.hhhhh_exp.setEnabled(False)
-        sizePolicy11.setHeightForWidth(self.hhhhh_exp.sizePolicy().hasHeightForWidth())
-        self.hhhhh_exp.setSizePolicy(sizePolicy11)
+        sizePolicy12.setHeightForWidth(self.hhhhh_exp.sizePolicy().hasHeightForWidth())
+        self.hhhhh_exp.setSizePolicy(sizePolicy12)
         self.hhhhh_exp.setStyleSheet(
             "QFrame#hhhhh_exp{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
@@ -1560,8 +1587,8 @@ class Ui_MainWindow:
         self.verticalLayout_47.setContentsMargins(5, 5, 5, 5)
         self.lb_path_10 = QLabel(self.hhhhh_exp)
         self.lb_path_10.setObjectName("lb_path_10")
-        sizePolicy17.setHeightForWidth(self.lb_path_10.sizePolicy().hasHeightForWidth())
-        self.lb_path_10.setSizePolicy(sizePolicy17)
+        sizePolicy18.setHeightForWidth(self.lb_path_10.sizePolicy().hasHeightForWidth())
+        self.lb_path_10.setSizePolicy(sizePolicy18)
         self.lb_path_10.setFont(font10)
         self.lb_path_10.setAlignment(Qt.AlignCenter)
 
@@ -1573,16 +1600,16 @@ class Ui_MainWindow:
         self.horizontalLayout_51.setObjectName("horizontalLayout_51")
         self.lb_path_22 = QLabel(self.hhhhh_exp)
         self.lb_path_22.setObjectName("lb_path_22")
-        sizePolicy16.setHeightForWidth(self.lb_path_22.sizePolicy().hasHeightForWidth())
-        self.lb_path_22.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_22.sizePolicy().hasHeightForWidth())
+        self.lb_path_22.setSizePolicy(sizePolicy17)
         self.lb_path_22.setFont(font5)
 
         self.horizontalLayout_51.addWidget(self.lb_path_22)
 
         self.lb_path_23 = QLabel(self.hhhhh_exp)
         self.lb_path_23.setObjectName("lb_path_23")
-        sizePolicy16.setHeightForWidth(self.lb_path_23.sizePolicy().hasHeightForWidth())
-        self.lb_path_23.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_23.sizePolicy().hasHeightForWidth())
+        self.lb_path_23.setSizePolicy(sizePolicy17)
         self.lb_path_23.setFont(font5)
 
         self.horizontalLayout_51.addWidget(self.lb_path_23, 0, Qt.AlignHCenter)
@@ -1599,8 +1626,8 @@ class Ui_MainWindow:
 
         self.lb_path_27 = QLabel(self.hhhhh_exp)
         self.lb_path_27.setObjectName("lb_path_27")
-        sizePolicy16.setHeightForWidth(self.lb_path_27.sizePolicy().hasHeightForWidth())
-        self.lb_path_27.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_27.sizePolicy().hasHeightForWidth())
+        self.lb_path_27.setSizePolicy(sizePolicy17)
         self.lb_path_27.setFont(font5)
 
         self.horizontalLayout_51.addWidget(self.lb_path_27, 0, Qt.AlignHCenter)
@@ -1617,8 +1644,8 @@ class Ui_MainWindow:
 
         self.lb_path_28 = QLabel(self.hhhhh_exp)
         self.lb_path_28.setObjectName("lb_path_28")
-        sizePolicy16.setHeightForWidth(self.lb_path_28.sizePolicy().hasHeightForWidth())
-        self.lb_path_28.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_28.sizePolicy().hasHeightForWidth())
+        self.lb_path_28.setSizePolicy(sizePolicy17)
         self.lb_path_28.setFont(font5)
 
         self.horizontalLayout_51.addWidget(self.lb_path_28, 0, Qt.AlignHCenter)
@@ -1639,16 +1666,16 @@ class Ui_MainWindow:
         self.horizontalLayout_52.setObjectName("horizontalLayout_52")
         self.lb_path_29 = QLabel(self.hhhhh_exp)
         self.lb_path_29.setObjectName("lb_path_29")
-        sizePolicy16.setHeightForWidth(self.lb_path_29.sizePolicy().hasHeightForWidth())
-        self.lb_path_29.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_29.sizePolicy().hasHeightForWidth())
+        self.lb_path_29.setSizePolicy(sizePolicy17)
         self.lb_path_29.setFont(font5)
 
         self.horizontalLayout_52.addWidget(self.lb_path_29)
 
         self.lb_path_30 = QLabel(self.hhhhh_exp)
         self.lb_path_30.setObjectName("lb_path_30")
-        sizePolicy16.setHeightForWidth(self.lb_path_30.sizePolicy().hasHeightForWidth())
-        self.lb_path_30.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_30.sizePolicy().hasHeightForWidth())
+        self.lb_path_30.setSizePolicy(sizePolicy17)
         self.lb_path_30.setFont(font5)
 
         self.horizontalLayout_52.addWidget(self.lb_path_30, 0, Qt.AlignHCenter)
@@ -1665,8 +1692,8 @@ class Ui_MainWindow:
 
         self.lb_path_31 = QLabel(self.hhhhh_exp)
         self.lb_path_31.setObjectName("lb_path_31")
-        sizePolicy16.setHeightForWidth(self.lb_path_31.sizePolicy().hasHeightForWidth())
-        self.lb_path_31.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_31.sizePolicy().hasHeightForWidth())
+        self.lb_path_31.setSizePolicy(sizePolicy17)
         self.lb_path_31.setFont(font5)
 
         self.horizontalLayout_52.addWidget(self.lb_path_31, 0, Qt.AlignHCenter)
@@ -1691,8 +1718,8 @@ class Ui_MainWindow:
         self.horizontalLayout_54.setObjectName("horizontalLayout_54")
         self.lb_path_26 = QLabel(self.hhhhh_exp)
         self.lb_path_26.setObjectName("lb_path_26")
-        sizePolicy16.setHeightForWidth(self.lb_path_26.sizePolicy().hasHeightForWidth())
-        self.lb_path_26.setSizePolicy(sizePolicy16)
+        sizePolicy17.setHeightForWidth(self.lb_path_26.sizePolicy().hasHeightForWidth())
+        self.lb_path_26.setSizePolicy(sizePolicy17)
         self.lb_path_26.setFont(font5)
 
         self.horizontalLayout_54.addWidget(self.lb_path_26)
@@ -1819,17 +1846,17 @@ class Ui_MainWindow:
 
         self.checkBox_point_comma_separator = QCheckBox(self.tab)
         self.checkBox_point_comma_separator.setObjectName("checkBox_point_comma_separator")
-        sizePolicy11.setHeightForWidth(
+        sizePolicy12.setHeightForWidth(
             self.checkBox_point_comma_separator.sizePolicy().hasHeightForWidth()
         )
-        self.checkBox_point_comma_separator.setSizePolicy(sizePolicy11)
+        self.checkBox_point_comma_separator.setSizePolicy(sizePolicy12)
 
         self.verticalLayout_17.addWidget(self.checkBox_point_comma_separator)
 
         self.nmn = QFrame(self.tab)
         self.nmn.setObjectName("nmn")
-        sizePolicy2.setHeightForWidth(self.nmn.sizePolicy().hasHeightForWidth())
-        self.nmn.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.nmn.sizePolicy().hasHeightForWidth())
+        self.nmn.setSizePolicy(sizePolicy7)
         self.nmn.setStyleSheet(
             "QFrame#nmn{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
@@ -1895,11 +1922,11 @@ class Ui_MainWindow:
 
         self.tabWidget = QTabWidget(self.tab)
         self.tabWidget.setObjectName("tabWidget")
-        sizePolicy18 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy18.setHorizontalStretch(0)
-        sizePolicy18.setVerticalStretch(0)
-        sizePolicy18.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
-        self.tabWidget.setSizePolicy(sizePolicy18)
+        sizePolicy19 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy19.setHorizontalStretch(0)
+        sizePolicy19.setVerticalStretch(0)
+        sizePolicy19.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
+        self.tabWidget.setSizePolicy(sizePolicy19)
         self.tabWidget.setFont(font6)
         self.tab_3 = QWidget()
         self.tab_3.setObjectName("tab_3")
@@ -1935,8 +1962,8 @@ class Ui_MainWindow:
         self.horizontalLayout_19.setObjectName("horizontalLayout_19")
         self.lb_color_pal_box = QLabel(self.frame_2)
         self.lb_color_pal_box.setObjectName("lb_color_pal_box")
-        sizePolicy10.setHeightForWidth(self.lb_color_pal_box.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_pal_box.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box.setSizePolicy(sizePolicy11)
         self.lb_color_pal_box.setFont(font6)
 
         self.horizontalLayout_19.addWidget(self.lb_color_pal_box)
@@ -1979,8 +2006,8 @@ class Ui_MainWindow:
         self.comboBox_color_pal_box.addItem("")
         self.comboBox_color_pal_box.addItem("")
         self.comboBox_color_pal_box.setObjectName("comboBox_color_pal_box")
-        sizePolicy2.setHeightForWidth(self.comboBox_color_pal_box.sizePolicy().hasHeightForWidth())
-        self.comboBox_color_pal_box.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.comboBox_color_pal_box.sizePolicy().hasHeightForWidth())
+        self.comboBox_color_pal_box.setSizePolicy(sizePolicy7)
         self.comboBox_color_pal_box.setFont(font6)
 
         self.horizontalLayout_19.addWidget(self.comboBox_color_pal_box)
@@ -1991,8 +2018,8 @@ class Ui_MainWindow:
         self.horizontalLayout_24.setObjectName("horizontalLayout_24")
         self.lb_color_pal_points = QLabel(self.frame_2)
         self.lb_color_pal_points.setObjectName("lb_color_pal_points")
-        sizePolicy10.setHeightForWidth(self.lb_color_pal_points.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_points.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_pal_points.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_points.setSizePolicy(sizePolicy11)
         self.lb_color_pal_points.setFont(font6)
 
         self.horizontalLayout_24.addWidget(self.lb_color_pal_points)
@@ -2035,10 +2062,10 @@ class Ui_MainWindow:
         self.comboBox_color_pal_points.addItem("")
         self.comboBox_color_pal_points.addItem("")
         self.comboBox_color_pal_points.setObjectName("comboBox_color_pal_points")
-        sizePolicy2.setHeightForWidth(
+        sizePolicy7.setHeightForWidth(
             self.comboBox_color_pal_points.sizePolicy().hasHeightForWidth()
         )
-        self.comboBox_color_pal_points.setSizePolicy(sizePolicy2)
+        self.comboBox_color_pal_points.setSizePolicy(sizePolicy7)
         self.comboBox_color_pal_points.setFont(font6)
 
         self.horizontalLayout_24.addWidget(self.comboBox_color_pal_points)
@@ -2049,16 +2076,16 @@ class Ui_MainWindow:
         self.horizontalLayout_20.setObjectName("horizontalLayout_20")
         self.lb_color_for_box = QLabel(self.frame_2)
         self.lb_color_for_box.setObjectName("lb_color_for_box")
-        sizePolicy10.setHeightForWidth(self.lb_color_for_box.sizePolicy().hasHeightForWidth())
-        self.lb_color_for_box.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_for_box.sizePolicy().hasHeightForWidth())
+        self.lb_color_for_box.setSizePolicy(sizePolicy11)
         self.lb_color_for_box.setFont(font6)
 
         self.horizontalLayout_20.addWidget(self.lb_color_for_box)
 
         self.color_box = QLineEdit(self.frame_2)
         self.color_box.setObjectName("color_box")
-        sizePolicy2.setHeightForWidth(self.color_box.sizePolicy().hasHeightForWidth())
-        self.color_box.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.color_box.sizePolicy().hasHeightForWidth())
+        self.color_box.setSizePolicy(sizePolicy7)
         self.color_box.setFont(font6)
 
         self.horizontalLayout_20.addWidget(self.color_box)
@@ -2077,16 +2104,16 @@ class Ui_MainWindow:
         self.horizontalLayout_25.setObjectName("horizontalLayout_25")
         self.lb_color_forpoints = QLabel(self.frame_2)
         self.lb_color_forpoints.setObjectName("lb_color_forpoints")
-        sizePolicy10.setHeightForWidth(self.lb_color_forpoints.sizePolicy().hasHeightForWidth())
-        self.lb_color_forpoints.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_forpoints.sizePolicy().hasHeightForWidth())
+        self.lb_color_forpoints.setSizePolicy(sizePolicy11)
         self.lb_color_forpoints.setFont(font6)
 
         self.horizontalLayout_25.addWidget(self.lb_color_forpoints)
 
         self.color_points = QLineEdit(self.frame_2)
         self.color_points.setObjectName("color_points")
-        sizePolicy2.setHeightForWidth(self.color_points.sizePolicy().hasHeightForWidth())
-        self.color_points.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.color_points.sizePolicy().hasHeightForWidth())
+        self.color_points.setSizePolicy(sizePolicy7)
         self.color_points.setFont(font6)
 
         self.horizontalLayout_25.addWidget(self.color_points)
@@ -2170,8 +2197,8 @@ class Ui_MainWindow:
 
         self.frame_3 = QFrame(self.scrollAreaWidgetContents_2)
         self.frame_3.setObjectName("frame_3")
-        sizePolicy10.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
-        self.frame_3.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
+        self.frame_3.setSizePolicy(sizePolicy11)
         self.verticalLayout_20 = QVBoxLayout(self.frame_3)
         self.verticalLayout_20.setObjectName("verticalLayout_20")
         self.verticalLayout_20.setContentsMargins(6, 6, 6, 6)
@@ -2304,7 +2331,7 @@ class Ui_MainWindow:
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 579, 260))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 492, 260))
         self.gridLayout_19 = QGridLayout(self.scrollAreaWidgetContents_3)
         self.gridLayout_19.setObjectName("gridLayout_19")
         self.verticalLayout_55 = QVBoxLayout()
@@ -2316,11 +2343,11 @@ class Ui_MainWindow:
         self.horizontalLayout_144.setObjectName("horizontalLayout_144")
         self.check_sort_or_not = QCheckBox(self.scrollAreaWidgetContents_3)
         self.check_sort_or_not.setObjectName("check_sort_or_not")
-        sizePolicy19 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy19.setHorizontalStretch(0)
-        sizePolicy19.setVerticalStretch(0)
-        sizePolicy19.setHeightForWidth(self.check_sort_or_not.sizePolicy().hasHeightForWidth())
-        self.check_sort_or_not.setSizePolicy(sizePolicy19)
+        sizePolicy20 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy20.setHorizontalStretch(0)
+        sizePolicy20.setVerticalStretch(0)
+        sizePolicy20.setHeightForWidth(self.check_sort_or_not.sizePolicy().hasHeightForWidth())
+        self.check_sort_or_not.setSizePolicy(sizePolicy20)
         self.check_sort_or_not.setFont(font6)
         self.check_sort_or_not.setChecked(False)
 
@@ -2329,10 +2356,10 @@ class Ui_MainWindow:
         self.check_sort_or_not_ascending = QCheckBox(self.scrollAreaWidgetContents_3)
         self.check_sort_or_not_ascending.setObjectName("check_sort_or_not_ascending")
         self.check_sort_or_not_ascending.setEnabled(False)
-        sizePolicy19.setHeightForWidth(
+        sizePolicy20.setHeightForWidth(
             self.check_sort_or_not_ascending.sizePolicy().hasHeightForWidth()
         )
-        self.check_sort_or_not_ascending.setSizePolicy(sizePolicy19)
+        self.check_sort_or_not_ascending.setSizePolicy(sizePolicy20)
         self.check_sort_or_not_ascending.setFont(font6)
         self.check_sort_or_not_ascending.setChecked(True)
 
@@ -2344,8 +2371,8 @@ class Ui_MainWindow:
         self.horizontalLayout_81.setObjectName("horizontalLayout_81")
         self.lb_del_hue_6 = QLabel(self.scrollAreaWidgetContents_3)
         self.lb_del_hue_6.setObjectName("lb_del_hue_6")
-        sizePolicy12.setHeightForWidth(self.lb_del_hue_6.sizePolicy().hasHeightForWidth())
-        self.lb_del_hue_6.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_del_hue_6.sizePolicy().hasHeightForWidth())
+        self.lb_del_hue_6.setSizePolicy(sizePolicy13)
         self.lb_del_hue_6.setFont(font6)
 
         self.horizontalLayout_81.addWidget(self.lb_del_hue_6)
@@ -2449,8 +2476,8 @@ class Ui_MainWindow:
         self.comboBox_spin_x_.addItem("")
         self.comboBox_spin_x_.addItem("")
         self.comboBox_spin_x_.setObjectName("comboBox_spin_x_")
-        sizePolicy2.setHeightForWidth(self.comboBox_spin_x_.sizePolicy().hasHeightForWidth())
-        self.comboBox_spin_x_.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.comboBox_spin_x_.sizePolicy().hasHeightForWidth())
+        self.comboBox_spin_x_.setSizePolicy(sizePolicy7)
         self.comboBox_spin_x_.setFont(font6)
 
         self.horizontalLayout_22.addWidget(self.comboBox_spin_x_)
@@ -2470,8 +2497,8 @@ class Ui_MainWindow:
         self.check_background = QCheckBox(self.scrollAreaWidgetContents_3)
         self.check_background.setObjectName("check_background")
         self.check_background.setEnabled(True)
-        sizePolicy19.setHeightForWidth(self.check_background.sizePolicy().hasHeightForWidth())
-        self.check_background.setSizePolicy(sizePolicy19)
+        sizePolicy20.setHeightForWidth(self.check_background.sizePolicy().hasHeightForWidth())
+        self.check_background.setSizePolicy(sizePolicy20)
         self.check_background.setChecked(False)
 
         self.horizontalLayout_66.addWidget(self.check_background)
@@ -2494,8 +2521,8 @@ class Ui_MainWindow:
         self.comboBox_sd_or_minmax.addItem("")
         self.comboBox_sd_or_minmax.addItem("")
         self.comboBox_sd_or_minmax.setObjectName("comboBox_sd_or_minmax")
-        sizePolicy2.setHeightForWidth(self.comboBox_sd_or_minmax.sizePolicy().hasHeightForWidth())
-        self.comboBox_sd_or_minmax.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.comboBox_sd_or_minmax.sizePolicy().hasHeightForWidth())
+        self.comboBox_sd_or_minmax.setSizePolicy(sizePolicy7)
         self.comboBox_sd_or_minmax.setFont(font6)
 
         self.horizontalLayout_17.addWidget(self.comboBox_sd_or_minmax)
@@ -2508,8 +2535,8 @@ class Ui_MainWindow:
         self.horizontalLayout_16.setObjectName("horizontalLayout_16")
         self.lb_bottom_lim = QLabel(self.scrollAreaWidgetContents_3)
         self.lb_bottom_lim.setObjectName("lb_bottom_lim")
-        sizePolicy12.setHeightForWidth(self.lb_bottom_lim.sizePolicy().hasHeightForWidth())
-        self.lb_bottom_lim.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_bottom_lim.sizePolicy().hasHeightForWidth())
+        self.lb_bottom_lim.setSizePolicy(sizePolicy13)
         self.lb_bottom_lim.setFont(font6)
 
         self.horizontalLayout_16.addWidget(self.lb_bottom_lim)
@@ -2526,8 +2553,8 @@ class Ui_MainWindow:
         self.horizontalLayout_139.setObjectName("horizontalLayout_139")
         self.lb_bottom_lim_2 = QLabel(self.scrollAreaWidgetContents_3)
         self.lb_bottom_lim_2.setObjectName("lb_bottom_lim_2")
-        sizePolicy12.setHeightForWidth(self.lb_bottom_lim_2.sizePolicy().hasHeightForWidth())
-        self.lb_bottom_lim_2.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_bottom_lim_2.sizePolicy().hasHeightForWidth())
+        self.lb_bottom_lim_2.setSizePolicy(sizePolicy13)
         self.lb_bottom_lim_2.setFont(font6)
 
         self.horizontalLayout_139.addWidget(self.lb_bottom_lim_2)
@@ -2560,7 +2587,7 @@ class Ui_MainWindow:
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 579, 212))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 530, 212))
         self.gridLayout_7 = QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_7.setObjectName("gridLayout_7")
         self.verticalLayout_56 = QVBoxLayout()
@@ -2721,8 +2748,8 @@ class Ui_MainWindow:
         self.formLayout_2.setObjectName("formLayout_2")
         self.frame = QFrame(self.tab_6)
         self.frame.setObjectName("frame")
-        sizePolicy10.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy11)
         self.frame.setLayoutDirection(Qt.LeftToRight)
         self.verticalLayout_19 = QVBoxLayout(self.frame)
         self.verticalLayout_19.setObjectName("verticalLayout_19")
@@ -2742,10 +2769,10 @@ class Ui_MainWindow:
         self.comboBox_correlation_figs_matrix.addItem("")
         self.comboBox_correlation_figs_matrix.addItem("")
         self.comboBox_correlation_figs_matrix.setObjectName("comboBox_correlation_figs_matrix")
-        sizePolicy2.setHeightForWidth(
+        sizePolicy7.setHeightForWidth(
             self.comboBox_correlation_figs_matrix.sizePolicy().hasHeightForWidth()
         )
-        self.comboBox_correlation_figs_matrix.setSizePolicy(sizePolicy2)
+        self.comboBox_correlation_figs_matrix.setSizePolicy(sizePolicy7)
         self.comboBox_correlation_figs_matrix.setFont(font6)
 
         self.horizontalLayout_123.addWidget(self.comboBox_correlation_figs_matrix)
@@ -2780,10 +2807,10 @@ class Ui_MainWindow:
         self.comboBox_correlation_color_map_for_figs.setObjectName(
             "comboBox_correlation_color_map_for_figs"
         )
-        sizePolicy2.setHeightForWidth(
+        sizePolicy7.setHeightForWidth(
             self.comboBox_correlation_color_map_for_figs.sizePolicy().hasHeightForWidth()
         )
-        self.comboBox_correlation_color_map_for_figs.setSizePolicy(sizePolicy2)
+        self.comboBox_correlation_color_map_for_figs.setSizePolicy(sizePolicy7)
         self.comboBox_correlation_color_map_for_figs.setFont(font6)
 
         self.horizontalLayout_124.addWidget(self.comboBox_correlation_color_map_for_figs)
@@ -3096,8 +3123,8 @@ class Ui_MainWindow:
         self.horizontalLayout_150.setObjectName("horizontalLayout_150")
         self.lb_color_pal_box_25 = QLabel(self.tab_11)
         self.lb_color_pal_box_25.setObjectName("lb_color_pal_box_25")
-        sizePolicy10.setHeightForWidth(self.lb_color_pal_box_25.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_25.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_pal_box_25.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_25.setSizePolicy(sizePolicy11)
         self.lb_color_pal_box_25.setFont(font6)
 
         self.horizontalLayout_150.addWidget(self.lb_color_pal_box_25)
@@ -3150,8 +3177,8 @@ class Ui_MainWindow:
         self.horizontalLayout_154.setObjectName("horizontalLayout_154")
         self.lb_color_pal_box_28 = QLabel(self.tab_11)
         self.lb_color_pal_box_28.setObjectName("lb_color_pal_box_28")
-        sizePolicy10.setHeightForWidth(self.lb_color_pal_box_28.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_28.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_pal_box_28.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_28.setSizePolicy(sizePolicy11)
         self.lb_color_pal_box_28.setFont(font6)
 
         self.horizontalLayout_154.addWidget(self.lb_color_pal_box_28)
@@ -3174,8 +3201,8 @@ class Ui_MainWindow:
         self.horizontalLayout_153.setObjectName("horizontalLayout_153")
         self.lb_color_pal_box_27 = QLabel(self.tab_11)
         self.lb_color_pal_box_27.setObjectName("lb_color_pal_box_27")
-        sizePolicy10.setHeightForWidth(self.lb_color_pal_box_27.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_27.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_pal_box_27.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_27.setSizePolicy(sizePolicy11)
         self.lb_color_pal_box_27.setFont(font6)
 
         self.horizontalLayout_153.addWidget(self.lb_color_pal_box_27)
@@ -3255,8 +3282,8 @@ class Ui_MainWindow:
         self.horizontalLayout_157.setObjectName("horizontalLayout_157")
         self.lb_color_pal_box_30 = QLabel(self.tab_13)
         self.lb_color_pal_box_30.setObjectName("lb_color_pal_box_30")
-        sizePolicy10.setHeightForWidth(self.lb_color_pal_box_30.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_30.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_pal_box_30.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_30.setSizePolicy(sizePolicy11)
         self.lb_color_pal_box_30.setFont(font6)
 
         self.horizontalLayout_157.addWidget(self.lb_color_pal_box_30)
@@ -3311,8 +3338,8 @@ class Ui_MainWindow:
         self.horizontalLayout_158.setObjectName("horizontalLayout_158")
         self.lb_color_pal_box_32 = QLabel(self.tab_13)
         self.lb_color_pal_box_32.setObjectName("lb_color_pal_box_32")
-        sizePolicy10.setHeightForWidth(self.lb_color_pal_box_32.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_32.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_pal_box_32.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_32.setSizePolicy(sizePolicy11)
         self.lb_color_pal_box_32.setFont(font6)
 
         self.horizontalLayout_158.addWidget(self.lb_color_pal_box_32)
@@ -3336,8 +3363,8 @@ class Ui_MainWindow:
         self.horizontalLayout_159.setObjectName("horizontalLayout_159")
         self.lb_color_pal_box_33 = QLabel(self.tab_13)
         self.lb_color_pal_box_33.setObjectName("lb_color_pal_box_33")
-        sizePolicy10.setHeightForWidth(self.lb_color_pal_box_33.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_33.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_pal_box_33.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_33.setSizePolicy(sizePolicy11)
         self.lb_color_pal_box_33.setFont(font6)
 
         self.horizontalLayout_159.addWidget(self.lb_color_pal_box_33)
@@ -3407,10 +3434,10 @@ class Ui_MainWindow:
         self.comboBox_correlation_one_parameter.addItem("")
         self.comboBox_correlation_one_parameter.addItem("")
         self.comboBox_correlation_one_parameter.setObjectName("comboBox_correlation_one_parameter")
-        sizePolicy2.setHeightForWidth(
+        sizePolicy7.setHeightForWidth(
             self.comboBox_correlation_one_parameter.sizePolicy().hasHeightForWidth()
         )
-        self.comboBox_correlation_one_parameter.setSizePolicy(sizePolicy2)
+        self.comboBox_correlation_one_parameter.setSizePolicy(sizePolicy7)
         self.comboBox_correlation_one_parameter.setFont(font6)
 
         self.horizontalLayout_164.addWidget(self.comboBox_correlation_one_parameter)
@@ -3484,7 +3511,7 @@ class Ui_MainWindow:
             "check_corr_one_parameter_plot_sep_wind"
         )
         self.check_corr_one_parameter_plot_sep_wind.setFont(font6)
-        self.check_corr_one_parameter_plot_sep_wind.setChecked(True)
+        self.check_corr_one_parameter_plot_sep_wind.setChecked(False)
 
         self.gridLayout_14.addWidget(self.check_corr_one_parameter_plot_sep_wind, 1, 0, 1, 1)
 
@@ -3512,16 +3539,16 @@ class Ui_MainWindow:
         self.gridLayout_11.setObjectName("gridLayout_11")
         self.frame1 = QFrame(self.widget2)
         self.frame1.setObjectName("frame1")
-        sizePolicy12.setHeightForWidth(self.frame1.sizePolicy().hasHeightForWidth())
-        self.frame1.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.frame1.sizePolicy().hasHeightForWidth())
+        self.frame1.setSizePolicy(sizePolicy13)
         self.verticalLayout_10 = QVBoxLayout(self.frame1)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
         self.horizontalLayout_10 = QHBoxLayout()
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         self.lb_path_for_profile = QLabel(self.frame1)
         self.lb_path_for_profile.setObjectName("lb_path_for_profile")
-        sizePolicy12.setHeightForWidth(self.lb_path_for_profile.sizePolicy().hasHeightForWidth())
-        self.lb_path_for_profile.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_path_for_profile.sizePolicy().hasHeightForWidth())
+        self.lb_path_for_profile.setSizePolicy(sizePolicy13)
         self.lb_path_for_profile.setFont(font6)
 
         self.horizontalLayout_10.addWidget(self.lb_path_for_profile)
@@ -3538,8 +3565,8 @@ class Ui_MainWindow:
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
         self.lb_patient_data = QLabel(self.frame1)
         self.lb_patient_data.setObjectName("lb_patient_data")
-        sizePolicy12.setHeightForWidth(self.lb_patient_data.sizePolicy().hasHeightForWidth())
-        self.lb_patient_data.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_patient_data.sizePolicy().hasHeightForWidth())
+        self.lb_patient_data.setSizePolicy(sizePolicy13)
         self.lb_patient_data.setFont(font6)
 
         self.horizontalLayout_11.addWidget(self.lb_patient_data)
@@ -3556,8 +3583,8 @@ class Ui_MainWindow:
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
         self.lb_norm_data = QLabel(self.frame1)
         self.lb_norm_data.setObjectName("lb_norm_data")
-        sizePolicy12.setHeightForWidth(self.lb_norm_data.sizePolicy().hasHeightForWidth())
-        self.lb_norm_data.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_norm_data.sizePolicy().hasHeightForWidth())
+        self.lb_norm_data.setSizePolicy(sizePolicy13)
         self.lb_norm_data.setFont(font6)
 
         self.horizontalLayout_12.addWidget(self.lb_norm_data)
@@ -3584,8 +3611,8 @@ class Ui_MainWindow:
         self.horizontalLayout_132.setObjectName("horizontalLayout_132")
         self.lb_norm_data_2 = QLabel(self.frame1)
         self.lb_norm_data_2.setObjectName("lb_norm_data_2")
-        sizePolicy12.setHeightForWidth(self.lb_norm_data_2.sizePolicy().hasHeightForWidth())
-        self.lb_norm_data_2.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_norm_data_2.sizePolicy().hasHeightForWidth())
+        self.lb_norm_data_2.setSizePolicy(sizePolicy13)
         self.lb_norm_data_2.setFont(font6)
 
         self.horizontalLayout_132.addWidget(self.lb_norm_data_2)
@@ -3602,8 +3629,8 @@ class Ui_MainWindow:
         self.horizontalLayout_133.setObjectName("horizontalLayout_133")
         self.lb_norm_data_3 = QLabel(self.frame1)
         self.lb_norm_data_3.setObjectName("lb_norm_data_3")
-        sizePolicy12.setHeightForWidth(self.lb_norm_data_3.sizePolicy().hasHeightForWidth())
-        self.lb_norm_data_3.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_norm_data_3.sizePolicy().hasHeightForWidth())
+        self.lb_norm_data_3.setSizePolicy(sizePolicy13)
         self.lb_norm_data_3.setFont(font6)
 
         self.horizontalLayout_133.addWidget(self.lb_norm_data_3)
@@ -3674,8 +3701,8 @@ class Ui_MainWindow:
 
         self.tyt = QFrame(self.widget2)
         self.tyt.setObjectName("tyt")
-        sizePolicy12.setHeightForWidth(self.tyt.sizePolicy().hasHeightForWidth())
-        self.tyt.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.tyt.sizePolicy().hasHeightForWidth())
+        self.tyt.setSizePolicy(sizePolicy13)
         self.tyt.setFont(font6)
         self.tyt.setStyleSheet(
             "QFrame#tyt{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
@@ -3739,8 +3766,8 @@ class Ui_MainWindow:
 
         self.opo = QFrame(self.widget2)
         self.opo.setObjectName("opo")
-        sizePolicy12.setHeightForWidth(self.opo.sizePolicy().hasHeightForWidth())
-        self.opo.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.opo.sizePolicy().hasHeightForWidth())
+        self.opo.setSizePolicy(sizePolicy13)
         self.opo.setStyleSheet(
             "QFrame#opo{\nborder: 5px solid rgb(128, 160, 165);\nborder-radius: 17px;\n}"
         )
@@ -3877,8 +3904,8 @@ class Ui_MainWindow:
         __qtablewidgetitem16 = QTableWidgetItem()
         self.tableWidget.setItem(3, 2, __qtablewidgetitem16)
         self.tableWidget.setObjectName("tableWidget")
-        sizePolicy11.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
-        self.tableWidget.setSizePolicy(sizePolicy11)
+        sizePolicy12.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
+        self.tableWidget.setSizePolicy(sizePolicy12)
         self.tableWidget.setTabletTracking(False)
         self.tableWidget.setLayoutDirection(Qt.LeftToRight)
         self.tableWidget.setFrameShape(QFrame.HLine)
@@ -3907,8 +3934,8 @@ class Ui_MainWindow:
 
         self.lb_norm_data_4 = QLabel(self.scrollAreaWidgetContents)
         self.lb_norm_data_4.setObjectName("lb_norm_data_4")
-        sizePolicy12.setHeightForWidth(self.lb_norm_data_4.sizePolicy().hasHeightForWidth())
-        self.lb_norm_data_4.setSizePolicy(sizePolicy12)
+        sizePolicy13.setHeightForWidth(self.lb_norm_data_4.sizePolicy().hasHeightForWidth())
+        self.lb_norm_data_4.setSizePolicy(sizePolicy13)
         self.lb_norm_data_4.setFont(font6)
 
         self.gridLayout_2.addWidget(self.lb_norm_data_4, 0, 0, 1, 1, Qt.AlignHCenter)
@@ -4017,11 +4044,8 @@ class Ui_MainWindow:
         self.verticalLayout_40.setContentsMargins(8, 8, 8, 8)
         self.lb_color_pal_box_17 = QLabel(self.yyy)
         self.lb_color_pal_box_17.setObjectName("lb_color_pal_box_17")
-        sizePolicy20 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
-        sizePolicy20.setHorizontalStretch(0)
-        sizePolicy20.setVerticalStretch(0)
-        sizePolicy20.setHeightForWidth(self.lb_color_pal_box_17.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_17.setSizePolicy(sizePolicy20)
+        sizePolicy2.setHeightForWidth(self.lb_color_pal_box_17.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_17.setSizePolicy(sizePolicy2)
         font11 = QFont()
         font11.setPointSize(11)
         font11.setBold(False)
@@ -4067,8 +4091,8 @@ class Ui_MainWindow:
         self.comboBox_sd_or_se_pivot.addItem("")
         self.comboBox_sd_or_se_pivot.addItem("")
         self.comboBox_sd_or_se_pivot.setObjectName("comboBox_sd_or_se_pivot")
-        sizePolicy2.setHeightForWidth(self.comboBox_sd_or_se_pivot.sizePolicy().hasHeightForWidth())
-        self.comboBox_sd_or_se_pivot.setSizePolicy(sizePolicy2)
+        sizePolicy7.setHeightForWidth(self.comboBox_sd_or_se_pivot.sizePolicy().hasHeightForWidth())
+        self.comboBox_sd_or_se_pivot.setSizePolicy(sizePolicy7)
         self.comboBox_sd_or_se_pivot.setFont(font6)
 
         self.horizontalLayout_78.addWidget(self.comboBox_sd_or_se_pivot)
@@ -4104,8 +4128,8 @@ class Ui_MainWindow:
         self.verticalLayout_42.setContentsMargins(8, 8, 8, 8)
         self.lb_color_pal_box_18 = QLabel(self.ppp)
         self.lb_color_pal_box_18.setObjectName("lb_color_pal_box_18")
-        sizePolicy20.setHeightForWidth(self.lb_color_pal_box_18.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_18.setSizePolicy(sizePolicy20)
+        sizePolicy2.setHeightForWidth(self.lb_color_pal_box_18.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_18.setSizePolicy(sizePolicy2)
         self.lb_color_pal_box_18.setFont(font11)
 
         self.verticalLayout_42.addWidget(self.lb_color_pal_box_18, 0, Qt.AlignHCenter)
@@ -4128,10 +4152,10 @@ class Ui_MainWindow:
         self.comboBox_correlation_person_or_not.addItem("")
         self.comboBox_correlation_person_or_not.addItem("")
         self.comboBox_correlation_person_or_not.setObjectName("comboBox_correlation_person_or_not")
-        sizePolicy2.setHeightForWidth(
+        sizePolicy7.setHeightForWidth(
             self.comboBox_correlation_person_or_not.sizePolicy().hasHeightForWidth()
         )
-        self.comboBox_correlation_person_or_not.setSizePolicy(sizePolicy2)
+        self.comboBox_correlation_person_or_not.setSizePolicy(sizePolicy7)
         self.comboBox_correlation_person_or_not.setFont(font6)
 
         self.horizontalLayout_85.addWidget(self.comboBox_correlation_person_or_not)
@@ -4186,10 +4210,10 @@ class Ui_MainWindow:
         self.comboBox_correlation_color_map.addItem("")
         self.comboBox_correlation_color_map.addItem("")
         self.comboBox_correlation_color_map.setObjectName("comboBox_correlation_color_map")
-        sizePolicy2.setHeightForWidth(
+        sizePolicy7.setHeightForWidth(
             self.comboBox_correlation_color_map.sizePolicy().hasHeightForWidth()
         )
-        self.comboBox_correlation_color_map.setSizePolicy(sizePolicy2)
+        self.comboBox_correlation_color_map.setSizePolicy(sizePolicy7)
         self.comboBox_correlation_color_map.setFont(font6)
 
         self.horizontalLayout_86.addWidget(self.comboBox_correlation_color_map)
@@ -4227,8 +4251,8 @@ class Ui_MainWindow:
         self.verticalLayout_53.setContentsMargins(8, 8, 8, 8)
         self.lb_color_pal_box_22 = QLabel(self.ppp_2)
         self.lb_color_pal_box_22.setObjectName("lb_color_pal_box_22")
-        sizePolicy20.setHeightForWidth(self.lb_color_pal_box_22.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_22.setSizePolicy(sizePolicy20)
+        sizePolicy2.setHeightForWidth(self.lb_color_pal_box_22.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_22.setSizePolicy(sizePolicy2)
         self.lb_color_pal_box_22.setFont(font11)
 
         self.verticalLayout_53.addWidget(self.lb_color_pal_box_22, 0, Qt.AlignHCenter)
@@ -4248,10 +4272,10 @@ class Ui_MainWindow:
         self.comboBox_index_data_or_raw.addItem("")
         self.comboBox_index_data_or_raw.addItem("")
         self.comboBox_index_data_or_raw.setObjectName("comboBox_index_data_or_raw")
-        sizePolicy2.setHeightForWidth(
+        sizePolicy7.setHeightForWidth(
             self.comboBox_index_data_or_raw.sizePolicy().hasHeightForWidth()
         )
-        self.comboBox_index_data_or_raw.setSizePolicy(sizePolicy2)
+        self.comboBox_index_data_or_raw.setSizePolicy(sizePolicy7)
         self.comboBox_index_data_or_raw.setFont(font6)
 
         self.horizontalLayout_143.addWidget(self.comboBox_index_data_or_raw)
@@ -4497,8 +4521,8 @@ class Ui_MainWindow:
         self.horizontalLayout_105.setObjectName("horizontalLayout_105")
         self.lb_color_pal_box_16 = QLabel(self.tab_10)
         self.lb_color_pal_box_16.setObjectName("lb_color_pal_box_16")
-        sizePolicy10.setHeightForWidth(self.lb_color_pal_box_16.sizePolicy().hasHeightForWidth())
-        self.lb_color_pal_box_16.setSizePolicy(sizePolicy10)
+        sizePolicy11.setHeightForWidth(self.lb_color_pal_box_16.sizePolicy().hasHeightForWidth())
+        self.lb_color_pal_box_16.setSizePolicy(sizePolicy11)
         self.lb_color_pal_box_16.setFont(font6)
 
         self.horizontalLayout_105.addWidget(self.lb_color_pal_box_16)
@@ -4598,10 +4622,10 @@ class Ui_MainWindow:
         self.comboBox_catplot_SD_or_not.addItem("")
         self.comboBox_catplot_SD_or_not.addItem("")
         self.comboBox_catplot_SD_or_not.setObjectName("comboBox_catplot_SD_or_not")
-        sizePolicy14.setHeightForWidth(
+        sizePolicy15.setHeightForWidth(
             self.comboBox_catplot_SD_or_not.sizePolicy().hasHeightForWidth()
         )
-        self.comboBox_catplot_SD_or_not.setSizePolicy(sizePolicy14)
+        self.comboBox_catplot_SD_or_not.setSizePolicy(sizePolicy15)
         self.comboBox_catplot_SD_or_not.setFont(font6)
 
         self.horizontalLayout_103.addWidget(self.comboBox_catplot_SD_or_not)
@@ -6200,6 +6224,9 @@ class Ui_MainWindow:
                 None,
             )
         )
+        # if QT_CONFIG(tooltip)
+        self.tabWidget.setToolTip("")
+        # endif // QT_CONFIG(tooltip)
         self.lb_color_pal_box.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6975,6 +7002,12 @@ class Ui_MainWindow:
             self.tabWidget.indexOf(self.tab_3),
             QCoreApplication.translate("MainWindow", "Box plot", None),
         )
+        # if QT_CONFIG(tooltip)
+        self.tabWidget.setTabToolTip(
+            self.tabWidget.indexOf(self.tab_3),
+            QCoreApplication.translate("MainWindow", "Box plot", None),
+        )
+        # endif // QT_CONFIG(tooltip)
         self.lb_sd_or_minmax_6.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7084,6 +7117,16 @@ class Ui_MainWindow:
                 None,
             ),
         )
+        # if QT_CONFIG(tooltip)
+        self.tabWidget.setTabToolTip(
+            self.tabWidget.indexOf(self.tab_6),
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u043c\u0430\u0442\u0440\u0438\u0446\u0430",
+                None,
+            ),
+        )
+        # endif // QT_CONFIG(tooltip)
         self.lb_corr_color_pallete_3.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7265,6 +7308,16 @@ class Ui_MainWindow:
                 None,
             ),
         )
+        # if QT_CONFIG(tooltip)
+        self.tabWidget.setTabToolTip(
+            self.tabWidget.indexOf(self.tab_2),
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0433\u0440\u0430\u0444\u0438\u043a",
+                None,
+            ),
+        )
+        # endif // QT_CONFIG(tooltip)
         self.lb_stattest_11.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7443,6 +7496,16 @@ class Ui_MainWindow:
                 None,
             ),
         )
+        # if QT_CONFIG(tooltip)
+        self.tabWidget.setTabToolTip(
+            self.tabWidget.indexOf(self.tab_11),
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041c\u0430\u0442\u0440\u0438\u0446\u0430 \u0440\u0430\u0441\u0441\u0435\u044f\u043d\u0438\u044f",
+                None,
+            ),
+        )
+        # endif // QT_CONFIG(tooltip)
         self.lb_color_pal_box_29.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7610,6 +7673,16 @@ class Ui_MainWindow:
                 None,
             ),
         )
+        # if QT_CONFIG(tooltip)
+        self.tabWidget.setTabToolTip(
+            self.tabWidget.indexOf(self.tab_13),
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0434\u0432\u0443\u043c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c",
+                None,
+            ),
+        )
+        # endif // QT_CONFIG(tooltip)
         self.lb_sd_or_minmax_8.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7663,6 +7736,16 @@ class Ui_MainWindow:
                 None,
             ),
         )
+        # if QT_CONFIG(tooltip)
+        self.tabWidget.setTabToolTip(
+            self.tabWidget.indexOf(self.tab_14),
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430",
+                None,
+            ),
+        )
+        # endif // QT_CONFIG(tooltip)
         self.btn_plot_and_save_figs.setText(
             QCoreApplication.translate(
                 "MainWindow",
