@@ -8,7 +8,10 @@ from loguru import logger
 # ----------------------------------------------- #
 logger.remove()
 
-logger.add(sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO")
+try:
+    logger.add(sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO")
+except Exception as e:
+    print(f"Нельзя импортировать: {e}")
 # ----------------------------------------------- #
 
 
