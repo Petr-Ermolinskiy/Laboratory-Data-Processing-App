@@ -1,4 +1,5 @@
 """Проверка разделителя -- ',' вместо '.'."""  # noqa: INP001
+
 import os
 import sys
 import time
@@ -23,7 +24,9 @@ from scripts.Data_Processing.utils.fig_val_separator import (
 logger.remove()
 
 try:
-    logger.add(sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO")
+    logger.add(
+        sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO"
+    )
 except Exception as e:
     print(f"Нельзя импортировать: {e}")
 # ----------------------------------------------- #

@@ -1,4 +1,4 @@
-"""Скрипт сборки для замены Makefile."""
+"""Скрипт сборки для замены Makefile."""  # noqa: INP001
 
 import argparse
 import json
@@ -14,7 +14,9 @@ from loguru import logger
 logger.remove()
 
 try:
-    logger.add(sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO")
+    logger.add(
+        sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO"
+    )
 except Exception as e:
     print(f"Нельзя импортировать: {e}")
 # ----------------------------------------------- #
