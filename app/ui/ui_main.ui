@@ -212,7 +212,7 @@ background-color: rgba(255, 255, 255, 0);</string>
        <string notr="true">/*background-color: rgb(249, 249, 249);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tabWidgetPage1">
        <attribute name="title">
@@ -2740,8 +2740,11 @@ border-radius: 10px;</string>
          </layout>
         </item>
         <item row="2" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout_50">
-          <item>
+         <layout class="QFormLayout" name="formLayout_4">
+          <property name="labelAlignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <item row="0" column="0">
            <widget class="QFrame" name="asd">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
@@ -2978,7 +2981,7 @@ border-radius: 17px;
             </layout>
            </widget>
           </item>
-          <item>
+          <item row="1" column="0">
            <widget class="QFrame" name="hhhhh">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
@@ -3211,7 +3214,7 @@ border-radius: 17px;
             </layout>
            </widget>
           </item>
-          <item>
+          <item row="2" column="0">
            <widget class="QFrame" name="hhhhh_exp">
             <property name="enabled">
              <bool>false</bool>
@@ -3586,7 +3589,10 @@ border-radius: 17px;
            </font>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>4</number>
+          </property>
+          <property name="usesScrollButtons">
+           <bool>false</bool>
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
@@ -3930,7 +3936,7 @@ border-radius: 17px;
                   <item row="0" column="0">
                    <widget class="QTabWidget" name="tabWidget_3">
                     <property name="currentIndex">
-                     <number>0</number>
+                     <number>1</number>
                     </property>
                     <widget class="QWidget" name="tab_15">
                      <attribute name="title">
@@ -4947,7 +4953,7 @@ border-radius: 17px;
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>492</width>
+                           <width>579</width>
                            <height>260</height>
                           </rect>
                          </property>
@@ -10480,11 +10486,299 @@ border-radius: 10px;</string>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab_12">
+          <widget class="QWidget" name="tab_4">
            <attribute name="title">
-            <string>Доп. обработка</string>
+            <string>Обработка RheoScan</string>
            </attribute>
-           <layout class="QGridLayout" name="gridLayout_9">
+           <layout class="QGridLayout" name="gridLayout_22">
+            <item row="1" column="0">
+             <layout class="QVBoxLayout" name="verticalLayout_66">
+              <item>
+               <widget class="Line" name="line_21">
+                <property name="font">
+                 <font>
+                  <family>Segoe UI</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(128, 160, 165);</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>3</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line_23">
+                <property name="font">
+                 <font>
+                  <family>Segoe UI</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(128, 160, 165);</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>3</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line_24">
+                <property name="font">
+                 <font>
+                  <family>Segoe UI</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(128, 160, 165);</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>3</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="0">
+             <layout class="QVBoxLayout" name="verticalLayout_65">
+              <item>
+               <widget class="QLabel" name="lb_path_for_plot_10">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                  <bold>false</bold>
+                  <underline>true</underline>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>RheoScan - сделать отчет</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_64">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_171">
+                  <item>
+                   <widget class="QLabel" name="lb_path_for_plot_9">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="toolTip">
+                     <string>Путь, по которому может быть найден excel файл</string>
+                    </property>
+                    <property name="text">
+                     <string>Путь к excel файлу</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="path_for_rheoscan_report">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_170">
+                  <item>
+                   <widget class="QLabel" name="lb_exel_name_9">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Название excel файла</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="comboBox_rheoscan_report"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_161">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_59">
+                  <item>
+                   <widget class="QLabel" name="label_3">
+                    <property name="text">
+                     <string>Дата измерения</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCalendarWidget" name="calendarWidget_rheoscan_report">
+                    <property name="locale">
+                     <locale language="Russian" country="Russia"/>
+                    </property>
+                    <property name="selectedDate">
+                     <date>
+                      <year>2026</year>
+                      <month>1</month>
+                      <day>1</day>
+                     </date>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_62">
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_60">
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_63">
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_168">
+                        <item>
+                         <widget class="QLabel" name="label_22">
+                          <property name="text">
+                           <string>Имя исполнителя эксперимента</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="rheoscan_report_name_exp"/>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_169">
+                        <item>
+                         <widget class="QLabel" name="label_24">
+                          <property name="text">
+                           <string>Имя обработчика</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="rheoscan_report_name_process"/>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_2">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>Переименование параметров</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPlainTextEdit" name="rheoscan_report_parameters_dict">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="plainText">
+                       <string>{&quot;AI&quot;:&quot;AI, %&quot;,
+ &quot;CSS&quot;:&quot;CSS, мПа&quot;,
+ &quot;T1/2&quot;: &quot;T1/2, сек.&quot;}</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_61">
+                    <item>
+                     <widget class="QLabel" name="label_6">
+                      <property name="text">
+                       <string>Диапазон нормы (среднее ± SD)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPlainTextEdit" name="rheoscan_report_norm_dict">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="plainText">
+                       <string>{&quot;AI, %&quot;: &quot;40±1&quot;,
+ &quot;CSS, мПа&quot;: &quot;200±20&quot;,
+ &quot;T1/2, сек.&quot;: &quot;5±2&quot;}</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_make_rheoscan_report">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(128, 160, 165, 50);
+border: 3px solid rgb(128, 160, 165);
+border-radius: 10px;</string>
+                </property>
+                <property name="text">
+                 <string>Сделать отчет</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
             <item row="0" column="0">
              <layout class="QVBoxLayout" name="verticalLayout_44">
               <item alignment="Qt::AlignHCenter">
@@ -10639,20 +10933,30 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="1" column="0">
-             <spacer name="verticalSpacer_4">
+            <item row="3" column="0">
+             <spacer name="verticalSpacer">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Maximum</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>10</width>
-                <height>10</height>
+                <width>200</width>
+                <height>200</height>
                </size>
               </property>
              </spacer>
             </item>
-            <item row="2" column="0">
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_12">
+           <attribute name="title">
+            <string>Доп. обработка</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_9">
+            <item row="1" column="0">
              <layout class="QVBoxLayout" name="verticalLayout_45">
               <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="lb_path_for_plot_8">
@@ -11048,6 +11352,19 @@ border-radius: 10px;</string>
                </widget>
               </item>
              </layout>
+            </item>
+            <item row="2" column="0">
+             <spacer name="verticalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>10</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </widget>
@@ -11622,8 +11939,8 @@ border-radius: 10px;</string>
      <y>464</y>
     </hint>
     <hint type="destinationlabel">
-     <x>626</x>
-     <y>466</y>
+     <x>605</x>
+     <y>470</y>
     </hint>
    </hints>
   </connection>
@@ -11688,6 +12005,22 @@ border-radius: 10px;</string>
     <hint type="destinationlabel">
      <x>397</x>
      <y>468</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>check_N_</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBox_box_check_N_</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>374</x>
+     <y>529</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>549</x>
+     <y>534</y>
     </hint>
    </hints>
   </connection>

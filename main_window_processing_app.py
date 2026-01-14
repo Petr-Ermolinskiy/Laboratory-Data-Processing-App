@@ -1,3 +1,5 @@
+"""Основной класс UI, в котором прописана логика."""
+
 import os
 import sys
 from pathlib import Path
@@ -50,7 +52,7 @@ def resource_path(relative_path: str) -> str:
     """Получить абсолютный путь к ресурсу, нужно для PyInstaller."""
     try:
         # PyInstaller создает временную папку и сохраняет путь в _MEIPASS
-        base_path = sys._MEIPASS
+        base_path = sys._MEIPASS  # noqa: SLF001
     except Exception:
         base_path = os.path.abspath(".")
 
@@ -76,51 +78,52 @@ class MainWindowProcessingApp(QMainWindow):
         # КНОПКИ
         #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #
 
-        # RheoScan
-        self.ui.btn_save_exel_csv.pressed.connect(self.RheoScan)  # для кнопки из вкладки RheoScan
-        self.ui.btn_sort_data_RheoScan.pressed.connect(
-            self.RheoScan_sort_data,
-        )  # для кнопки из вкладки RheoScan
-        self.ui.btn_RheoScan_describe_file_or_files.pressed.connect(
-            self.RheoScan_describe,
-        )  # для кнопки по дополнительной обработке данных RheoScan
-        self.ui.btn_dop_stat_calc.pressed.connect(
-            self.p_value_calc,
-        )  # для кнопки по дополнительной обработке данных - RheoScan - описать
+        # -- RheoScan -- #
+        # для кнопки из вкладки RheoScan
+        self.ui.btn_save_exel_csv.pressed.connect(self.RheoScan)
 
-        # Biola
-        self.ui.btn_biola.pressed.connect(self.biola_do)  # для кнопки по обработки данных Biola
-        self.ui.btn_biola_concentration.pressed.connect(
-            self.biola_concentration,
-        )  # для кнопки по обработки данных Biola
+        # для кнопки из вкладки RheoScan
+        self.ui.btn_sort_data_RheoScan.pressed.connect(self.RheoScan_sort_data)
 
-        # Лазерный пинцет
-        self.ui.btn_LT.pressed.connect(self.LT)  # для кнопки по обработки данных лазерного пинцета
+        # для кнопки по дополнительной обработке данных RheoScan
+        self.ui.btn_RheoScan_describe_file_or_files.pressed.connect(self.RheoScan_describe)
 
-        # Графики
-        self.ui.btn_plot_and_save_profile.pressed.connect(
-            self.profile_of_patient,
-        )  # для кнопки по построению микро реологического профиля
-        self.ui.btn_plot_and_save_figs.pressed.connect(
-            self.figures_and_stuff,
-        )  # для кнопки по построению графиков
-        self.ui.btn_plot_and_save_pivot_table.pressed.connect(
-            self.pivot_table,
-        )  # для кнопки по расчету сводных таблиц
-        self.ui.btn_plot_and_save_corr_table.pressed.connect(
-            self.corr_table,
-        )  # для кнопки по построению корреляционной матрицы
-        self.ui.btn_plot_and_save_catplot.pressed.connect(self.cat_plot)  # для кнопки по catplot
-        self.ui.btn_save_pivot_or_melt.pressed.connect(
-            self.pivot_or_melt,
-        )  # для кнопки по расчету сводных таблиц
-        self.ui.pushButton_HEX_box.pressed.connect(self.HEX_box)  # для кнопки выбора HEX цветов BOX
-        self.ui.pushButton_HEX_points.pressed.connect(
-            self.HEX_points,
-        )  # для кнопки выбора HEX цветов точек
-        self.ui.toolButton_RheoScan.pressed.connect(
-            self.toolButton_RheoScan_file
-        )  # для кнопки выбора папки
+        # для кнопки -- сделать отчет
+        self.ui.btn_make_rheoscan_report.pressed.connect(self.rheoscan_make_report)
+
+        # -- Biola -- #
+        # для кнопки по обработки данных Biola
+        self.ui.btn_biola.pressed.connect(self.biola_do)
+        # для кнопки по обработки данных Biola
+        self.ui.btn_biola_concentration.pressed.connect(self.biola_concentration)
+
+        # -- Лазерный пинцет -- #
+        # для кнопки по обработки данных лазерного пинцета
+        self.ui.btn_LT.pressed.connect(self.LT)
+
+        # -- Графики -- #
+        # для кнопки по построению микрореологического профиля
+        self.ui.btn_plot_and_save_profile.pressed.connect(self.profile_of_patient)
+        # для кнопки по построению графиков
+        self.ui.btn_plot_and_save_figs.pressed.connect(self.figures_and_stuff)
+        # для кнопки по расчету сводных таблиц
+        self.ui.btn_plot_and_save_pivot_table.pressed.connect(self.pivot_table)
+        # для кнопки по построению корреляционной матрицы
+        self.ui.btn_plot_and_save_corr_table.pressed.connect(self.corr_table)
+        # для кнопки по catplot
+        self.ui.btn_plot_and_save_catplot.pressed.connect(self.cat_plot)
+        # для кнопки по расчету сводных таблиц
+        self.ui.btn_save_pivot_or_melt.pressed.connect(self.pivot_or_melt)
+        # для кнопки выбора HEX цветов BOX
+        self.ui.pushButton_HEX_box.pressed.connect(self.HEX_box)
+        # для кнопки выбора HEX цветов точек
+        self.ui.pushButton_HEX_points.pressed.connect(self.HEX_points)
+        # для кнопки выбора папки
+        self.ui.toolButton_RheoScan.pressed.connect(self.toolButton_RheoScan_file)
+
+        # -- Доп. статистика -- #
+        # для кнопки по дополнительной обработке данных - рассчитать стат. значимость
+        self.ui.btn_dop_stat_calc.pressed.connect(self.p_value_calc)
 
         # Дополнительные кнопки
         self.ui.label_info.mousePressEvent = self.info_about_programme  # для инфо
@@ -143,7 +146,7 @@ class MainWindowProcessingApp(QMainWindow):
         self.ui.comboBox_pivot_table.currentTextChanged.connect(self.add_sheets_to_combobox_pivot)
         # обновим какие есть колонки - pivot
         self.ui.comboBox_pivot_table_excel_sheet.currentTextChanged.connect(
-            self.add_columns_to_combobox_pivot,
+            self.add_columns_to_combobox_pivot
         )
 
         # -----------------------------------------------------#
@@ -155,6 +158,10 @@ class MainWindowProcessingApp(QMainWindow):
         self.ui.path_for_catplot.textChanged.connect(self.add_excel_catplot)
         self.ui.comboBox_excel_catplot.currentTextChanged.connect(self.catplot_add_sheets)
         self.ui.comboBox_excel_sheet_catplot.currentTextChanged.connect(self.catplot_add_x_y_hue)
+
+        # -----------------------------------------------------#
+        # RheoScan -- отчет
+        self.ui.path_for_rheoscan_report.textChanged.connect(self.add_excel_rheoscan_report)
 
         # -----------------------------------------------------#
         # дополнительная статистика - расчет p-value
@@ -225,6 +232,10 @@ class MainWindowProcessingApp(QMainWindow):
     def RheoScan_describe(self) -> None:  # noqa: N802
         """Описание -- статистика по данным. Этот метод находится в отделе обработки данных."""
         rheo_scan_describe_file_or_files(self)
+
+    def rheoscan_make_report(self) -> None:
+        """Сделать отчет по одному пациенту. Этот метод находится в отделе обработки данных."""
+        pass
 
     # - - - - - - - - - #
     # Biola
@@ -326,6 +337,16 @@ class MainWindowProcessingApp(QMainWindow):
             self.ui.comboBox_catplot_x.clear()  # удалить все элементы из combobox
             self.ui.comboBox_catplot_y.clear()  # удалить все элементы из combobox
             self.ui.comboBox_catplot_hue.clear()  # удалить все элементы из combobox
+
+    # - - - - - - - - - #
+    # RheoScan -- отчет
+    # - - - - - - - - - #
+    def add_excel_rheoscan_report(self) -> None:
+        path = Path(self.ui.path_for_rheoscan_report.text())
+        files = list(path.glob("*.xlsx"))
+        files = get_name_out_of_path([str(f) for f in files])
+        self.ui.comboBox_rheoscan_report.clear()  # удалить все элементы из combobox
+        self.ui.comboBox_rheoscan_report.addItems(files)
 
     # - - - - - - - - - #
     # Дополнительная статистика

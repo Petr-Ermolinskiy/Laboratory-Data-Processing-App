@@ -44,6 +44,7 @@ from PySide6.QtWidgets import (
     QAbstractItemView,
     QAbstractScrollArea,
     QApplication,
+    QCalendarWidget,
     QCheckBox,
     QComboBox,
     QDateEdit,
@@ -56,6 +57,7 @@ from PySide6.QtWidgets import (
     QLabel,
     QLineEdit,
     QMainWindow,
+    QPlainTextEdit,
     QPushButton,
     QScrollArea,
     QSizePolicy,
@@ -1357,8 +1359,9 @@ class Ui_MainWindow(object):
 
         self.gridLayout_16.addLayout(self.horizontalLayout_149, 3, 0, 1, 1)
 
-        self.verticalLayout_50 = QVBoxLayout()
-        self.verticalLayout_50.setObjectName("verticalLayout_50")
+        self.formLayout_4 = QFormLayout()
+        self.formLayout_4.setObjectName("formLayout_4")
+        self.formLayout_4.setLabelAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
         self.asd = QFrame(self.tab_7)
         self.asd.setObjectName("asd")
         sizePolicy16 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
@@ -1470,7 +1473,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_26.addLayout(self.verticalLayout_25)
 
-        self.verticalLayout_50.addWidget(self.asd)
+        self.formLayout_4.setWidget(0, QFormLayout.LabelRole, self.asd)
 
         self.hhhhh = QFrame(self.tab_7)
         self.hhhhh.setObjectName("hhhhh")
@@ -1572,7 +1575,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_27.addLayout(self.verticalLayout_46)
 
-        self.verticalLayout_50.addWidget(self.hhhhh)
+        self.formLayout_4.setWidget(1, QFormLayout.LabelRole, self.hhhhh)
 
         self.hhhhh_exp = QFrame(self.tab_7)
         self.hhhhh_exp.setObjectName("hhhhh_exp")
@@ -1735,9 +1738,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_47.addLayout(self.verticalLayout_48)
 
-        self.verticalLayout_50.addWidget(self.hhhhh_exp)
+        self.formLayout_4.setWidget(2, QFormLayout.LabelRole, self.hhhhh_exp)
 
-        self.gridLayout_16.addLayout(self.verticalLayout_50, 2, 0, 1, 1)
+        self.gridLayout_16.addLayout(self.formLayout_4, 2, 0, 1, 1)
 
         self.Lab_stuff.addTab(self.tab_7, "")
         self.tabWidgetPage4 = QWidget()
@@ -1747,6 +1750,7 @@ class Ui_MainWindow(object):
         self.tabWidget_2 = QTabWidget(self.tabWidgetPage4)
         self.tabWidget_2.setObjectName("tabWidget_2")
         self.tabWidget_2.setFont(font6)
+        self.tabWidget_2.setUsesScrollButtons(False)
         self.tab = QWidget()
         self.tab.setObjectName("tab")
         self.gridLayout_4 = QGridLayout(self.tab)
@@ -2331,7 +2335,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 492, 260))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 579, 260))
         self.gridLayout_19 = QGridLayout(self.scrollAreaWidgetContents_3)
         self.gridLayout_19.setObjectName("gridLayout_19")
         self.verticalLayout_55 = QVBoxLayout()
@@ -4807,13 +4811,198 @@ class Ui_MainWindow(object):
         self.gridLayout_15.addItem(self.verticalSpacer_3, 7, 1, 1, 1)
 
         self.tabWidget_2.addTab(self.tab_10, "")
-        self.tab_12 = QWidget()
-        self.tab_12.setObjectName("tab_12")
-        self.gridLayout_9 = QGridLayout(self.tab_12)
-        self.gridLayout_9.setObjectName("gridLayout_9")
+        self.tab_4 = QWidget()
+        self.tab_4.setObjectName("tab_4")
+        self.gridLayout_22 = QGridLayout(self.tab_4)
+        self.gridLayout_22.setObjectName("gridLayout_22")
+        self.verticalLayout_66 = QVBoxLayout()
+        self.verticalLayout_66.setObjectName("verticalLayout_66")
+        self.line_21 = QFrame(self.tab_4)
+        self.line_21.setObjectName("line_21")
+        self.line_21.setFont(font4)
+        self.line_21.setStyleSheet("color: rgb(128, 160, 165);")
+        self.line_21.setFrameShadow(QFrame.Plain)
+        self.line_21.setLineWidth(3)
+        self.line_21.setFrameShape(QFrame.HLine)
+
+        self.verticalLayout_66.addWidget(self.line_21)
+
+        self.line_23 = QFrame(self.tab_4)
+        self.line_23.setObjectName("line_23")
+        self.line_23.setFont(font4)
+        self.line_23.setStyleSheet("color: rgb(128, 160, 165);")
+        self.line_23.setFrameShadow(QFrame.Plain)
+        self.line_23.setLineWidth(3)
+        self.line_23.setFrameShape(QFrame.HLine)
+
+        self.verticalLayout_66.addWidget(self.line_23)
+
+        self.line_24 = QFrame(self.tab_4)
+        self.line_24.setObjectName("line_24")
+        self.line_24.setFont(font4)
+        self.line_24.setStyleSheet("color: rgb(128, 160, 165);")
+        self.line_24.setFrameShadow(QFrame.Plain)
+        self.line_24.setLineWidth(3)
+        self.line_24.setFrameShape(QFrame.HLine)
+
+        self.verticalLayout_66.addWidget(self.line_24)
+
+        self.gridLayout_22.addLayout(self.verticalLayout_66, 1, 0, 1, 1)
+
+        self.verticalLayout_65 = QVBoxLayout()
+        self.verticalLayout_65.setObjectName("verticalLayout_65")
+        self.lb_path_for_plot_10 = QLabel(self.tab_4)
+        self.lb_path_for_plot_10.setObjectName("lb_path_for_plot_10")
+        self.lb_path_for_plot_10.setFont(font11)
+        self.lb_path_for_plot_10.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_65.addWidget(self.lb_path_for_plot_10)
+
+        self.verticalLayout_64 = QVBoxLayout()
+        self.verticalLayout_64.setObjectName("verticalLayout_64")
+        self.horizontalLayout_171 = QHBoxLayout()
+        self.horizontalLayout_171.setObjectName("horizontalLayout_171")
+        self.lb_path_for_plot_9 = QLabel(self.tab_4)
+        self.lb_path_for_plot_9.setObjectName("lb_path_for_plot_9")
+        self.lb_path_for_plot_9.setFont(font6)
+
+        self.horizontalLayout_171.addWidget(self.lb_path_for_plot_9)
+
+        self.path_for_rheoscan_report = QLineEdit(self.tab_4)
+        self.path_for_rheoscan_report.setObjectName("path_for_rheoscan_report")
+        self.path_for_rheoscan_report.setFont(font6)
+
+        self.horizontalLayout_171.addWidget(self.path_for_rheoscan_report)
+
+        self.verticalLayout_64.addLayout(self.horizontalLayout_171)
+
+        self.horizontalLayout_170 = QHBoxLayout()
+        self.horizontalLayout_170.setObjectName("horizontalLayout_170")
+        self.lb_exel_name_9 = QLabel(self.tab_4)
+        self.lb_exel_name_9.setObjectName("lb_exel_name_9")
+        self.lb_exel_name_9.setFont(font6)
+
+        self.horizontalLayout_170.addWidget(self.lb_exel_name_9)
+
+        self.comboBox_rheoscan_report = QComboBox(self.tab_4)
+        self.comboBox_rheoscan_report.setObjectName("comboBox_rheoscan_report")
+
+        self.horizontalLayout_170.addWidget(self.comboBox_rheoscan_report)
+
+        self.verticalLayout_64.addLayout(self.horizontalLayout_170)
+
+        self.verticalLayout_65.addLayout(self.verticalLayout_64)
+
+        self.horizontalLayout_161 = QHBoxLayout()
+        self.horizontalLayout_161.setObjectName("horizontalLayout_161")
+        self.verticalLayout_59 = QVBoxLayout()
+        self.verticalLayout_59.setObjectName("verticalLayout_59")
+        self.label_3 = QLabel(self.tab_4)
+        self.label_3.setObjectName("label_3")
+
+        self.verticalLayout_59.addWidget(self.label_3)
+
+        self.calendarWidget_rheoscan_report = QCalendarWidget(self.tab_4)
+        self.calendarWidget_rheoscan_report.setObjectName("calendarWidget_rheoscan_report")
+        self.calendarWidget_rheoscan_report.setLocale(QLocale(QLocale.Russian, QLocale.Russia))
+        self.calendarWidget_rheoscan_report.setSelectedDate(QDate(2026, 1, 1))
+
+        self.verticalLayout_59.addWidget(self.calendarWidget_rheoscan_report)
+
+        self.horizontalLayout_161.addLayout(self.verticalLayout_59)
+
+        self.verticalLayout_62 = QVBoxLayout()
+        self.verticalLayout_62.setObjectName("verticalLayout_62")
+        self.verticalLayout_60 = QVBoxLayout()
+        self.verticalLayout_60.setObjectName("verticalLayout_60")
+        self.verticalLayout_63 = QVBoxLayout()
+        self.verticalLayout_63.setObjectName("verticalLayout_63")
+        self.horizontalLayout_168 = QHBoxLayout()
+        self.horizontalLayout_168.setObjectName("horizontalLayout_168")
+        self.label_22 = QLabel(self.tab_4)
+        self.label_22.setObjectName("label_22")
+
+        self.horizontalLayout_168.addWidget(self.label_22)
+
+        self.rheoscan_report_name_exp = QLineEdit(self.tab_4)
+        self.rheoscan_report_name_exp.setObjectName("rheoscan_report_name_exp")
+
+        self.horizontalLayout_168.addWidget(self.rheoscan_report_name_exp)
+
+        self.verticalLayout_63.addLayout(self.horizontalLayout_168)
+
+        self.horizontalLayout_169 = QHBoxLayout()
+        self.horizontalLayout_169.setObjectName("horizontalLayout_169")
+        self.label_24 = QLabel(self.tab_4)
+        self.label_24.setObjectName("label_24")
+
+        self.horizontalLayout_169.addWidget(self.label_24)
+
+        self.rheoscan_report_name_process = QLineEdit(self.tab_4)
+        self.rheoscan_report_name_process.setObjectName("rheoscan_report_name_process")
+
+        self.horizontalLayout_169.addWidget(self.rheoscan_report_name_process)
+
+        self.verticalLayout_63.addLayout(self.horizontalLayout_169)
+
+        self.verticalLayout_60.addLayout(self.verticalLayout_63)
+
+        self.label_2 = QLabel(self.tab_4)
+        self.label_2.setObjectName("label_2")
+        sizePolicy16.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy16)
+
+        self.verticalLayout_60.addWidget(self.label_2)
+
+        self.rheoscan_report_parameters_dict = QPlainTextEdit(self.tab_4)
+        self.rheoscan_report_parameters_dict.setObjectName("rheoscan_report_parameters_dict")
+        sizePolicy19.setHeightForWidth(
+            self.rheoscan_report_parameters_dict.sizePolicy().hasHeightForWidth()
+        )
+        self.rheoscan_report_parameters_dict.setSizePolicy(sizePolicy19)
+
+        self.verticalLayout_60.addWidget(self.rheoscan_report_parameters_dict)
+
+        self.verticalLayout_62.addLayout(self.verticalLayout_60)
+
+        self.verticalLayout_61 = QVBoxLayout()
+        self.verticalLayout_61.setObjectName("verticalLayout_61")
+        self.label_6 = QLabel(self.tab_4)
+        self.label_6.setObjectName("label_6")
+
+        self.verticalLayout_61.addWidget(self.label_6)
+
+        self.rheoscan_report_norm_dict = QPlainTextEdit(self.tab_4)
+        self.rheoscan_report_norm_dict.setObjectName("rheoscan_report_norm_dict")
+        sizePolicy19.setHeightForWidth(
+            self.rheoscan_report_norm_dict.sizePolicy().hasHeightForWidth()
+        )
+        self.rheoscan_report_norm_dict.setSizePolicy(sizePolicy19)
+
+        self.verticalLayout_61.addWidget(self.rheoscan_report_norm_dict)
+
+        self.verticalLayout_62.addLayout(self.verticalLayout_61)
+
+        self.horizontalLayout_161.addLayout(self.verticalLayout_62)
+
+        self.verticalLayout_65.addLayout(self.horizontalLayout_161)
+
+        self.btn_make_rheoscan_report = QPushButton(self.tab_4)
+        self.btn_make_rheoscan_report.setObjectName("btn_make_rheoscan_report")
+        self.btn_make_rheoscan_report.setFont(font6)
+        self.btn_make_rheoscan_report.setStyleSheet(
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
+        )
+
+        self.verticalLayout_65.addWidget(self.btn_make_rheoscan_report)
+
+        self.gridLayout_22.addLayout(self.verticalLayout_65, 2, 0, 1, 1)
+
         self.verticalLayout_44 = QVBoxLayout()
         self.verticalLayout_44.setObjectName("verticalLayout_44")
-        self.lb_path_for_plot_7 = QLabel(self.tab_12)
+        self.lb_path_for_plot_7 = QLabel(self.tab_4)
         self.lb_path_for_plot_7.setObjectName("lb_path_for_plot_7")
         self.lb_path_for_plot_7.setFont(font11)
 
@@ -4821,19 +5010,19 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_128 = QHBoxLayout()
         self.horizontalLayout_128.setObjectName("horizontalLayout_128")
-        self.lb_path_for_plot_5 = QLabel(self.tab_12)
+        self.lb_path_for_plot_5 = QLabel(self.tab_4)
         self.lb_path_for_plot_5.setObjectName("lb_path_for_plot_5")
         self.lb_path_for_plot_5.setFont(font6)
 
         self.horizontalLayout_128.addWidget(self.lb_path_for_plot_5)
 
-        self.path_for_RheoScan_describe = QLineEdit(self.tab_12)
+        self.path_for_RheoScan_describe = QLineEdit(self.tab_4)
         self.path_for_RheoScan_describe.setObjectName("path_for_RheoScan_describe")
         self.path_for_RheoScan_describe.setFont(font6)
 
         self.horizontalLayout_128.addWidget(self.path_for_RheoScan_describe)
 
-        self.toolButton_RheoScan = QToolButton(self.tab_12)
+        self.toolButton_RheoScan = QToolButton(self.tab_4)
         self.toolButton_RheoScan.setObjectName("toolButton_RheoScan")
 
         self.horizontalLayout_128.addWidget(self.toolButton_RheoScan)
@@ -4842,14 +5031,14 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_129 = QHBoxLayout()
         self.horizontalLayout_129.setObjectName("horizontalLayout_129")
-        self.lb_stattest_12 = QLabel(self.tab_12)
+        self.lb_stattest_12 = QLabel(self.tab_4)
         self.lb_stattest_12.setObjectName("lb_stattest_12")
         self.lb_stattest_12.setEnabled(True)
         self.lb_stattest_12.setFont(font6)
 
         self.horizontalLayout_129.addWidget(self.lb_stattest_12)
 
-        self.comboBox_RheoScan_describe = QComboBox(self.tab_12)
+        self.comboBox_RheoScan_describe = QComboBox(self.tab_4)
         self.comboBox_RheoScan_describe.addItem("")
         self.comboBox_RheoScan_describe.addItem("")
         self.comboBox_RheoScan_describe.setObjectName("comboBox_RheoScan_describe")
@@ -4862,13 +5051,13 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_130 = QHBoxLayout()
         self.horizontalLayout_130.setObjectName("horizontalLayout_130")
-        self.lb_path_for_plot_6 = QLabel(self.tab_12)
+        self.lb_path_for_plot_6 = QLabel(self.tab_4)
         self.lb_path_for_plot_6.setObjectName("lb_path_for_plot_6")
         self.lb_path_for_plot_6.setFont(font6)
 
         self.horizontalLayout_130.addWidget(self.lb_path_for_plot_6)
 
-        self.RheoScan_describe_mask_sheets = QLineEdit(self.tab_12)
+        self.RheoScan_describe_mask_sheets = QLineEdit(self.tab_4)
         self.RheoScan_describe_mask_sheets.setObjectName("RheoScan_describe_mask_sheets")
         self.RheoScan_describe_mask_sheets.setFont(font6)
 
@@ -4876,7 +5065,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_44.addLayout(self.horizontalLayout_130)
 
-        self.btn_RheoScan_describe_file_or_files = QPushButton(self.tab_12)
+        self.btn_RheoScan_describe_file_or_files = QPushButton(self.tab_4)
         self.btn_RheoScan_describe_file_or_files.setObjectName(
             "btn_RheoScan_describe_file_or_files"
         )
@@ -4889,12 +5078,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_44.addWidget(self.btn_RheoScan_describe_file_or_files)
 
-        self.gridLayout_9.addLayout(self.verticalLayout_44, 0, 0, 1, 1)
+        self.gridLayout_22.addLayout(self.verticalLayout_44, 0, 0, 1, 1)
 
-        self.verticalSpacer_4 = QSpacerItem(10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(200, 200, QSizePolicy.Minimum, QSizePolicy.Maximum)
 
-        self.gridLayout_9.addItem(self.verticalSpacer_4, 1, 0, 1, 1)
+        self.gridLayout_22.addItem(self.verticalSpacer, 3, 0, 1, 1)
 
+        self.tabWidget_2.addTab(self.tab_4, "")
+        self.tab_12 = QWidget()
+        self.tab_12.setObjectName("tab_12")
+        self.gridLayout_9 = QGridLayout(self.tab_12)
+        self.gridLayout_9.setObjectName("gridLayout_9")
         self.verticalLayout_45 = QVBoxLayout()
         self.verticalLayout_45.setObjectName("verticalLayout_45")
         self.lb_path_for_plot_8 = QLabel(self.tab_12)
@@ -5092,7 +5286,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_45.addWidget(self.btn_dop_stat_calc)
 
-        self.gridLayout_9.addLayout(self.verticalLayout_45, 2, 0, 1, 1)
+        self.gridLayout_9.addLayout(self.verticalLayout_45, 1, 0, 1, 1)
+
+        self.verticalSpacer_4 = QSpacerItem(10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout_9.addItem(self.verticalSpacer_4, 2, 0, 1, 1)
 
         self.tabWidget_2.addTab(self.tab_12, "")
 
@@ -5254,11 +5452,12 @@ class Ui_MainWindow(object):
         self.check_stat_znachimost.toggled.connect(self.comboBox_alter_hep.setEnabled)
         self.check_stat_znachimost.toggled.connect(self.comboBox_stat_test.setEnabled)
         self.check_sort_or_not.toggled.connect(self.check_sort_or_not_ascending.setEnabled)
+        self.check_N_.toggled.connect(self.comboBox_box_check_N_.setEnabled)
 
-        self.Lab_stuff.setCurrentIndex(0)
-        self.tabWidget_2.setCurrentIndex(0)
+        self.Lab_stuff.setCurrentIndex(3)
+        self.tabWidget_2.setCurrentIndex(4)
         self.tabWidget.setCurrentIndex(0)
-        self.tabWidget_3.setCurrentIndex(0)
+        self.tabWidget_3.setCurrentIndex(1)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -8799,6 +8998,104 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", "Catplot", None),
         )
         # if QT_CONFIG(tooltip)
+        self.lb_path_for_plot_10.setToolTip(
+            QCoreApplication.translate(
+                "MainWindow", "<html><head/><body><p><br/></p></body></html>", None
+            )
+        )
+        # endif // QT_CONFIG(tooltip)
+        self.lb_path_for_plot_10.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "RheoScan - \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u043e\u0442\u0447\u0435\u0442",
+                None,
+            )
+        )
+        # if QT_CONFIG(tooltip)
+        self.lb_path_for_plot_9.setToolTip(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c, \u043f\u043e \u043a\u043e\u0442\u043e\u0440\u043e\u043c\u0443 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043d\u0430\u0439\u0434\u0435\u043d excel \u0444\u0430\u0439\u043b",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(tooltip)
+        self.lb_path_for_plot_9.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a excel \u0444\u0430\u0439\u043b\u0443",
+                None,
+            )
+        )
+        self.path_for_rheoscan_report.setText("")
+        self.lb_exel_name_9.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430",
+                None,
+            )
+        )
+        self.label_3.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0414\u0430\u0442\u0430 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f",
+                None,
+            )
+        )
+        self.label_22.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0418\u043c\u044f \u0438\u0441\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044f \u044d\u043a\u0441\u043f\u0435\u0440\u0438\u043c\u0435\u043d\u0442\u0430",
+                None,
+            )
+        )
+        self.label_24.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0418\u043c\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0430",
+                None,
+            )
+        )
+        self.label_2.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0435\u0440\u0435\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u0438\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432",
+                None,
+            )
+        )
+        self.rheoscan_report_parameters_dict.setPlainText(
+            QCoreApplication.translate(
+                "MainWindow",
+                '{"AI":"AI, %",\n'
+                ' "CSS":"CSS, \u043c\u041f\u0430",\n'
+                ' "T1/2": "T1/2, \u0441\u0435\u043a."}',
+                None,
+            )
+        )
+        self.label_6.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0414\u0438\u0430\u043f\u0430\u0437\u043e\u043d \u043d\u043e\u0440\u043c\u044b (\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u00b1 SD)",
+                None,
+            )
+        )
+        self.rheoscan_report_norm_dict.setPlainText(
+            QCoreApplication.translate(
+                "MainWindow",
+                '{"AI, %": "40\u00b11",\n'
+                ' "CSS, \u043c\u041f\u0430": "200\u00b120",\n'
+                ' "T1/2, \u0441\u0435\u043a.": "5\u00b12"}',
+                None,
+            )
+        )
+        self.btn_make_rheoscan_report.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0421\u0434\u0435\u043b\u0430\u0442\u044c \u043e\u0442\u0447\u0435\u0442",
+                None,
+            )
+        )
+        # if QT_CONFIG(tooltip)
         self.lb_path_for_plot_7.setToolTip(
             QCoreApplication.translate(
                 "MainWindow", "<html><head/><body><p><br/></p></body></html>", None
@@ -8891,6 +9188,14 @@ class Ui_MainWindow(object):
                 "\u0421\u0434\u0435\u043b\u0430\u0442\u044c \u0441\u0432\u043e\u0434\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u043f\u043e \u0444\u0430\u0439\u043b\u0443 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u0430\u043c",
                 None,
             )
+        )
+        self.tabWidget_2.setTabText(
+            self.tabWidget_2.indexOf(self.tab_4),
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 RheoScan",
+                None,
+            ),
         )
         # if QT_CONFIG(tooltip)
         self.lb_path_for_plot_8.setToolTip(
