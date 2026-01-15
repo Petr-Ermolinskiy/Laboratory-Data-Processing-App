@@ -4953,7 +4953,7 @@ border-radius: 17px;
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>579</width>
+                           <width>492</width>
                            <height>260</height>
                           </rect>
                          </property>
@@ -10491,295 +10491,7 @@ border-radius: 10px;</string>
             <string>Обработка RheoScan</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_22">
-            <item row="1" column="0">
-             <layout class="QVBoxLayout" name="verticalLayout_66">
-              <item>
-               <widget class="Line" name="line_21">
-                <property name="font">
-                 <font>
-                  <family>Segoe UI</family>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(128, 160, 165);</string>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Plain</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>3</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="Line" name="line_23">
-                <property name="font">
-                 <font>
-                  <family>Segoe UI</family>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(128, 160, 165);</string>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Plain</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>3</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="Line" name="line_24">
-                <property name="font">
-                 <font>
-                  <family>Segoe UI</family>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color: rgb(128, 160, 165);</string>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Plain</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>3</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item row="2" column="0">
-             <layout class="QVBoxLayout" name="verticalLayout_65">
-              <item>
-               <widget class="QLabel" name="lb_path_for_plot_10">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                  <bold>false</bold>
-                  <underline>true</underline>
-                 </font>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="text">
-                 <string>RheoScan - сделать отчет</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_64">
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_171">
-                  <item>
-                   <widget class="QLabel" name="lb_path_for_plot_9">
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="toolTip">
-                     <string>Путь, по которому может быть найден excel файл</string>
-                    </property>
-                    <property name="text">
-                     <string>Путь к excel файлу</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="path_for_rheoscan_report">
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_170">
-                  <item>
-                   <widget class="QLabel" name="lb_exel_name_9">
-                    <property name="font">
-                     <font>
-                      <pointsize>11</pointsize>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Название excel файла</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="comboBox_rheoscan_report"/>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_161">
-                <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_59">
-                  <item>
-                   <widget class="QLabel" name="label_3">
-                    <property name="text">
-                     <string>Дата измерения</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QCalendarWidget" name="calendarWidget_rheoscan_report">
-                    <property name="locale">
-                     <locale language="Russian" country="Russia"/>
-                    </property>
-                    <property name="selectedDate">
-                     <date>
-                      <year>2026</year>
-                      <month>1</month>
-                      <day>1</day>
-                     </date>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_62">
-                  <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_60">
-                    <item>
-                     <layout class="QVBoxLayout" name="verticalLayout_63">
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_168">
-                        <item>
-                         <widget class="QLabel" name="label_22">
-                          <property name="text">
-                           <string>Имя исполнителя эксперимента</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLineEdit" name="rheoscan_report_name_exp"/>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_169">
-                        <item>
-                         <widget class="QLabel" name="label_24">
-                          <property name="text">
-                           <string>Имя обработчика</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLineEdit" name="rheoscan_report_name_process"/>
-                        </item>
-                       </layout>
-                      </item>
-                     </layout>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_2">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="text">
-                       <string>Переименование параметров</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPlainTextEdit" name="rheoscan_report_parameters_dict">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="plainText">
-                       <string>{&quot;AI&quot;:&quot;AI, %&quot;,
- &quot;CSS&quot;:&quot;CSS, мПа&quot;,
- &quot;T1/2&quot;: &quot;T1/2, сек.&quot;}</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_61">
-                    <item>
-                     <widget class="QLabel" name="label_6">
-                      <property name="text">
-                       <string>Диапазон нормы (среднее ± SD)</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPlainTextEdit" name="rheoscan_report_norm_dict">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="plainText">
-                       <string>{&quot;AI, %&quot;: &quot;40±1&quot;,
- &quot;CSS, мПа&quot;: &quot;200±20&quot;,
- &quot;T1/2, сек.&quot;: &quot;5±2&quot;}</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_make_rheoscan_report">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgba(128, 160, 165, 50);
-border: 3px solid rgb(128, 160, 165);
-border-radius: 10px;</string>
-                </property>
-                <property name="text">
-                 <string>Сделать отчет</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item row="0" column="0">
+            <item row="0" column="0" colspan="2">
              <layout class="QVBoxLayout" name="verticalLayout_44">
               <item alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="lb_path_for_plot_7">
@@ -10933,21 +10645,351 @@ border-radius: 10px;</string>
               </item>
              </layout>
             </item>
-            <item row="3" column="0">
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Maximum</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>200</width>
-                <height>200</height>
-               </size>
-              </property>
-             </spacer>
+            <item row="1" column="0" colspan="2">
+             <layout class="QVBoxLayout" name="verticalLayout_66">
+              <item>
+               <widget class="Line" name="line_21">
+                <property name="font">
+                 <font>
+                  <family>Segoe UI</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(128, 160, 165);</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>3</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line_23">
+                <property name="font">
+                 <font>
+                  <family>Segoe UI</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(128, 160, 165);</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>3</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line_24">
+                <property name="font">
+                 <font>
+                  <family>Segoe UI</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(128, 160, 165);</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>3</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="0" colspan="2">
+             <layout class="QVBoxLayout" name="verticalLayout_65">
+              <item>
+               <widget class="QLabel" name="lb_path_for_plot_10">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                  <bold>false</bold>
+                  <underline>true</underline>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>RheoScan - сделать отчет</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_64">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_171">
+                  <item>
+                   <widget class="QLabel" name="lb_path_for_plot_9">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="toolTip">
+                     <string>Путь, по которому может быть найден excel файл</string>
+                    </property>
+                    <property name="text">
+                     <string>Путь к excel файлу</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="path_for_rheoscan_report">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_170">
+                  <item>
+                   <widget class="QLabel" name="lb_exel_name_9">
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Название excel файла</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="comboBox_rheoscan_report"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_161">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_59">
+                  <item>
+                   <widget class="QLabel" name="label_3">
+                    <property name="text">
+                     <string>Дата измерения</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCalendarWidget" name="calendarWidget_rheoscan_report">
+                    <property name="locale">
+                     <locale language="Russian" country="Russia"/>
+                    </property>
+                    <property name="selectedDate">
+                     <date>
+                      <year>2026</year>
+                      <month>1</month>
+                      <day>1</day>
+                     </date>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_63">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_168">
+                    <item>
+                     <widget class="QLabel" name="label_22">
+                      <property name="text">
+                       <string>Проведение эксперимента (ФИО):</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="rheoscan_report_name_exp"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_169">
+                    <item>
+                     <widget class="QLabel" name="label_24">
+                      <property name="text">
+                       <string>Ответственный за обработку данных:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="rheoscan_report_name_process"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QToolBox" name="toolBox">
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                    <widget class="QWidget" name="page">
+                     <property name="geometry">
+                      <rect>
+                       <x>0</x>
+                       <y>0</y>
+                       <width>372</width>
+                       <height>100</height>
+                      </rect>
+                     </property>
+                     <attribute name="label">
+                      <string>Переименование параметров</string>
+                     </attribute>
+                     <layout class="QGridLayout" name="gridLayout_23">
+                      <item row="0" column="0">
+                       <layout class="QVBoxLayout" name="verticalLayout_50">
+                        <item>
+                         <widget class="QPlainTextEdit" name="rheoscan_report_parameters_dict">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="plainText">
+                           <string>{&quot;AI&quot;:&quot;AI, %&quot;,
+ &quot;CSS&quot;:&quot;CSS, мПа&quot;,
+ &quot;T1/2&quot;: &quot;T1/2, сек.&quot;}</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                    <widget class="QWidget" name="page_2">
+                     <property name="geometry">
+                      <rect>
+                       <x>0</x>
+                       <y>0</y>
+                       <width>372</width>
+                       <height>100</height>
+                      </rect>
+                     </property>
+                     <attribute name="label">
+                      <string>Диапазон нормы (среднее ± SD)</string>
+                     </attribute>
+                     <layout class="QGridLayout" name="gridLayout_24">
+                      <item row="0" column="0">
+                       <layout class="QVBoxLayout" name="verticalLayout_61">
+                        <item>
+                         <widget class="QPlainTextEdit" name="rheoscan_report_norm_dict">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="plainText">
+                           <string>{&quot;AI, %&quot;: &quot;40±10&quot;,
+ &quot;CSS, мПа&quot;: &quot;180±50&quot;,
+ &quot;T1/2, сек.&quot;: &quot;7±2&quot;}</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                    <widget class="QWidget" name="page_3">
+                     <property name="geometry">
+                      <rect>
+                       <x>0</x>
+                       <y>0</y>
+                       <width>100</width>
+                       <height>98</height>
+                      </rect>
+                     </property>
+                     <attribute name="label">
+                      <string>Доп.комментарий</string>
+                     </attribute>
+                     <layout class="QGridLayout" name="gridLayout_25">
+                      <item row="0" column="0">
+                       <widget class="QPlainTextEdit" name="rheoscan_report_comment">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="plainText">
+                         <string>- Индекс агрегации (&quot;AI, %&quot;) немного повышен
+- Гидродинамическая прочность агрегатов (&quot;CSS, мПа&quot;) в норме
+- Время агрегации эритроцитов (&quot;T1/2, сек.&quot;) понижено
+
+В ходе измерений нештатных ситуаций не возникало.</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_make_rheoscan_report">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(128, 160, 165, 50);
+border: 3px solid rgb(128, 160, 165);
+border-radius: 10px;</string>
+                </property>
+                <property name="text">
+                 <string>Сделать отчет</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -11371,6 +11413,11 @@ border-radius: 10px;</string>
          </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="tab_9">
+       <attribute name="title">
+        <string>Доп.настройки</string>
+       </attribute>
       </widget>
      </widget>
     </item>

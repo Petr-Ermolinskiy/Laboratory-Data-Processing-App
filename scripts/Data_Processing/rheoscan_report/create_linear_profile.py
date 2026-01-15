@@ -88,7 +88,7 @@ class ParameterVisualizer:
             framealpha=0.9,
             fontsize=10,
             borderaxespad=0.5,
-            bbox_to_anchor=(0.5, 1.0),
+            bbox_to_anchor=(0.5, 1.05),
         )  # Позиция над фигурой
 
         # Делаем фон легенды более заметным
@@ -99,7 +99,10 @@ class ParameterVisualizer:
         return legend
 
     def visualize(
-        self, title: str = "Patient Values vs Normal Ranges", *, show_legend: bool = True
+        self,
+        title: str = "Patient Values vs Normal Ranges",
+        *,
+        show_legend: bool = True,
     ) -> tuple:
         """Создает полную визуализацию."""
         self.create_figure()
@@ -112,7 +115,7 @@ class ParameterVisualizer:
         if show_legend:
             # Сначала добавляем заголовок, затем легенду
             self.add_legend(location="upper center", ncol=3)
-            self.fig.suptitle(title, fontsize=14, fontweight="bold", y=1.05)
+            self.fig.suptitle(title, fontsize=14, fontweight="bold", y=1.15)
             # Настраиваем макет, чтобы освободить место для обоих
             # -- plt.tight_layout() -- не делаем
         else:
@@ -267,7 +270,7 @@ class ParameterVisualizer:
             },
         )
 
-    def _classify_status(self, row: pd.Series)->tuple:
+    def _classify_status(self, row: pd.Series) -> tuple:
         """Классифицирует статус значения пациента для цветового кодирования."""
         normal_low, normal_high = self._calculate_normal_range(row)
         patient_low = row["patient_mean"] - row["patient_SD"]

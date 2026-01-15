@@ -12,42 +12,6 @@ from .create_linear_profile import ParameterVisualizer
 from .rheoscan_report import create_pdf_microrheology_report
 
 
-def plot_fig_and_create_report(  # noqa: PLR0913
-    path: str,
-    exel_name: str,
-    df: pd.DataFrame,
-    date_of_measurement: str,
-    date_of_processing: str,
-    exp_name: str,
-    process_name: str,
-) -> None:
-    """Генерация рисунка и вызов ф-ии генерации pdf."""
-    visualizer = ParameterVisualizer(df, height_per_param=0.8)
-    fig, _ = visualizer.visualize(
-        title="Микрореологический профиль пациента",
-        show_legend=True,
-    )
-
-    surname = exel_name.replace(".xlsx", "")
-    path_to_save = str(Path(path) / f"{surname}.pdf")
-
-    comments = """• """
-
-    # создание отчета
-    create_pdf_microrheology_report(
-        path_to_save,
-        surname,
-        date_of_measurement,
-        date_of_processing,
-        exp_name,
-        process_name,
-        fig,
-        comments,
-    )
-
-    plt.close(fig)
-
-
 def prepare_and_create_rheo_scan_report(self) -> None:  # noqa: ANN001, PLR0911, PLR0915
     """Создание отчета RheoScan."""
     dlg = QMessageBox(self)
@@ -79,6 +43,9 @@ def prepare_and_create_rheo_scan_report(self) -> None:  # noqa: ANN001, PLR0911,
         dlg.setText("Введите имена исполнителей")
         dlg.exec()
         return
+
+    # комментарий
+    comment_for_patient = self.ui.rheoscan_report_comment.toPlainText()
 
     # выбранные параметры
     select_parameters_dict = self.ui.rheoscan_report_parameters_dict.toPlainText()
@@ -178,10 +145,6 @@ def prepare_and_create_rheo_scan_report(self) -> None:  # noqa: ANN001, PLR0911,
     mean_vals["parameter"] = mean_vals["parameter"].astype(str)
     std_vals["parameter"] = std_vals["parameter"].astype(str)
 
-    print(mean_vals)
-    print(std_vals)
-    print(norm_range)
-
     # объединяем данные
     overall_data = norm_range.merge(mean_vals, on="parameter").merge(std_vals, on="parameter")
 
@@ -193,6 +156,46 @@ def prepare_and_create_rheo_scan_report(self) -> None:  # noqa: ANN001, PLR0911,
         date_of_processing,
         name_experiment_executor,
         name_experiment_processer,
+        comment_for_patient,
     )
 
+    dlg.setWindowTitle("Отчет RheoScan")
+    dlg.setText(f"PDF файл {exel_name.replace('.xlsx', '')} успешно сохранен в папке {path}")
+    dlg.exec()
+
     return
+
+
+def plot_fig_and_create_report(  # noqa: PLR0913
+    path: str,
+    exel_name: str,
+    df: pd.DataFrame,
+    date_of_measurement: str,
+    date_of_processing: str,
+    exp_name: str,
+    process_name: str,
+    comment_for_patient: str,
+) -> None:
+    """Генерация рисунка и вызов ф-ии генерации pdf."""
+    visualizer = ParameterVisualizer(df, height_per_param=0.8)
+    fig, _ = visualizer.visualize(
+        title="Микрореологический профиль пациента",
+        show_legend=True,
+    )
+
+    surname = exel_name.replace(".xlsx", "")
+    path_to_save = str(Path(path) / f"{surname}.pdf")
+
+    # создание отчета
+    create_pdf_microrheology_report(
+        path_to_save,
+        surname,
+        date_of_measurement,
+        date_of_processing,
+        exp_name,
+        process_name,
+        fig,
+        comment_for_patient,
+    )
+
+    plt.close(fig)
