@@ -32,6 +32,11 @@ from scripts.Data_Processing.pivot_table_and_correlation import (
     pivot_or_melt_excel_file,
 )
 
+# отчет RheoScan по одному пациенту
+from scripts.Data_Processing.rheoscan_report.create_rheo_scan_report import (
+    prepare_and_create_rheo_scan_report,
+)
+
 # Лазерный пинцет
 from scripts.Laser_Tweezers.laser_tweezers import laser_tweezers
 from scripts.RheoScan.rheo_scan_describe import rheo_scan_describe_file_or_files
@@ -235,7 +240,7 @@ class MainWindowProcessingApp(QMainWindow):
 
     def rheoscan_make_report(self) -> None:
         """Сделать отчет по одному пациенту. Этот метод находится в отделе обработки данных."""
-        pass
+        prepare_and_create_rheo_scan_report(self)
 
     # - - - - - - - - - #
     # Biola
