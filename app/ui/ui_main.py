@@ -4820,7 +4820,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_44.setObjectName("verticalLayout_44")
         self.lb_path_for_plot_7 = QLabel(self.tab_4)
         self.lb_path_for_plot_7.setObjectName("lb_path_for_plot_7")
-        self.lb_path_for_plot_7.setFont(font11)
+        font12 = QFont()
+        font12.setPointSize(11)
+        font12.setBold(True)
+        font12.setUnderline(True)
+        self.lb_path_for_plot_7.setFont(font12)
 
         self.verticalLayout_44.addWidget(self.lb_path_for_plot_7, 0, Qt.AlignHCenter)
 
@@ -4934,7 +4938,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_65.setObjectName("verticalLayout_65")
         self.lb_path_for_plot_10 = QLabel(self.tab_4)
         self.lb_path_for_plot_10.setObjectName("lb_path_for_plot_10")
-        self.lb_path_for_plot_10.setFont(font11)
+        self.lb_path_for_plot_10.setFont(font12)
         self.lb_path_for_plot_10.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_65.addWidget(self.lb_path_for_plot_10)
@@ -5026,7 +5030,7 @@ class Ui_MainWindow(object):
         self.toolBox.setObjectName("toolBox")
         self.page = QWidget()
         self.page.setObjectName("page")
-        self.page.setGeometry(QRect(0, 0, 372, 100))
+        self.page.setGeometry(QRect(0, 0, 100, 100))
         self.gridLayout_23 = QGridLayout(self.page)
         self.gridLayout_23.setObjectName("gridLayout_23")
         self.verticalLayout_50 = QVBoxLayout()
@@ -5048,7 +5052,7 @@ class Ui_MainWindow(object):
         )
         self.page_2 = QWidget()
         self.page_2.setObjectName("page_2")
-        self.page_2.setGeometry(QRect(0, 0, 372, 100))
+        self.page_2.setGeometry(QRect(0, 0, 100, 100))
         self.gridLayout_24 = QGridLayout(self.page_2)
         self.gridLayout_24.setObjectName("gridLayout_24")
         self.verticalLayout_61 = QVBoxLayout()
@@ -5325,6 +5329,43 @@ class Ui_MainWindow(object):
         self.Lab_stuff.addTab(self.tabWidgetPage4, "")
         self.tab_9 = QWidget()
         self.tab_9.setObjectName("tab_9")
+        self.formLayout_5 = QFormLayout(self.tab_9)
+        self.formLayout_5.setObjectName("formLayout_5")
+        self.verticalLayout_60 = QVBoxLayout()
+        self.verticalLayout_60.setObjectName("verticalLayout_60")
+        self.label_2 = QLabel(self.tab_9)
+        self.label_2.setObjectName("label_2")
+        self.label_2.setFont(font1)
+
+        self.verticalLayout_60.addWidget(self.label_2)
+
+        self.horizontalLayout_172 = QHBoxLayout()
+        self.horizontalLayout_172.setObjectName("horizontalLayout_172")
+        self.label_6 = QLabel(self.tab_9)
+        self.label_6.setObjectName("label_6")
+
+        self.horizontalLayout_172.addWidget(self.label_6)
+
+        self.lineEdit_json_load = QLineEdit(self.tab_9)
+        self.lineEdit_json_load.setObjectName("lineEdit_json_load")
+
+        self.horizontalLayout_172.addWidget(self.lineEdit_json_load)
+
+        self.verticalLayout_60.addLayout(self.horizontalLayout_172)
+
+        self.btn_json_load = QPushButton(self.tab_9)
+        self.btn_json_load.setObjectName("btn_json_load")
+        self.btn_json_load.setFont(font6)
+        self.btn_json_load.setStyleSheet(
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
+        )
+
+        self.verticalLayout_60.addWidget(self.btn_json_load)
+
+        self.formLayout_5.setLayout(0, QFormLayout.LabelRole, self.verticalLayout_60)
+
         self.Lab_stuff.addTab(self.tab_9, "")
 
         self.gridLayout.addWidget(self.Lab_stuff, 0, 0, 1, 2)
@@ -5483,8 +5524,8 @@ class Ui_MainWindow(object):
         self.check_sort_or_not.toggled.connect(self.check_sort_or_not_ascending.setEnabled)
         self.check_N_.toggled.connect(self.comboBox_box_check_N_.setEnabled)
 
-        self.Lab_stuff.setCurrentIndex(3)
-        self.tabWidget_2.setCurrentIndex(4)
+        self.Lab_stuff.setCurrentIndex(4)
+        self.tabWidget_2.setCurrentIndex(2)
         self.tabWidget.setCurrentIndex(0)
         self.tabWidget_3.setCurrentIndex(1)
         self.toolBox.setCurrentIndex(0)
@@ -9482,6 +9523,27 @@ class Ui_MainWindow(object):
                 "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445",
                 None,
             ),
+        )
+        self.label_2.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u0434\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0438\u0437 JSON \u0444\u0430\u0439\u043b\u0430",
+                None,
+            )
+        )
+        self.label_6.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a JSON \u0444\u0430\u0439\u043b\u0443:",
+                None,
+            )
+        )
+        self.btn_json_load.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u0434\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438",
+                None,
+            )
         )
         self.Lab_stuff.setTabText(
             self.Lab_stuff.indexOf(self.tab_9),

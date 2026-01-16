@@ -45,6 +45,9 @@ from scripts.RheoScan.rheo_scan_describe import rheo_scan_describe_file_or_files
 from scripts.RheoScan.rheo_scan_main import all_rheo_scan_level
 from scripts.RheoScan.rheo_scan_sort import sort_rheo_scan_data
 
+# доп.параметры -- загрузка JSON файла
+from scripts.utils_dop.load_json_file import load_widgets_from_json
+
 #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #
 
 
@@ -130,8 +133,12 @@ class MainWindowProcessingApp(QMainWindow):
         # для кнопки по дополнительной обработке данных - рассчитать стат. значимость
         self.ui.btn_dop_stat_calc.pressed.connect(self.p_value_calc)
 
-        # Дополнительные кнопки
-        self.ui.label_info.mousePressEvent = self.info_about_programme  # для инфо
+        # -- Дополнительные кнопки -- #
+
+        # для загрузки JSON файла
+        self.ui.btn_json_load.pressed.connect(self.load_json_file)
+        # для инфо
+        self.ui.label_info.mousePressEvent = self.info_about_programme
 
         #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #
         # Текстовые и другие поля
@@ -185,6 +192,10 @@ class MainWindowProcessingApp(QMainWindow):
         # для цветов box plot
         self.ui.color_box.textChanged.connect(self.box_palette_off)
         self.ui.color_points.textChanged.connect(self.point_palette_off)
+
+    def load_json_file(self) -> None:
+        """Загрузка JSON файла."""
+        load_widgets_from_json(self)
 
     def info_about_programme(self, _) -> None:  # noqa: ANN001
         """Информация про программу.
