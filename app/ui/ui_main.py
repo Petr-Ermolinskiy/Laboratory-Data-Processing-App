@@ -2336,7 +2336,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 579, 260))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 492, 260))
         self.gridLayout_19 = QGridLayout(self.scrollAreaWidgetContents_3)
         self.gridLayout_19.setObjectName("gridLayout_19")
         self.verticalLayout_55 = QVBoxLayout()
@@ -2592,7 +2592,7 @@ class Ui_MainWindow(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 530, 212))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 579, 212))
         self.gridLayout_7 = QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_7.setObjectName("gridLayout_7")
         self.verticalLayout_56 = QVBoxLayout()
@@ -2664,6 +2664,21 @@ class Ui_MainWindow(object):
         self.comboBox_box_plot_sign_stat_znachimost.setFont(font6)
 
         self.horizontalLayout_142.addWidget(self.comboBox_box_plot_sign_stat_znachimost)
+
+        self.label_25 = QLabel(self.scrollAreaWidgetContents_4)
+        self.label_25.setObjectName("label_25")
+        self.label_25.setFont(font6)
+
+        self.horizontalLayout_142.addWidget(self.label_25)
+
+        self.spinBox_max_n_stars = QSpinBox(self.scrollAreaWidgetContents_4)
+        self.spinBox_max_n_stars.setObjectName("spinBox_max_n_stars")
+        self.spinBox_max_n_stars.setFont(font6)
+        self.spinBox_max_n_stars.setMinimum(1)
+        self.spinBox_max_n_stars.setMaximum(4)
+        self.spinBox_max_n_stars.setValue(4)
+
+        self.horizontalLayout_142.addWidget(self.spinBox_max_n_stars)
 
         self.verticalLayout_56.addLayout(self.horizontalLayout_142)
 
@@ -7102,6 +7117,11 @@ class Ui_MainWindow(object):
             ),
         )
 
+        self.label_25.setText(
+            QCoreApplication.translate(
+                "MainWindow", "\u041c\u0430\u043a\u0441.\u043a\u043e\u043b-\u0432\u043e *", None
+            )
+        )
         self.lb__altern_heposisis.setText(
             QCoreApplication.translate(
                 "MainWindow",

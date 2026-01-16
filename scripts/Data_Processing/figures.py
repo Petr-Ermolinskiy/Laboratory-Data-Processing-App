@@ -700,7 +700,7 @@ def box_and_whisker(
 
             ##############
             # эта функция нужна, если нужно точное значение p
-            def round_to(num, digits=2):
+            def round_to(num: float, digits: int = 2) -> float:
                 if num == 0:
                     return 0
                 scale = int(-math.floor(math.log10(abs(num - int(num))))) + digits - 1
@@ -711,7 +711,7 @@ def box_and_whisker(
             # Уровень значимости
             p = significant_combination[1]
 
-            def get_significance_symbol(p: float, display_mode: str) -> str:
+            def get_significance_symbol(p: float, display_mode: str, n_stars_max: int = 4) -> str:
                 """Символ для стат. значимости."""
                 # определим границы
                 thresholds = [
@@ -720,6 +720,8 @@ def box_and_whisker(
                     (0.01, "**", "p < 0.01"),
                     (0.05, "*", "p < 0.05"),
                 ]
+                # кол-во * -- ограничение
+                thresholds = thresholds[len(thresholds) - n_stars_max :]
 
                 # найдем символ
                 for threshold, asterisks, p_less_text in thresholds:
@@ -733,7 +735,9 @@ def box_and_whisker(
                 return ""
 
             sig_symbol = get_significance_symbol(
-                p, plot_feature_data__["box_plot_sign_stat_znachimost"]
+                p,
+                plot_feature_data__["box_plot_sign_stat_znachimost"],
+                plot_feature_data__["spinBox_max_n_stars"],
             )
 
             text_height = bar_height + (yrange * 0.01)
@@ -1323,10 +1327,18 @@ def safe_name(name: str) -> str:
     )
 
 
-# добавляем в массив plot_feature_data__ всё, что мы хотим -- я его так отдельно выделил в качестве безопасности при объявлении его global
-def lets_add_all_parameters_for_figs_here(self):
+def lets_add_all_parameters_for_figs_here(self) -> dict:  # noqa: ANN001, PLR0915
+    """Добавляем в массив plot_feature_data__ всё, что мы хотим.
+
+    Eго так отдельно выделил в качестве безопасности при объявлении его global
+
     # так, конечно, не очень хорошо делать,
-    # но я это очень удобный костыль
+    # но это очень удобный костыль
+
+    Returns:
+        dict: словарь из свойств
+
+    """
     # лучше было бы сделать словарь
     plot_feature_data__ = {}
 
@@ -1364,6 +1376,8 @@ def lets_add_all_parameters_for_figs_here(self):
     plot_feature_data__["check_sort_or_not"] = self.ui.check_sort_or_not.isChecked()
     # делать стат значимость или нет
     plot_feature_data__["check_stat_znachimost"] = self.ui.check_stat_znachimost.isChecked()
+    # box-plot: кол-во * максимальное для рассмотрения
+    plot_feature_data__["spinBox_max_n_stars"] = self.ui.spinBox_max_n_stars.value()
     # размер шрифт для оси x -- подпись
     plot_feature_data__["spinBox_x_label"] = self.ui.spinBox_x_label.value()
     # размер шрифт для оси y -- подпись
