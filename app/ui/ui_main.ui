@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+   <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -212,7 +212,7 @@ background-color: rgba(255, 255, 255, 0);</string>
        <string notr="true">/*background-color: rgb(249, 249, 249);</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabWidgetPage1">
        <attribute name="title">
@@ -3589,7 +3589,7 @@ border-radius: 17px;
            </font>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>0</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -3936,7 +3936,7 @@ border-radius: 17px;
                   <item row="0" column="0">
                    <widget class="QTabWidget" name="tabWidget_3">
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="tab_15">
                      <attribute name="title">
@@ -4953,7 +4953,7 @@ border-radius: 17px;
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>492</width>
+                           <width>579</width>
                            <height>260</height>
                           </rect>
                          </property>
@@ -10858,7 +10858,7 @@ border-radius: 10px;</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>372</width>
+                       <width>100</width>
                        <height>100</height>
                       </rect>
                      </property>
@@ -11419,7 +11419,7 @@ border-radius: 10px;</string>
         <string>Доп.настройки</string>
        </attribute>
        <layout class="QFormLayout" name="formLayout_5">
-        <item row="0" column="0">
+        <item row="0" column="0" colspan="2">
          <layout class="QVBoxLayout" name="verticalLayout_60">
           <item>
            <widget class="QLabel" name="label_2">
