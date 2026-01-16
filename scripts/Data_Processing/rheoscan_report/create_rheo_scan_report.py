@@ -52,6 +52,10 @@ def prepare_and_create_rheo_scan_report(self) -> None:  # noqa: ANN001, PLR0911,
     # диапазон нормы
     norm_range_dict = self.ui.rheoscan_report_norm_dict.toPlainText()
 
+    # изменим кавычки
+    select_parameters_dict = str(select_parameters_dict).replace("'", '"')
+    norm_range_dict = str(norm_range_dict).replace("'", '"')
+
     # приведение к JSON словарю
     try:
         select_parameters_dict = json.loads(select_parameters_dict)
