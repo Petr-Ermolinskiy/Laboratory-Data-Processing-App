@@ -672,7 +672,7 @@ def box_and_whisker(
             else:
                 pass
 
-            if p < 0.05:
+            if p < 0.05:  # noqa: PLR2004
                 significant_combinations.append([c, p])
 
         # МИН-МАКС оси Y
@@ -710,54 +710,32 @@ def box_and_whisker(
             ##############
             # Уровень значимости
             p = significant_combination[1]
-            if p < 0.0001:
-                sig_symbol = "****"
-                if (
-                    plot_feature_data__["box_plot_sign_stat_znachimost"]
-                    == "меньше какого-то значения (p<)"
-                ):
-                    sig_symbol = "p < 0.0001"
-                elif (
-                    plot_feature_data__["box_plot_sign_stat_znachimost"]
-                    == "равно какому-то значению (p=)"
-                ):
-                    sig_symbol = "p = " + str(round_to(p))
-            elif p < 0.001:
-                sig_symbol = "***"
-                if (
-                    plot_feature_data__["box_plot_sign_stat_znachimost"]
-                    == "меньше какого-то значения (p<)"
-                ):
-                    sig_symbol = "p < 0.001"
-                elif (
-                    plot_feature_data__["box_plot_sign_stat_znachimost"]
-                    == "равно какому-то значению (p=)"
-                ):
-                    sig_symbol = "p = " + str(round_to(p))
-            elif p < 0.01:
-                sig_symbol = "**"
-                if (
-                    plot_feature_data__["box_plot_sign_stat_znachimost"]
-                    == "меньше какого-то значения (p<)"
-                ):
-                    sig_symbol = "p < 0.01"
-                elif (
-                    plot_feature_data__["box_plot_sign_stat_znachimost"]
-                    == "равно какому-то значению (p=)"
-                ):
-                    sig_symbol = "p = " + str(round_to(p))
-            elif p < 0.05:
-                sig_symbol = "*"
-                if (
-                    plot_feature_data__["box_plot_sign_stat_znachimost"]
-                    == "меньше какого-то значения (p<)"
-                ):
-                    sig_symbol = "p < 0.05"
-                elif (
-                    plot_feature_data__["box_plot_sign_stat_znachimost"]
-                    == "равно какому-то значению (p=)"
-                ):
-                    sig_symbol = "p = " + str(round_to(p))
+
+            def get_significance_symbol(p: float, display_mode: str) -> str:
+                """Символ для стат. значимости."""
+                # определим границы
+                thresholds = [
+                    (0.0001, "****", "p < 0.0001"),
+                    (0.001, "***", "p < 0.001"),
+                    (0.01, "**", "p < 0.01"),
+                    (0.05, "*", "p < 0.05"),
+                ]
+
+                # найдем символ
+                for threshold, asterisks, p_less_text in thresholds:
+                    if p < threshold:
+                        if display_mode == "меньше какого-то значения (p<)":
+                            return p_less_text
+                        if display_mode == "равно какому-то значению (p=)":
+                            return f"p = {round_to(p)}"
+                        return asterisks
+
+                return ""
+
+            sig_symbol = get_significance_symbol(
+                p, plot_feature_data__["box_plot_sign_stat_znachimost"]
+            )
+
             text_height = bar_height + (yrange * 0.01)
             plt.text(
                 (x1 - 1 + x2 - 1) * 0.5,
