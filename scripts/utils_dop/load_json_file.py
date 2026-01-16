@@ -4,7 +4,22 @@ import json
 
 from loguru import logger
 from PySide6.QtCore import QDate, QTime
-from PySide6.QtWidgets import QMessageBox
+from PySide6.QtWidgets import (
+    QCalendarWidget,
+    QCheckBox,
+    QComboBox,
+    QDateEdit,
+    QDoubleSpinBox,
+    QLineEdit,
+    QMessageBox,
+    QPlainTextEdit,
+    QRadioButton,
+    QSlider,
+    QSpinBox,
+    QTextEdit,
+    QTimeEdit,
+    QWidget,
+)
 
 
 def show_message(dlg, title: str, text: str) -> None:  # noqa: ANN001
@@ -14,7 +29,7 @@ def show_message(dlg, title: str, text: str) -> None:  # noqa: ANN001
     dlg.exec()
 
 
-def load_widgets_from_json(self) -> None:  # noqa: ANN001
+def load_widgets_from_json(self) -> None:  # noqa: ANN001, C901
     """Загружает значения из JSON файла и устанавливает их в соответствующие виджеты."""
     dlg = QMessageBox(self)
 
@@ -32,8 +47,41 @@ def load_widgets_from_json(self) -> None:  # noqa: ANN001
 
         # Проходим по всем ключам (object names) в JSON
         for object_name, value in settings.items():
-            # Находим виджет по имени
-            widget = self.findChild(object_name)
+            # Находим виджет по имени - ИСПРАВЛЕННЫЙ ВАРИАНТ
+            widget = None
+
+            # Пробуем найти виджет по разным типам
+            widget_types = [
+                QCheckBox,
+                QLineEdit,
+                QComboBox,
+                QCalendarWidget,
+                QSpinBox,
+                QDoubleSpinBox,
+                QTextEdit,
+                QPlainTextEdit,
+                QRadioButton,
+                QSlider,
+                QDateEdit,
+                QTimeEdit,
+                QWidget,
+            ]
+
+            for widget_type in widget_types:
+                widget = self.findChild(widget_type, object_name)
+                if widget is not None:
+                    break
+
+            # Если не нашли в основном окне, ищем в ui
+            if widget is None and hasattr(self, "ui"):
+                # Пробуем получить атрибут по имени
+                widget = getattr(self.ui, object_name, None)
+                if widget is None:
+                    # Ищем в ui как дочерний элемент
+                    for widget_type in widget_types:
+                        widget = self.ui.findChild(widget_type, object_name)
+                        if widget is not None:
+                            break
 
             if widget is None:
                 logger.info(f"Виджет с именем '{object_name}' не найден")
@@ -58,7 +106,7 @@ def load_widgets_from_json(self) -> None:  # noqa: ANN001
         logger.info(msg)
 
 
-def _set_widget_value(widget: str, value) -> None:  # noqa: ANN001, C901, PLR0912
+def _set_widget_value(widget, value) -> None:  # noqa: ANN001, C901, PLR0912, PLR0915
     """
     Устанавливает значение для виджета в зависимости от его типа.
 
@@ -126,6 +174,11 @@ def _set_widget_value(widget: str, value) -> None:  # noqa: ANN001, C901, PLR091
             time = QTime.fromString(str(value), "HH:mm:ss")
             if time.isValid():
                 widget.setTime(time)
+            else:
+                # Попробуем другой формат
+                time = QTime.fromString(str(value), "HH:mm")
+                if time.isValid():
+                    widget.setTime(time)
 
         else:
             logger.info(f"Тип виджета {widget_type} для {widget.objectName()} не поддерживается")

@@ -1,3 +1,5 @@
+"""Основной тест всего приложения."""  # noqa: INP001
+
 import gc
 import json
 import os
@@ -356,3 +358,21 @@ def test_rheo_scan_post_processing(
         raise AssertionError(msg)
 
     logger.info("Все проверки по обработки данных RheoScan прошли")
+
+
+def test_json_loading(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+    logger.info("--- JSON: загрузка данных  ---")
+
+    # выставляем нужные переменные
+    window.ui.lineEdit_json_load.setText(str(Path(data_folder) / "_check.json"))
+
+    # JSON файл
+    window.load_json_file()
+
+    # узнаем какие значения в UI
+    assert window.ui.rheoscan_report_name_exp.text() == "ФИО", "Текстовое поле"
+    assert window.ui.check_approx_agg.isChecked(), "Неправильно выставлены checkbox"
+    assert window.ui.check_approx_deform.isChecked(), "Неправильно выставлены checkbox"
+    assert window.ui.rheoscan_report_parameters_dict.toPlainText() == "{'AAA': 'aaa'}", "Текст"
+
+    logger.info("Все проверки 'JSON: загрузка' данных прошли")

@@ -1,0 +1,8 @@
+{
+   "rheoscan_report_name_exp":"ФИО",
+   "rheoscan_report_parameters_dict":{
+      "AAA":"aaa"
+   },
+   "check_approx_agg":true,
+   "check_approx_deform":true
+}
