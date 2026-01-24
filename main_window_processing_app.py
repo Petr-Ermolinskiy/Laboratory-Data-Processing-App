@@ -237,6 +237,10 @@ class MainWindowProcessingApp(QMainWindow):
             with open(resource_path("app/style/style_dark.qss")) as f:
                 _style = f.read()
             self.setStyleSheet(_style)
+        elif index == 2:
+            with open(resource_path("app/style/integrid.qss")) as f:
+                _style = f.read()
+            self.setStyleSheet(_style)
         else:
             self.setStyleSheet("")
 
