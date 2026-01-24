@@ -68,21 +68,21 @@ python -m pytest -s tests/
 | UPX_DIR         | путь к [UPX](https://upx.github.io/), к примеру "C:/Users/petre/Desktop/Programes/upx-4.2.4-win64" |
 | APP_NAME        | имя приложения -- "Lab_App"                                                                        |
 | MAIN_SCRIPT     | входная точка приложения, т.е., "main.py"                                                          |
-| ICON_PATH       | доп. файлы для добавления в архив (иконка Windows) -- "app/style/logo.ico"                         |
-| ICON_PATH_MAC   | доп. файлы для добавления в архив (иконка Mac) -- "app/style/logo.icns"                            |
+| ICON_PATH       | путь до иконки Windows -- "app/style/logo.ico"                         |
+| ICON_PATH_MAC   | путь до иконки для Mac -- "app/style/logo.icns"                            |
 | VERSION_JSON    | доп. файлы для добавления в архив -- "version.json"                                                |
-| STYLE_QSS       | доп. файлы для добавления в архив -- "app/style/style_dark.qss"                                    |
+| STYLE_DIR       | доп. файлы для добавления в архив: стили                                    |
 
 
 ### _exe_ файл (Windows)
 
 Или же, чтобы создать _exe_-файл в Windows, можно выполнить следующую команду в терминале или командной строке:
 ```bash
-pyinstaller --windowed --add-data "config.json;." --add-data "app/style/logo.ico;app/style" --add-data "app/style/style_dark.qss;app/style/" --name='Lab_App_*.*.*' --icon=app/style/logo.ico main.py
+pyinstaller --windowed --add-data "config.json;." --add-data "app/style/*;app/style" --name='Lab_App_*.*.*' --icon=app/style/logo.ico main.py
 ```
 Я настоятельно рекомендую вам использовать [UPX](https://upx.github.io/) для уменьшения размера исполняемого файла. В этом случае вы можете выполнить следующую команду (изменив путь):
 ```bash
-pyinstaller --windowed --add-data "config.json;." --add-data "app/style/logo.ico;app/style" --add-data "app/style/style_dark.qss;app/style/" --name='Lab_App_*.*.*' --icon=app/style/logo.ico --upx-dir C:\path\to\the\folder\upx-4.2.4-win64 main.py
+pyinstaller --windowed --add-data "config.json;." --add-data "app/style/*;app/style" --name='Lab_App_*.*.*' --icon=app/style/logo.ico --upx-dir C:\path\to\the\folder\upx-4.2.4-win64 main.py
 ```
 
 Размер _exe_ будет составлять порядка 130 МБ.
@@ -98,3 +98,22 @@ pyinstaller --onefile --windowed --add-data "config.json:." --add-data "app/styl
 ## Автор
 
 Ермолинский Петр Борисович.
+
+## Цитирование
+
+Если вы используете это приложение в своей научной работе, пожалуйста, укажите ссылку на данный репозиторий.
+
+**В формате BibTeX**:
+```bibtex
+@software{ErmolinskiyLaboratoryDataProcessingApp,
+  author = {Ермолинский, Пётр Борисович},
+  title = {Приложение для обработки экспериментальных данных лаборатории Биомедицинской фотоники МГУ},
+  url = {https://github.com/Petr-Ermolinskiy/Laboratory-Data-Processing-App},
+  year = {2026},
+  note = {Версия 3.7.7}
+}
+```
+
+**В формате APA**:
+Ermolinskiy, P. B. (2026). Приложение для обработки экспериментальных данных лаборатории Биомедицинской фотоники МГУ [Компьютерное программное обеспечение]. GitHub. https://github.com/Petr-Ermolinskiy/Laboratory-Data-Processing-App
+
