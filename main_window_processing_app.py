@@ -19,6 +19,11 @@ from scripts.Biola.biola_main import biola_result
 from scripts.Data_Processing.calculation_of_p_value import p_value_calc_for_two_columns
 from scripts.Data_Processing.catplot_figures import plot_catplot
 
+# Класстеризация
+from scripts.Data_Processing.cluster_data.cluster_read_file_and_create_fig import (
+    cluster_read_file_and_create_fig,
+)
+
 # Рисунки
 from scripts.Data_Processing.figures import figs_plot
 
@@ -133,8 +138,10 @@ class MainWindowProcessingApp(QMainWindow):
         # для кнопки по дополнительной обработке данных - рассчитать стат. значимость
         self.ui.btn_dop_stat_calc.pressed.connect(self.p_value_calc)
 
-        # -- Дополнительные кнопки -- #
+        # -- Класстеризация признаков -- #
+        self.ui.btn_cluster_save_file.pressed.connect(self.cluster_data_and_save_file)
 
+        # -- Дополнительные кнопки -- #
         # для загрузки JSON файла
         self.ui.btn_json_load.pressed.connect(self.load_json_file)
         # для инфо
@@ -164,6 +171,11 @@ class MainWindowProcessingApp(QMainWindow):
         # -----------------------------------------------------#
         # для нахождения файла Biola
         self.ui.path_for_biola.textChanged.connect(self.add_biola_file)
+
+        # -----------------------------------------------------#
+        # класстеризация
+        self.ui.path_for_excel_cluster.textChanged.connect(self.add_excel_cluster)
+        self.ui.comboBox_cluster_file.currentTextChanged.connect(self.cluster_add_sheets)
 
         # -----------------------------------------------------#
         # catplot
@@ -306,11 +318,37 @@ class MainWindowProcessingApp(QMainWindow):
         """Дополнительная обработка данных -- расчет p-value."""
         p_value_calc_for_two_columns(self)
 
+    def cluster_data_and_save_file(self) -> None:
+        """Класстеризация признаков и построение графиков."""
+        cluster_read_file_and_create_fig(self)
+
     # -----------------------------------------------------#
     """
     Добавление списка файлов в папке в comboBox'ы
     """
+
     # -----------------------------------------------------#
+    # - - - - - - - - - #
+    # Класстеризация
+    # - - - - - - - - - #
+    def add_excel_cluster(self) -> None:
+        path = Path(self.ui.path_for_excel_cluster.text())
+        files = list(path.glob("*.xlsx"))
+        files = get_name_out_of_path([str(f) for f in files])
+        self.ui.comboBox_cluster_file.clear()  # удалить все элементы из combobox
+        self.ui.comboBox_cluster_file.addItems(files)
+
+    def cluster_add_sheets(self) -> None:
+        path_file = (
+            Path(self.ui.path_for_excel_cluster.text())
+            / self.ui.comboBox_cluster_file.currentText()
+        )
+        try:
+            sheets = pd.ExcelFile(str(path_file)).sheet_names
+            self.ui.comboBox_cluster_excel_sheet.clear()  # удалить все элементы из combobox
+            self.ui.comboBox_cluster_excel_sheet.addItems(sheets)
+        except:  # noqa: E722
+            self.ui.comboBox_cluster_excel_sheet.clear()  # удалить все элементы из combobox
 
     # - - - - - - - - - #
     # Catplot
