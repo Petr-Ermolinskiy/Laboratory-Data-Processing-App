@@ -1,5 +1,6 @@
-"""Автогенерация Markdown + HTML документации UI с безопасными якорями и уменьшенными картинками."""
+"""Автогенерация Markdown + HTML документации UI."""
 
+import base64
 import json
 import os
 import re
@@ -60,6 +61,26 @@ def safe_filename(text: str) -> str:
     """Сделать безопасное имя файла ASCII-only для скриншота"""
     text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
     return re.sub(r"[^\w\d_\-.]", "_", text)
+
+
+def image_to_base64(image_path: str) -> str:
+    """Конвертировать изображение в base64 строку"""
+    with open(image_path, "rb") as img_file:
+        # Определяем тип файла по расширению
+        ext = os.path.splitext(image_path)[1].lower()
+        if ext == ".png":
+            mime_type = "image/png"
+        elif ext in [".jpg", ".jpeg"]:
+            mime_type = "image/jpeg"
+        elif ext == ".gif":
+            mime_type = "image/gif"
+        elif ext == ".bmp":
+            mime_type = "image/bmp"
+        else:
+            mime_type = "image/png"  # по умолчанию
+
+        encoded_string = base64.b64encode(img_file.read()).decode("utf-8")
+        return f"data:{mime_type};base64,{encoded_string}"
 
 
 @contextmanager
@@ -194,8 +215,8 @@ def document_tab(
     level,
     counter,
     visited,
-    parent_path="",
-):
+    parent_path: str = "",
+)->None:
     """Рекурсивная документация табов."""
     if tab_widget in visited:
         return
@@ -262,7 +283,8 @@ def document_tab(
 
         # Сохраняем информацию для изображений
         content_md.append(f"IMG_PLACEHOLDER:{sec_id}:{img_name}:{title}\n")
-        content_html.append(f"IMG_PLACEHOLDER:{sec_id}:{img_name}:{title}\n")
+        # Для HTML сохраняем полный путь к изображению для конвертации в base64
+        content_html.append(f"IMG_PLACEHOLDER:{sec_id}:{img_path}:{img_name}:{title}\n")
 
         # ── widget docs ──────────────────────────
         start = counter["value"] - len(widgets) + 1
@@ -293,7 +315,7 @@ def document_tab(
             )
 
 
-def generate():
+def generate() -> None:
     window = MainWindow()
     window.show()
     window.raise_()
@@ -388,7 +410,7 @@ def generate():
     html.append("<ul>\n")
 
     # Группируем элементы по уровням для создания вложенных списков
-    def generate_nested_html(toc_items, start_idx, current_level):
+    def generate_nested_html(toc_items, start_idx, current_level) -> tuple:
         """Рекурсивно генерирует вложенные списки HTML."""
         lines = []
         i = start_idx
@@ -478,6 +500,51 @@ def generate():
             md_prefix = "#" * md_level
             processed_md.append(f"{md_prefix} {numbered_title}\n\n")
 
+        elif line.startswith("IMG_PLACEHOLDER:"):
+            # Разбираем информацию об изображении
+            parts = line.strip().split(":")
+            sec_id = parts[1]
+            img_name = parts[2]
+            title = parts[3]
+
+            print(f"{title}")
+
+            # Получаем номер раздела для подписи
+            number = section_number_map[sec_id]["number"] if sec_id in section_number_map else ""
+
+            # Добавляем изображение в Markdown
+            if number:
+                processed_md.append(f"![{title}](figs/{img_name})\n")
+                processed_md.append(f"*Скриншот {number}: вкладка — {title}*\n\n")
+            else:
+                processed_md.append(f"![{title}](figs/{img_name})\n")
+                processed_md.append(f"*{title}*\n\n")
+
+        else:
+            # Обычный контент (описание виджетов)
+            processed_md.append(line)
+
+    # Обрабатываем HTML контент отдельно для изображений
+    for line in content_html:
+        if line.startswith("HEADER_PLACEHOLDER:"):
+            # Разбираем информацию о заголовке (уже обработано выше)
+            parts = line.strip().split(":")
+            original_level = int(parts[1])
+            sec_id = parts[2]
+            title = parts[3]
+
+            # Получаем пронумерованный заголовок из карты
+            if sec_id in section_number_map:
+                numbered_info = section_number_map[sec_id]
+                number = numbered_info["number"]
+                header_title = numbered_info["title"]
+            else:
+                number = ""
+                header_title = title
+
+            # Определяем уровень заголовка для HTML
+            html_level = 2 if original_level == 1 else min(original_level + 1, 6)
+
             # Добавляем заголовок с номером в HTML
             if number:
                 processed_html.append('<div class="numbered-header">\n')
@@ -492,39 +559,47 @@ def generate():
                 )
 
         elif line.startswith("IMG_PLACEHOLDER:"):
-            # Разбираем информацию об изображении
+            # Разбираем информацию об изображении для HTML
             parts = line.strip().split(":")
             sec_id = parts[1]
-            img_name = parts[2]
-            title = parts[3]
+            img_path = parts[2]  # Полный путь к изображению
+            img_name = parts[3]
+            title = parts[4]
 
-            # Получаем номер раздела для подписи
-            number = section_number_map[sec_id]["number"] if sec_id in section_number_map else ""
+            # Конвертируем изображение в base64
+            try:
+                base64_data = image_to_base64(img_path)
 
-            # Добавляем изображение в Markdown
-            if number:
-                processed_md.append(f"![{title}](figs/{img_name})\n")
-                processed_md.append(f"*Скриншот {number}: вкладка — {title}*\n\n")
-            else:
-                processed_md.append(f"![{title}](figs/{img_name})\n")
-                processed_md.append(f"*{title}*\n\n")
-
-            # Добавляем изображение в HTML
-            processed_html.append('<div style="margin: 20px 0;">\n')
-            processed_html.append(
-                f'  <img src="figs/{img_name}" alt="{title}" style="max-width: 60%; border: 1px solid #ddd; border-radius: 4px; padding: 5px;">\n'
-            )
-            if number:
-                processed_html.append(
-                    f'  <p class="figure-caption">Скриншот {number}: вкладка -- {title}</p>\n'
+                # Получаем номер раздела для подписи
+                number = (
+                    section_number_map[sec_id]["number"] if sec_id in section_number_map else ""
                 )
-            else:
-                processed_html.append(f'  <p class="figure-caption">{title}</p>\n')
-            processed_html.append("</div>\n")
+
+                # Добавляем изображение в HTML с встроенным base64
+                processed_html.append('<div style="margin: 20px 0;">\n')
+                processed_html.append(
+                    f'  <img src="{base64_data}" alt="{title}" style="max-width: 60%; border: 1px solid #ddd; border-radius: 4px; padding: 5px;">\n'
+                )
+                if number:
+                    processed_html.append(
+                        f'  <p class="figure-caption">Скриншот {number}: вкладка -- {title}</p>\n'
+                    )
+                else:
+                    processed_html.append(f'  <p class="figure-caption">{title}</p>\n')
+                processed_html.append("</div>\n")
+
+                print(f"✅ Изображение встроено в HTML: {img_name}")
+            except Exception as e:
+                print(f"⚠️ Ошибка при встраивании изображения {img_name}: {e}")
+                # Если не удалось встроить, добавляем обычную ссылку
+                processed_html.append(f"<!-- Ошибка при встраивании изображения {img_name} -->\n")
+                if number:
+                    processed_html.append(
+                        f'  <p class="figure-caption">Скриншот {number}: вкладка -- {title} (изображение отсутствует)</p>\n'
+                    )
 
         else:
             # Обычный контент (описание виджетов)
-            processed_md.append(line)
             processed_html.append(line)
 
     # Добавляем обработанный контент
@@ -535,21 +610,18 @@ def generate():
     html.append("</body></html>")
 
     # Записываем MD файл
-    with open(
-        os.path.join(OUTPUT_DIR, f"Документация_Lab_App_{version_app}.md"),
-        "w",
-        encoding="utf-8",
-    ) as f:
+    md_filename = os.path.join(OUTPUT_DIR, f"Документация_Lab_App_{version_app}.md")
+    with open(md_filename, "w", encoding="utf-8") as f:
         f.writelines(md)
 
-    with open(
-        os.path.join(OUTPUT_DIR, f"Документация_Lab_App_{version_app}.html"),
-        "w",
-        encoding="utf-8",
-    ) as f:
+    # Записываем автономный HTML файл
+    html_filename = os.path.join(OUTPUT_DIR, f"Документация_Lab_App_{version_app}.html")
+    with open(html_filename, "w", encoding="utf-8") as f:
         f.writelines(html)
 
-    print("✅ Документация приложения Lab App")
+    print("Документация приложения Lab App сгенерирована:")
+    print(f"   - Markdown: {md_filename}")
+    print(f"   - HTML (автономный): {html_filename}")
 
     # Отладочная информация
     print("\n📋 Нумерация разделов:")
