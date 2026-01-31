@@ -23,24 +23,30 @@ from PySide6.QtWidgets import (
 
 from app.ui.ui_main import Ui_MainWindow
 
-# ── paths ─────────────────────────────────────────────
+# ~~~~~ выставляем путь на 2 папки выше ~~~~~ #
 os.chdir(str(Path(__file__).parent.parent))
 
-
+# чтения json файла -- версия приложения
 with open("config.json") as f:
     data = json.load(f)
     version_app = data["version"]
 
-
+# ~~~~~ выставляем путь на 1 папку выше ~~~~~ #
 os.chdir(str(Path(__file__).parent))
 
+# чтения json файла -- доп. комментарий к скриншотам
+with open("describe_tabs.json") as f:
+    describe_tabs_dict = json.load(f)
+
+# --------- ПУТИ ДЛЯ СОХРАНЕНИЯ ----------- #
 OUTPUT_DIR = "files"
 FIGS_DIR = os.path.join(OUTPUT_DIR, "figs")
 os.makedirs(FIGS_DIR, exist_ok=True)
 
 
 class MainWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self) -> None:
+        """Окно приложения."""
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -50,7 +56,7 @@ class MainWindow(QMainWindow):
 
 # ── helper functions ──────────────────────────────────
 def clean_anchor(text: str) -> str:
-    """Сделать безопасный якорь для MD/HTML"""
+    """Сделать безопасный якорь для MD/HTML."""
     text = text.lower()
     text = re.sub(r"[^\w\- ]+", "", text)  # буквы, цифры, дефисы, пробел
     text = text.replace(" ", "-")
@@ -58,13 +64,13 @@ def clean_anchor(text: str) -> str:
 
 
 def safe_filename(text: str) -> str:
-    """Сделать безопасное имя файла ASCII-only для скриншота"""
+    """Сделать безопасное имя файла ASCII-only для скриншота."""
     text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
     return re.sub(r"[^\w\d_\-.]", "_", text)
 
 
 def image_to_base64(image_path: str) -> str:
-    """Конвертировать изображение в base64 строку"""
+    """Конвертировать изображение в base64 строку."""
     with open(image_path, "rb") as img_file:
         # Определяем тип файла по расширению
         ext = os.path.splitext(image_path)[1].lower()
@@ -216,7 +222,7 @@ def document_tab(
     counter,
     visited,
     parent_path: str = "",
-)->None:
+) -> None:
     """Рекурсивная документация табов."""
     if tab_widget in visited:
         return
@@ -515,7 +521,9 @@ def generate() -> None:
             # Добавляем изображение в Markdown
             if number:
                 processed_md.append(f"![{title}](figs/{img_name})\n")
-                processed_md.append(f"*Скриншот {number}: вкладка — {title}*\n\n")
+                processed_md.append(
+                    f"*Скриншот {number}: вкладка — {title}*. {describe_tabs_dict.get(title, '')}\n\n"
+                )
             else:
                 processed_md.append(f"![{title}](figs/{img_name})\n")
                 processed_md.append(f"*{title}*\n\n")
@@ -582,7 +590,7 @@ def generate() -> None:
                 )
                 if number:
                     processed_html.append(
-                        f'  <p class="figure-caption">Скриншот {number}: вкладка -- {title}</p>\n'
+                        f'  <p class="figure-caption">Скриншот {number}: вкладка — {title}. {describe_tabs_dict.get(title, "")}</p>\n'
                     )
                 else:
                     processed_html.append(f'  <p class="figure-caption">{title}</p>\n')
@@ -595,7 +603,7 @@ def generate() -> None:
                 processed_html.append(f"<!-- Ошибка при встраивании изображения {img_name} -->\n")
                 if number:
                     processed_html.append(
-                        f'  <p class="figure-caption">Скриншот {number}: вкладка -- {title} (изображение отсутствует)</p>\n'
+                        f'  <p class="figure-caption">Скриншот {number}: вкладка — {title} (изображение отсутствует)</p>\n'
                     )
 
         else:
