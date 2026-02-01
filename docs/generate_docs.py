@@ -295,6 +295,22 @@ def document_tab(
 
                 if 0 <= x < pixmap.width() and 0 <= y < pixmap.height():
                     painter.drawEllipse(x - 6, y - 6, 12, 12)
+
+                    # белый фон
+                    text = str(idx)
+                    font_metrics = painter.fontMetrics()
+                    text_width = font_metrics.horizontalAdvance(text)
+                    text_height = font_metrics.height()
+
+                    # нарисуем фон под номером
+                    painter.fillRect(
+                        x + 8 - 1,
+                        y + 4 - text_height + 2,
+                        text_width + 2,
+                        text_height,
+                        QColor(255, 255, 255, 190),
+                    )
+
                     painter.drawText(x + 8, y + 4, str(idx))
 
             painter.end()
@@ -345,10 +361,10 @@ def generate() -> None:
     QApplication.processEvents()
 
     # Инициализируем структуры
-    md = ["# Документация приложения Lab App\n\n", "## Содержание\n\n"]
+    md = [f"# Документация приложения Lab App {version_app}\n\n", "## Содержание\n\n"]
     html = [
         "<html><head><meta charset='utf-8'>\n"
-        "<title>Документация приложения Lab App</title>\n"
+        f"<title>Документация приложения Lab App {version_app} </title>\n"
         "<style>\n"
         "  body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; }\n"
         "  .toc { background-color: #f5f5f5; padding: 15px 20px; border-radius: 5px; margin-bottom: 30px; }\n"
@@ -380,7 +396,7 @@ def generate() -> None:
         "  .widget-doc { margin: 15px 0; padding: 10px; background-color: #f9f9f9; border-left: 3px solid #0066cc; }\n"
         "</style>\n"
         "</head><body>\n"
-        "<h1>Документация приложения Lab App</h1>\n"
+        f"<h1>Документация приложения Lab App {version_app}</h1>\n"
         "<h2>Содержание</h2>\n"
     ]
 
