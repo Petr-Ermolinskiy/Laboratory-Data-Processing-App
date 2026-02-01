@@ -213,6 +213,9 @@ background-color: rgba(255, 255, 255, 0);</string>
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="whatsThis">
+       <string>порполав</string>
+      </property>
       <property name="styleSheet">
        <string notr="true">/*background-color: rgb(249, 249, 249);</string>
       </property>
@@ -220,8 +223,11 @@ background-color: rgba(255, 255, 255, 0);</string>
        <number>0</number>
       </property>
       <widget class="QWidget" name="tabWidgetPage1">
+       <property name="whatsThis">
+        <string>Прирррв</string>
+       </property>
        <attribute name="title">
-        <string> RheoScan</string>
+        <string>RheoScan</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_5">
         <item row="0" column="0">
@@ -326,6 +332,9 @@ background-color: rgba(255, 255, 255, 0);</string>
               <bold>false</bold>
              </font>
             </property>
+            <property name="whatsThis">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Произвести обработку данных исходя из введенных путей и дополнительных настроек.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
@@ -427,6 +436,9 @@ border-radius: 10px;</string>
                 <pointsize>11</pointsize>
                </font>
               </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Путь к папке с подпапками с файлами RheoScan. &lt;/p&gt;&lt;p&gt;В случае &lt;span style=&quot; text-decoration: underline;&quot;&gt;уровеня подпапок = 1&lt;/span&gt; это должна быть папка с 3 подпапками: &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;- agg&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;- deform&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;- stress&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Файлы уже должны быть рассортированы. Если это не так, то выберете путь и нажмите кнопку ниже для рассортировки. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string/>
               </property>
@@ -448,6 +460,9 @@ border-radius: 10px;</string>
                <font>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сохранить результат обработки по всем подпапкам (в случае, если уровень подпапок &amp;gt; 1), либо сохранить в корневой дирректории (введенный путь). Файлы excel сохранятся с теми именами, которые соответствуют папкам, в которых лежат 3 подпапки.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <item>
                <property name="text">
@@ -578,6 +593,9 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Иногда надо подобрать данное значение для правильной аппроксимации агрегатограммы. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                    <property name="minimum">
                     <number>1</number>
                    </property>
@@ -646,6 +664,9 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Иногда надо подобрать данное значение для правильной аппроксимации агрегатограммы. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                    <property name="minimum">
                     <number>1</number>
                    </property>
@@ -713,6 +734,9 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Иногда надо подобрать данное значение для правильной аппроксимации. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                    <property name="decimals">
                     <number>3</number>
                    </property>
@@ -777,6 +801,9 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Иногда надо подобрать данное значение для правильной аппроксимации. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                    <property name="minimum">
                     <number>3</number>
                    </property>
@@ -829,6 +856,9 @@ border-radius: 17px;
                    <pointsize>11</pointsize>
                   </font>
                  </property>
+                 <property name="whatsThis">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Произвести дополнительную аппроксимацию кривой светорассеяния для маленькой кюветы?&lt;/p&gt;&lt;p&gt;Аппроксимация производится с помощью 2 экспонент с разными характерными временами:&lt;/p&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#6a9955;&quot;&gt;# функция, которой аппроксимируется кривая&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;&quot;&gt;def &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#dcdcaa;&quot;&gt;f&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;y0&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;A1&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;A2&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;t1&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;t2&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;):&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#c586c0;&quot;&gt;return &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;y0&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;+&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;A1&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;*&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;&quot;&gt;np&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;exp&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;-&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;/&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;t1&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;)) &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;+&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;A2&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;*&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;&quot;&gt;np&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;exp&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;-&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;/&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;t2&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;))&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc; background-color:#1f1f1f;&quot;&gt;&lt;br/&gt;&lt;/pre&gt;&lt;p&gt;Идет расчет данных показателей, а также индекс агрегации для разных времен: 2.5, 5, 10, 50, 100 и MAX кол-ва секунд.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
                  <property name="text">
                   <string>Аппроксимация для agg</string>
                  </property>
@@ -853,6 +883,9 @@ border-radius: 17px;
                    <family>Segoe UI</family>
                    <pointsize>11</pointsize>
                   </font>
+                 </property>
+                 <property name="whatsThis">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Построить графики для аппроксимации кривых?&lt;/p&gt;&lt;p&gt;Рекомендуется всегда смотреть на корректность аппроксимации.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="text">
                   <string>Построить графики</string>
@@ -891,6 +924,9 @@ border-radius: 17px;
                    <pointsize>11</pointsize>
                   </font>
                  </property>
+                 <property name="whatsThis">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Произвести дополнительную аппроксимацию кривой индекса деформируемости и сдвигового напряжения для большой кюветы?&lt;/p&gt;&lt;p&gt;Аппроксимация производится с помощью линейной функции, где напряжения приведены в логарифм:&lt;/p&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#6a9955;&quot;&gt;# функция, которой будем аппроксимировать - линейная функция от логарифма напряжений сдвига&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;&quot;&gt;def&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#dcdcaa;&quot;&gt;f&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;: &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;&quot;&gt;float&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;a&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;: &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;&quot;&gt;float&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;b&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;: &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;&quot;&gt;float&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;):&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;&amp;quot;&amp;quot;Линейная функция.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#c586c0;&quot;&gt;return&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;a&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;*&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;+&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;b&lt;/span&gt;&lt;/pre&gt;&lt;p&gt;Рассчитываются параметры предела текучести (&lt;span style=&quot; font-weight:700;&quot;&gt;b&lt;/span&gt;) и вязкости внутреклеточного содержимого (&lt;span style=&quot; font-weight:700;&quot;&gt;1/a&lt;/span&gt;).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
                  <property name="text">
                   <string>Аппроксимация для deform</string>
                  </property>
@@ -906,6 +942,9 @@ border-radius: 17px;
                    <family>Segoe UI</family>
                    <pointsize>11</pointsize>
                   </font>
+                 </property>
+                 <property name="whatsThis">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Построить графики для аппроксимации кривых?&lt;/p&gt;&lt;p&gt;Рекомендуется всегда смотреть на корректность аппроксимации.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="text">
                   <string>Построить графики</string>
@@ -927,6 +966,9 @@ border-radius: 17px;
                 <pointsize>11</pointsize>
                </font>
               </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Создание доп. листов, где будет приведена статистика по столбцам.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Статистика по столбцам</string>
               </property>
@@ -942,6 +984,9 @@ border-radius: 17px;
               </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Выбросы убираются по интеркантильному размаху -- см. инфу по тому, что такое выбросы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Убрать выбросы. Использовать, когда вы обрабатываете &lt;span style=&quot; font-weight:700;&quot;&gt;только 1 пациента&lt;/span&gt;! &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
                <string>Убрать выбросы</string>
@@ -966,6 +1011,9 @@ border-radius: 17px;
                <font>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Коэффициент кол-ва интерквантильных размахов для определения выбросов.&lt;/p&gt;&lt;p&gt;Используется, только когда обрабатываете 1 пациента или 1 образец.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="decimals">
                <number>1</number>
@@ -1164,6 +1212,9 @@ border-radius: 10px;</string>
                 <pointsize>11</pointsize>
                </font>
               </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Уровень подпапок позволяет обрабатывать несколько папок пациентов/образцов одновременно.&lt;/p&gt;&lt;p&gt;К примеру, если вы ввели выше путь к папке с папками, названия которых совпадает с названием образцов, и в каждой такой папке есть 3 подпапки (agg, stress, deform), то для обновременной обработки нужно использовать &lt;span style=&quot; font-weight:700;&quot;&gt;уровень подпапок=2&lt;/span&gt;. Соответственно, чем больше у вас вложенных папок до 3 искомых подпапок, тем больше уровень подпапок вам нужно слелать.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="minimum">
                <number>1</number>
               </property>
@@ -1222,6 +1273,9 @@ border-radius: 10px;</string>
                 <pointsize>11</pointsize>
                </font>
               </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сохранить excel файл/файлы. Будет несколько листов в зависимости от выбранных настроек.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Сохранить excel файл</string>
               </property>
@@ -1238,6 +1292,9 @@ border-radius: 10px;</string>
                 <pointsize>11</pointsize>
                </font>
               </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сохранить csv файл/файлы. Будет несколько файлов в зависимости от выбранных настроек.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Сохранить csv файл(ы)</string>
               </property>
@@ -1250,6 +1307,9 @@ border-radius: 10px;</string>
                 <family>Segoe UI</family>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Сводная таблица по всем измерениям. По большей части не нужна из-за наличия доп. обработки данных RheoScan (см. 4 вкладку).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
                <string>Сохранить сводную таблицу</string>
@@ -1317,6 +1377,9 @@ border-radius: 17px;
                    </property>
                    <property name="toolTipDuration">
                     <number>4</number>
+                   </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Выбрать разделитель данных. Бывает полезно для образцов.&lt;/p&gt;&lt;p&gt;К примеру, у вас все образцы называюся по типу &amp;quot;sample-##-##&amp;quot;.&lt;/p&gt;&lt;p&gt;Вы можете выбрать разделителем дефис &amp;quot;-&amp;quot; и у вас появится дополнительные стролбцы.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="autoFillBackground">
                     <bool>false</bool>
@@ -1441,6 +1504,9 @@ border-radius: 17px;
                        <pointsize>11</pointsize>
                       </font>
                      </property>
+                     <property name="whatsThis">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Обработать ли папку &lt;span style=&quot; font-weight:700;&quot;&gt;agg&lt;/span&gt;. Иногда требуется обработать только одну какую-то папку, а не все сразу.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
                      <property name="text">
                       <string>Папка agg</string>
                      </property>
@@ -1457,6 +1523,9 @@ border-radius: 17px;
                        <pointsize>11</pointsize>
                       </font>
                      </property>
+                     <property name="whatsThis">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Обработать ли папку &lt;span style=&quot; font-weight:700;&quot;&gt;stress&lt;/span&gt;. Иногда требуется обработать только одну какую-то папку, а не все сразу.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
                      <property name="text">
                       <string>Папка stress</string>
                      </property>
@@ -1472,6 +1541,9 @@ border-radius: 17px;
                        <family>Segoe UI</family>
                        <pointsize>11</pointsize>
                       </font>
+                     </property>
+                     <property name="whatsThis">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Обработать ли папку &lt;span style=&quot; font-weight:700;&quot;&gt;deform&lt;/span&gt;. Иногда требуется обработать только одну какую-то папку, а не все сразу.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                      </property>
                      <property name="text">
                       <string>Папка deform</string>
@@ -1515,6 +1587,9 @@ border-radius: 17px;
                    </property>
                    <property name="toolTip">
                     <string>Это параметр аппроксимации кривой CSS - см. информацию в обучающем видео</string>
+                   </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Дополнительный параметр CSS, который вытаскивается из графика: светорассеяние VS напряжения сдвига. &lt;/p&gt;&lt;p&gt;Идет аппроксимация экспонентной и вытаскивается параметр затухания (&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; font-weight:700; color:#000000;&quot;&gt;new_parameter&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;)&lt;/span&gt;.&lt;/p&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;                    (&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;_&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;_&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;new_parameter&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;), &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;_&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;&quot;&gt;opt&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#dcdcaa;&quot;&gt;curve_fit&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;(&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;&quot;&gt;lambda&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;t&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;a&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;b&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;c&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;: &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;a&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;+&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;b&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;*&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;&quot;&gt;np&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;exp&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;-&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;t&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;&quot;&gt;/&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;c&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;),&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;                        сдвиговое напряжение,&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;                        интенсивность обратного светорассеяния,&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;                    )&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
                     <string>Доп. параметр CSS</string>
@@ -1593,6 +1668,9 @@ border-radius: 17px;
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Путь к папке с файлом txt, который был сохранен из программы для Биолы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
+            <property name="whatsThis">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;В данное поле необходимо ввести путь к папке, в которой находится txt файл с измерениями biola (борн и флуктуации) или pdf файл с измерениями концентрации тромбоцитов.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -1642,6 +1720,9 @@ border-radius: 17px;
                 <pointsize>11</pointsize>
                </font>
               </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Выберете txt файл, экспортированный из программы для Биолы.&lt;/p&gt;&lt;p&gt;Файлы появляются автоматически при добавлении путя к папке с файлом&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
              </widget>
             </item>
            </layout>
@@ -1684,6 +1765,9 @@ border-radius: 17px;
              <font>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="whatsThis">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Выберете pdf файл с данными касательно концентрации тромбоцитов.&lt;/p&gt;&lt;p&gt;Файлы появляются автоматически при добавлении путя к папке с файлом&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -1799,6 +1883,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Длина окна для сглаживания для данных светопропускания по Борну. Подбиралось эмпирически, чтобы соответствовать данным, рассчитанным в приложении Биола</string>
+                   </property>
                    <property name="minimum">
                     <number>1</number>
                    </property>
@@ -1850,6 +1937,9 @@ border-radius: 17px;
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Длина окна для сглаживания для данных флуктуаций светопропускания. Подбиралось эмпирически, чтобы соответствовать данным, рассчитанным в приложении Биола&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="minimum">
                     <number>1</number>
@@ -1980,6 +2070,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Длина окна для сглаживания для данных производной светопропускания по Борну. Подбиралось эмпирически, чтобы соответствовать данным, рассчитанным в приложении Биола&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                    <property name="minimum">
                     <number>1</number>
                    </property>
@@ -2032,6 +2125,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Длина окна для сглаживания для данных производной флуктуаций светопропускания. Подбиралось эмпирически, чтобы соответствовать данным, рассчитанным в приложении Биола&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                    <property name="minimum">
                     <number>1</number>
                    </property>
@@ -2063,6 +2159,9 @@ border-radius: 17px;
               <family>Segoe UI</family>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="whatsThis">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Начертить ли усредненные графики по Борну и флуктуациям, а также производным?&lt;/p&gt;&lt;p&gt;Имеет место использовать для группы однаковых образцов или одного пациента.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Начертить графики</string>
@@ -2184,6 +2283,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Относительный размер шрифта</string>
+                   </property>
                    <property name="decimals">
                     <number>1</number>
                    </property>
@@ -2236,6 +2338,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Погрешности на графиках</string>
+                   </property>
                    <item>
                     <property name="text">
                      <string>Среднеквадратическое отклонение</string>
@@ -2278,6 +2383,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Сделать сетку на графиках?</string>
+                   </property>
                    <property name="text">
                     <string>Сетка</string>
                    </property>
@@ -2317,6 +2425,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Язык для графиков</string>
+                   </property>
                    <item>
                     <property name="text">
                      <string>Rus</string>
@@ -2347,6 +2458,9 @@ border-radius: 17px;
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="whatsThis">
+             <string>Обработать данные из txt файла</string>
+            </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgba(128, 160, 165, 50);
 border: 3px solid rgb(128, 160, 165);
@@ -2363,6 +2477,9 @@ border-radius: 10px;</string>
              <font>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="whatsThis">
+             <string>Обработать данные из pdf файла</string>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -2416,6 +2533,9 @@ border-radius: 10px;</string>
                 <pointsize>11</pointsize>
                </font>
               </property>
+              <property name="whatsThis">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;Необходимо в данное поле ввести путь к папке с подпапками разных концентраций/пациентов/образцов.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;К примеру, в данной папке могут быть подпапки с концентрациями:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;10&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;100&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;В каждой подпапке должны быть видео, записанные через какой-то разделитель. Сила агрегации обозначается, как FA/fa/Fa; сила дезагрегации, как FD/fd/Fd. Сила взаимодействия эритроцита и эндотелия, как End/end. Важно, чтобы первые 2 буквы имени силы было правильным. Значение силы должно быть записано без доп. Знаков (к примеру, так нельзя: «Fd3-12.2+.avi». Будут обрабатываться названия только видеофайлов. Т.е. между разделителем и «.avi» должна быть только сила. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string/>
               </property>
@@ -2463,6 +2583,9 @@ border-radius: 10px;</string>
                    <font>
                     <pointsize>11</pointsize>
                    </font>
+                  </property>
+                  <property name="whatsThis">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;Разделитель для имени подпапок. Необходим, чтобы в excel файле были выделены интерисующие имена. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;К примеру, если подпапки назывались по шаблону &amp;quot;образец-концентрация&amp;quot;:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;dextran-0&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;dextran-10&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;dextran-100&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;То с разделителем &amp;quot;-&amp;quot; и позицией имени &amp;quot;2&amp;quot; в качестве образцов в excel будут: [0, 10, 100]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -2519,6 +2642,9 @@ border-radius: 10px;</string>
                  <font>
                   <pointsize>11</pointsize>
                  </font>
+                </property>
+                <property name="whatsThis">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;Позиция, на которой находится имя при использовании разделителя для имени подпапок. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;К примеру, если подпапки назывались по шаблону &amp;quot;образец-концентрация&amp;quot;:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;dextran-0&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;dextran-10&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;dextran-100&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;То с позицией &amp;quot;2&amp;quot; в качестве образцов в excel будут: [0, 10, 100]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="minimum">
                  <number>1</number>
@@ -2609,6 +2735,9 @@ border-radius: 10px;</string>
                   <pointsize>11</pointsize>
                  </font>
                 </property>
+                <property name="whatsThis">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;Важно внести в программу разделитель значения названия и значения силы.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;К примеру, чаще всего это &amp;quot;-&amp;quot;. Силы записываются в этом случае для примера:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;FA-19.9.avi&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;fa-17.0.avi&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;Fd-11.1.avi&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string>-</string>
                 </property>
@@ -2685,6 +2814,9 @@ border-radius: 10px;</string>
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="whatsThis">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Калибровка для дополнительного пучка может быть как линейной, так и экспоненциальной. Необходимо выбрать одно&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <item>
              <property name="text">
               <string>Линейная</string>
@@ -2707,6 +2839,9 @@ border-radius: 10px;</string>
              <font>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="whatsThis">
+             <string>Произвести обработку данных для лазерного пинцета</string>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -2733,6 +2868,9 @@ border-radius: 10px;</string>
              <font>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="whatsThis">
+             <string>Дополнительно сохранить данные в развернутом виде? </string>
             </property>
             <property name="text">
              <string>сохранить данные по столбцам</string>
@@ -3593,6 +3731,9 @@ border-radius: 17px;
             <pointsize>11</pointsize>
            </font>
           </property>
+          <property name="whatsThis">
+           <string>Путь к папке с excel файлом</string>
+          </property>
           <property name="currentIndex">
            <number>0</number>
           </property>
@@ -3634,6 +3775,9 @@ border-radius: 17px;
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>Путь к папке с excel файлом</string>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -3656,7 +3800,11 @@ border-radius: 17px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox"/>
+                     <widget class="QComboBox" name="comboBox">
+                      <property name="whatsThis">
+                       <string>Название excel файла -- подставится автоматически. Надо только выбрать</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -3671,6 +3819,9 @@ border-radius: 17px;
                       </property>
                       <property name="toolTip">
                        <string>Если выделана галочка, то программа пройдется по всем листам</string>
+                      </property>
+                      <property name="whatsThis">
+                       <string>Произвести обработку по всем листам в excel файле?</string>
                       </property>
                       <property name="text">
                        <string>По всем листам</string>
@@ -3702,6 +3853,9 @@ border-radius: 17px;
                         <property name="enabled">
                          <bool>false</bool>
                         </property>
+                        <property name="whatsThis">
+                         <string>Название листа в excel файле -- подставится автоматически. Надо только выбрать</string>
+                        </property>
                        </widget>
                       </item>
                      </layout>
@@ -3726,7 +3880,11 @@ border-radius: 17px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_2"/>
+                     <widget class="QComboBox" name="comboBox_2">
+                      <property name="whatsThis">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Название столбца для категориальных групп.&lt;/p&gt;&lt;p&gt;Это может быть любая колонка, где есть определенные категории.&lt;/p&gt;&lt;p&gt;К примеру, &amp;quot;Пол&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -3757,6 +3915,9 @@ border-radius: 17px;
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
+                </property>
+                <property name="whatsThis">
+                 <string>Разделитель значений на графике запятая?</string>
                 </property>
                 <property name="text">
                  <string>Разделитель запятая вместо точки</string>
@@ -3801,6 +3962,9 @@ border-radius: 17px;
                          <pointsize>11</pointsize>
                         </font>
                        </property>
+                       <property name="whatsThis">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Построить график box plot, в котором представлены разные категории?&lt;/p&gt;&lt;p&gt;В отдельной вкладке внизу можно изменить некоторые настройки построения графика.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
                        <property name="text">
                         <string>Box plot</string>
                        </property>
@@ -3819,6 +3983,9 @@ border-radius: 17px;
                        <property name="toolTip">
                         <string>seaborn.heatmap</string>
                        </property>
+                       <property name="whatsThis">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Построить график корреляционной матрицы? Одна матрица на каждую категорию.&lt;/p&gt;&lt;p&gt;В отдельной вкладке внизу можно изменить некоторые настройки построения графика.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
                        <property name="text">
                         <string>Корреляционная матрица</string>
                        </property>
@@ -3830,6 +3997,9 @@ border-radius: 17px;
                         <font>
                          <pointsize>11</pointsize>
                         </font>
+                       </property>
+                       <property name="whatsThis">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Построить корреляционный график, где цветами будут выделены категории?&lt;/p&gt;&lt;p&gt;В отдельной вкладке внизу можно изменить некоторые настройки построения графика.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                        <property name="text">
                         <string>Корреляционный график</string>
@@ -3866,6 +4036,9 @@ border-radius: 17px;
                        <property name="toolTip">
                         <string>см. seaborn.pairplot</string>
                        </property>
+                       <property name="whatsThis">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Построить матрицу рассеяния, где цветами будут выделены категории?&lt;/p&gt;&lt;p&gt;В отдельной вкладке внизу можно изменить некоторые настройки построения графика.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
                        <property name="text">
                         <string>Матрица рассеяния</string>
                        </property>
@@ -3887,6 +4060,9 @@ border-radius: 17px;
                        <property name="toolTip">
                         <string>см. seaborn.jointplot</string>
                        </property>
+                       <property name="whatsThis">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Построить график распределение по двум параметрам?&lt;/p&gt;&lt;p&gt;В отдельной вкладке внизу можно изменить некоторые настройки построения графика.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
                        <property name="text">
                         <string>Распределение по двум параметрам</string>
                        </property>
@@ -3898,6 +4074,9 @@ border-radius: 17px;
                         <font>
                          <pointsize>11</pointsize>
                         </font>
+                       </property>
+                       <property name="whatsThis">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Построить корреляцию одного параметра? &lt;/p&gt;&lt;p&gt;То есть строится корреляция между выбранной колонки и всеми остальными.&lt;/p&gt;&lt;p&gt;Строится отдельно от других графиков. &lt;/p&gt;&lt;p&gt;В отдельной вкладке внизу можно изменить некоторые настройки построения графика.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                        <property name="text">
                         <string>Корреляция одного параметра</string>
@@ -3950,6 +4129,12 @@ border-radius: 17px;
                      <layout class="QGridLayout" name="gridLayout_18">
                       <item row="0" column="0">
                        <widget class="QScrollArea" name="scrollArea_2">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>170</height>
+                         </size>
+                        </property>
                         <property name="frameShadow">
                          <enum>QFrame::Sunken</enum>
                         </property>
@@ -3971,6 +4156,9 @@ border-radius: 17px;
                          <layout class="QGridLayout" name="gridLayout_21">
                           <item row="0" column="0">
                            <layout class="QGridLayout" name="gridLayout_20">
+                            <property name="sizeConstraint">
+                             <enum>QLayout::SetDefaultConstraint</enum>
+                            </property>
                             <property name="topMargin">
                              <number>0</number>
                             </property>
@@ -4027,6 +4215,9 @@ border-radius: 17px;
                                     <font>
                                      <pointsize>11</pointsize>
                                     </font>
+                                   </property>
+                                   <property name="whatsThis">
+                                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Цветовая палитра для box&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                    </property>
                                    <item>
                                     <property name="text">
@@ -4244,6 +4435,9 @@ border-radius: 17px;
                                     <font>
                                      <pointsize>11</pointsize>
                                     </font>
+                                   </property>
+                                   <property name="whatsThis">
+                                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Цветовая палитра для точек&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                    </property>
                                    <item>
                                     <property name="text">
@@ -4481,6 +4675,9 @@ border-radius: 17px;
                                      <height>16777215</height>
                                     </size>
                                    </property>
+                                   <property name="whatsThis">
+                                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Возможно делать кастомные цвета для box.&lt;/p&gt;&lt;p&gt;Для этого выберайте итерационно цвета в палитре.&lt;/p&gt;&lt;p&gt;В панеле слева будет формироваться строка, которая будет использована для создания палитры.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                   </property>
                                    <property name="text">
                                     <string>HEX</string>
                                    </property>
@@ -4533,6 +4730,9 @@ border-radius: 17px;
                                      <width>50</width>
                                      <height>16777215</height>
                                     </size>
+                                   </property>
+                                   <property name="whatsThis">
+                                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Возможно делать кастомные цвета для точек.&lt;/p&gt;&lt;p&gt;Для этого выберайте итерационно цвета в палитре.&lt;/p&gt;&lt;p&gt;В панеле слева будет формироваться строка, которая будет использована для создания палитры.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                    </property>
                                    <property name="text">
                                     <string>HEX</string>
@@ -4682,7 +4882,7 @@ border-radius: 17px;
                             <item row="0" column="1">
                              <widget class="QFrame" name="frame_3">
                               <property name="sizePolicy">
-                               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                               <sizepolicy hsizetype="Fixed" vsizetype="MinimumExpanding">
                                 <horstretch>0</horstretch>
                                 <verstretch>0</verstretch>
                                </sizepolicy>
@@ -4726,6 +4926,9 @@ border-radius: 17px;
                                     <font>
                                      <pointsize>11</pointsize>
                                     </font>
+                                   </property>
+                                   <property name="whatsThis">
+                                    <string>Шрифт для подписей на графиках</string>
                                    </property>
                                    <item>
                                     <property name="text">
@@ -4799,6 +5002,9 @@ border-radius: 17px;
                                      <pointsize>11</pointsize>
                                     </font>
                                    </property>
+                                   <property name="whatsThis">
+                                    <string>Размер шрифта подписи X</string>
+                                   </property>
                                    <property name="minimum">
                                     <number>2</number>
                                    </property>
@@ -4838,6 +5044,9 @@ border-radius: 17px;
                                     <font>
                                      <pointsize>11</pointsize>
                                     </font>
+                                   </property>
+                                   <property name="whatsThis">
+                                    <string>Размер шрифта подписи Y</string>
                                    </property>
                                    <property name="minimum">
                                     <number>2</number>
@@ -4950,6 +5159,12 @@ border-radius: 17px;
                      <layout class="QGridLayout" name="gridLayout_17">
                       <item row="0" column="0">
                        <widget class="QScrollArea" name="scrollArea_3">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>170</height>
+                         </size>
+                        </property>
                         <property name="widgetResizable">
                          <bool>true</bool>
                         </property>
@@ -4991,6 +5206,9 @@ border-radius: 17px;
                                   <property name="toolTip">
                                    <string>Без флажка порядок будет таким, какой он в таблице</string>
                                   </property>
+                                  <property name="whatsThis">
+                                   <string>Упорядочить значения в группе? Используется базовая сортировка</string>
+                                  </property>
                                   <property name="text">
                                    <string>Упорядочить значения в группе</string>
                                   </property>
@@ -5014,6 +5232,9 @@ border-radius: 17px;
                                    <font>
                                     <pointsize>11</pointsize>
                                    </font>
+                                  </property>
+                                  <property name="whatsThis">
+                                   <string>Упорядочить значения в группе по возрастанию?</string>
                                   </property>
                                   <property name="text">
                                    <string>по возрастанию</string>
@@ -5057,6 +5278,9 @@ border-radius: 17px;
                                   </property>
                                   <property name="toolTip">
                                    <string/>
+                                  </property>
+                                  <property name="whatsThis">
+                                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Изменить порядок подписей. &lt;/p&gt;&lt;p&gt;Для этого необходимо через пробел цифрами ввести настоящий порядок.&lt;/p&gt;&lt;p&gt;Важно, чтобы количество элементов соответствовало кол-ву категорий в группе.&lt;/p&gt;&lt;p&gt;К примеру, можно ввести следующее:&lt;/p&gt;&lt;p&gt;1 2 4 3&lt;/p&gt;&lt;p&gt;Тогда будет порядок, как он представлен выше относительно начального порядка без упорядочивания&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -5509,6 +5733,12 @@ border-radius: 17px;
                      <layout class="QGridLayout" name="gridLayout_12">
                       <item row="0" column="0">
                        <widget class="QScrollArea" name="scrollArea_4">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>170</height>
+                         </size>
+                        </property>
                         <property name="widgetResizable">
                          <bool>true</bool>
                         </property>
@@ -5524,6 +5754,9 @@ border-radius: 17px;
                          <layout class="QGridLayout" name="gridLayout_7">
                           <item row="0" column="0">
                            <layout class="QVBoxLayout" name="verticalLayout_56">
+                            <property name="topMargin">
+                             <number>0</number>
+                            </property>
                             <item>
                              <layout class="QHBoxLayout" name="horizontalLayout_141">
                               <item>
@@ -5549,6 +5782,9 @@ border-radius: 17px;
                                    <font>
                                     <pointsize>11</pointsize>
                                    </font>
+                                  </property>
+                                  <property name="whatsThis">
+                                   <string>Рассчитать статистическую значимость?</string>
                                   </property>
                                   <property name="text">
                                    <string/>
@@ -5593,6 +5829,9 @@ border-radius: 17px;
                                     <pointsize>11</pointsize>
                                    </font>
                                   </property>
+                                  <property name="whatsThis">
+                                   <string>Шрифт значков статистической значимости</string>
+                                  </property>
                                   <property name="minimum">
                                    <number>1</number>
                                   </property>
@@ -5635,6 +5874,9 @@ border-radius: 17px;
                                   <pointsize>11</pointsize>
                                  </font>
                                 </property>
+                                <property name="whatsThis">
+                                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Значок статистической значимости.&lt;/p&gt;&lt;p&gt;Один из трех:&lt;/p&gt;&lt;p&gt;- звездочка (*)&lt;/p&gt;&lt;p&gt;- точное значение p (p=0.03)&lt;/p&gt;&lt;p&gt;- относительное p (p&amp;lt;0.05)&lt;/p&gt;&lt;p&gt;Статистическая значимость для здездочек обозначается следующим:&lt;/p&gt;&lt;p&gt;* p&amp;lt;0.05, ** p&amp;lt;0.01, *** p&amp;lt;0.001, **** p&amp;lt;0.0001&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                </property>
                                 <item>
                                  <property name="text">
                                   <string>звездочка (*)</string>
@@ -5670,6 +5912,9 @@ border-radius: 17px;
                                  <font>
                                   <pointsize>11</pointsize>
                                  </font>
+                                </property>
+                                <property name="whatsThis">
+                                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Максимальное кол-во знаков для статистической значимости.&lt;/p&gt;&lt;p&gt;Работает для значка стат.значимости &amp;quot;звездочка&amp;quot; и &amp;quot;точное значение p&amp;quot;.&lt;/p&gt;&lt;p&gt;Если макс.кол-во знаков = 1, то будет выведены только:&lt;/p&gt;&lt;p&gt;* или p&amp;lt;0.05, даже если p=0.00001&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                 </property>
                                 <property name="minimum">
                                  <number>1</number>
@@ -5710,6 +5955,9 @@ border-radius: 17px;
                                  <font>
                                   <pointsize>11</pointsize>
                                  </font>
+                                </property>
+                                <property name="whatsThis">
+                                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Альтернативная гипотеза для теста.&lt;/p&gt;&lt;p&gt;Если не знаете, то используйте всегда two-sided&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                 </property>
                                 <item>
                                  <property name="text">
@@ -5759,6 +6007,9 @@ border-radius: 17px;
                                  <font>
                                   <pointsize>11</pointsize>
                                  </font>
+                                </property>
+                                <property name="whatsThis">
+                                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Статистический тест для расчета стат.значимости. &lt;/p&gt;&lt;p&gt;В списке есть как параметрические, так и непараметрические тесты.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                 </property>
                                 <item>
                                  <property name="text">
@@ -5931,6 +6182,9 @@ border-radius: 17px;
                            <pointsize>11</pointsize>
                           </font>
                          </property>
+                         <property name="whatsThis">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Метод расчета корреляций: Пирсон, Спирмен или Кендал.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
                          <item>
                           <property name="text">
                            <string>pearson</string>
@@ -5985,6 +6239,9 @@ border-radius: 17px;
                           <font>
                            <pointsize>11</pointsize>
                           </font>
+                         </property>
+                         <property name="whatsThis">
+                          <string>Цветовая схема для корреляционной матрицы.</string>
                          </property>
                          <item>
                           <property name="text">
@@ -6079,6 +6336,9 @@ border-radius: 17px;
                            <pointsize>11</pointsize>
                           </font>
                          </property>
+                         <property name="whatsThis">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Размер рисунка для корреляционной матрицы. &lt;/p&gt;&lt;p&gt;Подбирается вручную. Влияет на размер конечного файла.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
                          <property name="decimals">
                           <number>0</number>
                          </property>
@@ -6122,6 +6382,9 @@ border-radius: 17px;
                            <pointsize>11</pointsize>
                           </font>
                          </property>
+                         <property name="whatsThis">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Масштаб шрифта подписей для корреляционных матриц.&lt;/p&gt;&lt;p&gt;Подбирается вручную.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
                          <property name="decimals">
                           <number>1</number>
                          </property>
@@ -6161,6 +6424,9 @@ border-radius: 17px;
                           <font>
                            <pointsize>11</pointsize>
                           </font>
+                         </property>
+                         <property name="whatsThis">
+                          <string>Размер шрифта заголовка. Подбирается вручную.</string>
                          </property>
                          <property name="decimals">
                           <number>0</number>
@@ -6214,6 +6480,9 @@ border-radius: 17px;
                            <pointsize>11</pointsize>
                           </font>
                          </property>
+                         <property name="whatsThis">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Дополнительное название заголовка &amp;lt;title&amp;gt;. &lt;/p&gt;&lt;p&gt;Конечное название формулируется следующим образом:&lt;/p&gt;&lt;p&gt;&amp;lt;title&amp;gt; + название_категории + (N=&amp;lt;кол-во образцов&amp;gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
                         </widget>
                        </item>
                       </layout>
@@ -6255,6 +6524,9 @@ border-radius: 17px;
                            <font>
                             <pointsize>11</pointsize>
                            </font>
+                          </property>
+                          <property name="whatsThis">
+                           <string>Цветовая палитра для корреляционного графика.</string>
                           </property>
                           <item>
                            <property name="text">
@@ -6472,6 +6744,9 @@ border-radius: 17px;
                             <pointsize>11</pointsize>
                            </font>
                           </property>
+                          <property name="whatsThis">
+                           <string>Нижняя граница для корреляционного графика. Иногда полезно, если нужно сделать четко &quot;0&quot; или другое число.</string>
+                          </property>
                           <property name="minimum">
                            <double>-100000.000000000000000</double>
                           </property>
@@ -6544,6 +6819,9 @@ border-radius: 17px;
                             <pointsize>11</pointsize>
                            </font>
                           </property>
+                          <property name="whatsThis">
+                           <string>Размер точек для корреляционного графика.</string>
+                          </property>
                           <property name="minimum">
                            <number>1</number>
                           </property>
@@ -6584,6 +6862,9 @@ border-radius: 17px;
                             <pointsize>11</pointsize>
                            </font>
                           </property>
+                          <property name="whatsThis">
+                           <string>Относительный размер шрифта для графика.</string>
+                          </property>
                           <property name="decimals">
                            <number>1</number>
                           </property>
@@ -6613,6 +6894,9 @@ border-radius: 17px;
                         <property name="toolTip">
                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Без флажка порядок будет таким, какой он в таблице.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                         </property>
+                        <property name="whatsThis">
+                         <string>Сортировать значения в группе?</string>
+                        </property>
                         <property name="text">
                          <string>Упорядочить значения в группе</string>
                         </property>
@@ -6630,6 +6914,9 @@ border-radius: 17px;
                         </property>
                         <property name="toolTip">
                          <string/>
+                        </property>
+                        <property name="whatsThis">
+                         <string>Включить сетку?</string>
                         </property>
                         <property name="text">
                          <string>Сетка</string>
@@ -6679,6 +6966,9 @@ border-radius: 17px;
                           <horstretch>0</horstretch>
                           <verstretch>0</verstretch>
                          </sizepolicy>
+                        </property>
+                        <property name="whatsThis">
+                         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Не учитвать группу в матрице рассеяния? &lt;/p&gt;&lt;p&gt;В этом случае все категории будут объеденены.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                         </property>
                         <property name="text">
                          <string/>
@@ -7198,6 +7488,9 @@ border-radius: 17px;
                           <pointsize>11</pointsize>
                          </font>
                         </property>
+                        <property name="whatsThis">
+                         <string>Цветовая палитра для графика распределение по двум параметрам.</string>
+                        </property>
                         <item>
                          <property name="text">
                           <string>Set1</string>
@@ -7408,6 +7701,9 @@ border-radius: 17px;
                           <pointsize>11</pointsize>
                          </font>
                         </property>
+                        <property name="whatsThis">
+                         <string>Возможные настройки по отображению распределений.</string>
+                        </property>
                         <item>
                          <property name="text">
                           <string>scatter</string>
@@ -7459,6 +7755,9 @@ border-radius: 17px;
                          <font>
                           <pointsize>11</pointsize>
                          </font>
+                        </property>
+                        <property name="whatsThis">
+                         <string>Стиль графика. Используются стили seaborn.</string>
                         </property>
                         <item>
                          <property name="text">
@@ -7522,6 +7821,9 @@ border-radius: 17px;
                           <pointsize>11</pointsize>
                          </font>
                         </property>
+                        <property name="whatsThis">
+                         <string>Размер точек на графике.</string>
+                        </property>
                         <property name="minimum">
                          <number>25</number>
                         </property>
@@ -7583,6 +7885,9 @@ border-radius: 17px;
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>Метод расчета корреляций: Пирсон, Спирмен или Кендал.</string>
+                      </property>
                       <item>
                        <property name="text">
                         <string>pearson</string>
@@ -7628,6 +7933,9 @@ border-radius: 17px;
                        <font>
                         <pointsize>11</pointsize>
                        </font>
+                      </property>
+                      <property name="whatsThis">
+                       <string>Относительный размер шрифта для корреляции одного параметра.</string>
                       </property>
                       <property name="decimals">
                        <number>1</number>
@@ -7685,6 +7993,9 @@ border-radius: 17px;
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>Отсечка по корреляциям. Все корреляции, которые ниже заданного числа, не будут учитываться.</string>
+                      </property>
                       <property name="decimals">
                        <number>2</number>
                       </property>
@@ -7739,6 +8050,9 @@ border-radius: 17px;
                       <pointsize>11</pointsize>
                      </font>
                     </property>
+                    <property name="whatsThis">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Построить график в отдельном окне?&lt;/p&gt;&lt;p&gt;Используйте, только если запускаете приложение не через десктопную версию.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
                     <property name="text">
                      <string>Построить график в отдельном окне</string>
                     </property>
@@ -7759,6 +8073,9 @@ border-radius: 17px;
                <font>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="whatsThis">
+               <string>Построить все графики и сохранить их в соответствующих папках</string>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -7813,6 +8130,9 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Путь к папке, в которую будут сохранены микрореологические профили.</string>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -7850,6 +8170,9 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Данные пациента.&lt;/p&gt;&lt;p&gt;Должны быть скопированы из excel и вставлены в данную ячейку.&lt;/p&gt;&lt;p&gt;Должно быть скопировано 3 столбца, к примеру:&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;Параметр&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;Среднее&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;SD&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;CSS, мПа&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;300&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;15&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;AI, %&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;62&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;5&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;AMP&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;0,06&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;Параметры должны обязательно называться одинаково для нормы и пациента.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;Называться параметры могут произвольно. Latex поддерживается.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -7886,6 +8209,9 @@ border-radius: 10px;</string>
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Данные нормы.&lt;/p&gt;&lt;p&gt;Должны быть скопированы из excel и вставлены в данную ячейку.&lt;/p&gt;&lt;p&gt;Должно быть скопировано 3 столбца, к примеру:&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;Параметр&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;Среднее&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;SD&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;CSS, мПа&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;300&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;15&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;AI, %&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;62&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;5&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;AMP&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;0,06&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;&quot;&gt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;Параметры должны обязательно называться одинаково для нормы и пациента.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica';&quot;&gt;Называться параметры могут произвольно. Latex поддерживается.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
                     <string/>
@@ -7943,6 +8269,9 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Название для радиального профиля.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                    <property name="text">
                     <string>Микрореологический профиль пациента </string>
                    </property>
@@ -7977,6 +8306,9 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Название для оси для линейного профиля.</string>
+                   </property>
                    <property name="text">
                     <string>Отклонение от нормы, %</string>
                    </property>
@@ -7994,6 +8326,9 @@ border-radius: 10px;</string>
                    </property>
                    <property name="toolTip">
                     <string>Иногда лучше отключить, чтобы она не накладывалась на график</string>
+                   </property>
+                   <property name="whatsThis">
+                    <string>Вставить легенду?</string>
                    </property>
                    <property name="text">
                     <string>Легенда</string>
@@ -8038,6 +8373,9 @@ border-radius: 10px;</string>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Вращать подписи для линейного профиля?</string>
+                   </property>
                    <item>
                     <property name="text">
                      <string>90</string>
@@ -8076,6 +8414,9 @@ border-radius: 10px;</string>
                       <font>
                        <pointsize>11</pointsize>
                       </font>
+                     </property>
+                     <property name="whatsThis">
+                      <string>Относительный размер шрифта на графиках.</string>
                      </property>
                      <property name="decimals">
                       <number>1</number>
@@ -8170,6 +8511,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Имя пациента/образца.</string>
+                   </property>
                    <property name="text">
                     <string>Пациент</string>
                    </property>
@@ -8181,6 +8525,9 @@ border-radius: 17px;
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="whatsThis">
+                    <string>Цвет для пациента. Используются только цвета HEX.</string>
                    </property>
                    <property name="text">
                     <string>#DB4900</string>
@@ -8201,6 +8548,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Пациент -- добавить линию на графике.</string>
+                   </property>
                    <property name="text">
                     <string>Линия на графике</string>
                    </property>
@@ -8218,6 +8568,9 @@ border-radius: 17px;
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="whatsThis">
+                    <string>Пациент -- добавить область с стандартным отклонением на графике.</string>
                    </property>
                    <property name="text">
                     <string>Стандартное отклонение</string>
@@ -8299,6 +8652,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Имя для нормы.</string>
+                   </property>
                    <property name="text">
                     <string>Норма</string>
                    </property>
@@ -8310,6 +8666,9 @@ border-radius: 17px;
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="whatsThis">
+                    <string>Цвет для нормы. Используются только цвета HEX.</string>
                    </property>
                    <property name="text">
                     <string>#2A968D</string>
@@ -8330,6 +8689,9 @@ border-radius: 17px;
                      <pointsize>11</pointsize>
                     </font>
                    </property>
+                   <property name="whatsThis">
+                    <string>Норма -- добавить линию на графике.</string>
+                   </property>
                    <property name="text">
                     <string>Линия на графике</string>
                    </property>
@@ -8347,6 +8709,9 @@ border-radius: 17px;
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="whatsThis">
+                    <string>Норма -- добавить область с стандартным отклонением на графике.</string>
                    </property>
                    <property name="text">
                     <string>Стандартное отклонение</string>
@@ -8369,6 +8734,9 @@ border-radius: 17px;
                  <font>
                   <pointsize>11</pointsize>
                  </font>
+                </property>
+                <property name="whatsThis">
+                 <string>Построить и сохранить радиальный и линейный профили.</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -8393,6 +8761,9 @@ border-radius: 10px;</string>
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Если отличия относительные, то на радиальном графике будет указываться отличия в процентах от нормы; в противном случае, за 100% принимается норма.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
+                <property name="whatsThis">
+                 <string>Добавить значения относительных различий на радиальном графике?</string>
+                </property>
                 <property name="text">
                  <string>Относительные отличия на радиальном графике</string>
                 </property>
@@ -8413,7 +8784,7 @@ border-radius: 10px;</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>666</width>
+                 <width>633</width>
                  <height>206</height>
                 </rect>
                </property>
@@ -8430,7 +8801,7 @@ border-radius: 10px;</string>
                    <bool>false</bool>
                   </property>
                   <property name="whatsThis">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Интервал параметров нужно писать через тире.&lt;/p&gt;&lt;p&gt;Пример: 0-3&lt;/p&gt;&lt;p&gt;Цвета:  matplotlib.colors&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Интервал параметров нужно писать через тире. Индекс начинается с нуля, а не единицы.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Пример&lt;/span&gt;: если всего 8 параметров, то можно сделать так:&lt;/p&gt;&lt;p&gt;(1 группа) &amp;quot;0-3&amp;quot;&lt;/p&gt;&lt;p&gt;(2 группа) &amp;quot;4-5&amp;quot;&lt;/p&gt;&lt;p&gt;(3 группа) &amp;quot;6-7&amp;quot;&lt;/p&gt;&lt;p&gt;Цвета: matplotlib.colors&lt;/p&gt;&lt;p&gt;Стиль линии: см. matplotlib &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:9.8pt; color:#7a7e85;&quot;&gt;solid, dashed, dashdot, dotted&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="layoutDirection">
                    <enum>Qt::LeftToRight</enum>
@@ -8637,7 +9008,7 @@ border-radius: 10px;</string>
                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Интервал параметров нужно писать через тире.&lt;/p&gt;&lt;p&gt;Пример: 0-3&lt;/p&gt;&lt;p&gt;Цвета: matplotlib.colors&lt;/p&gt;&lt;p&gt;Стиль линии: см. matplotlib &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:9.8pt; color:#000000;&quot;&gt;solid, dashed, dashdot, dotted&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="whatsThis">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Интервал параметров нужно писать через тире.&lt;/p&gt;&lt;p&gt;Пример: 0-3&lt;/p&gt;&lt;p&gt;Цвета: matplotlib.colors&lt;/p&gt;&lt;p&gt;Стиль линии: см. matplotlib &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:9.8pt; color:#7a7e85;&quot;&gt;solid, dashed, dashdot, dotted&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string/>
                   </property>
                   <property name="text">
                    <string>Таблица для выделения характерных групп параметров на радиальном графике</string>
@@ -8685,6 +9056,9 @@ border-radius: 10px;</string>
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>Путь к папке, где лежит(ат) excel файл(ы) для сводных таблиц.</string>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -8707,7 +9081,11 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_pivot_table"/>
+                     <widget class="QComboBox" name="comboBox_pivot_table">
+                      <property name="whatsThis">
+                       <string>Название excel файла -- подставится автоматически. Надо только выбрать</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -8726,7 +9104,11 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_pivot_table_excel_sheet"/>
+                     <widget class="QComboBox" name="comboBox_pivot_table_excel_sheet">
+                      <property name="whatsThis">
+                       <string>Название листа в excel файле -- подставится автоматически. Надо только выбрать</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -8748,7 +9130,11 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_pivot_hue"/>
+                     <widget class="QComboBox" name="comboBox_pivot_hue">
+                      <property name="whatsThis">
+                       <string>Выберете столбец для групп. Это категориальная группа. К примеру, &quot;Пол&quot;.</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -8855,6 +9241,9 @@ border-radius: 17px;
                        <property name="toolTip">
                         <string>Округляются все значения</string>
                        </property>
+                       <property name="whatsThis">
+                        <string/>
+                       </property>
                        <property name="text">
                         <string>Округлить значения до знака после запятой</string>
                        </property>
@@ -8872,6 +9261,9 @@ border-radius: 17px;
                         <font>
                          <pointsize>11</pointsize>
                         </font>
+                       </property>
+                       <property name="whatsThis">
+                        <string>Округлить значения до выбранного знака после запятой.</string>
                        </property>
                        <property name="minimum">
                         <number>0</number>
@@ -8913,6 +9305,9 @@ border-radius: 17px;
                          <pointsize>11</pointsize>
                         </font>
                        </property>
+                       <property name="whatsThis">
+                        <string>Погрешность SD или SE.</string>
+                       </property>
                        <item>
                         <property name="text">
                          <string>SD</string>
@@ -8935,6 +9330,9 @@ border-radius: 17px;
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="whatsThis">
+                    <string>Получить и сохранить сводную таблицу.</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -9044,6 +9442,9 @@ border-radius: 17px;
                          <pointsize>11</pointsize>
                         </font>
                        </property>
+                       <property name="whatsThis">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Метод расчета корреляций: Пирсон, Спирмен или Кендал.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
                        <item>
                         <property name="text">
                          <string>pearson</string>
@@ -9095,6 +9496,9 @@ border-radius: 17px;
                            <pointsize>11</pointsize>
                           </font>
                          </property>
+                         <property name="whatsThis">
+                          <string>Выделить ячейки цветом?</string>
+                         </property>
                          <property name="text">
                           <string/>
                          </property>
@@ -9140,6 +9544,9 @@ border-radius: 17px;
                           <font>
                            <pointsize>11</pointsize>
                           </font>
+                         </property>
+                         <property name="whatsThis">
+                          <string>Цветовая схема для корреляционной матрицы?</string>
                          </property>
                          <item>
                           <property name="text">
@@ -9220,6 +9627,9 @@ border-radius: 17px;
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Получить и сохранить корреляционную матрицу по всем данным.&lt;/p&gt;&lt;p&gt;Используются все столбцы для анализа.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -9327,6 +9737,9 @@ border-radius: 17px;
                        <pointsize>11</pointsize>
                       </font>
                      </property>
+                     <property name="whatsThis">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Перевести таблицу из широкого к длинному формату или наоборот.&lt;/p&gt;&lt;p&gt;Под &lt;span style=&quot; font-style:italic;&quot;&gt;индексируемыми&lt;/span&gt; полагается -- длинный формат.&lt;/p&gt;&lt;p&gt;Под &lt;span style=&quot; font-style:italic;&quot;&gt;сырым&lt;/span&gt; -- широкий формат.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
                      <item>
                       <property name="text">
                        <string>из индексированных в сырые</string>
@@ -9347,6 +9760,9 @@ border-radius: 17px;
                     <font>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="whatsThis">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Перевести данные из широкого в длинный формат или наоборот и сохранить excel файл.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -9394,6 +9810,9 @@ border-radius: 10px;</string>
                   <pointsize>11</pointsize>
                  </font>
                 </property>
+                <property name="whatsThis">
+                 <string>Путь к папке с excel файлом</string>
+                </property>
                 <property name="text">
                  <string/>
                 </property>
@@ -9416,7 +9835,11 @@ border-radius: 10px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QComboBox" name="comboBox_excel_catplot"/>
+               <widget class="QComboBox" name="comboBox_excel_catplot">
+                <property name="whatsThis">
+                 <string>Название excel файла -- подставится автоматически. Надо только выбрать</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -9435,7 +9858,11 @@ border-radius: 10px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QComboBox" name="comboBox_excel_sheet_catplot"/>
+               <widget class="QComboBox" name="comboBox_excel_sheet_catplot">
+                <property name="whatsThis">
+                 <string>Название листа в excel файле -- подставится автоматически. Надо только выбрать</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -9483,7 +9910,11 @@ border-radius: 10px;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_catplot_x"/>
+                   <widget class="QComboBox" name="comboBox_catplot_x">
+                    <property name="whatsThis">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Основная группа, в которой представлены категории.&lt;/p&gt;&lt;p&gt;К примеру, группа &amp;quot;Диагноз&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -9506,6 +9937,9 @@ border-radius: 10px;</string>
                   </item>
                   <item>
                    <widget class="QComboBox" name="comboBox_catplot_form_x">
+                    <property name="whatsThis">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Явно привести тип для группы по оси X в заданный тип.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
                     <item>
                      <property name="text">
                       <string>str</string>
@@ -9557,7 +9991,11 @@ border-radius: 10px;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_catplot_y"/>
+                   <widget class="QComboBox" name="comboBox_catplot_y">
+                    <property name="whatsThis">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Таргетный параметры для вывода на ось Y.&lt;/p&gt;&lt;p&gt;К примеру, &amp;quot;Сила агрегации&amp;quot;. &lt;/p&gt;&lt;p&gt;Обычно подразумевается, что значения в данном параметре:&lt;/p&gt;&lt;p&gt;- float&lt;/p&gt;&lt;p&gt;- int&lt;/p&gt;&lt;p&gt; То есть непрерывные или дискретные.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -9580,6 +10018,9 @@ border-radius: 10px;</string>
                   </item>
                   <item>
                    <widget class="QComboBox" name="comboBox_catplot_form_y">
+                    <property name="whatsThis">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Явно привести тип для значений по оси Y в заданный тип.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
                     <item>
                      <property name="text">
                       <string>float</string>
@@ -9631,7 +10072,11 @@ border-radius: 10px;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_catplot_hue"/>
+                   <widget class="QComboBox" name="comboBox_catplot_hue">
+                    <property name="whatsThis">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Дополнительная подгруппа в группе.&lt;/p&gt;&lt;p&gt;К примеру, группа может быть &amp;quot;Диагноз&amp;quot;, а подгруппа &amp;quot;Пол&amp;quot;.&lt;/p&gt;&lt;p&gt;На графике будут всевозможные комбинации категорий из двух групп.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -9654,6 +10099,9 @@ border-radius: 10px;</string>
                   </item>
                   <item>
                    <widget class="QComboBox" name="comboBox_catplot_form_hue">
+                    <property name="whatsThis">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Явно привести тип для подгруппы в заданный тип.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
                     <item>
                      <property name="text">
                       <string>str</string>
@@ -9738,6 +10186,9 @@ border-radius: 10px;</string>
                     <pointsize>11</pointsize>
                    </font>
                   </property>
+                  <property name="whatsThis">
+                   <string>Относительный размер шрифта.</string>
+                  </property>
                   <property name="decimals">
                    <number>1</number>
                   </property>
@@ -9799,6 +10250,9 @@ border-radius: 10px;</string>
                    <font>
                     <pointsize>11</pointsize>
                    </font>
+                  </property>
+                  <property name="whatsThis">
+                   <string>Цветовая палитра для catplot.</string>
                   </property>
                   <item>
                    <property name="text">
@@ -10010,6 +10464,9 @@ border-radius: 10px;</string>
                       <pointsize>11</pointsize>
                      </font>
                     </property>
+                    <property name="whatsThis">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Шаблон для графика:&lt;/p&gt;&lt;p&gt;1. strip - точечный график, показывает все точки данных с легким разбросом по горизонтали чтобы избежать перекрытия&lt;/p&gt;&lt;p&gt;2. swarm - точечный график без перекрытия, точки располагаются плотно, сохраняя положение по оси Y&lt;/p&gt;&lt;p&gt;3. box - боксплот, показывает медиану, квартили, выбросы и разброс данных&lt;/p&gt;&lt;p&gt;4. violin - график плотности, показывает распределение данных и его форму&lt;/p&gt;&lt;p&gt;5. boxen - улучшенный боксплот для больших наборов данных, показывает больше квантилей&lt;/p&gt;&lt;p&gt;6. point - график со средними значениями и доверительными интервалами, соединяет точки линиями&lt;/p&gt;&lt;p&gt;7. bar - столбчатая диаграмма со средними значениями и доверительными интервалами&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
                     <item>
                      <property name="text">
                       <string>bar</string>
@@ -10098,6 +10555,9 @@ border-radius: 10px;</string>
                       <pointsize>11</pointsize>
                      </font>
                     </property>
+                    <property name="whatsThis">
+                     <string>Погрешности для вывода: SD, SE, доверительный или перцентильный интервал.</string>
+                    </property>
                     <item>
                      <property name="text">
                       <string>Среднеквадратическое отклонение</string>
@@ -10144,6 +10604,9 @@ border-radius: 10px;</string>
                    <font>
                     <pointsize>11</pointsize>
                    </font>
+                  </property>
+                  <property name="whatsThis">
+                   <string>Вращать подписи на заданный угол.</string>
                   </property>
                   <property name="minimum">
                    <number>-90</number>
@@ -10226,6 +10689,9 @@ border-radius: 10px;</string>
                     <pointsize>11</pointsize>
                    </font>
                   </property>
+                  <property name="whatsThis">
+                   <string>Рассчитать статистическую значимость?</string>
+                  </property>
                   <property name="text">
                    <string/>
                   </property>
@@ -10263,6 +10729,9 @@ border-radius: 10px;</string>
                      <font>
                       <pointsize>11</pointsize>
                      </font>
+                    </property>
+                    <property name="whatsThis">
+                     <string>Статистический тест для расчета статистической значимости для catplot.</string>
                     </property>
                     <item>
                      <property name="text">
@@ -10347,6 +10816,9 @@ border-radius: 10px;</string>
                     <pointsize>11</pointsize>
                    </font>
                   </property>
+                  <property name="whatsThis">
+                   <string>Рассчитать статистическую значимость только внутри подгруппы?</string>
+                  </property>
                   <property name="text">
                    <string/>
                   </property>
@@ -10386,6 +10858,9 @@ border-radius: 10px;</string>
                    <font>
                     <pointsize>11</pointsize>
                    </font>
+                  </property>
+                  <property name="whatsThis">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Формат подписей для стат. значимости:&lt;/p&gt;&lt;p&gt;Один из трех:&lt;/p&gt;&lt;p&gt;- звездочка (*)&lt;/p&gt;&lt;p&gt;- точное значение p (p=0.03)&lt;/p&gt;&lt;p&gt;- относительное p (p&amp;lt;0.05)&lt;/p&gt;&lt;p&gt;Статистическая значимость для здездочек обозначается следующим:&lt;/p&gt;&lt;p&gt;* p&amp;lt;0.05, ** p&amp;lt;0.01, *** p&amp;lt;0.001, **** p&amp;lt;0.0001&lt;/p&gt;&lt;p&gt;Данная расшифровка сохраняется в txt файл рядом с рисунком.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <item>
                    <property name="text">
@@ -10435,6 +10910,9 @@ border-radius: 10px;</string>
                    <font>
                     <pointsize>11</pointsize>
                    </font>
+                  </property>
+                  <property name="whatsThis">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Поправка на множественную проверку гипотез. Важно когда много попарных сравнений.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <item>
                    <property name="text">
@@ -10495,6 +10973,9 @@ border-radius: 10px;</string>
                <font>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="whatsThis">
+               <string>Построить график catplot и сохранить png файл.</string>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -10569,6 +11050,9 @@ border-radius: 10px;</string>
                     <pointsize>11</pointsize>
                    </font>
                   </property>
+                  <property name="whatsThis">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Путь папке к excel файлу или файлам, которые были получены путем расчета из первой вкладки.&lt;/p&gt;&lt;p&gt;Важно, что будут рассмотрены все excel файлы из папки.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
                   <property name="text">
                    <string/>
                   </property>
@@ -10576,6 +11060,9 @@ border-radius: 10px;</string>
                 </item>
                 <item>
                  <widget class="QToolButton" name="toolButton_RheoScan">
+                  <property name="whatsThis">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Выбрать папку, в которой лежат excel файлы интерактивно.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
                   <property name="text">
                    <string>...</string>
                   </property>
@@ -10612,6 +11099,9 @@ border-radius: 10px;</string>
                    <font>
                     <pointsize>11</pointsize>
                    </font>
+                  </property>
+                  <property name="whatsThis">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Можно выбрать следующее: &lt;/p&gt;&lt;p&gt;1. Либо у вас есть много файлов, где каждый файл -- это измерения по одному образцу/пациенту.&lt;/p&gt;&lt;p&gt;2. Либо у вас один файл, &lt;span style=&quot; text-decoration: underline;&quot;&gt;где первая колонка соответствует названию образца или ФИО пациента&lt;/span&gt;. Важно, чтобы это была первая колонка.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <item>
                    <property name="text">
@@ -10654,6 +11144,9 @@ border-radius: 10px;</string>
                     <pointsize>11</pointsize>
                    </font>
                   </property>
+                  <property name="whatsThis">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Возможность расчета/игнорирование SD на разных листах.&lt;/p&gt;&lt;p&gt;По дефолту SD расчитывается для всех листов excel.&lt;/p&gt;&lt;p&gt;По сути это маска, которая должна состоять из:&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;положительных&lt;/span&gt; -- оставить SD  -- &lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;y&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;t&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;on&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;или&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;отрицательных&lt;/span&gt; -- убрать SD -- &lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;n&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;no&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;f&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;false&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;off&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;К примеру, если у вас 3 листа и нужно только для первых двух посчитать SD, а для третьего -- НЕТ, то нужно ввести:&lt;/p&gt;&lt;p&gt;&amp;quot;1 1 0&amp;quot; -- ввести без кавычек.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
                   <property name="text">
                    <string/>
                   </property>
@@ -10667,6 +11160,9 @@ border-radius: 10px;</string>
                  <font>
                   <pointsize>11</pointsize>
                  </font>
+                </property>
+                <property name="whatsThis">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Рассчитать средние значения и SD для файла или файлов и сохранить данные в excel файл.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -10798,6 +11294,9 @@ border-radius: 10px;</string>
                       <pointsize>11</pointsize>
                      </font>
                     </property>
+                    <property name="whatsThis">
+                     <string>Путь к папке с excel файлом</string>
+                    </property>
                     <property name="text">
                      <string/>
                     </property>
@@ -10820,7 +11319,11 @@ border-radius: 10px;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="comboBox_rheoscan_report"/>
+                   <widget class="QComboBox" name="comboBox_rheoscan_report">
+                    <property name="whatsThis">
+                     <string>Название excel файла -- подставится автоматически. Надо только выбрать</string>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -10839,6 +11342,9 @@ border-radius: 10px;</string>
                   </item>
                   <item>
                    <widget class="QCalendarWidget" name="calendarWidget_rheoscan_report">
+                    <property name="whatsThis">
+                     <string>Дата измерения.</string>
+                    </property>
                     <property name="locale">
                      <locale language="Russian" country="Russia"/>
                     </property>
@@ -10865,7 +11371,11 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="rheoscan_report_name_exp"/>
+                     <widget class="QLineEdit" name="rheoscan_report_name_exp">
+                      <property name="whatsThis">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ФИО того, кто проводил эксперимент.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -10879,12 +11389,19 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="rheoscan_report_name_process"/>
+                     <widget class="QLineEdit" name="rheoscan_report_name_process">
+                      <property name="whatsThis">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ФИО того, кто обрабатывал данные.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
                   <item>
                    <widget class="QToolBox" name="toolBox">
+                    <property name="whatsThis">
+                     <string/>
+                    </property>
                     <property name="currentIndex">
                      <number>0</number>
                     </property>
@@ -10910,6 +11427,9 @@ border-radius: 10px;</string>
                             <horstretch>0</horstretch>
                             <verstretch>0</verstretch>
                            </sizepolicy>
+                          </property>
+                          <property name="whatsThis">
+                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Здесь нужно в виде Python словаря ввести переименование параметров.&lt;/p&gt;&lt;p&gt;К примеру, в excel файле параметр индекса агрегации называется &amp;quot;AI&amp;quot;, а в отчете мы хотим видеть &amp;quot;AI, %&amp;quot;.&lt;/p&gt;&lt;p&gt;К примеру:&lt;/p&gt;&lt;p&gt;{&amp;quot;AI&amp;quot;:&amp;quot;AI, %&amp;quot;, &amp;quot;CSS&amp;quot;:&amp;quot;CSS, мПа&amp;quot;, &amp;quot;T1/2&amp;quot;: &amp;quot;T1/2, сек.&amp;quot;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                           </property>
                           <property name="plainText">
                            <string>{&quot;AI&quot;:&quot;AI, %&quot;,
@@ -10945,6 +11465,9 @@ border-radius: 10px;</string>
                             <verstretch>0</verstretch>
                            </sizepolicy>
                           </property>
+                          <property name="whatsThis">
+                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Здесь нужно в виде Python словаря ввести значения для нормы.&lt;br/&gt;Важно, чтобы ключи - параметры соответствовали значениям словаря из разделе &amp;quot;Переименование параметров&amp;quot;.&lt;/p&gt;&lt;p&gt;Значение нормы записывается, как среднее&lt;span style=&quot; font-family:'Google Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0a0a0a; background-color:#ffffff;&quot;&gt;±&lt;/span&gt;SD.&lt;/p&gt;&lt;p&gt;К примеру:&lt;/p&gt;&lt;p&gt;{&amp;quot;AI, %&amp;quot;: &amp;quot;40±10&amp;quot;, &amp;quot;CSS, мПа&amp;quot;: &amp;quot;180±50&amp;quot;, &amp;quot;T1/2, сек.&amp;quot;: &amp;quot;7±2&amp;quot;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                          </property>
                           <property name="plainText">
                            <string>{&quot;AI, %&quot;: &quot;40±10&quot;,
  &quot;CSS, мПа&quot;: &quot;180±50&quot;,
@@ -10977,6 +11500,9 @@ border-radius: 10px;</string>
                           <verstretch>0</verstretch>
                          </sizepolicy>
                         </property>
+                        <property name="whatsThis">
+                         <string>Дополнительный комментарий к отчету.</string>
+                        </property>
                         <property name="plainText">
                          <string>- Индекс агрегации (&quot;AI, %&quot;) немного повышен
 - Гидродинамическая прочность агрегатов (&quot;CSS, мПа&quot;) в норме
@@ -11000,6 +11526,9 @@ border-radius: 10px;</string>
                  <font>
                   <pointsize>11</pointsize>
                  </font>
+                </property>
+                <property name="whatsThis">
+                 <string>Сделать отчет по одному образцу/пациенту и сохранить его в pdf.</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -11086,6 +11615,9 @@ border-radius: 10px;</string>
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>Путь к папке с excel файлом</string>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -11108,7 +11640,11 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_excel_dop_stat"/>
+                     <widget class="QComboBox" name="comboBox_excel_dop_stat">
+                      <property name="whatsThis">
+                       <string>Название excel файла -- подставится автоматически. Надо только выбрать</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -11127,7 +11663,11 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_excel_sheet_dop_stat"/>
+                     <widget class="QComboBox" name="comboBox_excel_sheet_dop_stat">
+                      <property name="whatsThis">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Название листа в excel файле -- подставится автоматически. Надо только выбрать&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -11171,7 +11711,11 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_dop_stat_x"/>
+                     <widget class="QComboBox" name="comboBox_dop_stat_x">
+                      <property name="whatsThis">
+                       <string>Колонка №1/2 для выбора.</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -11193,7 +11737,11 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_dop_stat_y"/>
+                     <widget class="QComboBox" name="comboBox_dop_stat_y">
+                      <property name="whatsThis">
+                       <string>Колонка №2/2 для выбора.</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -11250,6 +11798,9 @@ border-radius: 10px;</string>
                          <font>
                           <pointsize>11</pointsize>
                          </font>
+                        </property>
+                        <property name="whatsThis">
+                         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Статистический тест для выбора.&lt;/p&gt;&lt;p&gt;Не используйте пермутационные тесты, если у вас много значений в колонках.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                         </property>
                         <item>
                          <property name="text">
@@ -11349,6 +11900,9 @@ border-radius: 10px;</string>
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>Альтернативная гипотеза.</string>
+                      </property>
                       <item>
                        <property name="text">
                         <string>two-sided</string>
@@ -11414,6 +11968,9 @@ border-radius: 10px;</string>
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Выводимое значение p.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -11427,6 +11984,9 @@ border-radius: 10px;</string>
                      <font>
                       <pointsize>11</pointsize>
                      </font>
+                    </property>
+                    <property name="whatsThis">
+                     <string>Рассчитать статистическую значимость между двумя столбцами.</string>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -11493,6 +12053,9 @@ border-radius: 10px;</string>
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>Путь к папке с excel файлом для кластеризации признаков по корреляции.</string>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -11515,7 +12078,11 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_cluster_file"/>
+                     <widget class="QComboBox" name="comboBox_cluster_file">
+                      <property name="whatsThis">
+                       <string>Название excel файла -- подставится автоматически. Надо только выбрать</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -11534,7 +12101,11 @@ border-radius: 10px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_cluster_excel_sheet"/>
+                     <widget class="QComboBox" name="comboBox_cluster_excel_sheet">
+                      <property name="whatsThis">
+                       <string>Название листа в excel файле -- подставится автоматически. Надо только выбрать</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -11584,6 +12155,9 @@ border-radius: 10px;</string>
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>Кол-во класстеров для выделения.</string>
+                      </property>
                       <property name="minimum">
                        <number>2</number>
                       </property>
@@ -11624,6 +12198,9 @@ border-radius: 10px;</string>
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>Координаты пространства для 2D отображения: MDS или PSA.</string>
+                      </property>
                       <item>
                        <property name="text">
                         <string>MDS</string>
@@ -11662,6 +12239,9 @@ border-radius: 10px;</string>
                         <pointsize>11</pointsize>
                        </font>
                       </property>
+                      <property name="whatsThis">
+                       <string>Размер пузырьков на графике.</string>
+                      </property>
                       <property name="minimum">
                        <number>1</number>
                       </property>
@@ -11681,6 +12261,9 @@ border-radius: 10px;</string>
                      <font>
                       <pointsize>11</pointsize>
                      </font>
+                    </property>
+                    <property name="whatsThis">
+                     <string>Сделать кластеризацию и сохранить график.</string>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">background-color: rgba(128, 160, 165, 50);
@@ -11762,7 +12345,11 @@ border-radius: 10px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_json_load"/>
+             <widget class="QLineEdit" name="lineEdit_json_load">
+              <property name="whatsThis">
+               <string>Полный путь к JSON файлу</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -11772,6 +12359,9 @@ border-radius: 10px;</string>
              <font>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="whatsThis">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Подгрузить настройки из JSON файла. &lt;/p&gt;&lt;p&gt;Это может быть полезно, если у вас есть готовый шаблон настроек для построения графиков и обработки и вам не хочется каждый раз при открытии приложения изменять настройки.&lt;/p&gt;&lt;p&gt;JSON файл должен быть по типу:&lt;/p&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;{&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;&amp;quot;rheoscan_report_name_exp&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;ФИО&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;&amp;quot;rheoscan_report_parameters_dict&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;:{&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;&amp;quot;AAA&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;&quot;&gt;&amp;quot;aaa&amp;quot;&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;   },&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;&amp;quot;check_approx_agg&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;&quot;&gt;true&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;/&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;&quot;&gt;&amp;quot;check_approx_deform&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;&quot;&gt;true&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;&quot;&gt;&lt;span style=&quot; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;p&gt;То есть ключ -- это имя объекта (в документации явно указано в подзаголовках), значение -- значение, которое в данное поле подставить.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgba(128, 160, 165, 50);

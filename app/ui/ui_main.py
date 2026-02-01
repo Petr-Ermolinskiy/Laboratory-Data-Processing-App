@@ -55,6 +55,7 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QHeaderView,
     QLabel,
+    QLayout,
     QLineEdit,
     QMainWindow,
     QPlainTextEdit,
@@ -1946,6 +1947,7 @@ class Ui_MainWindow(object):
         self.gridLayout_18.setObjectName("gridLayout_18")
         self.scrollArea_2 = QScrollArea(self.tab_15)
         self.scrollArea_2.setObjectName("scrollArea_2")
+        self.scrollArea_2.setMinimumSize(QSize(0, 170))
         self.scrollArea_2.setFrameShadow(QFrame.Sunken)
         self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.scrollArea_2.setWidgetResizable(True)
@@ -1956,6 +1958,7 @@ class Ui_MainWindow(object):
         self.gridLayout_21.setObjectName("gridLayout_21")
         self.gridLayout_20 = QGridLayout()
         self.gridLayout_20.setObjectName("gridLayout_20")
+        self.gridLayout_20.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.gridLayout_20.setContentsMargins(-1, 0, -1, -1)
         self.frame_2 = QFrame(self.scrollAreaWidgetContents_2)
         self.frame_2.setObjectName("frame_2")
@@ -2203,8 +2206,8 @@ class Ui_MainWindow(object):
 
         self.frame_3 = QFrame(self.scrollAreaWidgetContents_2)
         self.frame_3.setObjectName("frame_3")
-        sizePolicy11.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
-        self.frame_3.setSizePolicy(sizePolicy11)
+        sizePolicy14.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
+        self.frame_3.setSizePolicy(sizePolicy14)
         self.verticalLayout_20 = QVBoxLayout(self.frame_3)
         self.verticalLayout_20.setObjectName("verticalLayout_20")
         self.verticalLayout_20.setContentsMargins(6, 6, 6, 6)
@@ -2334,6 +2337,7 @@ class Ui_MainWindow(object):
         self.gridLayout_17.setObjectName("gridLayout_17")
         self.scrollArea_3 = QScrollArea(self.tab_16)
         self.scrollArea_3.setObjectName("scrollArea_3")
+        self.scrollArea_3.setMinimumSize(QSize(0, 170))
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
@@ -2590,6 +2594,7 @@ class Ui_MainWindow(object):
         self.gridLayout_12.setObjectName("gridLayout_12")
         self.scrollArea_4 = QScrollArea(self.tab_17)
         self.scrollArea_4.setObjectName("scrollArea_4")
+        self.scrollArea_4.setMinimumSize(QSize(0, 170))
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
@@ -2598,6 +2603,7 @@ class Ui_MainWindow(object):
         self.gridLayout_7.setObjectName("gridLayout_7")
         self.verticalLayout_56 = QVBoxLayout()
         self.verticalLayout_56.setObjectName("verticalLayout_56")
+        self.verticalLayout_56.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayout_141 = QHBoxLayout()
         self.horizontalLayout_141.setObjectName("horizontalLayout_141")
         self.horizontalLayout_21 = QHBoxLayout()
@@ -3877,7 +3883,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 666, 206))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 633, 206))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.tableWidget = QTableWidget(self.scrollAreaWidgetContents)
@@ -5753,6 +5759,29 @@ class Ui_MainWindow(object):
             )
         )
         self.label_version.setText(QCoreApplication.translate("MainWindow", "_._._", None))
+        # if QT_CONFIG(whatsthis)
+        self.Lab_stuff.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow", "\u043f\u043e\u0440\u043f\u043e\u043b\u0430\u0432", None
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.tabWidgetPage1.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow", "\u041f\u0440\u0438\u0440\u0440\u0440\u0432", None
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.btn_save_exel_csv.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u0440\u043e\u0438\u0437\u0432\u0435\u0441\u0442\u0438 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0443 \u0434\u0430\u043d\u043d\u044b\u0445 \u0438\u0441\u0445\u043e\u0434\u044f \u0438\u0437 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044b\u0445 \u043f\u0443\u0442\u0435\u0439 \u0438 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043a.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_save_exel_csv.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5776,6 +5805,16 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.main_path.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p>\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0430\u043c\u0438 \u0441 \u0444\u0430\u0439\u043b\u0430\u043c\u0438 RheoScan. </p><p>\u0412 \u0441\u043b\u0443\u0447\u0430\u0435 <span style=" text-decoration: underline;">\u0443\u0440\u043e\u0432\u0435\u043d\u044f \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a = 1</span> \u044d\u0442\u043e \u0434\u043e\u043b\u0436\u043d\u0430 \u0431\u044b\u0442\u044c \u043f\u0430\u043f\u043a\u0430 \u0441 3 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0430\u043c\u0438: </p><p><span style=" font-style:italic;">- agg</span></p><p><span style=" font-style:italic;">- deform</span></p><p><span style=" font-style:italic;">- stress</span></p><p>\u0424\u0430\u0439\u043b\u044b \u0443\u0436\u0435 \u0434\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u0440\u0430\u0441\u0441\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u044b. \u0415\u0441\u043b\u0438 \u044d\u0442\u043e \u043d\u0435'
+                " \u0442\u0430\u043a, \u0442\u043e \u0432\u044b\u0431\u0435\u0440\u0435\u0442\u0435 \u043f\u0443\u0442\u044c \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \u043d\u0438\u0436\u0435 \u0434\u043b\u044f \u0440\u0430\u0441\u0441\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0438. </p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.main_path.setText("")
         self.comboBox_RheoScan_path_save.setItemText(
             0,
@@ -5794,6 +5833,16 @@ class Ui_MainWindow(object):
             ),
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_RheoScan_path_save.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u043f\u043e \u0432\u0441\u0435\u043c \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0430\u043c (\u0432 \u0441\u043b\u0443\u0447\u0430\u0435, \u0435\u0441\u043b\u0438 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a &gt; 1), \u043b\u0438\u0431\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0432 \u043a\u043e\u0440\u043d\u0435\u0432\u043e\u0439 \u0434\u0438\u0440\u0440\u0435\u043a\u0442\u043e\u0440\u0438\u0438 (\u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044b\u0439 \u043f\u0443\u0442\u044c). \u0424\u0430\u0439\u043b\u044b excel \u0441\u043e\u0445\u0440\u0430\u043d\u044f\u0442\u0441\u044f \u0441 \u0442\u0435\u043c\u0438 \u0438\u043c\u0435\u043d\u0430\u043c\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044e"
+                "\u0442 \u043f\u0430\u043f\u043a\u0430\u043c, \u0432 \u043a\u043e\u0442\u043e\u0440\u044b\u0445 \u043b\u0435\u0436\u0430\u0442 3 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_approx_deform_raw_data.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5817,6 +5866,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.tua_1_agg.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0418\u043d\u043e\u0433\u0434\u0430 \u043d\u0430\u0434\u043e \u043f\u043e\u0434\u043e\u0431\u0440\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0439 \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438 \u0430\u0433\u0440\u0435\u0433\u0430\u0442\u043e\u0433\u0440\u0430\u043c\u043c\u044b. </p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.label_21.setToolTip(
             QCoreApplication.translate(
@@ -5833,6 +5891,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.tua_2_agg.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0418\u043d\u043e\u0433\u0434\u0430 \u043d\u0430\u0434\u043e \u043f\u043e\u0434\u043e\u0431\u0440\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0439 \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438 \u0430\u0433\u0440\u0435\u0433\u0430\u0442\u043e\u0433\u0440\u0430\u043c\u043c\u044b. </p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.label_23.setToolTip(
             QCoreApplication.translate(
@@ -5849,6 +5916,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.r2_def.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0418\u043d\u043e\u0433\u0434\u0430 \u043d\u0430\u0434\u043e \u043f\u043e\u0434\u043e\u0431\u0440\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0439 \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438. </p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.label_18.setToolTip(
             QCoreApplication.translate(
@@ -5865,6 +5941,31 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_n_max_deform.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0418\u043d\u043e\u0433\u0434\u0430 \u043d\u0430\u0434\u043e \u043f\u043e\u0434\u043e\u0431\u0440\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0439 \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438. </p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.check_approx_agg.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p>\u041f\u0440\u043e\u0438\u0437\u0432\u0435\u0441\u0442\u0438 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u044e \u043a\u0440\u0438\u0432\u043e\u0439 \u0441\u0432\u0435\u0442\u043e\u0440\u0430\u0441\u0441\u0435\u044f\u043d\u0438\u044f \u0434\u043b\u044f \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u0439 \u043a\u044e\u0432\u0435\u0442\u044b?</p><p>\u0410\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0441\u044f \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e 2 \u044d\u043a\u0441\u043f\u043e\u043d\u0435\u043d\u0442 \u0441 \u0440\u0430\u0437\u043d\u044b\u043c\u0438 \u0445\u0430\u0440\u0430\u043a\u0442\u0435\u0440\u043d\u044b\u043c\u0438 \u0432\u0440\u0435\u043c\u0435\u043d\u0430\u043c\u0438:</p><pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-ind'
+                "ent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#6a9955;\"># \u0444\u0443\u043d\u043a\u0446\u0438\u044f, \u043a\u043e\u0442\u043e\u0440\u043e\u0439 \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u043a\u0440\u0438\u0432\u0430\u044f</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;\">def </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#dcdcaa;\">f</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">(</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">x</span><span style=\" font-family:'Menlo'"
+                ",'Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">y0</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">A1</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">A2</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">t1</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco"
+                "','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">t2</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">):</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#c586c0;\">return </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">y0</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">+</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">A1</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">*</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;\">np</span><span"
+                " style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">.</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">exp</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">(</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">-</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">(</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">x</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">/</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">t1</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">)) </span><span style=\" fo"
+                "nt-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">+</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">A2</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">*</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;\">np</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">.</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">exp</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">(</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">-</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">(</span><span style=\" font-family:'Me"
+                "nlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">x</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">/</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">t2</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">))</span></pre><pre style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc; background-color:#1f1f1f;\"><br/></pre><p>\u0418\u0434\u0435\u0442 \u0440\u0430\u0441\u0447\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0445 \u043f\u043e\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u0435\u0439, \u0430 \u0442\u0430\u043a\u0436\u0435 \u0438\u043d\u0434\u0435\u043a\u0441 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u0434\u043b\u044f \u0440\u0430"
+                "\u0437\u043d\u044b\u0445 \u0432\u0440\u0435\u043c\u0435\u043d: 2.5, 5, 10, 50, 100 \u0438 MAX \u043a\u043e\u043b-\u0432\u0430 \u0441\u0435\u043a\u0443\u043d\u0434.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_approx_agg.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5872,6 +5973,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_figs_for_agg.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a\u0438 \u0434\u043b\u044f \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438 \u043a\u0440\u0438\u0432\u044b\u0445?</p><p>\u0420\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u0442\u0441\u044f \u0432\u0441\u0435\u0433\u0434\u0430 \u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u043d\u0430 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e\u0441\u0442\u044c \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_figs_for_agg.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5879,6 +5989,21 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_approx_deform.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u0440\u043e\u0438\u0437\u0432\u0435\u0441\u0442\u0438 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u044e \u043a\u0440\u0438\u0432\u043e\u0439 \u0438\u043d\u0434\u0435\u043a\u0441\u0430 \u0434\u0435\u0444\u043e\u0440\u043c\u0438\u0440\u0443\u0435\u043c\u043e\u0441\u0442\u0438 \u0438 \u0441\u0434\u0432\u0438\u0433\u043e\u0432\u043e\u0433\u043e \u043d\u0430\u043f\u0440\u044f\u0436\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u0431\u043e\u043b\u044c\u0448\u043e\u0439 \u043a\u044e\u0432\u0435\u0442\u044b?</p><p>\u0410\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0441\u044f \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e \u043b\u0438\u043d\u0435\u0439\u043d\u043e\u0439 \u0444\u0443\u043d\u043a\u0446\u0438\u0438, \u0433\u0434\u0435 \u043d\u0430\u043f\u0440\u044f\u0436\u0435\u043d\u0438\u044f"
+                " \u043f\u0440\u0438\u0432\u0435\u0434\u0435\u043d\u044b \u0432 \u043b\u043e\u0433\u0430\u0440\u0438\u0444\u043c:</p><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#6a9955;\"># \u0444\u0443\u043d\u043a\u0446\u0438\u044f, \u043a\u043e\u0442\u043e\u0440\u043e\u0439 \u0431\u0443\u0434\u0435\u043c \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c - \u043b\u0438\u043d\u0435\u0439\u043d\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u043e\u0442 \u043b\u043e\u0433\u0430\u0440\u0438\u0444\u043c\u0430 \u043d\u0430\u043f\u0440\u044f\u0436\u0435\u043d\u0438\u0439 \u0441\u0434\u0432\u0438\u0433\u0430</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0"
+                "px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;\">def</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#dcdcaa;\">f</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">(</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">x</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">: </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;\">float</span><span style=\" font-family:'Menlo','Monaco','Cour"
+                "ier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">a</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">: </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;\">float</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">b</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">: </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;\">float</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">):</span></pre><pre style=\" margin-top:0px; margin-bottom:0px"
+                "; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;&quot;&quot;\u041b\u0438\u043d\u0435\u0439\u043d\u0430\u044f \u0444\u0443\u043d\u043a\u0446\u0438\u044f.&quot;&quot;&quot;</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#c586c0;\">return</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cd"
+                "cfe;\">a</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">*</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">x</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">+</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">b</span></pre><p>\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440"
+                '\u044b \u043f\u0440\u0435\u0434\u0435\u043b\u0430 \u0442\u0435\u043a\u0443\u0447\u0435\u0441\u0442\u0438 (<span style=" font-weight:700;">b</span>) \u0438 \u0432\u044f\u0437\u043a\u043e\u0441\u0442\u0438 \u0432\u043d\u0443\u0442\u0440\u0435\u043a\u043b\u0435\u0442\u043e\u0447\u043d\u043e\u0433\u043e \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u043c\u043e\u0433\u043e (<span style=" font-weight:700;">1/a</span>).</p></body></html>',
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_approx_deform.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5886,6 +6011,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_for_deform.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a\u0438 \u0434\u043b\u044f \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438 \u043a\u0440\u0438\u0432\u044b\u0445?</p><p>\u0420\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u0442\u0441\u044f \u0432\u0441\u0435\u0433\u0434\u0430 \u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u043d\u0430 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e\u0441\u0442\u044c \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u0438.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_for_deform.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5893,6 +6027,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_stat_for_column.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0421\u043e\u0437\u0434\u0430\u043d\u0438\u0435 \u0434\u043e\u043f. \u043b\u0438\u0441\u0442\u043e\u0432, \u0433\u0434\u0435 \u0431\u0443\u0434\u0435\u0442 \u043f\u0440\u0438\u0432\u0435\u0434\u0435\u043d\u0430 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430 \u043f\u043e \u0441\u0442\u043e\u043b\u0431\u0446\u0430\u043c.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_stat_for_column.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5909,6 +6052,15 @@ class Ui_MainWindow(object):
             )
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.vibros_delete.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p>\u0423\u0431\u0440\u0430\u0442\u044c \u0432\u044b\u0431\u0440\u043e\u0441\u044b. \u0418\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c, \u043a\u043e\u0433\u0434\u0430 \u0432\u044b \u043e\u0431\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0435\u0442\u0435 <span style=" font-weight:700;">\u0442\u043e\u043b\u044c\u043a\u043e 1 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430</span>! </p></body></html>',
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.vibros_delete.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5916,6 +6068,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.iqr_vibros.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041a\u043e\u044d\u0444\u0444\u0438\u0446\u0438\u0435\u043d\u0442 \u043a\u043e\u043b-\u0432\u0430 \u0438\u043d\u0442\u0435\u0440\u043a\u0432\u0430\u043d\u0442\u0438\u043b\u044c\u043d\u044b\u0445 \u0440\u0430\u0437\u043c\u0430\u0445\u043e\u0432 \u0434\u043b\u044f \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u0432\u044b\u0431\u0440\u043e\u0441\u043e\u0432.</p><p>\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f, \u0442\u043e\u043b\u044c\u043a\u043e \u043a\u043e\u0433\u0434\u0430 \u043e\u0431\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0435\u0442\u0435 1 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430 \u0438\u043b\u0438 1 \u043e\u0431\u0440\u0430\u0437\u0435\u0446.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.label_11.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5955,6 +6116,26 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_level.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u043e\u0431\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0442\u044c \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043f\u0430\u043f\u043e\u043a \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432/\u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432 \u043e\u0434\u043d\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e.</p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0435\u0441\u043b\u0438 \u0432\u044b \u0432\u0432\u0435\u043b\u0438 \u0432\u044b\u0448\u0435 \u043f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 \u043f\u0430\u043f\u043a\u0430\u043c\u0438, \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u044f \u043a\u043e\u0442\u043e\u0440\u044b\u0445 \u0441\u043e\u0432\u043f\u0430\u0434\u0430\u0435\u0442 \u0441 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435\u043c \u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432"
+                ', \u0438 \u0432 \u043a\u0430\u0436\u0434\u043e\u0439 \u0442\u0430\u043a\u043e\u0439 \u043f\u0430\u043f\u043a\u0435 \u0435\u0441\u0442\u044c 3 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438 (agg, stress, deform), \u0442\u043e \u0434\u043b\u044f \u043e\u0431\u043d\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u043d\u0443\u0436\u043d\u043e \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c <span style=" font-weight:700;">\u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a=2</span>. \u0421\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e, \u0447\u0435\u043c \u0431\u043e\u043b\u044c\u0448\u0435 \u0443 \u0432\u0430\u0441 \u0432\u043b\u043e\u0436\u0435\u043d\u043d\u044b\u0445 \u043f\u0430\u043f\u043e\u043a \u0434\u043e 3 \u0438\u0441\u043a\u043e\u043c\u044b\u0445 \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a, \u0442\u0435\u043c \u0431\u043e\u043b\u044c'
+                "\u0448\u0435 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a \u0432\u0430\u043c \u043d\u0443\u0436\u043d\u043e \u0441\u043b\u0435\u043b\u0430\u0442\u044c.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.check_save_exel.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c excel \u0444\u0430\u0439\u043b/\u0444\u0430\u0439\u043b\u044b. \u0411\u0443\u0434\u0435\u0442 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043b\u0438\u0441\u0442\u043e\u0432 \u0432 \u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e\u0441\u0442\u0438 \u043e\u0442 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0445 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043a.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_save_exel.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5962,6 +6143,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_save_csv.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c csv \u0444\u0430\u0439\u043b/\u0444\u0430\u0439\u043b\u044b. \u0411\u0443\u0434\u0435\u0442 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0444\u0430\u0439\u043b\u043e\u0432 \u0432 \u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e\u0441\u0442\u0438 \u043e\u0442 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0445 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043a.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_save_csv.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5969,6 +6159,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_save_RheoScan_overall.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0421\u0432\u043e\u0434\u043d\u0430\u044f \u0442\u0430\u0431\u043b\u0438\u0446\u0430 \u043f\u043e \u0432\u0441\u0435\u043c \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f\u043c. \u041f\u043e \u0431\u043e\u043b\u044c\u0448\u0435\u0439 \u0447\u0430\u0441\u0442\u0438 \u043d\u0435 \u043d\u0443\u0436\u043d\u0430 \u0438\u0437-\u0437\u0430 \u043d\u0430\u043b\u0438\u0447\u0438\u044f \u0434\u043e\u043f. \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u0434\u0430\u043d\u043d\u044b\u0445 RheoScan (\u0441\u043c. 4 \u0432\u043a\u043b\u0430\u0434\u043a\u0443).</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_save_RheoScan_overall.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -5992,6 +6191,16 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.separator_for_data.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u0434\u0430\u043d\u043d\u044b\u0445. \u0411\u044b\u0432\u0430\u0435\u0442 \u043f\u043e\u043b\u0435\u0437\u043d\u043e \u0434\u043b\u044f \u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432.</p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0443 \u0432\u0430\u0441 \u0432\u0441\u0435 \u043e\u0431\u0440\u0430\u0437\u0446\u044b \u043d\u0430\u0437\u044b\u0432\u0430\u044e\u0441\u044f \u043f\u043e \u0442\u0438\u043f\u0443 &quot;sample-##-##&quot;.</p><p>\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u0435\u043c \u0434\u0435\u0444\u0438\u0441 &quot;-&quot; \u0438 \u0443 \u0432\u0430\u0441 \u043f\u043e\u044f\u0432\u0438\u0442\u0441\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u0441\u0442\u0440\u043e\u043b\u0431\u0446\u044b.</p></bod"
+                "y></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.separator_for_data.setText("")
         self.check_name_rheoscan.setText(
             QCoreApplication.translate(
@@ -6016,12 +6225,39 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_agg.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p>\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u043b\u0438 \u043f\u0430\u043f\u043a\u0443 <span style=" font-weight:700;">agg</span>. \u0418\u043d\u043e\u0433\u0434\u0430 \u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u043e\u0434\u043d\u0443 \u043a\u0430\u043a\u0443\u044e-\u0442\u043e \u043f\u0430\u043f\u043a\u0443, \u0430 \u043d\u0435 \u0432\u0441\u0435 \u0441\u0440\u0430\u0437\u0443.</p></body></html>',
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_agg.setText(
             QCoreApplication.translate("MainWindow", "\u041f\u0430\u043f\u043a\u0430 agg", None)
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_stress.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p>\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u043b\u0438 \u043f\u0430\u043f\u043a\u0443 <span style=" font-weight:700;">stress</span>. \u0418\u043d\u043e\u0433\u0434\u0430 \u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u043e\u0434\u043d\u0443 \u043a\u0430\u043a\u0443\u044e-\u0442\u043e \u043f\u0430\u043f\u043a\u0443, \u0430 \u043d\u0435 \u0432\u0441\u0435 \u0441\u0440\u0430\u0437\u0443.</p></body></html>',
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_stress.setText(
             QCoreApplication.translate("MainWindow", "\u041f\u0430\u043f\u043a\u0430 stress", None)
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_deform.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p>\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u043b\u0438 \u043f\u0430\u043f\u043a\u0443 <span style=" font-weight:700;">deform</span>. \u0418\u043d\u043e\u0433\u0434\u0430 \u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u043e\u0434\u043d\u0443 \u043a\u0430\u043a\u0443\u044e-\u0442\u043e \u043f\u0430\u043f\u043a\u0443, \u0430 \u043d\u0435 \u0432\u0441\u0435 \u0441\u0440\u0430\u0437\u0443.</p></body></html>',
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_deform.setText(
             QCoreApplication.translate("MainWindow", "\u041f\u0430\u043f\u043a\u0430 deform", None)
         )
@@ -6034,6 +6270,22 @@ class Ui_MainWindow(object):
             )
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.check_dop_CSS_parameter.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 CSS, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0432\u044b\u0442\u0430\u0441\u043a\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u0438\u0437 \u0433\u0440\u0430\u0444\u0438\u043a\u0430: \u0441\u0432\u0435\u0442\u043e\u0440\u0430\u0441\u0441\u0435\u044f\u043d\u0438\u0435 VS \u043d\u0430\u043f\u0440\u044f\u0436\u0435\u043d\u0438\u044f \u0441\u0434\u0432\u0438\u0433\u0430. </p><p>\u0418\u0434\u0435\u0442 \u0430\u043f\u043f\u0440\u043e\u043a\u0441\u0438\u043c\u0430\u0446\u0438\u044f \u044d\u043a\u0441\u043f\u043e\u043d\u0435\u043d\u0442\u043d\u043e\u0439 \u0438 \u0432\u044b\u0442\u0430\u0441\u043a\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 \u0437\u0430\u0442\u0443\u0445\u0430\u043d\u0438\u044f (<span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; font-weight:700; color:#000000;\">ne"
+                "w_parameter</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">)</span>.</p><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">                    (</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">_</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">_</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">new_parameter</span><span style=\" font-family:'Menlo',"
+                "'Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">), </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">_</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">=</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;\">opt</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">.</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#dcdcaa;\">curve_fit</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">(</span></pre><pre style=\" margin-top:0px; margin-bottom:0px;"
+                " margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;\">lambda</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">t</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">a</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">b</span><span style=\" font-family:'Menlo',"
+                "'Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">c</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">: </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">a</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">+</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">b</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; "
+                "font-size:12px; color:#d4d4d4;\">*</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#4ec9b0;\">np</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">.</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">exp</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">(</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d4;\">-</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">t</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#d4d4d"
+                "4;\">/</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">c</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">),</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">                        \u0441\u0434\u0432\u0438\u0433\u043e\u0432\u043e\u0435 \u043d\u0430\u043f\u0440\u044f\u0436\u0435\u043d\u0438\u0435,</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">                 "
+                "       \u0438\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u043e\u0441\u0442\u044c \u043e\u0431\u0440\u0430\u0442\u043d\u043e\u0433\u043e \u0441\u0432\u0435\u0442\u043e\u0440\u0430\u0441\u0441\u0435\u044f\u043d\u0438\u044f,</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">                    )</span></pre></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_dop_CSS_parameter.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6043,7 +6295,7 @@ class Ui_MainWindow(object):
         )
         self.Lab_stuff.setTabText(
             self.Lab_stuff.indexOf(self.tabWidgetPage1),
-            QCoreApplication.translate("MainWindow", " RheoScan", None),
+            QCoreApplication.translate("MainWindow", "RheoScan", None),
         )
         self.lb_path_2.setText(
             QCoreApplication.translate(
@@ -6061,6 +6313,15 @@ class Ui_MainWindow(object):
             )
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.path_for_biola.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0412 \u0434\u0430\u043d\u043d\u043e\u0435 \u043f\u043e\u043b\u0435 \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u043f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u0439 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f txt \u0444\u0430\u0439\u043b \u0441 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f\u043c\u0438 biola (\u0431\u043e\u0440\u043d \u0438 \u0444\u043b\u0443\u043a\u0442\u0443\u0430\u0446\u0438\u0438) \u0438\u043b\u0438 pdf \u0444\u0430\u0439\u043b \u0441 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f\u043c\u0438 \u043a\u043e\u043d\u0446\u0435\u043d\u0442\u0440\u0430\u0446\u0438\u0438 \u0442\u0440\u043e\u043c\u0431\u043e\u0446\u0438\u0442\u043e\u0432.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.path_for_biola.setText("")
         # if QT_CONFIG(tooltip)
         self.lb_path_3.setToolTip(
@@ -6078,6 +6339,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_biola.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0412\u044b\u0431\u0435\u0440\u0435\u0442\u0435 txt \u0444\u0430\u0439\u043b, \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u0438\u0437 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b \u0434\u043b\u044f \u0411\u0438\u043e\u043b\u044b.</p><p>\u0424\u0430\u0439\u043b\u044b \u043f\u043e\u044f\u0432\u043b\u044f\u044e\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u043f\u0440\u0438 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0438 \u043f\u0443\u0442\u044f \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 \u0444\u0430\u0439\u043b\u043e\u043c</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_path_16.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6085,6 +6355,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_biola_concentration.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0412\u044b\u0431\u0435\u0440\u0435\u0442\u0435 pdf \u0444\u0430\u0439\u043b \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438 \u043a\u0430\u0441\u0430\u0442\u0435\u043b\u044c\u043d\u043e \u043a\u043e\u043d\u0446\u0435\u043d\u0442\u0440\u0430\u0446\u0438\u0438 \u0442\u0440\u043e\u043c\u0431\u043e\u0446\u0438\u0442\u043e\u0432.</p><p>\u0424\u0430\u0439\u043b\u044b \u043f\u043e\u044f\u0432\u043b\u044f\u044e\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u043f\u0440\u0438 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0438 \u043f\u0443\u0442\u044f \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 \u0444\u0430\u0439\u043b\u043e\u043c</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.label_15.setToolTip(
             QCoreApplication.translate(
@@ -6104,11 +6383,29 @@ class Ui_MainWindow(object):
         self.label_16.setText(
             QCoreApplication.translate("MainWindow", "\u0411\u043e\u0440\u043d", None)
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_biola_born_odd.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0414\u043b\u0438\u043d\u0430 \u043e\u043a\u043d\u0430 \u0434\u043b\u044f \u0441\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u044f \u0434\u043b\u044f \u0434\u0430\u043d\u043d\u044b\u0445 \u0441\u0432\u0435\u0442\u043e\u043f\u0440\u043e\u043f\u0443\u0441\u043a\u0430\u043d\u0438\u044f \u043f\u043e \u0411\u043e\u0440\u043d\u0443. \u041f\u043e\u0434\u0431\u0438\u0440\u0430\u043b\u043e\u0441\u044c \u044d\u043c\u043f\u0438\u0440\u0438\u0447\u0435\u0441\u043a\u0438, \u0447\u0442\u043e\u0431\u044b \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u043c, \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u043d\u043d\u044b\u043c \u0432 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0438 \u0411\u0438\u043e\u043b\u0430",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.label_17.setText(
             QCoreApplication.translate(
                 "MainWindow", "\u0424\u043b\u0443\u043a\u0442\u0430\u0446\u0438\u0438", None
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_biola_fluc_odd.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0414\u043b\u0438\u043d\u0430 \u043e\u043a\u043d\u0430 \u0434\u043b\u044f \u0441\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u044f \u0434\u043b\u044f \u0434\u0430\u043d\u043d\u044b\u0445 \u0444\u043b\u0443\u043a\u0442\u0443\u0430\u0446\u0438\u0439 \u0441\u0432\u0435\u0442\u043e\u043f\u0440\u043e\u043f\u0443\u0441\u043a\u0430\u043d\u0438\u044f. \u041f\u043e\u0434\u0431\u0438\u0440\u0430\u043b\u043e\u0441\u044c \u044d\u043c\u043f\u0438\u0440\u0438\u0447\u0435\u0441\u043a\u0438, \u0447\u0442\u043e\u0431\u044b \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u043c, \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u043d\u043d\u044b\u043c \u0432 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0438 \u0411\u0438\u043e\u043b\u0430</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.label_12.setToolTip(
             QCoreApplication.translate(
@@ -6128,11 +6425,38 @@ class Ui_MainWindow(object):
         self.label_13.setText(
             QCoreApplication.translate("MainWindow", "\u0411\u043e\u0440\u043d", None)
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_biola_born.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0414\u043b\u0438\u043d\u0430 \u043e\u043a\u043d\u0430 \u0434\u043b\u044f \u0441\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u044f \u0434\u043b\u044f \u0434\u0430\u043d\u043d\u044b\u0445 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u043d\u043e\u0439 \u0441\u0432\u0435\u0442\u043e\u043f\u0440\u043e\u043f\u0443\u0441\u043a\u0430\u043d\u0438\u044f \u043f\u043e \u0411\u043e\u0440\u043d\u0443. \u041f\u043e\u0434\u0431\u0438\u0440\u0430\u043b\u043e\u0441\u044c \u044d\u043c\u043f\u0438\u0440\u0438\u0447\u0435\u0441\u043a\u0438, \u0447\u0442\u043e\u0431\u044b \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u043c, \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u043d\u043d\u044b\u043c \u0432 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0438 \u0411\u0438\u043e\u043b\u0430</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.label_14.setText(
             QCoreApplication.translate(
                 "MainWindow", "\u0424\u043b\u0443\u043a\u0442\u0430\u0446\u0438\u0438", None
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_biola_fluc.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0414\u043b\u0438\u043d\u0430 \u043e\u043a\u043d\u0430 \u0434\u043b\u044f \u0441\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u044f \u0434\u043b\u044f \u0434\u0430\u043d\u043d\u044b\u0445 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u043d\u043e\u0439 \u0444\u043b\u0443\u043a\u0442\u0443\u0430\u0446\u0438\u0439 \u0441\u0432\u0435\u0442\u043e\u043f\u0440\u043e\u043f\u0443\u0441\u043a\u0430\u043d\u0438\u044f. \u041f\u043e\u0434\u0431\u0438\u0440\u0430\u043b\u043e\u0441\u044c \u044d\u043c\u043f\u0438\u0440\u0438\u0447\u0435\u0441\u043a\u0438, \u0447\u0442\u043e\u0431\u044b \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u043c, \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u043d\u043d\u044b\u043c \u0432 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0438 \u0411\u0438\u043e\u043b\u0430</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.check_biola_plot_figs.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041d\u0430\u0447\u0435\u0440\u0442\u0438\u0442\u044c \u043b\u0438 \u0443\u0441\u0440\u0435\u0434\u043d\u0435\u043d\u043d\u044b\u0435 \u0433\u0440\u0430\u0444\u0438\u043a\u0438 \u043f\u043e \u0411\u043e\u0440\u043d\u0443 \u0438 \u0444\u043b\u0443\u043a\u0442\u0443\u0430\u0446\u0438\u044f\u043c, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u043d\u044b\u043c?</p><p>\u0418\u043c\u0435\u0435\u0442 \u043c\u0435\u0441\u0442\u043e \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u0434\u043b\u044f \u0433\u0440\u0443\u043f\u043f\u044b \u043e\u0434\u043d\u0430\u043a\u043e\u0432\u044b\u0445 \u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432 \u0438\u043b\u0438 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430.</p><p><br/></p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_biola_plot_figs.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6154,6 +6478,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.doubleSpinBox_Biola.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_color_pal_box_10.setToolTip(
             QCoreApplication.translate(
@@ -6203,6 +6536,24 @@ class Ui_MainWindow(object):
             ),
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_Biola_SD_or.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0438 \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0430\u0445",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.check_setka_biola.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0421\u0434\u0435\u043b\u0430\u0442\u044c \u0441\u0435\u0442\u043a\u0443 \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0430\u0445?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_setka_biola.setText(
             QCoreApplication.translate("MainWindow", "\u0421\u0435\u0442\u043a\u0430", None)
         )
@@ -6216,6 +6567,24 @@ class Ui_MainWindow(object):
             1, QCoreApplication.translate("MainWindow", "Eng", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_Biola_language.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u042f\u0437\u044b\u043a \u0434\u043b\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u043e\u0432",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.btn_biola.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0438\u0437 txt \u0444\u0430\u0439\u043b\u0430",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_biola.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6223,6 +6592,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.btn_biola_concentration.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0438\u0437 pdf \u0444\u0430\u0439\u043b\u0430",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_biola_concentration.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6250,6 +6628,18 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.path_for_LT.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p><span style=\" font-family:'Helvetica';\">\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0432 \u0434\u0430\u043d\u043d\u043e\u0435 \u043f\u043e\u043b\u0435 \u0432\u0432\u0435\u0441\u0442\u0438 \u043f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0430\u043c\u0438 \u0440\u0430\u0437\u043d\u044b\u0445 \u043a\u043e\u043d\u0446\u0435\u043d\u0442\u0440\u0430\u0446\u0438\u0439/\u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432/\u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432.</span></p><p><span style=\" font-family:'Helvetica';\">\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0432 \u0434\u0430\u043d\u043d\u043e\u0439 \u043f\u0430\u043f\u043a\u0435 \u043c\u043e\u0433\u0443\u0442 \u0431\u044b\u0442\u044c \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438 \u0441 \u043a\u043e\u043d\u0446\u0435\u043d\u0442\u0440\u0430\u0446\u0438\u044f\u043c\u0438:</span></p><p><span style=\" font-family:'Helvetica';\">0</span></p><p"
+                "><span style=\" font-family:'Helvetica';\">1</span></p><p><span style=\" font-family:'Helvetica';\">10</span></p><p><span style=\" font-family:'Helvetica';\">100</span></p><p><br/></p><p><span style=\" font-family:'Helvetica';\">\u0412 \u043a\u0430\u0436\u0434\u043e\u0439 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0435 \u0434\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u0432\u0438\u0434\u0435\u043e, \u0437\u0430\u043f\u0438\u0441\u0430\u043d\u043d\u044b\u0435 \u0447\u0435\u0440\u0435\u0437 \u043a\u0430\u043a\u043e\u0439-\u0442\u043e \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c. \u0421\u0438\u043b\u0430 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u0435\u0442\u0441\u044f, \u043a\u0430\u043a FA/fa/Fa; \u0441\u0438\u043b\u0430 \u0434\u0435\u0437\u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438, \u043a\u0430\u043a FD/fd/Fd. \u0421\u0438\u043b\u0430 \u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432"
+                "\u0438\u044f \u044d\u0440\u0438\u0442\u0440\u043e\u0446\u0438\u0442\u0430 \u0438 \u044d\u043d\u0434\u043e\u0442\u0435\u043b\u0438\u044f, \u043a\u0430\u043a End/end. \u0412\u0430\u0436\u043d\u043e, \u0447\u0442\u043e\u0431\u044b \u043f\u0435\u0440\u0432\u044b\u0435 2 \u0431\u0443\u043a\u0432\u044b \u0438\u043c\u0435\u043d\u0438 \u0441\u0438\u043b\u044b \u0431\u044b\u043b\u043e \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u043c. \u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0441\u0438\u043b\u044b \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u0430\u043d\u043e \u0431\u0435\u0437 \u0434\u043e\u043f. \u0417\u043d\u0430\u043a\u043e\u0432 (\u043a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0442\u0430\u043a \u043d\u0435\u043b\u044c\u0437\u044f: \u00abFd3-12.2+.avi\u00bb. \u0411\u0443\u0434\u0443\u0442 \u043e\u0431\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u044f \u0442\u043e\u043b\u044c"
+                "\u043a\u043e \u0432\u0438\u0434\u0435\u043e\u0444\u0430\u0439\u043b\u043e\u0432. \u0422.\u0435. \u043c\u0435\u0436\u0434\u0443 \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u0435\u043c \u0438 \u00ab.avi\u00bb \u0434\u043e\u043b\u0436\u043d\u0430 \u0431\u044b\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u0441\u0438\u043b\u0430.\u00a0</span></p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.path_for_LT.setText("")
         # if QT_CONFIG(tooltip)
         self.lb_path_13.setToolTip(
@@ -6267,6 +6657,16 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.sep_for_LT.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p><span style=\" font-family:'Helvetica';\">\u0420\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u0434\u043b\u044f \u0438\u043c\u0435\u043d\u0438 \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a. \u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u0432 excel \u0444\u0430\u0439\u043b\u0435 \u0431\u044b\u043b\u0438 \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u044b \u0438\u043d\u0442\u0435\u0440\u0438\u0441\u0443\u044e\u0449\u0438\u0435 \u0438\u043c\u0435\u043d\u0430. </span></p><p><span style=\" font-family:'Helvetica';\">\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0435\u0441\u043b\u0438 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438 \u043d\u0430\u0437\u044b\u0432\u0430\u043b\u0438\u0441\u044c \u043f\u043e \u0448\u0430\u0431\u043b\u043e\u043d\u0443 &quot;\u043e\u0431\u0440\u0430\u0437\u0435\u0446-\u043a\u043e\u043d\u0446\u0435\u043d\u0442\u0440\u0430\u0446\u0438\u044f&quot;:</span></p><p><span style=\" font-family:'Helvetica';\">de"
+                "xtran-0</span></p><p><span style=\" font-family:'Helvetica';\">dextran-10</span></p><p><span style=\" font-family:'Helvetica';\">dextran-100</span></p><p><span style=\" font-family:'Helvetica';\">\u0422\u043e \u0441 \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u0435\u043c &quot;-&quot; \u0438 \u043f\u043e\u0437\u0438\u0446\u0438\u0435\u0439 \u0438\u043c\u0435\u043d\u0438 &quot;2&quot; \u0432 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435 \u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432 \u0432 excel \u0431\u0443\u0434\u0443\u0442: [0, 10, 100]</span></p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.sep_for_LT.setText("")
         # if QT_CONFIG(tooltip)
         self.lb_path_15.setToolTip(
@@ -6284,6 +6684,16 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.position.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p><span style=" font-family:\'Helvetica\';">\u041f\u043e\u0437\u0438\u0446\u0438\u044f, \u043d\u0430 \u043a\u043e\u0442\u043e\u0440\u043e\u0439 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0438\u043c\u044f \u043f\u0440\u0438 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u0438 \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044f \u0434\u043b\u044f \u0438\u043c\u0435\u043d\u0438 \u043f\u043e\u0434\u043f\u0430\u043f\u043e\u043a. </span></p><p><span style=" font-family:\'Helvetica\';">\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0435\u0441\u043b\u0438 \u043f\u043e\u0434\u043f\u0430\u043f\u043a\u0438 \u043d\u0430\u0437\u044b\u0432\u0430\u043b\u0438\u0441\u044c \u043f\u043e \u0448\u0430\u0431\u043b\u043e\u043d\u0443 &quot;\u043e\u0431\u0440\u0430\u0437\u0435\u0446-\u043a\u043e\u043d\u0446\u0435\u043d\u0442\u0440\u0430\u0446\u0438\u044f&quot;:</span></p><p><span style=" font-family:\'Helvetica\';">dextran-0</span></p><p><span style=" fo'
+                "nt-family:'Helvetica';\">dextran-10</span></p><p><span style=\" font-family:'Helvetica';\">dextran-100</span></p><p><span style=\" font-family:'Helvetica';\">\u0422\u043e \u0441 \u043f\u043e\u0437\u0438\u0446\u0438\u0435\u0439 &quot;2&quot; \u0432 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435 \u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432 \u0432 excel \u0431\u0443\u0434\u0443\u0442: [0, 10, 100]</span></p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_path_14.setToolTip(
             QCoreApplication.translate(
@@ -6300,6 +6710,16 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.sep_for_LT_values.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p><span style=\" font-family:'Helvetica';\">\u0412\u0430\u0436\u043d\u043e \u0432\u043d\u0435\u0441\u0442\u0438 \u0432 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0443 \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u044f \u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0441\u0438\u043b\u044b.</span></p><p><span style=\" font-family:'Helvetica';\">\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0447\u0430\u0449\u0435 \u0432\u0441\u0435\u0433\u043e \u044d\u0442\u043e &quot;-&quot;. \u0421\u0438\u043b\u044b \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u0432 \u044d\u0442\u043e\u043c \u0441\u043b\u0443\u0447\u0430\u0435 \u0434\u043b\u044f \u043f\u0440\u0438\u043c\u0435\u0440\u0430:</span></p><p><span style=\" font-family:'Helvetica';\">FA-19.9.avi</span></p><p><span style=\" font-family:'Helvetica';\">fa-17.0.avi</span></p><p><span style"
+                "=\" font-family:'Helvetica';\">Fd-11.1.avi</span></p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.sep_for_LT_values.setText(QCoreApplication.translate("MainWindow", "-", None))
         # if QT_CONFIG(tooltip)
         self.lb_stattest_13.setToolTip(
@@ -6332,6 +6752,24 @@ class Ui_MainWindow(object):
             ),
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_LT_calibration.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430 \u0434\u043b\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u043f\u0443\u0447\u043a\u0430 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043a\u0430\u043a \u043b\u0438\u043d\u0435\u0439\u043d\u043e\u0439, \u0442\u0430\u043a \u0438 \u044d\u043a\u0441\u043f\u043e\u043d\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0439. \u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u043e\u0434\u043d\u043e</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.btn_LT.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0440\u043e\u0438\u0437\u0432\u0435\u0441\u0442\u0438 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0443 \u0434\u0430\u043d\u043d\u044b\u0445 \u0434\u043b\u044f \u043b\u0430\u0437\u0435\u0440\u043d\u043e\u0433\u043e \u043f\u0438\u043d\u0446\u0435\u0442\u0430",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_LT.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6339,6 +6777,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_LT_raw_data.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0432 \u0440\u0430\u0437\u0432\u0435\u0440\u043d\u0443\u0442\u043e\u043c \u0432\u0438\u0434\u0435? ",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_LT_raw_data.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6554,6 +7001,15 @@ class Ui_MainWindow(object):
                 None,
             ),
         )
+        # if QT_CONFIG(whatsthis)
+        self.tabWidget_2.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 excel \u0444\u0430\u0439\u043b\u043e\u043c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_path_for_plot.setToolTip(
             QCoreApplication.translate(
@@ -6570,6 +7026,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.path_for_plot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 excel \u0444\u0430\u0439\u043b\u043e\u043c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.path_for_plot.setText("")
         self.lb_exel_name.setText(
             QCoreApplication.translate(
@@ -6578,6 +7043,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.check_box_figs_all_sheets.setToolTip(
             QCoreApplication.translate(
@@ -6587,6 +7061,15 @@ class Ui_MainWindow(object):
             )
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.check_box_figs_all_sheets.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0440\u043e\u0438\u0437\u0432\u0435\u0441\u0442\u0438 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0443 \u043f\u043e \u0432\u0441\u0435\u043c \u043b\u0438\u0441\u0442\u0430\u043c \u0432 excel \u0444\u0430\u0439\u043b\u0435?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_box_figs_all_sheets.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6601,6 +7084,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_figs_sheets.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430 \u0432 excel \u0444\u0430\u0439\u043b\u0435 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name.setToolTip(
             QCoreApplication.translate(
@@ -6617,6 +7109,24 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_2.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0441\u0442\u043e\u043b\u0431\u0446\u0430 \u0434\u043b\u044f \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0430\u043b\u044c\u043d\u044b\u0445 \u0433\u0440\u0443\u043f\u043f.</p><p>\u042d\u0442\u043e \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043b\u044e\u0431\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430, \u0433\u0434\u0435 \u0435\u0441\u0442\u044c \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0435 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438.</p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, &quot;\u041f\u043e\u043b&quot;.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.checkBox_point_comma_separator.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435 \u0437\u0430\u043f\u044f\u0442\u0430\u044f?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.checkBox_point_comma_separator.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6624,12 +7134,30 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_box_plot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a box plot, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u043c \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u044b \u0440\u0430\u0437\u043d\u044b\u0435 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438?</p><p>\u0412 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u0439 \u0432\u043a\u043b\u0430\u0434\u043a\u0435 \u0432\u043d\u0438\u0437\u0443 \u043c\u043e\u0436\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_box_plot.setText(QCoreApplication.translate("MainWindow", "Box plot", None))
         # if QT_CONFIG(tooltip)
         self.check_corr_matrix.setToolTip(
             QCoreApplication.translate("MainWindow", "seaborn.heatmap", None)
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.check_corr_matrix.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u043c\u0430\u0442\u0440\u0438\u0446\u044b? \u041e\u0434\u043d\u0430 \u043c\u0430\u0442\u0440\u0438\u0446\u0430 \u043d\u0430 \u043a\u0430\u0436\u0434\u0443\u044e \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044e.</p><p>\u0412 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u0439 \u0432\u043a\u043b\u0430\u0434\u043a\u0435 \u0432\u043d\u0438\u0437\u0443 \u043c\u043e\u0436\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_corr_matrix.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6637,6 +7165,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_corr_figs.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0433\u0440\u0430\u0444\u0438\u043a, \u0433\u0434\u0435 \u0446\u0432\u0435\u0442\u0430\u043c\u0438 \u0431\u0443\u0434\u0443\u0442 \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u044b \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438?</p><p>\u0412 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u0439 \u0432\u043a\u043b\u0430\u0434\u043a\u0435 \u0432\u043d\u0438\u0437\u0443 \u043c\u043e\u0436\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_corr_figs.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6649,6 +7186,15 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.pairplot", None)
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.check_box_pairplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u043c\u0430\u0442\u0440\u0438\u0446\u0443 \u0440\u0430\u0441\u0441\u0435\u044f\u043d\u0438\u044f, \u0433\u0434\u0435 \u0446\u0432\u0435\u0442\u0430\u043c\u0438 \u0431\u0443\u0434\u0443\u0442 \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u044b \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438?</p><p>\u0412 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u0439 \u0432\u043a\u043b\u0430\u0434\u043a\u0435 \u0432\u043d\u0438\u0437\u0443 \u043c\u043e\u0436\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_box_pairplot.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6661,6 +7207,15 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.jointplot", None)
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.check_jointplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0434\u0432\u0443\u043c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c?</p><p>\u0412 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u0439 \u0432\u043a\u043b\u0430\u0434\u043a\u0435 \u0432\u043d\u0438\u0437\u0443 \u043c\u043e\u0436\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_jointplot.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6668,6 +7223,16 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_corr_one_parameter.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u044e \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430? </p><p>\u0422\u043e \u0435\u0441\u0442\u044c \u0441\u0442\u0440\u043e\u0438\u0442\u0441\u044f \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u044f \u043c\u0435\u0436\u0434\u0443 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u043e\u0439 \u043a\u043e\u043b\u043e\u043d\u043a\u0438 \u0438 \u0432\u0441\u0435\u043c\u0438 \u043e\u0441\u0442\u0430\u043b\u044c\u043d\u044b\u043c\u0438.</p><p>\u0421\u0442\u0440\u043e\u0438\u0442\u0441\u044f \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e \u043e\u0442 \u0434\u0440\u0443\u0433\u0438\u0445 \u0433\u0440\u0430\u0444\u0438\u043a\u043e\u0432. </p><p>\u0412 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u0439 \u0432\u043a\u043b\u0430\u0434\u043a\u0435 \u0432\u043d\u0438\u0437\u0443 \u043c\u043e\u0436\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0438"
+                "\u0442\u044c \u043d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_corr_one_parameter.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6794,6 +7359,15 @@ class Ui_MainWindow(object):
             35, QCoreApplication.translate("MainWindow", "BuPu_r", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_color_pal_box.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u0434\u043b\u044f box</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_points.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -6910,6 +7484,15 @@ class Ui_MainWindow(object):
             35, QCoreApplication.translate("MainWindow", "BuPu_r", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_color_pal_points.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u0434\u043b\u044f \u0442\u043e\u0447\u0435\u043a</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_color_for_box.setToolTip(
             QCoreApplication.translate(
@@ -6924,6 +7507,15 @@ class Ui_MainWindow(object):
                 "MainWindow", "\u0426\u0432\u0435\u0442 \u0434\u043b\u044f box (HEX)", None
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.pushButton_HEX_box.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0434\u0435\u043b\u0430\u0442\u044c \u043a\u0430\u0441\u0442\u043e\u043c\u043d\u044b\u0435 \u0446\u0432\u0435\u0442\u0430 \u0434\u043b\u044f box.</p><p>\u0414\u043b\u044f \u044d\u0442\u043e\u0433\u043e \u0432\u044b\u0431\u0435\u0440\u0430\u0439\u0442\u0435 \u0438\u0442\u0435\u0440\u0430\u0446\u0438\u043e\u043d\u043d\u043e \u0446\u0432\u0435\u0442\u0430 \u0432 \u043f\u0430\u043b\u0438\u0442\u0440\u0435.</p><p>\u0412 \u043f\u0430\u043d\u0435\u043b\u0435 \u0441\u043b\u0435\u0432\u0430 \u0431\u0443\u0434\u0435\u0442 \u0444\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u0441\u0442\u0440\u043e\u043a\u0430, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u0431\u0443\u0434\u0435\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0430 \u0434\u043b\u044f \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u044b.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.pushButton_HEX_box.setText(QCoreApplication.translate("MainWindow", "HEX", None))
         # if QT_CONFIG(tooltip)
         self.lb_color_forpoints.setToolTip(
@@ -6941,6 +7533,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.pushButton_HEX_points.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0434\u0435\u043b\u0430\u0442\u044c \u043a\u0430\u0441\u0442\u043e\u043c\u043d\u044b\u0435 \u0446\u0432\u0435\u0442\u0430 \u0434\u043b\u044f \u0442\u043e\u0447\u0435\u043a.</p><p>\u0414\u043b\u044f \u044d\u0442\u043e\u0433\u043e \u0432\u044b\u0431\u0435\u0440\u0430\u0439\u0442\u0435 \u0438\u0442\u0435\u0440\u0430\u0446\u0438\u043e\u043d\u043d\u043e \u0446\u0432\u0435\u0442\u0430 \u0432 \u043f\u0430\u043b\u0438\u0442\u0440\u0435.</p><p>\u0412 \u043f\u0430\u043d\u0435\u043b\u0435 \u0441\u043b\u0435\u0432\u0430 \u0431\u0443\u0434\u0435\u0442 \u0444\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u0441\u0442\u0440\u043e\u043a\u0430, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u0431\u0443\u0434\u0435\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0430 \u0434\u043b\u044f \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u044b.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.pushButton_HEX_points.setText(QCoreApplication.translate("MainWindow", "HEX", None))
         self.lb_color_pal_box_19.setText(
             QCoreApplication.translate(
@@ -6993,6 +7594,15 @@ class Ui_MainWindow(object):
             6, QCoreApplication.translate("MainWindow", "Georgia", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_fonts.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0428\u0440\u0438\u0444\u0442 \u0434\u043b\u044f \u043f\u043e\u0434\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0430\u0445",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_2.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7000,6 +7610,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_x_label.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u043f\u043e\u0434\u043f\u0438\u0441\u0438 X",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_3.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7007,6 +7626,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_y_label.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u043f\u043e\u0434\u043f\u0438\u0441\u0438 Y",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_5.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7038,6 +7666,15 @@ class Ui_MainWindow(object):
             )
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.check_sort_or_not.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0423\u043f\u043e\u0440\u044f\u0434\u043e\u0447\u0438\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0432 \u0433\u0440\u0443\u043f\u043f\u0435? \u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f \u0431\u0430\u0437\u043e\u0432\u0430\u044f \u0441\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_sort_or_not.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7045,6 +7682,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_sort_or_not_ascending.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0423\u043f\u043e\u0440\u044f\u0434\u043e\u0447\u0438\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0432 \u0433\u0440\u0443\u043f\u043f\u0435 \u043f\u043e \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u043d\u0438\u044e?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_sort_or_not_ascending.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7071,6 +7717,16 @@ class Ui_MainWindow(object):
         # if QT_CONFIG(tooltip)
         self.order_box_plot.setToolTip("")
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.order_box_plot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u043e\u0440\u044f\u0434\u043e\u043a \u043f\u043e\u0434\u043f\u0438\u0441\u0435\u0439. </p><p>\u0414\u043b\u044f \u044d\u0442\u043e\u0433\u043e \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u043e\u0431\u0435\u043b \u0446\u0438\u0444\u0440\u0430\u043c\u0438 \u0432\u0432\u0435\u0441\u0442\u0438 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0438\u0439 \u043f\u043e\u0440\u044f\u0434\u043e\u043a.</p><p>\u0412\u0430\u0436\u043d\u043e, \u0447\u0442\u043e\u0431\u044b \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u043b\u043e \u043a\u043e\u043b-\u0432\u0443 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0439 \u0432 \u0433\u0440\u0443\u043f\u043f\u0435.</p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u043c\u043e\u0436\u043d\u043e "
+                "\u0432\u0432\u0435\u0441\u0442\u0438 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0435:</p><p>1 2 4 3</p><p>\u0422\u043e\u0433\u0434\u0430 \u0431\u0443\u0434\u0435\u0442 \u043f\u043e\u0440\u044f\u0434\u043e\u043a, \u043a\u0430\u043a \u043e\u043d \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d \u0432\u044b\u0448\u0435 \u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u043d\u0430\u0447\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043f\u043e\u0440\u044f\u0434\u043a\u0430 \u0431\u0435\u0437 \u0443\u043f\u043e\u0440\u044f\u0434\u043e\u0447\u0438\u0432\u0430\u043d\u0438\u044f</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_stattest_3.setToolTip(
             QCoreApplication.translate(
@@ -7245,6 +7901,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_stat_znachimost.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_stat_znachimost.setText("")
         self.lb_color_pal_box_21.setText(
             QCoreApplication.translate(
@@ -7253,6 +7918,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_size_stat_znachimost.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0428\u0440\u0438\u0444\u0442 \u0437\u043d\u0430\u0447\u043a\u043e\u0432 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb__altern_heposisis_4.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7283,11 +7957,30 @@ class Ui_MainWindow(object):
             ),
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_box_plot_sign_stat_znachimost.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0417\u043d\u0430\u0447\u043e\u043a \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438.</p><p>\u041e\u0434\u0438\u043d \u0438\u0437 \u0442\u0440\u0435\u0445:</p><p>- \u0437\u0432\u0435\u0437\u0434\u043e\u0447\u043a\u0430 (*)</p><p>- \u0442\u043e\u0447\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 p (p=0.03)</p><p>- \u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 p (p&lt;0.05)</p><p>\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u0434\u043b\u044f \u0437\u0434\u0435\u0437\u0434\u043e\u0447\u0435\u043a \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u0435\u0442\u0441\u044f \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u043c:</p><p>* p&lt;0.05, ** p&lt;0.01, *** p&lt;0.001, **** p&lt;0.0001</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.label_25.setText(
             QCoreApplication.translate(
                 "MainWindow", "\u041c\u0430\u043a\u0441.\u043a\u043e\u043b-\u0432\u043e *", None
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_max_n_stars.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u043e\u043b-\u0432\u043e \u0437\u043d\u0430\u043a\u043e\u0432 \u0434\u043b\u044f \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438.</p><p>\u0420\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0434\u043b\u044f \u0437\u043d\u0430\u0447\u043a\u0430 \u0441\u0442\u0430\u0442.\u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438 &quot;\u0437\u0432\u0435\u0437\u0434\u043e\u0447\u043a\u0430&quot; \u0438 &quot;\u0442\u043e\u0447\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 p&quot;.</p><p>\u0415\u0441\u043b\u0438 \u043c\u0430\u043a\u0441.\u043a\u043e\u043b-\u0432\u043e \u0437\u043d\u0430\u043a\u043e\u0432 = 1, \u0442\u043e \u0431\u0443\u0434\u0435\u0442 \u0432\u044b\u0432\u0435\u0434\u0435\u043d\u044b \u0442\u043e\u043b\u044c\u043a\u043e:</p><p>* \u0438\u043b\u0438 p&lt;0.05, \u0434\u0430\u0436\u0435"
+                " \u0435\u0441\u043b\u0438 p=0.00001</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb__altern_heposisis.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7305,6 +7998,15 @@ class Ui_MainWindow(object):
             2, QCoreApplication.translate("MainWindow", "greater", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_alter_hep.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0433\u0438\u043f\u043e\u0442\u0435\u0437\u0430 \u0434\u043b\u044f \u0442\u0435\u0441\u0442\u0430.</p><p>\u0415\u0441\u043b\u0438 \u043d\u0435 \u0437\u043d\u0430\u0435\u0442\u0435, \u0442\u043e \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 \u0432\u0441\u0435\u0433\u0434\u0430 two-sided</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_stattest.setToolTip(
             QCoreApplication.translate(
@@ -7426,6 +8128,15 @@ class Ui_MainWindow(object):
             ),
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_stat_test.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0435\u0441\u0442 \u0434\u043b\u044f \u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0441\u0442\u0430\u0442.\u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438. </p><p>\u0412 \u0441\u043f\u0438\u0441\u043a\u0435 \u0435\u0441\u0442\u044c \u043a\u0430\u043a \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0435, \u0442\u0430\u043a \u0438 \u043d\u0435\u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0442\u0435\u0441\u0442\u044b.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_del_hue_7.setToolTip(
             QCoreApplication.translate(
@@ -7481,6 +8192,15 @@ class Ui_MainWindow(object):
             2, QCoreApplication.translate("MainWindow", "spearman", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_correlation_figs_matrix.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041c\u0435\u0442\u043e\u0434 \u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0439: \u041f\u0438\u0440\u0441\u043e\u043d, \u0421\u043f\u0438\u0440\u043c\u0435\u043d \u0438\u043b\u0438 \u041a\u0435\u043d\u0434\u0430\u043b.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_sd_or_minmax_7.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7528,6 +8248,15 @@ class Ui_MainWindow(object):
             12, QCoreApplication.translate("MainWindow", "gist_heat", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_correlation_color_map_for_figs.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u0441\u0445\u0435\u043c\u0430 \u0434\u043b\u044f \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u043c\u0430\u0442\u0440\u0438\u0446\u044b.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_size_corr_matrix.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7535,6 +8264,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.corr_mat_figsize.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0420\u0430\u0437\u043c\u0435\u0440 \u0440\u0438\u0441\u0443\u043d\u043a\u0430 \u0434\u043b\u044f \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u043c\u0430\u0442\u0440\u0438\u0446\u044b. </p><p>\u041f\u043e\u0434\u0431\u0438\u0440\u0430\u0435\u0442\u0441\u044f \u0432\u0440\u0443\u0447\u043d\u0443\u044e. \u0412\u043b\u0438\u044f\u0435\u0442 \u043d\u0430 \u0440\u0430\u0437\u043c\u0435\u0440 \u043a\u043e\u043d\u0435\u0447\u043d\u043e\u0433\u043e \u0444\u0430\u0439\u043b\u0430.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_font_in.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7542,6 +8280,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.font_for_in.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041c\u0430\u0441\u0448\u0442\u0430\u0431 \u0448\u0440\u0438\u0444\u0442\u0430 \u043f\u043e\u0434\u043f\u0438\u0441\u0435\u0439 \u0434\u043b\u044f \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u043c\u0430\u0442\u0440\u0438\u0446.</p><p>\u041f\u043e\u0434\u0431\u0438\u0440\u0430\u0435\u0442\u0441\u044f \u0432\u0440\u0443\u0447\u043d\u0443\u044e.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_font_out.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7549,6 +8296,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.font_for_out.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430. \u041f\u043e\u0434\u0431\u0438\u0440\u0430\u0435\u0442\u0441\u044f \u0432\u0440\u0443\u0447\u043d\u0443\u044e.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_name_of_title.setToolTip(
             QCoreApplication.translate(
@@ -7565,6 +8321,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.name_of_corr_matrix.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 &lt;title&gt;. </p><p>\u041a\u043e\u043d\u0435\u0447\u043d\u043e\u0435 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0444\u043e\u0440\u043c\u0443\u043b\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u043c \u043e\u0431\u0440\u0430\u0437\u043e\u043c:</p><p>&lt;title&gt; + \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435_\u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438 + (N=&lt;\u043a\u043e\u043b-\u0432\u043e \u043e\u0431\u0440\u0430\u0437\u0446\u043e\u0432&gt;)</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.tabWidget.setTabText(
             self.tabWidget.indexOf(self.tab_6),
             QCoreApplication.translate(
@@ -7693,6 +8458,15 @@ class Ui_MainWindow(object):
             33, QCoreApplication.translate("MainWindow", "tab20c", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_color_pal_corr.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u0434\u043b\u044f \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u043e\u0433\u043e \u0433\u0440\u0430\u0444\u0438\u043a\u0430.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_del_hue_4.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7701,6 +8475,15 @@ class Ui_MainWindow(object):
             )
         )
         self.check_change_corr_fig_down_limit.setText("")
+        # if QT_CONFIG(whatsthis)
+        self.doubleSpinBox_corr_figs.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '\u041d\u0438\u0436\u043d\u044f\u044f \u0433\u0440\u0430\u043d\u0438\u0446\u0430 \u0434\u043b\u044f \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u043e\u0433\u043e \u0433\u0440\u0430\u0444\u0438\u043a\u0430. \u0418\u043d\u043e\u0433\u0434\u0430 \u043f\u043e\u043b\u0435\u0437\u043d\u043e, \u0435\u0441\u043b\u0438 \u043d\u0443\u0436\u043d\u043e \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u0447\u0435\u0442\u043a\u043e "0" \u0438\u043b\u0438 \u0434\u0440\u0443\u0433\u043e\u0435 \u0447\u0438\u0441\u043b\u043e.',
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_del_hue_3.setToolTip(
             QCoreApplication.translate(
@@ -7727,6 +8510,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_points_corrFIGS.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0437\u043c\u0435\u0440 \u0442\u043e\u0447\u0435\u043a \u0434\u043b\u044f \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u043e\u0433\u043e \u0433\u0440\u0430\u0444\u0438\u043a\u0430.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_12.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7734,6 +8526,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.doubleSpinBox_corr_figs_fontscale.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u043b\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.check_sort_or_not_corr_figs.setToolTip(
             QCoreApplication.translate(
@@ -7743,6 +8544,15 @@ class Ui_MainWindow(object):
             )
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.check_sort_or_not_corr_figs.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0421\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0432 \u0433\u0440\u0443\u043f\u043f\u0435?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_sort_or_not_corr_figs.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -7753,6 +8563,15 @@ class Ui_MainWindow(object):
         # if QT_CONFIG(tooltip)
         self.check_setka.setToolTip("")
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.check_setka.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0441\u0435\u0442\u043a\u0443?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_setka.setText(
             QCoreApplication.translate("MainWindow", "\u0421\u0435\u0442\u043a\u0430", None)
         )
@@ -7781,6 +8600,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_pairplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041d\u0435 \u0443\u0447\u0438\u0442\u0432\u0430\u0442\u044c \u0433\u0440\u0443\u043f\u043f\u0443 \u0432 \u043c\u0430\u0442\u0440\u0438\u0446\u0435 \u0440\u0430\u0441\u0441\u0435\u044f\u043d\u0438\u044f? </p><p>\u0412 \u044d\u0442\u043e\u043c \u0441\u043b\u0443\u0447\u0430\u0435 \u0432\u0441\u0435 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438 \u0431\u0443\u0434\u0443\u0442 \u043e\u0431\u044a\u0435\u0434\u0435\u043d\u0435\u043d\u044b.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_pairplot.setText("")
         self.lb_color_pal_box_24.setText(
             QCoreApplication.translate(
@@ -8079,6 +8907,15 @@ class Ui_MainWindow(object):
             33, QCoreApplication.translate("MainWindow", "tab20c", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_color_jointplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u0434\u043b\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0434\u0432\u0443\u043c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_color_pal_box_32.setToolTip(
             QCoreApplication.translate("MainWindow", "\u0441\u043c. seaborn.pairplot", None)
@@ -8095,6 +8932,15 @@ class Ui_MainWindow(object):
             2, QCoreApplication.translate("MainWindow", "hist", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_pairplot_jointplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0412\u043e\u0437\u043c\u043e\u0436\u043d\u044b\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044e \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0439.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_33.setText(
             QCoreApplication.translate("MainWindow", "\u0421\u0442\u0438\u043b\u044c", None)
         )
@@ -8114,6 +8960,15 @@ class Ui_MainWindow(object):
             4, QCoreApplication.translate("MainWindow", "ticks", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_style_jointplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0421\u0442\u0438\u043b\u044c \u0433\u0440\u0430\u0444\u0438\u043a\u0430. \u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u044e\u0442\u0441\u044f \u0441\u0442\u0438\u043b\u0438 seaborn.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_31.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8121,6 +8976,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_point_size_for_jointplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0437\u043c\u0435\u0440 \u0442\u043e\u0447\u0435\u043a \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.tabWidget.setTabText(
             self.tabWidget.indexOf(self.tab_13),
             QCoreApplication.translate(
@@ -8156,6 +9020,15 @@ class Ui_MainWindow(object):
             2, QCoreApplication.translate("MainWindow", "spearman", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_correlation_one_parameter.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041c\u0435\u0442\u043e\u0434 \u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0439: \u041f\u0438\u0440\u0441\u043e\u043d, \u0421\u043f\u0438\u0440\u043c\u0435\u043d \u0438\u043b\u0438 \u041a\u0435\u043d\u0434\u0430\u043b.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_34.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8163,6 +9036,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.doubleSpinBox_size_for_one_correlation.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u043b\u044f \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0438 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_35.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8170,6 +9052,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.doubleSpinBox_one_correlation.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041e\u0442\u0441\u0435\u0447\u043a\u0430 \u043f\u043e \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u044f\u043c. \u0412\u0441\u0435 \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0438\u0436\u0435 \u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0433\u043e \u0447\u0438\u0441\u043b\u0430, \u043d\u0435 \u0431\u0443\u0434\u0443\u0442 \u0443\u0447\u0438\u0442\u044b\u0432\u0430\u0442\u044c\u0441\u044f.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_corr_one_parameter_only_one.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8177,6 +9068,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_corr_one_parameter_plot_sep_wind.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a \u0432 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u043c \u043e\u043a\u043d\u0435?</p><p>\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435, \u0442\u043e\u043b\u044c\u043a\u043e \u0435\u0441\u043b\u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0435\u0442\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043d\u0435 \u0447\u0435\u0440\u0435\u0437 \u0434\u0435\u0441\u043a\u0442\u043e\u043f\u043d\u0443\u044e \u0432\u0435\u0440\u0441\u0438\u044e.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_corr_one_parameter_plot_sep_wind.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8202,6 +9102,15 @@ class Ui_MainWindow(object):
             ),
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.btn_plot_and_save_figs.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0432\u0441\u0435 \u0433\u0440\u0430\u0444\u0438\u043a\u0438 \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0438\u0445 \u0432 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044e\u0449\u0438\u0445 \u043f\u0430\u043f\u043a\u0430\u0445",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_plot_and_save_figs.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8222,6 +9131,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.path_for_profile.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435, \u0432 \u043a\u043e\u0442\u043e\u0440\u0443\u044e \u0431\u0443\u0434\u0443\u0442 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u044b \u043c\u0438\u043a\u0440\u043e\u0440\u0435\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043f\u0440\u043e\u0444\u0438\u043b\u0438.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.path_for_profile.setText("")
         # if QT_CONFIG(tooltip)
         self.lb_patient_data.setToolTip(
@@ -8239,6 +9157,21 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.patient_data.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p>\u0414\u0430\u043d\u043d\u044b\u0435 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430.</p><p>\u0414\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u044b \u0438\u0437 excel \u0438 \u0432\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u044b \u0432 \u0434\u0430\u043d\u043d\u0443\u044e \u044f\u0447\u0435\u0439\u043a\u0443.</p><p>\u0414\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e 3 \u0441\u0442\u043e\u043b\u0431\u0446\u0430, \u043a \u043f\u0440\u0438\u043c\u0435\u0440\u0443:</p><p><br/></p><table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;" cellspacing="2" cellpadding="0"><thead><tr><td style=" padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-style:solid;"><p><span style=" font-fa'
+                "mily:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440</span></p></td><td style=\" padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">\u0421\u0440\u0435\u0434\u043d\u0435\u0435</span></p></td><td style=\" padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Rob"
+                "oto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">SD</span></p></td></tr></thead><tr><td style=\" padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">CSS, \u043c\u041f\u0430</span></p></td><td style=\" padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">300</span></p></td><td style=\" padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1p"
+                "x; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">15</span></p></td></tr><tr><td style=\" padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">AI, %</span></p></td><td style=\" padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0"
+                "f1115;\">62</span></p></td><td style=\" padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">5</span></p></td></tr><tr><td style=\" padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">AMP</span></p></td><td style=\" padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemF"
+                "ont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">0,06</span></p></td><td style=\" padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">0.01</span></p></td></tr></table><p><br/></p><p><span style=\" font-family:'Helvetica';\">\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0434\u043e\u043b\u0436\u043d\u044b \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e \u043d\u0430\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e \u0434\u043b\u044f \u043d\u043e\u0440\u043c\u044b \u0438 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430.</span></p><p><span style=\" font-family:'"
+                "Helvetica';\">\u041d\u0430\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043c\u043e\u0433\u0443\u0442 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u043b\u044c\u043d\u043e. Latex \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f.</span></p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.patient_data.setText("")
         # if QT_CONFIG(tooltip)
         self.lb_norm_data.setToolTip(
@@ -8256,6 +9189,21 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.norm_data.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p>\u0414\u0430\u043d\u043d\u044b\u0435 \u043d\u043e\u0440\u043c\u044b.</p><p>\u0414\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u044b \u0438\u0437 excel \u0438 \u0432\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u044b \u0432 \u0434\u0430\u043d\u043d\u0443\u044e \u044f\u0447\u0435\u0439\u043a\u0443.</p><p>\u0414\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e 3 \u0441\u0442\u043e\u043b\u0431\u0446\u0430, \u043a \u043f\u0440\u0438\u043c\u0435\u0440\u0443:</p><p><br/></p><table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;" cellspacing="2" cellpadding="0"><thead><tr><td style=" padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-color:#000000; border-bottom-style:solid;"><p><span style'
+                "=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440</span></p></td><td style=\" padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">\u0421\u0440\u0435\u0434\u043d\u0435\u0435</span></p></td><td style=\" padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-top:7px; border-bottom:1px; border-top-color:#000000; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','In"
+                "ter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">SD</span></p></td></tr></thead><tr><td style=\" padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">CSS, \u043c\u041f\u0430</span></p></td><td style=\" padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#"
+                "0f1115;\">300</span></p></td><td style=\" padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">15</span></p></td></tr><tr><td style=\" padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">AI, %</span></p></td><td style=\" padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span"
+                " style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">62</span></p></td><td style=\" padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">5</span></p></td></tr><tr><td style=\" padding-left:0; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:1"
+                "6px; color:#0f1115;\">AMP</span></p></td><td style=\" padding-left:16; padding-right:16; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">0,06</span></p></td><td style=\" padding-left:16; padding-right:0; padding-top:10; padding-bottom:10; border-bottom:1px; border-bottom-color:#000000; border-bottom-style:solid;\"><p><span style=\" font-family:'quote-cjk-patch','Inter','system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Open Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0f1115;\">0.01</span></p></td></tr></table><p><br/></p><p><span style=\" font-family:'Helvetica';\">\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0434\u043e\u043b\u0436\u043d\u044b \u043e"
+                "\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e \u043d\u0430\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e \u0434\u043b\u044f \u043d\u043e\u0440\u043c\u044b \u0438 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430.</span></p><p><span style=\" font-family:'Helvetica';\">\u041d\u0430\u0437\u044b\u0432\u0430\u0442\u044c\u0441\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043c\u043e\u0433\u0443\u0442 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u043b\u044c\u043d\u043e. Latex \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f.</span></p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.norm_data.setText("")
         self.lb_norm_data_2.setText(
             QCoreApplication.translate(
@@ -8264,6 +9212,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.profile_title_rad.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0434\u043b\u044f \u0440\u0430\u0434\u0438\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0444\u0438\u043b\u044f.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.profile_title_rad.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8278,6 +9235,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.profile_title_lin.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0434\u043b\u044f \u043e\u0441\u0438 \u0434\u043b\u044f \u043b\u0438\u043d\u0435\u0439\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0444\u0438\u043b\u044f.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.profile_title_lin.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8294,6 +9260,15 @@ class Ui_MainWindow(object):
             )
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.check_profile_legend.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0412\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u043b\u0435\u0433\u0435\u043d\u0434\u0443?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_profile_legend.setText(
             QCoreApplication.translate(
                 "MainWindow", "\u041b\u0435\u0433\u0435\u043d\u0434\u0430", None
@@ -8313,6 +9288,15 @@ class Ui_MainWindow(object):
             1, QCoreApplication.translate("MainWindow", "0", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_profile_lin_spin.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0412\u0440\u0430\u0449\u0430\u0442\u044c \u043f\u043e\u0434\u043f\u0438\u0441\u0438 \u0434\u043b\u044f \u043b\u0438\u043d\u0435\u0439\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0444\u0438\u043b\u044f?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_20.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8320,6 +9304,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.doubleSpinBoX_profile.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430 \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0430\u0445.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.label_5.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8343,12 +9336,39 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.patient_prof.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0418\u043c\u044f \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430/\u043e\u0431\u0440\u0430\u0437\u0446\u0430.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.patient_prof.setText(
             QCoreApplication.translate(
                 "MainWindow", "\u041f\u0430\u0446\u0438\u0435\u043d\u0442", None
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.color_for_patient.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0426\u0432\u0435\u0442 \u0434\u043b\u044f \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430. \u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u044e\u0442\u0441\u044f \u0442\u043e\u043b\u044c\u043a\u043e \u0446\u0432\u0435\u0442\u0430 HEX.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.color_for_patient.setText(QCoreApplication.translate("MainWindow", "#DB4900", None))
+        # if QT_CONFIG(whatsthis)
+        self.check_profile_pat_line.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0430\u0446\u0438\u0435\u043d\u0442 -- \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043b\u0438\u043d\u0438\u044e \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_profile_pat_line.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8356,6 +9376,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_profile_pat_sd.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0430\u0446\u0438\u0435\u043d\u0442 -- \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043e\u0431\u043b\u0430\u0441\u0442\u044c \u0441 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u044b\u043c \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435\u043c \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_profile_pat_sd.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8386,10 +9415,37 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.norm_prof.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0418\u043c\u044f \u0434\u043b\u044f \u043d\u043e\u0440\u043c\u044b.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.norm_prof.setText(
             QCoreApplication.translate("MainWindow", "\u041d\u043e\u0440\u043c\u0430", None)
         )
+        # if QT_CONFIG(whatsthis)
+        self.color_for_norm.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0426\u0432\u0435\u0442 \u0434\u043b\u044f \u043d\u043e\u0440\u043c\u044b. \u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u044e\u0442\u0441\u044f \u0442\u043e\u043b\u044c\u043a\u043e \u0446\u0432\u0435\u0442\u0430 HEX.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.color_for_norm.setText(QCoreApplication.translate("MainWindow", "#2A968D", None))
+        # if QT_CONFIG(whatsthis)
+        self.check_profile_norm_line.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u043e\u0440\u043c\u0430 -- \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043b\u0438\u043d\u0438\u044e \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_profile_norm_line.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8397,6 +9453,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_profile_norm_sd.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u043e\u0440\u043c\u0430 -- \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043e\u0431\u043b\u0430\u0441\u0442\u044c \u0441 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u044b\u043c \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435\u043c \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_profile_norm_sd.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8404,6 +9469,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.btn_plot_and_save_profile.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0440\u0430\u0434\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u0438 \u043b\u0438\u043d\u0435\u0439\u043d\u044b\u0439 \u043f\u0440\u043e\u0444\u0438\u043b\u0438.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_plot_and_save_profile.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8420,6 +9494,15 @@ class Ui_MainWindow(object):
             )
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.check_profile_relative.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0440\u0430\u0437\u043b\u0438\u0447\u0438\u0439 \u043d\u0430 \u0440\u0430\u0434\u0438\u0430\u043b\u044c\u043d\u043e\u043c \u0433\u0440\u0430\u0444\u0438\u043a\u0435?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_profile_relative.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8507,7 +9590,8 @@ class Ui_MainWindow(object):
         self.tableWidget.setWhatsThis(
             QCoreApplication.translate(
                 "MainWindow",
-                "<html><head/><body><p>\u0418\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432 \u043d\u0443\u0436\u043d\u043e \u043f\u0438\u0441\u0430\u0442\u044c \u0447\u0435\u0440\u0435\u0437 \u0442\u0438\u0440\u0435.</p><p>\u041f\u0440\u0438\u043c\u0435\u0440: 0-3</p><p>\u0426\u0432\u0435\u0442\u0430:  matplotlib.colors</p></body></html>",
+                '<html><head/><body><p>\u0418\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432 \u043d\u0443\u0436\u043d\u043e \u043f\u0438\u0441\u0430\u0442\u044c \u0447\u0435\u0440\u0435\u0437 \u0442\u0438\u0440\u0435. \u0418\u043d\u0434\u0435\u043a\u0441 \u043d\u0430\u0447\u0438\u043d\u0430\u0435\u0442\u0441\u044f \u0441 \u043d\u0443\u043b\u044f, \u0430 \u043d\u0435 \u0435\u0434\u0438\u043d\u0438\u0446\u044b.</p><p><span style=" font-style:italic;">\u041f\u0440\u0438\u043c\u0435\u0440</span>: \u0435\u0441\u043b\u0438 \u0432\u0441\u0435\u0433\u043e 8 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432, \u0442\u043e \u043c\u043e\u0436\u043d\u043e \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u0442\u0430\u043a:</p><p>(1 \u0433\u0440\u0443\u043f\u043f\u0430) &quot;0-3&quot;</p><p>(2 \u0433\u0440\u0443\u043f\u043f\u0430) &quot;4-5&quot;</p><p>(3 \u0433\u0440\u0443\u043f\u043f\u0430) &quot;6-7&quot;</p><p>\u0426\u0432\u0435\u0442\u0430: matplotlib.colors</p><p>\u0421\u0442'
+                "\u0438\u043b\u044c \u043b\u0438\u043d\u0438\u0438: \u0441\u043c. matplotlib </p><p><span style=\" font-family:'JetBrains Mono','monospace'; font-size:9.8pt; color:#7a7e85;\">solid, dashed, dashdot, dotted</span><br/></p></body></html>",
                 None,
             )
         )
@@ -8522,13 +9606,7 @@ class Ui_MainWindow(object):
         )
         # endif // QT_CONFIG(tooltip)
         # if QT_CONFIG(whatsthis)
-        self.lb_norm_data_4.setWhatsThis(
-            QCoreApplication.translate(
-                "MainWindow",
-                "<html><head/><body><p>\u0418\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432 \u043d\u0443\u0436\u043d\u043e \u043f\u0438\u0441\u0430\u0442\u044c \u0447\u0435\u0440\u0435\u0437 \u0442\u0438\u0440\u0435.</p><p>\u041f\u0440\u0438\u043c\u0435\u0440: 0-3</p><p>\u0426\u0432\u0435\u0442\u0430: matplotlib.colors</p><p>\u0421\u0442\u0438\u043b\u044c \u043b\u0438\u043d\u0438\u0438: \u0441\u043c. matplotlib </p><p><span style=\" font-family:'JetBrains Mono','monospace'; font-size:9.8pt; color:#7a7e85;\">solid, dashed, dashdot, dotted</span><br/></p></body></html>",
-                None,
-            )
-        )
+        self.lb_norm_data_4.setWhatsThis("")
         # endif // QT_CONFIG(whatsthis)
         self.lb_norm_data_4.setText(
             QCoreApplication.translate(
@@ -8561,6 +9639,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.path_for_pivot_table.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435, \u0433\u0434\u0435 \u043b\u0435\u0436\u0438\u0442(\u0430\u0442) excel \u0444\u0430\u0439\u043b(\u044b) \u0434\u043b\u044f \u0441\u0432\u043e\u0434\u043d\u044b\u0445 \u0442\u0430\u0431\u043b\u0438\u0446.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.path_for_pivot_table.setText("")
         self.lb_exel_name_2.setText(
             QCoreApplication.translate(
@@ -8569,6 +9656,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_pivot_table.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_exel_name_7.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8576,6 +9672,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_pivot_table_excel_sheet.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430 \u0432 excel \u0444\u0430\u0439\u043b\u0435 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_2.setToolTip(
             QCoreApplication.translate(
@@ -8592,6 +9697,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_pivot_hue.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '\u0412\u044b\u0431\u0435\u0440\u0435\u0442\u0435 \u0441\u0442\u043e\u043b\u0431\u0435\u0446 \u0434\u043b\u044f \u0433\u0440\u0443\u043f\u043f. \u042d\u0442\u043e \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0430\u043b\u044c\u043d\u0430\u044f \u0433\u0440\u0443\u043f\u043f\u0430. \u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, "\u041f\u043e\u043b".',
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_17.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8608,6 +9722,9 @@ class Ui_MainWindow(object):
             )
         )
         # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(whatsthis)
+        self.lb_color_pal_box_8.setWhatsThis("")
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_8.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8615,6 +9732,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_pivot_table.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041e\u043a\u0440\u0443\u0433\u043b\u0438\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0434\u043e \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u043e\u0433\u043e \u0437\u043d\u0430\u043a\u0430 \u043f\u043e\u0441\u043b\u0435 \u0437\u0430\u043f\u044f\u0442\u043e\u0439.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_sd_or_minmax_2.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8629,6 +9755,24 @@ class Ui_MainWindow(object):
             1, QCoreApplication.translate("MainWindow", "SE", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_sd_or_se_pivot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u044c SD \u0438\u043b\u0438 SE.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.btn_plot_and_save_pivot_table.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0441\u0432\u043e\u0434\u043d\u0443\u044e \u0442\u0430\u0431\u043b\u0438\u0446\u0443.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_plot_and_save_pivot_table.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8660,6 +9804,15 @@ class Ui_MainWindow(object):
             2, QCoreApplication.translate("MainWindow", "spearman", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_correlation_person_or_not.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041c\u0435\u0442\u043e\u0434 \u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0439: \u041f\u0438\u0440\u0441\u043e\u043d, \u0421\u043f\u0438\u0440\u043c\u0435\u043d \u0438\u043b\u0438 \u041a\u0435\u043d\u0434\u0430\u043b.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_sd_or_minmax_4.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8667,6 +9820,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_color_for_corr_pivot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0412\u044b\u0434\u0435\u043b\u0438\u0442\u044c \u044f\u0447\u0435\u0439\u043a\u0438 \u0446\u0432\u0435\u0442\u043e\u043c?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_color_for_corr_pivot.setText("")
         self.lb_sd_or_minmax_5.setText(
             QCoreApplication.translate(
@@ -8715,6 +9877,24 @@ class Ui_MainWindow(object):
             12, QCoreApplication.translate("MainWindow", "gist_heat", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_correlation_color_map.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u0441\u0445\u0435\u043c\u0430 \u0434\u043b\u044f \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u043c\u0430\u0442\u0440\u0438\u0446\u044b?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.btn_plot_and_save_corr_table.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u0443\u044e \u043c\u0430\u0442\u0440\u0438\u0446\u0443 \u043f\u043e \u0432\u0441\u0435\u043c \u0434\u0430\u043d\u043d\u044b\u043c.</p><p>\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u044e\u0442\u0441\u044f \u0432\u0441\u0435 \u0441\u0442\u043e\u043b\u0431\u0446\u044b \u0434\u043b\u044f \u0430\u043d\u0430\u043b\u0438\u0437\u0430.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_plot_and_save_corr_table.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8753,6 +9933,24 @@ class Ui_MainWindow(object):
             ),
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_index_data_or_raw.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p>\u041f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u0442\u0430\u0431\u043b\u0438\u0446\u0443 \u0438\u0437 \u0448\u0438\u0440\u043e\u043a\u043e\u0433\u043e \u043a \u0434\u043b\u0438\u043d\u043d\u043e\u043c\u0443 \u0444\u043e\u0440\u043c\u0430\u0442\u0443 \u0438\u043b\u0438 \u043d\u0430\u043e\u0431\u043e\u0440\u043e\u0442.</p><p>\u041f\u043e\u0434 <span style=" font-style:italic;">\u0438\u043d\u0434\u0435\u043a\u0441\u0438\u0440\u0443\u0435\u043c\u044b\u043c\u0438</span> \u043f\u043e\u043b\u0430\u0433\u0430\u0435\u0442\u0441\u044f -- \u0434\u043b\u0438\u043d\u043d\u044b\u0439 \u0444\u043e\u0440\u043c\u0430\u0442.</p><p>\u041f\u043e\u0434 <span style=" font-style:italic;">\u0441\u044b\u0440\u044b\u043c</span> -- \u0448\u0438\u0440\u043e\u043a\u0438\u0439 \u0444\u043e\u0440\u043c\u0430\u0442.</p></body></html>',
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.btn_save_pivot_or_melt.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u0438\u0437 \u0448\u0438\u0440\u043e\u043a\u043e\u0433\u043e \u0432 \u0434\u043b\u0438\u043d\u043d\u044b\u0439 \u0444\u043e\u0440\u043c\u0430\u0442 \u0438\u043b\u0438 \u043d\u0430\u043e\u0431\u043e\u0440\u043e\u0442 \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c excel \u0444\u0430\u0439\u043b.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_save_pivot_or_melt.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8784,6 +9982,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.path_for_catplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 excel \u0444\u0430\u0439\u043b\u043e\u043c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.path_for_catplot.setText("")
         self.lb_exel_name_3.setText(
             QCoreApplication.translate(
@@ -8792,6 +9999,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_excel_catplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_exel_name_4.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8799,6 +10015,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_excel_sheet_catplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430 \u0432 excel \u0444\u0430\u0439\u043b\u0435 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_3.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -8809,6 +10034,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_catplot_x.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041e\u0441\u043d\u043e\u0432\u043d\u0430\u044f \u0433\u0440\u0443\u043f\u043f\u0430, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u0439 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u044b \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438.</p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0433\u0440\u0443\u043f\u043f\u0430 &quot;\u0414\u0438\u0430\u0433\u043d\u043e\u0437&quot;.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_7.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -8831,6 +10065,15 @@ class Ui_MainWindow(object):
             4, QCoreApplication.translate("MainWindow", "default", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_catplot_form_x.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u042f\u0432\u043d\u043e \u043f\u0440\u0438\u0432\u0435\u0441\u0442\u0438 \u0442\u0438\u043f \u0434\u043b\u044f \u0433\u0440\u0443\u043f\u043f\u044b \u043f\u043e \u043e\u0441\u0438 X \u0432 \u0437\u0430\u0434\u0430\u043d\u043d\u044b\u0439 \u0442\u0438\u043f.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_4.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -8841,6 +10084,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_catplot_y.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0422\u0430\u0440\u0433\u0435\u0442\u043d\u044b\u0439 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0434\u043b\u044f \u0432\u044b\u0432\u043e\u0434\u0430 \u043d\u0430 \u043e\u0441\u044c Y.</p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, &quot;\u0421\u0438\u043b\u0430 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438&quot;. </p><p>\u041e\u0431\u044b\u0447\u043d\u043e \u043f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0435\u0432\u0430\u0435\u0442\u0441\u044f, \u0447\u0442\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0432 \u0434\u0430\u043d\u043d\u043e\u043c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0435:</p><p>- float</p><p>- int</p><p>\u00a0\u0422\u043e \u0435\u0441\u0442\u044c \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u044b\u0435 \u0438\u043b\u0438 \u0434\u0438\u0441\u043a\u0440\u0435\u0442\u043d\u044b\u0435.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_6.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -8863,6 +10115,15 @@ class Ui_MainWindow(object):
             4, QCoreApplication.translate("MainWindow", "default", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_catplot_form_y.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u042f\u0432\u043d\u043e \u043f\u0440\u0438\u0432\u0435\u0441\u0442\u0438 \u0442\u0438\u043f \u0434\u043b\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 \u043f\u043e \u043e\u0441\u0438 Y \u0432 \u0437\u0430\u0434\u0430\u043d\u043d\u044b\u0439 \u0442\u0438\u043f.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_5.setToolTip(
             QCoreApplication.translate(
@@ -8877,6 +10138,15 @@ class Ui_MainWindow(object):
                 "MainWindow", "\u041f\u043e\u0434\u0433\u0440\u0443\u043f\u043f\u0430", None
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_catplot_hue.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043e\u0434\u0433\u0440\u0443\u043f\u043f\u0430 \u0432 \u0433\u0440\u0443\u043f\u043f\u0435.</p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0433\u0440\u0443\u043f\u043f\u0430 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c &quot;\u0414\u0438\u0430\u0433\u043d\u043e\u0437&quot;, \u0430 \u043f\u043e\u0434\u0433\u0440\u0443\u043f\u043f\u0430 &quot;\u041f\u043e\u043b&quot;.</p><p>\u041d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435 \u0431\u0443\u0434\u0443\u0442 \u0432\u0441\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u044b\u0435 \u043a\u043e\u043c\u0431\u0438\u043d\u0430\u0446\u0438\u0438 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0439 \u0438\u0437 \u0434\u0432\u0443\u0445 \u0433\u0440\u0443\u043f\u043f.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_8.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -8899,6 +10169,15 @@ class Ui_MainWindow(object):
             4, QCoreApplication.translate("MainWindow", "default", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_catplot_form_hue.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u042f\u0432\u043d\u043e \u043f\u0440\u0438\u0432\u0435\u0441\u0442\u0438 \u0442\u0438\u043f \u0434\u043b\u044f \u043f\u043e\u0434\u0433\u0440\u0443\u043f\u043f\u044b \u0432 \u0437\u0430\u0434\u0430\u043d\u043d\u044b\u0439 \u0442\u0438\u043f.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_14.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -8906,6 +10185,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.doubleSpinBox_catplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_color_pal_box_16.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9016,6 +10304,15 @@ class Ui_MainWindow(object):
             33, QCoreApplication.translate("MainWindow", "tab20c", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_color_catplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u0434\u043b\u044f catplot.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_stattest_7.setToolTip(
             QCoreApplication.translate(
@@ -9054,6 +10351,18 @@ class Ui_MainWindow(object):
             6, QCoreApplication.translate("MainWindow", "point", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_template_catplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0428\u0430\u0431\u043b\u043e\u043d \u0434\u043b\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u0430:</p><p>1. strip - \u0442\u043e\u0447\u0435\u0447\u043d\u044b\u0439 \u0433\u0440\u0430\u0444\u0438\u043a, \u043f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u0432\u0441\u0435 \u0442\u043e\u0447\u043a\u0438 \u0434\u0430\u043d\u043d\u044b\u0445 \u0441 \u043b\u0435\u0433\u043a\u0438\u043c \u0440\u0430\u0437\u0431\u0440\u043e\u0441\u043e\u043c \u043f\u043e \u0433\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u0438 \u0447\u0442\u043e\u0431\u044b \u0438\u0437\u0431\u0435\u0436\u0430\u0442\u044c \u043f\u0435\u0440\u0435\u043a\u0440\u044b\u0442\u0438\u044f</p><p>2. swarm - \u0442\u043e\u0447\u0435\u0447\u043d\u044b\u0439 \u0433\u0440\u0430\u0444\u0438\u043a \u0431\u0435\u0437 \u043f\u0435\u0440\u0435\u043a\u0440\u044b\u0442\u0438\u044f, \u0442\u043e\u0447\u043a\u0438 \u0440\u0430\u0441\u043f\u043e\u043b\u0430\u0433\u0430\u044e\u0442\u0441\u044f \u043f\u043b\u043e\u0442\u043d\u043e,"
+                " \u0441\u043e\u0445\u0440\u0430\u043d\u044f\u044f \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043f\u043e \u043e\u0441\u0438 Y</p><p>3. box - \u0431\u043e\u043a\u0441\u043f\u043b\u043e\u0442, \u043f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u043c\u0435\u0434\u0438\u0430\u043d\u0443, \u043a\u0432\u0430\u0440\u0442\u0438\u043b\u0438, \u0432\u044b\u0431\u0440\u043e\u0441\u044b \u0438 \u0440\u0430\u0437\u0431\u0440\u043e\u0441 \u0434\u0430\u043d\u043d\u044b\u0445</p><p>4. violin - \u0433\u0440\u0430\u0444\u0438\u043a \u043f\u043b\u043e\u0442\u043d\u043e\u0441\u0442\u0438, \u043f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 \u0438 \u0435\u0433\u043e \u0444\u043e\u0440\u043c\u0443</p><p>5. boxen - \u0443\u043b\u0443\u0447\u0448\u0435\u043d\u043d\u044b\u0439 \u0431\u043e\u043a\u0441\u043f\u043b\u043e\u0442 \u0434\u043b\u044f \u0431\u043e\u043b\u044c\u0448\u0438\u0445 \u043d"
+                "\u0430\u0431\u043e\u0440\u043e\u0432 \u0434\u0430\u043d\u043d\u044b\u0445, \u043f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u0431\u043e\u043b\u044c\u0448\u0435 \u043a\u0432\u0430\u043d\u0442\u0438\u043b\u0435\u0439</p><p>6. point - \u0433\u0440\u0430\u0444\u0438\u043a \u0441\u043e \u0441\u0440\u0435\u0434\u043d\u0438\u043c\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f\u043c\u0438 \u0438 \u0434\u043e\u0432\u0435\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u043c\u0438 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u0430\u043c\u0438, \u0441\u043e\u0435\u0434\u0438\u043d\u044f\u0435\u0442 \u0442\u043e\u0447\u043a\u0438 \u043b\u0438\u043d\u0438\u044f\u043c\u0438</p><p>7. bar - \u0441\u0442\u043e\u043b\u0431\u0447\u0430\u0442\u0430\u044f \u0434\u0438\u0430\u0433\u0440\u0430\u043c\u043c\u0430 \u0441\u043e \u0441\u0440\u0435\u0434\u043d\u0438\u043c\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f\u043c\u0438 \u0438 \u0434\u043e\u0432\u0435\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b"
+                "\u043c\u0438 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u0430\u043c\u0438</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_color_pal_box_15.setToolTip(
             QCoreApplication.translate(
@@ -9103,6 +10412,15 @@ class Ui_MainWindow(object):
             ),
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_catplot_SD_or_not.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0438 \u0434\u043b\u044f \u0432\u044b\u0432\u043e\u0434\u0430: SD, SE, \u0434\u043e\u0432\u0435\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0438\u043b\u0438 \u043f\u0435\u0440\u0446\u0435\u043d\u0442\u0438\u043b\u044c\u043d\u044b\u0439 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.label_10.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9110,6 +10428,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_catplot_angle.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0412\u0440\u0430\u0449\u0430\u0442\u044c \u043f\u043e\u0434\u043f\u0438\u0441\u0438 \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u043d\u044b\u0439 \u0443\u0433\u043e\u043b.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_stattest_6.setToolTip(
             QCoreApplication.translate(
@@ -9124,6 +10451,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_stat_znachimost_catplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_stat_znachimost_catplot.setText("")
         # if QT_CONFIG(tooltip)
         self.lb_stattest_5.setToolTip(
@@ -9170,6 +10506,15 @@ class Ui_MainWindow(object):
             9, QCoreApplication.translate("MainWindow", "Kruskal", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_stat_test_catplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0435\u0441\u0442 \u0434\u043b\u044f \u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438 \u0434\u043b\u044f catplot.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_stattest_14.setToolTip(
             QCoreApplication.translate(
@@ -9184,6 +10529,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_stat_znachimost_catplot_inside_subgroup.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u043d\u0443\u0442\u0440\u0438 \u043f\u043e\u0434\u0433\u0440\u0443\u043f\u043f\u044b?",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_stat_znachimost_catplot_inside_subgroup.setText("")
         # if QT_CONFIG(tooltip)
         self.lb_stattest_9.setToolTip(
@@ -9213,6 +10567,16 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", "\u043f\u043e\u043b\u043d\u044b\u0439", None),
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_catplot_stat_formatt.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0424\u043e\u0440\u043c\u0430\u0442 \u043f\u043e\u0434\u043f\u0438\u0441\u0435\u0439 \u0434\u043b\u044f \u0441\u0442\u0430\u0442. \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u0438:</p><p>\u041e\u0434\u0438\u043d \u0438\u0437 \u0442\u0440\u0435\u0445:</p><p>- \u0437\u0432\u0435\u0437\u0434\u043e\u0447\u043a\u0430 (*)</p><p>- \u0442\u043e\u0447\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 p (p=0.03)</p><p>- \u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 p (p&lt;0.05)</p><p>\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u0434\u043b\u044f \u0437\u0434\u0435\u0437\u0434\u043e\u0447\u0435\u043a \u043e\u0431\u043e\u0437\u043d\u0430\u0447\u0430\u0435\u0442\u0441\u044f \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u043c:</p><p>* p&lt;0.05, ** p&lt;0.01, *** p&lt;0.001, **** p&lt;0.0001</p><p>\u0414\u0430\u043d\u043d\u0430\u044f \u0440"
+                "\u0430\u0441\u0448\u0438\u0444\u0440\u043e\u0432\u043a\u0430 \u0441\u043e\u0445\u0440\u0430\u043d\u044f\u0435\u0442\u0441\u044f \u0432 txt \u0444\u0430\u0439\u043b \u0440\u044f\u0434\u043e\u043c \u0441 \u0440\u0438\u0441\u0443\u043d\u043a\u043e\u043c.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_stattest_10.setToolTip(
             QCoreApplication.translate(
@@ -9243,6 +10607,24 @@ class Ui_MainWindow(object):
             4, QCoreApplication.translate("MainWindow", "Benjamini-Yekutieli", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_catplot_mult_stat.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u043f\u0440\u0430\u0432\u043a\u0430 \u043d\u0430 \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u0443\u044e \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0443 \u0433\u0438\u043f\u043e\u0442\u0435\u0437. \u0412\u0430\u0436\u043d\u043e \u043a\u043e\u0433\u0434\u0430 \u043c\u043d\u043e\u0433\u043e \u043f\u043e\u043f\u0430\u0440\u043d\u044b\u0445 \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u0439.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.btn_plot_and_save_catplot.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a catplot \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c png \u0444\u0430\u0439\u043b.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_plot_and_save_catplot.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9284,7 +10666,25 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.path_for_RheoScan_describe.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u0443\u0442\u044c \u043f\u0430\u043f\u043a\u0435 \u043a excel \u0444\u0430\u0439\u043b\u0443 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u0430\u043c, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0431\u044b\u043b\u0438 \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u044b \u043f\u0443\u0442\u0435\u043c \u0440\u0430\u0441\u0447\u0435\u0442\u0430 \u0438\u0437 \u043f\u0435\u0440\u0432\u043e\u0439 \u0432\u043a\u043b\u0430\u0434\u043a\u0438.</p><p>\u0412\u0430\u0436\u043d\u043e, \u0447\u0442\u043e \u0431\u0443\u0434\u0443\u0442 \u0440\u0430\u0441\u0441\u043c\u043e\u0442\u0440\u0435\u043d\u044b \u0432\u0441\u0435 excel \u0444\u0430\u0439\u043b\u044b \u0438\u0437 \u043f\u0430\u043f\u043a\u0438.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.path_for_RheoScan_describe.setText("")
+        # if QT_CONFIG(whatsthis)
+        self.toolButton_RheoScan.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u043f\u0430\u043f\u043a\u0443, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u0439 \u043b\u0435\u0436\u0430\u0442 excel \u0444\u0430\u0439\u043b\u044b \u0438\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u043e.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.toolButton_RheoScan.setText(QCoreApplication.translate("MainWindow", "...", None))
         # if QT_CONFIG(tooltip)
         self.lb_stattest_12.setToolTip(
@@ -9315,6 +10715,16 @@ class Ui_MainWindow(object):
             ),
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_RheoScan_describe.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                '<html><head/><body><p>\u041c\u043e\u0436\u043d\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0435: </p><p>1. \u041b\u0438\u0431\u043e \u0443 \u0432\u0430\u0441 \u0435\u0441\u0442\u044c \u043c\u043d\u043e\u0433\u043e \u0444\u0430\u0439\u043b\u043e\u0432, \u0433\u0434\u0435 \u043a\u0430\u0436\u0434\u044b\u0439 \u0444\u0430\u0439\u043b -- \u044d\u0442\u043e \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f \u043f\u043e \u043e\u0434\u043d\u043e\u043c\u0443 \u043e\u0431\u0440\u0430\u0437\u0446\u0443/\u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0443.</p><p>2. \u041b\u0438\u0431\u043e \u0443 \u0432\u0430\u0441 \u043e\u0434\u0438\u043d \u0444\u0430\u0439\u043b, <span style=" text-decoration: underline;">\u0433\u0434\u0435 \u043f\u0435\u0440\u0432\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u044e \u043e\u0431\u0440\u0430\u0437\u0446'
+                "\u0430 \u0438\u043b\u0438 \u0424\u0418\u041e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430</span>. \u0412\u0430\u0436\u043d\u043e, \u0447\u0442\u043e\u0431\u044b \u044d\u0442\u043e \u0431\u044b\u043b\u0430 \u043f\u0435\u0440\u0432\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_path_for_plot_6.setToolTip(
             QCoreApplication.translate(
@@ -9340,7 +10750,29 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.RheoScan_describe_mask_sheets.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c \u0440\u0430\u0441\u0447\u0435\u0442\u0430/\u0438\u0433\u043d\u043e\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 SD \u043d\u0430 \u0440\u0430\u0437\u043d\u044b\u0445 \u043b\u0438\u0441\u0442\u0430\u0445.</p><p>\u041f\u043e \u0434\u0435\u0444\u043e\u043b\u0442\u0443 SD \u0440\u0430\u0441\u0447\u0438\u0442\u044b\u0432\u0430\u0435\u0442\u0441\u044f \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u043b\u0438\u0441\u0442\u043e\u0432 excel.</p><p>\u041f\u043e \u0441\u0443\u0442\u0438 \u044d\u0442\u043e \u043c\u0430\u0441\u043a\u0430, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u0434\u043e\u043b\u0436\u043d\u0430 \u0441\u043e\u0441\u0442\u043e\u044f\u0442\u044c \u0438\u0437:</p><p><span style=\" font-weight:700;\">\u043f\u043e\u043b\u043e\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445</span> -- \u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c SD  -- <span style=\" font-family:'Menlo','Monaco','Courier New','monospace"
+                "'; font-size:12px; color:#cccccc;\">(</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;y&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;yes&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;t&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;true&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'"
+                "Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;on&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;1&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">)</span></p><p>\u0438\u043b\u0438</p><p><span style=\" font-weight:700;\">\u043e\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0445</span> -- \u0443\u0431\u0440\u0430\u0442\u044c SD -- <span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">(</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;n&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menl"
+                "o','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;no&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;f&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;false&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;off&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">, </span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\""
+                ">&quot;0&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">)</span></p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0435\u0441\u043b\u0438 \u0443 \u0432\u0430\u0441 3 \u043b\u0438\u0441\u0442\u0430 \u0438 \u043d\u0443\u0436\u043d\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0434\u043b\u044f \u043f\u0435\u0440\u0432\u044b\u0445 \u0434\u0432\u0443\u0445 \u043f\u043e\u0441\u0447\u0438\u0442\u0430\u0442\u044c SD, \u0430 \u0434\u043b\u044f \u0442\u0440\u0435\u0442\u044c\u0435\u0433\u043e -- \u041d\u0415\u0422, \u0442\u043e \u043d\u0443\u0436\u043d\u043e \u0432\u0432\u0435\u0441\u0442\u0438:</p><p>&quot;1 1 0&quot; -- \u0432\u0432\u0435\u0441\u0442\u0438 \u0431\u0435\u0437 \u043a\u0430\u0432\u044b\u0447\u0435\u043a.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.RheoScan_describe_mask_sheets.setText("")
+        # if QT_CONFIG(whatsthis)
+        self.btn_RheoScan_describe_file_or_files.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0440\u0435\u0434\u043d\u0438\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0438 SD \u0434\u043b\u044f \u0444\u0430\u0439\u043b\u0430 \u0438\u043b\u0438 \u0444\u0430\u0439\u043b\u043e\u0432 \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u0432 excel \u0444\u0430\u0439\u043b.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_RheoScan_describe_file_or_files.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9378,6 +10810,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.path_for_rheoscan_report.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 excel \u0444\u0430\u0439\u043b\u043e\u043c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.path_for_rheoscan_report.setText("")
         self.lb_exel_name_9.setText(
             QCoreApplication.translate(
@@ -9386,6 +10827,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_rheoscan_report.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.label_3.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9393,6 +10843,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.calendarWidget_rheoscan_report.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0414\u0430\u0442\u0430 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.label_22.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9400,6 +10859,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.rheoscan_report_name_exp.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0424\u0418\u041e \u0442\u043e\u0433\u043e, \u043a\u0442\u043e \u043f\u0440\u043e\u0432\u043e\u0434\u0438\u043b \u044d\u043a\u0441\u043f\u0435\u0440\u0438\u043c\u0435\u043d\u0442.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.label_24.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9407,6 +10875,28 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.rheoscan_report_name_process.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0424\u0418\u041e \u0442\u043e\u0433\u043e, \u043a\u0442\u043e \u043e\u0431\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u043b \u0434\u0430\u043d\u043d\u044b\u0435.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.toolBox.setWhatsThis("")
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.rheoscan_report_parameters_dict.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0417\u0434\u0435\u0441\u044c \u043d\u0443\u0436\u043d\u043e \u0432 \u0432\u0438\u0434\u0435 Python \u0441\u043b\u043e\u0432\u0430\u0440\u044f \u0432\u0432\u0435\u0441\u0442\u0438 \u043f\u0435\u0440\u0435\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u0438\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432.</p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443, \u0432 excel \u0444\u0430\u0439\u043b\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 \u0438\u043d\u0434\u0435\u043a\u0441\u0430 \u0430\u0433\u0440\u0435\u0433\u0430\u0446\u0438\u0438 \u043d\u0430\u0437\u044b\u0432\u0430\u0435\u0442\u0441\u044f &quot;AI&quot;, \u0430 \u0432 \u043e\u0442\u0447\u0435\u0442\u0435 \u043c\u044b \u0445\u043e\u0442\u0438\u043c \u0432\u0438\u0434\u0435\u0442\u044c &quot;AI, %&quot;.</p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443:</p><p>{&quot;AI&quot;:&quot;AI, %&quot;, &quot;CSS&quot;:&quot;CSS, \u043c\u041f\u0430&quot;, &quot;T1/2&quot;: &quot;T1/2, \u0441\u0435\u043a"
+                ".&quot;}</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.rheoscan_report_parameters_dict.setPlainText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9424,6 +10914,16 @@ class Ui_MainWindow(object):
                 None,
             ),
         )
+        # if QT_CONFIG(whatsthis)
+        self.rheoscan_report_norm_dict.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0417\u0434\u0435\u0441\u044c \u043d\u0443\u0436\u043d\u043e \u0432 \u0432\u0438\u0434\u0435 Python \u0441\u043b\u043e\u0432\u0430\u0440\u044f \u0432\u0432\u0435\u0441\u0442\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u043d\u043e\u0440\u043c\u044b.<br/>\u0412\u0430\u0436\u043d\u043e, \u0447\u0442\u043e\u0431\u044b \u043a\u043b\u044e\u0447\u0438 - \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u043e\u0432\u0430\u043b\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f\u043c \u0441\u043b\u043e\u0432\u0430\u0440\u044f \u0438\u0437 \u0440\u0430\u0437\u0434\u0435\u043b\u0435 &quot;\u041f\u0435\u0440\u0435\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u0438\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432&quot;.</p><p>\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043d\u043e\u0440\u043c\u044b \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u0435\u0442\u0441\u044f, \u043a"
+                "\u0430\u043a \u0441\u0440\u0435\u0434\u043d\u0435\u0435<span style=\" font-family:'Google Sans','Helvetica Neue','sans-serif'; font-size:16px; color:#0a0a0a; background-color:#ffffff;\">\u00b1</span>SD.</p><p>\u041a \u043f\u0440\u0438\u043c\u0435\u0440\u0443:</p><p>{&quot;AI, %&quot;: &quot;40\u00b110&quot;, &quot;CSS, \u043c\u041f\u0430&quot;: &quot;180\u00b150&quot;, &quot;T1/2, \u0441\u0435\u043a.&quot;: &quot;7\u00b12&quot;}</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.rheoscan_report_norm_dict.setPlainText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9441,6 +10941,15 @@ class Ui_MainWindow(object):
                 None,
             ),
         )
+        # if QT_CONFIG(whatsthis)
+        self.rheoscan_report_comment.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0439 \u043a \u043e\u0442\u0447\u0435\u0442\u0443.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.rheoscan_report_comment.setPlainText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9460,6 +10969,15 @@ class Ui_MainWindow(object):
                 None,
             ),
         )
+        # if QT_CONFIG(whatsthis)
+        self.btn_make_rheoscan_report.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0421\u0434\u0435\u043b\u0430\u0442\u044c \u043e\u0442\u0447\u0435\u0442 \u043f\u043e \u043e\u0434\u043d\u043e\u043c\u0443 \u043e\u0431\u0440\u0430\u0437\u0446\u0443/\u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0443 \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0435\u0433\u043e \u0432 pdf.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_make_rheoscan_report.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9505,6 +11023,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.path_for_dop_stat.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 excel \u0444\u0430\u0439\u043b\u043e\u043c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.path_for_dop_stat.setText("")
         self.lb_exel_name_5.setText(
             QCoreApplication.translate(
@@ -9513,6 +11040,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_excel_dop_stat.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_exel_name_6.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9520,6 +11056,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_excel_sheet_dop_stat.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430 \u0432 excel \u0444\u0430\u0439\u043b\u0435 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_9.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -9530,6 +11075,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_dop_stat_x.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041a\u043e\u043b\u043e\u043d\u043a\u0430 \u21161/2 \u0434\u043b\u044f \u0432\u044b\u0431\u043e\u0440\u0430.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_10.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -9540,6 +11094,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_dop_stat_y.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041a\u043e\u043b\u043e\u043d\u043a\u0430 \u21162/2 \u0434\u043b\u044f \u0432\u044b\u0431\u043e\u0440\u0430.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_stattest_8.setToolTip(
             QCoreApplication.translate(
@@ -9661,6 +11224,15 @@ class Ui_MainWindow(object):
             ),
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_stat_test_dop_stat.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0435\u0441\u0442 \u0434\u043b\u044f \u0432\u044b\u0431\u043e\u0440\u0430.</p><p>\u041d\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 \u043f\u0435\u0440\u043c\u0443\u0442\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0442\u0435\u0441\u0442\u044b, \u0435\u0441\u043b\u0438 \u0443 \u0432\u0430\u0441 \u043c\u043d\u043e\u0433\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 \u0432 \u043a\u043e\u043b\u043e\u043d\u043a\u0430\u0445.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb__altern_heposisis_2.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9678,6 +11250,15 @@ class Ui_MainWindow(object):
             2, QCoreApplication.translate("MainWindow", "greater", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_alter_hep_dop_stat.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0433\u0438\u043f\u043e\u0442\u0435\u0437\u0430.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_11.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -9686,7 +11267,25 @@ class Ui_MainWindow(object):
                 "MainWindow", "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 p:", None
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.p_value_dop_stat.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0412\u044b\u0432\u043e\u0434\u0438\u043c\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 p.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.p_value_dop_stat.setText("")
+        # if QT_CONFIG(whatsthis)
+        self.btn_dop_stat_calc.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0443\u044e \u0437\u043d\u0430\u0447\u0438\u043c\u043e\u0441\u0442\u044c \u043c\u0435\u0436\u0434\u0443 \u0434\u0432\u0443\u043c\u044f \u0441\u0442\u043e\u043b\u0431\u0446\u0430\u043c\u0438.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_dop_stat_calc.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9732,6 +11331,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.path_for_excel_cluster.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a \u043f\u0430\u043f\u043a\u0435 \u0441 excel \u0444\u0430\u0439\u043b\u043e\u043c \u0434\u043b\u044f \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0438\u0437\u0430\u0446\u0438\u0438 \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u043e\u0432 \u043f\u043e \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0438.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.path_for_excel_cluster.setText("")
         self.lb_exel_name_10.setText(
             QCoreApplication.translate(
@@ -9740,6 +11348,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_cluster_file.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 excel \u0444\u0430\u0439\u043b\u0430 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.lb_exel_name_11.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9747,6 +11364,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_cluster_excel_sheet.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0441\u0442\u0430 \u0432 excel \u0444\u0430\u0439\u043b\u0435 -- \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438. \u041d\u0430\u0434\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b\u0431\u0440\u0430\u0442\u044c",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_12.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -9757,6 +11383,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_cluster_n.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041a\u043e\u043b-\u0432\u043e \u043a\u043b\u0430\u0441\u0441\u0442\u0435\u0440\u043e\u0432 \u0434\u043b\u044f \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u0438\u044f.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_13.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -9772,6 +11407,15 @@ class Ui_MainWindow(object):
             1, QCoreApplication.translate("MainWindow", "PCA", None)
         )
 
+        # if QT_CONFIG(whatsthis)
+        self.comboBox_cluster_coord.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442\u044b \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0430 \u0434\u043b\u044f 2D \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f: MDS \u0438\u043b\u0438 PSA.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         # if QT_CONFIG(tooltip)
         self.lb_hue_name_14.setToolTip("")
         # endif // QT_CONFIG(tooltip)
@@ -9782,6 +11426,24 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.spinBox_cluster_buble_size.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0420\u0430\u0437\u043c\u0435\u0440 \u043f\u0443\u0437\u044b\u0440\u044c\u043a\u043e\u0432 \u043d\u0430 \u0433\u0440\u0430\u0444\u0438\u043a\u0435.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.btn_cluster_save_file.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0421\u0434\u0435\u043b\u0430\u0442\u044c \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0438\u0437\u0430\u0446\u0438\u044e \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0433\u0440\u0430\u0444\u0438\u043a.",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_cluster_save_file.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -9827,6 +11489,29 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.lineEdit_json_load.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u043b\u043d\u044b\u0439 \u043f\u0443\u0442\u044c \u043a JSON \u0444\u0430\u0439\u043b\u0443",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.btn_json_load.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0434\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0438\u0437 JSON \u0444\u0430\u0439\u043b\u0430. </p><p>\u042d\u0442\u043e \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u043e\u043b\u0435\u0437\u043d\u043e, \u0435\u0441\u043b\u0438 \u0443 \u0432\u0430\u0441 \u0435\u0441\u0442\u044c \u0433\u043e\u0442\u043e\u0432\u044b\u0439 \u0448\u0430\u0431\u043b\u043e\u043d \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043a \u0434\u043b\u044f \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u043e\u0432 \u0438 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u0438 \u0432\u0430\u043c \u043d\u0435 \u0445\u043e\u0447\u0435\u0442\u0441\u044f \u043a\u0430\u0436\u0434\u044b\u0439 \u0440\u0430\u0437 \u043f\u0440\u0438 \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u0438 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0438\u0437\u043c\u0435\u043d\u044f\u0442\u044c"
+                " \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438.</p><p>JSON \u0444\u0430\u0439\u043b \u0434\u043e\u043b\u0436\u0435\u043d \u0431\u044b\u0442\u044c \u043f\u043e \u0442\u0438\u043f\u0443:</p><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">{</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">&quot;rheoscan_report_name_exp&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">:</span><span style=\" font-family:'Menlo','Monaco','Cou"
+                "rier New','monospace'; font-size:12px; color:#ce9178;\">&quot;\u0424\u0418\u041e&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">,</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">&quot;rheoscan_report_parameters_dict&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">:{</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo"
+                "','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">&quot;AAA&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">:</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;aaa&quot;</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">   },</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">&quot;check_approx_agg&quot;</span><span style=\" font-fami"
+                "ly:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">:</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;\">true</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">,</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">&quot;check_approx_deform&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">:</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;\">true</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-ri"
+                "ght:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">}</span></pre><p>\u0422\u043e \u0435\u0441\u0442\u044c \u043a\u043b\u044e\u0447 -- \u044d\u0442\u043e \u0438\u043c\u044f \u043e\u0431\u044a\u0435\u043a\u0442\u0430 (\u0432 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438 \u044f\u0432\u043d\u043e \u0443\u043a\u0430\u0437\u0430\u043d\u043e \u0432 \u043f\u043e\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430\u0445), \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 -- \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435, \u043a\u043e\u0442\u043e\u0440\u043e\u0435 \u0432 \u0434\u0430\u043d\u043d\u043e\u0435 \u043f\u043e\u043b\u0435 \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u044c.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.btn_json_load.setText(
             QCoreApplication.translate(
                 "MainWindow",
