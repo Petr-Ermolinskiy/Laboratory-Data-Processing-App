@@ -9,6 +9,8 @@ import unicodedata
 from contextlib import contextmanager
 from pathlib import Path
 
+from loguru import logger
+
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from PySide6.QtCore import Qt, QTimer
@@ -42,6 +44,17 @@ with open("describe_tabs.json") as f:
 OUTPUT_DIR = "files"
 FIGS_DIR = os.path.join(OUTPUT_DIR, "figs")
 os.makedirs(FIGS_DIR, exist_ok=True)
+
+# ----------------------------------------------- #
+logger.remove()
+
+try:
+    logger.add(
+        sys.stderr, format="<green>{time:HH:mm:ss}</green> | {level} | {message}", level="INFO"
+    )
+except Exception as e:
+    logger.info(f"Нельзя импортировать: {e}")
+# ----------------------------------------------- #
 
 
 class MainWindow(QMainWindow):
@@ -513,7 +526,7 @@ def generate() -> None:
             img_name = parts[2]
             title = parts[3]
 
-            print(f"{title}")
+            logger.info(f"{title}")
 
             # Получаем номер раздела для подписи
             number = section_number_map[sec_id]["number"] if sec_id in section_number_map else ""
@@ -596,9 +609,9 @@ def generate() -> None:
                     processed_html.append(f'  <p class="figure-caption">{title}</p>\n')
                 processed_html.append("</div>\n")
 
-                print(f"✅ Изображение встроено в HTML: {img_name}")
+                logger.info(f"✅ Изображение встроено в HTML: {img_name}")
             except Exception as e:
-                print(f"⚠️ Ошибка при встраивании изображения {img_name}: {e}")
+                logger.warning(f"⚠️ Ошибка при встраивании изображения {img_name}: {e}")
                 # Если не удалось встроить, добавляем обычную ссылку
                 processed_html.append(f"<!-- Ошибка при встраивании изображения {img_name} -->\n")
                 if number:
@@ -627,17 +640,17 @@ def generate() -> None:
     with open(html_filename, "w", encoding="utf-8") as f:
         f.writelines(html)
 
-    print("Документация приложения Lab App сгенерирована:")
-    print(f"   - Markdown: {md_filename}")
-    print(f"   - HTML (автономный): {html_filename}")
+    logger.info("Документация приложения Lab App сгенерирована:")
+    logger.info(f"   - Markdown: {md_filename}")
+    logger.info(f"   - HTML (автономный): {html_filename}")
 
     # Отладочная информация
-    print("\n📋 Нумерация разделов:")
+    logger.info("Нумерация разделов:")
     for _, info in sorted(
         section_number_map.items(),
         key=lambda x: tuple(map(int, x[1]["number"].split("."))) if x[1]["number"] else (0,),
     ):
-        print(f"  {info['number']}: {info['title']}")
+        logger.info(f"  {info['number']}: {info['title']}")
 
 
 if __name__ == "__main__":
