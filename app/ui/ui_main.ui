@@ -1339,6 +1339,18 @@ border-radius: 17px;
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_32">
                <item>
+                <widget class="QCheckBox" name="check_patient_name_from_file_name">
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>имя образца — из имени файла, не из данных</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_65">
                  <item alignment="Qt::AlignLeft">
                   <widget class="QLabel" name="lb_separator">
@@ -11410,7 +11422,7 @@ border-radius: 10px;</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>372</width>
+                       <width>100</width>
                        <height>100</height>
                       </rect>
                      </property>

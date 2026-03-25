@@ -94,6 +94,7 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
     save_only_one_name = self.ui.check_name_rheoscan.isChecked()
     save_raw_deform_data = self.ui.check_approx_deform_raw_data.isChecked()
     dop_css_parameter = self.ui.check_dop_CSS_parameter.isChecked()
+    check_patient_name_from_file_name = self.ui.check_patient_name_from_file_name.isChecked()
     # позиция имени, которое будет сохранено
     name_position = self.ui.spinBox_check_name_rheoscan.value()
     # разделитель данных
@@ -171,7 +172,12 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             )
             yy = x.drop([0, 2, 3, 4, 9, 10])
             jj = yy[0].apply(lambda x: pd.Series(x.split(":"))).T
-            all_agg = pd.concat([all_agg, jj.loc[1].to_frame().T], ignore_index=True)
+            temp_df = jj.loc[1].to_frame().T
+            # имя образца/пациента или из файла, или имени файла
+            if check_patient_name_from_file_name:
+                temp_df.iloc[0, 0] = Path(i).name.replace(".txt", "")
+            # добавляем данные в датафрейм
+            all_agg = pd.concat([all_agg, temp_df], ignore_index=True)
         all_agg.columns = ["Patient", "AI", "T1/2", "AMP", "M"]
         # изменить ',' на '.'
         all_agg = all_agg.replace(",", ".", regex=True)
@@ -236,6 +242,11 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                 decimal=",",
             )
             Name_fit_agg = x_agg_name.iloc[1, 0].split(":")[1]
+
+            # имя образца/пациента или из файла, или имени файла
+            if check_patient_name_from_file_name:
+                Name_fit_agg = Path(i).name.replace(".txt", "")
+
             ############
             x = pd.read_table(i, skiprows=22, header=None, decimal=",")
             try:
@@ -362,6 +373,13 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             )
             data_css = x.drop([0, 2, 3, 4, 5, 6, 7, 8, 11])
             data_css = data_css[0].apply(lambda x: pd.Series(x.split(":"))).T
+            # сохраняем все в временную переменную
+            temp_css = data_css.loc[1]
+
+            # имя образца/пациента или из файла, или имени файла
+            if check_patient_name_from_file_name:
+                temp_css.iloc[0] = Path(i).name.replace(".txt", "")
+
             if dop_css_parameter:
                 ############
                 # читаем все остальные данные - новый параметр
@@ -403,15 +421,13 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
 
                 # добавляем всё в датафрейм
                 new_row = (
-                    pd.concat([data_css.loc[1], pd.Series(data=str(new_parameter))], axis=0)
-                    .to_frame()
-                    .T
+                    pd.concat([temp_css, pd.Series(data=str(new_parameter))], axis=0).to_frame().T
                 )
                 all_CSS = pd.concat([all_CSS, new_row], ignore_index=True)
 
             else:
                 # добавляем всё в датафрейм
-                all_CSS = pd.concat([all_CSS, data_css.loc[1].to_frame().T], ignore_index=True)
+                all_CSS = pd.concat([all_CSS, temp_css.to_frame().T], ignore_index=True)
 
         if dop_css_parameter:
             all_CSS.columns = ["Patient", "Critical time, s", "CSS", "New parameter, Pa"]
@@ -480,9 +496,13 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             )
             newx_x = newx.loc[1]
             s_x = "".join(newx_x)
-            new_str_x = s_x.replace("Patient name:", "")
+            patient_name_deform = s_x.replace("Patient name:", "")
 
-            new_row = pd.DataFrame([{"Patient": new_str_x}])
+            # имя образца/пациента или из файла, или имени файла
+            if check_patient_name_from_file_name:
+                patient_name_deform = Path(i).name.replace(".txt", "")
+
+            new_row = pd.DataFrame([{"Patient": patient_name_deform}])
             all_def_name = pd.concat([all_def_name, new_row], ignore_index=True)
         # меняем подписи по колонкам
         all_def.columns = [
@@ -615,7 +635,12 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             )
             iopp = xip.loc[1]
             sss = "".join(iopp)
-            ttt = sss.replace("Patient name:", "")
+            patient_name_deform_fit = sss.replace("Patient name:", "")
+
+            # имя образца/пациента или из файла, или имени файла
+            if check_patient_name_from_file_name:
+                patient_name_deform_fit = Path(i).name.replace(".txt", "")
+
             # df2 - непосредственно значения индекса элонгации для последующей аппроксимации
             df2 = data_def_approx[1]
             # one3 - непосредственно значения сдвиговых напряжений для последующей аппроксимации
@@ -653,7 +678,7 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                 # For r_sq
                 new_row = pd.DataFrame([
                     {
-                        "Patient": ttt,
+                        "Patient": patient_name_deform_fit,
                         "r^2": r_squared,
                         "nn": n,
                         "Yield strength": yieldd,
@@ -668,7 +693,7 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                 # For r_sq_seq
                 new_row_seq = pd.DataFrame([
                     {
-                        "Patient": ttt,
+                        "Patient": patient_name_deform_fit,
                         "r^2": r_squared,
                         "nn": n,
                         "Yield strength": yieldd,
@@ -696,11 +721,17 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                         )
                         plt.plot(one3, f(one3, sslope, extra), "r-")
                         plt.legend(("Raw Data", "Fit Data"))
-                        plt.title(ttt + " (r2=" + str(round(r_squared, 3)) + ")")
+                        plt.title(
+                            patient_name_deform_fit + " (r2=" + str(round(r_squared, 3)) + ")"
+                        )
                         plt.xlabel("Сдвиговое напряжение, Log10(Па)")
                         plt.ylabel("Индекс деформируемости, отн.ед.")
                         # сохраняем все рисунки в отдельную папку
-                        fig.savefig(str(path_for_def_fit / f"{ttt}.png"), dpi=600, format="png")
+                        fig.savefig(
+                            str(path_for_def_fit / f"{patient_name_deform_fit}.png"),
+                            dpi=600,
+                            format="png",
+                        )
                         # закрываем и всё очищаем
                         plt.close()
                         ax.cla()
@@ -770,18 +801,8 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
     Разделение имен (для индекса при построении)
     """
 
-    # функция для того, чтобы разделить столбец 'Patient'
-
-    """
-            if how_to_split != '' and how_to_split.split('=')[0] == 'symbols':
-                if type(how_to_split.split('=')[1]) == int:
-                    jj.loc[1][1] = jj.loc[1][1][0:int(how_to_split.split('=')[1])]
-                else:
-                    pass
-    """
-
-    def splitting(all_split, self):
-        # также можно оставить только определенное количество символов
+    def splitting(all_split: pd.DataFrame, self) -> None:
+        """Функция для того, чтобы разделить столбец 'Patient'."""
         if how_to_split.split("=")[0] == "symbols":
             if how_to_split.split("=")[1].isdigit():
                 all_split["Patient"] = all_split["Patient"].map(
@@ -847,7 +868,7 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
     # выделим ячейки с R^2 < 0.99 для дальнейшей проверки по графикам -- сначала идёт функция для выделения, а в дальнейшем применяем эту функцию к DataFrame
     if var_fit and files_agg != []:
 
-        def highlight(df, col2highlite="R^2"):
+        def highlight(df: pd.DataFrame, col2highlite: str = "R^2") -> pd.DataFrame:
             ret = pd.DataFrame("", index=df.index, columns=df.columns)
             ret.loc[df["R^2"] < 0.99, col2highlite] = "background-color: red"
             return ret
@@ -937,16 +958,15 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
     ]
 
 
-# Функция для вычисления выбросов - ничего не возвращает и очищает 1 Data Frame от выбросов - определение выбросов стандартное
-def out_lets_quartile(all_Data_Frame: pd.DataFrame, factor: int):
-    for i in all_Data_Frame.columns:
-        if i == "Patient" or len(all_Data_Frame[i]) <= 3:
+# Функция для вычисления выбросов - ничего не возвращает
+# и очищает 1 Data Frame от выбросов - определение выбросов стандартное
+def out_lets_quartile(df_: pd.DataFrame, factor: int) -> None:
+    """Выбрасывает выбросы из Data Frame по методу межквартильного размаха (IQR)."""
+    for i in df_.columns:
+        if i == "Patient" or len(df_[i]) <= 3:
             continue
-        q1 = all_Data_Frame.loc[:, i].quantile(0.25)
-        q3 = all_Data_Frame.loc[:, i].quantile(0.75)
-        for j in range(len(all_Data_Frame[i])):
-            if (
-                all_Data_Frame.loc[j, i] < q1 - (q3 - q1) * factor
-                or all_Data_Frame.loc[j, i] > q3 + (q3 - q1) * factor
-            ):
-                all_Data_Frame.loc[j, i] = np.nan
+        q1 = df_.loc[:, i].quantile(0.25)
+        q3 = df_.loc[:, i].quantile(0.75)
+        for j in range(len(df_[i])):
+            if df_.loc[j, i] < q1 - (q3 - q1) * factor or df_.loc[j, i] > q3 + (q3 - q1) * factor:
+                df_.loc[j, i] = np.nan

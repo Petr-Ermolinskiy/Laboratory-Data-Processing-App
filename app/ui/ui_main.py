@@ -636,6 +636,12 @@ class Ui_MainWindow(object):
         )
         self.verticalLayout_32 = QVBoxLayout(self.hjgf)
         self.verticalLayout_32.setObjectName("verticalLayout_32")
+        self.check_patient_name_from_file_name = QCheckBox(self.hjgf)
+        self.check_patient_name_from_file_name.setObjectName("check_patient_name_from_file_name")
+        self.check_patient_name_from_file_name.setFont(font6)
+
+        self.verticalLayout_32.addWidget(self.check_patient_name_from_file_name)
+
         self.horizontalLayout_65 = QHBoxLayout()
         self.horizontalLayout_65.setObjectName("horizontalLayout_65")
         self.lb_separator = QLabel(self.hjgf)
@@ -5052,7 +5058,7 @@ class Ui_MainWindow(object):
         self.toolBox.setObjectName("toolBox")
         self.page = QWidget()
         self.page.setObjectName("page")
-        self.page.setGeometry(QRect(0, 0, 372, 100))
+        self.page.setGeometry(QRect(0, 0, 100, 100))
         self.gridLayout_23 = QGridLayout(self.page)
         self.gridLayout_23.setObjectName("gridLayout_23")
         self.verticalLayout_50 = QVBoxLayout()
@@ -6172,6 +6178,13 @@ class Ui_MainWindow(object):
             QCoreApplication.translate(
                 "MainWindow",
                 "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0441\u0432\u043e\u0434\u043d\u0443\u044e \u0442\u0430\u0431\u043b\u0438\u0446\u0443",
+                None,
+            )
+        )
+        self.check_patient_name_from_file_name.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0438\u043c\u044f \u043e\u0431\u0440\u0430\u0437\u0446\u0430 \u2014 \u0438\u0437 \u0438\u043c\u0435\u043d\u0438 \u0444\u0430\u0439\u043b\u0430, \u043d\u0435 \u0438\u0437 \u0434\u0430\u043d\u043d\u044b\u0445",
                 None,
             )
         )
