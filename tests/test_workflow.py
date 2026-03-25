@@ -10,6 +10,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+import pandas as pd
 import pytest
 from compare_excel import compare_excel_files
 from loguru import logger
@@ -137,7 +138,9 @@ def cleanup_folder_after_app(pytestconfig, data_folder, app) -> None:
 
 
 def test_rheo_scan_1_level(
-    app: QApplication, window: MainWindowProcessingApp, data_folder: str
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
 ) -> None:
     logger.info("--- RheoScan: level=1  ---")
 
@@ -153,8 +156,57 @@ def test_rheo_scan_1_level(
     logger.info("Все проверки для RheoScan прошли (level=1)")
 
 
+def test_rheo_scan_different_names(
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
+) -> None:
+    logger.info("--- RheoScan: different names  ---")
+
+    # выставляем нужные переменные
+    window.ui.main_path.setText(str(Path(data_folder) / "RheoScan_names_check"))
+    window.ui.spinBox_level.setValue(1)
+
+    window.ui.check_save_RheoScan_overall.setChecked(True)
+
+    # выполняем обработку данных
+    window.RheoScan()
+
+    # проверяем, что имя пациента было правильно распознано из файла (НЕ названия)
+    df_check = pd.read_excel(
+        str(Path(data_folder) / "RheoScan_names_check" / "RheoScan_names_check.xlsx"),
+        sheet_name=None,
+    )
+
+    for df_ in df_check.values():
+        assert len(df_) == 1, "Должна быть только одна строка в каждом листе"
+        assert df_["Patient"].iloc[0].strip() == "test_1", "Имя пациента не распознано из файла"
+
+    # изменяем флаг -- теперь имя пациента должно быть распознано из названия файла, а не из данных
+    window.ui.check_patient_name_from_file_name.setChecked(True)
+
+    # выполняем обработку данных
+    window.RheoScan()
+
+    # проверяем, что имя пациента было правильно распознано из названия файла
+    df_check = pd.read_excel(
+        str(Path(data_folder) / "RheoScan_names_check" / "RheoScan_names_check.xlsx"),
+        sheet_name=None,
+    )
+
+    for sheet_name, df_ in df_check.items():
+        assert len(df_) == 1, "Должна быть только одна строка в каждом листе"
+        assert df_["Patient"].iloc[0].strip() == f"test_{sheet_name.lower()}", (
+            "Имя пациента не распознано из названия файла"
+        )
+
+    logger.info("Все проверки для RheoScan прошли (different names)")
+
+
 def test_rheo_scan_2_level(
-    app: QApplication, window: MainWindowProcessingApp, data_folder: str
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
 ) -> None:
     logger.info("--- RheoScan: level=2  ---")
 
@@ -179,7 +231,11 @@ def test_rheo_scan_2_level(
     logger.info("Все проверки для RheoScan прошли (level=2)")
 
 
-def test_lt(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+def test_lt(
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
+) -> None:
     logger.info("--- Лазерный пинцет  ---")
 
     # выставляем нужные переменные
@@ -207,7 +263,11 @@ def test_lt(app: QApplication, window: MainWindowProcessingApp, data_folder: str
     logger.info("Все проверки для Лазерного пинцета прошли")
 
 
-def test_biola(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+def test_biola(
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
+) -> None:
     logger.info("--- Biola  ---")
 
     # выставляем нужные переменные
@@ -234,7 +294,11 @@ def test_biola(app: QApplication, window: MainWindowProcessingApp, data_folder: 
     logger.info("Все проверки для Биола прошли")
 
 
-def test_figs(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+def test_figs(
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
+) -> None:
     logger.info("--- Обработка данных: графики  ---")
 
     # выставляем нужные переменные
@@ -262,7 +326,11 @@ def test_figs(app: QApplication, window: MainWindowProcessingApp, data_folder: s
     logger.info("Все проверки для построения рисунков прошли")
 
 
-def test_profile(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+def test_profile(
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
+) -> None:
     logger.info("--- Обработка данных: микрореологический профиль  ---")
 
     # выставляем нужные переменные
@@ -277,7 +345,11 @@ def test_profile(app: QApplication, window: MainWindowProcessingApp, data_folder
     logger.info("Все проверки для построения микрореологического профиля прошли")
 
 
-def test_table(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+def test_table(
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
+) -> None:
     logger.info("--- Обработка данных: сводные таблицы  ---")
 
     # выставляем нужные переменные
@@ -292,7 +364,11 @@ def test_table(app: QApplication, window: MainWindowProcessingApp, data_folder: 
     logger.info("Все проверки для сводных таблиц прошли")
 
 
-def test_catplot(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+def test_catplot(
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
+) -> None:
     logger.info("--- Обработка данных: catplot  ---")
 
     # выставляем нужные переменные
@@ -308,7 +384,9 @@ def test_catplot(app: QApplication, window: MainWindowProcessingApp, data_folder
 
 
 def test_calc_stat_significance(
-    app: QApplication, window: MainWindowProcessingApp, data_folder: str
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
 ) -> None:
     logger.info("--- Обработка данных: стат.значимость  ---")
     # выставляем нужные переменные
@@ -326,7 +404,9 @@ def test_calc_stat_significance(
 
 
 def test_rheo_scan_post_processing(
-    app: QApplication, window: MainWindowProcessingApp, data_folder: str
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
 ) -> None:
     logger.info("--- RheoScan: сводные таблицы  ---")
 
@@ -360,7 +440,11 @@ def test_rheo_scan_post_processing(
     logger.info("Все проверки по обработки данных RheoScan прошли")
 
 
-def test_json_loading(app: QApplication, window: MainWindowProcessingApp, data_folder: str) -> None:
+def test_json_loading(
+    app: QApplication,
+    window: MainWindowProcessingApp,
+    data_folder: str,
+) -> None:
     logger.info("--- JSON: загрузка данных  ---")
 
     # выставляем нужные переменные
