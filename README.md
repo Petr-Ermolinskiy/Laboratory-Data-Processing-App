@@ -50,6 +50,10 @@ NOTE: для обновления UI используйте команду в т
 ```bash
 pyside6-uic app/ui/ui_main.ui -o app/ui/ui_main.py
 ```
+или 
+```bash
+python build_application/convert_ui_to_py.py
+```
 
 ## Проблемы с установкой
 - Если при установке библиотек не устанавливается pandas, то скорее всего это из-за отсутствия 
