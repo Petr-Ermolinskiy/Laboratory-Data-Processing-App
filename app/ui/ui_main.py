@@ -6181,6 +6181,15 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(whatsthis)
+        self.check_patient_name_from_file_name.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c \u0432\u044b\u0431\u0438\u0440\u0430\u0442\u044c: \u0438\u043c\u044f \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430/\u043e\u0431\u0440\u0430\u0437\u0446\u0430 \u0431\u0435\u0440\u0435\u0442\u0441\u044f \u0438\u0437 \u0444\u0430\u0439\u043b\u0430 \u0438\u043b\u0438 \u0438\u0437 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u044f \u0444\u0430\u0439\u043b\u0430. \u041f\u043e \u0434\u0435\u0444\u043e\u043b\u0442\u0443 \u0438\u0437 \u0444\u0430\u0439\u043b\u0430.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
         self.check_patient_name_from_file_name.setText(
             QCoreApplication.translate(
                 "MainWindow",

@@ -1345,6 +1345,9 @@ border-radius: 17px;
                    <pointsize>11</pointsize>
                   </font>
                  </property>
+                 <property name="whatsThis">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Возможность выбирать: имя пациента/образца берется из файла или из названия файла. По дефолту из файла.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
                  <property name="text">
                   <string>имя образца — из имени файла, не из данных</string>
                  </property>
