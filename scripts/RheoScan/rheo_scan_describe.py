@@ -8,7 +8,15 @@ COLS_MNOI_RHEOSCAN_DICT = {
     "AI (10 sec.), %": "AI, %",
     "T1/2": "T1/2, c",
     "AMP": "AMP",
+    "M": "M",
     "CSS": "CSS, мПа",
+    "Critical time, s": "Crit. time, с",
+    "y0": "y0",
+    "A1": "A1",
+    "A2": "A2",
+    "A1+A2": "A1+A2",
+    "t1": "t1",
+    "t2": "t2",
     "1 Pa": "E1",
     "2 Pa": "E2",
     "3 Pa": "E3",
@@ -113,13 +121,14 @@ def _describe_all_multiple_files(path: str, mask_sheet_main=None, make_as_remote
         # сохраняем в основной DataFrame
         describe_all_files = pd.concat([describe_all_files, describe_data_frame], axis=0)
 
-    if make_as_remote:
-        describe_all_files = describe_all_files[list(COLS_MNOI_RHEOSCAN_DICT.keys())].rename(
-            columns=COLS_MNOI_RHEOSCAN_DICT
-        )[list(COLS_MNOI_RHEOSCAN_DICT.values())]
-
     # сохраняем в excel файл
-    describe_all_files.to_excel(str(summary_file))
+    with pd.ExcelWriter(str(summary_file)) as writer:
+        describe_all_files.to_excel(writer, sheet_name="Sheet1")
+        if make_as_remote:
+            describe_all_files[list(COLS_MNOI_RHEOSCAN_DICT.keys())].rename(
+                columns=COLS_MNOI_RHEOSCAN_DICT
+            )[list(COLS_MNOI_RHEOSCAN_DICT.values())].to_excel(writer, sheet_name="данные_таблица_мноц")
+
     return None
 
 
@@ -153,14 +162,14 @@ def _describe_all_one_file(path: str, mask_sheet: list | None = None, make_as_re
         # статистика
         describe_file = pd.concat([describe_file, df_describe_for_one_sheet], axis=1)
 
-    if make_as_remote:
-        describe_file = describe_file[list(COLS_MNOI_RHEOSCAN_DICT.keys())].rename(
-            columns=COLS_MNOI_RHEOSCAN_DICT
-        )[list(COLS_MNOI_RHEOSCAN_DICT.values())]
-
-    # сохраняем
+    # сохраняем в excel файл
     path_obj = Path(path)
-    describe_file.to_excel(str(path_obj.parent / "RheoScan_summary.xlsx"))
+    with pd.ExcelWriter(str(path_obj.parent / "RheoScan_summary.xlsx")) as writer:
+        describe_file.to_excel(writer, sheet_name="Sheet1")
+        if make_as_remote:
+            describe_file[list(COLS_MNOI_RHEOSCAN_DICT.keys())].rename(
+                columns=COLS_MNOI_RHEOSCAN_DICT
+            )[list(COLS_MNOI_RHEOSCAN_DICT.values())].to_excel(writer, sheet_name="данные_таблица_мноц")
 
 
 def strtobool(val: str) -> int:
