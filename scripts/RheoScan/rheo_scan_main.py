@@ -103,6 +103,8 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
     iqr_val = self.ui.iqr_vibros.value()
     #########################
 
+    check_deform_only_left_points = self.ui.check_deform_only_left_points.isChecked()
+
     # для того чтобы избежать ошибок
     all_def_des, all_CSS_des, fit_res_des, all_agg_des, fit_res_deform_des = (
         pd.DataFrame(index=["mean"]),
@@ -666,6 +668,13 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
                 r222 = r2_score(f(one3, *popt), df2)
                 # Найти точку с максимальной ошибкой среди всех
                 dop_val = residuals**2
+
+                if check_deform_only_left_points:
+                    # даём приоритет левым точкам
+                    dop_val = dop_val + pd.Series([
+                        i / (0.1 * dop_val.mean()) for i in range(len(dop_val))
+                    ])
+
                 max_ind = dop_val.idxmax()
                 # получить из данных аппроксимации значения вязкости внутриклеточного содержимого и предела текучести
                 viscosity = 1 / popt[0]
