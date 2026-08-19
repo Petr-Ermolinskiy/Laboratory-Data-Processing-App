@@ -79,7 +79,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(768, 773)
+        MainWindow.resize(893, 773)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -1959,7 +1959,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 582, 248))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 758, 216))
         self.gridLayout_21 = QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_21.setObjectName("gridLayout_21")
         self.gridLayout_20 = QGridLayout()
@@ -2347,7 +2347,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 492, 260))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 607, 245))
         self.gridLayout_19 = QGridLayout(self.scrollAreaWidgetContents_3)
         self.gridLayout_19.setObjectName("gridLayout_19")
         self.verticalLayout_55 = QVBoxLayout()
@@ -2604,7 +2604,7 @@ class Ui_MainWindow(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 530, 212))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 609, 198))
         self.gridLayout_7 = QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_7.setObjectName("gridLayout_7")
         self.verticalLayout_56 = QVBoxLayout()
@@ -3889,7 +3889,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 633, 206))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 623, 209))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.tableWidget = QTableWidget(self.scrollAreaWidgetContents)
@@ -4911,6 +4911,14 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_130.addWidget(self.RheoScan_describe_mask_sheets)
 
+        self.checkBox_save_additional_excel_list_rheoscan = QCheckBox(self.tab_4)
+        self.checkBox_save_additional_excel_list_rheoscan.setObjectName(
+            "checkBox_save_additional_excel_list_rheoscan"
+        )
+        self.checkBox_save_additional_excel_list_rheoscan.setFont(font6)
+
+        self.horizontalLayout_130.addWidget(self.checkBox_save_additional_excel_list_rheoscan)
+
         self.verticalLayout_44.addLayout(self.horizontalLayout_130)
 
         self.btn_RheoScan_describe_file_or_files = QPushButton(self.tab_4)
@@ -5058,7 +5066,7 @@ class Ui_MainWindow(object):
         self.toolBox.setObjectName("toolBox")
         self.page = QWidget()
         self.page.setObjectName("page")
-        self.page.setGeometry(QRect(0, 0, 100, 100))
+        self.page.setGeometry(QRect(0, 0, 406, 113))
         self.gridLayout_23 = QGridLayout(self.page)
         self.gridLayout_23.setObjectName("gridLayout_23")
         self.verticalLayout_50 = QVBoxLayout()
@@ -5080,7 +5088,7 @@ class Ui_MainWindow(object):
         )
         self.page_2 = QWidget()
         self.page_2.setObjectName("page_2")
-        self.page_2.setGeometry(QRect(0, 0, 100, 100))
+        self.page_2.setGeometry(QRect(0, 0, 91, 91))
         self.gridLayout_24 = QGridLayout(self.page_2)
         self.gridLayout_24.setObjectName("gridLayout_24")
         self.verticalLayout_61 = QVBoxLayout()
@@ -5102,7 +5110,7 @@ class Ui_MainWindow(object):
         )
         self.page_3 = QWidget()
         self.page_3.setObjectName("page_3")
-        self.page_3.setGeometry(QRect(0, 0, 100, 98))
+        self.page_3.setGeometry(QRect(0, 0, 89, 89))
         self.gridLayout_25 = QGridLayout(self.page_3)
         self.gridLayout_25.setObjectName("gridLayout_25")
         self.rheoscan_report_comment = QPlainTextEdit(self.page_3)
@@ -10786,6 +10794,22 @@ class Ui_MainWindow(object):
         )
         # endif // QT_CONFIG(whatsthis)
         self.RheoScan_describe_mask_sheets.setText("")
+        # if QT_CONFIG(whatsthis)
+        self.checkBox_save_additional_excel_list_rheoscan.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0434\u043e\u043f. \u043b\u0438\u0441\u0442 \u0441 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0432 \u0442\u043e\u043c \u0436\u0435 \u043f\u043e\u0440\u044f\u0434\u043a\u0435, \u0447\u0442\u043e \u0438 \u043d\u0430 \u042f\u043d\u0434\u0435\u043a\u0441/Google \u0434\u0438\u0441\u043a\u0435",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        self.checkBox_save_additional_excel_list_rheoscan.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0434\u043e\u043f. \u043b\u0438\u0441\u0442 \u0441 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438, \u043a\u0430\u043a \u043d\u0430 \u043e\u0431\u043b\u0430\u0447\u043d\u043e\u043c \u0434\u0438\u0441\u043a\u0435",
+                None,
+            )
+        )
         # if QT_CONFIG(whatsthis)
         self.btn_RheoScan_describe_file_or_files.setWhatsThis(
             QCoreApplication.translate(

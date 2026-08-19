@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>768</width>
+    <width>893</width>
     <height>773</height>
    </rect>
   </property>
@@ -4164,8 +4164,8 @@ border-radius: 17px;
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>582</width>
-                           <height>248</height>
+                           <width>758</width>
+                           <height>216</height>
                           </rect>
                          </property>
                          <layout class="QGridLayout" name="gridLayout_21">
@@ -5188,8 +5188,8 @@ border-radius: 17px;
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>492</width>
-                           <height>260</height>
+                           <width>607</width>
+                           <height>245</height>
                           </rect>
                          </property>
                          <layout class="QGridLayout" name="gridLayout_19">
@@ -5762,8 +5762,8 @@ border-radius: 17px;
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>530</width>
-                           <height>212</height>
+                           <width>609</width>
+                           <height>198</height>
                           </rect>
                          </property>
                          <layout class="QGridLayout" name="gridLayout_7">
@@ -8799,8 +8799,8 @@ border-radius: 10px;</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>633</width>
-                 <height>206</height>
+                 <width>623</width>
+                 <height>209</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -11167,6 +11167,21 @@ border-radius: 10px;</string>
                   </property>
                  </widget>
                 </item>
+                <item>
+                 <widget class="QCheckBox" name="checkBox_save_additional_excel_list_rheoscan">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="whatsThis">
+                   <string>Сохранить доп. лист с параметрами в том же порядке, что и на Яндекс/Google диске</string>
+                  </property>
+                  <property name="text">
+                   <string>Сохранить доп. лист с параметрами, как на облачном диске</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </item>
               <item>
@@ -11425,8 +11440,8 @@ border-radius: 10px;</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>100</width>
-                       <height>100</height>
+                       <width>406</width>
+                       <height>113</height>
                       </rect>
                      </property>
                      <attribute name="label">
@@ -11462,8 +11477,8 @@ border-radius: 10px;</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>100</width>
-                       <height>100</height>
+                       <width>91</width>
+                       <height>91</height>
                       </rect>
                      </property>
                      <attribute name="label">
@@ -11499,8 +11514,8 @@ border-radius: 10px;</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>100</width>
-                       <height>98</height>
+                       <width>89</width>
+                       <height>89</height>
                       </rect>
                      </property>
                      <attribute name="label">

@@ -4,6 +4,29 @@ import pandas as pd
 from PySide6.QtWidgets import QMessageBox
 
 
+COLS_MNOI_RHEOSCAN_DICT = {
+    "AI (10 sec.), %": "AI, %",
+    "T1/2": "T1/2, c",
+    "AMP": "AMP",
+    "CSS": "CSS, мПа",
+    "1 Pa": "E1",
+    "2 Pa": "E2",
+    "3 Pa": "E3",
+    "4 Pa": "E4",
+    "5 Pa": "E5",
+    "6 Pa": "E6",
+    "7 Pa": "E7",
+    "8 Pa": "E8",
+    "10 Pa": "E10",
+    "12 Pa": "E12",
+    "15 Pa": "E15",
+    "17 Pa": "E17",
+    "20 Pa": "E20",
+    "Yield strength": "Предел текучести",
+    "Viscosity": "Вязкость внутр. содерж.",
+}
+
+
 def rheo_scan_describe_file_or_files(self):
     dlg = QMessageBox(self)
     # путь
@@ -13,6 +36,9 @@ def rheo_scan_describe_file_or_files(self):
         dlg.setText("Не введен путь к excel файлу")
         dlg.exec()
         return
+
+    # флаг, что будем смотреть только колонки как в файле
+    make_as_remote = self.ui.checkBox_save_additional_excel_list_rheoscan.isChecked()
 
     if self.ui.RheoScan_describe_mask_sheets.text() == "":
         mask = None
@@ -30,9 +56,9 @@ def rheo_scan_describe_file_or_files(self):
 
     try:
         if self.ui.comboBox_RheoScan_describe.currentText() == "Один файл - один образец":
-            _describe_all_multiple_files(path, mask)
+            _describe_all_multiple_files(path, mask, make_as_remote)
         else:
-            _describe_all_one_file(path, mask)
+            _describe_all_one_file(path, mask, make_as_remote)
     except Exception as e:
         dlg.setWindowTitle("Обработка файлов RheoScan")
         dlg.setText("Ошибка в обработке: " + str(e))
@@ -47,7 +73,7 @@ def rheo_scan_describe_file_or_files(self):
 
 
 # функция, когда файлов много и один файл == один образец
-def _describe_all_multiple_files(path: str, mask_sheet_main=None) -> None:
+def _describe_all_multiple_files(path: str, mask_sheet_main=None, make_as_remote=None) -> None:
     path_obj = Path(path)
     summary_file = path_obj / "RheoScan_summary.xlsx"
 
@@ -87,13 +113,18 @@ def _describe_all_multiple_files(path: str, mask_sheet_main=None) -> None:
         # сохраняем в основной DataFrame
         describe_all_files = pd.concat([describe_all_files, describe_data_frame], axis=0)
 
+    if make_as_remote:
+        describe_all_files = describe_all_files[list(COLS_MNOI_RHEOSCAN_DICT.keys())].rename(
+            columns=COLS_MNOI_RHEOSCAN_DICT
+        )[list(COLS_MNOI_RHEOSCAN_DICT.values())]
+
     # сохраняем в excel файл
     describe_all_files.to_excel(str(summary_file))
     return None
 
 
 # функция, когда файл один и один файл == много образцов -- причем колонка с индексами -- первая
-def _describe_all_one_file(path: str, mask_sheet: list | None = None) -> None:
+def _describe_all_one_file(path: str, mask_sheet: list | None = None, make_as_remote=None) -> None:
     describe_file = pd.DataFrame()
     sheets = pd.ExcelFile(path).sheet_names
     if mask_sheet is None:
@@ -121,6 +152,12 @@ def _describe_all_one_file(path: str, mask_sheet: list | None = None) -> None:
 
         # статистика
         describe_file = pd.concat([describe_file, df_describe_for_one_sheet], axis=1)
+
+    if make_as_remote:
+        describe_file = describe_file[list(COLS_MNOI_RHEOSCAN_DICT.keys())].rename(
+            columns=COLS_MNOI_RHEOSCAN_DICT
+        )[list(COLS_MNOI_RHEOSCAN_DICT.values())]
+
     # сохраняем
     path_obj = Path(path)
     describe_file.to_excel(str(path_obj.parent / "RheoScan_summary.xlsx"))
