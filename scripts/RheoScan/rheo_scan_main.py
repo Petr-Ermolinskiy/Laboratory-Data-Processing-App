@@ -13,6 +13,7 @@ from sklearn.metrics import r2_score
 
 
 def all_rheo_scan_level(self) -> None:
+    """Основная функция для вызова обработчика для всех папок."""
     # закроем все рисунки, если они открыты
     # если этого не сделать, то может быть такое, что рисунки наложатся друг на друга
     plt.close()
@@ -25,12 +26,22 @@ def all_rheo_scan_level(self) -> None:
     # сюда будут сохраняться все данные
     all_and_all = pd.DataFrame()
 
-    # проходимся по каждому пути
-    for path_for_one in get_subfolder_files_paths(level, path):
-        check = main_thingy(self, path_for_one)
-        if check[0] != 0:
-            break
-        all_and_all = pd.concat([all_and_all, check[1]], axis=1, ignore_index=False)
+    # создадим объект для вывода сообщений
+    dlg = QMessageBox(self)
+
+    # проходимся по каждому пути по кажому файлу
+    try:
+        for path_for_one in get_subfolder_files_paths(level, path):
+            check = main_thingy(self, path_for_one, dlg)
+            if check[0] != 0:
+                break
+            all_and_all = pd.concat([all_and_all, check[1]], axis=1, ignore_index=False)
+    except Exception as e:
+        dlg.setWindowTitle("RheoScan")
+        dlg.setText(f"Ошибка: {e}")
+        dlg.exec()
+        return
+
     # сохраняем общий массив
     if check[0] == 0 and self.ui.check_save_RheoScan_overall.isChecked():
         path_obj = Path(path)
@@ -40,13 +51,13 @@ def all_rheo_scan_level(self) -> None:
                 sheet_name="All_data",
             )
     if check[0] == 0:
-        dlg = QMessageBox(self)
         dlg.setWindowTitle("RheoScan")
         dlg.setText("Все данные успешно записаны в excel/csv файл(ы)")
         dlg.exec()
 
 
 def get_subfolder_files_paths(level: int, path: str, s: set | None = None) -> set:
+    """Найдем все подпапки для заданной глубины."""
     if s is None:
         s = set()
 
@@ -65,8 +76,8 @@ def get_subfolder_files_paths(level: int, path: str, s: set | None = None) -> se
 
 
 # основная функция для извлечения данных
-def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
-    dlg = QMessageBox(self)
+def main_thingy(self, path_for_one, dlg) -> [int, pd.DataFrame]:
+    """Основная функция для обработки одной папки RheoScan."""
     #########################
     # параметры, которые нам понадобятся
     #########################
@@ -283,7 +294,10 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             r2 = r2_score(f(x["Time, s"], *[y0_, A1_, A2_, t1_, t2_]), x["Raw data, a.u."])
 
             # далее вычислим AI по сырым данным -- если выходим за пределы дата фрейма, то просто возвращаем None
-            def calc_ai_index_in_percent(data_frame, time, bottom_index):
+            def calc_ai_index_in_percent(
+                data_frame: pd.DataFrame, time: float, bottom_index: int
+            ) -> float:
+                """Кастомно вычисляем индекс агрегации по сырым данным."""
                 try:
                     integral_raw = trapz(
                         data_frame.iloc[bottom_index : bottom_index + int(time * 10), 1]
@@ -759,9 +773,15 @@ def main_thingy(self, path_for_one) -> [int, pd.DataFrame]:
             # выбираем только значение с максимальным R^2 - находим индекс с максимальным R^2
             max_value_index = r_sq_seq["r^2"].idxmax()
             # по индексу максимального значения находим само значения и записываем всю строку в наш изначальный Data Frame
-            fit_res_deform = pd.concat(
-                [fit_res_deform, r_sq_seq.loc[[max_value_index]]], ignore_index=True
-            )
+            try:
+                fit_res_deform = pd.concat(
+                    [fit_res_deform, r_sq_seq.loc[[max_value_index]]], ignore_index=True
+                )
+            except Exception as e:
+                dlg.setWindowTitle("RheoScan -- деформируемость")
+                dlg.setText(f"Проблема при аппроксиации при обработки файла '{i}': {e}")
+                dlg.exec()
+                return [1, pd.DataFrame()]
 
         # обновляем индексы
         fit_res_deform = fit_res_deform.reset_index(drop=True)
