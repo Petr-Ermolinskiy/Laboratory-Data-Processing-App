@@ -22,25 +22,55 @@ except Exception as e:
 def parse_date_string(date_str: str) -> datetime:
     """Парсинг формата дат.
 
-    - 03.04.2025 (European format: день.месяц.год)
-    - 03/04/2025 (US format: месяц/день/год or день/месяц/год)
+    Поддерживаемые форматы:
+    - 03.04.2025 (день.месяц.год)
+    - 03/04/2025 (день/месяц/год)
+    - 1/1/24 (месяц/день/год с двузначным годом)
+    - 01/01/2024 (месяц/день/год)
     """
-    # убираем
     date_str = date_str.strip()
 
-    # пробуем разные форматы
+    # Форматы для парсинга (в порядке приоритета)
     formats = [
-        "%d.%m.%Y",  # 03.04.2025 (день.месяц.год)
-        "%d/%m/%Y",  # 03/04/2025 (день/месяц/год)
+        "%d.%m.%Y",  # 03.04.2025
+        "%d/%m/%Y",  # 03/04/2025
+        "%m/%d/%Y",  # 03/04/2025 (US: месяц/день/год)
+        "%d.%m.%y",  # 03.04.25
+        "%d/%m/%y",  # 03/04/25
+        "%m/%d/%y",  # 03/04/25 (US: месяц/день/год с двузначным годом)
+        "%Y-%m-%d",  # 2025-04-03 (ISO)
+        "%y-%m-%d",  # 25-04-03
     ]
 
     for fmt in formats:
         try:
-            return datetime.strptime(date_str, fmt)
+            return datetime.strptime(date_str, fmt)  # noqa: DTZ007
         except ValueError:
             continue
 
-    # если ничто не сработало, то ошибка
+    # Если ничто не сработало, пробуем определить формат автоматически
+    # Для дат вида 1/1/24
+    if "/" in date_str:
+        parts = date_str.split("/")
+        if len(parts) == 3:
+            try:
+                # Пробуем как день/месяц/год
+                day, month, year = map(int, parts)
+                if 0 < day <= 31 and 0 < month <= 12:
+                    year = 2000 + year if year < 100 else year
+                    return datetime(year, month, day)  # noqa: DTZ001
+            except ValueError:
+                pass
+
+            try:
+                # Пробуем как месяц/день/год (US)
+                month, day, year = map(int, parts)
+                if 0 < month <= 12 and 0 < day <= 31:
+                    year = 2000 + year if year < 100 else year
+                    return datetime(year, month, day)  # noqa: DTZ001
+            except ValueError:
+                pass
+
     msg = f"Unable to parse date string: {date_str}"
     raise ValueError(msg)
 
