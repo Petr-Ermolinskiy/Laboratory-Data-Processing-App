@@ -4,18 +4,20 @@ import os
 import sys
 from unittest.mock import MagicMock
 
-# Only apply mock in CI environment on macOS
-if "GITHUB_ACTIONS" in os.environ and sys.platform == "darwin":
-    print("🔧 Setting up WeasyPrint mock for CI...")
+# делаем Mock только для CI на GitHub
+if "GITHUB_ACTIONS" in os.environ:
+    print("Настройка WeasyPrint mock для CI на GitHub...")
 
-    # Create a mock that behaves like a real module
+    # создадим клас для мока
     class MockWeasyPrint:
+        """Mock для WeasyPrint."""
+
         __name__ = "weasyprint"
         __version__ = "99.99.9"
         __file__ = "/mock/weasyprint/__init__.py"
-        __path__ = ["/mock/weasyprint"]
+        __path__ = ["/mock/weasyprint"]  # noqa: RUF012
 
-        # Submodules
+        # доп. модули
         class HTML:
             __name__ = "weasyprint.HTML"
 
@@ -37,14 +39,13 @@ if "GITHUB_ACTIONS" in os.environ and sys.platform == "darwin":
         class ffi:
             __name__ = "weasyprint.ffi"
 
-    # Register the mock
     mock_instance = MockWeasyPrint()
     sys.modules["weasyprint"] = mock_instance
 
-    # Also mock submodules
+    # добавим др. модули
     sys.modules["weasyprint.HTML"] = mock_instance.HTML
     sys.modules["weasyprint.css"] = mock_instance.css
     sys.modules["weasyprint.text"] = mock_instance.text
     sys.modules["weasyprint.fonts"] = mock_instance.fonts
 
-    print("✅ WeasyPrint mock initialized successfully")
+    print("✅ WeasyPrint mock инициализирован")
