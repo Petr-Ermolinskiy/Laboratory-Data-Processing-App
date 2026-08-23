@@ -21,7 +21,15 @@ from PySide6.QtWidgets import QApplication, QMessageBox
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 # главный класс MainWindowProcessingApp
-from main_window_processing_app import MainWindowProcessingApp
+from main_window_processing_app import MainWindowProcessingApp  # noqa: I001
+
+# ----------------------------------------------- #
+
+# добавляем weasyprint -- Мок
+from unittest.mock import MagicMock
+mock_weasyprint = MagicMock()
+sys.modules["weasyprint"] = mock_weasyprint
+sys.modules["weasyprint.HTML"] = MagicMock()
 
 # ----------------------------------------------- #
 logger.remove()
