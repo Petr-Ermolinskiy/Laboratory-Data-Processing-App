@@ -50,8 +50,9 @@ from scripts.RheoScan.rheo_scan_describe import rheo_scan_describe_file_or_files
 from scripts.RheoScan.rheo_scan_main import all_rheo_scan_level
 from scripts.RheoScan.rheo_scan_sort import sort_rheo_scan_data
 
-# доп.параметры -- загрузка JSON файла
+# доп.параметры -- загрузка и выгрузка JSON файла
 from scripts.utils_dop.load_json_file import load_widgets_from_json
+from scripts.utils_dop.save_json_file import save_widgets_to_json
 
 #  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  #
 
@@ -144,6 +145,8 @@ class MainWindowProcessingApp(QMainWindow):
         # -- Дополнительные кнопки -- #
         # для загрузки JSON файла
         self.ui.btn_json_load.pressed.connect(self.load_json_file)
+        # для выгрузки JSON файла
+        self.ui.btn_json_save.pressed.connect(self.save_json_file)
         # для инфо
         self.ui.label_info.mousePressEvent = self.info_about_programme
 
@@ -205,17 +208,28 @@ class MainWindowProcessingApp(QMainWindow):
         self.ui.color_box.textChanged.connect(self.box_palette_off)
         self.ui.color_points.textChanged.connect(self.point_palette_off)
 
+    def show_message(self, title_: str, message_:str)->None:
+        """Показывает сообщение."""
+        info_message = QMessageBox(self)
+        info_message.setWindowTitle(title_)
+        info_message.setText(message_)
+        info_message.exec()
+
     def load_json_file(self) -> None:
         """Загрузка JSON файла."""
         load_widgets_from_json(self)
+        self.show_message("JSON файл", "Параметры из JSON файла загружены.")
+
+    def save_json_file(self) -> None:
+        """Сохранение JSON файла с параметрами."""
+        save_widgets_to_json(self)
+        self.show_message("JSON файл", "JSON файл с параметрами сохранен.")
 
     def info_about_programme(self, _) -> None:  # noqa: ANN001
         """Информация про программу.
 
         :param _: Нужен этот параметр, так как передается 2 параметра функции.
         """
-        info_message = QMessageBox(self)
-        info_message.setWindowTitle("Информация про программу")
         first_message = (
             "Программа написана на языке Python с применением ряда библиотек Ермолинским Петром Борисовичем"
             "- аспирантом лаборатории <Биомедицинской фотоники> Физического факультета МГУ имени М.В. Ломоносова."
@@ -223,8 +237,7 @@ class MainWindowProcessingApp(QMainWindow):
         )
         url_message = "https://github.com/Petr-Ermolinskiy"
         message = first_message + "\n" + url_message
-        info_message.setText(message)
-        info_message.exec()
+        self.show_message("Информация про программу", message)
 
     @Slot(int)
     def on_comboBox_style_sheet_currentIndexChanged(self, index: int) -> None:  # noqa: N802

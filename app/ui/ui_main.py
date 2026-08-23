@@ -89,32 +89,14 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-        self.comboBox_style_sheet = QComboBox(self.centralwidget)
-        self.comboBox_style_sheet.addItem("")
-        self.comboBox_style_sheet.addItem("")
-        self.comboBox_style_sheet.addItem("")
-        self.comboBox_style_sheet.setObjectName("comboBox_style_sheet")
-        sizePolicy1 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.comboBox_style_sheet.sizePolicy().hasHeightForWidth())
-        self.comboBox_style_sheet.setSizePolicy(sizePolicy1)
-        self.comboBox_style_sheet.setMinimumSize(QSize(120, 0))
-        font = QFont()
-        font.setFamilies(["Segoe UI"])
-        font.setPointSize(9)
-        font.setBold(True)
-        self.comboBox_style_sheet.setFont(font)
-        self.comboBox_style_sheet.setStyleSheet(
-            "color: rgb(128, 160, 165);\nbackground-color: rgba(255, 255, 255, 0);"
-        )
-
-        self.gridLayout.addWidget(self.comboBox_style_sheet, 1, 1, 1, 1, Qt.AlignRight)
-
         self.horizontalLayout_167 = QHBoxLayout()
         self.horizontalLayout_167.setObjectName("horizontalLayout_167")
         self.label_info = QLabel(self.centralwidget)
         self.label_info.setObjectName("label_info")
+        font = QFont()
+        font.setFamilies(["Segoe UI"])
+        font.setPointSize(9)
+        font.setBold(True)
         self.label_info.setFont(font)
         self.label_info.setStyleSheet("color: rgb(128, 160, 165);")
 
@@ -130,6 +112,26 @@ class Ui_MainWindow(object):
         self.horizontalLayout_167.addWidget(self.label_version)
 
         self.gridLayout.addLayout(self.horizontalLayout_167, 1, 0, 1, 1)
+
+        self.comboBox_style_sheet = QComboBox(self.centralwidget)
+        self.comboBox_style_sheet.addItem("")
+        self.comboBox_style_sheet.addItem("")
+        self.comboBox_style_sheet.addItem("")
+        self.comboBox_style_sheet.setObjectName("comboBox_style_sheet")
+        sizePolicy1 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.comboBox_style_sheet.sizePolicy().hasHeightForWidth())
+        self.comboBox_style_sheet.setSizePolicy(sizePolicy1)
+        self.comboBox_style_sheet.setMinimumSize(QSize(120, 0))
+        self.comboBox_style_sheet.setFont(font)
+        self.comboBox_style_sheet.setStyleSheet(
+            "color: rgb(128, 160, 165);\nbackground-color: rgba(255, 255, 255, 0);"
+        )
+
+        self.gridLayout.addWidget(
+            self.comboBox_style_sheet, 1, 1, 1, 1, Qt.AlignmentFlag.AlignRight
+        )
 
         self.Lab_stuff = QTabWidget(self.centralwidget)
         self.Lab_stuff.setObjectName("Lab_stuff")
@@ -197,7 +199,7 @@ class Ui_MainWindow(object):
         font4.setPointSize(10)
         self.line_14.setFont(font4)
         self.line_14.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_14.setFrameShadow(QFrame.Plain)
+        self.line_14.setFrameShadow(QFrame.Shadow.Plain)
         self.line_14.setLineWidth(3)
         self.line_14.setFrameShape(QFrame.HLine)
 
@@ -207,13 +209,13 @@ class Ui_MainWindow(object):
         self.line_3.setObjectName("line_3")
         self.line_3.setFont(font4)
         self.line_3.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_3.setFrameShadow(QFrame.Plain)
+        self.line_3.setFrameShadow(QFrame.Shadow.Plain)
         self.line_3.setLineWidth(3)
         self.line_3.setFrameShape(QFrame.HLine)
 
         self.gridLayout_3.addWidget(self.line_3, 8, 0, 1, 1)
 
-        self.verticalSpacer_2 = QSpacerItem(13, 7, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_2 = QSpacerItem(13, 7, QSizePolicy.Policy.Fixed, QSizePolicy.Minimum)
 
         self.gridLayout_3.addItem(self.verticalSpacer_2, 3, 0, 1, 1)
 
@@ -267,7 +269,9 @@ class Ui_MainWindow(object):
         self.check_approx_deform_raw_data.setSizePolicy(sizePolicy3)
         self.check_approx_deform_raw_data.setFont(font5)
 
-        self.horizontalLayout_71.addWidget(self.check_approx_deform_raw_data, 0, Qt.AlignHCenter)
+        self.horizontalLayout_71.addWidget(
+            self.check_approx_deform_raw_data, 0, Qt.AlignmentFlag.AlignHCenter
+        )
 
         self.gridLayout_3.addLayout(self.horizontalLayout_71, 14, 0, 1, 1)
 
@@ -275,7 +279,7 @@ class Ui_MainWindow(object):
         self.line.setObjectName("line")
         self.line.setFont(font4)
         self.line.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line.setFrameShadow(QFrame.Plain)
+        self.line.setFrameShadow(QFrame.Shadow.Plain)
         self.line.setLineWidth(3)
         self.line.setFrameShape(QFrame.HLine)
 
@@ -304,8 +308,12 @@ class Ui_MainWindow(object):
         font7.setStrikeOut(False)
         font7.setHintingPreference(QFont.PreferNoHinting)
         self.label_20.setFont(font7)
-        self.label_20.setTextFormat(Qt.RichText)
-        self.label_20.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
+        self.label_20.setTextFormat(Qt.TextFormat.RichText)
+        self.label_20.setAlignment(
+            Qt.AlignmentFlag.AlignRight
+            | Qt.AlignmentFlag.AlignTrailing
+            | Qt.AlignmentFlag.AlignVCenter
+        )
         self.label_20.setWordWrap(True)
         self.label_20.setMargin(0)
         self.label_20.setIndent(1)
@@ -341,7 +349,11 @@ class Ui_MainWindow(object):
         font8.setFamilies(["Segoe UI"])
         font8.setPointSize(12)
         self.label_21.setFont(font8)
-        self.label_21.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
+        self.label_21.setAlignment(
+            Qt.AlignmentFlag.AlignRight
+            | Qt.AlignmentFlag.AlignTrailing
+            | Qt.AlignmentFlag.AlignVCenter
+        )
         self.label_21.setWordWrap(True)
 
         self.horizontalLayout_3.addWidget(self.label_21)
@@ -394,7 +406,7 @@ class Ui_MainWindow(object):
         self.r2_def.setSingleStep(0.001000000000000)
         self.r2_def.setValue(0.950000000000000)
 
-        self.horizontalLayout.addWidget(self.r2_def, 0, Qt.AlignRight)
+        self.horizontalLayout.addWidget(self.r2_def, 0, Qt.AlignmentFlag.AlignRight)
 
         self.verticalLayout_3.addLayout(self.horizontalLayout)
 
@@ -601,7 +613,7 @@ class Ui_MainWindow(object):
         self.line_4.setObjectName("line_4")
         self.line_4.setFont(font4)
         self.line_4.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_4.setFrameShadow(QFrame.Plain)
+        self.line_4.setFrameShadow(QFrame.Shadow.Plain)
         self.line_4.setLineWidth(3)
         self.line_4.setFrameShape(QFrame.HLine)
 
@@ -659,7 +671,7 @@ class Ui_MainWindow(object):
         self.lb_separator.setSizePolicy(sizePolicy11)
         self.lb_separator.setFont(font5)
 
-        self.horizontalLayout_65.addWidget(self.lb_separator, 0, Qt.AlignLeft)
+        self.horizontalLayout_65.addWidget(self.lb_separator, 0, Qt.AlignmentFlag.AlignLeft)
 
         self.separator_for_data = QLineEdit(self.hjgf)
         self.separator_for_data.setObjectName("separator_for_data")
@@ -679,7 +691,7 @@ class Ui_MainWindow(object):
         self.check_name_rheoscan.setFont(font5)
         self.check_name_rheoscan.setChecked(False)
 
-        self.verticalLayout_32.addWidget(self.check_name_rheoscan, 0, Qt.AlignHCenter)
+        self.verticalLayout_32.addWidget(self.check_name_rheoscan, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.horizontalLayout_116 = QHBoxLayout()
         self.horizontalLayout_116.setObjectName("horizontalLayout_116")
@@ -756,9 +768,9 @@ class Ui_MainWindow(object):
         sizePolicy12.setHeightForWidth(self.line_22.sizePolicy().hasHeightForWidth())
         self.line_22.setSizePolicy(sizePolicy12)
         self.line_22.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_22.setFrameShadow(QFrame.Plain)
+        self.line_22.setFrameShadow(QFrame.Shadow.Plain)
         self.line_22.setLineWidth(4)
-        self.line_22.setFrameShape(QFrame.VLine)
+        self.line_22.setFrameShape(QFrame.HLine)
 
         self.horizontalLayout_136.addWidget(self.line_22)
 
@@ -779,7 +791,7 @@ class Ui_MainWindow(object):
         self.line_15.setObjectName("line_15")
         self.line_15.setFont(font4)
         self.line_15.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_15.setFrameShadow(QFrame.Plain)
+        self.line_15.setFrameShadow(QFrame.Shadow.Plain)
         self.line_15.setLineWidth(3)
         self.line_15.setFrameShape(QFrame.HLine)
 
@@ -822,7 +834,11 @@ class Ui_MainWindow(object):
         sizePolicy10.setHeightForWidth(self.lb_path_3.sizePolicy().hasHeightForWidth())
         self.lb_path_3.setSizePolicy(sizePolicy10)
         self.lb_path_3.setFont(font5)
-        self.lb_path_3.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
+        self.lb_path_3.setAlignment(
+            Qt.AlignmentFlag.AlignLeading
+            | Qt.AlignmentFlag.AlignLeft
+            | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.horizontalLayout_41.addWidget(self.lb_path_3)
 
@@ -845,7 +861,11 @@ class Ui_MainWindow(object):
         sizePolicy10.setHeightForWidth(self.lb_path_16.sizePolicy().hasHeightForWidth())
         self.lb_path_16.setSizePolicy(sizePolicy10)
         self.lb_path_16.setFont(font5)
-        self.lb_path_16.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
+        self.lb_path_16.setAlignment(
+            Qt.AlignmentFlag.AlignLeading
+            | Qt.AlignmentFlag.AlignLeft
+            | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.horizontalLayout_72.addWidget(self.lb_path_16)
 
@@ -889,9 +909,9 @@ class Ui_MainWindow(object):
         sizePolicy12.setHeightForWidth(self.line_16.sizePolicy().hasHeightForWidth())
         self.line_16.setSizePolicy(sizePolicy12)
         self.line_16.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_16.setFrameShadow(QFrame.Plain)
+        self.line_16.setFrameShadow(QFrame.Shadow.Plain)
         self.line_16.setLineWidth(4)
-        self.line_16.setFrameShape(QFrame.VLine)
+        self.line_16.setFrameShape(QFrame.HLine)
 
         self.vvv.addWidget(self.line_16)
 
@@ -904,7 +924,11 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.label_16.sizePolicy().hasHeightForWidth())
         self.label_16.setSizePolicy(sizePolicy3)
         self.label_16.setFont(font6)
-        self.label_16.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
+        self.label_16.setAlignment(
+            Qt.AlignmentFlag.AlignRight
+            | Qt.AlignmentFlag.AlignTrailing
+            | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.horizontalLayout_46.addWidget(self.label_16)
 
@@ -929,7 +953,11 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.label_17.sizePolicy().hasHeightForWidth())
         self.label_17.setSizePolicy(sizePolicy3)
         self.label_17.setFont(font6)
-        self.label_17.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
+        self.label_17.setAlignment(
+            Qt.AlignmentFlag.AlignRight
+            | Qt.AlignmentFlag.AlignTrailing
+            | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.horizontalLayout_47.addWidget(self.label_17)
 
@@ -974,9 +1002,9 @@ class Ui_MainWindow(object):
         sizePolicy12.setHeightForWidth(self.line_17.sizePolicy().hasHeightForWidth())
         self.line_17.setSizePolicy(sizePolicy12)
         self.line_17.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_17.setFrameShadow(QFrame.Plain)
+        self.line_17.setFrameShadow(QFrame.Shadow.Plain)
         self.line_17.setLineWidth(4)
-        self.line_17.setFrameShape(QFrame.VLine)
+        self.line_17.setFrameShape(QFrame.HLine)
 
         self.horizontalLayout_44.addWidget(self.line_17)
 
@@ -989,7 +1017,11 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.label_13.sizePolicy().hasHeightForWidth())
         self.label_13.setSizePolicy(sizePolicy3)
         self.label_13.setFont(font6)
-        self.label_13.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
+        self.label_13.setAlignment(
+            Qt.AlignmentFlag.AlignRight
+            | Qt.AlignmentFlag.AlignTrailing
+            | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.horizontalLayout_42.addWidget(self.label_13)
 
@@ -1014,7 +1046,11 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.label_14.sizePolicy().hasHeightForWidth())
         self.label_14.setSizePolicy(sizePolicy3)
         self.label_14.setFont(font6)
-        self.label_14.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
+        self.label_14.setAlignment(
+            Qt.AlignmentFlag.AlignRight
+            | Qt.AlignmentFlag.AlignTrailing
+            | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.horizontalLayout_43.addWidget(self.label_14)
 
@@ -1043,7 +1079,9 @@ class Ui_MainWindow(object):
         self.check_biola_plot_figs.setChecked(True)
         self.check_biola_plot_figs.setTristate(False)
 
-        self.verticalLayout_31.addWidget(self.check_biola_plot_figs, 0, Qt.AlignHCenter)
+        self.verticalLayout_31.addWidget(
+            self.check_biola_plot_figs, 0, Qt.AlignmentFlag.AlignHCenter
+        )
 
         self.plp = QFrame(self.tab_5)
         self.plp.setObjectName("plp")
@@ -1064,7 +1102,7 @@ class Ui_MainWindow(object):
         font9.setPointSize(11)
         font9.setUnderline(True)
         self.lb_color_pal_box_13.setFont(font9)
-        self.lb_color_pal_box_13.setAlignment(Qt.AlignCenter)
+        self.lb_color_pal_box_13.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_30.addWidget(self.lb_color_pal_box_13)
 
@@ -1072,7 +1110,7 @@ class Ui_MainWindow(object):
         self.line_18.setObjectName("line_18")
         self.line_18.setFont(font4)
         self.line_18.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_18.setFrameShadow(QFrame.Plain)
+        self.line_18.setFrameShadow(QFrame.Shadow.Plain)
         self.line_18.setLineWidth(4)
         self.line_18.setFrameShape(QFrame.HLine)
 
@@ -1148,7 +1186,7 @@ class Ui_MainWindow(object):
         self.lb_color_pal_box_11.setSizePolicy(sizePolicy3)
         self.lb_color_pal_box_11.setFont(font6)
 
-        self.horizontalLayout_63.addWidget(self.lb_color_pal_box_11, 0, Qt.AlignRight)
+        self.horizontalLayout_63.addWidget(self.lb_color_pal_box_11, 0, Qt.AlignmentFlag.AlignRight)
 
         self.comboBox_Biola_language = QComboBox(self.plp)
         self.comboBox_Biola_language.addItem("")
@@ -1285,7 +1323,7 @@ class Ui_MainWindow(object):
         self.line_6.setObjectName("line_6")
         self.line_6.setFont(font4)
         self.line_6.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_6.setFrameShadow(QFrame.Plain)
+        self.line_6.setFrameShadow(QFrame.Shadow.Plain)
         self.line_6.setLineWidth(3)
         self.line_6.setFrameShape(QFrame.HLine)
 
@@ -1319,7 +1357,7 @@ class Ui_MainWindow(object):
         self.line_5.setObjectName("line_5")
         self.line_5.setFont(font4)
         self.line_5.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_5.setFrameShadow(QFrame.Plain)
+        self.line_5.setFrameShadow(QFrame.Shadow.Plain)
         self.line_5.setLineWidth(3)
         self.line_5.setFrameShape(QFrame.HLine)
 
@@ -1376,7 +1414,11 @@ class Ui_MainWindow(object):
 
         self.formLayout_4 = QFormLayout()
         self.formLayout_4.setObjectName("formLayout_4")
-        self.formLayout_4.setLabelAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
+        self.formLayout_4.setLabelAlignment(
+            Qt.AlignmentFlag.AlignLeading
+            | Qt.AlignmentFlag.AlignLeft
+            | Qt.AlignmentFlag.AlignVCenter
+        )
         self.asd = QFrame(self.tab_7)
         self.asd.setObjectName("asd")
         sizePolicy16 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
@@ -1402,7 +1444,7 @@ class Ui_MainWindow(object):
         font10.setPointSize(11)
         font10.setUnderline(True)
         self.lb_path_5.setFont(font10)
-        self.lb_path_5.setAlignment(Qt.AlignCenter)
+        self.lb_path_5.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_26.addWidget(self.lb_path_5)
 
@@ -1508,7 +1550,7 @@ class Ui_MainWindow(object):
         sizePolicy18.setHeightForWidth(self.lb_path_6.sizePolicy().hasHeightForWidth())
         self.lb_path_6.setSizePolicy(sizePolicy18)
         self.lb_path_6.setFont(font10)
-        self.lb_path_6.setAlignment(Qt.AlignCenter)
+        self.lb_path_6.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_27.addWidget(self.lb_path_6)
 
@@ -1608,7 +1650,7 @@ class Ui_MainWindow(object):
         sizePolicy18.setHeightForWidth(self.lb_path_10.sizePolicy().hasHeightForWidth())
         self.lb_path_10.setSizePolicy(sizePolicy18)
         self.lb_path_10.setFont(font10)
-        self.lb_path_10.setAlignment(Qt.AlignCenter)
+        self.lb_path_10.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_47.addWidget(self.lb_path_10)
 
@@ -1630,7 +1672,7 @@ class Ui_MainWindow(object):
         self.lb_path_23.setSizePolicy(sizePolicy17)
         self.lb_path_23.setFont(font5)
 
-        self.horizontalLayout_51.addWidget(self.lb_path_23, 0, Qt.AlignHCenter)
+        self.horizontalLayout_51.addWidget(self.lb_path_23, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.dop_cal_k = QDoubleSpinBox(self.hhhhh_exp)
         self.dop_cal_k.setObjectName("dop_cal_k")
@@ -1648,7 +1690,7 @@ class Ui_MainWindow(object):
         self.lb_path_27.setSizePolicy(sizePolicy17)
         self.lb_path_27.setFont(font5)
 
-        self.horizontalLayout_51.addWidget(self.lb_path_27, 0, Qt.AlignHCenter)
+        self.horizontalLayout_51.addWidget(self.lb_path_27, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.dop_cal_y0 = QDoubleSpinBox(self.hhhhh_exp)
         self.dop_cal_y0.setObjectName("dop_cal_y0")
@@ -1666,7 +1708,7 @@ class Ui_MainWindow(object):
         self.lb_path_28.setSizePolicy(sizePolicy17)
         self.lb_path_28.setFont(font5)
 
-        self.horizontalLayout_51.addWidget(self.lb_path_28, 0, Qt.AlignHCenter)
+        self.horizontalLayout_51.addWidget(self.lb_path_28, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.dop_cal_A = QDoubleSpinBox(self.hhhhh_exp)
         self.dop_cal_A.setObjectName("dop_cal_A")
@@ -1696,7 +1738,7 @@ class Ui_MainWindow(object):
         self.lb_path_30.setSizePolicy(sizePolicy17)
         self.lb_path_30.setFont(font5)
 
-        self.horizontalLayout_52.addWidget(self.lb_path_30, 0, Qt.AlignHCenter)
+        self.horizontalLayout_52.addWidget(self.lb_path_30, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.dop_cal_R0 = QDoubleSpinBox(self.hhhhh_exp)
         self.dop_cal_R0.setObjectName("dop_cal_R0")
@@ -1714,7 +1756,7 @@ class Ui_MainWindow(object):
         self.lb_path_31.setSizePolicy(sizePolicy17)
         self.lb_path_31.setFont(font5)
 
-        self.horizontalLayout_52.addWidget(self.lb_path_31, 0, Qt.AlignHCenter)
+        self.horizontalLayout_52.addWidget(self.lb_path_31, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.dop_cal_b = QDoubleSpinBox(self.hhhhh_exp)
         self.dop_cal_b.setObjectName("dop_cal_b")
@@ -1857,7 +1899,7 @@ class Ui_MainWindow(object):
         self.line_25 = QFrame(self.tab)
         self.line_25.setObjectName("line_25")
         self.line_25.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_25.setFrameShadow(QFrame.Plain)
+        self.line_25.setFrameShadow(QFrame.Shadow.Plain)
         self.line_25.setLineWidth(3)
         self.line_25.setFrameShape(QFrame.HLine)
 
@@ -1907,7 +1949,9 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_156.addLayout(self.verticalLayout_54)
 
-        self.horizontalSpacer_5 = QSpacerItem(50, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_5 = QSpacerItem(
+            50, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Minimum
+        )
 
         self.horizontalLayout_156.addItem(self.horizontalSpacer_5)
 
@@ -1960,17 +2004,17 @@ class Ui_MainWindow(object):
         self.scrollArea_2 = QScrollArea(self.tab_15)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollArea_2.setMinimumSize(QSize(0, 170))
-        self.scrollArea_2.setFrameShadow(QFrame.Sunken)
-        self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollArea_2.setFrameShadow(QFrame.Shadow.Sunken)
+        self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 758, 216))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 704, 244))
         self.gridLayout_21 = QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_21.setObjectName("gridLayout_21")
         self.gridLayout_20 = QGridLayout()
         self.gridLayout_20.setObjectName("gridLayout_20")
-        self.gridLayout_20.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.gridLayout_20.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
         self.gridLayout_20.setContentsMargins(-1, 0, -1, -1)
         self.frame_2 = QFrame(self.scrollAreaWidgetContents_2)
         self.frame_2.setObjectName("frame_2")
@@ -2353,7 +2397,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 607, 245))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 492, 260))
         self.gridLayout_19 = QGridLayout(self.scrollAreaWidgetContents_3)
         self.gridLayout_19.setObjectName("gridLayout_19")
         self.verticalLayout_55 = QVBoxLayout()
@@ -2435,7 +2479,9 @@ class Ui_MainWindow(object):
         self.lb__altern_heposisis_5.setEnabled(True)
         self.lb__altern_heposisis_5.setFont(font6)
 
-        self.horizontalLayout_145.addWidget(self.lb__altern_heposisis_5, 0, Qt.AlignRight)
+        self.horizontalLayout_145.addWidget(
+            self.lb__altern_heposisis_5, 0, Qt.AlignmentFlag.AlignRight
+        )
 
         self.comboBox_box_check_N_ = QComboBox(self.scrollAreaWidgetContents_3)
         self.comboBox_box_check_N_.addItem("")
@@ -2459,7 +2505,7 @@ class Ui_MainWindow(object):
         self.line_7.setObjectName("line_7")
         self.line_7.setFont(font4)
         self.line_7.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_7.setFrameShadow(QFrame.Plain)
+        self.line_7.setFrameShadow(QFrame.Shadow.Plain)
         self.line_7.setLineWidth(3)
         self.line_7.setFrameShape(QFrame.HLine)
 
@@ -2610,7 +2656,7 @@ class Ui_MainWindow(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 609, 198))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 542, 212))
         self.gridLayout_7 = QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_7.setObjectName("gridLayout_7")
         self.verticalLayout_56 = QVBoxLayout()
@@ -2644,7 +2690,9 @@ class Ui_MainWindow(object):
         self.lb_color_pal_box_21.setSizePolicy(sizePolicy3)
         self.lb_color_pal_box_21.setFont(font6)
 
-        self.horizontalLayout_140.addWidget(self.lb_color_pal_box_21, 0, Qt.AlignRight)
+        self.horizontalLayout_140.addWidget(
+            self.lb_color_pal_box_21, 0, Qt.AlignmentFlag.AlignRight
+        )
 
         self.spinBox_size_stat_znachimost = QSpinBox(self.scrollAreaWidgetContents_4)
         self.spinBox_size_stat_znachimost.setObjectName("spinBox_size_stat_znachimost")
@@ -2789,7 +2837,7 @@ class Ui_MainWindow(object):
         self.frame.setObjectName("frame")
         sizePolicy11.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy11)
-        self.frame.setLayoutDirection(Qt.LeftToRight)
+        self.frame.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.verticalLayout_19 = QVBoxLayout(self.frame)
         self.verticalLayout_19.setObjectName("verticalLayout_19")
         self.horizontalLayout_123 = QHBoxLayout()
@@ -2861,7 +2909,11 @@ class Ui_MainWindow(object):
         self.lb_size_corr_matrix = QLabel(self.frame)
         self.lb_size_corr_matrix.setObjectName("lb_size_corr_matrix")
         self.lb_size_corr_matrix.setFont(font6)
-        self.lb_size_corr_matrix.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
+        self.lb_size_corr_matrix.setAlignment(
+            Qt.AlignmentFlag.AlignRight
+            | Qt.AlignmentFlag.AlignTrailing
+            | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.horizontalLayout_28.addWidget(self.lb_size_corr_matrix)
 
@@ -2883,7 +2935,11 @@ class Ui_MainWindow(object):
         self.lb_font_in = QLabel(self.frame)
         self.lb_font_in.setObjectName("lb_font_in")
         self.lb_font_in.setFont(font6)
-        self.lb_font_in.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
+        self.lb_font_in.setAlignment(
+            Qt.AlignmentFlag.AlignRight
+            | Qt.AlignmentFlag.AlignTrailing
+            | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.horizontalLayout_29.addWidget(self.lb_font_in)
 
@@ -2904,7 +2960,11 @@ class Ui_MainWindow(object):
         self.lb_font_out = QLabel(self.frame)
         self.lb_font_out.setObjectName("lb_font_out")
         self.lb_font_out.setFont(font6)
-        self.lb_font_out.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
+        self.lb_font_out.setAlignment(
+            Qt.AlignmentFlag.AlignRight
+            | Qt.AlignmentFlag.AlignTrailing
+            | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.horizontalLayout_30.addWidget(self.lb_font_out)
 
@@ -2926,7 +2986,11 @@ class Ui_MainWindow(object):
         self.lb_name_of_title = QLabel(self.frame)
         self.lb_name_of_title.setObjectName("lb_name_of_title")
         self.lb_name_of_title.setFont(font6)
-        self.lb_name_of_title.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
+        self.lb_name_of_title.setAlignment(
+            Qt.AlignmentFlag.AlignRight
+            | Qt.AlignmentFlag.AlignTrailing
+            | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.horizontalLayout_31.addWidget(self.lb_name_of_title)
 
@@ -3640,7 +3704,7 @@ class Ui_MainWindow(object):
         self.line_19.setObjectName("line_19")
         self.line_19.setFont(font4)
         self.line_19.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_19.setFrameShadow(QFrame.Plain)
+        self.line_19.setFrameShadow(QFrame.Shadow.Plain)
         self.line_19.setLineWidth(3)
         self.line_19.setFrameShape(QFrame.HLine)
 
@@ -3895,7 +3959,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 623, 209))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 617, 190))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.tableWidget = QTableWidget(self.scrollAreaWidgetContents)
@@ -3946,20 +4010,20 @@ class Ui_MainWindow(object):
         sizePolicy12.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
         self.tableWidget.setSizePolicy(sizePolicy12)
         self.tableWidget.setTabletTracking(False)
-        self.tableWidget.setLayoutDirection(Qt.LeftToRight)
-        self.tableWidget.setFrameShape(QFrame.HLine)
-        self.tableWidget.setFrameShadow(QFrame.Plain)
+        self.tableWidget.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.tableWidget.setFrameShape(QFrame.Shape.HLine)
+        self.tableWidget.setFrameShadow(QFrame.Shadow.Plain)
         self.tableWidget.setLineWidth(2)
         self.tableWidget.setMidLineWidth(1)
-        self.tableWidget.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.tableWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.tableWidget.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.tableWidget.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.tableWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.tableWidget.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
         self.tableWidget.setDragEnabled(False)
         self.tableWidget.setAlternatingRowColors(False)
-        self.tableWidget.setTextElideMode(Qt.ElideMiddle)
-        self.tableWidget.setVerticalScrollMode(QAbstractItemView.ScrollPerItem)
+        self.tableWidget.setTextElideMode(Qt.TextElideMode.ElideMiddle)
+        self.tableWidget.setVerticalScrollMode(QAbstractItemView.ScrollMode.ScrollPerItem)
         self.tableWidget.setShowGrid(True)
-        self.tableWidget.setGridStyle(Qt.SolidLine)
+        self.tableWidget.setGridStyle(Qt.PenStyle.SolidLine)
         self.tableWidget.setSortingEnabled(False)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(True)
         self.tableWidget.horizontalHeader().setMinimumSectionSize(25)
@@ -3977,7 +4041,7 @@ class Ui_MainWindow(object):
         self.lb_norm_data_4.setSizePolicy(sizePolicy13)
         self.lb_norm_data_4.setFont(font6)
 
-        self.gridLayout_2.addWidget(self.lb_norm_data_4, 0, 0, 1, 1, Qt.AlignHCenter)
+        self.gridLayout_2.addWidget(self.lb_norm_data_4, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
@@ -4063,13 +4127,13 @@ class Ui_MainWindow(object):
         self.line_2.setObjectName("line_2")
         self.line_2.setFont(font4)
         self.line_2.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_2.setFrameShadow(QFrame.Plain)
+        self.line_2.setFrameShadow(QFrame.Shadow.Plain)
         self.line_2.setLineWidth(10)
         self.line_2.setFrameShape(QFrame.HLine)
 
         self.verticalLayout_43.addWidget(self.line_2)
 
-        self.verticalSpacer_6 = QSpacerItem(20, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_6 = QSpacerItem(20, 5, QSizePolicy.Policy.Fixed, QSizePolicy.Minimum)
 
         self.verticalLayout_43.addItem(self.verticalSpacer_6)
 
@@ -4091,7 +4155,7 @@ class Ui_MainWindow(object):
         font11.setUnderline(True)
         self.lb_color_pal_box_17.setFont(font11)
 
-        self.verticalLayout_40.addWidget(self.lb_color_pal_box_17, 0, Qt.AlignHCenter)
+        self.verticalLayout_40.addWidget(self.lb_color_pal_box_17, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.horizontalLayout_80 = QHBoxLayout()
         self.horizontalLayout_80.setObjectName("horizontalLayout_80")
@@ -4153,7 +4217,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_43.addWidget(self.yyy)
 
-        self.verticalSpacer_5 = QSpacerItem(10, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_5 = QSpacerItem(10, 5, QSizePolicy.Policy.Fixed, QSizePolicy.Minimum)
 
         self.verticalLayout_43.addItem(self.verticalSpacer_5)
 
@@ -4171,7 +4235,7 @@ class Ui_MainWindow(object):
         self.lb_color_pal_box_18.setSizePolicy(sizePolicy)
         self.lb_color_pal_box_18.setFont(font11)
 
-        self.verticalLayout_42.addWidget(self.lb_color_pal_box_18, 0, Qt.AlignHCenter)
+        self.verticalLayout_42.addWidget(self.lb_color_pal_box_18, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.verticalLayout_41 = QVBoxLayout()
         self.verticalLayout_41.setObjectName("verticalLayout_41")
@@ -4276,7 +4340,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_43.addWidget(self.ppp)
 
-        self.verticalSpacer_7 = QSpacerItem(10, 5, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_7 = QSpacerItem(10, 5, QSizePolicy.Policy.Fixed, QSizePolicy.Minimum)
 
         self.verticalLayout_43.addItem(self.verticalSpacer_7)
 
@@ -4294,7 +4358,7 @@ class Ui_MainWindow(object):
         self.lb_color_pal_box_22.setSizePolicy(sizePolicy)
         self.lb_color_pal_box_22.setFont(font11)
 
-        self.verticalLayout_53.addWidget(self.lb_color_pal_box_22, 0, Qt.AlignHCenter)
+        self.verticalLayout_53.addWidget(self.lb_color_pal_box_22, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.horizontalLayout_143 = QHBoxLayout()
         self.horizontalLayout_143.setSpacing(10)
@@ -4393,7 +4457,7 @@ class Ui_MainWindow(object):
         self.line_9.setObjectName("line_9")
         self.line_9.setFont(font4)
         self.line_9.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_9.setFrameShadow(QFrame.Plain)
+        self.line_9.setFrameShadow(QFrame.Shadow.Plain)
         self.line_9.setLineWidth(3)
         self.line_9.setFrameShape(QFrame.HLine)
 
@@ -4520,7 +4584,7 @@ class Ui_MainWindow(object):
         self.line_8.setObjectName("line_8")
         self.line_8.setFont(font4)
         self.line_8.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_8.setFrameShadow(QFrame.Plain)
+        self.line_8.setFrameShadow(QFrame.Shadow.Plain)
         self.line_8.setLineWidth(3)
         self.line_8.setFrameShape(QFrame.HLine)
 
@@ -4702,7 +4766,7 @@ class Ui_MainWindow(object):
         self.line_11.setObjectName("line_11")
         self.line_11.setFont(font4)
         self.line_11.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_11.setFrameShadow(QFrame.Plain)
+        self.line_11.setFrameShadow(QFrame.Shadow.Plain)
         self.line_11.setLineWidth(3)
         self.line_11.setFrameShape(QFrame.HLine)
 
@@ -4822,7 +4886,7 @@ class Ui_MainWindow(object):
         self.line_10.setObjectName("line_10")
         self.line_10.setFont(font4)
         self.line_10.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_10.setFrameShadow(QFrame.Plain)
+        self.line_10.setFrameShadow(QFrame.Shadow.Plain)
         self.line_10.setLineWidth(3)
         self.line_10.setFrameShape(QFrame.HLine)
 
@@ -4841,7 +4905,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_15.addWidget(self.btn_plot_and_save_catplot, 6, 0, 1, 1)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout_15.addItem(self.verticalSpacer_3, 7, 1, 1, 1)
 
@@ -4860,7 +4924,7 @@ class Ui_MainWindow(object):
         font12.setUnderline(True)
         self.lb_path_for_plot_7.setFont(font12)
 
-        self.verticalLayout_44.addWidget(self.lb_path_for_plot_7, 0, Qt.AlignHCenter)
+        self.verticalLayout_44.addWidget(self.lb_path_for_plot_7, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.horizontalLayout_128 = QHBoxLayout()
         self.horizontalLayout_128.setObjectName("horizontalLayout_128")
@@ -4948,7 +5012,7 @@ class Ui_MainWindow(object):
         self.line_21.setObjectName("line_21")
         self.line_21.setFont(font4)
         self.line_21.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_21.setFrameShadow(QFrame.Plain)
+        self.line_21.setFrameShadow(QFrame.Shadow.Plain)
         self.line_21.setLineWidth(3)
         self.line_21.setFrameShape(QFrame.HLine)
 
@@ -4958,7 +5022,7 @@ class Ui_MainWindow(object):
         self.line_23.setObjectName("line_23")
         self.line_23.setFont(font4)
         self.line_23.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_23.setFrameShadow(QFrame.Plain)
+        self.line_23.setFrameShadow(QFrame.Shadow.Plain)
         self.line_23.setLineWidth(3)
         self.line_23.setFrameShape(QFrame.HLine)
 
@@ -4968,7 +5032,7 @@ class Ui_MainWindow(object):
         self.line_24.setObjectName("line_24")
         self.line_24.setFont(font4)
         self.line_24.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_24.setFrameShadow(QFrame.Plain)
+        self.line_24.setFrameShadow(QFrame.Shadow.Plain)
         self.line_24.setLineWidth(3)
         self.line_24.setFrameShape(QFrame.HLine)
 
@@ -4981,7 +5045,7 @@ class Ui_MainWindow(object):
         self.lb_path_for_plot_10 = QLabel(self.tab_4)
         self.lb_path_for_plot_10.setObjectName("lb_path_for_plot_10")
         self.lb_path_for_plot_10.setFont(font12)
-        self.lb_path_for_plot_10.setAlignment(Qt.AlignCenter)
+        self.lb_path_for_plot_10.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_65.addWidget(self.lb_path_for_plot_10)
 
@@ -5072,7 +5136,7 @@ class Ui_MainWindow(object):
         self.toolBox.setObjectName("toolBox")
         self.page = QWidget()
         self.page.setObjectName("page")
-        self.page.setGeometry(QRect(0, 0, 91, 91))
+        self.page.setGeometry(QRect(0, 0, 100, 100))
         self.gridLayout_23 = QGridLayout(self.page)
         self.gridLayout_23.setObjectName("gridLayout_23")
         self.verticalLayout_50 = QVBoxLayout()
@@ -5094,7 +5158,7 @@ class Ui_MainWindow(object):
         )
         self.page_2 = QWidget()
         self.page_2.setObjectName("page_2")
-        self.page_2.setGeometry(QRect(0, 0, 91, 91))
+        self.page_2.setGeometry(QRect(0, 0, 100, 100))
         self.gridLayout_24 = QGridLayout(self.page_2)
         self.gridLayout_24.setObjectName("gridLayout_24")
         self.verticalLayout_61 = QVBoxLayout()
@@ -5116,7 +5180,7 @@ class Ui_MainWindow(object):
         )
         self.page_3 = QWidget()
         self.page_3.setObjectName("page_3")
-        self.page_3.setGeometry(QRect(0, 0, 89, 89))
+        self.page_3.setGeometry(QRect(0, 0, 100, 98))
         self.gridLayout_25 = QGridLayout(self.page_3)
         self.gridLayout_25.setObjectName("gridLayout_25")
         self.rheoscan_report_comment = QPlainTextEdit(self.page_3)
@@ -5150,7 +5214,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_65.addWidget(self.btn_make_rheoscan_report)
 
-        self.verticalSpacer = QSpacerItem(20, 100, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 100, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.verticalLayout_65.addItem(self.verticalSpacer)
 
@@ -5173,7 +5237,7 @@ class Ui_MainWindow(object):
         self.lb_path_for_plot_8.setObjectName("lb_path_for_plot_8")
         self.lb_path_for_plot_8.setFont(font12)
 
-        self.verticalLayout_45.addWidget(self.lb_path_for_plot_8, 0, Qt.AlignHCenter)
+        self.verticalLayout_45.addWidget(self.lb_path_for_plot_8, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.horizontalLayout_107 = QHBoxLayout()
         self.horizontalLayout_107.setObjectName("horizontalLayout_107")
@@ -5225,7 +5289,7 @@ class Ui_MainWindow(object):
         self.line_12.setObjectName("line_12")
         self.line_12.setFont(font4)
         self.line_12.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_12.setFrameShadow(QFrame.Plain)
+        self.line_12.setFrameShadow(QFrame.Shadow.Plain)
         self.line_12.setLineWidth(3)
         self.line_12.setFrameShape(QFrame.HLine)
 
@@ -5265,7 +5329,7 @@ class Ui_MainWindow(object):
         self.line_13.setObjectName("line_13")
         self.line_13.setFont(font4)
         self.line_13.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_13.setFrameShadow(QFrame.Plain)
+        self.line_13.setFrameShadow(QFrame.Shadow.Plain)
         self.line_13.setLineWidth(3)
         self.line_13.setFrameShape(QFrame.HLine)
 
@@ -5331,7 +5395,7 @@ class Ui_MainWindow(object):
         self.line_20.setObjectName("line_20")
         self.line_20.setFont(font4)
         self.line_20.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_20.setFrameShadow(QFrame.Plain)
+        self.line_20.setFrameShadow(QFrame.Shadow.Plain)
         self.line_20.setLineWidth(3)
         self.line_20.setFrameShape(QFrame.HLine)
 
@@ -5376,7 +5440,7 @@ class Ui_MainWindow(object):
         self.lb_path_for_plot_11 = QLabel(self.tab_20)
         self.lb_path_for_plot_11.setObjectName("lb_path_for_plot_11")
         self.lb_path_for_plot_11.setFont(font12)
-        self.lb_path_for_plot_11.setAlignment(Qt.AlignCenter)
+        self.lb_path_for_plot_11.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_62.addWidget(self.lb_path_for_plot_11)
 
@@ -5430,7 +5494,7 @@ class Ui_MainWindow(object):
         self.line_26.setObjectName("line_26")
         self.line_26.setFont(font4)
         self.line_26.setStyleSheet("color: rgb(128, 160, 165);")
-        self.line_26.setFrameShadow(QFrame.Plain)
+        self.line_26.setFrameShadow(QFrame.Shadow.Plain)
         self.line_26.setLineWidth(3)
         self.line_26.setFrameShape(QFrame.HLine)
 
@@ -5507,7 +5571,7 @@ class Ui_MainWindow(object):
         self.gridLayout_27.addLayout(self.verticalLayout_62, 0, 0, 1, 1)
 
         self.verticalSpacer_8 = QSpacerItem(
-            20, 40, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding
+            20, 40, QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Minimum
         )
 
         self.gridLayout_27.addItem(self.verticalSpacer_8, 1, 0, 1, 1)
@@ -5516,7 +5580,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_28.addWidget(self.tabWidget_4, 0, 0, 1, 1)
 
-        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout_28.addItem(self.verticalSpacer_4, 1, 0, 1, 1)
 
@@ -5527,15 +5591,50 @@ class Ui_MainWindow(object):
         self.Lab_stuff.addTab(self.tabWidgetPage4, "")
         self.tab_9 = QWidget()
         self.tab_9.setObjectName("tab_9")
-        self.formLayout_5 = QFormLayout(self.tab_9)
-        self.formLayout_5.setObjectName("formLayout_5")
-        self.verticalLayout_60 = QVBoxLayout()
-        self.verticalLayout_60.setObjectName("verticalLayout_60")
+        self.gridLayout_31 = QGridLayout(self.tab_9)
+        self.gridLayout_31.setObjectName("gridLayout_31")
+        self.gridLayout_30 = QGridLayout()
+        self.gridLayout_30.setObjectName("gridLayout_30")
+        self.label_26 = QLabel(self.tab_9)
+        self.label_26.setObjectName("label_26")
+        self.label_26.setFont(font1)
+
+        self.gridLayout_30.addWidget(self.label_26, 0, 0, 1, 1)
+
+        self.horizontalLayout_179 = QHBoxLayout()
+        self.horizontalLayout_179.setObjectName("horizontalLayout_179")
+        self.label_27 = QLabel(self.tab_9)
+        self.label_27.setObjectName("label_27")
+
+        self.horizontalLayout_179.addWidget(self.label_27)
+
+        self.lineEdit_json_save = QLineEdit(self.tab_9)
+        self.lineEdit_json_save.setObjectName("lineEdit_json_save")
+
+        self.horizontalLayout_179.addWidget(self.lineEdit_json_save)
+
+        self.gridLayout_30.addLayout(self.horizontalLayout_179, 1, 0, 1, 1)
+
+        self.btn_json_save = QPushButton(self.tab_9)
+        self.btn_json_save.setObjectName("btn_json_save")
+        self.btn_json_save.setFont(font6)
+        self.btn_json_save.setStyleSheet(
+            "background-color: rgba(128, 160, 165, 50);\n"
+            "border: 3px solid rgb(128, 160, 165);\n"
+            "border-radius: 10px;"
+        )
+
+        self.gridLayout_30.addWidget(self.btn_json_save, 2, 0, 1, 1)
+
+        self.gridLayout_31.addLayout(self.gridLayout_30, 2, 0, 1, 1)
+
+        self.gridLayout_29 = QGridLayout()
+        self.gridLayout_29.setObjectName("gridLayout_29")
         self.label_2 = QLabel(self.tab_9)
         self.label_2.setObjectName("label_2")
         self.label_2.setFont(font1)
 
-        self.verticalLayout_60.addWidget(self.label_2)
+        self.gridLayout_29.addWidget(self.label_2, 0, 0, 1, 1)
 
         self.horizontalLayout_172 = QHBoxLayout()
         self.horizontalLayout_172.setObjectName("horizontalLayout_172")
@@ -5549,7 +5648,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_172.addWidget(self.lineEdit_json_load)
 
-        self.verticalLayout_60.addLayout(self.horizontalLayout_172)
+        self.gridLayout_29.addLayout(self.horizontalLayout_172, 1, 0, 1, 1)
 
         self.btn_json_load = QPushButton(self.tab_9)
         self.btn_json_load.setObjectName("btn_json_load")
@@ -5560,9 +5659,25 @@ class Ui_MainWindow(object):
             "border-radius: 10px;"
         )
 
-        self.verticalLayout_60.addWidget(self.btn_json_load)
+        self.gridLayout_29.addWidget(self.btn_json_load, 2, 0, 1, 1)
 
-        self.formLayout_5.setLayout(0, QFormLayout.SpanningRole, self.verticalLayout_60)
+        self.gridLayout_31.addLayout(self.gridLayout_29, 0, 0, 1, 1)
+
+        self.line_27 = QFrame(self.tab_9)
+        self.line_27.setObjectName("line_27")
+        self.line_27.setFont(font4)
+        self.line_27.setStyleSheet("color: rgb(128, 160, 165);")
+        self.line_27.setFrameShadow(QFrame.Shadow.Plain)
+        self.line_27.setLineWidth(3)
+        self.line_27.setFrameShape(QFrame.HLine)
+
+        self.gridLayout_31.addWidget(self.line_27, 1, 0, 1, 1)
+
+        self.verticalSpacer_9 = QSpacerItem(
+            20, 500, QSizePolicy.Policy.Maximum, QSizePolicy.Minimum
+        )
+
+        self.gridLayout_31.addItem(self.verticalSpacer_9, 3, 0, 1, 1)
 
         self.Lab_stuff.addTab(self.tab_9, "")
 
@@ -5741,6 +5856,21 @@ class Ui_MainWindow(object):
                 None,
             )
         )
+        # if QT_CONFIG(tooltip)
+        self.label_info.setToolTip(
+            QCoreApplication.translate(
+                "MainWindow", "<html><head/><body><p><br/></p></body></html>", None
+            )
+        )
+        # endif // QT_CONFIG(tooltip)
+        self.label_info.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u0438\u044f \u0411\u0438\u043e\u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0439 \u0444\u043e\u0442\u043e\u043d\u0438\u043a\u0438 \u041c\u0413\u0423 \u2014 \u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f",
+                None,
+            )
+        )
+        self.label_version.setText(QCoreApplication.translate("MainWindow", "_._._", None))
         self.comboBox_style_sheet.setItemText(
             0,
             QCoreApplication.translate(
@@ -5764,21 +5894,6 @@ class Ui_MainWindow(object):
             ),
         )
 
-        # if QT_CONFIG(tooltip)
-        self.label_info.setToolTip(
-            QCoreApplication.translate(
-                "MainWindow", "<html><head/><body><p><br/></p></body></html>", None
-            )
-        )
-        # endif // QT_CONFIG(tooltip)
-        self.label_info.setText(
-            QCoreApplication.translate(
-                "MainWindow",
-                "\u041b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u0438\u044f \u0411\u0438\u043e\u043c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0439 \u0444\u043e\u0442\u043e\u043d\u0438\u043a\u0438 \u041c\u0413\u0423 \u2014 \u0415\u0440\u043c\u043e\u043b\u0438\u043d\u0441\u043a\u0438\u0439 \u041f\u0435\u0442\u0440 \u2014 \u0432\u0435\u0440\u0441\u0438\u044f",
-                None,
-            )
-        )
-        self.label_version.setText(QCoreApplication.translate("MainWindow", "_._._", None))
         # if QT_CONFIG(whatsthis)
         self.Lab_stuff.setWhatsThis(
             QCoreApplication.translate(
@@ -11542,6 +11657,50 @@ class Ui_MainWindow(object):
                 "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445",
                 None,
             ),
+        )
+        self.label_26.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0412\u044b\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0432 JSON \u0444\u0430\u0439\u043b",
+                None,
+            )
+        )
+        self.label_27.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u0443\u0442\u044c \u043a \u0444\u0430\u0439\u043b\u0443 \u0434\u043b\u044f \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f:",
+                None,
+            )
+        )
+        # if QT_CONFIG(whatsthis)
+        self.lineEdit_json_save.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u041f\u043e\u043b\u043d\u044b\u0439 \u043f\u0443\u0442\u044c \u043a JSON \u0444\u0430\u0439\u043b\u0443",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        # if QT_CONFIG(whatsthis)
+        self.btn_json_save.setWhatsThis(
+            QCoreApplication.translate(
+                "MainWindow",
+                "<html><head/><body><p>\u041f\u043e\u0434\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0438\u0437 JSON \u0444\u0430\u0439\u043b\u0430. </p><p>\u042d\u0442\u043e \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u043e\u043b\u0435\u0437\u043d\u043e, \u0435\u0441\u043b\u0438 \u0443 \u0432\u0430\u0441 \u0435\u0441\u0442\u044c \u0433\u043e\u0442\u043e\u0432\u044b\u0439 \u0448\u0430\u0431\u043b\u043e\u043d \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043a \u0434\u043b\u044f \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u044f \u0433\u0440\u0430\u0444\u0438\u043a\u043e\u0432 \u0438 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u0438 \u0432\u0430\u043c \u043d\u0435 \u0445\u043e\u0447\u0435\u0442\u0441\u044f \u043a\u0430\u0436\u0434\u044b\u0439 \u0440\u0430\u0437 \u043f\u0440\u0438 \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u0438 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0438\u0437\u043c\u0435\u043d\u044f\u0442\u044c"
+                " \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438.</p><p>JSON \u0444\u0430\u0439\u043b \u0434\u043e\u043b\u0436\u0435\u043d \u0431\u044b\u0442\u044c \u043f\u043e \u0442\u0438\u043f\u0443:</p><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">{</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">&quot;rheoscan_report_name_exp&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">:</span><span style=\" font-family:'Menlo','Monaco','Cou"
+                "rier New','monospace'; font-size:12px; color:#ce9178;\">&quot;\u0424\u0418\u041e&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">,</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">&quot;rheoscan_report_parameters_dict&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">:{</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo"
+                "','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">&quot;AAA&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">:</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#ce9178;\">&quot;aaa&quot;</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">   },</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">&quot;check_approx_agg&quot;</span><span style=\" font-fami"
+                "ly:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">:</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;\">true</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">,</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\"/><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#9cdcfe;\">&quot;check_approx_deform&quot;</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">:</span><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#569cd6;\">true</span></pre><pre style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-ri"
+                "ght:0px; -qt-block-indent:0; text-indent:0px; background-color:#1f1f1f;\"><span style=\" font-family:'Menlo','Monaco','Courier New','monospace'; font-size:12px; color:#cccccc;\">}</span></pre><p>\u0422\u043e \u0435\u0441\u0442\u044c \u043a\u043b\u044e\u0447 -- \u044d\u0442\u043e \u0438\u043c\u044f \u043e\u0431\u044a\u0435\u043a\u0442\u0430 (\u0432 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438 \u044f\u0432\u043d\u043e \u0443\u043a\u0430\u0437\u0430\u043d\u043e \u0432 \u043f\u043e\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430\u0445), \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 -- \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435, \u043a\u043e\u0442\u043e\u0440\u043e\u0435 \u0432 \u0434\u0430\u043d\u043d\u043e\u0435 \u043f\u043e\u043b\u0435 \u043f\u043e\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u044c.</p></body></html>",
+                None,
+            )
+        )
+        # endif // QT_CONFIG(whatsthis)
+        self.btn_json_save.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "\u0412\u044b\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438",
+                None,
+            )
         )
         self.label_2.setText(
             QCoreApplication.translate(

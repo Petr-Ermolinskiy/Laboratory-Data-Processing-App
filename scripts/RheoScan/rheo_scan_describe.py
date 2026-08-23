@@ -127,7 +127,9 @@ def _describe_all_multiple_files(path: str, mask_sheet_main=None, make_as_remote
         if make_as_remote:
             describe_all_files[list(COLS_MNOI_RHEOSCAN_DICT.keys())].rename(
                 columns=COLS_MNOI_RHEOSCAN_DICT
-            )[list(COLS_MNOI_RHEOSCAN_DICT.values())].to_excel(writer, sheet_name="данные_таблица_мноц")
+            )[list(COLS_MNOI_RHEOSCAN_DICT.values())].to_excel(
+                writer, sheet_name="данные_таблица_мноц"
+            )
 
     return None
 
@@ -169,7 +171,9 @@ def _describe_all_one_file(path: str, mask_sheet: list | None = None, make_as_re
         if make_as_remote:
             describe_file[list(COLS_MNOI_RHEOSCAN_DICT.keys())].rename(
                 columns=COLS_MNOI_RHEOSCAN_DICT
-            )[list(COLS_MNOI_RHEOSCAN_DICT.values())].to_excel(writer, sheet_name="данные_таблица_мноц")
+            )[list(COLS_MNOI_RHEOSCAN_DICT.values())].to_excel(
+                writer, sheet_name="данные_таблица_мноц"
+            )
 
 
 def strtobool(val: str) -> int:
