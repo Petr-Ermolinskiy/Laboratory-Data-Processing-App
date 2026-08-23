@@ -132,9 +132,9 @@ def clean_build(config: dict) -> None:
         if os.path.exists(folder):
             try:
                 shutil.rmtree(folder)
-                print(f"Удалена папка: {folder}")
+                logger.info(f"Удалена папка: {folder}")
             except Exception as e:
-                print(f"Ошибка удаления {folder}: {e}")
+                logger.info(f"Ошибка удаления {folder}: {e}")
 
     for file in files_to_remove:
         if os.path.exists(file):

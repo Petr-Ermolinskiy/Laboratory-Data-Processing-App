@@ -43,7 +43,7 @@ def test_create_profile() -> None:
     df = pd.DataFrame(data)
 
     # Создание визуализации С легендой
-    print("Создание визуализации С легендой...")
+    logger.info("Создание визуализации С легендой...")
     visualizer = ParameterVisualizer(df, height_per_param=0.8)
     visualizer.visualize(
         title="Значения пациента vs Нормальные диапазоны",

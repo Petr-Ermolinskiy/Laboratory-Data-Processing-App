@@ -115,8 +115,6 @@ def boxplot_separator(separator: str) -> None:
     # Проверяем разделитель
     tick_labels_y = [tick.get_text() for tick in ax.get_yticklabels() if tick.get_text()]
     if tick_labels_y:
-        print("))))))))")
-        print(tick_labels_y)
         assert all(separator in i for i in tick_labels_y)
         logger.info(
             f"Boxplot проверен: разделитель '{separator}' найден в {len(tick_labels_y)} метках"
