@@ -16,12 +16,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # macOS-specific system dependencies
+      - name: Install system dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install cairo pango gdk-pixbuf libffi
+
+      # Windows-specific system dependencies (if needed)
+      - name: Install system dependencies (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          # WeasyPrint on Windows needs GTK3 runtime
+          echo "Windows WeasyPrint dependencies need special handling"
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
@@ -32,6 +45,7 @@ jobs:
   build:
     name: Build on ${{ matrix.os }}
     needs: test
+    if: github.ref == 'refs/heads/master'
     strategy:
       matrix:
         os: [windows-latest, macos-latest]
@@ -39,12 +53,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install system dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: brew install cairo pango gdk-pixbuf libffi
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
