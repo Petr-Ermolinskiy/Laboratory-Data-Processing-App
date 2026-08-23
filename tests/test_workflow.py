@@ -23,15 +23,12 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 # ----------------------------------------------- #
 
 # добавляем weasyprint -- Мок
-from unittest.mock import MagicMock  # noqa: I001
-mock_weasyprint = MagicMock()
-sys.modules["weasyprint"] = mock_weasyprint
-sys.modules["weasyprint.HTML"] = MagicMock()
+import scripts._mock.weasyprint  # noqa: F401, I001
 
 # ----------------------------------------------- #
 
 # главный класс MainWindowProcessingApp
-from main_window_processing_app import MainWindowProcessingApp  # noqa: E402
+from main_window_processing_app import MainWindowProcessingApp
 
 # ----------------------------------------------- #
 
