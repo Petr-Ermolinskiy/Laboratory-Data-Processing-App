@@ -6,8 +6,6 @@ from unittest.mock import MagicMock
 
 # делаем Mock только для CI на GitHub
 if "GITHUB_ACTIONS" in os.environ:
-    print("Настройка WeasyPrint mock для CI на GitHub...")
-
     # создадим клас для мока
     class MockWeasyPrint:
         """Mock для WeasyPrint."""
@@ -47,5 +45,3 @@ if "GITHUB_ACTIONS" in os.environ:
     sys.modules["weasyprint.css"] = mock_instance.css
     sys.modules["weasyprint.text"] = mock_instance.text
     sys.modules["weasyprint.fonts"] = mock_instance.fonts
-
-    print("✅ WeasyPrint mock инициализирован")
