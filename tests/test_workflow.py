@@ -426,7 +426,7 @@ def test_rheo_scan_post_processing(
 
     # на Windows и Mac могут быть различия в Numpy обработки данных с точки зрения аппроксимации
     # поэтому надо сделать разный порог для сравнения -- tolerance
-    tolerance = 1e-10 if platform.system() == "Windows" else 1e-6
+    tolerance = 1e-6 if platform.system() == "Windows" else 1e-10
 
     # проверка на файлы
     check_, diff = compare_excel_files(
