@@ -11,6 +11,8 @@ from PySide6.QtWidgets import QMessageBox
 from scipy.integrate import trapz
 from sklearn.metrics import r2_score
 
+from ..utils_dop.const_vals import COLS_MNOI_RHEOSCAN_DICT  # noqa: TID252
+
 
 def all_rheo_scan_level(self) -> None:
     """Основная функция для вызова обработчика для всех папок."""
@@ -827,6 +829,48 @@ def main_thingy(self, path_for_one, dlg) -> [int, pd.DataFrame]:
         fit_res_deform_des = fit_res_deform.describe()
 
     """
+    Дополнительная статистика по колонкам, как в таблице на облаке
+    """
+    add_sheet_fin_cols = False
+    fin_df_cloud_data = pd.DataFrame()
+    fin_df_cloud_dict = {}
+
+    if stat_need:
+        ovarall_stat_df = pd.concat(
+            [
+                all_agg_des,
+                fit_res_des,
+                all_CSS_des,
+                all_def_des,
+                fit_res_deform_des,
+            ],
+            axis=1,
+        )
+
+        fin_df_cloud_dict = ovarall_stat_df.loc["mean", :].to_dict()
+
+        if set(COLS_MNOI_RHEOSCAN_DICT.keys()) - set(fin_df_cloud_dict.keys()) == set():
+            fin_df_cloud_dict = {
+                key: val for key, val in fin_df_cloud_dict.items() if key in COLS_MNOI_RHEOSCAN_DICT
+            }
+            fin_df_cloud_dict = {
+                COLS_MNOI_RHEOSCAN_DICT[key]: [val] for key, val in fin_df_cloud_dict.items()
+            }
+
+            fin_df_cloud_dict = dict(
+                sorted(
+                    fin_df_cloud_dict.items(),
+                    key=lambda item: list(COLS_MNOI_RHEOSCAN_DICT.values()).index(item[0]),
+                )
+            )
+
+            fin_df_cloud_data = pd.DataFrame(fin_df_cloud_dict, index=[name_of_patient])
+
+            add_sheet_fin_cols = True
+        else:
+            pass
+
+    """
     Разделение имен (для индекса при построении)
     """
 
@@ -947,6 +991,9 @@ def main_thingy(self, path_for_one, dlg) -> [int, pd.DataFrame]:
                         )
                     if save_raw_deform_data:
                         r_sq.to_excel(writer, index_label="Номер", sheet_name="Deform-Fit-Raw")
+                # сохраняем данные по статистике
+                if add_sheet_fin_cols:
+                    fin_df_cloud_data.to_excel(writer, sheet_name="данные_таблица_мноц")
         if saving_s_csv:
             if var_agg and files_agg != []:
                 all_agg.to_csv(str(path_save / f"Agg__{name_of_patient}.csv"))
@@ -958,6 +1005,7 @@ def main_thingy(self, path_for_one, dlg) -> [int, pd.DataFrame]:
                 all_def.to_csv(str(path_save / f"Deform__{name_of_patient}.csv"))
             if var_fit_deform and files_def != []:
                 fit_res_deform.to_csv(str(path_save / f"Deform-Fit__{name_of_patient}.csv"))
+
     except Exception as e:
         dlg.setWindowTitle("RheoScan - Ошибка сохранения")
         dlg.setText(
