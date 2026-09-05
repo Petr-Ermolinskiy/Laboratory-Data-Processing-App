@@ -3,36 +3,7 @@ from pathlib import Path
 import pandas as pd
 from PySide6.QtWidgets import QMessageBox
 
-
-COLS_MNOI_RHEOSCAN_DICT = {
-    "AI (10 sec.), %": "AI, %",
-    "T1/2": "T1/2, c",
-    "AMP": "AMP",
-    "M": "M",
-    "CSS": "CSS, мПа",
-    "Critical time, s": "Crit. time, с",
-    "y0": "y0",
-    "A1": "A1",
-    "A2": "A2",
-    "A1+A2": "A1+A2",
-    "t1": "t1",
-    "t2": "t2",
-    "1 Pa": "E1",
-    "2 Pa": "E2",
-    "3 Pa": "E3",
-    "4 Pa": "E4",
-    "5 Pa": "E5",
-    "6 Pa": "E6",
-    "7 Pa": "E7",
-    "8 Pa": "E8",
-    "10 Pa": "E10",
-    "12 Pa": "E12",
-    "15 Pa": "E15",
-    "17 Pa": "E17",
-    "20 Pa": "E20",
-    "Yield strength": "Предел текучести",
-    "Viscosity": "Вязкость внутр. содерж.",
-}
+from ..utils_dop.const_vals import COLS_MNOI_RHEOSCAN_DICT
 
 
 def rheo_scan_describe_file_or_files(self):
@@ -81,7 +52,11 @@ def rheo_scan_describe_file_or_files(self):
 
 
 # функция, когда файлов много и один файл == один образец
-def _describe_all_multiple_files(path: str, mask_sheet_main=None, make_as_remote=None) -> None:
+def _describe_all_multiple_files(
+    path: str,
+    mask_sheet_main=None,
+    make_as_remote: bool = False,
+) -> None:
     path_obj = Path(path)
     summary_file = path_obj / "RheoScan_summary.xlsx"
 
@@ -92,12 +67,18 @@ def _describe_all_multiple_files(path: str, mask_sheet_main=None, make_as_remote
     describe_all_files = pd.DataFrame()
 
     for file in files_all:
-        sheets = pd.ExcelFile(file).sheet_names
+        # читаем exel файл
+        try:
+            sheets = pd.ExcelFile(file).sheet_names
+        except Exception as e:
+            msg = f"Не удаётся открыть файл -- скорее всего он открыт в другой программе: {e}"
+            raise ValueError(msg)  # noqa: B904
 
         if mask_sheet_main is None:
             mask_sheet = [True] * len(sheets)
-        elif isinstance(mask_sheet_main, list) or len(mask_sheet_main) > len(sheets):
-            return 0
+        elif not isinstance(mask_sheet_main, list) or len(mask_sheet_main) > len(sheets):
+            msg = "Переданная строка по маске не может конвертироваться в список или кол-во больше, чем кол-во листов."
+            raise ValueError(msg)
         elif len(mask_sheet_main) < len(sheets):
             mask_sheet = [*mask_sheet_main, *[False] * (len(sheets) - len(mask_sheet_main))]
         else:
@@ -107,17 +88,29 @@ def _describe_all_multiple_files(path: str, mask_sheet_main=None, make_as_remote
         file_path = Path(file)
         name_of_file = file_path.stem
         for one_sheet, mask in zip(sheets, mask_sheet, strict=False):
+            # -- если есть какая-то статистика, то просто пропускаем эти листы -- #
+            if "-Stat" in one_sheet:
+                continue
+
             # читаем exel файл
-            df = pd.read_excel(str(file_path), one_sheet)
+            try:
+                df = pd.read_excel(str(file_path), one_sheet)
+            except Exception as e:
+                msg = f"Не удаётся открыть файл -- скорее всего он открыт в другой программе: {e}"
+                raise ValueError(msg)  # noqa: B904
+
             mean_vals = df[df.columns[2:]].mean()
             if mask:
                 std_vals = df[df.columns[2:]].std()
                 std_vals.index = std_vals.index + "_SD"
-                one_sheet = pd.DataFrame([pd.concat([mean_vals, std_vals])], index=[name_of_file])
-                one_sheet = one_sheet[one_sheet.columns.sort_values()]
+                data_from_sheet = pd.DataFrame(
+                    [pd.concat([mean_vals, std_vals])],
+                    index=[name_of_file],
+                )
+                data_from_sheet = data_from_sheet[data_from_sheet.columns.sort_values()]
             else:
-                one_sheet = pd.DataFrame([mean_vals], index=[name_of_file])
-            describe_data_frame = pd.concat([describe_data_frame, one_sheet], axis=1)
+                data_from_sheet = pd.DataFrame([mean_vals], index=[name_of_file])
+            describe_data_frame = pd.concat([describe_data_frame, data_from_sheet], axis=1)
         # сохраняем в основной DataFrame
         describe_all_files = pd.concat([describe_all_files, describe_data_frame], axis=0)
 
@@ -131,17 +124,21 @@ def _describe_all_multiple_files(path: str, mask_sheet_main=None, make_as_remote
                 writer, sheet_name="данные_таблица_мноц"
             )
 
-    return None
 
 
 # функция, когда файл один и один файл == много образцов -- причем колонка с индексами -- первая
-def _describe_all_one_file(path: str, mask_sheet: list | None = None, make_as_remote=None) -> None:
+def _describe_all_one_file(
+    path: str,
+    mask_sheet: list | None = None,
+    make_as_remote: bool = False,
+) -> None:
     describe_file = pd.DataFrame()
     sheets = pd.ExcelFile(path).sheet_names
     if mask_sheet is None:
         mask_sheet = [True] * len(sheets)
-    elif isinstance(mask_sheet, list) or len(mask_sheet) > len(sheets):
-        return
+    elif not isinstance(mask_sheet, list) or len(mask_sheet) > len(sheets):
+        msg = "Переданная строка по маске не может конвертироваться в список или кол-во больше, чем кол-во листов."
+        raise ValueError(msg)
     elif len(mask_sheet) < len(sheets):
         mask_sheet = [*mask_sheet, *[False] * (len(sheets) - len(mask_sheet))]
 
