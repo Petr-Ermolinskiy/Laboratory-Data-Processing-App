@@ -89,7 +89,7 @@ def _describe_all_multiple_files(
         name_of_file = file_path.stem
         for one_sheet, mask in zip(sheets, mask_sheet, strict=False):
             # -- если есть какая-то статистика, то просто пропускаем эти листы -- #
-            if "-Stat" in one_sheet:
+            if "-Stat" in one_sheet or one_sheet == "данные_таблица_мноц":
                 continue
 
             # читаем exel файл
