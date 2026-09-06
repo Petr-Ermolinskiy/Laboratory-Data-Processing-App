@@ -119,7 +119,7 @@ pyinstaller --onefile --windowed --add-data "config.json:." --add-data "app/styl
   title = {Приложение для обработки экспериментальных данных лаборатории Биомедицинской фотоники МГУ},
   url = {https://github.com/Petr-Ermolinskiy/Laboratory-Data-Processing-App},
   year = {2026},
-  note = {Версия 3.7.7}
+  note = {Версия 3.7.12}
 }
 ```
 
