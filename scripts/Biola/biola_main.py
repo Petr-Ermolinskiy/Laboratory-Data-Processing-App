@@ -63,8 +63,8 @@ def biola_result(self) -> None:
         )
         # добавляем индексы для того, чтобы в дальнейшем разделить данные
         name = dff.iat[1, 0] + " " + dff.iat[2, 0] + "мкМ" + " " + dff.iat[0, 0]
-    except Exception:
-        logger.info("Biola: кодировка на русском")
+    except Exception as e:
+        logger.info(f"Biola: кодировка на русском: ({e})")
         # для кодировки на русском
         dff = pd.read_csv(
             str(path_obj / name_of_file),
@@ -76,7 +76,7 @@ def biola_result(self) -> None:
             encoding="cp1251",
         )
         # добавляем индексы для того, чтобы в дальнейшем разделить данные
-        name = dff.iat[0, 0] + " " + dff.iat[1, 0] + " мкМ" + " " + dff.columns[0]
+        name = dff.iat[1, 0] + " " + dff.iat[2, 0] + "мкМ" + " " + dff.iat[0, 0]
 
     # добавляем дополнительный столбец
     dff["индекс для split"] = ""
