@@ -104,6 +104,18 @@ def command_for_build_mac(config: dict) -> list:
         config["MAIN_SCRIPT"],
     ]
 
+def command_for_build_linux(config: dict) -> list:
+    """Команда для сборки -- Linux."""
+    app_name = config["APP_NAME"] + "_" + config["version"] + "_linux"
+    return [
+        "pyinstaller",
+        "--windowed",
+        f"--add-data={config['VERSION_JSON']}:.",
+        f"--add-data={config['STYLE_DIR']}:app/style",
+        f"--name={app_name}",
+        config["MAIN_SCRIPT"],
+    ]
+
 
 def build_app(config: dict) -> bool:
     """Собрать приложение с помощью PyInstaller."""
@@ -112,11 +124,15 @@ def build_app(config: dict) -> bool:
     # Сформировать команду pyinstaller
     if platform.system() == "Windows":
         cmd = command_for_build_windows(config)
+    elif platform.system() == "Linux":
+        cmd = command_for_build_linux(config)
     else:
         cmd = command_for_build_mac(config)
 
     # Преобразовать список в строку для выполнения в shell
     cmd_str = " ".join(cmd)
+
+    print(f"Команда: {cmd_str}")
 
     return run_command(cmd_str, "Сборка с PyInstaller")
 

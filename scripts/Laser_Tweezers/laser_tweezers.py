@@ -27,6 +27,7 @@ def parse_date_string(date_str: str) -> datetime:
     - 03/04/2025 (день/месяц/год)
     - 1/1/24 (месяц/день/год с двузначным годом)
     - 01/01/2024 (месяц/день/год)
+    и др...
     """
     date_str = date_str.strip()
 
@@ -40,6 +41,12 @@ def parse_date_string(date_str: str) -> datetime:
         "%m/%d/%y",  # 03/04/25 (US: месяц/день/год с двузначным годом)
         "%Y-%m-%d",  # 2025-04-03 (ISO)
         "%y-%m-%d",  # 25-04-03
+        "%d %b %Y",  # 1 Jan 2024
+        "%d %B %Y",  # 1 January 2024
+        "%b %d, %Y", # Jan 1, 2024
+        "%B %d, %Y", # January 1, 2024
+        "%d-%b-%Y",  # 01-Jan-2024
+        "%b %d %Y",  # Jan 1 2024
     ]
 
     for fmt in formats:
